@@ -1,0 +1,48 @@
+//
+//  MyHomeCloud.pch
+//  MyHomeCloud
+//
+//  Created by tjsoft on 2017/5/8.
+//  Copyright © 2017年 TENG. All rights reserved.
+//
+
+#ifndef MyHomeCloud_pch
+#define MyHomeCloud_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+#import <AVOSCloud/AVOSCloud.h>
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+
+#import "UITableView+NoMoreDataInFooter.h"
+#import "UIView+TYKYPrompt.h"
+#import "CTTool.h"
+#import "NSString+Extension.h"
+
+#endif /* MyHomeCloud_pch */
+
+#define  MyUserDefaults [NSUserDefaults standardUserDefaults]
+#define dHeight   [[UIScreen mainScreen] bounds].size.height
+#define dWidth    [[UIScreen mainScreen] bounds].size.width
+
+#ifdef DEBUG
+
+#define debugLog(...) NSLog(__VA_ARGS__)
+#define debugMethod() NSLog(@"%s", __func__)
+
+#else
+
+#define debugLog(...)
+#define debugMethod()
+
+#endif
+
+#define LOADIMAGE(name)         [UIImage imageNamed:name]
+
+#define BUTTON_FRAME(frame)     [[UIButton alloc] initWithFrame:frame]
+#define BUTTON_ACTION(btn,target,bselector) [btn addTarget:target action:bselector forControlEvents:UIControlEventTouchUpInside];
+
+#define APP_PRESENT(VC)     [[UIApplication sharedApplication]keyWindow.rootViewController presentViewController:VC animated:YES completion:nil]
+#define APP_PUSH(VC)        [self.navigationController pushViewController:VC animated:YES]
+#define POPVC               [self.navigationController popViewControllerAnimated:YES]

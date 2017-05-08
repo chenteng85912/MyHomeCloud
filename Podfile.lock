@@ -1,0 +1,71 @@
+PODS:
+  - AVOSCloud (4.4.0)
+  - FMDB (2.6.2):
+    - FMDB/standard (= 2.6.2)
+  - FMDB/standard (2.6.2)
+  - MBProgressHUD (1.0.0)
+  - MJRefresh (3.1.12)
+  - SDWebImage (4.0.0):
+    - SDWebImage/Core (= 4.0.0)
+  - SDWebImage/Core (4.0.0)
+  - TYKYLibrary (1.2.5):
+    - TYKYLibrary/AutoLocation (= 1.2.5)
+    - TYKYLibrary/AutoLoop (= 1.2.5)
+    - TYKYLibrary/CustomAlbum (= 1.2.5)
+    - TYKYLibrary/CustomCamera (= 1.2.5)
+    - TYKYLibrary/Download (= 1.2.5)
+    - TYKYLibrary/LeftMenu (= 1.2.5)
+    - TYKYLibrary/ONEPhoto (= 1.2.5)
+    - TYKYLibrary/PageViewController (= 1.2.5)
+    - TYKYLibrary/Request (= 1.2.5)
+    - TYKYLibrary/ShowPictures (= 1.2.5)
+    - TYKYLibrary/TableViewDelegate (= 1.2.5)
+    - TYKYLibrary/TouchIDAuthorize (= 1.2.5)
+    - TYKYLibrary/VersionAutoUpdate (= 1.2.5)
+  - TYKYLibrary/AutoLocation (1.2.5)
+  - TYKYLibrary/AutoLoop (1.2.5)
+  - TYKYLibrary/CustomAlbum (1.2.5)
+  - TYKYLibrary/CustomCamera (1.2.5):
+    - TYKYLibrary/CustomAlbum
+  - TYKYLibrary/Download (1.2.5)
+  - TYKYLibrary/LeftMenu (1.2.5)
+  - TYKYLibrary/ONEPhoto (1.2.5):
+    - TYKYLibrary/CustomAlbum
+  - TYKYLibrary/PageViewController (1.2.5)
+  - TYKYLibrary/Request (1.2.5)
+  - TYKYLibrary/ShowPictures (1.2.5):
+    - TYKYLibrary/Download
+  - TYKYLibrary/TableViewDelegate (1.2.5)
+  - TYKYLibrary/TouchIDAuthorize (1.2.5)
+  - TYKYLibrary/VersionAutoUpdate (1.2.5):
+    - TYKYLibrary/Request
+  - UMengAnalytics-NO-IDFA (4.2.5)
+  - UMengUShare/Core (6.4.3):
+    - UMengUShare/Network
+  - UMengUShare/Network (6.4.3)
+  - UMengUShare/Social/ReducedWeChat (6.4.3):
+    - UMengUShare/Core
+
+DEPENDENCIES:
+  - AVOSCloud
+  - FMDB
+  - MBProgressHUD
+  - MJRefresh
+  - SDWebImage
+  - TYKYLibrary
+  - UMengAnalytics-NO-IDFA
+  - UMengUShare/Social/ReducedWeChat
+
+SPEC CHECKSUMS:
+  AVOSCloud: c2cbba727f10776c995108d7e8fd3142d703ebaa
+  FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
+  MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
+  SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
+  TYKYLibrary: 9133b79f7bb524868a9a8bcdb1ce50d1f48a9015
+  UMengAnalytics-NO-IDFA: 16666e32edce5be44ae5b14aaaa7f3582e09d6ab
+  UMengUShare: d39cb682598df87ebdd3c055d03d00eb0102d42c
+
+PODFILE CHECKSUM: 2115793b4949198032158bbf5bbcab212a9379d8
+
+COCOAPODS: 1.2.0

@@ -1,0 +1,736 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0B2343BD1EC01CA1007A3AC1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2343BC1EC01CA1007A3AC1 /* main.m */; };
+		0B2343C01EC01CA1007A3AC1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2343BF1EC01CA1007A3AC1 /* AppDelegate.m */; };
+		0B2343C91EC01CA1007A3AC1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B2343C71EC01CA1007A3AC1 /* Main.storyboard */; };
+		0B2343CB1EC01CA1007A3AC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B2343CA1EC01CA1007A3AC1 /* Assets.xcassets */; };
+		0B2343CE1EC01CA1007A3AC1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B2343CC1EC01CA1007A3AC1 /* LaunchScreen.storyboard */; };
+		0B2343D91EC01CA2007A3AC1 /* MyHomeCloudTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2343D81EC01CA2007A3AC1 /* MyHomeCloudTests.m */; };
+		0B2344591EC03095007A3AC1 /* NSMutableArray+CTExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2343E81EC03095007A3AC1 /* NSMutableArray+CTExtension.m */; };
+		0B23445A1EC03095007A3AC1 /* NSMutableDictionary+IHateNil.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2343EA1EC03095007A3AC1 /* NSMutableDictionary+IHateNil.m */; };
+		0B23445B1EC03095007A3AC1 /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2343EC1EC03095007A3AC1 /* NSString+Extension.m */; };
+		0B23445C1EC03095007A3AC1 /* UIAlertController+TYKYAlertBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2343EE1EC03095007A3AC1 /* UIAlertController+TYKYAlertBlock.m */; };
+		0B23445D1EC03095007A3AC1 /* UIImage+Scale.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2343F01EC03095007A3AC1 /* UIImage+Scale.m */; };
+		0B23445E1EC03095007A3AC1 /* UIScrollView+UITouchEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2343F21EC03095007A3AC1 /* UIScrollView+UITouchEvent.m */; };
+		0B23445F1EC03095007A3AC1 /* UITableView+NoMoreDataInFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2343F41EC03095007A3AC1 /* UITableView+NoMoreDataInFooter.m */; };
+		0B2344601EC03095007A3AC1 /* UIView+SDXIBExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2343F61EC03095007A3AC1 /* UIView+SDXIBExtension.m */; };
+		0B2344611EC03095007A3AC1 /* UIView+TYKYPrompt.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2343F81EC03095007A3AC1 /* UIView+TYKYPrompt.m */; };
+		0B2344631EC03095007A3AC1 /* Colours.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2343FD1EC03095007A3AC1 /* Colours.m */; };
+		0B2344681EC03095007A3AC1 /* TJDownloadTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B23440A1EC03095007A3AC1 /* TJDownloadTool.m */; };
+		0B23446A1EC03095007A3AC1 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B23440F1EC03095007A3AC1 /* Reachability.m */; };
+		0B23446C1EC03095007A3AC1 /* CTTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2344141EC03095007A3AC1 /* CTTool.m */; };
+		0B23446E1EC03095007A3AC1 /* TYKYLocalDataCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2344191EC03095007A3AC1 /* TYKYLocalDataCenter.m */; };
+		0B23447B1EC03095007A3AC1 /* AdjustScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2344421EC03095007A3AC1 /* AdjustScrollView.m */; };
+		0B23447C1EC03095007A3AC1 /* AutoRunLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2344441EC03095007A3AC1 /* AutoRunLabel.m */; };
+		9E8788EDDBF16621BCB775EC /* libPods-MyHomeCloud.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 28918ABEED7A893430DD718E /* libPods-MyHomeCloud.a */; };
+		9FC8B56C676C33C132BD175B /* libPods-MyHomeCloudTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8195A483A5A5B25BE92F9997 /* libPods-MyHomeCloudTests.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0B2343D51EC01CA2007A3AC1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0B2343B01EC01CA1007A3AC1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0B2343B71EC01CA1007A3AC1;
+			remoteInfo = MyHomeCloud;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0B2343B81EC01CA1007A3AC1 /* MyHomeCloud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyHomeCloud.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0B2343BC1EC01CA1007A3AC1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		0B2343BE1EC01CA1007A3AC1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		0B2343BF1EC01CA1007A3AC1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		0B2343C81EC01CA1007A3AC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0B2343CA1EC01CA1007A3AC1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0B2343CD1EC01CA1007A3AC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		0B2343CF1EC01CA1007A3AC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0B2343D41EC01CA2007A3AC1 /* MyHomeCloudTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyHomeCloudTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0B2343D81EC01CA2007A3AC1 /* MyHomeCloudTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyHomeCloudTests.m; sourceTree = "<group>"; };
+		0B2343DA1EC01CA2007A3AC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0B2343E71EC03095007A3AC1 /* NSMutableArray+CTExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+CTExtension.h"; sourceTree = "<group>"; };
+		0B2343E81EC03095007A3AC1 /* NSMutableArray+CTExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+CTExtension.m"; sourceTree = "<group>"; };
+		0B2343E91EC03095007A3AC1 /* NSMutableDictionary+IHateNil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+IHateNil.h"; sourceTree = "<group>"; };
+		0B2343EA1EC03095007A3AC1 /* NSMutableDictionary+IHateNil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+IHateNil.m"; sourceTree = "<group>"; };
+		0B2343EB1EC03095007A3AC1 /* NSString+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extension.h"; sourceTree = "<group>"; };
+		0B2343EC1EC03095007A3AC1 /* NSString+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extension.m"; sourceTree = "<group>"; };
+		0B2343ED1EC03095007A3AC1 /* UIAlertController+TYKYAlertBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+TYKYAlertBlock.h"; sourceTree = "<group>"; };
+		0B2343EE1EC03095007A3AC1 /* UIAlertController+TYKYAlertBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+TYKYAlertBlock.m"; sourceTree = "<group>"; };
+		0B2343EF1EC03095007A3AC1 /* UIImage+Scale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Scale.h"; sourceTree = "<group>"; };
+		0B2343F01EC03095007A3AC1 /* UIImage+Scale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Scale.m"; sourceTree = "<group>"; };
+		0B2343F11EC03095007A3AC1 /* UIScrollView+UITouchEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+UITouchEvent.h"; sourceTree = "<group>"; };
+		0B2343F21EC03095007A3AC1 /* UIScrollView+UITouchEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+UITouchEvent.m"; sourceTree = "<group>"; };
+		0B2343F31EC03095007A3AC1 /* UITableView+NoMoreDataInFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+NoMoreDataInFooter.h"; sourceTree = "<group>"; };
+		0B2343F41EC03095007A3AC1 /* UITableView+NoMoreDataInFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+NoMoreDataInFooter.m"; sourceTree = "<group>"; };
+		0B2343F51EC03095007A3AC1 /* UIView+SDXIBExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SDXIBExtension.h"; sourceTree = "<group>"; };
+		0B2343F61EC03095007A3AC1 /* UIView+SDXIBExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SDXIBExtension.m"; sourceTree = "<group>"; };
+		0B2343F71EC03095007A3AC1 /* UIView+TYKYPrompt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+TYKYPrompt.h"; sourceTree = "<group>"; };
+		0B2343F81EC03095007A3AC1 /* UIView+TYKYPrompt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+TYKYPrompt.m"; sourceTree = "<group>"; };
+		0B2343FC1EC03095007A3AC1 /* Colours.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Colours.h; sourceTree = "<group>"; };
+		0B2343FD1EC03095007A3AC1 /* Colours.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Colours.m; sourceTree = "<group>"; };
+		0B2344091EC03095007A3AC1 /* TJDownloadTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TJDownloadTool.h; sourceTree = "<group>"; };
+		0B23440A1EC03095007A3AC1 /* TJDownloadTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TJDownloadTool.m; sourceTree = "<group>"; };
+		0B23440E1EC03095007A3AC1 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		0B23440F1EC03095007A3AC1 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		0B2344131EC03095007A3AC1 /* CTTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTTool.h; sourceTree = "<group>"; };
+		0B2344141EC03095007A3AC1 /* CTTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTTool.m; sourceTree = "<group>"; };
+		0B2344181EC03095007A3AC1 /* TYKYLocalDataCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYKYLocalDataCenter.h; sourceTree = "<group>"; };
+		0B2344191EC03095007A3AC1 /* TYKYLocalDataCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYKYLocalDataCenter.m; sourceTree = "<group>"; };
+		0B2344411EC03095007A3AC1 /* AdjustScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdjustScrollView.h; sourceTree = "<group>"; };
+		0B2344421EC03095007A3AC1 /* AdjustScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdjustScrollView.m; sourceTree = "<group>"; };
+		0B2344431EC03095007A3AC1 /* AutoRunLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoRunLabel.h; sourceTree = "<group>"; };
+		0B2344441EC03095007A3AC1 /* AutoRunLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoRunLabel.m; sourceTree = "<group>"; };
+		0B2344841EC04296007A3AC1 /* MyHomeCloud.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyHomeCloud.pch; sourceTree = "<group>"; };
+		1AAB7260269F8CCA93F199B4 /* Pods-MyHomeCloudTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyHomeCloudTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyHomeCloudTests/Pods-MyHomeCloudTests.release.xcconfig"; sourceTree = "<group>"; };
+		28918ABEED7A893430DD718E /* libPods-MyHomeCloud.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyHomeCloud.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2BD76340FB7FEF978B1E1792 /* Pods-MyHomeCloud.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyHomeCloud.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyHomeCloud/Pods-MyHomeCloud.debug.xcconfig"; sourceTree = "<group>"; };
+		8195A483A5A5B25BE92F9997 /* libPods-MyHomeCloudTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyHomeCloudTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		94235DC15FEE09B15B76D4E5 /* Pods-MyHomeCloudTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyHomeCloudTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyHomeCloudTests/Pods-MyHomeCloudTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B6A1BBA8A047697D99556676 /* Pods-MyHomeCloud.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyHomeCloud.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyHomeCloud/Pods-MyHomeCloud.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0B2343B51EC01CA1007A3AC1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9E8788EDDBF16621BCB775EC /* libPods-MyHomeCloud.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0B2343D11EC01CA1007A3AC1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9FC8B56C676C33C132BD175B /* libPods-MyHomeCloudTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0B2343AF1EC01CA1007A3AC1 = {
+			isa = PBXGroup;
+			children = (
+				0B2343BA1EC01CA1007A3AC1 /* MyHomeCloud */,
+				0B2343D71EC01CA2007A3AC1 /* MyHomeCloudTests */,
+				0B2343B91EC01CA1007A3AC1 /* Products */,
+				5F0155942F2DC918E5FBA1EF /* Pods */,
+				7C85C11C537F6C90A6EF472C /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		0B2343B91EC01CA1007A3AC1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0B2343B81EC01CA1007A3AC1 /* MyHomeCloud.app */,
+				0B2343D41EC01CA2007A3AC1 /* MyHomeCloudTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0B2343BA1EC01CA1007A3AC1 /* MyHomeCloud */ = {
+			isa = PBXGroup;
+			children = (
+				0B2343E31EC03095007A3AC1 /* BusinessSystem */,
+				0B2343BE1EC01CA1007A3AC1 /* AppDelegate.h */,
+				0B2343BF1EC01CA1007A3AC1 /* AppDelegate.m */,
+				0B2343C71EC01CA1007A3AC1 /* Main.storyboard */,
+				0B2343CA1EC01CA1007A3AC1 /* Assets.xcassets */,
+				0B2343CC1EC01CA1007A3AC1 /* LaunchScreen.storyboard */,
+				0B2343CF1EC01CA1007A3AC1 /* Info.plist */,
+				0B2343BB1EC01CA1007A3AC1 /* Supporting Files */,
+			);
+			path = MyHomeCloud;
+			sourceTree = "<group>";
+		};
+		0B2343BB1EC01CA1007A3AC1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0B2343BC1EC01CA1007A3AC1 /* main.m */,
+				0B2344841EC04296007A3AC1 /* MyHomeCloud.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0B2343D71EC01CA2007A3AC1 /* MyHomeCloudTests */ = {
+			isa = PBXGroup;
+			children = (
+				0B2343D81EC01CA2007A3AC1 /* MyHomeCloudTests.m */,
+				0B2343DA1EC01CA2007A3AC1 /* Info.plist */,
+			);
+			path = MyHomeCloudTests;
+			sourceTree = "<group>";
+		};
+		0B2343E31EC03095007A3AC1 /* BusinessSystem */ = {
+			isa = PBXGroup;
+			children = (
+				0B2343E41EC03095007A3AC1 /* Category */,
+				0B2343FB1EC03095007A3AC1 /* Colours */,
+				0B2344081EC03095007A3AC1 /* Download */,
+				0B23440D1EC03095007A3AC1 /* InternetStatus */,
+				0B2344101EC03095007A3AC1 /* Library */,
+				0B2344171EC03095007A3AC1 /* LocalData */,
+				0B2344401EC03095007A3AC1 /* Subclass */,
+			);
+			path = BusinessSystem;
+			sourceTree = "<group>";
+		};
+		0B2343E41EC03095007A3AC1 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				0B2343E71EC03095007A3AC1 /* NSMutableArray+CTExtension.h */,
+				0B2343E81EC03095007A3AC1 /* NSMutableArray+CTExtension.m */,
+				0B2343E91EC03095007A3AC1 /* NSMutableDictionary+IHateNil.h */,
+				0B2343EA1EC03095007A3AC1 /* NSMutableDictionary+IHateNil.m */,
+				0B2343EB1EC03095007A3AC1 /* NSString+Extension.h */,
+				0B2343EC1EC03095007A3AC1 /* NSString+Extension.m */,
+				0B2343ED1EC03095007A3AC1 /* UIAlertController+TYKYAlertBlock.h */,
+				0B2343EE1EC03095007A3AC1 /* UIAlertController+TYKYAlertBlock.m */,
+				0B2343EF1EC03095007A3AC1 /* UIImage+Scale.h */,
+				0B2343F01EC03095007A3AC1 /* UIImage+Scale.m */,
+				0B2343F11EC03095007A3AC1 /* UIScrollView+UITouchEvent.h */,
+				0B2343F21EC03095007A3AC1 /* UIScrollView+UITouchEvent.m */,
+				0B2343F31EC03095007A3AC1 /* UITableView+NoMoreDataInFooter.h */,
+				0B2343F41EC03095007A3AC1 /* UITableView+NoMoreDataInFooter.m */,
+				0B2343F51EC03095007A3AC1 /* UIView+SDXIBExtension.h */,
+				0B2343F61EC03095007A3AC1 /* UIView+SDXIBExtension.m */,
+				0B2343F71EC03095007A3AC1 /* UIView+TYKYPrompt.h */,
+				0B2343F81EC03095007A3AC1 /* UIView+TYKYPrompt.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		0B2343FB1EC03095007A3AC1 /* Colours */ = {
+			isa = PBXGroup;
+			children = (
+				0B2343FC1EC03095007A3AC1 /* Colours.h */,
+				0B2343FD1EC03095007A3AC1 /* Colours.m */,
+			);
+			path = Colours;
+			sourceTree = "<group>";
+		};
+		0B2344081EC03095007A3AC1 /* Download */ = {
+			isa = PBXGroup;
+			children = (
+				0B2344091EC03095007A3AC1 /* TJDownloadTool.h */,
+				0B23440A1EC03095007A3AC1 /* TJDownloadTool.m */,
+			);
+			path = Download;
+			sourceTree = "<group>";
+		};
+		0B23440D1EC03095007A3AC1 /* InternetStatus */ = {
+			isa = PBXGroup;
+			children = (
+				0B23440E1EC03095007A3AC1 /* Reachability.h */,
+				0B23440F1EC03095007A3AC1 /* Reachability.m */,
+			);
+			path = InternetStatus;
+			sourceTree = "<group>";
+		};
+		0B2344101EC03095007A3AC1 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				0B2344131EC03095007A3AC1 /* CTTool.h */,
+				0B2344141EC03095007A3AC1 /* CTTool.m */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		0B2344171EC03095007A3AC1 /* LocalData */ = {
+			isa = PBXGroup;
+			children = (
+				0B2344181EC03095007A3AC1 /* TYKYLocalDataCenter.h */,
+				0B2344191EC03095007A3AC1 /* TYKYLocalDataCenter.m */,
+			);
+			path = LocalData;
+			sourceTree = "<group>";
+		};
+		0B2344401EC03095007A3AC1 /* Subclass */ = {
+			isa = PBXGroup;
+			children = (
+				0B2344411EC03095007A3AC1 /* AdjustScrollView.h */,
+				0B2344421EC03095007A3AC1 /* AdjustScrollView.m */,
+				0B2344431EC03095007A3AC1 /* AutoRunLabel.h */,
+				0B2344441EC03095007A3AC1 /* AutoRunLabel.m */,
+			);
+			path = Subclass;
+			sourceTree = "<group>";
+		};
+		5F0155942F2DC918E5FBA1EF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2BD76340FB7FEF978B1E1792 /* Pods-MyHomeCloud.debug.xcconfig */,
+				B6A1BBA8A047697D99556676 /* Pods-MyHomeCloud.release.xcconfig */,
+				94235DC15FEE09B15B76D4E5 /* Pods-MyHomeCloudTests.debug.xcconfig */,
+				1AAB7260269F8CCA93F199B4 /* Pods-MyHomeCloudTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		7C85C11C537F6C90A6EF472C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				28918ABEED7A893430DD718E /* libPods-MyHomeCloud.a */,
+				8195A483A5A5B25BE92F9997 /* libPods-MyHomeCloudTests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0B2343B71EC01CA1007A3AC1 /* MyHomeCloud */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0B2343DD1EC01CA2007A3AC1 /* Build configuration list for PBXNativeTarget "MyHomeCloud" */;
+			buildPhases = (
+				62D396216015D9344D190BBB /* [CP] Check Pods Manifest.lock */,
+				0B2343B41EC01CA1007A3AC1 /* Sources */,
+				0B2343B51EC01CA1007A3AC1 /* Frameworks */,
+				0B2343B61EC01CA1007A3AC1 /* Resources */,
+				BA0E84D335A0E5296CF9A670 /* [CP] Embed Pods Frameworks */,
+				03AA7CBA46E7FA1D544172C9 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MyHomeCloud;
+			productName = MyHomeCloud;
+			productReference = 0B2343B81EC01CA1007A3AC1 /* MyHomeCloud.app */;
+			productType = "com.apple.product-type.application";
+		};
+		0B2343D31EC01CA1007A3AC1 /* MyHomeCloudTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0B2343E01EC01CA2007A3AC1 /* Build configuration list for PBXNativeTarget "MyHomeCloudTests" */;
+			buildPhases = (
+				2DDB01162E43443D22F7E56A /* [CP] Check Pods Manifest.lock */,
+				0B2343D01EC01CA1007A3AC1 /* Sources */,
+				0B2343D11EC01CA1007A3AC1 /* Frameworks */,
+				0B2343D21EC01CA1007A3AC1 /* Resources */,
+				28AD257B2B7BE486CAB6ED54 /* [CP] Embed Pods Frameworks */,
+				3511563689E1E94F76B46548 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0B2343D61EC01CA2007A3AC1 /* PBXTargetDependency */,
+			);
+			name = MyHomeCloudTests;
+			productName = MyHomeCloudTests;
+			productReference = 0B2343D41EC01CA2007A3AC1 /* MyHomeCloudTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0B2343B01EC01CA1007A3AC1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = AJ;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = TENG;
+				TargetAttributes = {
+					0B2343B71EC01CA1007A3AC1 = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = 2NZ83N8RQJ;
+						ProvisioningStyle = Automatic;
+					};
+					0B2343D31EC01CA1007A3AC1 = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 0B2343B71EC01CA1007A3AC1;
+					};
+				};
+			};
+			buildConfigurationList = 0B2343B31EC01CA1007A3AC1 /* Build configuration list for PBXProject "MyHomeCloud" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0B2343AF1EC01CA1007A3AC1;
+			productRefGroup = 0B2343B91EC01CA1007A3AC1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0B2343B71EC01CA1007A3AC1 /* MyHomeCloud */,
+				0B2343D31EC01CA1007A3AC1 /* MyHomeCloudTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0B2343B61EC01CA1007A3AC1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0B2343CE1EC01CA1007A3AC1 /* LaunchScreen.storyboard in Resources */,
+				0B2343CB1EC01CA1007A3AC1 /* Assets.xcassets in Resources */,
+				0B2343C91EC01CA1007A3AC1 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0B2343D21EC01CA1007A3AC1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		03AA7CBA46E7FA1D544172C9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyHomeCloud/Pods-MyHomeCloud-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		28AD257B2B7BE486CAB6ED54 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyHomeCloudTests/Pods-MyHomeCloudTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2DDB01162E43443D22F7E56A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		3511563689E1E94F76B46548 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyHomeCloudTests/Pods-MyHomeCloudTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		62D396216015D9344D190BBB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		BA0E84D335A0E5296CF9A670 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyHomeCloud/Pods-MyHomeCloud-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0B2343B41EC01CA1007A3AC1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0B23445C1EC03095007A3AC1 /* UIAlertController+TYKYAlertBlock.m in Sources */,
+				0B2343C01EC01CA1007A3AC1 /* AppDelegate.m in Sources */,
+				0B2344601EC03095007A3AC1 /* UIView+SDXIBExtension.m in Sources */,
+				0B23446E1EC03095007A3AC1 /* TYKYLocalDataCenter.m in Sources */,
+				0B2344591EC03095007A3AC1 /* NSMutableArray+CTExtension.m in Sources */,
+				0B2344611EC03095007A3AC1 /* UIView+TYKYPrompt.m in Sources */,
+				0B23447C1EC03095007A3AC1 /* AutoRunLabel.m in Sources */,
+				0B23445D1EC03095007A3AC1 /* UIImage+Scale.m in Sources */,
+				0B23445A1EC03095007A3AC1 /* NSMutableDictionary+IHateNil.m in Sources */,
+				0B2344631EC03095007A3AC1 /* Colours.m in Sources */,
+				0B2344681EC03095007A3AC1 /* TJDownloadTool.m in Sources */,
+				0B2343BD1EC01CA1007A3AC1 /* main.m in Sources */,
+				0B23446A1EC03095007A3AC1 /* Reachability.m in Sources */,
+				0B23446C1EC03095007A3AC1 /* CTTool.m in Sources */,
+				0B23447B1EC03095007A3AC1 /* AdjustScrollView.m in Sources */,
+				0B23445B1EC03095007A3AC1 /* NSString+Extension.m in Sources */,
+				0B23445F1EC03095007A3AC1 /* UITableView+NoMoreDataInFooter.m in Sources */,
+				0B23445E1EC03095007A3AC1 /* UIScrollView+UITouchEvent.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0B2343D01EC01CA1007A3AC1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0B2343D91EC01CA2007A3AC1 /* MyHomeCloudTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0B2343D61EC01CA2007A3AC1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0B2343B71EC01CA1007A3AC1 /* MyHomeCloud */;
+			targetProxy = 0B2343D51EC01CA2007A3AC1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		0B2343C71EC01CA1007A3AC1 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0B2343C81EC01CA1007A3AC1 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		0B2343CC1EC01CA1007A3AC1 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0B2343CD1EC01CA1007A3AC1 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0B2343DB1EC01CA2007A3AC1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		0B2343DC1EC01CA2007A3AC1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0B2343DE1EC01CA2007A3AC1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2BD76340FB7FEF978B1E1792 /* Pods-MyHomeCloud.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 2NZ83N8RQJ;
+				GCC_PREFIX_HEADER = MyHomeCloud/MyHomeCloud.pch;
+				INFOPLIST_FILE = MyHomeCloud/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MyHomeCloud/ThirdpartyFramwork/LibBPush",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.webhall.MyHomeCloud;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		0B2343DF1EC01CA2007A3AC1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B6A1BBA8A047697D99556676 /* Pods-MyHomeCloud.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 2NZ83N8RQJ;
+				GCC_PREFIX_HEADER = MyHomeCloud/MyHomeCloud.pch;
+				INFOPLIST_FILE = MyHomeCloud/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MyHomeCloud/ThirdpartyFramwork/LibBPush",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.webhall.MyHomeCloud;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		0B2343E11EC01CA2007A3AC1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 94235DC15FEE09B15B76D4E5 /* Pods-MyHomeCloudTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = MyHomeCloudTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.webhall.MyHomeCloudTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyHomeCloud.app/MyHomeCloud";
+			};
+			name = Debug;
+		};
+		0B2343E21EC01CA2007A3AC1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1AAB7260269F8CCA93F199B4 /* Pods-MyHomeCloudTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = MyHomeCloudTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.webhall.MyHomeCloudTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyHomeCloud.app/MyHomeCloud";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0B2343B31EC01CA1007A3AC1 /* Build configuration list for PBXProject "MyHomeCloud" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0B2343DB1EC01CA2007A3AC1 /* Debug */,
+				0B2343DC1EC01CA2007A3AC1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0B2343DD1EC01CA2007A3AC1 /* Build configuration list for PBXNativeTarget "MyHomeCloud" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0B2343DE1EC01CA2007A3AC1 /* Debug */,
+				0B2343DF1EC01CA2007A3AC1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0B2343E01EC01CA2007A3AC1 /* Build configuration list for PBXNativeTarget "MyHomeCloudTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0B2343E11EC01CA2007A3AC1 /* Debug */,
+				0B2343E21EC01CA2007A3AC1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0B2343B01EC01CA1007A3AC1 /* Project object */;
+}

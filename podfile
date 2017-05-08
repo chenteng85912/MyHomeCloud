@@ -1,0 +1,25 @@
+platform :ios,'8.0'
+
+project 'MyHomeCloud.xcodeproj'
+
+target "MyHomeCloud" do
+    pod 'AVOSCloud'
+    pod 'MJRefresh'
+    pod 'MBProgressHUD'
+    pod 'SDWebImage'
+    pod 'FMDB'
+    pod 'TYKYLibrary'
+    pod 'UMengUShare/Social/ReducedWeChat'
+    pod 'UMengAnalytics-NO-IDFA'
+end
+
+target "MyHomeCloudTests" do
+    pod 'AVOSCloud'
+    pod 'MJRefresh'
+    pod 'MBProgressHUD'
+    pod 'SDWebImage'
+    pod 'FMDB'
+    pod 'TYKYLibrary'
+    pod 'UMengUShare/Social/ReducedWeChat'
+    pod 'UMengAnalytics-NO-IDFA'
+end
