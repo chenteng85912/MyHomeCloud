@@ -29,6 +29,22 @@
 		0B23446E1EC03095007A3AC1 /* TYKYLocalDataCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2344191EC03095007A3AC1 /* TYKYLocalDataCenter.m */; };
 		0B23447B1EC03095007A3AC1 /* AdjustScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2344421EC03095007A3AC1 /* AdjustScrollView.m */; };
 		0B23447C1EC03095007A3AC1 /* AutoRunLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2344441EC03095007A3AC1 /* AutoRunLabel.m */; };
+		0B57F5791EC1919E00B89CE2 /* TYKYTableViewLocalData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B57F55E1EC1919E00B89CE2 /* TYKYTableViewLocalData.m */; };
+		0B57F57A1EC1919E00B89CE2 /* TYKYTableViewCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B57F5611EC1919E00B89CE2 /* TYKYTableViewCellModel.m */; };
+		0B57F57B1EC1919E00B89CE2 /* TYKYTableViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B57F5631EC1919E00B89CE2 /* TYKYTableViewModel.m */; };
+		0B57F57C1EC1919E00B89CE2 /* TYKYWebserviceParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B57F5651EC1919E00B89CE2 /* TYKYWebserviceParameters.m */; };
+		0B57F57D1EC1919E00B89CE2 /* TYKYTableViewRemoteData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B57F5681EC1919E00B89CE2 /* TYKYTableViewRemoteData.m */; };
+		0B57F57E1EC1919E00B89CE2 /* TYKYTableViewRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B57F56B1EC1919E00B89CE2 /* TYKYTableViewRepository.m */; };
+		0B57F57F1EC1919E00B89CE2 /* TYKYTableViewPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B57F56E1EC1919E00B89CE2 /* TYKYTableViewPresenter.m */; };
+		0B57F5801EC1919E00B89CE2 /* TYKYBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B57F5781EC1919E00B89CE2 /* TYKYBaseTableViewController.m */; };
+		0B57F58F1EC198BC00B89CE2 /* AJHonmeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B57F58D1EC198BC00B89CE2 /* AJHonmeViewController.m */; };
+		0B57F5901EC198BC00B89CE2 /* AJHonmeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B57F58E1EC198BC00B89CE2 /* AJHonmeViewController.xib */; };
+		0B57F5941EC198D000B89CE2 /* AJUserCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B57F5921EC198D000B89CE2 /* AJUserCenterViewController.m */; };
+		0B57F5951EC198D000B89CE2 /* AJUserCenterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B57F5931EC198D000B89CE2 /* AJUserCenterViewController.xib */; };
+		0B57F5991EC198DB00B89CE2 /* AJNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B57F5971EC198DA00B89CE2 /* AJNewsViewController.m */; };
+		0B57F59A1EC198DB00B89CE2 /* AJNewsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B57F5981EC198DA00B89CE2 /* AJNewsViewController.xib */; };
+		0B57F59E1EC198F100B89CE2 /* CTBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B57F59D1EC198F100B89CE2 /* CTBaseViewController.m */; };
+		0B57F5A11EC1991800B89CE2 /* AjMainTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B57F5A01EC1991800B89CE2 /* AjMainTabBarViewController.m */; };
 		9E8788EDDBF16621BCB775EC /* libPods-MyHomeCloud.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 28918ABEED7A893430DD718E /* libPods-MyHomeCloud.a */; };
 		9FC8B56C676C33C132BD175B /* libPods-MyHomeCloudTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8195A483A5A5B25BE92F9997 /* libPods-MyHomeCloudTests.a */; };
 /* End PBXBuildFile section */
@@ -88,6 +104,41 @@
 		0B2344431EC03095007A3AC1 /* AutoRunLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoRunLabel.h; sourceTree = "<group>"; };
 		0B2344441EC03095007A3AC1 /* AutoRunLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoRunLabel.m; sourceTree = "<group>"; };
 		0B2344841EC04296007A3AC1 /* MyHomeCloud.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyHomeCloud.pch; sourceTree = "<group>"; };
+		0B57F55D1EC1919E00B89CE2 /* TYKYTableViewLocalData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYKYTableViewLocalData.h; sourceTree = "<group>"; };
+		0B57F55E1EC1919E00B89CE2 /* TYKYTableViewLocalData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYKYTableViewLocalData.m; sourceTree = "<group>"; };
+		0B57F5601EC1919E00B89CE2 /* TYKYTableViewCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYKYTableViewCellModel.h; sourceTree = "<group>"; };
+		0B57F5611EC1919E00B89CE2 /* TYKYTableViewCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYKYTableViewCellModel.m; sourceTree = "<group>"; };
+		0B57F5621EC1919E00B89CE2 /* TYKYTableViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYKYTableViewModel.h; sourceTree = "<group>"; };
+		0B57F5631EC1919E00B89CE2 /* TYKYTableViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYKYTableViewModel.m; sourceTree = "<group>"; };
+		0B57F5641EC1919E00B89CE2 /* TYKYWebserviceParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYKYWebserviceParameters.h; sourceTree = "<group>"; };
+		0B57F5651EC1919E00B89CE2 /* TYKYWebserviceParameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYKYWebserviceParameters.m; sourceTree = "<group>"; };
+		0B57F5671EC1919E00B89CE2 /* TYKYTableViewRemoteData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYKYTableViewRemoteData.h; sourceTree = "<group>"; };
+		0B57F5681EC1919E00B89CE2 /* TYKYTableViewRemoteData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYKYTableViewRemoteData.m; sourceTree = "<group>"; };
+		0B57F56A1EC1919E00B89CE2 /* TYKYTableViewRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYKYTableViewRepository.h; sourceTree = "<group>"; };
+		0B57F56B1EC1919E00B89CE2 /* TYKYTableViewRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYKYTableViewRepository.m; sourceTree = "<group>"; };
+		0B57F56D1EC1919E00B89CE2 /* TYKYTableViewPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYKYTableViewPresenter.h; sourceTree = "<group>"; };
+		0B57F56E1EC1919E00B89CE2 /* TYKYTableViewPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYKYTableViewPresenter.m; sourceTree = "<group>"; };
+		0B57F5701EC1919E00B89CE2 /* TYKYTableViewCellModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYKYTableViewCellModelProtocol.h; sourceTree = "<group>"; };
+		0B57F5711EC1919E00B89CE2 /* TYKYTableViewCellProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYKYTableViewCellProtocol.h; sourceTree = "<group>"; };
+		0B57F5721EC1919E00B89CE2 /* TYKYTableViewDataProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYKYTableViewDataProtocol.h; sourceTree = "<group>"; };
+		0B57F5731EC1919E00B89CE2 /* TYKYTableViewModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYKYTableViewModelProtocol.h; sourceTree = "<group>"; };
+		0B57F5741EC1919E00B89CE2 /* TYKYTableViewPresenterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYKYTableViewPresenterProtocol.h; sourceTree = "<group>"; };
+		0B57F5751EC1919E00B89CE2 /* TYKYTableviewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYKYTableviewProtocol.h; sourceTree = "<group>"; };
+		0B57F5771EC1919E00B89CE2 /* TYKYBaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYKYBaseTableViewController.h; sourceTree = "<group>"; };
+		0B57F5781EC1919E00B89CE2 /* TYKYBaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYKYBaseTableViewController.m; sourceTree = "<group>"; };
+		0B57F58C1EC198BC00B89CE2 /* AJHonmeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJHonmeViewController.h; sourceTree = "<group>"; };
+		0B57F58D1EC198BC00B89CE2 /* AJHonmeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJHonmeViewController.m; sourceTree = "<group>"; };
+		0B57F58E1EC198BC00B89CE2 /* AJHonmeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJHonmeViewController.xib; sourceTree = "<group>"; };
+		0B57F5911EC198D000B89CE2 /* AJUserCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJUserCenterViewController.h; sourceTree = "<group>"; };
+		0B57F5921EC198D000B89CE2 /* AJUserCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJUserCenterViewController.m; sourceTree = "<group>"; };
+		0B57F5931EC198D000B89CE2 /* AJUserCenterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJUserCenterViewController.xib; sourceTree = "<group>"; };
+		0B57F5961EC198DA00B89CE2 /* AJNewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJNewsViewController.h; sourceTree = "<group>"; };
+		0B57F5971EC198DA00B89CE2 /* AJNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJNewsViewController.m; sourceTree = "<group>"; };
+		0B57F5981EC198DA00B89CE2 /* AJNewsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJNewsViewController.xib; sourceTree = "<group>"; };
+		0B57F59C1EC198F100B89CE2 /* CTBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTBaseViewController.h; sourceTree = "<group>"; };
+		0B57F59D1EC198F100B89CE2 /* CTBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTBaseViewController.m; sourceTree = "<group>"; };
+		0B57F59F1EC1991800B89CE2 /* AjMainTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AjMainTabBarViewController.h; sourceTree = "<group>"; };
+		0B57F5A01EC1991800B89CE2 /* AjMainTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AjMainTabBarViewController.m; sourceTree = "<group>"; };
 		1AAB7260269F8CCA93F199B4 /* Pods-MyHomeCloudTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyHomeCloudTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyHomeCloudTests/Pods-MyHomeCloudTests.release.xcconfig"; sourceTree = "<group>"; };
 		28918ABEED7A893430DD718E /* libPods-MyHomeCloud.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyHomeCloud.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BD76340FB7FEF978B1E1792 /* Pods-MyHomeCloud.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyHomeCloud.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyHomeCloud/Pods-MyHomeCloud.debug.xcconfig"; sourceTree = "<group>"; };
@@ -139,6 +190,8 @@
 		0B2343BA1EC01CA1007A3AC1 /* MyHomeCloud */ = {
 			isa = PBXGroup;
 			children = (
+				0B57F5881EC1989400B89CE2 /* UI */,
+				0B57F55A1EC1919E00B89CE2 /* TYKYCommonTableView */,
 				0B2343E31EC03095007A3AC1 /* BusinessSystem */,
 				0B2343BE1EC01CA1007A3AC1 /* AppDelegate.h */,
 				0B2343BF1EC01CA1007A3AC1 /* AppDelegate.m */,
@@ -264,6 +317,151 @@
 			path = Subclass;
 			sourceTree = "<group>";
 		};
+		0B57F55A1EC1919E00B89CE2 /* TYKYCommonTableView */ = {
+			isa = PBXGroup;
+			children = (
+				0B57F55B1EC1919E00B89CE2 /* Data */,
+				0B57F56C1EC1919E00B89CE2 /* Presenter */,
+				0B57F56F1EC1919E00B89CE2 /* Protocol */,
+				0B57F5761EC1919E00B89CE2 /* View */,
+			);
+			path = TYKYCommonTableView;
+			sourceTree = "<group>";
+		};
+		0B57F55B1EC1919E00B89CE2 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				0B57F55C1EC1919E00B89CE2 /* LocalDataSource */,
+				0B57F55F1EC1919E00B89CE2 /* Model */,
+				0B57F5661EC1919E00B89CE2 /* RemoteDataSource */,
+				0B57F5691EC1919E00B89CE2 /* Repository */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		0B57F55C1EC1919E00B89CE2 /* LocalDataSource */ = {
+			isa = PBXGroup;
+			children = (
+				0B57F55D1EC1919E00B89CE2 /* TYKYTableViewLocalData.h */,
+				0B57F55E1EC1919E00B89CE2 /* TYKYTableViewLocalData.m */,
+			);
+			path = LocalDataSource;
+			sourceTree = "<group>";
+		};
+		0B57F55F1EC1919E00B89CE2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0B57F5601EC1919E00B89CE2 /* TYKYTableViewCellModel.h */,
+				0B57F5611EC1919E00B89CE2 /* TYKYTableViewCellModel.m */,
+				0B57F5621EC1919E00B89CE2 /* TYKYTableViewModel.h */,
+				0B57F5631EC1919E00B89CE2 /* TYKYTableViewModel.m */,
+				0B57F5641EC1919E00B89CE2 /* TYKYWebserviceParameters.h */,
+				0B57F5651EC1919E00B89CE2 /* TYKYWebserviceParameters.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0B57F5661EC1919E00B89CE2 /* RemoteDataSource */ = {
+			isa = PBXGroup;
+			children = (
+				0B57F5671EC1919E00B89CE2 /* TYKYTableViewRemoteData.h */,
+				0B57F5681EC1919E00B89CE2 /* TYKYTableViewRemoteData.m */,
+			);
+			path = RemoteDataSource;
+			sourceTree = "<group>";
+		};
+		0B57F5691EC1919E00B89CE2 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				0B57F56A1EC1919E00B89CE2 /* TYKYTableViewRepository.h */,
+				0B57F56B1EC1919E00B89CE2 /* TYKYTableViewRepository.m */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		0B57F56C1EC1919E00B89CE2 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				0B57F56D1EC1919E00B89CE2 /* TYKYTableViewPresenter.h */,
+				0B57F56E1EC1919E00B89CE2 /* TYKYTableViewPresenter.m */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		0B57F56F1EC1919E00B89CE2 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				0B57F5701EC1919E00B89CE2 /* TYKYTableViewCellModelProtocol.h */,
+				0B57F5711EC1919E00B89CE2 /* TYKYTableViewCellProtocol.h */,
+				0B57F5721EC1919E00B89CE2 /* TYKYTableViewDataProtocol.h */,
+				0B57F5731EC1919E00B89CE2 /* TYKYTableViewModelProtocol.h */,
+				0B57F5741EC1919E00B89CE2 /* TYKYTableViewPresenterProtocol.h */,
+				0B57F5751EC1919E00B89CE2 /* TYKYTableviewProtocol.h */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		0B57F5761EC1919E00B89CE2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0B57F5771EC1919E00B89CE2 /* TYKYBaseTableViewController.h */,
+				0B57F5781EC1919E00B89CE2 /* TYKYBaseTableViewController.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0B57F5881EC1989400B89CE2 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				0B57F59B1EC198F100B89CE2 /* SuperVC */,
+				0B57F5891EC1989400B89CE2 /* Home */,
+				0B57F58A1EC1989400B89CE2 /* Me */,
+				0B57F58B1EC1989400B89CE2 /* News */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		0B57F5891EC1989400B89CE2 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				0B57F58C1EC198BC00B89CE2 /* AJHonmeViewController.h */,
+				0B57F58D1EC198BC00B89CE2 /* AJHonmeViewController.m */,
+				0B57F58E1EC198BC00B89CE2 /* AJHonmeViewController.xib */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		0B57F58A1EC1989400B89CE2 /* Me */ = {
+			isa = PBXGroup;
+			children = (
+				0B57F5911EC198D000B89CE2 /* AJUserCenterViewController.h */,
+				0B57F5921EC198D000B89CE2 /* AJUserCenterViewController.m */,
+				0B57F5931EC198D000B89CE2 /* AJUserCenterViewController.xib */,
+			);
+			path = Me;
+			sourceTree = "<group>";
+		};
+		0B57F58B1EC1989400B89CE2 /* News */ = {
+			isa = PBXGroup;
+			children = (
+				0B57F5961EC198DA00B89CE2 /* AJNewsViewController.h */,
+				0B57F5971EC198DA00B89CE2 /* AJNewsViewController.m */,
+				0B57F5981EC198DA00B89CE2 /* AJNewsViewController.xib */,
+			);
+			path = News;
+			sourceTree = "<group>";
+		};
+		0B57F59B1EC198F100B89CE2 /* SuperVC */ = {
+			isa = PBXGroup;
+			children = (
+				0B57F59F1EC1991800B89CE2 /* AjMainTabBarViewController.h */,
+				0B57F5A01EC1991800B89CE2 /* AjMainTabBarViewController.m */,
+				0B57F59C1EC198F100B89CE2 /* CTBaseViewController.h */,
+				0B57F59D1EC198F100B89CE2 /* CTBaseViewController.m */,
+			);
+			path = SuperVC;
+			sourceTree = "<group>";
+		};
 		5F0155942F2DC918E5FBA1EF /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -376,7 +574,10 @@
 			files = (
 				0B2343CE1EC01CA1007A3AC1 /* LaunchScreen.storyboard in Resources */,
 				0B2343CB1EC01CA1007A3AC1 /* Assets.xcassets in Resources */,
+				0B57F59A1EC198DB00B89CE2 /* AJNewsViewController.xib in Resources */,
 				0B2343C91EC01CA1007A3AC1 /* Main.storyboard in Resources */,
+				0B57F5901EC198BC00B89CE2 /* AJHonmeViewController.xib in Resources */,
+				0B57F5951EC198D000B89CE2 /* AJUserCenterViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,22 +688,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B57F59E1EC198F100B89CE2 /* CTBaseViewController.m in Sources */,
 				0B23445C1EC03095007A3AC1 /* UIAlertController+TYKYAlertBlock.m in Sources */,
 				0B2343C01EC01CA1007A3AC1 /* AppDelegate.m in Sources */,
 				0B2344601EC03095007A3AC1 /* UIView+SDXIBExtension.m in Sources */,
 				0B23446E1EC03095007A3AC1 /* TYKYLocalDataCenter.m in Sources */,
 				0B2344591EC03095007A3AC1 /* NSMutableArray+CTExtension.m in Sources */,
+				0B57F5A11EC1991800B89CE2 /* AjMainTabBarViewController.m in Sources */,
+				0B57F57B1EC1919E00B89CE2 /* TYKYTableViewModel.m in Sources */,
 				0B2344611EC03095007A3AC1 /* UIView+TYKYPrompt.m in Sources */,
 				0B23447C1EC03095007A3AC1 /* AutoRunLabel.m in Sources */,
+				0B57F57E1EC1919E00B89CE2 /* TYKYTableViewRepository.m in Sources */,
 				0B23445D1EC03095007A3AC1 /* UIImage+Scale.m in Sources */,
+				0B57F57A1EC1919E00B89CE2 /* TYKYTableViewCellModel.m in Sources */,
 				0B23445A1EC03095007A3AC1 /* NSMutableDictionary+IHateNil.m in Sources */,
 				0B2344631EC03095007A3AC1 /* Colours.m in Sources */,
 				0B2344681EC03095007A3AC1 /* TJDownloadTool.m in Sources */,
+				0B57F5791EC1919E00B89CE2 /* TYKYTableViewLocalData.m in Sources */,
 				0B2343BD1EC01CA1007A3AC1 /* main.m in Sources */,
 				0B23446A1EC03095007A3AC1 /* Reachability.m in Sources */,
 				0B23446C1EC03095007A3AC1 /* CTTool.m in Sources */,
+				0B57F57F1EC1919E00B89CE2 /* TYKYTableViewPresenter.m in Sources */,
+				0B57F57D1EC1919E00B89CE2 /* TYKYTableViewRemoteData.m in Sources */,
 				0B23447B1EC03095007A3AC1 /* AdjustScrollView.m in Sources */,
+				0B57F5991EC198DB00B89CE2 /* AJNewsViewController.m in Sources */,
 				0B23445B1EC03095007A3AC1 /* NSString+Extension.m in Sources */,
+				0B57F58F1EC198BC00B89CE2 /* AJHonmeViewController.m in Sources */,
+				0B57F57C1EC1919E00B89CE2 /* TYKYWebserviceParameters.m in Sources */,
+				0B57F5801EC1919E00B89CE2 /* TYKYBaseTableViewController.m in Sources */,
+				0B57F5941EC198D000B89CE2 /* AJUserCenterViewController.m in Sources */,
 				0B23445F1EC03095007A3AC1 /* UITableView+NoMoreDataInFooter.m in Sources */,
 				0B23445E1EC03095007A3AC1 /* UIScrollView+UITouchEvent.m in Sources */,
 			);
