@@ -18,6 +18,7 @@ CGFloat const IMAGEHEIGHT  = 200.0f;
 @property (weak, nonatomic) IBOutlet UIView *headView;
 @property (weak, nonatomic) IBOutlet UIImageView *headImg;
 @property (weak, nonatomic) IBOutlet UIImageView *userHead;
+@property (weak, nonatomic) IBOutlet UIView *headInfoView;
 
 @property (strong, nonatomic) NSArray *dataArray;
 
@@ -115,6 +116,9 @@ CGFloat const IMAGEHEIGHT  = 200.0f;
         currentFrame.origin.y = offsetY;
         currentFrame.size.height = IMAGEHEIGHT-offsetY;
         _headImg.frame = currentFrame;
+        
+        CGFloat sub = offsetY+20;
+        _headInfoView.center = CGPointMake(dWidth/2, (IMAGEHEIGHT+sub)/2);
     }
 }
 - (IBAction)buttonAction:(UIButton *)sender {
