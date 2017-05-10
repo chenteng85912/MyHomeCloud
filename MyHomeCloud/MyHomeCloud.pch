@@ -19,12 +19,14 @@
 #import "UIView+TYKYPrompt.h"
 #import "CTTool.h"
 #import "NSString+Extension.h"
-
 #endif /* MyHomeCloud_pch */
 
-#define  MyUserDefaults [NSUserDefaults standardUserDefaults]
-#define dHeight   [[UIScreen mainScreen] bounds].size.height
-#define dWidth    [[UIScreen mainScreen] bounds].size.width
+#define UIColorFromRGB(rgbValue)    [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+#define NavigationBarColor  UIColorFromRGB(0xF69233)//UIColorFromRGB(0x1CB464)
+
+#define MyUserDefaults      [NSUserDefaults standardUserDefaults]
+#define dHeight             [[UIScreen mainScreen] bounds].size.height
+#define dWidth              [[UIScreen mainScreen] bounds].size.width
 
 #ifdef DEBUG
 

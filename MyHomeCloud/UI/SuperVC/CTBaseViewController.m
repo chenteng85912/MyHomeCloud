@@ -37,7 +37,7 @@
         }
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:backImg style:UIBarButtonItemStylePlain target:self action:@selector(backToPreVC)];
         self.navigationItem.leftBarButtonItem.imageInsets = UIEdgeInsetsMake(5, 0, 5, 10);
-        self.navigationItem.leftBarButtonItem.tintColor = [UIColor blackColor];
+        self.navigationItem.leftBarButtonItem.tintColor = NavigationBarColor;
     }
    
 }
