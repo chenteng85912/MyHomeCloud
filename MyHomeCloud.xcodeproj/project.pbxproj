@@ -45,6 +45,10 @@
 		0B57F59A1EC198DB00B89CE2 /* AJNewsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B57F5981EC198DA00B89CE2 /* AJNewsViewController.xib */; };
 		0B57F59E1EC198F100B89CE2 /* CTBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B57F59D1EC198F100B89CE2 /* CTBaseViewController.m */; };
 		0B57F5A11EC1991800B89CE2 /* AjMainTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B57F5A01EC1991800B89CE2 /* AjMainTabBarViewController.m */; };
+		0BE2A35C1EC2D2CD00519840 /* AJMeCenterData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BE2A35B1EC2D2CD00519840 /* AJMeCenterData.m */; };
+		0BE2A35F1EC2DE1700519840 /* AJMeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BE2A35E1EC2DE1700519840 /* AJMeModel.m */; };
+		0BE2A3641EC2DF9B00519840 /* AJMyhouseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BE2A3621EC2DF9B00519840 /* AJMyhouseViewController.m */; };
+		0BE2A3651EC2DF9B00519840 /* AJMyhouseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BE2A3631EC2DF9B00519840 /* AJMyhouseViewController.xib */; };
 		9E8788EDDBF16621BCB775EC /* libPods-MyHomeCloud.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 28918ABEED7A893430DD718E /* libPods-MyHomeCloud.a */; };
 		9FC8B56C676C33C132BD175B /* libPods-MyHomeCloudTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8195A483A5A5B25BE92F9997 /* libPods-MyHomeCloudTests.a */; };
 /* End PBXBuildFile section */
@@ -139,6 +143,13 @@
 		0B57F59D1EC198F100B89CE2 /* CTBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTBaseViewController.m; sourceTree = "<group>"; };
 		0B57F59F1EC1991800B89CE2 /* AjMainTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AjMainTabBarViewController.h; sourceTree = "<group>"; };
 		0B57F5A01EC1991800B89CE2 /* AjMainTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AjMainTabBarViewController.m; sourceTree = "<group>"; };
+		0BE2A35A1EC2D2CD00519840 /* AJMeCenterData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJMeCenterData.h; sourceTree = "<group>"; };
+		0BE2A35B1EC2D2CD00519840 /* AJMeCenterData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJMeCenterData.m; sourceTree = "<group>"; };
+		0BE2A35D1EC2DE1700519840 /* AJMeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJMeModel.h; sourceTree = "<group>"; };
+		0BE2A35E1EC2DE1700519840 /* AJMeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJMeModel.m; sourceTree = "<group>"; };
+		0BE2A3611EC2DF9B00519840 /* AJMyhouseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJMyhouseViewController.h; sourceTree = "<group>"; };
+		0BE2A3621EC2DF9B00519840 /* AJMyhouseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJMyhouseViewController.m; sourceTree = "<group>"; };
+		0BE2A3631EC2DF9B00519840 /* AJMyhouseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJMyhouseViewController.xib; sourceTree = "<group>"; };
 		1AAB7260269F8CCA93F199B4 /* Pods-MyHomeCloudTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyHomeCloudTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyHomeCloudTests/Pods-MyHomeCloudTests.release.xcconfig"; sourceTree = "<group>"; };
 		28918ABEED7A893430DD718E /* libPods-MyHomeCloud.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyHomeCloud.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BD76340FB7FEF978B1E1792 /* Pods-MyHomeCloud.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyHomeCloud.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyHomeCloud/Pods-MyHomeCloud.debug.xcconfig"; sourceTree = "<group>"; };
@@ -434,9 +445,14 @@
 		0B57F58A1EC1989400B89CE2 /* Me */ = {
 			isa = PBXGroup;
 			children = (
+				0BE2A35A1EC2D2CD00519840 /* AJMeCenterData.h */,
+				0BE2A35B1EC2D2CD00519840 /* AJMeCenterData.m */,
+				0BE2A35D1EC2DE1700519840 /* AJMeModel.h */,
+				0BE2A35E1EC2DE1700519840 /* AJMeModel.m */,
 				0B57F5911EC198D000B89CE2 /* AJUserCenterViewController.h */,
 				0B57F5921EC198D000B89CE2 /* AJUserCenterViewController.m */,
 				0B57F5931EC198D000B89CE2 /* AJUserCenterViewController.xib */,
+				0BE2A3601EC2DF8800519840 /* Like_house */,
 			);
 			path = Me;
 			sourceTree = "<group>";
@@ -460,6 +476,16 @@
 				0B57F59D1EC198F100B89CE2 /* CTBaseViewController.m */,
 			);
 			path = SuperVC;
+			sourceTree = "<group>";
+		};
+		0BE2A3601EC2DF8800519840 /* Like_house */ = {
+			isa = PBXGroup;
+			children = (
+				0BE2A3611EC2DF9B00519840 /* AJMyhouseViewController.h */,
+				0BE2A3621EC2DF9B00519840 /* AJMyhouseViewController.m */,
+				0BE2A3631EC2DF9B00519840 /* AJMyhouseViewController.xib */,
+			);
+			path = Like_house;
 			sourceTree = "<group>";
 		};
 		5F0155942F2DC918E5FBA1EF /* Pods */ = {
@@ -577,6 +603,7 @@
 				0B57F59A1EC198DB00B89CE2 /* AJNewsViewController.xib in Resources */,
 				0B2343C91EC01CA1007A3AC1 /* Main.storyboard in Resources */,
 				0B57F5901EC198BC00B89CE2 /* AJHonmeViewController.xib in Resources */,
+				0BE2A3651EC2DF9B00519840 /* AJMyhouseViewController.xib in Resources */,
 				0B57F5951EC198D000B89CE2 /* AJUserCenterViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -700,8 +727,10 @@
 				0B23447C1EC03095007A3AC1 /* AutoRunLabel.m in Sources */,
 				0B57F57E1EC1919E00B89CE2 /* TYKYTableViewRepository.m in Sources */,
 				0B23445D1EC03095007A3AC1 /* UIImage+Scale.m in Sources */,
+				0BE2A3641EC2DF9B00519840 /* AJMyhouseViewController.m in Sources */,
 				0B57F57A1EC1919E00B89CE2 /* TYKYTableViewCellModel.m in Sources */,
 				0B23445A1EC03095007A3AC1 /* NSMutableDictionary+IHateNil.m in Sources */,
+				0BE2A35F1EC2DE1700519840 /* AJMeModel.m in Sources */,
 				0B2344631EC03095007A3AC1 /* Colours.m in Sources */,
 				0B2344681EC03095007A3AC1 /* TJDownloadTool.m in Sources */,
 				0B57F5791EC1919E00B89CE2 /* TYKYTableViewLocalData.m in Sources */,
@@ -710,6 +739,7 @@
 				0B23446C1EC03095007A3AC1 /* CTTool.m in Sources */,
 				0B57F57F1EC1919E00B89CE2 /* TYKYTableViewPresenter.m in Sources */,
 				0B57F57D1EC1919E00B89CE2 /* TYKYTableViewRemoteData.m in Sources */,
+				0BE2A35C1EC2D2CD00519840 /* AJMeCenterData.m in Sources */,
 				0B23447B1EC03095007A3AC1 /* AdjustScrollView.m in Sources */,
 				0B57F5991EC198DB00B89CE2 /* AJNewsViewController.m in Sources */,
 				0B23445B1EC03095007A3AC1 /* NSString+Extension.m in Sources */,
