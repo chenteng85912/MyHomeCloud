@@ -19,6 +19,9 @@
 #import "UIView+TYKYPrompt.h"
 #import "CTTool.h"
 #import "NSString+Extension.h"
+#import "CTBaseViewController.h"
+#import "UIAlertController+TYKYAlertBlock.h"
+
 #endif /* MyHomeCloud_pch */
 
 #define UIColorFromRGB(rgbValue)    [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
@@ -45,6 +48,6 @@
 #define BUTTON_FRAME(frame)     [[UIButton alloc] initWithFrame:frame]
 #define BUTTON_ACTION(btn,target,bselector) [btn addTarget:target action:bselector forControlEvents:UIControlEventTouchUpInside];
 
-#define APP_PRESENT(VC)     [[UIApplication sharedApplication]keyWindow.rootViewController presentViewController:VC animated:YES completion:nil]
+#define APP_PRESENT(VC)     [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:VC animated:YES completion:nil]
 #define APP_PUSH(VC)        [self.navigationController pushViewController:VC animated:YES]
 #define POPVC               [self.navigationController popViewControllerAnimated:YES]

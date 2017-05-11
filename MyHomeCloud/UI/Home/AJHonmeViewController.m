@@ -7,6 +7,7 @@
 //
 
 #import "AJHonmeViewController.h"
+#import "AJLoginViewController.h"
 
 @interface AJHonmeViewController ()
 
@@ -16,6 +17,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    if (![AVUser currentUser]) {
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[AJLoginViewController new]];
+        APP_PRESENT(nav);
+        return;
+    }
     // Do any additional setup after loading the view from its nib.
 }
 

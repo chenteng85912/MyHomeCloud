@@ -23,4 +23,6 @@
 //封装明杰刷新
 + (MJRefreshNormalHeader *)makeMJRefeshWithTarget:(id)root andMethod:(SEL)methodName;
 
+//应用图标
++ (UIImage *)iconImage;
 @end

@@ -45,6 +45,8 @@
 		0B57F59A1EC198DB00B89CE2 /* AJNewsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B57F5981EC198DA00B89CE2 /* AJNewsViewController.xib */; };
 		0B57F59E1EC198F100B89CE2 /* CTBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B57F59D1EC198F100B89CE2 /* CTBaseViewController.m */; };
 		0B57F5A11EC1991800B89CE2 /* AjMainTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B57F5A01EC1991800B89CE2 /* AjMainTabBarViewController.m */; };
+		0B6E12C51EC4235300103571 /* AJLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B6E12C31EC4235300103571 /* AJLoginViewController.m */; };
+		0B6E12C61EC4235300103571 /* AJLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B6E12C41EC4235300103571 /* AJLoginViewController.xib */; };
 		0BE2A35C1EC2D2CD00519840 /* AJMeCenterData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BE2A35B1EC2D2CD00519840 /* AJMeCenterData.m */; };
 		0BE2A35F1EC2DE1700519840 /* AJMeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BE2A35E1EC2DE1700519840 /* AJMeModel.m */; };
 		0BE2A3641EC2DF9B00519840 /* AJMyhouseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BE2A3621EC2DF9B00519840 /* AJMyhouseViewController.m */; };
@@ -143,6 +145,9 @@
 		0B57F59D1EC198F100B89CE2 /* CTBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTBaseViewController.m; sourceTree = "<group>"; };
 		0B57F59F1EC1991800B89CE2 /* AjMainTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AjMainTabBarViewController.h; sourceTree = "<group>"; };
 		0B57F5A01EC1991800B89CE2 /* AjMainTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AjMainTabBarViewController.m; sourceTree = "<group>"; };
+		0B6E12C21EC4235300103571 /* AJLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJLoginViewController.h; sourceTree = "<group>"; };
+		0B6E12C31EC4235300103571 /* AJLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJLoginViewController.m; sourceTree = "<group>"; };
+		0B6E12C41EC4235300103571 /* AJLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJLoginViewController.xib; sourceTree = "<group>"; };
 		0BE2A35A1EC2D2CD00519840 /* AJMeCenterData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJMeCenterData.h; sourceTree = "<group>"; };
 		0BE2A35B1EC2D2CD00519840 /* AJMeCenterData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJMeCenterData.m; sourceTree = "<group>"; };
 		0BE2A35D1EC2DE1700519840 /* AJMeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJMeModel.h; sourceTree = "<group>"; };
@@ -424,6 +429,7 @@
 		0B57F5881EC1989400B89CE2 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				0B6E12B71EC421A700103571 /* LoginAndRegister */,
 				0B57F59B1EC198F100B89CE2 /* SuperVC */,
 				0B57F5891EC1989400B89CE2 /* Home */,
 				0B57F58A1EC1989400B89CE2 /* Me */,
@@ -476,6 +482,16 @@
 				0B57F59D1EC198F100B89CE2 /* CTBaseViewController.m */,
 			);
 			path = SuperVC;
+			sourceTree = "<group>";
+		};
+		0B6E12B71EC421A700103571 /* LoginAndRegister */ = {
+			isa = PBXGroup;
+			children = (
+				0B6E12C21EC4235300103571 /* AJLoginViewController.h */,
+				0B6E12C31EC4235300103571 /* AJLoginViewController.m */,
+				0B6E12C41EC4235300103571 /* AJLoginViewController.xib */,
+			);
+			path = LoginAndRegister;
 			sourceTree = "<group>";
 		};
 		0BE2A3601EC2DF8800519840 /* Like_house */ = {
@@ -603,6 +619,7 @@
 				0B57F59A1EC198DB00B89CE2 /* AJNewsViewController.xib in Resources */,
 				0B2343C91EC01CA1007A3AC1 /* Main.storyboard in Resources */,
 				0B57F5901EC198BC00B89CE2 /* AJHonmeViewController.xib in Resources */,
+				0B6E12C61EC4235300103571 /* AJLoginViewController.xib in Resources */,
 				0BE2A3651EC2DF9B00519840 /* AJMyhouseViewController.xib in Resources */,
 				0B57F5951EC198D000B89CE2 /* AJUserCenterViewController.xib in Resources */,
 			);
@@ -719,6 +736,7 @@
 				0B23445C1EC03095007A3AC1 /* UIAlertController+TYKYAlertBlock.m in Sources */,
 				0B2343C01EC01CA1007A3AC1 /* AppDelegate.m in Sources */,
 				0B2344601EC03095007A3AC1 /* UIView+SDXIBExtension.m in Sources */,
+				0B6E12C51EC4235300103571 /* AJLoginViewController.m in Sources */,
 				0B23446E1EC03095007A3AC1 /* TYKYLocalDataCenter.m in Sources */,
 				0B2344591EC03095007A3AC1 /* NSMutableArray+CTExtension.m in Sources */,
 				0B57F5A11EC1991800B89CE2 /* AjMainTabBarViewController.m in Sources */,
@@ -890,10 +908,7 @@
 				INFOPLIST_FILE = MyHomeCloud/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/MyHomeCloud/ThirdpartyFramwork/LibBPush",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.webhall.MyHomeCloud;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -909,10 +924,7 @@
 				INFOPLIST_FILE = MyHomeCloud/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/MyHomeCloud/ThirdpartyFramwork/LibBPush",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.webhall.MyHomeCloud;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

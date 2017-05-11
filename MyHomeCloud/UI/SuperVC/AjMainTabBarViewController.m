@@ -24,6 +24,7 @@
     
     [self initRootViewController];
 
+   
 }
 
 //初始化根视图控制器

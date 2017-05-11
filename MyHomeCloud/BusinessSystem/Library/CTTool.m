@@ -73,5 +73,10 @@
     return header;
 }
 
-
+//应用图标
++ (UIImage *)iconImage{
+    NSDictionary *infoDic = [[NSBundle mainBundle] infoDictionary];
+    NSString *iconStr = [[infoDic valueForKeyPath:@"CFBundleIcons.CFBundlePrimaryIcon.CFBundleIconFiles"] lastObject];
+    return [UIImage imageNamed:iconStr];
+}
 @end

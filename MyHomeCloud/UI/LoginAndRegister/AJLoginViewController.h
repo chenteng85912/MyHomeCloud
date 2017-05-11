@@ -1,0 +1,6 @@
+
+
+@interface AJLoginViewController : CTBaseViewController
+
+
+@end
