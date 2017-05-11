@@ -9,6 +9,7 @@
 #import "AJMeCenterData.h"
 #import "AJMeModel.h"
 #import "AJMyhouseViewController.h"
+#import "AJSettingViewController.h"
 
 @implementation AJMeCenterData
 
@@ -20,24 +21,21 @@
     
     //section0
     AJMeModel *model = [AJMeModel new];
-    model.title = @"二手房关注";
+    model.title = @"我的房源";
     model.iconName = @"house";
     model.className = NSStringFromClass([AJMyhouseViewController class]);
-    model.checkLogin = YES;
     [temp addObject:model];
     
     model = [AJMeModel new];
-    model.title = @"小区关注";
-    model.iconName = @"estate";
+    model.title = @"我的收藏";
+    model.iconName = @"liked";
     model.className = NSStringFromClass([AJMyhouseViewController class]);
-    model.checkLogin = YES;
     [temp addObject:model];
     
     model = [AJMeModel new];
     model.title = @"浏览记录";
     model.iconName = @"record";
     model.className = NSStringFromClass([AJMyhouseViewController class]);
-    model.checkLogin = YES;
     [temp addObject:model];
     
     [dataArray addObject:temp];
@@ -48,14 +46,11 @@
     model.title = @"购房计算器";
     model.iconName = @"house_cal";
     model.className = NSStringFromClass([AJMyhouseViewController class]);
-    model.checkLogin = YES;
     [temp addObject:model];
     
     model = [AJMeModel new];
     model.title = @"客服热线";
     model.iconName = @"service_phone";
-    model.className = NSStringFromClass([AJMyhouseViewController class]);
-    model.checkLogin = YES;
     [temp addObject:model];
     [dataArray addObject:temp];
 
@@ -65,8 +60,7 @@
     model = [AJMeModel new];
     model.title = @"设置";
     model.iconName = @"setting";
-    model.className = NSStringFromClass([AJMyhouseViewController class]);
-    model.checkLogin = YES;
+    model.className = NSStringFromClass([AJSettingViewController class]);
     [temp addObject:model];
     
     [dataArray addObject:temp];
@@ -76,7 +70,20 @@
 
 + (NSMutableArray *)getSettingData{
     NSMutableArray *temp = [NSMutableArray array];
-   
+    
+    AJMeModel *model = [AJMeModel new];
+    model.title = @"关于我们";
+    model.className = NSStringFromClass([AJMyhouseViewController class]);
+    [temp addObject:model];
+    
+    model = [AJMeModel new];
+    model.title = @"隐私说明";
+    model.className = NSStringFromClass([AJMyhouseViewController class]);
+    [temp addObject:model];
+    
+    model = [AJMeModel new];
+    model.title = @"清理缓存";
+    [temp addObject:model];
     
     return temp;
 }

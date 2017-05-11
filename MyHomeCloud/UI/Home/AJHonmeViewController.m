@@ -7,7 +7,7 @@
 //
 
 #import "AJHonmeViewController.h"
-#import "AJLoginViewController.h"
+#import "AJMyhouseViewController.h"
 
 @interface AJHonmeViewController ()
 
@@ -17,14 +17,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    if (![AVUser currentUser]) {
-        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[AJLoginViewController new]];
-        APP_PRESENT(nav);
-        return;
-    }
-    // Do any additional setup after loading the view from its nib.
-}
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"search"] style:UIBarButtonItemStylePlain target:self action:@selector(openSearch)];
+    self.navigationItem.rightBarButtonItem.tintColor = NavigationBarColor;
 
+}
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+}
+- (void)openSearch{
+    AJMyhouseViewController *test = [AJMyhouseViewController new];
+    test.title = @"搜索";
+    test.hidesBottomBarWhenPushed = YES;
+    APP_PUSH(test);
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

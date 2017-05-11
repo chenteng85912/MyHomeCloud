@@ -1,16 +1,16 @@
 {
   "images" : [
     {
-      "idiom" : "universal",
-      "filename" : "FailToGetData.png",
+      "idiom" : "iphone",
       "scale" : "1x"
     },
     {
-      "idiom" : "universal",
+      "idiom" : "iphone",
+      "filename" : "noNet.png",
       "scale" : "2x"
     },
     {
-      "idiom" : "universal",
+      "idiom" : "iphone",
       "scale" : "3x"
     }
   ],

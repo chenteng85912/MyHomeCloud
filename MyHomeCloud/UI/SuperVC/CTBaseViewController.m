@@ -20,8 +20,10 @@
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     self.navigationController.navigationBar.translucent = NO;
+    
     if (self.navigationItem.leftBarButtonItem) {
         return;
     }
@@ -39,6 +41,7 @@
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:backImg style:UIBarButtonItemStylePlain target:self action:@selector(backToPreVC)];
         self.navigationItem.leftBarButtonItem.imageInsets = UIEdgeInsetsMake(5, 0, 5, 10);
         self.navigationItem.leftBarButtonItem.tintColor = NavigationBarColor;
+
     }
    
 }

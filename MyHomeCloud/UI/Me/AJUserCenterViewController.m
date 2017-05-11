@@ -19,6 +19,7 @@ CGFloat const IMAGEHEIGHT  = 200.0f;
 @property (weak, nonatomic) IBOutlet UIImageView *headImg;
 @property (weak, nonatomic) IBOutlet UIImageView *userHead;
 @property (weak, nonatomic) IBOutlet UIView *headInfoView;
+@property (weak, nonatomic) IBOutlet UILabel *userName;
 
 @property (strong, nonatomic) NSArray *dataArray;
 
@@ -31,11 +32,14 @@ CGFloat const IMAGEHEIGHT  = 200.0f;
     self.dataArray = [AJMeCenterData userCenterData];
     [self.tbView registerClass:[UITableViewCell class] forCellReuseIdentifier:CellIdentifier];
     self.tbView.tableHeaderView = self.headView;
+    
+//    self.userName.text = [AVUser currentUser].mobilePhoneNumber;
 
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
 }
 #pragma mark UITableViewDatasource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -87,7 +91,9 @@ CGFloat const IMAGEHEIGHT  = 200.0f;
     
     NSArray *temp = self.dataArray[indexPath.section];
     AJMeModel *model = temp[indexPath.row];
-    
+    if (!model.className) {
+        return;
+    }
     Class vcClass = NSClassFromString(model.className);             //反射
     UIViewController *vc = [vcClass new];
     vc.title = model.title;

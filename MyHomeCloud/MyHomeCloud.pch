@@ -11,10 +11,11 @@
 
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
-#import <AVOSCloud/AVOSCloud.h>
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 
+#import <AVOSCloud/AVOSCloud.h>
+#import <MJRefresh/MJRefresh.h>
 #import "UITableView+NoMoreDataInFooter.h"
 #import "UIView+TYKYPrompt.h"
 #import "CTTool.h"
@@ -30,6 +31,7 @@
 #define MyUserDefaults      [NSUserDefaults standardUserDefaults]
 #define dHeight             [[UIScreen mainScreen] bounds].size.height
 #define dWidth              [[UIScreen mainScreen] bounds].size.width
+#define WeakSelf            __weak typeof(self) weakSelf = self;
 
 #ifdef DEBUG
 

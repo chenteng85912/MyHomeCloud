@@ -53,6 +53,8 @@
 		0BE2A3651EC2DF9B00519840 /* AJMyhouseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BE2A3631EC2DF9B00519840 /* AJMyhouseViewController.xib */; };
 		9E8788EDDBF16621BCB775EC /* libPods-MyHomeCloud.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 28918ABEED7A893430DD718E /* libPods-MyHomeCloud.a */; };
 		9FC8B56C676C33C132BD175B /* libPods-MyHomeCloudTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8195A483A5A5B25BE92F9997 /* libPods-MyHomeCloudTests.a */; };
+		A411B3C01EC4B0BD00244B6E /* AJSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A411B3BE1EC4B0BD00244B6E /* AJSettingViewController.m */; };
+		A411B3C11EC4B0BD00244B6E /* AJSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A411B3BF1EC4B0BD00244B6E /* AJSettingViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -160,6 +162,9 @@
 		2BD76340FB7FEF978B1E1792 /* Pods-MyHomeCloud.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyHomeCloud.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyHomeCloud/Pods-MyHomeCloud.debug.xcconfig"; sourceTree = "<group>"; };
 		8195A483A5A5B25BE92F9997 /* libPods-MyHomeCloudTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyHomeCloudTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		94235DC15FEE09B15B76D4E5 /* Pods-MyHomeCloudTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyHomeCloudTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyHomeCloudTests/Pods-MyHomeCloudTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A411B3BD1EC4B0BD00244B6E /* AJSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJSettingViewController.h; sourceTree = "<group>"; };
+		A411B3BE1EC4B0BD00244B6E /* AJSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJSettingViewController.m; sourceTree = "<group>"; };
+		A411B3BF1EC4B0BD00244B6E /* AJSettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJSettingViewController.xib; sourceTree = "<group>"; };
 		B6A1BBA8A047697D99556676 /* Pods-MyHomeCloud.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyHomeCloud.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyHomeCloud/Pods-MyHomeCloud.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -451,6 +456,7 @@
 		0B57F58A1EC1989400B89CE2 /* Me */ = {
 			isa = PBXGroup;
 			children = (
+				A411B3BC1EC4B0A900244B6E /* Setting */,
 				0BE2A35A1EC2D2CD00519840 /* AJMeCenterData.h */,
 				0BE2A35B1EC2D2CD00519840 /* AJMeCenterData.m */,
 				0BE2A35D1EC2DE1700519840 /* AJMeModel.h */,
@@ -522,6 +528,16 @@
 				8195A483A5A5B25BE92F9997 /* libPods-MyHomeCloudTests.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A411B3BC1EC4B0A900244B6E /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				A411B3BD1EC4B0BD00244B6E /* AJSettingViewController.h */,
+				A411B3BE1EC4B0BD00244B6E /* AJSettingViewController.m */,
+				A411B3BF1EC4B0BD00244B6E /* AJSettingViewController.xib */,
+			);
+			path = Setting;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -619,6 +635,7 @@
 				0B57F59A1EC198DB00B89CE2 /* AJNewsViewController.xib in Resources */,
 				0B2343C91EC01CA1007A3AC1 /* Main.storyboard in Resources */,
 				0B57F5901EC198BC00B89CE2 /* AJHonmeViewController.xib in Resources */,
+				A411B3C11EC4B0BD00244B6E /* AJSettingViewController.xib in Resources */,
 				0B6E12C61EC4235300103571 /* AJLoginViewController.xib in Resources */,
 				0BE2A3651EC2DF9B00519840 /* AJMyhouseViewController.xib in Resources */,
 				0B57F5951EC198D000B89CE2 /* AJUserCenterViewController.xib in Resources */,
@@ -752,6 +769,7 @@
 				0B2344631EC03095007A3AC1 /* Colours.m in Sources */,
 				0B2344681EC03095007A3AC1 /* TJDownloadTool.m in Sources */,
 				0B57F5791EC1919E00B89CE2 /* TYKYTableViewLocalData.m in Sources */,
+				A411B3C01EC4B0BD00244B6E /* AJSettingViewController.m in Sources */,
 				0B2343BD1EC01CA1007A3AC1 /* main.m in Sources */,
 				0B23446A1EC03095007A3AC1 /* Reachability.m in Sources */,
 				0B23446C1EC03095007A3AC1 /* CTTool.m in Sources */,

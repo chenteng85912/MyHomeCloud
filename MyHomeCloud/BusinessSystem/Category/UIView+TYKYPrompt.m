@@ -110,30 +110,30 @@ NSInteger const tipViewTag = 12345678;
 #pragma mark 无数据提示
 // 暂无数据
 - (void)addNoDataTipView{
-    [self createNoticeView:@"暂无数据" imageName:@"NoDataNow"];
+    [self createNoticeView:@"暂无数据" imageName:@"noData"];
     
 }
 // 网络有问题提示
 - (void)addInternetErrorTipView{
     
-    [self createNoticeView:@"您似乎断开了网络连接" imageName:@"ErrorInternet"];
+    [self createNoticeView:@"您似乎断开了网络连接" imageName:@"noNet"];
 }
 
 // 加载数据失败提示
 - (void)addFailDataTipView{
-    [self createNoticeView:@"加载数据失败" imageName:@"FailToGetData"];
+    [self createNoticeView:@"加载数据失败" imageName:@"netError"];
 }
 
 // 消息界面-暂时没有新消息
 - (void)addNoMessageTipView{
     
-    [self createNoticeView:@"暂无消息" imageName:@"NoMessageNow"];
+    [self createNoticeView:@"暂无消息" imageName:@"noMsg"];
  
 }
 // 其他提示
 - (void)addTipView:(NSString *)tipText{
     
-    [self createNoticeView:tipText imageName:@"NoMessageNow"];
+    [self createNoticeView:tipText imageName:@"noData"];
     
 }
 // 隐藏提示

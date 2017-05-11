@@ -13,6 +13,5 @@
 @property (strong, nonatomic) NSString *title;//标题
 @property (strong, nonatomic) NSString *iconName;//图标名称
 @property (strong, nonatomic) NSString *className;//类名
-@property (assign, nonatomic) BOOL checkLogin;//是否需要登录
 
 @end

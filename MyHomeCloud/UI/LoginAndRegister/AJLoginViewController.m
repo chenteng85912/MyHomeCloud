@@ -22,12 +22,12 @@
 #pragma mark -life cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"登录";
     [self initUI];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+//    [self.navigationController setNavigationBarHidden:YES animated:YES];
     
 }
 
