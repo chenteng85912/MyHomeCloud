@@ -25,4 +25,7 @@
 
 //应用图标
 + (UIImage *)iconImage;
+
+//裁剪图片
++(UIImage *) imageCompressForWidth:(UIImage *)sourceImage targetWidth:(CGFloat)defineWidth;
 @end

@@ -46,6 +46,7 @@ static NSString *CellIdentifier = @"TJSettingsCellId";
     //数据源
     _tableDatasource = [CTDataSourceObj createTableViewDataSourceWithIdentify:CellIdentifier cellConfigureBlock:^(UITableViewCell *cell, id model, NSIndexPath *indexPath) {
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         if (dWidth==320) {
             cell.textLabel.font = [UIFont systemFontOfSize:14];
         }else{
@@ -64,7 +65,7 @@ static NSString *CellIdentifier = @"TJSettingsCellId";
     self.tableList = [AJMeCenterData getSettingData];
     
     _tableView.tableHeaderView = self.topView;
-    if (![AVUser currentUser]) {
+    if ([AVUser currentUser]) {
         self.footerView.hidden = NO;
         _tableView.tableFooterView = self.footerView;
     }
@@ -91,9 +92,16 @@ static NSString *CellIdentifier = @"TJSettingsCellId";
     }
 }
 - (IBAction)logoutAction:(UIButton *)sender {
+    WeakSelf;
     [UIAlertController alertWithTitle:nil message:nil cancelButtonTitle:@"取消" otherButtonTitles:@[@"退出"] preferredStyle:UIAlertControllerStyleActionSheet block:^(NSInteger buttonIndex) {
         if (buttonIndex==1) {
-//            [(AppDelegate *)[UIApplication sharedApplication].delegate switchRootVC];
+            [AVUser logOut];
+            [weakSelf.view showHUD:@"正在注销..."];
+            dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC));
+            dispatch_after(delayTime, dispatch_get_main_queue(), ^(void){
+                [(AppDelegate *)[UIApplication sharedApplication].delegate switchRootVC];
+
+            });
         }
     }];
 }

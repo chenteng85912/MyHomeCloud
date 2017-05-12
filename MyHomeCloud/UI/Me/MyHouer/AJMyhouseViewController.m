@@ -7,6 +7,7 @@
 //
 
 #import "AJMyhouseViewController.h"
+#import "AJNewHouserViewController.h"
 
 @interface AJMyhouseViewController ()
 
@@ -16,9 +17,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"add"] style:UIBarButtonItemStylePlain target:self action:@selector(addNewHouse)];
+    self.navigationItem.rightBarButtonItem.tintColor = NavigationBarColor;
+
     // Do any additional setup after loading the view from its nib.
 }
-
+- (void)addNewHouse{
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[AJNewHouserViewController new]];
+    APP_PRESENT(nav);
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

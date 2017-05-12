@@ -30,7 +30,7 @@
     return YES;
 }
 - (void)switchRootVC{
-    if (![AVUser currentUser ]) {
+    if ([AVUser currentUser ]) {
         self.window.rootViewController = [AjMainTabBarViewController new];
 
     }else{

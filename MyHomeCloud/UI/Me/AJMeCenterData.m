@@ -10,7 +10,7 @@
 #import "AJMeModel.h"
 #import "AJMyhouseViewController.h"
 #import "AJSettingViewController.h"
-
+#import "AJSearchViewController.h"
 @implementation AJMeCenterData
 
 + (NSMutableArray *)userCenterData
@@ -29,13 +29,13 @@
     model = [AJMeModel new];
     model.title = @"我的收藏";
     model.iconName = @"liked";
-    model.className = NSStringFromClass([AJMyhouseViewController class]);
+    model.className = NSStringFromClass([AJSearchViewController class]);
     [temp addObject:model];
     
     model = [AJMeModel new];
     model.title = @"浏览记录";
     model.iconName = @"record";
-    model.className = NSStringFromClass([AJMyhouseViewController class]);
+    model.className = NSStringFromClass([AJSearchViewController class]);
     [temp addObject:model];
     
     [dataArray addObject:temp];
@@ -45,7 +45,7 @@
     model = [AJMeModel new];
     model.title = @"购房计算器";
     model.iconName = @"house_cal";
-    model.className = NSStringFromClass([AJMyhouseViewController class]);
+    model.className = NSStringFromClass([AJSearchViewController class]);
     [temp addObject:model];
     
     model = [AJMeModel new];
@@ -73,12 +73,12 @@
     
     AJMeModel *model = [AJMeModel new];
     model.title = @"关于我们";
-    model.className = NSStringFromClass([AJMyhouseViewController class]);
+    model.className = NSStringFromClass([AJSearchViewController class]);
     [temp addObject:model];
     
     model = [AJMeModel new];
     model.title = @"隐私说明";
-    model.className = NSStringFromClass([AJMyhouseViewController class]);
+    model.className = NSStringFromClass([AJSearchViewController class]);
     [temp addObject:model];
     
     model = [AJMeModel new];

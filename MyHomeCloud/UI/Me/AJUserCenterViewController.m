@@ -9,11 +9,14 @@
 #import "AJUserCenterViewController.h"
 #import "AJMeCenterData.h"
 #import "AJMeModel.h"
+#import "UIImageView+WebCache.h"
 
 static NSString *CellIdentifier = @"AJUserCellId";
+NSString  *const HEAD_URL = @"headUrl";
+
 CGFloat const IMAGEHEIGHT  = 200.0f;
 
-@interface AJUserCenterViewController ()
+@interface AJUserCenterViewController ()<CTONEPhotoDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tbView;
 @property (weak, nonatomic) IBOutlet UIView *headView;
 @property (weak, nonatomic) IBOutlet UIImageView *headImg;
@@ -33,7 +36,8 @@ CGFloat const IMAGEHEIGHT  = 200.0f;
     [self.tbView registerClass:[UITableViewCell class] forCellReuseIdentifier:CellIdentifier];
     self.tbView.tableHeaderView = self.headView;
     
-//    self.userName.text = [AVUser currentUser].mobilePhoneNumber;
+    self.userName.text = [AVUser currentUser].username;
+    [self.userHead sd_setImageWithURL:[NSURL URLWithString:[AVUser currentUser][HEAD_URL]] placeholderImage:[UIImage imageNamed:@"lauchIcon"]];
 
 }
 - (void)viewWillAppear:(BOOL)animated{
@@ -128,13 +132,43 @@ CGFloat const IMAGEHEIGHT  = 200.0f;
     }
 }
 - (IBAction)buttonAction:(UIButton *)sender {
-    if (sender.tag==0) {
-        //头像
-    }else{
-        //登录
-    }
+    [UIAlertController alertWithTitle:@"更换头像" message:nil cancelButtonTitle:@"取消" otherButtonTitles:@[@"拍照",@"从相册选取"] preferredStyle:UIAlertControllerStyleActionSheet block:^(NSInteger buttonIndex) {
+        if (buttonIndex==1) {
+            [CTONEPhoto shareSigtonPhoto].delegate = self;
+            [[CTONEPhoto shareSigtonPhoto] openCamera:self editModal:YES];
+        }else if (buttonIndex==2){
+            [CTONEPhoto shareSigtonPhoto].delegate = self;
+            [[CTONEPhoto shareSigtonPhoto] openAlbum:self editModal:YES];
+        }
+    }];
 }
+#pragma mark - CTONEPhotoDelegate
+- (void)sendOnePhoto:(UIImage *)image withImageName:(NSString *)imageName;{
+    [self saveUserHeadImage:[CTTool imageCompressForWidth:image targetWidth:200]];
 
+}
+#pragma mark 上传用户头像
+- (void)saveUserHeadImage:(UIImage *)image{
+    
+    NSData *imgData = UIImageJPEGRepresentation(image, 1);
+    NSString *name = [NSString stringWithFormat:@"%.0f",[[NSDate new] timeIntervalSince1970]];
+    AVFile *file = [AVFile fileWithName:name data:imgData];
+
+    [self.view showHUD:@"正在上传..."];
+    [file saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        [self.view removeHUD];
+        if (!succeeded) {
+            [self.view showTips:@"上传失败，请重试" withState:TYKYHUDModeSuccess complete:nil];
+
+            return;
+        }
+        [self.view showTips:@"上传成功" withState:TYKYHUDModeSuccess complete:nil];
+        self.userHead.image = image;
+        [[AVUser currentUser] setObject:file.url forKey:HEAD_URL];
+        [[AVUser currentUser] saveInBackground];
+
+    }];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

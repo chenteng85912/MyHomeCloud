@@ -1,6 +1,7 @@
 
 
 #import "AJLoginViewController.h"
+#import "AppDelegate.h"
 #import <UMSocialCore/UMSocialCore.h>
 
 @interface AJLoginViewController ()
@@ -14,8 +15,8 @@
 //NSString *const USERNAME = @"USERNAME";
 //NSString *const PASSWORD = @"PASSWORD";
 //
-//NSString *const LOGIN_SUCCESS = @"登录成功";
-//NSString *const LOGIN_FAIL = @"登录失败";
+NSString *const LOGIN_SUCCESS = @"登录成功";
+NSString *const LOGIN_FAIL = @"登录失败";
 
 @implementation AJLoginViewController
 
@@ -68,8 +69,35 @@
         return;
     }
     
-//    [CTTool showKeyWindowHUD:@"正在登录..."];
-   
+    [CTTool showKeyWindowHUD:@"正在登录..."];
+    [AVUser logInWithUsernameInBackground:self.userNameTF.text password:self.pswTF.text block:^(AVUser *user, NSError *error) {
+        [CTTool removeKeyWindowHUD];
+        
+        if (user) {
+            //登录成功
+            [self.view showTips:LOGIN_SUCCESS withState:TYKYHUDModeSuccess complete:^{
+                [(AppDelegate *)[UIApplication sharedApplication].delegate switchRootVC];
+            }];
+            return;
+        }
+        if (error.code==210) {
+            [self.view showTips:@"密码错误" withState:TYKYHUDModeFail complete:nil];
+            return;
+        }
+        if (error.code==211) {
+            [self.view showTips:@"该用户名不存在" withState:TYKYHUDModeFail complete:nil];
+            return;
+        }
+        if (error.code==1) {
+            [self.view showTips:@"登录失败次数超过限制，请稍候再试，或者通过忘记密码重设密码" withState:TYKYHUDModeFail complete:^{
+                
+            }];
+        }else{
+            [self.view showTips:@"网络错误，请重试" withState:TYKYHUDModeFail complete:nil];
+            
+        }
+        
+    }];
 }
 
 //找回密码

@@ -7,7 +7,7 @@
 //
 
 #import "AJHonmeViewController.h"
-#import "AJMyhouseViewController.h"
+#import "AJSearchViewController.h"
 
 @interface AJHonmeViewController ()
 
@@ -26,10 +26,10 @@
     [super viewWillAppear:animated];
 }
 - (void)openSearch{
-    AJMyhouseViewController *test = [AJMyhouseViewController new];
-    test.title = @"搜索";
-    test.hidesBottomBarWhenPushed = YES;
-    APP_PUSH(test);
+    AJSearchViewController *search = [AJSearchViewController new];
+    search.title = @"搜索";
+    search.hidesBottomBarWhenPushed = YES;
+    APP_PUSH(search);
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
