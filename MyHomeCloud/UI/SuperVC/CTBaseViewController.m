@@ -73,6 +73,16 @@
         return YES;
     }
 }
+- (AVQuery *)baseQuery{
+    if (_baseQuery==nil) {
+        _baseQuery = [AVQuery new];
+        _baseQuery.cachePolicy = kAVCachePolicyCacheElseNetwork;
+        _baseQuery.limit = 50;;
+        [_baseQuery orderByDescending:@"createdAt"];
+
+    }
+    return _baseQuery;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

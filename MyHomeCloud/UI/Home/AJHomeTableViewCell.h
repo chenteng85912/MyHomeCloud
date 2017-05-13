@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AJTbViewCellProtocol.h"
-#import "AJHomeCellModel.h"
+#import "AJTableViewCell.h"
 
-@interface AJHomeTableViewCell : UITableViewCell<AJTbViewCellProtocol>
+@interface AJHomeTableViewCell : AJTableViewCell
 
 @end

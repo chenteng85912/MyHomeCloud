@@ -9,8 +9,7 @@
 #import "AJMyhouseViewController.h"
 #import "AJNewHouserViewController.h"
 #import "AJMyHomeTableViewCell.h"
-
-NSString *const USER_PHONE =  @"userPhone";
+#import "AJHouseDetailsViewController.h"
 
 @interface AJMyhouseViewController ()
 
@@ -24,7 +23,6 @@ NSString *const USER_PHONE =  @"userPhone";
     if (self.showModal==MyHouseModal) {
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"add"] style:UIBarButtonItemStylePlain target:self action:@selector(addNewHouse)];
         self.navigationItem.rightBarButtonItem.tintColor = NavigationBarColor;
-
     }
    
 }
@@ -37,13 +35,13 @@ NSString *const USER_PHONE =  @"userPhone";
 }
 - (NSString *)requestClassName{
     if (self.showModal==MyHouseModal) {
-        return HOUSER_DATA;
+        return HOUSE_INFO;
 
     }else if (self.showModal == FavoriteModal){
-        return @"";
+        return FAVORITE_HOUSE;
 
     }else{
-        return @"";
+        return RECORD_HOUSE;
 
     }
 }
@@ -58,24 +56,15 @@ NSString *const USER_PHONE =  @"userPhone";
     return  NSStringFromClass([AJMyHomeTableViewCell class]);
 }
 
-#pragma mark - UITableViewDataSource
--(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-    AJHomeCellModel *model = (AJHomeCellModel *)self.dataArray[indexPath.row];
-    
-    AJMyHomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([AJMyHomeTableViewCell class])];
-    
-    [cell processCellData:model];
-    
-    return cell;
-}
 #pragma mark - UITableViewDelegate
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    AJHomeCellModel *model = (AJHomeCellModel *)self.dataArray[indexPath.row];
-    
+    AJTbViewCellModel *model = self.dataArray[indexPath.row];
+  
+    AJHouseDetailsViewController *details = [AJHouseDetailsViewController new];
+    details.houseInfo = model.objectData;
+    APP_PUSH(details);
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 0.01;

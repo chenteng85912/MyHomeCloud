@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "AJTbViewProtocol.h"
 #import "AJTbViewPresenter.h"
+#import "AJTbViewCellProtocol.h"
 #import "AJTbViewPresenterProtocol.h"
 
 @class AJTbViewCellModel;

@@ -80,7 +80,16 @@
     return [UIImage imageNamed:iconStr];
 }
 //裁剪图片
-+(UIImage *) imageCompressForWidth:(UIImage *)sourceImage targetWidth:(CGFloat)defineWidth
++ (UIImage *)scaleImage:(UIImage *)img toSize:(CGSize)size{
+    UIGraphicsBeginImageContextWithOptions(size, NO,0.0);
+    CGRect imageRect = CGRectMake(0.0, 0.0, size.width, size.height);
+    [img drawInRect:imageRect];
+    UIImage *newImg = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImg;
+}
+//按宽度裁剪图片
++ (UIImage *) imageCompressForWidth:(UIImage *)sourceImage targetWidth:(CGFloat)defineWidth
 {
     CGSize imageSize = sourceImage.size;
     CGFloat width = imageSize.width;

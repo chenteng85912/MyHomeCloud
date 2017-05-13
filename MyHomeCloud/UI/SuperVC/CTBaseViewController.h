@@ -9,6 +9,8 @@
 
 @interface CTBaseViewController : UIViewController
 
+@property (strong, nonatomic) AVQuery *baseQuery;
+
 - (void)backToPreVC;
 
 @end

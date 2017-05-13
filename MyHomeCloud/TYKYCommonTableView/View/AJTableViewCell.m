@@ -1,19 +1,15 @@
 //
-//  AJMyHomeTableViewCell.m
+//  AJTableViewCell.m
 //  MyHomeCloud
 //
 //  Created by 腾 on 2017/5/13.
 //  Copyright © 2017年 TENG. All rights reserved.
 //
 
-#import "AJMyHomeTableViewCell.h"
+#import "AJTableViewCell.h"
 
-@implementation AJMyHomeTableViewCell
+@implementation AJTableViewCell
 
-- (void)processCellData:(id<AJTbViewCellModelProtocol>)data{
-    AJHomeCellModel *model = (AJHomeCellModel *)data;
-    
-}
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code

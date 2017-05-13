@@ -41,7 +41,7 @@
     [dataArray addObject:temp];
     
     //section1
-//    temp = [NSMutableArray array];
+    temp = [NSMutableArray array];
 //    model = [AJMeModel new];
 //    model.title = @"购房计算器";
 //    model.iconName = @"house_cal";

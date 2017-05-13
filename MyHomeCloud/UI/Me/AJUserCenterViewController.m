@@ -25,7 +25,7 @@ CGFloat const IMAGEHEIGHT  = 200.0f;
 @property (weak, nonatomic) IBOutlet UIView *headInfoView;
 @property (weak, nonatomic) IBOutlet UILabel *userName;
 
-@property (strong, nonatomic) NSArray *dataArray;
+@property (strong, nonatomic) NSArray *dataArray;//数据源
 
 @end
 
@@ -38,7 +38,7 @@ CGFloat const IMAGEHEIGHT  = 200.0f;
     self.tbView.tableHeaderView = self.headView;
     
     self.userName.text = [AVUser currentUser].mobilePhoneNumber;
-    [self.userHead sd_setImageWithURL:[NSURL URLWithString:[AVUser currentUser][HEAD_URL]] placeholderImage:[UIImage imageNamed:@"lauchIcon"]];
+    [self.userHead sd_setImageWithURL:[NSURL URLWithString:[AVUser currentUser][HEAD_URL]] placeholderImage:LOADIMAGE(@"lauchIcon")];
 
 }
 - (void)viewWillAppear:(BOOL)animated{
@@ -65,7 +65,7 @@ CGFloat const IMAGEHEIGHT  = 200.0f;
     NSArray *temp = self.dataArray[indexPath.section];
     AJMeModel *model = temp[indexPath.row];
     cell.textLabel.text = model.title;
-    [self scaleCellImageView:cell.imageView withImage:[UIImage imageNamed:model.iconName]];
+    cell.imageView.image = [CTTool scaleImage:LOADIMAGE(model.iconName) toSize:CGSizeMake(25, 25)];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
@@ -113,22 +113,13 @@ CGFloat const IMAGEHEIGHT  = 200.0f;
             house.showModal = UserRecordModal;
 
         }
+        vc = house;
     }
     vc.hidesBottomBarWhenPushed = YES;
     APP_PUSH(vc);
     
 }
 
-//裁剪图片
-- (void)scaleCellImageView:(UIImageView *)imgView withImage:(UIImage *)img{
-    CGSize itemSize = CGSizeMake(25, 25);
-    UIGraphicsBeginImageContextWithOptions(itemSize, NO,0.0);
-    CGRect imageRect = CGRectMake(0.0, 0.0, itemSize.width, itemSize.height);
-    [img drawInRect:imageRect];
-    
-    imgView.image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-}
 #pragma mark UIScrollViewDelegate
 //头部拉伸放大
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView

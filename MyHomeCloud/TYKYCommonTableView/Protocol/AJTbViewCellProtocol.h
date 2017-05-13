@@ -9,9 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "AJTbViewCellModelProtocol.h"
 
+@class AJTbViewCellModel;
 @protocol AJTbViewCellProtocol <NSObject>
 
 //单元格数据处理和界面布局《单元格实现该方法》
-- (void)processCellData:(id<AJTbViewCellModelProtocol>)data;
+- (void)processCellData:(AJTbViewCellModel *)data;
 
 @end

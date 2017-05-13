@@ -87,6 +87,7 @@ NSInteger const defaultPageSize = 50;
     
         AJTbViewCellModel *model = [AJTbViewCellModel new];
         model.objectData = obj;
+        model.type = [_tbViewVC requestClassName];
         if ([model respondsToSelector:@selector(calculateSizeConstrainedToSize)]) {
             [model calculateSizeConstrainedToSize];
         }

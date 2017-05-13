@@ -11,8 +11,8 @@
 
 @interface AJTbViewCellModel : NSObject<AJTbViewCellModelProtocol>
 
-@property (strong, nonatomic) AVObject *objectData;    //单元格原始数据
-
+@property (strong, nonatomic) AVObject *objectData;   //单元格原始数据
+@property (strong, nonatomic) NSString *type;         //类型
 @property (assign, nonatomic) CGFloat cellHeight;
 
 @end

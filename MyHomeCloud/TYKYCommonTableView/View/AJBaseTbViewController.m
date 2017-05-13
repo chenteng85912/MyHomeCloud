@@ -67,7 +67,16 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.dataArray.count;
 }
-
+-(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    AJTbViewCellModel *model = self.dataArray[indexPath.row];
+    
+    id <AJTbViewCellProtocol> cell = [tableView dequeueReusableCellWithIdentifier:[self customeTableViewCellClassName]];
+    
+    [cell processCellData:model];
+    
+    return (UITableViewCell*)cell;
+}
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if ([self respondsToSelector:@selector(AJTableView:heightForRowAtIndexPath:)]) {
         return  [self AJTableView:tableView heightForRowAtIndexPath:indexPath];
@@ -77,6 +86,8 @@
     return model.cellHeight;
 
 }
+#pragma mark - UITableViewDelegate
+
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
     if ([self respondsToSelector:@selector(canDeleteCell)]) {
         return YES;
@@ -206,10 +217,8 @@
     
     [self.view addSubview:self.tableView];
     
-    if ([self respondsToSelector:@selector(customeTableViewCellClassName)]) {
-        [self.tableView registerNib:[UINib nibWithNibName:[self customeTableViewCellClassName] bundle:nil] forCellReuseIdentifier:[self customeTableViewCellClassName]];
-        
-    }
+    [self.tableView registerNib:[UINib nibWithNibName:[self customeTableViewCellClassName] bundle:nil] forCellReuseIdentifier:[self customeTableViewCellClassName]];
+    
     if ([self respondsToSelector:@selector(makeMJRefresh)]) {
         _mjRefresh = YES;
         self.tableView.mj_header = [self makeMJRefeshWithTarget:self andMethod:@selector(initStartData)];

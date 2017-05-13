@@ -11,6 +11,9 @@
 @implementation AJHomeCellModel
 - (void)calculateSizeConstrainedToSize{
     
-    self.cellHeight = 100;
+    if ([self.type isEqualToString:FAVORITE_HOUSE]||[self.type isEqualToString:RECORD_HOUSE]) {
+        AVObject *object = self.objectData[HOUSE_OBJECT];
+        return;
+    }
 }
 @end
