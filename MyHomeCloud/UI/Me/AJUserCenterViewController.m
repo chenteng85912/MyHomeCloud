@@ -9,6 +9,7 @@
 #import "AJUserCenterViewController.h"
 #import "AJMeCenterData.h"
 #import "AJMeModel.h"
+#import "AJMyhouseViewController.h"
 #import "UIImageView+WebCache.h"
 
 static NSString *CellIdentifier = @"AJUserCellId";
@@ -101,6 +102,18 @@ CGFloat const IMAGEHEIGHT  = 200.0f;
     Class vcClass = NSClassFromString(model.className);             //反射
     UIViewController *vc = [vcClass new];
     vc.title = model.title;
+    if ([model.className isEqualToString: NSStringFromClass([AJMyhouseViewController class])]) {
+        AJMyhouseViewController *house = (AJMyhouseViewController *)vc;
+        if (indexPath.row==0) {
+            house.showModal = MyHouseModal;
+        }else if (indexPath.row==1){
+            house.showModal = FavoriteModal;
+
+        }else{
+            house.showModal = UserRecordModal;
+
+        }
+    }
     vc.hidesBottomBarWhenPushed = YES;
     APP_PUSH(vc);
     

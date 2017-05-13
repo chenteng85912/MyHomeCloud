@@ -21,10 +21,12 @@ NSString *const USER_PHONE =  @"userPhone";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"add"] style:UIBarButtonItemStylePlain target:self action:@selector(addNewHouse)];
-    self.navigationItem.rightBarButtonItem.tintColor = NavigationBarColor;
+    if (self.showModal==MyHouseModal) {
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"add"] style:UIBarButtonItemStylePlain target:self action:@selector(addNewHouse)];
+        self.navigationItem.rightBarButtonItem.tintColor = NavigationBarColor;
 
-    // Do any additional setup after loading the view from its nib.
+    }
+   
 }
 #pragma mark - AJTbViewProtocol
 - (BOOL)makeMJRefresh{
@@ -34,7 +36,16 @@ NSString *const USER_PHONE =  @"userPhone";
     return UITableViewStyleGrouped;
 }
 - (NSString *)requestClassName{
-    return HOUSER_DATA;
+    if (self.showModal==MyHouseModal) {
+        return HOUSER_DATA;
+
+    }else if (self.showModal == FavoriteModal){
+        return @"";
+
+    }else{
+        return @"";
+
+    }
 }
 - (NSString *)requestKeyName{
     return USER_PHONE;

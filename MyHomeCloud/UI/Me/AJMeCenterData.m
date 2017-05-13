@@ -29,24 +29,24 @@
     model = [AJMeModel new];
     model.title = @"我的收藏";
     model.iconName = @"liked";
-    model.className = NSStringFromClass([AJSearchViewController class]);
+    model.className = NSStringFromClass([AJMyhouseViewController class]);
     [temp addObject:model];
     
     model = [AJMeModel new];
     model.title = @"浏览记录";
     model.iconName = @"record";
-    model.className = NSStringFromClass([AJSearchViewController class]);
+    model.className = NSStringFromClass([AJMyhouseViewController class]);
     [temp addObject:model];
     
     [dataArray addObject:temp];
     
     //section1
-    temp = [NSMutableArray array];
-    model = [AJMeModel new];
-    model.title = @"购房计算器";
-    model.iconName = @"house_cal";
-    model.className = NSStringFromClass([AJSearchViewController class]);
-    [temp addObject:model];
+//    temp = [NSMutableArray array];
+//    model = [AJMeModel new];
+//    model.title = @"购房计算器";
+//    model.iconName = @"house_cal";
+//    model.className = NSStringFromClass([AJSearchViewController class]);
+//    [temp addObject:model];
     
     model = [AJMeModel new];
     model.title = @"客服热线";

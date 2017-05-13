@@ -588,7 +588,7 @@
 				TargetAttributes = {
 					0B2343B71EC01CA1007A3AC1 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = 2NZ83N8RQJ;
+						DevelopmentTeam = 4F5G8L9327;
 						ProvisioningStyle = Automatic;
 					};
 					0B2343D31EC01CA1007A3AC1 = {
@@ -917,14 +917,16 @@
 			baseConfigurationReference = 2BD76340FB7FEF978B1E1792 /* Pods-MyHomeCloud.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 2NZ83N8RQJ;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 4F5G8L9327;
 				GCC_PREFIX_HEADER = MyHomeCloud/MyHomeCloud.pch;
 				INFOPLIST_FILE = MyHomeCloud/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.webhall.MyHomeCloud;
+				PRODUCT_BUNDLE_IDENTIFIER = com.chenteng.AJCloud;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -933,14 +935,16 @@
 			baseConfigurationReference = B6A1BBA8A047697D99556676 /* Pods-MyHomeCloud.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 2NZ83N8RQJ;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 4F5G8L9327;
 				GCC_PREFIX_HEADER = MyHomeCloud/MyHomeCloud.pch;
 				INFOPLIST_FILE = MyHomeCloud/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.webhall.MyHomeCloud;
+				PRODUCT_BUNDLE_IDENTIFIER = com.chenteng.AJCloud;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
