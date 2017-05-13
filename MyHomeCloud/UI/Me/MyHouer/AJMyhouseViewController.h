@@ -6,7 +6,8 @@
 //  Copyright © 2017年 TENG. All rights reserved.
 //
 
+#import "AJBaseTbViewController.h"
 
-@interface AJMyhouseViewController : CTBaseViewController
+@interface AJMyhouseViewController : AJBaseTbViewController
 
 @end

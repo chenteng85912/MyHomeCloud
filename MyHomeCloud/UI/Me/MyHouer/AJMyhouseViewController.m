@@ -8,6 +8,9 @@
 
 #import "AJMyhouseViewController.h"
 #import "AJNewHouserViewController.h"
+#import "AJMyHomeTableViewCell.h"
+
+NSString *const USER_PHONE =  @"userPhone";
 
 @interface AJMyhouseViewController ()
 
@@ -22,6 +25,52 @@
     self.navigationItem.rightBarButtonItem.tintColor = NavigationBarColor;
 
     // Do any additional setup after loading the view from its nib.
+}
+#pragma mark - AJTbViewProtocol
+- (BOOL)makeMJRefresh{
+    return YES;
+}
+- (UITableViewStyle)tableViewStyle{
+    return UITableViewStyleGrouped;
+}
+- (NSString *)requestClassName{
+    return HOUSER_DATA;
+}
+- (NSString *)requestKeyName{
+    return USER_PHONE;
+}
+
+- (BOOL)canDeleteCell{
+    return YES;
+}
+- (NSString *)customeTableViewCellClassName{
+    return  NSStringFromClass([AJMyHomeTableViewCell class]);
+}
+
+#pragma mark - UITableViewDataSource
+-(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    AJHomeCellModel *model = (AJHomeCellModel *)self.dataArray[indexPath.row];
+    
+    AJMyHomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([AJMyHomeTableViewCell class])];
+    
+    [cell processCellData:model];
+    
+    return cell;
+}
+#pragma mark - UITableViewDelegate
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    AJHomeCellModel *model = (AJHomeCellModel *)self.dataArray[indexPath.row];
+    
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 0.01;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 0.01;
 }
 - (void)addNewHouse{
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[AJNewHouserViewController new]];

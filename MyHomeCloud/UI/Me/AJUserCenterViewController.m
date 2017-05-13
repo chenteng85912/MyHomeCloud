@@ -36,7 +36,7 @@ CGFloat const IMAGEHEIGHT  = 200.0f;
     [self.tbView registerClass:[UITableViewCell class] forCellReuseIdentifier:CellIdentifier];
     self.tbView.tableHeaderView = self.headView;
     
-    self.userName.text = [AVUser currentUser].username;
+    self.userName.text = [AVUser currentUser].mobilePhoneNumber;
     [self.userHead sd_setImageWithURL:[NSURL URLWithString:[AVUser currentUser][HEAD_URL]] placeholderImage:[UIImage imageNamed:@"lauchIcon"]];
 
 }

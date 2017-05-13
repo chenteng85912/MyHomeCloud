@@ -8,6 +8,7 @@
 
 #import "AJHonmeViewController.h"
 #import "AJSearchViewController.h"
+#import "AJHomeTableViewCell.h"
 
 @interface AJHonmeViewController ()
 
@@ -24,6 +25,46 @@
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+}
+#pragma mark - AJTbViewProtocol
+- (BOOL)makeMJRefresh{
+    return YES;
+}
+- (UITableViewStyle)tableViewStyle{
+    return UITableViewStyleGrouped;
+}
+- (NSString *)requestClassName{
+    return HOUSER_DATA;
+}
+
+- (NSString *)customeTableViewCellClassName{
+    return  NSStringFromClass([AJHomeTableViewCell class]);
+}
+
+#pragma mark - UITableViewDataSource
+-(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+   
+    AJHomeCellModel *model = (AJHomeCellModel *)self.dataArray[indexPath.row];
+    
+    AJHomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([AJHomeTableViewCell class])];
+    
+    [cell processCellData:model];
+    
+    return cell;
+}
+#pragma mark - UITableViewDelegate
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    AJHomeCellModel *model = (AJHomeCellModel *)self.dataArray[indexPath.row];
+    
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 0.01;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 0.01;
 }
 - (void)openSearch{
     AJSearchViewController *search = [AJSearchViewController new];

@@ -8,15 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol TYKYTableViewPresenterProtocol <NSObject>
+@protocol AJTbViewPresenterProtocol <NSObject>
 
 //初始化数据
 - (void)initStartData;
 
 //加载更多数据
 - (void)loadMoreData;
-
-//删除单元格
-- (void)deleteCell:(NSInteger)index;
 
 @end

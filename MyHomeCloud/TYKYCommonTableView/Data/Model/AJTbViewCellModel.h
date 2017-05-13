@@ -7,11 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TYKYTableViewCellModelProtocol.h"
+#import "AJTbViewCellModelProtocol.h"
 
-@interface TYKYTableViewCellModel : NSObject<TYKYTableViewCellModelProtocol>
+@interface AJTbViewCellModel : NSObject<AJTbViewCellModelProtocol>
 
-@property (strong, nonatomic) NSMutableDictionary *cellInfo;    //单元格原始数据
+@property (strong, nonatomic) AVObject *objectData;    //单元格原始数据
 
 @property (assign, nonatomic) CGFloat cellHeight;
 

@@ -8,16 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol TYKYTableViewCellModelProtocol <NSObject>
+@protocol AJTbViewCellModelProtocol <NSObject>
 
 @optional
-
-//kvc初始化模型《父类单元格模型 实现该协议方法》
-- (instancetype)initValueWithDictionary:(NSDictionary *)dic;
 
 //计算单元格高度《自定义单元格模型 实现该协议方法》
 - (void)calculateSizeConstrainedToSize;
 
-//没有找到模型key
-- (void)initValue:(id)value forUndefinedKey:(NSString *)key;
 @end

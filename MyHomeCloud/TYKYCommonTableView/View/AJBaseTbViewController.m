@@ -6,13 +6,12 @@
 //  Copyright © 2017年 腾. All rights reserved.
 //
 
-#import "TYKYBaseTableViewController.h"
-#import "TYKYTableViewCellModel.h"
-#import "TYKYTableviewProtocol.h"
+#import "AJBaseTbViewController.h"
+#import "AJTbViewCellModel.h"
 #import "UITableView+NoMoreDataInFooter.h"
 #import <MJRefresh/MJRefresh.h>
 
-@interface TYKYBaseTableViewController ()
+@interface AJBaseTbViewController ()
 
 //上一次单元格数量
 @property (assign, nonatomic) NSInteger oldDataNum;
@@ -21,10 +20,9 @@
 
 @property (assign, nonatomic) BOOL networkOk;//有网络
 
-
 @end
 
-@implementation TYKYBaseTableViewController
+@implementation AJBaseTbViewController
 
 #pragma mark - life cycle
 - (void)viewDidLoad {
@@ -44,18 +42,7 @@
    
     if (!_isLoad) {
         _isLoad = YES;
-
-        if ([UIApplication sharedApplication].statusBarStyle == UIStatusBarStyleLightContent) {
-            self.tableView.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height-49);
-
-        }else{
-            self.tableView.frame = self.view.bounds;
-
-        }
-//        if (self.dataArray.count>0) {
-//            [self.tableView reloadData];
-//            return;
-//        }
+        self.tableView.frame = self.view.bounds;
         if (_mjRefresh) {
             [self.tableView.mj_header beginRefreshing];
 
@@ -71,8 +58,8 @@
 
 #pragma mark - TableviewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    if ([self respondsToSelector:@selector(TYKYNumberOfSectionsInTableView:)]) {
-        return [self TYKYNumberOfSectionsInTableView:tableView];
+    if ([self respondsToSelector:@selector(AJNumberOfSectionsInTableView:)]) {
+        return [self AJNumberOfSectionsInTableView:tableView];
     }
     return 1;
 }
@@ -82,15 +69,39 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if ([self respondsToSelector:@selector(TYKYTableView:heightForRowAtIndexPath:)]) {
-        return  [self TYKYTableView:tableView heightForRowAtIndexPath:indexPath];
+    if ([self respondsToSelector:@selector(AJTableView:heightForRowAtIndexPath:)]) {
+        return  [self AJTableView:tableView heightForRowAtIndexPath:indexPath];
         
     }
-    TYKYTableViewCellModel <TYKYTableViewCellModelProtocol> *model = self.dataArray[indexPath.row];
+    AJTbViewCellModel *model = self.dataArray[indexPath.row];
     return model.cellHeight;
 
 }
-
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
+    if ([self respondsToSelector:@selector(canDeleteCell)]) {
+        return YES;
+    }
+    return NO;
+}
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        AJTbViewCellModel *model = self.dataArray[indexPath.row];
+        WeakSelf;
+        [model.objectData deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            if (!succeeded) {
+                [weakSelf.view showTips:@"网络错误,请重试" withState:TYKYHUDModeFail complete:nil];
+                return;
+            }
+            [weakSelf.dataArray removeObjectAtIndex:indexPath.row];
+            [weakSelf.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            if (weakSelf.dataArray.count==0) {
+                [weakSelf.tableView addNoDataTipView];
+            }
+            
+        }];
+        
+    }
+}
 #pragma mark - TYKYTableViewProtocol
 //重置上拉刷新
 - (void)reStupTableviewFooterView:(NSInteger)pageSize{
@@ -122,22 +133,24 @@
     }
 }
 //刷新数据
-- (void)reloadTableView:(NSMutableArray *)dataArray{
-    if (_mjRefresh) {
-        [self.tableView.mj_header endRefreshing];
-
+- (void)reloadTableView:(NSArray *)dataArray modal:(TableViewInitDataModal)type{
+   
+    if (type==StartInitDataModal) {
+        [self.dataArray removeAllObjects];
     }
-
-    self.dataArray = dataArray;
+    [self.dataArray addObjectsFromArray:dataArray];
     [self.tableView reloadData];
 
 }
 //添加提示
 - (void)showTipView:(TableViewInitDataModal)type{
-    
+    if (_mjRefresh) {
+        [self.tableView.mj_header endRefreshing];
+        
+    }
     [self.tableView hiddenTipsView];
     if (type==StartInitDataModal) {
-        switch (_presenter.tableViewData.requestState) {
+        switch (self.presenter.requestState) {
             case RequestSuccessModal:{
                 if (self.dataArray.count==0) {
                     [self.tableView addNoDataTipView];
@@ -146,7 +159,6 @@
             }
                 break;
             case RequestTimeOutModal:{
-                [self.tableView addTipView:self.presenter.tableViewData.error];
                
             }
                 break;
@@ -171,12 +183,7 @@
                 break;
         }
     }else{
-        switch (_presenter.tableViewData.requestState) {
-            case RequestSuccessModal:{
-                
-            }
-                
-                break;
+        switch (self.presenter.requestState) {
             case RequestTimeOutModal:
             case RequestFailModal:{
                [self.view showTips:@"请求数据失败" withState:TYKYHUDModeFail complete:nil];
@@ -214,8 +221,6 @@
 #pragma mark -private methods 加载数据
 //首次从网络请求数据
 - (void)initStartData{
-    
-    //获取列表数据，网络请求、或者到本地去取
     _oldDataNum = 0;
     [self.presenter initStartData];
 }
@@ -231,8 +236,6 @@
     [header setTitle:@"正在刷新..." forState:MJRefreshStateRefreshing];
     // 隐藏时间
     header.lastUpdatedTimeLabel.hidden = YES;
-//    header.lastUpdatedTimeLabel.font = [UIFont fontWithName:@"Avenir-Book" size:10];
-//    header.lastUpdatedTimeLabel.textColor = [UIColor blackColor];
 
     header.stateLabel.font = [UIFont fontWithName:@"Avenir-Book" size:14];
     header.stateLabel.textColor = [UIColor blackColor];
@@ -243,7 +246,7 @@
 }
 
 #pragma mark - getters and setters
-- (NSMutableArray <TYKYTableViewCellModel *>*)dataArray{
+- (NSMutableArray <AJTbViewCellModel *>*)dataArray{
     if (!_dataArray) {
         _dataArray = [NSMutableArray new];
     }
@@ -264,9 +267,9 @@
     }
     return _tableView;
 }
-- (TYKYTableViewPresenter *)presenter{
+- (AJTbViewPresenter *)presenter{
     if (!_presenter) {
-        _presenter = [TYKYTableViewPresenter new];
+        _presenter = [AJTbViewPresenter new];
         _presenter.tbViewVC = self;
     }
     return _presenter;
