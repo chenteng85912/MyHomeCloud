@@ -40,6 +40,7 @@
         }
         [weakSelf.view showTips:@"保存成功" withState:TYKYHUDModeSuccess complete:^{
             [weakSelf.navigationController dismissViewControllerAnimated:YES completion:^{
+                [[NSNotificationCenter defaultCenter] postNotificationName:kHomeHouseNotification object:nil];
                 
             }];
         }];

@@ -20,7 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"添加房源";
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:[CTTool makeCustomRightBtn:@"下一步" target:self sel:@selector(nextAction:)]];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:[CTTool makeCustomRightBtn:@"下一步" target:self sel:@selector(addHomeDes)]];
 }
 
 //保存房源
@@ -77,10 +77,10 @@
     NSString *name = [NSString stringWithFormat:@"%.0f",[[NSDate new] timeIntervalSince1970]];
     AVFile *file = [AVFile fileWithName:name data:imgData];
     
-    [self.view showHUD:@"正在上传..."];
+    [CTTool showKeyWindowHUD:@"正在上传..."];
     WeakSelf;
     [file saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        [self.view removeHUD];
+        [CTTool removeKeyWindowHUD];
         if (!succeeded) {
             [self.view showTips:@"上传失败，请重试" withState:TYKYHUDModeSuccess complete:nil];
             
@@ -89,6 +89,9 @@
         AVObject *obj = [weakSelf creatHouseInfo:file.url];
         [weakSelf nextAction:obj];
     }];
+}
+- (void)addHomeDes{
+    [self nextAction:nil];
 }
 - (void)nextAction:(AVObject *)obj{
     

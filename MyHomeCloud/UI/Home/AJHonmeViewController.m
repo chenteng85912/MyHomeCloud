@@ -22,6 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshHomeData) name:kHomeHouseNotification object:nil];
 //    self.navigationItem.titleView = self.searchBar;
 
 }
@@ -50,11 +51,11 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-//    AJHomeCellModel *model = (AJHomeCellModel *)self.dataArray[indexPath.row];
-//    AJHouseDetailsViewController *details = [AJHouseDetailsViewController new];
-//    details.houseInfo = model.objectData;
-//    
-//    APP_PUSH(details);
+    AJHomeCellModel *model = (AJHomeCellModel *)self.dataArray[indexPath.row];
+    AJHouseDetailsViewController *details = [AJHouseDetailsViewController new];
+    details.houseInfo = model.objectData;
+    details.hidesBottomBarWhenPushed = YES;
+    APP_PUSH(details);
 //    [self addRecordData:model.objectData];
 
 }
@@ -86,6 +87,13 @@
         }
     }];
 
+}
+- (void)refreshHomeData{
+    [self.tableView.mj_header beginRefreshing];
+}
+
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

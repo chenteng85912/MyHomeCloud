@@ -27,7 +27,7 @@
 - (void)processCellData:(id <AJTbViewCellModelProtocol>)data{
     
     self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
     AJHomeCellModel *model = (AJHomeCellModel *)data;
     
     self.houseName.text =  model.houseName;

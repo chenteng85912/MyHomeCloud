@@ -25,6 +25,8 @@
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"add"] style:UIBarButtonItemStylePlain target:self action:@selector(addNewHouse)];
         self.navigationItem.rightBarButtonItem.tintColor = NavigationBarColor;
     }
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshHomeData) name:kHomeHouseNotification object:nil];
+
    
 }
 #pragma mark - AJTbViewProtocol
@@ -50,9 +52,9 @@
     return USER_PHONE;
 }
 
-- (BOOL)canDeleteCell{
-    return YES;
-}
+//- (BOOL)canDeleteCell{
+//    return YES;
+//}
 - (NSString *)customeTbViewCellClassName{
     return  NSStringFromClass([AJHomeTableViewCell class]);
 }
@@ -63,11 +65,12 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-//    AJHomeCellModel *model = (AJHomeCellModel *)self.dataArray[indexPath.row];
-//    AJHouseDetailsViewController *details = [AJHouseDetailsViewController new];
-//    details.houseInfo = model.objectData;
-//    
-//    APP_PUSH(details);
+    AJHomeCellModel *model = (AJHomeCellModel *)self.dataArray[indexPath.row];
+    AJHouseDetailsViewController *details = [AJHouseDetailsViewController new];
+    details.houseInfo = model.objectData;
+    details.hidesBottomBarWhenPushed = YES;
+
+    APP_PUSH(details);
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 0.01;
@@ -78,6 +81,14 @@
 - (void)addNewHouse{
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[AJNewHouserViewController new]];
     APP_PRESENT(nav);
+}
+
+- (void)refreshHomeData{
+    [self.tableView.mj_header beginRefreshing];
+}
+
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
