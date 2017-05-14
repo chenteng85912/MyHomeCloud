@@ -113,6 +113,7 @@ static NSString *CellIdentifier = @"TJSettingsCellId";
         if (buttonIndex==1) {
             [weakSelf.view showHUD:@"正在清理..."];
             [TYKYLocalDataCenter clearLocalData];
+            [AVQuery clearAllCachedResults];
             dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC));
             dispatch_after(delayTime, dispatch_get_main_queue(), ^(void){
                 [weakSelf.view removeHUD];

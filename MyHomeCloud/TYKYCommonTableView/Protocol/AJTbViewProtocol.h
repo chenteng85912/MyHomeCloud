@@ -45,10 +45,12 @@ typedef NS_ENUM(NSInteger,TableViewInitDataModal) {
 //-------------列表控制器子类Delegate代理---------------//
 @protocol AJTbViewDelegateProtocol <UITableViewDelegate>
 
-//获取子类自定义单元格类名称
-- (NSString *)customeTableViewCellClassName;
-
 @optional
+//获取子类自定义单元格类名称
+- (NSString *)customeTbViewCellClassName;
+
+//获取子类自定义单元格模型名称
+- (NSString *)customeTbViewCellModelClassName;
 
 //表视图样式
 - (UITableViewStyle)tableViewStyle;

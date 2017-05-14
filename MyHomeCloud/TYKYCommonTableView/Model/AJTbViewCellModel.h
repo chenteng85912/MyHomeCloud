@@ -9,10 +9,17 @@
 #import <Foundation/Foundation.h>
 #import "AJTbViewCellModelProtocol.h"
 
+extern CGFloat const NAME_FONT;
+extern CGFloat const SUB_FONT;
+extern CGFloat const DES_FONT;
+extern CGFloat const TOTAL_FONT;
+extern CGFloat const UNIT_FONT;
+
 @interface AJTbViewCellModel : NSObject<AJTbViewCellModelProtocol>
 
 @property (strong, nonatomic) AVObject *objectData;   //单元格原始数据
 @property (strong, nonatomic) NSString *type;         //类型
 @property (assign, nonatomic) CGFloat cellHeight;
-
+//初始化数据
+- (void)initCellData:(AVObject *)obj dataType:(NSString *)type;
 @end

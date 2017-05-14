@@ -10,6 +10,7 @@
 #import "AJSearchViewController.h"
 #import "AJHomeTableViewCell.h"
 #import "AJHouseDetailsViewController.h"
+#import "AJHomeCellModel.h"
 
 @interface AJHonmeViewController ()
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
@@ -21,9 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"search"] style:UIBarButtonItemStylePlain target:self action:@selector(openSearch)];
-//    self.navigationItem.rightBarButtonItem.tintColor = NavigationBarColor;
-    self.navigationItem.titleView = self.searchBar;
+//    self.navigationItem.titleView = self.searchBar;
 
 }
 - (void)viewWillAppear:(BOOL)animated{
@@ -40,19 +39,24 @@
     return HOUSE_INFO;
 }
 
-- (NSString *)customeTableViewCellClassName{
+- (NSString *)customeTbViewCellClassName{
     return  NSStringFromClass([AJHomeTableViewCell class]);
+}
+- (NSString *)customeTbViewCellModelClassName{
+    return NSStringFromClass([AJHomeCellModel class]);
 }
 
 #pragma mark - UITableViewDelegate
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    AJTbViewCellModel *model = self.dataArray[indexPath.row];
-    AJHouseDetailsViewController *details = [AJHouseDetailsViewController new];
-    details.houseInfo = model.objectData;
     
-    [self addRecordData:model.objectData];
-    APP_PUSH(details);
+//    AJHomeCellModel *model = (AJHomeCellModel *)self.dataArray[indexPath.row];
+//    AJHouseDetailsViewController *details = [AJHouseDetailsViewController new];
+//    details.houseInfo = model.objectData;
+//    
+//    APP_PUSH(details);
+//    [self addRecordData:model.objectData];
+
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 0.01;

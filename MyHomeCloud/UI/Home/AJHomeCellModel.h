@@ -10,4 +10,18 @@
 
 @interface AJHomeCellModel : AJTbViewCellModel
 
+@property (strong, nonatomic) NSString *houseName;
+@property (strong, nonatomic) NSString *subTitle;
+@property (strong, nonatomic) NSString *houseDes;
+@property (strong, nonatomic) NSString *totalPrice;
+@property (strong, nonatomic) NSString *unitPrice;
+
+@property (assign, nonatomic) CGRect nameFrame;
+@property (assign, nonatomic) CGRect subFrame;
+@property (assign, nonatomic) CGRect desFrame;
+@property (assign, nonatomic) CGRect totalFrame;
+@property (assign, nonatomic) CGRect unitFrame;
+@property (assign, nonatomic) CGRect imgFrame;
+
+
 @end

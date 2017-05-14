@@ -18,13 +18,13 @@
     CGFloat width = [title sizeWithMaxSize:CGSizeMake(200, 25) fontSize:15].width;
     UIButton *right = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, width+8, 25)];
     [right setTitle:title forState:UIControlStateNormal];
-    [right setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [right setTitleColor:NavigationBarColor forState:UIControlStateNormal];
     
     right.titleLabel.font = [UIFont systemFontOfSize:14];
     right.layer.masksToBounds = YES;
     right.layer.cornerRadius = 5.0;
     right.layer.borderWidth = 0.5;
-    right.layer.borderColor = [UIColor blackColor].CGColor;
+    right.layer.borderColor = NavigationBarColor.CGColor;
     
     [right addTarget:target action:actionName forControlEvents:UIControlEventTouchUpInside];
     return right;
@@ -102,5 +102,43 @@
     UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return newImage;
+}
+//字典转json格式字符串：
++ (NSString*)dictionaryToJson:(NSDictionary *)dic
+{
+    NSError *parseError = nil;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dic options:NSJSONWritingPrettyPrinted error:&parseError];
+    
+    return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+}
+
++ (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonString {
+    
+    if (jsonString == nil) {
+        
+        return nil;
+        
+    }
+    
+    NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+    
+    NSError *err;
+    
+    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
+                         
+                                                        options:NSJSONReadingMutableContainers
+                         
+                                                          error:&err];
+    
+    if(err) {
+        
+        NSLog(@"json解析失败：%@",err);
+        
+        return nil;
+        
+    }
+    
+    return dic;
+    
 }
 @end

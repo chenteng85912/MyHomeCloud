@@ -69,9 +69,9 @@
 }
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    AJTbViewCellModel *model = self.dataArray[indexPath.row];
+    AJTbViewCellModel <AJTbViewCellModelProtocol> *model = self.dataArray[indexPath.row];
     
-    id <AJTbViewCellProtocol> cell = [tableView dequeueReusableCellWithIdentifier:[self customeTableViewCellClassName]];
+    id <AJTbViewCellProtocol> cell = [tableView dequeueReusableCellWithIdentifier:[self customeTbViewCellClassName]];
     
     [cell processCellData:model];
     
@@ -96,20 +96,29 @@
 }
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        AJTbViewCellModel *model = self.dataArray[indexPath.row];
         WeakSelf;
-        [model.objectData deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-            if (!succeeded) {
-                [weakSelf.view showTips:@"网络错误,请重试" withState:TYKYHUDModeFail complete:nil];
-                return;
+
+        [UIAlertController alertWithTitle:@"温馨提示" message:@"确定删除该房源?" cancelButtonTitle:@"取消" otherButtonTitles:@[@"删除"] preferredStyle:UIAlertControllerStyleAlert block:^(NSInteger buttonIndex) {
+            if (buttonIndex==1) {
+                AJTbViewCellModel *model = weakSelf.dataArray[indexPath.row];
+                [weakSelf.view showHUD:@"正在删除..."];
+                [model.objectData deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                    [weakSelf.view removeHUD];
+                    if (!succeeded) {
+                        [weakSelf.view showTips:@"网络错误,请重试" withState:TYKYHUDModeFail complete:nil];
+                        return;
+                    }
+                    [weakSelf.tableView showTips:@"删除成功" withState:TYKYHUDModeSuccess complete:nil];
+                    [weakSelf.dataArray removeObjectAtIndex:indexPath.row];
+                    [weakSelf.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+                    if (weakSelf.dataArray.count==0) {
+                        [weakSelf.tableView addNoDataTipView];
+                    }
+                    
+                }];
             }
-            [weakSelf.dataArray removeObjectAtIndex:indexPath.row];
-            [weakSelf.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            if (weakSelf.dataArray.count==0) {
-                [weakSelf.tableView addNoDataTipView];
-            }
-            
         }];
+       
         
     }
 }
@@ -217,7 +226,7 @@
     
     [self.view addSubview:self.tableView];
     
-    [self.tableView registerNib:[UINib nibWithNibName:[self customeTableViewCellClassName] bundle:nil] forCellReuseIdentifier:[self customeTableViewCellClassName]];
+    [self.tableView registerNib:[UINib nibWithNibName:[self customeTbViewCellClassName] bundle:nil] forCellReuseIdentifier:[self customeTbViewCellClassName]];
     
     if ([self respondsToSelector:@selector(makeMJRefresh)]) {
         _mjRefresh = YES;

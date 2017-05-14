@@ -42,7 +42,7 @@ NSInteger const defaultPageSize = 50;
 
     }
 
-    _pageNo = 1;
+    _pageNo = 0;
     self.query.className = [_tbViewVC requestClassName];
     self.query.skip = _pageSize *_pageNo;
 
@@ -83,15 +83,19 @@ NSInteger const defaultPageSize = 50;
 //数据处理
 - (NSMutableArray <AJTbViewCellModel *> *)processData:(NSArray *)objects{
     NSMutableArray <AJTbViewCellModel *> *dataArray = [NSMutableArray new];
-    for (AVObject *obj in objects) {
+    if (![self.tbViewVC respondsToSelector:@selector(customeTbViewCellModelClassName)]) {
+        return dataArray;
+    }
     
-        AJTbViewCellModel *model = [AJTbViewCellModel new];
-        model.objectData = obj;
-        model.type = [_tbViewVC requestClassName];
-        if ([model respondsToSelector:@selector(calculateSizeConstrainedToSize)]) {
-            [model calculateSizeConstrainedToSize];
+    for (AVObject *obj in objects) {
+        Class modelClass = NSClassFromString([self.tbViewVC customeTbViewCellModelClassName]);
+        id <AJTbViewCellModelProtocol> cellModel = [modelClass new];
+        [(AJTbViewCellModel *)cellModel initCellData:obj dataType:[_tbViewVC requestClassName]];
+        
+        if ([cellModel respondsToSelector:@selector(calculateSizeConstrainedToSize)]) {
+            [cellModel calculateSizeConstrainedToSize];
         }
-        [dataArray addObject:model];
+        [dataArray addObject:cellModel];
     }
     return dataArray;
 }
@@ -99,7 +103,7 @@ NSInteger const defaultPageSize = 50;
 - (AVQuery *)query{
     if (_query ==nil) {
         _query = [AVQuery new];
-        _query.cachePolicy = kAVCachePolicyCacheElseNetwork;
+//        _query.cachePolicy = kAVCachePolicyCacheElseNetwork;
         _query.limit = _pageSize;
         [_query orderByDescending:@"createdAt"];
     }

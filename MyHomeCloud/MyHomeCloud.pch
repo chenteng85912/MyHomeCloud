@@ -33,9 +33,11 @@
 #define dWidth              [[UIScreen mainScreen] bounds].size.width
 #define WeakSelf            __weak typeof(self) weakSelf = self;
 
+//数据表
 #define HOUSE_INFO          @"HouseInfo"//所有房屋数据表
 #define RECORD_HOUSE        @"RecordHouse"//浏览记录表
 #define FAVORITE_HOUSE      @"FavoriteHouse"//用户收藏表
+#define HOUSE_DESCRIBE      @"HouseDescribe"//房屋描述
 
 //浏览记录 收藏保存的房屋数据
 #define HOUSE_OBJECT        @"HouseObject"//房屋数据  浏览记录 收藏
@@ -43,17 +45,31 @@
 
 //房屋数据
 #define USER_PHONE          @"UserPhone"//用户电话
-#define ESTATE_NAME         @"EstateName"//小区名称
+#define HOUSE_DEVELOPER     @"Developer"//小区开发商
+#define HOUSE_ESTATE_NAME   @"EstateName"//小区名称
 #define HOUSE_NUMBER        @"Number"//小区房号
+#define HOUSE_BUILD_NUMBER  @"BuildNumber"//小区栋号
+#define HOUSE_AREA          @"AreaName"//所处镇区名称
+#define HOUSE_AMOUNT          @"HouseAmout"//房间数量
 #define HOUSE_UNIT          @"UnitNumber"//单元编号
 #define HOUSE_AREAAGE       @"AreaAge"//房屋建筑面积
-#define HOUSE_AREA          @"AreaName"//所处镇区名称
 #define HOUSE_TOTAL_PRICE       @"TotalPrice"//房屋总价
 #define HOUSE_UNIT_PRICE        @"UnitPrice"//房屋单价
 #define HOUSE_TOTAL_FLOOR       @"TotalFloorNum"//房屋所在层号
 #define HOUSE_FLOOR_NUM         @"FloorNum"//总层数
-#define HOUSE_DECORATE          @"Decorate"//房屋装修情况
+#define HOUSE_PICTURE           @"Picture"//房屋图片
+#define HOUSE_IMAGES            @"HouseImages"//房屋图片
+#define HOUSE_THUMB             @"HouseThumb"//房屋缩略图片
 
+#define HOUSE_YEARS             @"HouseYears"//房屋年代
+
+#define YEARS_DES             @"YearsDes"//证满5年
+#define WATCH_DES            @"WatchDes"//随时看房
+#define TRAFFIC_DES          @"TrafficDes"//交通情况
+#define DECORATE_DES         @"DecorateDes"//精装修
+#define BUSSINESS_DES        @"BussinessDes"//商业中心
+#define GOOD_LIVE_DES        @"GoodLiveDes"//宜居小区
+#define SCHOOL_DES           @"SchoolDes"//学区房
 
 #ifdef DEBUG
 

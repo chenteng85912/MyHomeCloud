@@ -7,6 +7,8 @@
 //
 
 #import "AJMyHomeTableViewCell.h"
+#import "AJHomeCellModel.h"
+#import "UIImageView+WebCache.h"
 
 @implementation AJMyHomeTableViewCell
 

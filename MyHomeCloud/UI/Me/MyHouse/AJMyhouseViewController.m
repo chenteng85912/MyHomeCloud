@@ -8,8 +8,9 @@
 
 #import "AJMyhouseViewController.h"
 #import "AJNewHouserViewController.h"
-#import "AJMyHomeTableViewCell.h"
 #import "AJHouseDetailsViewController.h"
+#import "AJHomeTableViewCell.h"
+#import "AJHomeCellModel.h"
 
 @interface AJMyhouseViewController ()
 
@@ -52,19 +53,21 @@
 - (BOOL)canDeleteCell{
     return YES;
 }
-- (NSString *)customeTableViewCellClassName{
-    return  NSStringFromClass([AJMyHomeTableViewCell class]);
+- (NSString *)customeTbViewCellClassName{
+    return  NSStringFromClass([AJHomeTableViewCell class]);
 }
-
+- (NSString *)customeTbViewCellModelClassName{
+    return NSStringFromClass([AJHomeCellModel class]);
+}
 #pragma mark - UITableViewDelegate
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    AJTbViewCellModel *model = self.dataArray[indexPath.row];
-  
-    AJHouseDetailsViewController *details = [AJHouseDetailsViewController new];
-    details.houseInfo = model.objectData;
-    APP_PUSH(details);
+//    AJHomeCellModel *model = (AJHomeCellModel *)self.dataArray[indexPath.row];
+//    AJHouseDetailsViewController *details = [AJHouseDetailsViewController new];
+//    details.houseInfo = model.objectData;
+//    
+//    APP_PUSH(details);
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 0.01;

@@ -31,4 +31,10 @@
 
 //裁剪图片
 + (UIImage *)scaleImage:(UIImage *)img toSize:(CGSize)size;
+
+//字典转json格式字符串：
++ (NSString*)dictionaryToJson:(NSDictionary *)dic;
+
++ (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonString;
+
 @end

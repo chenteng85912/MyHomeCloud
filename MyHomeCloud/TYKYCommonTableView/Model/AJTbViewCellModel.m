@@ -8,6 +8,16 @@
 
 #import "AJTbViewCellModel.h"
 
+CGFloat const NAME_FONT = 16.0;
+CGFloat const SUB_FONT = 13.0;
+CGFloat const DES_FONT = 13.0;
+CGFloat const TOTAL_FONT = 15.0;
+CGFloat const UNIT_FONT = 13.0;
+
 @implementation AJTbViewCellModel
+- (void)initCellData:(AVObject *)obj dataType:(NSString *)type{
+    self.objectData = obj;
+    self.type = type;
+}
 
 @end
