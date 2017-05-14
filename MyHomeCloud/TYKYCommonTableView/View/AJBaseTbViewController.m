@@ -42,7 +42,13 @@
    
     if (!_isLoad) {
         _isLoad = YES;
-        self.tableView.frame = self.view.bounds;
+        if (![self respondsToSelector:@selector(requestKeyName)]) {
+            self.tableView.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height-49);
+            
+        }else{
+            self.tableView.frame = self.view.bounds;
+            
+        }
         if (_mjRefresh) {
             [self.tableView.mj_header beginRefreshing];
 
@@ -111,6 +117,8 @@
                     [weakSelf.tableView showTips:@"删除成功" withState:TYKYHUDModeSuccess complete:nil];
                     [weakSelf.dataArray removeObjectAtIndex:indexPath.row];
                     [weakSelf.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:kHomeHouseNotification object:nil];
+
                     if (weakSelf.dataArray.count==0) {
                         [weakSelf.tableView addNoDataTipView];
                     }

@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MyHomeCloud/TYKYCommonTableView/Presenter/AJTbViewPresenter.m"
-            timestampString = "516454132.457152"
+            filePath = "MyHomeCloud/UI/Home/AJHonmeViewController.m"
+            timestampString = "516464002.694669"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
-            landmarkName = "-processData:"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
+            landmarkName = "-refreshHomeData"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MyHomeCloud/UI/Home/AJHomeCellModel.m"
-            timestampString = "516454193.004912"
+            filePath = "MyHomeCloud/TYKYCommonTableView/View/AJBaseTbViewController.m"
+            timestampString = "516464020.484416"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
-            landmarkName = "-calculateSizeConstrainedToSize"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "-tableView:commitEditingStyle:forRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

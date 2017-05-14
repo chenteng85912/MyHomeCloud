@@ -33,7 +33,7 @@ CGFloat const IMG_HEIGHT = 80.0;
     self.nameFrame = CGRectMake(lx, cellY, houseSize.width, houseSize.height);
     
     //副标题
-    self.subTitle =  [NSString stringWithFormat:@"%@/%@m/%@",object[HOUSE_AMOUNT],object[HOUSE_AREAAGE],object[HOUSE_ESTATE_NAME]];
+    self.subTitle =  [NSString stringWithFormat:@"%@/%@m²/%@",object[HOUSE_AMOUNT],object[HOUSE_AREAAGE],object[HOUSE_ESTATE_NAME]];
     CGSize subSize = [self.subTitle sizeWithMaxSize:CGSizeMake(dWidth-cellX*3, MAXFLOAT) fontSize:SUB_FONT];
     self.subFrame = CGRectMake(lx, CGRectGetMaxY(self.nameFrame)+subY, subSize.width, subSize.height);
     

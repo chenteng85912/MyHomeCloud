@@ -29,6 +29,8 @@
 #define NavigationBarColor  UIColorFromRGB(0xF69233)//UIColorFromRGB(0x1CB464)
 
 #define kHomeHouseNotification      @"kHomeHouseNotification"
+#define kNewHouseNotification       @"kNewHouseNotification"
+
 #define MyUserDefaults      [NSUserDefaults standardUserDefaults]
 #define dHeight             [[UIScreen mainScreen] bounds].size.height
 #define dWidth              [[UIScreen mainScreen] bounds].size.width

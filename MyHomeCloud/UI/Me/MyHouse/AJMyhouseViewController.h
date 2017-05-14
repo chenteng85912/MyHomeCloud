@@ -13,6 +13,7 @@ typedef NS_ENUM(NSInteger,HouseShowModal) {
     FavoriteModal,      //我的收藏
     UserRecordModal,    //浏览记录
 };
+
 @interface AJMyhouseViewController : AJBaseTbViewController
 
 @property (assign, nonatomic) HouseShowModal showModal;

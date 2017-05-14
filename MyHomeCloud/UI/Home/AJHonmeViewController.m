@@ -23,6 +23,8 @@
     [super viewDidLoad];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshHomeData) name:kHomeHouseNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshHomeData) name:kNewHouseNotification object:nil];
+
 //    self.navigationItem.titleView = self.searchBar;
 
 }
@@ -46,7 +48,9 @@
 - (NSString *)customeTbViewCellModelClassName{
     return NSStringFromClass([AJHomeCellModel class]);
 }
-
+- (void)loadDataSuccess{
+    [self.view removeHUD];
+}
 #pragma mark - UITableViewDelegate
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -89,7 +93,8 @@
 
 }
 - (void)refreshHomeData{
-    [self.tableView.mj_header beginRefreshing];
+    [self.view showHUD:nil];
+    [self initStartData];
 }
 
 - (void)dealloc{

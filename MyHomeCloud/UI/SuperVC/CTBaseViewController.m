@@ -23,11 +23,11 @@
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     self.navigationController.navigationBar.translucent = NO;
-    
+    self.navigationController.interactivePopGestureRecognizer.delegate = self;
+
     if (self.navigationItem.leftBarButtonItem) {
         return;
     }
-    self.navigationController.interactivePopGestureRecognizer.delegate = self;
 
     //添加返回键
     if (self.navigationController.viewControllers.count<2&&!self.navigationController.presentingViewController) {

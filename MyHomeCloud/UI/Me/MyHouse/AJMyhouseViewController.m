@@ -25,7 +25,7 @@
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"add"] style:UIBarButtonItemStylePlain target:self action:@selector(addNewHouse)];
         self.navigationItem.rightBarButtonItem.tintColor = NavigationBarColor;
     }
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshHomeData) name:kHomeHouseNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshHomeData) name:kNewHouseNotification object:nil];
 
    
 }
@@ -52,14 +52,17 @@
     return USER_PHONE;
 }
 
-//- (BOOL)canDeleteCell{
-//    return YES;
-//}
+- (BOOL)canDeleteCell{
+    return YES;
+}
 - (NSString *)customeTbViewCellClassName{
     return  NSStringFromClass([AJHomeTableViewCell class]);
 }
 - (NSString *)customeTbViewCellModelClassName{
     return NSStringFromClass([AJHomeCellModel class]);
+}
+- (void)loadDataSuccess{
+    [self.view removeHUD];
 }
 #pragma mark - UITableViewDelegate
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -84,7 +87,8 @@
 }
 
 - (void)refreshHomeData{
-    [self.tableView.mj_header beginRefreshing];
+    [self.view showHUD:nil];
+    [self initStartData];
 }
 
 - (void)dealloc{
