@@ -114,7 +114,6 @@
                         [weakSelf.view showTips:@"网络错误,请重试" withState:TYKYHUDModeFail complete:nil];
                         return;
                     }
-                    [weakSelf.tableView showTips:@"删除成功" withState:TYKYHUDModeSuccess complete:nil];
                     [weakSelf.dataArray removeObjectAtIndex:indexPath.row];
                     [weakSelf.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
                     [[NSNotificationCenter defaultCenter] postNotificationName:kHomeHouseNotification object:nil];
@@ -124,6 +123,8 @@
                     }
                     
                 }];
+            }else{
+                [self.tableView setEditing:NO animated:YES];
             }
         }];
        

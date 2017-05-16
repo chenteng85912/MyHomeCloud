@@ -21,6 +21,7 @@ CGFloat const IMG_HEIGHT = 80.0;
     AVObject *object = self.objectData;
     if ([self.type isEqualToString:FAVORITE_HOUSE]||[self.type isEqualToString:RECORD_HOUSE]) {
         object = self.objectData[HOUSE_OBJECT];
+        
     }
     
     //图片
@@ -37,7 +38,7 @@ CGFloat const IMG_HEIGHT = 80.0;
     CGSize subSize = [self.subTitle sizeWithMaxSize:CGSizeMake(dWidth-cellX*3, MAXFLOAT) fontSize:SUB_FONT];
     self.subFrame = CGRectMake(lx, CGRectGetMaxY(self.nameFrame)+subY, subSize.width, subSize.height);
     
-    NSDictionary *desObj = [CTTool dictionaryWithJsonString:object[HOUSE_DESCRIBE]];
+    NSDictionary *desObj = object[HOUSE_DESCRIBE];//[CTTool dictionaryWithJsonString:object[HOUSE_DESCRIBE]];
     //描述
     self.houseDes = [NSString stringWithFormat:@"%@ %@ %@",desObj[YEARS_DES],desObj[WATCH_DES],desObj[DECORATE_DES]];
     CGSize desSize = [self.houseDes sizeWithMaxSize:CGSizeMake(dWidth-cellX*3, MAXFLOAT) fontSize:DES_FONT];

@@ -24,23 +24,17 @@
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     self.navigationController.navigationBar.translucent = NO;
     self.navigationController.interactivePopGestureRecognizer.delegate = self;
-
-    if (self.navigationItem.leftBarButtonItem) {
-        return;
-    }
+    self.navigationController.navigationBar.tintColor = NavigationBarColor;
 
     //添加返回键
-    if (self.navigationController.viewControllers.count<2&&!self.navigationController.presentingViewController) {
-        self.navigationItem.leftBarButtonItem = nil;
+    if (self.navigationController.presentingViewController) {
        
-    }else{
-        UIImage *backImg = [UIImage imageNamed:@"close"];
         if (self.navigationController.viewControllers.count>1) {
-            backImg = [UIImage imageNamed:@"back"];
+            self.navigationItem.leftBarButtonItem = nil;
+        }else{
+            self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"close"] style:UIBarButtonItemStylePlain target:self action:@selector(backToPreVC)];
         }
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:backImg style:UIBarButtonItemStylePlain target:self action:@selector(backToPreVC)];
-        self.navigationItem.leftBarButtonItem.tintColor = NavigationBarColor;
-
+        
     }
    
 }
@@ -76,7 +70,7 @@
 - (AVQuery *)baseQuery{
     if (_baseQuery==nil) {
         _baseQuery = [AVQuery new];
-        _baseQuery.cachePolicy = kAVCachePolicyCacheElseNetwork;
+//        _baseQuery.cachePolicy = kAVCachePolicyCacheElseNetwork;
         _baseQuery.limit = 50;;
         [_baseQuery orderByDescending:@"createdAt"];
 

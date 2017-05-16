@@ -39,8 +39,8 @@
     [houseData setObject:@"一单元"           forKey:HOUSE_UNIT];
     [houseData setObject:@"1101"            forKey:HOUSE_NUMBER];
     [houseData setObject:@"寮步镇"           forKey:HOUSE_AREA];
-    [houseData setObject:[NSString stringWithFormat:@"%d",(arc4random() % 70) + 130]             forKey:HOUSE_AREAAGE];
-    [houseData setObject:[NSString stringWithFormat:@"%d",(arc4random() % 100) + 150]             forKey:HOUSE_TOTAL_PRICE];
+    [houseData setObject:[NSString stringWithFormat:@"%d",(arc4random() % 80) + 70]             forKey:HOUSE_AREAAGE];
+    [houseData setObject:[NSString stringWithFormat:@"%d",(arc4random() % 100) + 100]             forKey:HOUSE_TOTAL_PRICE];
     [houseData setObject:@"13674"           forKey:HOUSE_UNIT_PRICE];
     
     //缩略图

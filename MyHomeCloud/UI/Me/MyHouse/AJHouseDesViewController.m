@@ -29,8 +29,8 @@
 
     [self.view showHUD:@"正在保存..."];
     WeakSelf;
-   
-    [self.houseObj setObject:[CTTool dictionaryToJson:houseDes] forKey:HOUSE_DESCRIBE];
+    [self.houseObj setObject:houseDes forKey:HOUSE_DESCRIBE];
+
     [self.houseObj saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         [weakSelf.view removeHUD];
 

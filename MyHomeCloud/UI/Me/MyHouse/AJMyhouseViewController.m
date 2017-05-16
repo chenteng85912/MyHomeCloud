@@ -70,7 +70,7 @@
     
     AJHomeCellModel *model = (AJHomeCellModel *)self.dataArray[indexPath.row];
     AJHouseDetailsViewController *details = [AJHouseDetailsViewController new];
-    details.houseInfo = model.objectData;
+    details.houseInfo = model.objectData[HOUSE_OBJECT];
     details.hidesBottomBarWhenPushed = YES;
 
     APP_PUSH(details);
