@@ -124,6 +124,8 @@
                     }
                     
                 }];
+            }else{
+                [self.tableView setEditing:NO animated:YES];
             }
         }];
        

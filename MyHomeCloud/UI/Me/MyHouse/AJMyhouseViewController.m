@@ -23,7 +23,6 @@
     
     if (self.showModal==MyHouseModal) {
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"add"] style:UIBarButtonItemStylePlain target:self action:@selector(addNewHouse)];
-        self.navigationItem.rightBarButtonItem.tintColor = NavigationBarColor;
     }
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshHomeData) name:kNewHouseNotification object:nil];
 

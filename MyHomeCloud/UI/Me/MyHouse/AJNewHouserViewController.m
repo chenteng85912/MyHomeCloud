@@ -12,6 +12,7 @@
 @interface AJNewHouserViewController ()<CTONEPhotoDelegate>
 
 @property (strong, nonatomic) AVObject *houseData;
+@property (strong, nonatomic) NSArray *houseNameArray;
 
 @end
 
@@ -20,6 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"添加房源";
+    self.houseNameArray = @[@"鼎峰品筑",@"鼎峰尚镜",@"鼎峰卡布斯",@"鼎峰金椅豪园"];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:[CTTool makeCustomRightBtn:@"下一步" target:self sel:@selector(addHomeDes)]];
 }
 
@@ -30,7 +32,7 @@
     [houseData setObject:[AVUser currentUser].mobilePhoneNumber      forKey:USER_PHONE];
 
     [houseData setObject:@"30"          forKey:HOUSE_TOTAL_FLOOR];
-    [houseData setObject:@"品筑"      forKey:HOUSE_ESTATE_NAME];
+    [houseData setObject:self.houseNameArray[arc4random() % 3]      forKey:HOUSE_ESTATE_NAME];
     [houseData setObject:@"鼎峰集团"      forKey:HOUSE_DEVELOPER];
     [houseData setObject:@"12"          forKey:HOUSE_BUILD_NUMBER];
     [houseData setObject:@"12"              forKey:HOUSE_FLOOR_NUM];
@@ -39,9 +41,9 @@
     [houseData setObject:@"一单元"           forKey:HOUSE_UNIT];
     [houseData setObject:@"1101"            forKey:HOUSE_NUMBER];
     [houseData setObject:@"寮步镇"           forKey:HOUSE_AREA];
-    [houseData setObject:[NSString stringWithFormat:@"%d",(arc4random() % 70) + 130]             forKey:HOUSE_AREAAGE];
-    [houseData setObject:[NSString stringWithFormat:@"%d",(arc4random() % 100) + 150]             forKey:HOUSE_TOTAL_PRICE];
-    [houseData setObject:@"13674"           forKey:HOUSE_UNIT_PRICE];
+    [houseData setObject:[NSString stringWithFormat:@"%d",(arc4random() % 70) + 70]             forKey:HOUSE_AREAAGE];
+    [houseData setObject:[NSString stringWithFormat:@"%d",(arc4random() % 100) + 100]            forKey:HOUSE_TOTAL_PRICE];
+    [houseData setObject:[NSString stringWithFormat:@"%d",(arc4random() % 3000) + 13000]        forKey:HOUSE_UNIT_PRICE];
     
     //缩略图
     if (imgUrl) {
