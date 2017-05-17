@@ -10,4 +10,6 @@
 
 @interface AJHouseViewController : AJBaseTbViewController
 
+@property (assign, nonatomic) BOOL isAdmin;
+
 @end

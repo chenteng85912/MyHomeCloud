@@ -14,6 +14,8 @@
                 <outlet property="headImg" destination="bPI-si-WCQ" id="Ql1-Ki-vmR"/>
                 <outlet property="headInfoView" destination="aEd-BO-5qf" id="SzL-8A-hW4"/>
                 <outlet property="headView" destination="GbO-vw-wOQ" id="UhY-MG-H6T"/>
+                <outlet property="roleIcon" destination="UlN-fv-Qtc" id="DEn-zr-a4U"/>
+                <outlet property="roleName" destination="eBq-b8-OpJ" id="HHB-34-dcF"/>
                 <outlet property="tbView" destination="Isv-lS-KkU" id="dCK-JX-Nfx"/>
                 <outlet property="userHead" destination="pgp-ql-kVC" id="z8m-lO-iXo"/>
                 <outlet property="userName" destination="DpS-zr-lgK" id="c29-Oc-H6Q"/>
@@ -47,7 +49,7 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="lauchIcon" translatesAutoresizingMaskIntoConstraints="NO" id="pgp-ql-kVC">
-                                    <rect key="frame" x="120" y="50" width="80" height="80"/>
+                                    <rect key="frame" x="120" y="45" width="80" height="80"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -56,19 +58,38 @@
                                     </userDefinedRuntimeAttributes>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="安家云" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DpS-zr-lgK">
-                                    <rect key="frame" x="60" y="135" width="200" height="30"/>
+                                    <rect key="frame" x="60" y="130" width="200" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MR2-aN-IMh">
-                                    <rect key="frame" x="120" y="50" width="80" height="80"/>
+                                    <rect key="frame" x="120" y="45" width="80" height="80"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <connections>
                                         <action selector="buttonAction:" destination="-1" eventType="touchUpInside" id="q9v-y5-J8y"/>
                                     </connections>
                                 </button>
+                                <view clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Slc-jI-K9r">
+                                    <rect key="frame" x="60" y="160" width="200" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="admin" translatesAutoresizingMaskIntoConstraints="NO" id="UlN-fv-Qtc">
+                                            <rect key="frame" x="66" y="2" width="25" height="25"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="管理员" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eBq-b8-OpJ">
+                                            <rect key="frame" x="95" y="0.0" width="80" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
@@ -81,6 +102,7 @@
         </view>
     </objects>
     <resources>
+        <image name="admin" width="30" height="30"/>
         <image name="default_back" width="307" height="186"/>
         <image name="lauchIcon" width="100" height="100"/>
     </resources>

@@ -9,8 +9,9 @@
 #import "AJUserCenterViewController.h"
 #import "AJMeCenterData.h"
 #import "AJMeModel.h"
-#import "AJUserHouseViewController.h"
+#import "AJMyhouseViewController.h"
 #import "UIImageView+WebCache.h"
+#import "AJHouseViewController.h"
 
 static NSString *CellIdentifier = @"AJUserCellId";
 NSString  *const HEAD_URL = @"headUrl";
@@ -25,6 +26,8 @@ CGFloat const IMAGEHEIGHT  = 200.0f;
 @property (weak, nonatomic) IBOutlet UIView *headInfoView;
 @property (weak, nonatomic) IBOutlet UILabel *userName;
 
+@property (weak, nonatomic) IBOutlet UIImageView *roleIcon;
+@property (weak, nonatomic) IBOutlet UILabel *roleName;
 @property (strong, nonatomic) NSArray *dataArray;//数据源
 
 @end
@@ -39,6 +42,8 @@ CGFloat const IMAGEHEIGHT  = 200.0f;
     
     self.userName.text = [AVUser currentUser].mobilePhoneNumber;
     [self.userHead sd_setImageWithURL:[NSURL URLWithString:[AVUser currentUser][HEAD_URL]] placeholderImage:LOADIMAGE(@"lauchIcon")];
+    
+    [self initRoleData];
 
 }
 - (void)viewWillAppear:(BOOL)animated{
@@ -100,11 +105,10 @@ CGFloat const IMAGEHEIGHT  = 200.0f;
     if (!model.className) {
         return;
     }
-    Class vcClass = NSClassFromString(model.className);             //反射
-    UIViewController *vc = [vcClass new];
+    UIViewController *vc = [NSClassFromString(model.className) new];
     vc.title = model.title;
-    if ([model.className isEqualToString: NSStringFromClass([AJUserHouseViewController class])]) {
-        AJUserHouseViewController *house = (AJUserHouseViewController *)vc;
+    if ([model.className isEqualToString: NSStringFromClass([AJMyhouseViewController class])]) {
+        AJMyhouseViewController *house = (AJMyhouseViewController *)vc;
         if (indexPath.row==0) {
             house.showModal = MyHouseModal;
         }else if (indexPath.row==1){
@@ -115,6 +119,11 @@ CGFloat const IMAGEHEIGHT  = 200.0f;
 
         }
         vc = house;
+    }
+    if ([model.className isEqualToString:NSStringFromClass([AJHouseViewController class])]) {
+         AJHouseViewController *home = (AJHouseViewController *)vc;
+        home.isAdmin = YES;
+        vc = home;
     }
     vc.hidesBottomBarWhenPushed = YES;
     APP_PUSH(vc);
@@ -173,6 +182,23 @@ CGFloat const IMAGEHEIGHT  = 200.0f;
         [[AVUser currentUser] saveInBackground];
 
     }];
+}
+//角色信息
+- (void)initRoleData{
+    NSInteger role = [[AVUser currentUser][USER_ROLE] integerValue];
+    if (role==1) {
+        self.roleIcon.image = LOADIMAGE(@"admin");
+        self.roleName.text  = @"管理员";
+    }else if (role==2) {
+        self.roleIcon.image = LOADIMAGE(@"estater");
+        self.roleName.text  = @"物业公司";
+    }else if (role==3) {
+        self.roleIcon.image = LOADIMAGE(@"agency");
+        self.roleName.text  = @"中介";
+    }else{
+        self.roleIcon.image = LOADIMAGE(@"visitor");
+        self.roleName.text  = @"游客";
+    }
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

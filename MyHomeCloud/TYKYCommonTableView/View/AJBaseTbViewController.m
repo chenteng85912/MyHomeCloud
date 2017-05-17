@@ -40,7 +40,7 @@
    
     if (!_isLoad) {
         _isLoad = YES;
-        if (![self respondsToSelector:@selector(requestKeyName)]) {
+        if ([UIApplication sharedApplication].statusBarStyle == UIStatusBarStyleLightContent) {
             self.tableView.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height-49);
             
         }else{
@@ -338,16 +338,7 @@
     }
     return _presenter;
 }
-- (AVQuery *)baseQuery{
-    if (_baseQuery==nil) {
-        _baseQuery = [AVQuery new];
-        //        _baseQuery.cachePolicy = kAVCachePolicyCacheElseNetwork;
-        _baseQuery.limit = 50;;
-        [_baseQuery orderByDescending:@"createdAt"];
-        
-    }
-    return _baseQuery;
-}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

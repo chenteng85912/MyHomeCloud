@@ -10,6 +10,7 @@
 #import "AJHouseDetailsViewController.h"
 #import "AJHomeTableViewCell.h"
 #import "AJHomeCellModel.h"
+#import "AJNewHouserViewController.h"
 
 @interface AJMyhouseViewController ()
 
@@ -20,7 +21,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-   
+    if (self.showModal==MyHouseModal) {
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"add"] style:UIBarButtonItemStylePlain target:self action:@selector(addNewHouse)];
+    }
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshHomeData) name:kNewHouseNotification object:nil];
    
 }
@@ -87,7 +90,10 @@
     [self.view showHUD:nil];
     [self initStartData];
 }
-
+- (void)addNewHouse{
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[AJNewHouserViewController new]];
+    APP_PRESENT(nav);
+}
 - (void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }

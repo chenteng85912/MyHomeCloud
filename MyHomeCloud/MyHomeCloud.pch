@@ -42,6 +42,8 @@
 #define FAVORITE_HOUSE      @"FavoriteHouse"//用户收藏表
 #define HOUSE_DESCRIBE      @"HouseDescribe"//房屋描述
 
+#define USER_ROLE            @"userRole"//用户角色
+
 //浏览记录 收藏保存的房屋数据
 #define HOUSE_OBJECT        @"HouseObject"//房屋数据  浏览记录 收藏
 #define HOUSE_ID            @"HouseId"//房屋数据Id  浏览记录 收藏
@@ -53,7 +55,7 @@
 #define HOUSE_NUMBER        @"Number"//小区房号
 #define HOUSE_BUILD_NUMBER  @"BuildNumber"//小区栋号
 #define HOUSE_AREA          @"AreaName"//所处镇区名称
-#define HOUSE_AMOUNT          @"HouseAmout"//房间数量
+#define HOUSE_AMOUNT        @"HouseAmout"//房间数量
 #define HOUSE_UNIT          @"UnitNumber"//单元编号
 #define HOUSE_AREAAGE       @"AreaAge"//房屋建筑面积
 #define HOUSE_TOTAL_PRICE       @"TotalPrice"//房屋总价

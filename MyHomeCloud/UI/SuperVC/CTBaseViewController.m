@@ -21,6 +21,9 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
+    if (self.isSubVC) {
+        return;
+    }
 
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
     self.navigationController.navigationBar.tintColor = NavigationBarColor;

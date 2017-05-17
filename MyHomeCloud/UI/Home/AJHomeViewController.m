@@ -18,6 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     AJHouseViewController *house = [AJHouseViewController new];
+    house.isSubVC = YES;
     [self.view addSubview:house.view];
     [self addChildViewController:house];
     // Do any additional setup after loading the view from its nib.

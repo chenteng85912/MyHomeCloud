@@ -41,7 +41,9 @@
 - (NSString *)requestClassName{
     return HOUSE_INFO;
 }
-
+- (BOOL)canDeleteCell{
+    return self.isAdmin;
+}
 - (NSString *)customeTbViewCellClassName{
     return  NSStringFromClass([AJHomeTableViewCell class]);
 }
