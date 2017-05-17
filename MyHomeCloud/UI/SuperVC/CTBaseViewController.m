@@ -33,14 +33,21 @@
      @{NSFontAttributeName:[UIFont boldSystemFontOfSize:16],
        NSForegroundColorAttributeName:[UIColor blackColor]}];
     
-    if (self.navigationController.presentingViewController) {
-        if (self.navigationController.viewControllers.count>1) {
-                self.navigationItem.leftBarButtonItem = nil;
+    if (self.navigationItem.leftBarButtonItem) {
+        return;
+    }
+    
+    //添加返回键
+    if (self.navigationController.viewControllers.count<2&&!self.navigationController.presentingViewController) {
+        self.navigationItem.leftBarButtonItem = nil;
         
-        }else{
-            self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"close"] style:UIBarButtonItemStylePlain target:self action:@selector(backToPreVC)];
-
+    }else{
+        UIImage *backImg = [UIImage imageNamed:@"close"];
+        if (self.navigationController.viewControllers.count>1) {
+            backImg = [UIImage imageNamed:@"back"];
         }
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:backImg style:UIBarButtonItemStylePlain target:self action:@selector(backToPreVC)];
+        
     }
 }
 
