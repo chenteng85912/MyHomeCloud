@@ -134,10 +134,11 @@
         
     }
 }
-//删除浏览记录
+//删除浏览记录 用户收藏 图片文件
 - (void)deleteRecordData:(AVObject *)obj{
     self.baseQuery.className = RECORD_HOUSE;
     [self.baseQuery whereKey:HOUSE_ID equalTo:obj.objectId];
+
     WeakSelf;
     [self.baseQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         if (objects.count>0) {
@@ -155,6 +156,18 @@
         }];
     }];
     
+    //删除文件
+    NSArray *fileArray = obj[HOUSE_FILE_ID];
+    for (NSString *fileId in fileArray) {
+        NSString *delCql = [NSString stringWithFormat:@"delete from _File where objectId = '%@'",fileId];
+        [AVQuery doCloudQueryInBackgroundWithCQL:delCql callback:^(AVCloudQueryResult *result, NSError *error) {
+            // 如果 error 为空，说明保存成功
+            if (!error) {
+                debugLog(@"文件删除成功");
+            }
+            
+        }];
+    }
     
 }
 #pragma mark - TYKYTableViewProtocol

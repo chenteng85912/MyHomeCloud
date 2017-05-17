@@ -65,7 +65,7 @@ NSInteger const defaultPageSize = 50;
         [_tbViewVC reloadTableView:[self processData:objects]  modal:StartInitDataModal];
 
         [_tbViewVC showTipView:StartInitDataModal];
-        
+        [_tbViewVC reStupTableviewFooterView:self.pageSize];
    }];
     
 }
@@ -82,6 +82,7 @@ NSInteger const defaultPageSize = 50;
 
         }
         [_tbViewVC showTipView:LoadMoreDataModal];
+        [_tbViewVC reStupTableviewFooterView:self.pageSize];
 
     }];
 

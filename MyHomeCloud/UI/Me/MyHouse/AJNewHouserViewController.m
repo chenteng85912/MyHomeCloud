@@ -26,7 +26,7 @@
 }
 
 //保存房源
-- (AVObject *)creatHouseInfo:(NSString *)imgUrl{
+- (AVObject *)creatHouseInfo:(AVFile *)imgFile{
 
     AVObject *houseData = [AVObject objectWithClassName:HOUSE_INFO];
     [houseData setObject:[AVUser currentUser].mobilePhoneNumber      forKey:USER_PHONE];
@@ -46,8 +46,9 @@
     [houseData setObject:[NSString stringWithFormat:@"%d",(arc4random() % 3000) + 13000]        forKey:HOUSE_UNIT_PRICE];
 
     //缩略图
-    if (imgUrl) {
-        [houseData setObject:imgUrl                 forKey:HOUSE_THUMB];
+    if (imgFile) {
+        [houseData setObject:imgFile.url                 forKey:HOUSE_THUMB];
+        [houseData setObject:@[imgFile.objectId]         forKey:HOUSE_FILE_ID];
 
     }
 
@@ -69,13 +70,13 @@
 }
 #pragma mark - CTONEPhotoDelegate
 - (void)sendOnePhoto:(UIImage *)image withImageName:(NSString *)imageName;{
-    [self saveHouseImage:image];
+    [self saveHouseImage:[CTTool imageCompressForWidth:image targetWidth:300]];
     
 }
 #pragma mark 上传用户头像
 - (void)saveHouseImage:(UIImage *)image{
     
-    NSData *imgData = UIImageJPEGRepresentation(image, 0.8);
+    NSData *imgData = UIImageJPEGRepresentation(image, 0.5);
     NSString *name = [NSString stringWithFormat:@"%.0f",[[NSDate new] timeIntervalSince1970]];
     AVFile *file = [AVFile fileWithName:name data:imgData];
     
@@ -88,7 +89,7 @@
             
             return;
         }
-        AVObject *obj = [weakSelf creatHouseInfo:file.url];
+        AVObject *obj = [weakSelf creatHouseInfo:file];
         [weakSelf nextAction:obj];
     }];
 }
