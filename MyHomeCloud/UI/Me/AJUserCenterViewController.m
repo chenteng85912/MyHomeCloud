@@ -9,7 +9,7 @@
 #import "AJUserCenterViewController.h"
 #import "AJMeCenterData.h"
 #import "AJMeModel.h"
-#import "AJMyhouseViewController.h"
+#import "AJUserHouseViewController.h"
 #import "UIImageView+WebCache.h"
 
 static NSString *CellIdentifier = @"AJUserCellId";
@@ -43,9 +43,10 @@ CGFloat const IMAGEHEIGHT  = 200.0f;
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
+
 #pragma mark UITableViewDatasource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -102,8 +103,8 @@ CGFloat const IMAGEHEIGHT  = 200.0f;
     Class vcClass = NSClassFromString(model.className);             //反射
     UIViewController *vc = [vcClass new];
     vc.title = model.title;
-    if ([model.className isEqualToString: NSStringFromClass([AJMyhouseViewController class])]) {
-        AJMyhouseViewController *house = (AJMyhouseViewController *)vc;
+    if ([model.className isEqualToString: NSStringFromClass([AJUserHouseViewController class])]) {
+        AJUserHouseViewController *house = (AJUserHouseViewController *)vc;
         if (indexPath.row==0) {
             house.showModal = MyHouseModal;
         }else if (indexPath.row==1){

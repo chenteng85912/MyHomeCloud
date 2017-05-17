@@ -8,6 +8,6 @@
 
 #import "AJBaseTbViewController.h"
 
-@interface AJHonmeViewController : AJBaseTbViewController
+@interface AJHouseViewController : AJBaseTbViewController
 
 @end

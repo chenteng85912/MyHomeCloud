@@ -7,7 +7,6 @@
 //
 
 #import "AJMyhouseViewController.h"
-#import "AJNewHouserViewController.h"
 #import "AJHouseDetailsViewController.h"
 #import "AJHomeTableViewCell.h"
 #import "AJHomeCellModel.h"
@@ -21,11 +20,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    if (self.showModal==MyHouseModal) {
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"add"] style:UIBarButtonItemStylePlain target:self action:@selector(addNewHouse)];
-    }
+   
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshHomeData) name:kNewHouseNotification object:nil];
-
    
 }
 #pragma mark - AJTbViewProtocol
@@ -85,10 +81,6 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     return 0.01;
-}
-- (void)addNewHouse{
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[AJNewHouserViewController new]];
-    APP_PRESENT(nav);
 }
 
 - (void)refreshHomeData{

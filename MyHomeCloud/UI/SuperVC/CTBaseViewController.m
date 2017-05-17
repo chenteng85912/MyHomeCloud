@@ -20,13 +20,19 @@
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
+
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+    self.navigationController.navigationBar.tintColor = NavigationBarColor;
+    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+
     self.navigationController.navigationBar.translucent = NO;
     self.navigationController.interactivePopGestureRecognizer.delegate = self;
 
-    self.navigationController.navigationBar.tintColor = NavigationBarColor;
-
+    [self.navigationController.navigationBar setTitleTextAttributes:
+     @{NSFontAttributeName:[UIFont boldSystemFontOfSize:16],
+       NSForegroundColorAttributeName:[UIColor blackColor]}];
+    
     if (self.navigationController.presentingViewController) {
         if (self.navigationController.viewControllers.count>1) {
                 self.navigationItem.leftBarButtonItem = nil;

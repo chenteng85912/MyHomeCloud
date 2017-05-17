@@ -17,4 +17,5 @@ typedef NS_ENUM(NSInteger,HouseShowModal) {
 @interface AJMyhouseViewController : AJBaseTbViewController
 
 @property (assign, nonatomic) HouseShowModal showModal;
+
 @end

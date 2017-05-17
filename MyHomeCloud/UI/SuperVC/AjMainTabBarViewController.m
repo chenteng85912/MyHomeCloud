@@ -7,7 +7,7 @@
 //
 
 #import "AjMainTabBarViewController.h"
-#import "AJHonmeViewController.h"
+#import "AJHomeViewController.h"
 #import "AJUserCenterViewController.h"
 #import "AJNewsViewController.h"
 
@@ -30,7 +30,7 @@
 //初始化根视图控制器
 - (void)initRootViewController{
     
-    AJHonmeViewController *home = [AJHonmeViewController new];
+    AJHomeViewController *home = [AJHomeViewController new];
     home.title = @"首页";
     
     AJNewsViewController *news = [AJNewsViewController new];

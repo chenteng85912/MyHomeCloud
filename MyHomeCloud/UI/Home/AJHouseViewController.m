@@ -6,18 +6,18 @@
 //  Copyright © 2017年 TENG. All rights reserved.
 //
 
-#import "AJHonmeViewController.h"
+#import "AJHouseViewController.h"
 #import "AJSearchViewController.h"
 #import "AJHomeTableViewCell.h"
 #import "AJHouseDetailsViewController.h"
 #import "AJHomeCellModel.h"
 
-@interface AJHonmeViewController ()
+@interface AJHouseViewController ()
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @end
 
-@implementation AJHonmeViewController
+@implementation AJHouseViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

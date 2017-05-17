@@ -6,7 +6,6 @@
 //  Copyright © 2017年 TENG. All rights reserved.
 //
 
-
 @interface AJUserCenterViewController : UIViewController
 
 @end

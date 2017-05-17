@@ -14,12 +14,13 @@
 
 @class AJTbViewCellModel;
 
-@interface AJBaseTbViewController : CTBaseViewController<AJTbViewProtocol,AJTbViewDelegateProtocol,AJTbViewDataSourceProtocol>
+@interface AJBaseTbViewController : UIViewController<AJTbViewProtocol,AJTbViewDelegateProtocol,AJTbViewDataSourceProtocol>
 
 //列表数据源
 @property (strong, nonatomic) NSMutableArray <AJTbViewCellModel *>*dataArray;
 
 @property (strong, nonatomic) UITableView *tableView;
+@property (strong, nonatomic) AVQuery *baseQuery;
 
 //调度
 @property (strong, nonatomic) AJTbViewPresenter *presenter;

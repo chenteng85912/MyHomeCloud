@@ -8,9 +8,10 @@
 
 #import "AJMeCenterData.h"
 #import "AJMeModel.h"
-#import "AJMyhouseViewController.h"
+#import "AJUserHouseViewController.h"
 #import "AJSettingViewController.h"
 #import "AJSearchViewController.h"
+
 @implementation AJMeCenterData
 
 + (NSMutableArray *)userCenterData
@@ -23,19 +24,19 @@
     AJMeModel *model = [AJMeModel new];
     model.title = @"我的房源";
     model.iconName = @"house";
-    model.className = NSStringFromClass([AJMyhouseViewController class]);
+    model.className = NSStringFromClass([AJUserHouseViewController class]);
     [temp addObject:model];
     
     model = [AJMeModel new];
     model.title = @"我的收藏";
     model.iconName = @"liked";
-    model.className = NSStringFromClass([AJMyhouseViewController class]);
+    model.className = NSStringFromClass([AJUserHouseViewController class]);
     [temp addObject:model];
     
     model = [AJMeModel new];
     model.title = @"浏览记录";
     model.iconName = @"record";
-    model.className = NSStringFromClass([AJMyhouseViewController class]);
+    model.className = NSStringFromClass([AJUserHouseViewController class]);
     [temp addObject:model];
     
     [dataArray addObject:temp];

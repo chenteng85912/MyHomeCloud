@@ -22,7 +22,7 @@
     
     self.title = [NSString stringWithFormat:@"%@ %@ %@万",self.houseInfo[HOUSE_ESTATE_NAME],self.houseInfo[HOUSE_AMOUNT],self.houseInfo[HOUSE_TOTAL_PRICE]];
     
-    self.rightBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
+    self.rightBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 22, 22)];
     [self.rightBtn setImage:LOADIMAGE(@"unlike") forState:UIControlStateNormal];
     [self.rightBtn setImage:LOADIMAGE(@"liked") forState:UIControlStateSelected];
     
