@@ -18,8 +18,6 @@
 //是否集成下拉刷新
 @property (assign, nonatomic) BOOL mjRefresh;
 
-@property (assign, nonatomic) BOOL networkOk;//有网络
-
 @end
 
 @implementation AJBaseTbViewController
@@ -114,7 +112,10 @@
                         [weakSelf.view showTips:@"网络错误,请重试" withState:TYKYHUDModeFail complete:nil];
                         return;
                     }
-                    [weakSelf.tableView showTips:@"删除成功" withState:TYKYHUDModeSuccess complete:nil];
+                    if ([[weakSelf requestClassName] isEqualToString:HOUSE_INFO]) {
+                        [weakSelf deleteRecordData:model.objectData];
+                    }
+                    
                     [weakSelf.dataArray removeObjectAtIndex:indexPath.row];
                     [weakSelf.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
                     [[NSNotificationCenter defaultCenter] postNotificationName:kHomeHouseNotification object:nil];
@@ -122,6 +123,7 @@
                     if (weakSelf.dataArray.count==0) {
                         [weakSelf.tableView addNoDataTipView];
                     }
+                    
                     
                 }];
             }else{
@@ -131,6 +133,29 @@
        
         
     }
+}
+//删除浏览记录
+- (void)deleteRecordData:(AVObject *)obj{
+    self.baseQuery.className = RECORD_HOUSE;
+    [self.baseQuery whereKey:HOUSE_ID equalTo:obj.objectId];
+    WeakSelf;
+    [self.baseQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        if (objects.count>0) {
+            for (AVObject *obje in objects) {
+                [obje deleteInBackground];
+            }
+        }
+        weakSelf.baseQuery.className = FAVORITE_HOUSE;
+        [weakSelf.baseQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+            if (objects.count>0) {
+                for (AVObject *obje in objects) {
+                    [obje deleteInBackground];
+                }
+            }
+        }];
+    }];
+    
+    
 }
 #pragma mark - TYKYTableViewProtocol
 //重置上拉刷新
@@ -193,7 +218,6 @@
             }
                 break;
             case RequestFailModal:{
-                self.networkOk = NO;
                 [self.tableView addFailDataTipView];
                 self.tableView.mj_footer = nil;
 
@@ -201,7 +225,6 @@
                 break;
             case NetworkHaveProblom:
             {
-                self.networkOk = NO;
 
                 [self.tableView addInternetErrorTipView];
                 self.tableView.mj_footer = nil;

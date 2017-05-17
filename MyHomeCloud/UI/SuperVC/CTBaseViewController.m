@@ -35,7 +35,6 @@
             self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"close"] style:UIBarButtonItemStylePlain target:self action:@selector(backToPreVC)];
 
         }
-
     }
 }
 
@@ -70,7 +69,7 @@
 - (AVQuery *)baseQuery{
     if (_baseQuery==nil) {
         _baseQuery = [AVQuery new];
-        _baseQuery.cachePolicy = kAVCachePolicyCacheElseNetwork;
+//        _baseQuery.cachePolicy = kAVCachePolicyCacheElseNetwork;
         _baseQuery.limit = 50;;
         [_baseQuery orderByDescending:@"createdAt"];
 

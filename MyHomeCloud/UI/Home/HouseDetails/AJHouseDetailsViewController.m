@@ -21,19 +21,19 @@
     [super viewDidLoad];
     
     self.title = [NSString stringWithFormat:@"%@ %@ %@万",self.houseInfo[HOUSE_ESTATE_NAME],self.houseInfo[HOUSE_AMOUNT],self.houseInfo[HOUSE_TOTAL_PRICE]];
-//    self.rightBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
-//    [self.rightBtn setImage:LOADIMAGE(@"unlike") forState:UIControlStateNormal];
-//    [self.rightBtn setImage:LOADIMAGE(@"liked") forState:UIControlStateSelected];
-//    
-//    [self.rightBtn addTarget:self action:@selector(addLikeHouse) forControlEvents:UIControlEventTouchUpInside];
-//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.rightBtn];
-//    
-//    [self checkLikeState];
+    
+    self.rightBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
+    [self.rightBtn setImage:LOADIMAGE(@"unlike") forState:UIControlStateNormal];
+    [self.rightBtn setImage:LOADIMAGE(@"liked") forState:UIControlStateSelected];
+    
+    [self.rightBtn addTarget:self action:@selector(addLikeHouse) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.rightBtn];
+    
+    [self checkLikeState];
 }
 - (void)checkLikeState{
     
     [self.view showHUD:nil];
-    
     self.baseQuery.className = FAVORITE_HOUSE;
     [self.baseQuery whereKey:USER_PHONE equalTo:[AVUser currentUser].mobilePhoneNumber];
     [self.baseQuery whereKey:HOUSE_ID equalTo:self.houseInfo.objectId];
@@ -49,10 +49,12 @@
     }];
 
 }
+//添加收藏
 - (void)addLikeHouse{
     WeakSelf;
 
     if (self.rightBtn.selected) {
+       
         [self.likedObj deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             if (succeeded) {
                 self.rightBtn.selected = NO;
@@ -70,7 +72,7 @@
         
         [houseInfo saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             if (succeeded) {
-                weakSelf.likedObj = houseInfo;
+                self.likedObj = houseInfo;
                 weakSelf.rightBtn.selected = YES;
             }
 

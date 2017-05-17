@@ -9,7 +9,7 @@
 #import "AJHomeCellModel.h"
 
 CGFloat const cellX = 20.0;
-CGFloat const cellY = 20.0;
+CGFloat const cellY = 15.0;
 CGFloat const subY = 10.0;
 
 CGFloat const IMG_WIDTH = 100.0;
@@ -19,10 +19,10 @@ CGFloat const IMG_HEIGHT = 80.0;
 - (void)calculateSizeConstrainedToSize{
     
     AVObject *object = self.objectData;
-    if ([self.type isEqualToString:FAVORITE_HOUSE]||[self.type isEqualToString:RECORD_HOUSE]) {
-        object = self.objectData[HOUSE_OBJECT];
+    if (self.subObj) {
+        object = self.subObj;
+        
     }
-    
     //图片
     self.imgFrame = CGRectMake(cellX, cellY, IMG_WIDTH, IMG_HEIGHT);
     CGFloat lx = CGRectGetMaxX(self.imgFrame) +cellX;
@@ -37,7 +37,7 @@ CGFloat const IMG_HEIGHT = 80.0;
     CGSize subSize = [self.subTitle sizeWithMaxSize:CGSizeMake(dWidth-cellX*3, MAXFLOAT) fontSize:SUB_FONT];
     self.subFrame = CGRectMake(lx, CGRectGetMaxY(self.nameFrame)+subY, subSize.width, subSize.height);
     
-    NSDictionary *desObj = [CTTool dictionaryWithJsonString:object[HOUSE_DESCRIBE]];
+    NSDictionary *desObj = object[HOUSE_DESCRIBE];//[CTTool dictionaryWithJsonString:object[HOUSE_DESCRIBE]];
     //描述
     self.houseDes = [NSString stringWithFormat:@"%@ %@ %@",desObj[YEARS_DES],desObj[WATCH_DES],desObj[DECORATE_DES]];
     CGSize desSize = [self.houseDes sizeWithMaxSize:CGSizeMake(dWidth-cellX*3, MAXFLOAT) fontSize:DES_FONT];
@@ -55,4 +55,5 @@ CGFloat const IMG_HEIGHT = 80.0;
     
     self.cellHeight = CGRectGetMaxY(self.totalFrame)+cellY;
 }
+
 @end

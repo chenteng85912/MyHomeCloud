@@ -18,8 +18,8 @@ extern CGFloat const UNIT_FONT;
 @interface AJTbViewCellModel : NSObject<AJTbViewCellModelProtocol>
 
 @property (strong, nonatomic) AVObject *objectData;   //单元格原始数据
-@property (strong, nonatomic) NSString *type;         //类型
+@property (strong, nonatomic) AVObject *subObj;   //
+
 @property (assign, nonatomic) CGFloat cellHeight;
-//初始化数据
-- (void)initCellData:(AVObject *)obj dataType:(NSString *)type;
+
 @end

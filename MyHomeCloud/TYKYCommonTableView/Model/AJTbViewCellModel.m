@@ -15,9 +15,12 @@ CGFloat const TOTAL_FONT = 15.0;
 CGFloat const UNIT_FONT = 13.0;
 
 @implementation AJTbViewCellModel
-- (void)initCellData:(AVObject *)obj dataType:(NSString *)type{
-    self.objectData = obj;
-    self.type = type;
+- (void)setObjectData:(AVObject *)objectData{
+    _objectData = objectData;
+    if (objectData[HOUSE_OBJECT]) {
+        self.subObj = objectData[HOUSE_OBJECT];
+    }
 }
+
 
 @end

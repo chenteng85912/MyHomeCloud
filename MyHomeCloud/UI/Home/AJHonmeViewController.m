@@ -60,7 +60,7 @@
     details.houseInfo = model.objectData;
     details.hidesBottomBarWhenPushed = YES;
     APP_PUSH(details);
-//    [self addRecordData:model.objectData];
+    [self addRecordData:model.objectData];
 
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -79,16 +79,23 @@
 //保存浏览记录
 - (void)addRecordData:(AVObject *)object{
     AVObject *houseInfo = [[AVObject alloc] initWithClassName:RECORD_HOUSE];
-    
     [houseInfo setObject:object.objectId forKey:HOUSE_ID];
     [houseInfo setObject:[AVUser currentUser].mobilePhoneNumber forKey:USER_PHONE];
     
     [houseInfo setObject:[AVObject objectWithClassName:HOUSE_INFO objectId:object.objectId] forKey:HOUSE_OBJECT];
     
-    [houseInfo saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        if (succeeded) {
-          
+    self.baseQuery.className = RECORD_HOUSE;
+    [self.baseQuery whereKey:HOUSE_ID equalTo:object.objectId];
+    [self.baseQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        if (objects.count>0) {
+            return;
+           
         }
+        [houseInfo saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            if (succeeded) {
+                
+            }
+        }];
     }];
 
 }

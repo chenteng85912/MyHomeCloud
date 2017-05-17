@@ -45,18 +45,25 @@ NSInteger const defaultPageSize = 50;
     _pageNo = 0;
     self.query.className = [_tbViewVC requestClassName];
     self.query.skip = _pageSize *_pageNo;
+    if (![self.query.className isEqualToString:HOUSE_INFO]) {
+        [self.query includeKey:[NSString stringWithFormat:@"%@.%@",HOUSE_OBJECT,HOUSE_INFO]];
+
+    }
+    // 关键代码，同上，会返回 targetAVUser 对应的对象的详细信息，而不仅仅是 objectId
 
     [self.query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error) {
             self.requestState = RequestFailModal;
+
         }else{
             self.requestState = RequestSuccessModal;
-            [_tbViewVC reloadTableView:[self processData:objects]  modal:StartInitDataModal];
             if ([self.tbViewVC respondsToSelector:@selector(loadDataSuccess)]) {
                 [self.tbViewVC loadDataSuccess];
             }
 
         }
+        [_tbViewVC reloadTableView:[self processData:objects]  modal:StartInitDataModal];
+
         [_tbViewVC showTipView:StartInitDataModal];
         
    }];
@@ -90,7 +97,8 @@ NSInteger const defaultPageSize = 50;
     for (AVObject *obj in objects) {
         Class modelClass = NSClassFromString([self.tbViewVC customeTbViewCellModelClassName]);
         id <AJTbViewCellModelProtocol> cellModel = [modelClass new];
-        [(AJTbViewCellModel *)cellModel initCellData:obj dataType:[_tbViewVC requestClassName]];
+        AJTbViewCellModel *model = (AJTbViewCellModel *)cellModel;
+        model.objectData = obj;
         
         if ([cellModel respondsToSelector:@selector(calculateSizeConstrainedToSize)]) {
             [cellModel calculateSizeConstrainedToSize];

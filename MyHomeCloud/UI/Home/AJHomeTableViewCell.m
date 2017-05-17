@@ -46,7 +46,11 @@
     self.unitPrice.frame = model.unitFrame;
     
     self.houseImg.frame = model.imgFrame;;
-    [self.houseImg sd_setImageWithURL:[NSURL URLWithString:model.objectData[HOUSE_THUMB]] placeholderImage:LOADIMAGE(@"default_img")];
+    NSString *imgStr = model.objectData[HOUSE_THUMB];
+    if (model.subObj) {
+        imgStr = model.subObj[HOUSE_THUMB];
+    }
+    [self.houseImg sd_setImageWithURL:[NSURL URLWithString:imgStr] placeholderImage:LOADIMAGE(@"default_img")];
 
 }
 

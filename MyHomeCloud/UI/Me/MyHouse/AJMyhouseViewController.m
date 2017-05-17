@@ -69,7 +69,13 @@
     
     AJHomeCellModel *model = (AJHomeCellModel *)self.dataArray[indexPath.row];
     AJHouseDetailsViewController *details = [AJHouseDetailsViewController new];
-    details.houseInfo = model.objectData;
+    if (self.showModal!=MyHouseModal) {
+        details.houseInfo = model.objectData[HOUSE_OBJECT];
+
+    }else{
+        details.houseInfo = model.objectData;
+
+    }
     details.hidesBottomBarWhenPushed = YES;
 
     APP_PUSH(details);
