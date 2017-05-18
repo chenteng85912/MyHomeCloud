@@ -26,7 +26,7 @@
 }
 
 //保存房源
-- (AVObject *)creatHouseInfo:(AVFile *)imgFile{
+- (AVObject *)creatHouseInfo{
 
     AVObject *houseData = [AVObject objectWithClassName:HOUSE_INFO];
     [houseData setObject:[AVUser currentUser].mobilePhoneNumber      forKey:USER_PHONE];
@@ -36,7 +36,7 @@
     [houseData setObject:@"鼎峰集团"      forKey:HOUSE_DEVELOPER];
     [houseData setObject:@"12"          forKey:HOUSE_BUILD_NUMBER];
     [houseData setObject:@"12"              forKey:HOUSE_FLOOR_NUM];
-    [houseData setObject:@"3房2厅"              forKey:HOUSE_AMOUNT];
+    [houseData setObject:@"3房2厅"           forKey:HOUSE_AMOUNT];
 
     [houseData setObject:@"一单元"           forKey:HOUSE_UNIT];
     [houseData setObject:@"1101"            forKey:HOUSE_NUMBER];
@@ -46,11 +46,11 @@
     [houseData setObject:[NSString stringWithFormat:@"%d",(arc4random() % 3000) + 13000]        forKey:HOUSE_UNIT_PRICE];
 
     //缩略图
-    if (imgFile) {
-        [houseData setObject:imgFile.url                 forKey:HOUSE_THUMB];
-        [houseData setObject:@[imgFile.objectId]         forKey:HOUSE_FILE_ID];
-
-    }
+//    if (imgFile) {
+//        [houseData setObject:imgFile.url                 forKey:HOUSE_THUMB];
+//        [houseData setObject:@[imgFile.objectId]         forKey:HOUSE_FILE_ID];
+//
+//    }
 
     //先上传图片
 //    [house setObject:@[@""]     forKey:HOUSE_PICTURE];
@@ -81,7 +81,6 @@
     AVFile *file = [AVFile fileWithName:name data:imgData];
     
     [CTTool showKeyWindowHUD:@"正在上传..."];
-    WeakSelf;
     [file saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         [CTTool removeKeyWindowHUD];
         if (!succeeded) {
@@ -89,26 +88,16 @@
             
             return;
         }
-        AVObject *obj = [weakSelf creatHouseInfo:file];
-        [weakSelf nextAction:obj];
+
     }];
 }
 - (void)addHomeDes{
-    [self nextAction:nil];
-}
-- (void)nextAction:(AVObject *)obj{
-    
     AJHouseDesViewController *des = [AJHouseDesViewController new];
-    if (!obj) {
-        des.houseObj = [self creatHouseInfo:nil];
-
-    }else{
-        des.houseObj = obj;
-
-    }
+    des.houseObj = [self creatHouseInfo];
     
     APP_PUSH(des);
 }
+
 
 - (void)uploadThumb:(UIImage *)img{
     

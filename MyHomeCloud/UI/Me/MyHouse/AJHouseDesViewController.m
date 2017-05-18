@@ -16,7 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"添加房屋描述";
+    self.title = @"房屋详情完善";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:[CTTool makeCustomRightBtn:@"保存" target:self sel:@selector(saveHouseData)]];
     // Do any additional setup after loading the view from its nib.
 }
