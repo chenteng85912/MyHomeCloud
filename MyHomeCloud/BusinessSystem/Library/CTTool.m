@@ -103,42 +103,47 @@
     UIGraphicsEndImageContext();
     return newImage;
 }
-//字典转json格式字符串：
-+ (NSString*)dictionaryToJson:(NSDictionary *)dic
-{
-    NSError *parseError = nil;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dic options:NSJSONWritingPrettyPrinted error:&parseError];
-    
-    return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-}
 
-+ (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonString {
+//手机号合法验证
++ (BOOL)isValidateMobile:(NSString *)mobile{
     
-    if (jsonString == nil) {
-        
-        return nil;
-        
+    NSString * MOBILE = @"^1((3//d|5[0-35-9]|8[025-9])//d|70[059])\\d{7}$";
+    
+    /**
+     * 中国移动：China Mobile
+     * 134[0-8],135,136,137,138,139,150,151,157,158,159,182,187,188，1705
+     */
+    NSString * CM = @"^1(34[0-8]|(3[5-9]|5[017-9]|8[278])\\d|705)\\d{7}$";
+    
+    /**
+     * 中国联通：China Unicom
+     * 130,131,132,152,155,156,185,186,1709,145,176,177
+     */
+    NSString * CU = @"^1((3[0-2]|5[256]|8[56]|4[5]|7[6]|7[7])\\d|709)\\d{7}$";
+    
+    /**
+     * 中国电信：China Telecom
+     * 133,1349,153,180,189,1700
+     */
+    NSString * CT = @"^1((33|53|8[09])\\d|349|700)\\d{7}$";
+    
+    NSPredicate *regextestmobile = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", MOBILE];
+    NSPredicate *regextestcm = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", CM];
+    NSPredicate *regextestcu = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", CU];
+    NSPredicate *regextestct = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", CT];
+    BOOL res1 = [regextestmobile evaluateWithObject:mobile];
+    BOOL res2 = [regextestcm evaluateWithObject:mobile];
+    BOOL res3 = [regextestcu evaluateWithObject:mobile];
+    BOOL res4 = [regextestct evaluateWithObject:mobile];
+    
+    if (res1 || res2 || res3 || res4 )
+    {
+        return YES;
     }
-    
-    NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
-    
-    NSError *err;
-    
-    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
-                         
-                                                        options:NSJSONReadingMutableContainers
-                         
-                                                          error:&err];
-    
-    if(err) {
-        
-        NSLog(@"json解析失败：%@",err);
-        
-        return nil;
-        
+    else
+    {
+        return NO;
     }
-    
-    return dic;
     
 }
 @end

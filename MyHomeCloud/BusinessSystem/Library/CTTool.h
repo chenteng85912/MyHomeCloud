@@ -32,9 +32,6 @@
 //裁剪图片
 + (UIImage *)scaleImage:(UIImage *)img toSize:(CGSize)size;
 
-//字典转json格式字符串：
-+ (NSString*)dictionaryToJson:(NSDictionary *)dic;
-
-+ (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonString;
-
+//手机号合法验证
++ (BOOL)isValidateMobile:(NSString *)mobile;
 @end

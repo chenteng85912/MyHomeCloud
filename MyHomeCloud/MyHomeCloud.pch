@@ -36,6 +36,8 @@
 #define dWidth              [[UIScreen mainScreen] bounds].size.width
 #define WeakSelf            __weak typeof(self) weakSelf = self;
 
+#define USER_NAME           @"userName"
+
 //数据表
 #define HOUSE_INFO          @"HouseInfo"//所有房屋数据表
 #define RECORD_HOUSE        @"RecordHouse"//浏览记录表

@@ -45,6 +45,14 @@ NSString *const LOGIN_FAIL = @"登录失败";
 
 #pragma mark -life UITextFieldDelegate
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    NSString *resultStr = [textField.text stringByAppendingString:string];
+    [self initUserPhoneShowModal:string];
+    if (textField==self.userNameTF&&resultStr.length>13) {
+        [textField resignFirstResponder];
+        [self.view showTips:@"手机号码为11位数字" withState:TYKYHUDModeWarning complete:nil];
+        return NO;
+        
+    }
     if ([string isEqualToString:@"\n"]) {
        
         [self loginAction:nil];
@@ -58,21 +66,24 @@ NSString *const LOGIN_FAIL = @"登录失败";
 //登陆
 - (IBAction)loginAction:(UIButton *)sender {
     [self.view endEditing:YES];
-    NSString *userName = self.userNameTF.text;
-    NSString *psw = self.pswTF.text;
-    if ([@"" isEqualToString:[userName stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]]) {
+
+    if (!self.userNameTF.hasText) {
        [self.view showTips:@"请输入手机号" withState:TYKYHUDModeWarning complete:nil];
         return;
     }
-    if ([@"" isEqualToString:[psw stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]]) {
+    if (![CTTool isValidateMobile:[self.userNameTF.text stringByReplacingOccurrencesOfString:@" " withString:@""]]) {
+        [self.view showTips:@"请输入正确的手机号" withState:TYKYHUDModeWarning complete:nil];
+        return;
+    }
+    if (!self.pswTF.hasText) {
        [self.view showTips:@"请输入密码"  withState:TYKYHUDModeWarning complete:nil];
         return;
     }
     
     [CTTool showKeyWindowHUD:@"正在登录..."];
-    [AVUser logInWithUsernameInBackground:self.userNameTF.text password:self.pswTF.text block:^(AVUser *user, NSError *error) {
+    [AVUser logInWithUsernameInBackground:[_userNameTF.text stringByReplacingOccurrencesOfString:@" " withString:@""] password:self.pswTF.text block:^(AVUser *user, NSError *error) {
         [CTTool removeKeyWindowHUD];
-        
+        [MyUserDefaults setObject:self.userNameTF.text forKey:USER_NAME];
         if (user) {
             //登录成功
             [self.view showTips:LOGIN_SUCCESS withState:TYKYHUDModeSuccess complete:^{
@@ -105,10 +116,28 @@ NSString *const LOGIN_FAIL = @"登录失败";
     
     
 }
+//添加或者删除空格
+- (void)initUserPhoneShowModal:(NSString *)inputStr{
+    //后退
+    if ([inputStr isEqualToString:@""]) {
+        if (_userNameTF.text.length==5||_userNameTF.text.length==10) {
+            _userNameTF.text = [_userNameTF.text substringToIndex:_userNameTF.text.length-1];
+            
+        }
+    }else{
+        if (_userNameTF.text.length==3||_userNameTF.text.length==8) {
+            _userNameTF.text = [_userNameTF.text stringByAppendingString:@" "];
 
+        }
+    }
+}
 #pragma mark - private methods
 - (void)initUI{
     self.headImg.image = [CTTool iconImage];
+    NSString *userName = [MyUserDefaults objectForKey:USER_NAME];
+    if (userName) {
+        self.userNameTF.text = userName;
+    }
 }
 - (void)backToPreVC{
     if (![AVUser currentUser]) {
