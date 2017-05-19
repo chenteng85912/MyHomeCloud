@@ -88,7 +88,8 @@ NSString *const USER_ONLINE = @"该用户已在别处登录";
         if (user) {
             //用户已经登录
             if ([[AVUser currentUser][USER_LOGIN_STATE] integerValue]>0) {
-                [self.view showTips:USER_ONLINE withState:TYKYHUDModeSuccess complete:nil];
+                [AVUser logOut];
+                [self.view showTips:USER_ONLINE withState:TYKYHUDModeFail complete:nil];
                 return;
             }
             //登录成功
