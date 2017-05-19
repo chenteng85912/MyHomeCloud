@@ -48,8 +48,6 @@ CGFloat const IMAGEHEIGHT  = 200.0f;
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 
 #pragma mark UITableViewDatasource

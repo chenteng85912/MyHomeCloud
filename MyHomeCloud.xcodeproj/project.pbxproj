@@ -422,10 +422,10 @@
 		0B57F5891EC1989400B89CE2 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				A40B20B21EC733090027399E /* HouseDetails */,
 				0BE4D9EC1ECC6B8200E4ADCD /* AJHomeViewController.h */,
 				0BE4D9ED1ECC6B8200E4ADCD /* AJHomeViewController.m */,
 				0BE4D9EE1ECC6B8200E4ADCD /* AJHomeViewController.xib */,
-				A40B20B21EC733090027399E /* HouseDetails */,
 				0B57F58C1EC198BC00B89CE2 /* AJHouseViewController.h */,
 				0B57F58D1EC198BC00B89CE2 /* AJHouseViewController.m */,
 				0B57F58E1EC198BC00B89CE2 /* AJHouseViewController.xib */,

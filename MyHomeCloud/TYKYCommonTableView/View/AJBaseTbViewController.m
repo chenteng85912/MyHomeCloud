@@ -40,7 +40,7 @@
    
     if (!_isLoad) {
         _isLoad = YES;
-        if ([UIApplication sharedApplication].statusBarStyle == UIStatusBarStyleLightContent) {
+        if (self.navigationController.navigationBar.hidden) {
             self.tableView.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height-49);
             
         }else{

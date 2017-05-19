@@ -88,6 +88,8 @@
     
     self.baseQuery.className = RECORD_HOUSE;
     [self.baseQuery whereKey:HOUSE_ID equalTo:object.objectId];
+    [self.baseQuery whereKey:USER_PHONE equalTo:[AVUser currentUser].mobilePhoneNumber];
+
     [self.baseQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         if (objects.count>0) {
             return;
