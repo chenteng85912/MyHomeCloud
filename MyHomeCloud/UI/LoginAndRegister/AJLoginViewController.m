@@ -17,6 +17,7 @@
 //
 NSString *const LOGIN_SUCCESS = @"登录成功";
 NSString *const LOGIN_FAIL = @"登录失败";
+NSString *const USER_ONLINE = @"该用户已在别处登录";
 
 @implementation AJLoginViewController
 
@@ -85,7 +86,14 @@ NSString *const LOGIN_FAIL = @"登录失败";
         [CTTool removeKeyWindowHUD];
         [MyUserDefaults setObject:self.userNameTF.text forKey:USER_NAME];
         if (user) {
+            //用户已经登录
+            if ([[AVUser currentUser][USER_LOGIN_STATE] integerValue]>0) {
+                [self.view showTips:USER_ONLINE withState:TYKYHUDModeSuccess complete:nil];
+                return;
+            }
             //登录成功
+            [[AVUser currentUser] setObject:@1 forKey:USER_LOGIN_STATE];
+            [[AVUser currentUser] saveInBackground];
             [self.view showTips:LOGIN_SUCCESS withState:TYKYHUDModeSuccess complete:^{
                 [(AppDelegate *)[UIApplication sharedApplication].delegate switchRootVC];
             }];

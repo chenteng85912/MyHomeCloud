@@ -95,13 +95,18 @@ static NSString *CellIdentifier = @"TJSettingsCellId";
     WeakSelf;
     [UIAlertController alertWithTitle:nil message:nil cancelButtonTitle:@"取消" otherButtonTitles:@[@"退出"] preferredStyle:UIAlertControllerStyleActionSheet block:^(NSInteger buttonIndex) {
         if (buttonIndex==1) {
-            [AVUser logOut];
-            [weakSelf.view showHUD:@"正在注销..."];
-            dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC));
-            dispatch_after(delayTime, dispatch_get_main_queue(), ^(void){
-                [(AppDelegate *)[UIApplication sharedApplication].delegate switchRootVC];
+            [CTTool showKeyWindowHUD:@"正在注销..."];
+            [[AVUser currentUser] setObject:@0 forKey:USER_LOGIN_STATE];
+            [[AVUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                [CTTool removeKeyWindowHUD];
+                [AVUser logOut];
+                [weakSelf.view showTips:@"注销成功" withState:TYKYHUDModeSuccess complete:^{
+                    [(AppDelegate *)[UIApplication sharedApplication].delegate switchRootVC];
 
-            });
+                }];
+
+            }];
+           
         }
     }];
 }
@@ -114,6 +119,7 @@ static NSString *CellIdentifier = @"TJSettingsCellId";
             [weakSelf.view showHUD:@"正在清理..."];
             [TYKYLocalDataCenter clearLocalData];
             [AVQuery clearAllCachedResults];
+
             dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC));
             dispatch_after(delayTime, dispatch_get_main_queue(), ^(void){
                 [weakSelf.view removeHUD];
