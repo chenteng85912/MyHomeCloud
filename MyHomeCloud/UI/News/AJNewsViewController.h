@@ -6,6 +6,8 @@
 //  Copyright © 2017年 TENG. All rights reserved.
 //
 
-@interface AJNewsViewController : CTBaseViewController
+#import "CTHomeBaseViewController.h"
+
+@interface AJNewsViewController : CTHomeBaseViewController
 
 @end

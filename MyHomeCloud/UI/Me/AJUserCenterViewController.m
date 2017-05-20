@@ -48,6 +48,9 @@ CGFloat const IMAGEHEIGHT  = 200.0f;
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+
 }
 
 #pragma mark UITableViewDatasource
@@ -112,17 +115,16 @@ CGFloat const IMAGEHEIGHT  = 200.0f;
         }else if (indexPath.row==1){
             house.showModal = FavoriteModal;
 
-        }else{
+        }else if (indexPath.row==2){
             house.showModal = UserRecordModal;
+
+        }else{
+            house.showModal = AllHouseModal;
 
         }
         vc = house;
     }
-    if ([model.className isEqualToString:NSStringFromClass([AJHouseViewController class])]) {
-         AJHouseViewController *home = (AJHouseViewController *)vc;
-        home.isAdmin = YES;
-        vc = home;
-    }
+    
     vc.hidesBottomBarWhenPushed = YES;
     APP_PUSH(vc);
     

@@ -9,6 +9,7 @@
 #import "AJSearchViewController.h"
 
 @interface AJSearchViewController ()
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @end
 
@@ -16,6 +17,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationItem.titleView = self.searchBar;
+
+    [self.searchBar becomeFirstResponder];
     // Do any additional setup after loading the view from its nib.
 }
 

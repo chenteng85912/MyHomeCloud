@@ -8,8 +8,11 @@
 
 #import "AJHomeViewController.h"
 #import "AJHouseViewController.h"
+#import "AJSearchViewController.h"
+
 
 @interface AJHomeViewController ()
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @end
 
@@ -21,8 +24,28 @@
     house.isSubVC = YES;
     [self.view addSubview:house.view];
     [self addChildViewController:house];
-    // Do any additional setup after loading the view from its nib.
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleDone target:self action:nil];
+    self.navigationItem.titleView = self.searchBar;
+
 }
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"东莞" style:UIBarButtonItemStylePlain target:self action:nil];
+
+}
+
+
+- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
+    
+    AJSearchViewController *search = [AJSearchViewController new];
+    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:search];
+    [nav setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
+    [self presentViewController:nav animated:YES completion:^{
+    }];
+    return NO;
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

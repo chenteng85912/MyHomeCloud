@@ -9,7 +9,6 @@
 #import "AJMeCenterData.h"
 #import "AJMeModel.h"
 #import "AJMyhouseViewController.h"
-#import "AJHouseViewController.h"
 #import "AJSettingViewController.h"
 #import "AJSearchViewController.h"
 
@@ -45,7 +44,7 @@
         model = [AJMeModel new];
         model.title = @"所有房源";
         model.iconName = @"allHouse";
-        model.className = NSStringFromClass([AJHouseViewController class]);
+        model.className = NSStringFromClass([AJMyhouseViewController class]);
         [temp addObject:model];
         
     }

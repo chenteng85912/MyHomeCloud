@@ -1,31 +1,33 @@
 //
-//  AJMyhouseViewController.m
+//  AJHonmeViewController.m
 //  MyHomeCloud
 //
-//  Created by tjsoft on 2017/5/10.
+//  Created by tjsoft on 2017/5/9.
 //  Copyright © 2017年 TENG. All rights reserved.
 //
 
-#import "AJMyhouseViewController.h"
-#import "AJHouseDetailsViewController.h"
+#import "AJHouseViewController.h"
 #import "AJHomeTableViewCell.h"
+#import "AJHouseDetailsViewController.h"
 #import "AJHomeCellModel.h"
-#import "AJNewHouserViewController.h"
+#import "AJHomeViewController.h"
 
-@interface AJMyhouseViewController ()
+@interface AJHouseViewController ()<UIScrollViewDelegate>
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @end
 
-@implementation AJMyhouseViewController
+@implementation AJHouseViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    if (self.showModal==MyHouseModal) {
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"add"] style:UIBarButtonItemStylePlain target:self action:@selector(addNewHouse)];
-    }
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshHomeData) name:kHomeHouseNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshHomeData) name:kNewHouseNotification object:nil];
-   
+
+}
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
 }
 #pragma mark - AJTbViewProtocol
 - (BOOL)makeMJRefresh{
@@ -35,27 +37,9 @@
     return UITableViewStyleGrouped;
 }
 - (NSString *)requestClassName{
-    if (self.showModal==MyHouseModal||AllHouseModal) {
-        return HOUSE_INFO;
-
-    }else if (self.showModal == FavoriteModal){
-        return FAVORITE_HOUSE;
-
-    }else{
-        return RECORD_HOUSE;
-
-    }
-}
-- (NSString *)requestKeyName{
-    if (self.showModal==AllHouseModal) {
-        return nil;
-    }
-    return USER_PHONE;
+    return HOUSE_INFO;
 }
 
-- (BOOL)canDeleteCell{
-    return YES;
-}
 - (NSString *)customeTbViewCellClassName{
     return  NSStringFromClass([AJHomeTableViewCell class]);
 }
@@ -71,16 +55,11 @@
     
     AJHomeCellModel *model = (AJHomeCellModel *)self.dataArray[indexPath.row];
     AJHouseDetailsViewController *details = [AJHouseDetailsViewController new];
-    if (self.showModal!=MyHouseModal) {
-        details.houseInfo = model.objectData[HOUSE_OBJECT];
-
-    }else{
-        details.houseInfo = model.objectData;
-
-    }
+    details.houseInfo = model.objectData;
     details.hidesBottomBarWhenPushed = YES;
-
     APP_PUSH(details);
+    [self addRecordData:model.objectData];
+
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 0.01;
@@ -89,14 +68,37 @@
     return 0.01;
 }
 
+//保存浏览记录
+- (void)addRecordData:(AVObject *)object{
+    AVObject *houseInfo = [[AVObject alloc] initWithClassName:RECORD_HOUSE];
+    [houseInfo setObject:object.objectId forKey:HOUSE_ID];
+    [houseInfo setObject:[AVUser currentUser].mobilePhoneNumber forKey:USER_PHONE];
+    
+    [houseInfo setObject:[AVObject objectWithClassName:HOUSE_INFO objectId:object.objectId] forKey:HOUSE_OBJECT];
+    
+    self.baseQuery.className = RECORD_HOUSE;
+    [self.baseQuery whereKey:HOUSE_ID equalTo:object.objectId];
+    [self.baseQuery whereKey:USER_PHONE equalTo:[AVUser currentUser].mobilePhoneNumber];
+
+    [self.baseQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        if (objects.count>0) {
+            return;
+           
+        }
+        [houseInfo saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            if (succeeded) {
+                
+            }
+        }];
+    }];
+
+}
 - (void)refreshHomeData{
     [self.view showHUD:nil];
     [self initStartData];
 }
-- (void)addNewHouse{
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[AJNewHouserViewController new]];
-    APP_PRESENT(nav);
-}
+
+
 - (void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }

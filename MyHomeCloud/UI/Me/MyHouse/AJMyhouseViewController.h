@@ -9,6 +9,7 @@
 #import "AJBaseTbViewController.h"
 
 typedef NS_ENUM(NSInteger,HouseShowModal) {
+    AllHouseModal,      //所有房源
     MyHouseModal,       //我的房源
     FavoriteModal,      //我的收藏
     UserRecordModal,    //浏览记录

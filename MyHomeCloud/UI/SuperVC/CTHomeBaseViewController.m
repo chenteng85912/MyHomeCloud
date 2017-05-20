@@ -20,7 +20,15 @@
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    self.navigationController.navigationBar.barTintColor = NavigationBarColor;
+    self.navigationController.navigationBar.translucent = NO;
+    
+    [self.navigationController.navigationBar setTitleTextAttributes:
+     @{NSFontAttributeName:[UIFont boldSystemFontOfSize:16],
+       NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
 
 }
 - (void)didReceiveMemoryWarning {
