@@ -6,6 +6,7 @@
 //  Copyright © 2017年 TENG. All rights reserved.
 //
 
-@interface AJUserCenterViewController : UIViewController
+#import "CTHomeBaseViewController.h"
+@interface AJUserCenterViewController : CTHomeBaseViewController
 
 @end

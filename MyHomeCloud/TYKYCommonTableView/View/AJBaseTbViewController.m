@@ -37,16 +37,16 @@
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-   
+    if ([UIApplication sharedApplication].statusBarStyle==UIStatusBarStyleLightContent) {
+        self.tableView.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height-49);
+        
+    }else{
+        self.tableView.frame = self.view.bounds;
+        
+    }
     if (!_isLoad) {
         _isLoad = YES;
-        if ([UIApplication sharedApplication].statusBarStyle==UIStatusBarStyleLightContent) {
-            self.tableView.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height-49);
-            
-        }else{
-            self.tableView.frame = self.view.bounds;
-            
-        }
+        
         if (_mjRefresh) {
             [self.tableView.mj_header beginRefreshing];
 
@@ -94,7 +94,7 @@
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
     if ([self respondsToSelector:@selector(canDeleteCell)]) {
-        return YES;
+        return [self canDeleteCell];
     }
     return NO;
 }
@@ -275,8 +275,11 @@
     [self.tableView registerNib:[UINib nibWithNibName:[self customeTbViewCellClassName] bundle:nil] forCellReuseIdentifier:[self customeTbViewCellClassName]];
     
     if ([self respondsToSelector:@selector(makeMJRefresh)]) {
-        _mjRefresh = YES;
-        self.tableView.mj_header = [self makeMJRefeshWithTarget:self andMethod:@selector(initStartData)];
+        _mjRefresh = [self makeMJRefresh];
+        if (_mjRefresh) {
+            self.tableView.mj_header = [self makeMJRefeshWithTarget:self andMethod:@selector(initStartData)];
+
+        }
         
     }
 

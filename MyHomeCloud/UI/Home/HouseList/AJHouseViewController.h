@@ -7,6 +7,13 @@
 //
 
 #import "AJBaseTbViewController.h"
+
+typedef NS_ENUM(NSInteger,HouseShowModal) {
+    HomeHouseModal,      //首页房源
+    SearchHouseModal,    //搜索房源
+};
+
 @interface AJHouseViewController : AJBaseTbViewController
+@property (assign, nonatomic) HouseShowModal showModal;
 
 @end

@@ -34,6 +34,8 @@
 		0B302F581ECFE0D7006896CA /* AJHomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B302F521ECFE0D7006896CA /* AJHomeTableViewCell.xib */; };
 		0B302F591ECFE0D7006896CA /* AJHouseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B302F541ECFE0D7006896CA /* AJHouseViewController.m */; };
 		0B302F5A1ECFE0D7006896CA /* AJHouseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B302F551ECFE0D7006896CA /* AJHouseViewController.xib */; };
+		0B302F5E1ED01835006896CA /* AJOtherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B302F5C1ED01835006896CA /* AJOtherViewController.m */; };
+		0B302F5F1ED01835006896CA /* AJOtherViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B302F5D1ED01835006896CA /* AJOtherViewController.xib */; };
 		0B57F57F1EC1919E00B89CE2 /* AJTbViewPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B57F56E1EC1919E00B89CE2 /* AJTbViewPresenter.m */; };
 		0B57F5801EC1919E00B89CE2 /* AJBaseTbViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B57F5781EC1919E00B89CE2 /* AJBaseTbViewController.m */; };
 		0B57F5941EC198D000B89CE2 /* AJUserCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B57F5921EC198D000B89CE2 /* AJUserCenterViewController.m */; };
@@ -132,6 +134,9 @@
 		0B302F531ECFE0D7006896CA /* AJHouseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJHouseViewController.h; sourceTree = "<group>"; };
 		0B302F541ECFE0D7006896CA /* AJHouseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJHouseViewController.m; sourceTree = "<group>"; };
 		0B302F551ECFE0D7006896CA /* AJHouseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJHouseViewController.xib; sourceTree = "<group>"; };
+		0B302F5B1ED01835006896CA /* AJOtherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJOtherViewController.h; sourceTree = "<group>"; };
+		0B302F5C1ED01835006896CA /* AJOtherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJOtherViewController.m; sourceTree = "<group>"; };
+		0B302F5D1ED01835006896CA /* AJOtherViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJOtherViewController.xib; sourceTree = "<group>"; };
 		0B57F56D1EC1919E00B89CE2 /* AJTbViewPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJTbViewPresenter.h; sourceTree = "<group>"; };
 		0B57F56E1EC1919E00B89CE2 /* AJTbViewPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJTbViewPresenter.m; sourceTree = "<group>"; };
 		0B57F5711EC1919E00B89CE2 /* AJTbViewCellProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJTbViewCellProtocol.h; sourceTree = "<group>"; };
@@ -562,6 +567,9 @@
 				A411B3BD1EC4B0BD00244B6E /* AJSettingViewController.h */,
 				A411B3BE1EC4B0BD00244B6E /* AJSettingViewController.m */,
 				A411B3BF1EC4B0BD00244B6E /* AJSettingViewController.xib */,
+				0B302F5B1ED01835006896CA /* AJOtherViewController.h */,
+				0B302F5C1ED01835006896CA /* AJOtherViewController.m */,
+				0B302F5D1ED01835006896CA /* AJOtherViewController.xib */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -687,6 +695,7 @@
 				0B6E12C61EC4235300103571 /* AJLoginViewController.xib in Resources */,
 				A4AD085C1EC80A7E001A8F1C /* AJHouseDesViewController.xib in Resources */,
 				0B57F5951EC198D000B89CE2 /* AJUserCenterViewController.xib in Resources */,
+				0B302F5F1ED01835006896CA /* AJOtherViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -813,6 +822,7 @@
 				0B2344611EC03095007A3AC1 /* UIView+TYKYPrompt.m in Sources */,
 				0B23447C1EC03095007A3AC1 /* AutoRunLabel.m in Sources */,
 				0B23445D1EC03095007A3AC1 /* UIImage+Scale.m in Sources */,
+				0B302F5E1ED01835006896CA /* AJOtherViewController.m in Sources */,
 				0B23445A1EC03095007A3AC1 /* NSMutableDictionary+IHateNil.m in Sources */,
 				0BE2A35F1EC2DE1700519840 /* AJMeModel.m in Sources */,
 				0B2344631EC03095007A3AC1 /* Colours.m in Sources */,

@@ -10,7 +10,7 @@
 #import "AJMeModel.h"
 #import "AJMyhouseViewController.h"
 #import "AJSettingViewController.h"
-#import "AJSearchViewController.h"
+#import "AJOtherViewController.h"
 
 @implementation AJMeCenterData
 
@@ -83,12 +83,12 @@
     
     AJMeModel *model = [AJMeModel new];
     model.title = @"关于我们";
-    model.className = NSStringFromClass([AJSearchViewController class]);
+    model.className = NSStringFromClass([AJOtherViewController class]);
     [temp addObject:model];
     
     model = [AJMeModel new];
     model.title = @"隐私说明";
-    model.className = NSStringFromClass([AJSearchViewController class]);
+    model.className = NSStringFromClass([AJOtherViewController class]);
     [temp addObject:model];
     
     model = [AJMeModel new];

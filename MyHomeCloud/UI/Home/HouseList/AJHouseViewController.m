@@ -10,10 +10,10 @@
 #import "AJHomeTableViewCell.h"
 #import "AJHouseDetailsViewController.h"
 #import "AJHomeCellModel.h"
-#import "AJHomeViewController.h"
 
-@interface AJHouseViewController ()<UIScrollViewDelegate>
-@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@interface AJHouseViewController ()<UIScrollViewDelegate,UISearchBarDelegate>
+@property (strong, nonatomic) UISearchBar *searchBar;
+@property (strong, nonatomic) UITapGestureRecognizer *tapGes;
 
 @end
 
@@ -22,16 +22,33 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshHomeData) name:kHomeHouseNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshHomeData) name:kNewHouseNotification object:nil];
-
+    if (self.showModal==HomeHouseModal) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshHomeData) name:kHomeHouseNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshHomeData) name:kNewHouseNotification object:nil];
+    }else{
+        [self.view addGestureRecognizer:self.tapGes];
+        self.navigationItem.titleView = self.searchBar;
+        [self.searchBar becomeFirstResponder];
+    }
+   
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+
 }
+- (void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+}
+
 #pragma mark - AJTbViewProtocol
 - (BOOL)makeMJRefresh{
-    return YES;
+    if (self.showModal==HomeHouseModal) {
+
+        return YES;
+    }
+    
+    return NO;
+    
 }
 - (UITableViewStyle)tableViewStyle{
     return UITableViewStyleGrouped;
@@ -39,7 +56,12 @@
 - (NSString *)requestClassName{
     return HOUSE_INFO;
 }
-
+- (NSString *)requestKeyName{
+    if (self.showModal==SearchHouseModal) {
+        return self.searchBar.text;
+    }
+    return nil;
+}
 - (NSString *)customeTbViewCellClassName{
     return  NSStringFromClass([AJHomeTableViewCell class]);
 }
@@ -93,14 +115,55 @@
     }];
 
 }
+//刷新数据
 - (void)refreshHomeData{
     [self.view showHUD:nil];
     [self initStartData];
 }
 
-
+#pragma mark UISearchBarDelegate
+- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
+    [self.view addGestureRecognizer:self.tapGes];
+    return YES;
+}
+/*键盘上的搜索按钮*/
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    [searchBar resignFirstResponder];
+    
+    [self searchAction:searchBar.text];
+}
+//跳转到搜索界面
+- (void)searchAction:(NSString *)searchKey{
+    [self refreshHomeData];
+}
+- (void)hiddenKeyBoard{
+    [self.searchBar resignFirstResponder];
+    [self.view removeGestureRecognizer:self.tapGes];
+}
+- (void)backToPreVC{
+    [self.searchBar resignFirstResponder];
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+}
 - (void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (UISearchBar *)searchBar{
+    if (_searchBar ==nil) {
+        _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, dWidth, 30)];
+        _searchBar.placeholder = @"小区/楼盘名称";
+        _searchBar.delegate = self;
+        _searchBar.returnKeyType = UIReturnKeySearch;
+        _searchBar.enablesReturnKeyAutomatically = YES;
+        _searchBar.searchBarStyle = UISearchBarStyleMinimal;
+    }
+    return _searchBar;
+}
+- (UITapGestureRecognizer *)tapGes{
+    if (_tapGes ==nil) {
+        _tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hiddenKeyBoard)];
+    }
+    return _tapGes;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

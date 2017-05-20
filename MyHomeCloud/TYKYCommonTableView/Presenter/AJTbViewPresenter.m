@@ -38,7 +38,26 @@ NSInteger const defaultPageSize = 50;
     }
     
     if ([_tbViewVC respondsToSelector:@selector(requestKeyName)]&&[_tbViewVC requestKeyName]) {
-        [self.query whereKey:[_tbViewVC requestKeyName] equalTo:[AVUser currentUser].mobilePhoneNumber];
+        if ([[_tbViewVC requestKeyName] isEqualToString:USER_PHONE]) {
+            [self.query whereKey:[_tbViewVC requestKeyName] equalTo:[AVUser currentUser].mobilePhoneNumber];
+
+        }else{
+            //搜索
+            //小区名称
+            AVQuery *estate = [AVQuery queryWithClassName:[_tbViewVC requestClassName]];
+            [estate whereKey:HOUSE_ESTATE_NAME containsString:[_tbViewVC requestKeyName]];
+            //开发商名称
+            AVQuery *deve = [AVQuery queryWithClassName:[_tbViewVC requestClassName]];
+            [deve whereKey:HOUSE_DEVELOPER containsString:[_tbViewVC requestKeyName]];
+            //地区
+            AVQuery *area = [AVQuery queryWithClassName:[_tbViewVC requestClassName]];
+            [area whereKey:HOUSE_AREA containsString:[_tbViewVC requestKeyName]];
+
+            AVQuery *mulQuery = [AVQuery orQueryWithSubqueries:@[estate,deve,area]];
+            mulQuery.limit = _pageSize;
+            [mulQuery orderByDescending:@"createdAt"];
+            self.query = mulQuery;
+        }
 
     }
 

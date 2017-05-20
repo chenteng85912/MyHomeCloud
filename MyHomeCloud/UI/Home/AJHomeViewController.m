@@ -21,6 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     AJHouseViewController *house = [AJHouseViewController new];
+    house.showModal = HomeHouseModal;
     house.isSubVC = YES;
     [self.view addSubview:house.view];
     [self addChildViewController:house];
@@ -31,14 +32,23 @@
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"东莞" style:UIBarButtonItemStylePlain target:self action:nil];
+    UIButton *areaBut = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 30)];
+    [areaBut setTitle:@"东莞" forState:UIControlStateNormal];
+    [areaBut setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    areaBut.titleLabel.font = [UIFont boldSystemFontOfSize:15];
+    areaBut.titleEdgeInsets = UIEdgeInsetsMake(0, -25, 0, 0);
+    [areaBut setImage:LOADIMAGE(@"down") forState:UIControlStateNormal];
+    areaBut.imageEdgeInsets = UIEdgeInsetsMake(0, 35, 0, 0);
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:areaBut];
 
 }
 
 
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
     
-    AJSearchViewController *search = [AJSearchViewController new];
+    AJHouseViewController *search = [AJHouseViewController new];
+    search.showModal = SearchHouseModal;
+    search.isLoad = YES;
     UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:search];
     [nav setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
     [self presentViewController:nav animated:YES completion:^{

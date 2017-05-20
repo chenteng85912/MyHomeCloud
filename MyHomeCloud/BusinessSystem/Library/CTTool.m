@@ -20,10 +20,10 @@
     [right setTitle:title forState:UIControlStateNormal];
     [right setTitleColor:NavigationBarColor forState:UIControlStateNormal];
     
-    right.titleLabel.font = [UIFont systemFontOfSize:14];
+    right.titleLabel.font = [UIFont boldSystemFontOfSize:14];
     right.layer.masksToBounds = YES;
     right.layer.cornerRadius = 5.0;
-    right.layer.borderWidth = 0.5;
+    right.layer.borderWidth = 1;
     right.layer.borderColor = NavigationBarColor.CGColor;
     
     [right addTarget:target action:actionName forControlEvents:UIControlEventTouchUpInside];
