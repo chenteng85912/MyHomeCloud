@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface CTHomeBaseViewController : UIViewController
+@property (assign, nonatomic) BOOL isSubVC;
 
 @end

@@ -11,9 +11,17 @@
 #import "AJHouseDetailsViewController.h"
 #import "AJHomeCellModel.h"
 
-@interface AJHouseViewController ()<UIScrollViewDelegate,UISearchBarDelegate>
+#define HOME_HEAD_HEIGHT dHeight/4 +100.0
+
+@interface AJHouseViewController ()<UISearchBarDelegate,CTAutoLoopViewDelegate>
+@property (weak, nonatomic) IBOutlet UIView *headBtnView;
 @property (strong, nonatomic) UISearchBar *searchBar;
 @property (strong, nonatomic) UITapGestureRecognizer *tapGes;
+//首页App 滚动广告视图
+@property (strong, nonatomic) CTAutoLoopViewController * autoLoopView;
+//头部广告图片数据
+@property (strong, nonatomic) NSMutableArray *autoLoopDataArray;
+@property (strong, nonatomic) UIView *headView;
 
 @end
 
@@ -25,6 +33,7 @@
     if (self.showModal==HomeHouseModal) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshHomeData) name:kHomeHouseNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshHomeData) name:kNewHouseNotification object:nil];
+        self.tableView.tableHeaderView = self.headView;
     }else{
         [self.view addGestureRecognizer:self.tapGes];
         self.navigationItem.titleView = self.searchBar;
@@ -84,7 +93,9 @@
 
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+  
     return 0.01;
+
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     return 0.01;
@@ -147,7 +158,9 @@
 - (void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
-
+#pragma mark CTAutoLoopViewDelegate
+- (void)CTAutoLoopViewController:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+   }
 - (UISearchBar *)searchBar{
     if (_searchBar ==nil) {
         _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, dWidth, 30)];
@@ -164,6 +177,37 @@
         _tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hiddenKeyBoard)];
     }
     return _tapGes;
+}
+-(CTAutoLoopViewController*)autoLoopView
+{
+    if (!_autoLoopView) {
+        _autoLoopView = [[CTAutoLoopViewController alloc] initWithFrame:CGRectMake(0, 0, dWidth, dHeight/4) onceLoopTime:3.0 cellDisplayModal:CTLoopCellDisplayImage scollDiretion:CTLoopScollDirectionHorizontal];
+        _autoLoopView.delegate = self;
+        //头部广告滚动视图数据源
+        [_autoLoopView addModels:self.autoLoopDataArray];
+    }
+    return _autoLoopView;
+}
+- (UIView*)headView
+{
+    if (!_headView) {
+        _headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, dWidth, HOME_HEAD_HEIGHT)];
+        [_headView addSubview:self.autoLoopView.view];
+        _headBtnView.frame = CGRectMake(0, HOME_HEAD_HEIGHT-100, dWidth, 100);
+        [_headView addSubview:self.headBtnView];
+
+    }
+    return _headView;
+}
+- (NSMutableArray *)autoLoopDataArray{
+    if (!_autoLoopDataArray) {
+        _autoLoopDataArray = [NSMutableArray new];
+    }
+    [_autoLoopDataArray addObject:@"ad1"];
+    [_autoLoopDataArray addObject:@"ad2"];
+    [_autoLoopDataArray addObject:@"ad3"];
+
+    return _autoLoopDataArray;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

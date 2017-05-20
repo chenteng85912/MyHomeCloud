@@ -11,8 +11,10 @@
 #import "AJSearchViewController.h"
 
 
+
 @interface AJHomeViewController ()
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (strong, nonatomic) UIView *headView;
 
 @end
 
@@ -56,7 +58,12 @@
     return NO;
 }
 
-
+- (UIView *)headView{
+    if (_headView ==nil) {
+        _headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, dWidth, dHeight)];
+    }
+    return _headView;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

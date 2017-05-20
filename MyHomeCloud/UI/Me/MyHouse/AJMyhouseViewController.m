@@ -11,6 +11,7 @@
 #import "AJHomeTableViewCell.h"
 #import "AJHomeCellModel.h"
 #import "AJNewHouserViewController.h"
+#import "AJHouseViewController.h"
 
 @interface AJMyhouseViewController ()
 
@@ -23,6 +24,9 @@
     
     if (self.showModal==MyHouseModal) {
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"add"] style:UIBarButtonItemStylePlain target:self action:@selector(addNewHouse)];
+    }
+    if (self.showModal ==AllHouseModal){
+         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"search"] style:UIBarButtonItemStylePlain target:self action:@selector(addNewHouse)];
     }
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshHomeData) name:kNewHouseNotification object:nil];
    
@@ -94,6 +98,16 @@
     [self initStartData];
 }
 - (void)addNewHouse{
+    if (self.showModal == AllHouseModal) {
+        AJHouseViewController *search = [AJHouseViewController new];
+        search.showModal = SearchHouseModal;
+        search.isLoad = YES;
+        UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:search];
+        [nav setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
+        [self presentViewController:nav animated:YES completion:^{
+        }];
+        return;
+    }
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[AJNewHouserViewController new]];
     APP_PRESENT(nav);
 }

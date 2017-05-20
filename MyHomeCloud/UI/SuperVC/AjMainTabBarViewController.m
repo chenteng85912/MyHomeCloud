@@ -37,6 +37,7 @@
     news.title = @"消息";
     
     AJUserCenterViewController *user = [AJUserCenterViewController new];
+    user.isSubVC = YES;
     user.title = @"我";
     
     NSArray *normalImgs = @[@"home",@"msg",@"user"];

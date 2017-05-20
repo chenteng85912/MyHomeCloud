@@ -37,13 +37,9 @@
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    if ([UIApplication sharedApplication].statusBarStyle==UIStatusBarStyleLightContent) {
-        self.tableView.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height-49);
-        
-    }else{
-        self.tableView.frame = self.view.bounds;
-        
-    }
+  
+    self.tableView.frame = self.view.bounds;
+    
     if (!_isLoad) {
         _isLoad = YES;
         
