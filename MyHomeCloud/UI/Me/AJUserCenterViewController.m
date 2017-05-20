@@ -10,15 +10,14 @@
 #import "AJMeCenterData.h"
 #import "AJMeModel.h"
 #import "AJMyhouseViewController.h"
-#import "UIImageView+WebCache.h"
 #import "AJHouseViewController.h"
+#import "AJUserHeadViewController.h"
 
 static NSString *CellIdentifier = @"AJUserCellId";
-NSString  *const HEAD_URL = @"headUrl";
 
 CGFloat const IMAGEHEIGHT  = 200.0f;
 
-@interface AJUserCenterViewController ()<CTONEPhotoDelegate>
+@interface AJUserCenterViewController ()<AJUserHeadViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tbView;
 @property (weak, nonatomic) IBOutlet UIView *headView;
 @property (weak, nonatomic) IBOutlet UIImageView *headImg;
@@ -146,42 +145,15 @@ CGFloat const IMAGEHEIGHT  = 200.0f;
     }
 }
 - (IBAction)buttonAction:(UIButton *)sender {
-    [UIAlertController alertWithTitle:@"更换头像" message:nil cancelButtonTitle:@"取消" otherButtonTitles:@[@"拍照",@"从相册选取"] preferredStyle:UIAlertControllerStyleActionSheet block:^(NSInteger buttonIndex) {
-        if (buttonIndex==1) {
-            [CTONEPhoto shareSigtonPhoto].delegate = self;
-            [[CTONEPhoto shareSigtonPhoto] openCamera:self editModal:YES];
-        }else if (buttonIndex==2){
-            [CTONEPhoto shareSigtonPhoto].delegate = self;
-            [[CTONEPhoto shareSigtonPhoto] openAlbum:self editModal:YES];
-        }
-    }];
+    AJUserHeadViewController *head = [AJUserHeadViewController new];
+    head.headImg = self.userHead.image;
+    head.delegate  = self;
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:head];
+    APP_PRESENT(nav);
 }
-#pragma mark - CTONEPhotoDelegate
-- (void)sendOnePhoto:(UIImage *)image withImageName:(NSString *)imageName;{
-    [self saveUserHeadImage:[CTTool imageCompressForWidth:image targetWidth:200]];
 
-}
-#pragma mark 上传用户头像
-- (void)saveUserHeadImage:(UIImage *)image{
-    
-    NSData *imgData = UIImageJPEGRepresentation(image, 1);
-    NSString *name = [NSString stringWithFormat:@"%.0f",[[NSDate new] timeIntervalSince1970]];
-    AVFile *file = [AVFile fileWithName:name data:imgData];
-
-    [self.view showHUD:@"正在上传..."];
-    [file saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        [self.view removeHUD];
-        if (!succeeded) {
-            [self.view showTips:@"上传失败，请重试" withState:TYKYHUDModeSuccess complete:nil];
-
-            return;
-        }
-        [self.view showTips:@"上传成功" withState:TYKYHUDModeSuccess complete:nil];
-        self.userHead.image = image;
-        [[AVUser currentUser] setObject:file.url forKey:HEAD_URL];
-        [[AVUser currentUser] saveInBackground];
-
-    }];
+- (void)uploadSuccess:(UIImage *)image{
+    self.userHead.image = image;
 }
 //角色信息
 - (void)initRoleData{

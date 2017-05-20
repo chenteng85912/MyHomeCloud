@@ -10,7 +10,7 @@
 
 CGFloat const cellX = 20.0;
 CGFloat const cellY = 15.0;
-CGFloat const subY = 10.0;
+CGFloat const subY = 8.0;
 
 CGFloat const IMG_WIDTH = 100.0;
 CGFloat const IMG_HEIGHT = 80.0;
@@ -37,7 +37,7 @@ CGFloat const IMG_HEIGHT = 80.0;
     CGSize subSize = [self.subTitle sizeWithMaxSize:CGSizeMake(dWidth-cellX*3-IMG_WIDTH, MAXFLOAT) fontSize:SUB_FONT];
     self.subFrame = CGRectMake(lx, CGRectGetMaxY(self.nameFrame)+subY, subSize.width, subSize.height);
     
-    NSDictionary *desObj = object[HOUSE_DESCRIBE];//[CTTool dictionaryWithJsonString:object[HOUSE_DESCRIBE]];
+    NSDictionary *desObj = object[HOUSE_DESCRIBE];
     //描述
     self.houseDes = [NSString stringWithFormat:@"%@ %@ %@",desObj[YEARS_DES],desObj[WATCH_DES],desObj[DECORATE_DES]];
     CGSize desSize = [self.houseDes sizeWithMaxSize:CGSizeMake(dWidth-cellX*3-IMG_WIDTH, MAXFLOAT) fontSize:DES_FONT];

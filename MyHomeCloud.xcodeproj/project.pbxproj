@@ -36,6 +36,8 @@
 		0B302F5A1ECFE0D7006896CA /* AJHouseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B302F551ECFE0D7006896CA /* AJHouseViewController.xib */; };
 		0B302F5E1ED01835006896CA /* AJOtherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B302F5C1ED01835006896CA /* AJOtherViewController.m */; };
 		0B302F5F1ED01835006896CA /* AJOtherViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B302F5D1ED01835006896CA /* AJOtherViewController.xib */; };
+		0B302F6E1ED04F47006896CA /* AJUserHeadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B302F6C1ED04F47006896CA /* AJUserHeadViewController.m */; };
+		0B302F6F1ED04F47006896CA /* AJUserHeadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B302F6D1ED04F47006896CA /* AJUserHeadViewController.xib */; };
 		0B57F57F1EC1919E00B89CE2 /* AJTbViewPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B57F56E1EC1919E00B89CE2 /* AJTbViewPresenter.m */; };
 		0B57F5801EC1919E00B89CE2 /* AJBaseTbViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B57F5781EC1919E00B89CE2 /* AJBaseTbViewController.m */; };
 		0B57F5941EC198D000B89CE2 /* AJUserCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B57F5921EC198D000B89CE2 /* AJUserCenterViewController.m */; };
@@ -137,6 +139,9 @@
 		0B302F5B1ED01835006896CA /* AJOtherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJOtherViewController.h; sourceTree = "<group>"; };
 		0B302F5C1ED01835006896CA /* AJOtherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJOtherViewController.m; sourceTree = "<group>"; };
 		0B302F5D1ED01835006896CA /* AJOtherViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJOtherViewController.xib; sourceTree = "<group>"; };
+		0B302F6B1ED04F47006896CA /* AJUserHeadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJUserHeadViewController.h; sourceTree = "<group>"; };
+		0B302F6C1ED04F47006896CA /* AJUserHeadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJUserHeadViewController.m; sourceTree = "<group>"; };
+		0B302F6D1ED04F47006896CA /* AJUserHeadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJUserHeadViewController.xib; sourceTree = "<group>"; };
 		0B57F56D1EC1919E00B89CE2 /* AJTbViewPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJTbViewPresenter.h; sourceTree = "<group>"; };
 		0B57F56E1EC1919E00B89CE2 /* AJTbViewPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJTbViewPresenter.m; sourceTree = "<group>"; };
 		0B57F5711EC1919E00B89CE2 /* AJTbViewCellProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJTbViewCellProtocol.h; sourceTree = "<group>"; };
@@ -466,6 +471,9 @@
 				0B57F5911EC198D000B89CE2 /* AJUserCenterViewController.h */,
 				0B57F5921EC198D000B89CE2 /* AJUserCenterViewController.m */,
 				0B57F5931EC198D000B89CE2 /* AJUserCenterViewController.xib */,
+				0B302F6B1ED04F47006896CA /* AJUserHeadViewController.h */,
+				0B302F6C1ED04F47006896CA /* AJUserHeadViewController.m */,
+				0B302F6D1ED04F47006896CA /* AJUserHeadViewController.xib */,
 			);
 			path = Me;
 			sourceTree = "<group>";
@@ -689,6 +697,7 @@
 				0B2343C91EC01CA1007A3AC1 /* Main.storyboard in Resources */,
 				0B302F5A1ECFE0D7006896CA /* AJHouseViewController.xib in Resources */,
 				A40B20CD1EC7395B0027399E /* AJMyHomeTableViewCell.xib in Resources */,
+				0B302F6F1ED04F47006896CA /* AJUserHeadViewController.xib in Resources */,
 				A411B3C11EC4B0BD00244B6E /* AJSettingViewController.xib in Resources */,
 				A40B20B71EC733280027399E /* AJHouseDetailsViewController.xib in Resources */,
 				0BE4D9F01ECC6B8200E4ADCD /* AJHomeViewController.xib in Resources */,
@@ -834,6 +843,7 @@
 				0B302F571ECFE0D7006896CA /* AJHomeTableViewCell.m in Sources */,
 				0B23446A1EC03095007A3AC1 /* Reachability.m in Sources */,
 				A40B20CE1EC7395B0027399E /* AJMyhouseViewController.m in Sources */,
+				0B302F6E1ED04F47006896CA /* AJUserHeadViewController.m in Sources */,
 				A40B20BE1EC7383F0027399E /* AJTbViewCellModel.m in Sources */,
 				0B23446C1EC03095007A3AC1 /* CTTool.m in Sources */,
 				0B302F561ECFE0D7006896CA /* AJHomeCellModel.m in Sources */,

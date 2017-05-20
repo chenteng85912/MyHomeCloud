@@ -50,6 +50,9 @@
     if (model.subObj) {
         imgStr = model.subObj[HOUSE_THUMB];
     }
+    self.houseImg.layer.masksToBounds = YES;
+    self.houseImg.layer.cornerRadius = 2.0;
+    self.houseImg.clipsToBounds = YES;
     [self.houseImg sd_setImageWithURL:[NSURL URLWithString:imgStr] placeholderImage:LOADIMAGE(@"default_img")];
 
 }

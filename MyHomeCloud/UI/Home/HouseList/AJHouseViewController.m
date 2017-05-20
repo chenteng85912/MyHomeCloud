@@ -11,7 +11,7 @@
 #import "AJHouseDetailsViewController.h"
 #import "AJHomeCellModel.h"
 
-#define HOME_HEAD_HEIGHT dHeight/4 +100.0
+CGFloat const HEAD_BUTTON_HEIGHT  = 100.0;
 
 @interface AJHouseViewController ()<UISearchBarDelegate,CTAutoLoopViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *headBtnView;
@@ -44,6 +44,13 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
 
+}
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    if (self.showModal==SearchHouseModal&&self.dataArray.count==0) {
+            [self.tableView addNoDataTipView];
+
+    }
 }
 - (void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
@@ -191,9 +198,9 @@
 - (UIView*)headView
 {
     if (!_headView) {
-        _headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, dWidth, HOME_HEAD_HEIGHT)];
+        _headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, dWidth, dHeight/4+HEAD_BUTTON_HEIGHT)];
         [_headView addSubview:self.autoLoopView.view];
-        _headBtnView.frame = CGRectMake(0, HOME_HEAD_HEIGHT-100, dWidth, 100);
+        _headBtnView.frame = CGRectMake(0, dHeight/4, dWidth,HEAD_BUTTON_HEIGHT);
         [_headView addSubview:self.headBtnView];
 
     }
