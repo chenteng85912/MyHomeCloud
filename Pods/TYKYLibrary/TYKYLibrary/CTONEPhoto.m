@@ -49,8 +49,6 @@ static CTONEPhoto *onePhoto = nil;
     if (![[CTSavePhotos new] checkAuthorityOfAblum]) {
         return;
     }
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
-
     //onePhoto.imagePicker.sourceType=UIImagePickerControllerSourceTypeSavedPhotosAlbum;
     onePhoto.imagePicker.sourceType=UIImagePickerControllerSourceTypePhotoLibrary;
     onePhoto.imagePicker.allowsEditing = enableEdit;

@@ -101,13 +101,20 @@ NSString  *const HEAD_URL = @"headUrl";
 }
 
 - (void)chooseUserHead{
-    [UIAlertController alertWithTitle:@"更换头像" message:nil cancelButtonTitle:@"取消" otherButtonTitles:@[@"拍照",@"从相册选取"] preferredStyle:UIAlertControllerStyleActionSheet block:^(NSInteger buttonIndex) {
+    WeakSelf;
+    [UIAlertController alertWithTitle:@"更换头像" message:nil cancelButtonTitle:@"取消" otherButtonTitles:@[@"拍照",@"从相册选取",@"保存头像"] preferredStyle:UIAlertControllerStyleActionSheet block:^(NSInteger buttonIndex) {
         if (buttonIndex==1) {
-            [CTONEPhoto shareSigtonPhoto].delegate = self;
-            [[CTONEPhoto shareSigtonPhoto] openCamera:self editModal:YES];
+            [CTONEPhoto shareSigtonPhoto].delegate = weakSelf;
+            [[CTONEPhoto shareSigtonPhoto] openCamera:weakSelf editModal:YES];
         }else if (buttonIndex==2){
-            [CTONEPhoto shareSigtonPhoto].delegate = self;
-            [[CTONEPhoto shareSigtonPhoto] openAlbum:self editModal:YES];
+            [CTONEPhoto shareSigtonPhoto].delegate = weakSelf;
+            [[CTONEPhoto shareSigtonPhoto] openAlbum:weakSelf editModal:YES];
+        }else if (buttonIndex==3){
+            if ([[CTSavePhotos new] checkAuthorityOfAblum]) {
+                //存入相册
+                [[CTSavePhotos new] saveImageIntoAlbum:weakSelf.headImg];
+                [self.view showTips:@"保存成功" withState:TYKYHUDModeSuccess complete:nil];
+            }
         }
     }];
 
