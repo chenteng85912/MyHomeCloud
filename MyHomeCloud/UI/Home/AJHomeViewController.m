@@ -10,12 +10,9 @@
 #import "AJHouseViewController.h"
 #import "AJSearchViewController.h"
 
-
-
-@interface AJHomeViewController ()
+@interface AJHomeViewController ()<CTLocationViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
-@property (strong, nonatomic) UIView *headView;
-
+@property (strong, nonatomic) UIButton *areaBtn;
 @end
 
 @implementation AJHomeViewController
@@ -34,17 +31,10 @@
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    UIButton *areaBut = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 30)];
-    [areaBut setTitle:@"东莞" forState:UIControlStateNormal];
-    [areaBut setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    areaBut.titleLabel.font = [UIFont boldSystemFontOfSize:15];
-    areaBut.titleEdgeInsets = UIEdgeInsetsMake(0, -25, 0, 0);
-    [areaBut setImage:LOADIMAGE(@"down") forState:UIControlStateNormal];
-    areaBut.imageEdgeInsets = UIEdgeInsetsMake(0, 35, 0, 0);
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:areaBut];
+   
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.areaBtn];
 
 }
-
 
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
     
@@ -58,11 +48,32 @@
     return NO;
 }
 
-- (UIView *)headView{
-    if (_headView ==nil) {
-        _headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, dWidth, dHeight)];
+- (void)chooseAreaAction{
+    CTLocationViewController *location = [CTLocationViewController new];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:location];
+    location.delegate = self;
+    APP_PRESENT(nav);
+}
+#pragma mark CTLocationViewControllerDelegate
+- (void)sendCityName:(NSString *)cityName{
+    if (![cityName isEqualToString:@"东莞"]) {
+        [[UIApplication sharedApplication].keyWindow showTips:@"该区域暂未开放" withState:TYKYHUDModeWarning complete:nil];
+        return;
     }
-    return _headView;
+    [self.areaBtn setTitle:cityName forState:UIControlStateNormal];;
+}
+- (UIButton *)areaBtn{
+    if (_areaBtn ==nil) {
+        _areaBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 30)];
+        [_areaBtn setTitle:@"东莞" forState:UIControlStateNormal];
+        [_areaBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        _areaBtn.titleLabel.font = [UIFont boldSystemFontOfSize:15];
+        _areaBtn.titleEdgeInsets = UIEdgeInsetsMake(0, -25, 0, 0);
+        [_areaBtn setImage:LOADIMAGE(@"down") forState:UIControlStateNormal];
+        _areaBtn.imageEdgeInsets = UIEdgeInsetsMake(0, 35, 0, 0);
+        [_areaBtn addTarget:self action:@selector(chooseAreaAction) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _areaBtn;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
