@@ -117,7 +117,7 @@ CGFloat const PICKVIEW_HEIGHT = 200.0;
 
         }
         
-        self.text = [NSString stringWithFormat:@"%@房 %@厅 %@卫",self.first,self.second,self.third];
+        self.text = [NSString stringWithFormat:@"%@房%@厅%@卫",self.first,self.second,self.third];
     }else{
         self.text = self.firstArray[row];
 

@@ -86,6 +86,13 @@ CGFloat const HEAD_BUTTON_HEIGHT  = 0.0;
 }
 - (void)loadDataSuccess{
     [self.view removeHUD];
+    if (self.showModal==SearchHouseModal&&self.dataArray.count==0) {
+        [self.view addTipView:@"暂无搜索结果"];
+        
+    }else{
+        [self.view hiddenTipsView];
+
+    }
 }
 #pragma mark - UITableViewDelegate
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

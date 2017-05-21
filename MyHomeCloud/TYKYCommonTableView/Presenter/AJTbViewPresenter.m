@@ -76,15 +76,19 @@ NSInteger const defaultPageSize = 50;
 
         }else{
             self.requestState = RequestSuccessModal;
-            if ([self.tbViewVC respondsToSelector:@selector(loadDataSuccess)]) {
-                [self.tbViewVC loadDataSuccess];
-            }
+            
 
         }
         [_tbViewVC reloadTableView:[self processData:objects]  modal:StartInitDataModal];
 
         [_tbViewVC showTipView:StartInitDataModal];
         [_tbViewVC reStupTableviewFooterView:self.pageSize];
+        if (self.requestState == RequestSuccessModal) {
+            if ([self.tbViewVC respondsToSelector:@selector(loadDataSuccess)]) {
+                [self.tbViewVC loadDataSuccess];
+            }
+        }
+       
    }];
     
 }
