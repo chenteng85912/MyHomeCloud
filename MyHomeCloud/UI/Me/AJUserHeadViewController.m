@@ -127,7 +127,7 @@ NSString  *const HEAD_URL = @"headUrl";
 #pragma mark 上传用户头像
 - (void)saveUserHeadImage:(UIImage *)image{
     
-    NSData *imgData = UIImageJPEGRepresentation(image, 0.8);
+    NSData *imgData = UIImageJPEGRepresentation(image, 1);
     AVFile *file = [AVFile fileWithName:[AVUser currentUser].mobilePhoneNumber data:imgData];
     
     [self.view showHUD:@"正在上传..."];

@@ -11,7 +11,7 @@
 #import "AJHouseDetailsViewController.h"
 #import "AJHomeCellModel.h"
 
-CGFloat const HEAD_BUTTON_HEIGHT  = 100.0;
+CGFloat const HEAD_BUTTON_HEIGHT  = 0.0;
 
 @interface AJHouseViewController ()<UISearchBarDelegate,CTAutoLoopViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *headBtnView;
@@ -171,7 +171,7 @@ CGFloat const HEAD_BUTTON_HEIGHT  = 100.0;
 - (UISearchBar *)searchBar{
     if (_searchBar ==nil) {
         _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, dWidth, 30)];
-        _searchBar.placeholder = @"小区/楼盘名称";
+        _searchBar.placeholder = @"区域/小区/开发商";
         _searchBar.delegate = self;
         _searchBar.returnKeyType = UIReturnKeySearch;
         _searchBar.enablesReturnKeyAutomatically = YES;

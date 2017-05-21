@@ -7,6 +7,7 @@
 //
 
 #import "AJHouseDetailsViewController.h"
+#import "AJMyhouseViewController.h"
 
 @interface AJHouseDetailsViewController ()
 
@@ -37,19 +38,20 @@
     self.baseQuery.className = FAVORITE_HOUSE;
     [self.baseQuery whereKey:USER_PHONE equalTo:[AVUser currentUser].mobilePhoneNumber];
     [self.baseQuery whereKey:HOUSE_ID equalTo:self.houseInfo.objectId];
+    WeakSelf;
     [self.baseQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
-        [self.view removeHUD];
+        [weakSelf.view removeHUD];
         if (objects.count>0) {
-            self.likedObj = objects[0];
-            self.rightBtn.selected = YES;
+            weakSelf.likedObj = objects[0];
+            weakSelf.rightBtn.selected = YES;
         }else{
-            self.rightBtn.selected = NO;
+            weakSelf.rightBtn.selected = NO;
 
         }
     }];
 
 }
-//添加收藏
+//添加 取消收藏
 - (void)addLikeHouse{
     WeakSelf;
 
@@ -57,8 +59,9 @@
        
         [self.likedObj deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             if (succeeded) {
-                self.rightBtn.selected = NO;
-                self.likedObj = nil;
+                weakSelf.rightBtn.selected = NO;
+                weakSelf.likedObj = nil;
+                [weakSelf refreshMyFavoriteList];
             }
         }];
 
@@ -72,15 +75,25 @@
         
         [houseInfo saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             if (succeeded) {
-                self.likedObj = houseInfo;
+                weakSelf.likedObj = houseInfo;
                 weakSelf.rightBtn.selected = YES;
+
             }
 
         }];
     }
    
 }
-
+//取消收藏后 刷新收藏列表
+- (void)refreshMyFavoriteList{
+    for (id vc in self.navigationController.viewControllers) {
+        if ([vc isKindOfClass:[AJMyhouseViewController class]]) {
+            AJMyhouseViewController *house = (AJMyhouseViewController *)vc;
+            house.isLoad = NO;
+            break;
+        }
+    }
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
