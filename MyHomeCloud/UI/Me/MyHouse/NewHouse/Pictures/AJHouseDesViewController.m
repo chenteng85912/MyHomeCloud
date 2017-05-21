@@ -121,25 +121,25 @@
 #pragma mark - CTCustomAlbumViewControllerDelegate
 - (void)sendImageDictionary:(NSDictionary *)imageDic{
 
+    [self.view showHUD:nil];
+    [self performSelector:@selector(creatUploadData:) withObject:imageDic afterDelay:0];
+
+}
+//上传图片
+- (void)creatUploadData:(NSDictionary *)imageDic{
     for (NSString *imgName in imageDic.allKeys) {
         UIImage *img = [CTTool imageCompressForWidth:imageDic[imgName] targetWidth:500];
         NSString *timeName = [NSString stringWithFormat:@"%f_%@",[NSDate new].timeIntervalSince1970,imgName];
         AJUploadPicModel *upload = [AJUploadPicModel new];
-        
         NSData *imgData = UIImageJPEGRepresentation(img, 0.6);
-        NSString *filePath = [CTTool imagePathWithImageName:timeName];
-        if (![[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
-            [imgData writeToFile:filePath atomically:YES];
-            
-        }
+       
         AVFile *file = [AVFile fileWithName:timeName data:imgData];
         upload.picFile = file;
         [self.dataArray addObject:upload];
     }
+    [self.view removeHUD];
     [self.colView reloadData];
-
 }
-
 - (NSMutableArray <AJUploadPicModel *> *)dataArray{
     if (_dataArray == nil) {
         _dataArray = [NSMutableArray new];

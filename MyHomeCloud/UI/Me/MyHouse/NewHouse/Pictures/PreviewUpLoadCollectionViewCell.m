@@ -34,9 +34,8 @@
     _modal = modal;
     
     //读取本地图片
-    NSString *filePath = [CTTool imagePathWithImageName:modal.picFile.name];
-    NSData *imgData = [NSData dataWithContentsOfFile:filePath];
-    _imgView.image = [UIImage imageWithData:imgData];
+
+    _imgView.image = [UIImage imageWithData:modal.picFile.getData];
 
     modal.delegate = self;
     _percentLabel.text = [NSString stringWithFormat:@"%ld%%",(long)modal.percent];

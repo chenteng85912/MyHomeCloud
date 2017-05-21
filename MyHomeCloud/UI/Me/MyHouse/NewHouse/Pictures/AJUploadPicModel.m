@@ -21,7 +21,11 @@
             if ([self.delegate respondsToSelector:@selector(uploadSuccess:)]) {
                 [self.delegate uploadSuccess:YES];
             }
-           
+            NSString *filePath = [CTTool imagePathWithImageName:weakSelf.picFile.name];
+            if (![[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+                [weakSelf.picFile.getData writeToFile:filePath atomically:YES];
+                
+            }
             weakSelf.state  =@2;
         }else{
             if ([self.delegate respondsToSelector:@selector(uploadSuccess:)]) {
