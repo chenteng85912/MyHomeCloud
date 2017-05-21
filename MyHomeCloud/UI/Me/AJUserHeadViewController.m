@@ -158,7 +158,6 @@ NSString  *const HEAD_URL = @"headUrl";
 - (void)deleteOldHeadImg{
     NSString *delCql = [NSString stringWithFormat:@"delete from _File where objectId = '%@'",[AVUser currentUser][USER_HEAD_IMG_ID]];
     [AVQuery doCloudQueryInBackgroundWithCQL:delCql callback:^(AVCloudQueryResult *result, NSError *error) {
-        // 如果 error 为空，说明保存成功
         if (!error) {
             debugLog(@"文件删除成功");
         }

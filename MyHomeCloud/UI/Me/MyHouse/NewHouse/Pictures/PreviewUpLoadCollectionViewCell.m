@@ -34,7 +34,6 @@
     _modal = modal;
     
     //读取本地图片
-
     _imgView.image = [UIImage imageWithData:modal.picFile.getData];
 
     modal.delegate = self;
@@ -75,7 +74,7 @@
 }
 - (TJCircleView *)circleView{
     if (_circleView ==nil) {
-        _circleView = [[TJCircleView alloc] initWithFrame:CGRectMake(0, 0, circleWidth, circleWidth) progessColor:NavigationBarColor progressTrackColor:[UIColor lightGrayColor] progressStrokeWidth:3.0];
+        _circleView = [[TJCircleView alloc] initWithFrame:CGRectMake(0, 0, circleWidth, circleWidth) progessColor:NavigationBarColor progressTrackColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.2] progressStrokeWidth:3.0];
         _circleView.center  = CGPointMake(self.frame.size.width/2, self.frame.size.width/2);
         [self addSubview:_circleView];
     }

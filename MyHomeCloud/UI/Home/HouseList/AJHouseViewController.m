@@ -48,7 +48,7 @@ CGFloat const HEAD_BUTTON_HEIGHT  = 0.0;
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     if (self.showModal==SearchHouseModal&&self.dataArray.count==0) {
-            [self.tableView addNoDataTipView];
+        [self.view addTipView:@"暂无搜索结果"];
 
     }
 }

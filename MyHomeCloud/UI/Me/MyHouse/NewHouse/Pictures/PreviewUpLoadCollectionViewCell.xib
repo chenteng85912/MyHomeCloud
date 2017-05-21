@@ -41,7 +41,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.39950770547945208" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vw0-RR-CUX">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="上传中" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vw0-RR-CUX">
                                 <rect key="frame" x="32" y="55" width="38" height="15"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
@@ -82,8 +82,8 @@
                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="mVU-ZP-Thy">
                         <rect key="frame" x="40" y="0.0" width="50" height="50"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                        <inset key="contentEdgeInsets" minX="10" minY="-10" maxX="-10" maxY="10"/>
-                        <state key="normal" image="delete"/>
+                        <inset key="imageEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="5"/>
+                        <state key="normal" image="close"/>
                     </button>
                 </subviews>
             </view>
@@ -112,7 +112,7 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="delete" width="50" height="50"/>
+        <image name="close" width="27" height="27"/>
         <image name="reUpload" width="32" height="32"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
