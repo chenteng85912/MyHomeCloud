@@ -268,7 +268,10 @@
     
     [self.view addSubview:self.tableView];
     
-    [self.tableView registerNib:[UINib nibWithNibName:[self customeTbViewCellClassName] bundle:nil] forCellReuseIdentifier:[self customeTbViewCellClassName]];
+    if ([self respondsToSelector:@selector(customeTbViewCellClassName)]) {
+        [self.tableView registerNib:[UINib nibWithNibName:[self customeTbViewCellClassName] bundle:nil] forCellReuseIdentifier:[self customeTbViewCellClassName]];
+
+    }
     
     if ([self respondsToSelector:@selector(makeMJRefresh)]) {
         _mjRefresh = [self makeMJRefresh];

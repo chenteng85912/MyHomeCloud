@@ -9,15 +9,17 @@
 #import "AJNewHouserViewController.h"
 #import "AJHouseDesViewController.h"
 #import "AJPickViewTextField.h"
+#import "AJAllHouseListViewController.h"
 
-@interface AJNewHouserViewController ()
+@interface AJNewHouserViewController ()<AJAllHouseListViewControllerDelegate>
 
 @property (strong, nonatomic) AVObject *houseData;
 @property (strong, nonatomic) NSArray *houseNameArray;
+@property (strong, nonatomic) AVObject *houseInfoData;
 
-@property (weak, nonatomic) IBOutlet UILabel *developName;
-@property (weak, nonatomic) IBOutlet UILabel *houseYear;
-@property (weak, nonatomic) IBOutlet UILabel *houseArea;
+@property (weak, nonatomic) IBOutlet UILabel *houseDesInfo;
+
+@property (weak, nonatomic) IBOutlet UILabel *houseBaseInfo;
 
 @property (weak, nonatomic) IBOutlet UITextField *houseName;
 @property (weak, nonatomic) IBOutlet UITextField *houseAreaage;
@@ -28,7 +30,6 @@
 @property (weak, nonatomic) IBOutlet AJPickViewTextField *houseFloor;
 @property (weak, nonatomic) IBOutlet AJPickViewTextField *houseDes;
 @property (weak, nonatomic) IBOutlet AJPickViewTextField *houseTotalFloor;
-
 
 @end
 
@@ -45,21 +46,21 @@
 - (AVObject *)creatHouseInfo{
 
     AVObject *houseData = [AVObject objectWithClassName:HOUSE_INFO];
+    
     [houseData setObject:[AVUser currentUser].mobilePhoneNumber      forKey:USER_PHONE];
-
+    
     [houseData setObject:_houseTotalFloor.text          forKey:HOUSE_TOTAL_FLOOR];
-    [houseData setObject:_houseName.text      forKey:HOUSE_ESTATE_NAME];
-    [houseData setObject:_developName.text      forKey:HOUSE_DEVELOPER];
+    [houseData setObject:_houseName.text                forKey:HOUSE_ESTATE_NAME];
+    [houseData setObject:self.houseInfoData[HOUSE_DEVELOPER]              forKey:HOUSE_DEVELOPER];
     [houseData setObject:_houseTotalFloor.text          forKey:HOUSE_BUILD_NUMBER];
-    [houseData setObject:_houseFloor.text              forKey:HOUSE_FLOOR_NUM];
-    [houseData setObject:_houseRooms.text           forKey:HOUSE_AMOUNT];
-
-    [houseData setObject:_houseArea.text          forKey:HOUSE_AREA];
+    [houseData setObject:_houseFloor.text               forKey:HOUSE_FLOOR_NUM];
+    [houseData setObject:_houseRooms.text               forKey:HOUSE_AMOUNT];
+    [houseData setObject:self.houseInfoData[HOUSE_AREA]                forKey:HOUSE_AREA];
     [houseData setObject:_houseAreaage.text             forKey:HOUSE_AREAAGE];
-    [houseData setObject:_houseTotal.text           forKey:HOUSE_TOTAL_PRICE];
+    [houseData setObject:_houseTotal.text               forKey:HOUSE_TOTAL_PRICE];
     
     //房屋单价
-    NSInteger unitPrice = _houseTotal.text.integerValue/_houseAreaage.text.integerValue;
+    NSInteger unitPrice = _houseTotal.text.integerValue*10000/_houseAreaage.text.integerValue;
     [houseData setObject:[NSString stringWithFormat:@"%ld",(long)unitPrice]        forKey:HOUSE_UNIT_PRICE];
 
     return houseData;
@@ -91,11 +92,22 @@
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
     
     if (textField.tag==0) {
+        AJAllHouseListViewController *houseList = [AJAllHouseListViewController new];
+        houseList.delegate = self;
+        APP_PUSH(houseList);
         return NO;
     }
     return YES;;
 }
 
+#pragma mark - AJAllHouseListViewControllerDelegate
+- (void)chooseHouseInfo:(AVObject *)houseInfo{
+    
+    self.houseInfoData = houseInfo;
+    _houseName.text = houseInfo[HOUSE_ESTATE_NAME];
+    _houseBaseInfo.text = [NSString stringWithFormat:@"%@ %@ %@",houseInfo[HOUSE_AREA],houseInfo[HOUSE_DEVELOPER],houseInfo[HOUSE_YEARS]];
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

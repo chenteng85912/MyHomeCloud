@@ -38,17 +38,19 @@
 #define dWidth              [[UIScreen mainScreen] bounds].size.width
 #define WeakSelf            __weak typeof(self) weakSelf = self;
 
+//本地用户名称
 #define USER_NAME                  @"UserName"
+
 #define USER_LOGIN_STATE           @"LoginState"//登录状态
-#define USER_HEAD_IMG_ID            @"UserHeadImgid"//头像文件id
+#define USER_HEAD_IMG_ID           @"UserHeadImgid"//头像文件id
+#define USER_ROLE                  @"userRole"//用户角色
 
 //数据表
 #define HOUSE_INFO          @"HouseInfo"//所有房屋数据表
 #define RECORD_HOUSE        @"RecordHouse"//浏览记录表
 #define FAVORITE_HOUSE      @"FavoriteHouse"//用户收藏表
 #define HOUSE_DESCRIBE      @"HouseDescribe"//房屋描述
-
-#define USER_ROLE            @"userRole"//用户角色
+#define HOUSE_BASE_INFO     @"HouseBaseInfo"//房屋基本信息
 
 //浏览记录 收藏保存的房屋数据
 #define HOUSE_OBJECT        @"HouseObject"//房屋数据  浏览记录 收藏
@@ -71,11 +73,10 @@
 #define HOUSE_PICTURE           @"Picture"//房屋图片
 #define HOUSE_IMAGES            @"HouseImages"//房屋图片
 #define HOUSE_THUMB             @"HouseThumb"//房屋缩略图片
-#define HOUSE_FILE_ID          @"HouseFileId"//房屋缩略图片id
-
+#define HOUSE_FILE_ID           @"HouseFileId"//房屋缩略图片id
 #define HOUSE_YEARS             @"HouseYears"//房屋年代
 
-#define YEARS_DES             @"YearsDes"//证满5年
+#define YEARS_DES            @"YearsDes"//证满5年
 #define WATCH_DES            @"WatchDes"//随时看房
 #define TRAFFIC_DES          @"TrafficDes"//交通情况
 #define DECORATE_DES         @"DecorateDes"//精装修

@@ -146,4 +146,27 @@
     }
     
 }
+
+//沙盒根目录地址
++ (NSString*)documentPath
+{
+    NSString *executableFile = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleExecutableKey];
+    
+    NSString *cachePath = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:executableFile];
+    
+    BOOL isDir = YES;
+    BOOL isExist = [[NSFileManager defaultManager] fileExistsAtPath:cachePath isDirectory:&isDir];
+    if(!isExist || !isDir)
+        [[NSFileManager defaultManager] createDirectoryAtPath:cachePath withIntermediateDirectories:NO attributes:nil error:nil];
+    
+    return cachePath;
+}
+
+//图片存储地址
++ (NSString *)imagePathWithImageName:(NSString *)imageName{
+    
+    NSString *imagePath = [[self documentPath] stringByAppendingPathComponent:imageName];
+    
+    return imagePath;
+}
 @end

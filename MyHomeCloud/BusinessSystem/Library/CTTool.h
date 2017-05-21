@@ -34,4 +34,8 @@
 
 //手机号合法验证
 + (BOOL)isValidateMobile:(NSString *)mobile;
+
+//图片存储地址
++ (NSString *)imagePathWithImageName:(NSString *)imageName;
+
 @end
