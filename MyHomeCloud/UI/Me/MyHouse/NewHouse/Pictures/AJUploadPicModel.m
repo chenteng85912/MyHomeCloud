@@ -12,7 +12,7 @@
 
 - (void)setPicFile:(AVFile *)picFile{
     _picFile = picFile;
-//    [self startUpload];
+    [self startUpload];
 }
 - (void)startUpload{
     WeakSelf;

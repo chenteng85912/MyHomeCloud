@@ -59,7 +59,7 @@
         [show addObject:img];
     }
     
-    [[CTImagePreviewViewController defaultShowPicture] showPictureWithUrlOrImages:show withCurrentPageNum:indexPath.row+1 andRootViewController:self];
+    [[CTImagePreviewViewController defaultShowPicture] showPictureWithUrlOrImages:show withCurrentPageNum:indexPath.row andRootViewController:self];
 }
 - (void)saveHouseData{
     NSMutableDictionary *houseDes = [NSMutableDictionary new];
