@@ -155,7 +155,7 @@
     //删除文件
     NSArray *fileArray = obj[HOUSE_FILE_ID];
     for (NSString *fileId in fileArray) {
-        [CTTool deleteFile:fileId];
+        [CTTool deleteFile:fileId complete:nil];
     }
     
 }

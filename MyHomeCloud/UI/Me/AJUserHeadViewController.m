@@ -148,7 +148,7 @@ NSString  *const HEAD_URL = @"headUrl";
         weakSelf.headImageView.image = image;
         
         //删除旧头像文件
-        [CTTool deleteFile:[AVUser currentUser][USER_HEAD_IMG_ID]];
+        [CTTool deleteFile:[AVUser currentUser][USER_HEAD_IMG_ID] complete:nil];
         
         //保存新头像地址
         [[AVUser currentUser] setObject:file.url forKey:HEAD_URL];

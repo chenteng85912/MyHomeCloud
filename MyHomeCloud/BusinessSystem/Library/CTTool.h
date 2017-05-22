@@ -39,5 +39,5 @@
 + (NSString *)imagePathWithImageName:(NSString *)imageName;
 
 //根据文件ID删除文件
-+ (void)deleteFile:(NSString *)fileId;
++ (void)deleteFile:(NSString *)fileId complete:(void(^)(void))completeHandle;
 @end

@@ -43,7 +43,7 @@
         [UIAlertController alertWithTitle:@"温馨提示" message:@"图片已上传，退出将丢失，是否退出?" cancelButtonTitle:@"取消" otherButtonTitles:@[@"退出"] preferredStyle:UIAlertControllerStyleAlert block:^(NSInteger buttonIndex) {
             if (buttonIndex==1) {
                 for (AJUploadPicModel *model in self.dataArray) {
-                    [CTTool deleteFile:model.picFile.objectId];
+                    [CTTool deleteFile:model.picFile.objectId complete:nil];
 
                 }
                 POPVC;
@@ -87,9 +87,15 @@
     
     [[CTImagePreviewViewController defaultShowPicture] showPictureWithUrlOrImages:show withCurrentPageNum:indexPath.row andRootViewController:self];
 }
+//保存房屋信息
 - (void)saveHouseData{
     if (self.dataArray.count==0) {
         [self.view showTips:@"暂未上传图片" withState:TYKYHUDModeWarning complete:nil];
+
+        return;
+    }
+    if (self.dataArray.count<6) {
+        [self.view showTips:@"请至少上传6张图片" withState:TYKYHUDModeWarning complete:nil];
 
         return;
     }
@@ -104,8 +110,6 @@
         return;
     }
    
-    //先上传图片
-    //    [house setObject:@[@""]     forKey:HOUSE_PICTURE];
     //    [houseData setObject:@"一单元"           forKey:HOUSE_UNIT];
     //    [houseData setObject:@"1101"            forKey:HOUSE_NUMBER];
     
@@ -206,7 +210,10 @@
 - (void)deleteCell:(NSInteger)index{
     AJUploadPicModel *modal = self.dataArray[index];
 
-    [CTTool deleteFile:modal.picFile.objectId];
+    WeakSelf;
+    [CTTool deleteFile:modal.picFile.objectId complete:^{
+        [weakSelf removeCollectionItem:index];
+    }];
    
 }
 //删除单元格动画
