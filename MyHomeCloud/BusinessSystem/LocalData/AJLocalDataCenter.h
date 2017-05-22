@@ -24,7 +24,7 @@ extern NSString *const TIME_KEY;
 + (void)saveLocalDataTime:(NSString *)localKey;
 
 //删除加班本地数据时间
-+ (void)removeLocalDataTime:(NSString *)localKey；
++ (void)removeLocalDataTime:(NSString *)localKey;
 
 //计算缓存大小
 + (NSString *)calcuteLocalDataSize;

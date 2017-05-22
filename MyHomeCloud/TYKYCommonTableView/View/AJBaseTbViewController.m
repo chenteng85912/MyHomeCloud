@@ -17,6 +17,8 @@
 @property (assign, nonatomic) NSInteger oldDataNum;
 //是否集成下拉刷新
 @property (assign, nonatomic) BOOL mjRefresh;
+//动画
+@property (assign, nonatomic) BOOL isAnimate;
 
 @end
 
@@ -202,6 +204,15 @@
     [self.dataArray addObjectsFromArray:dataArray];
     [self.tableView reloadData];
 
+    if (!_isAnimate) {
+        self.tableView.alpha = 0.0;
+        
+        [UIView animateWithDuration:0.3 animations:^{
+            self.tableView.alpha = 1.0;
+
+        }];
+        _isAnimate = YES;
+    }
 }
 //添加提示
 - (void)showTipView:(TableViewInitDataModal)type{
@@ -285,6 +296,7 @@
 //首次从网络请求数据
 - (void)initStartData{
     if (!_isLoad) {
+        
         _isLoad = YES;
 
     }else{

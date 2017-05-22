@@ -9,6 +9,8 @@
 #import "AJLocalDataCenter.h"
 
 NSString *const TIME_KEY = @"time_key";
+NSString *const ALLKEYS_KEY = @"ajCloudAllKeys";
+
 NSInteger const AUTOCLEAR_TIME = 5;//分钟
 
 @implementation AJLocalDataCenter
