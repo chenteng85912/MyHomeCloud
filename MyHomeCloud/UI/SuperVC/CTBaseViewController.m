@@ -7,6 +7,7 @@
 //
 
 #import "CTBaseViewController.h"
+#import "AJHouseDesViewController.h"
 
 @interface CTBaseViewController ()<UIGestureRecognizerDelegate>
 @end
@@ -79,7 +80,9 @@
     if (self.navigationController.viewControllers.count==0) {
         return NO;
     }else{
-       
+        if ([self isKindOfClass:[AJHouseDesViewController class]]) {
+            return NO;
+        }
         return YES;
     }
 }

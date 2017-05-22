@@ -39,8 +39,9 @@
     }
 }
 - (void)backToPreVC{
-    if (self.dataArray.count>0&&[self checkAllPicture]) {
-        [UIAlertController alertWithTitle:@"温馨提示" message:@"图片已上传，退出将丢失，是否退出?" cancelButtonTitle:@"取消" otherButtonTitles:@[@"退出"] preferredStyle:UIAlertControllerStyleAlert block:^(NSInteger buttonIndex) {
+    if (self.dataArray.count>0) {
+       
+        [UIAlertController alertWithTitle:@"温馨提示" message:@"退出将丢失已经上传的图片，是否退出?" cancelButtonTitle:@"取消" otherButtonTitles:@[@"退出"] preferredStyle:UIAlertControllerStyleAlert block:^(NSInteger buttonIndex) {
             if (buttonIndex==1) {
                 for (AJUploadPicModel *model in self.dataArray) {
                     [CTTool deleteFile:model.picFile.objectId complete:nil];
@@ -106,7 +107,7 @@
     [self.houseObj setObject:houseDes forKey:HOUSE_DESCRIBE];
 
     if (![self checkAllPicture]) {
-        [self.view showTips:@"图片正在上传" withState:TYKYHUDModeWarning complete:nil];
+        [self.view showTips:@"图片未全部上传成功" withState:TYKYHUDModeWarning complete:nil];
         return;
     }
    

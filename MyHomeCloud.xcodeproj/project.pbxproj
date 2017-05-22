@@ -26,7 +26,7 @@
 		0B2344681EC03095007A3AC1 /* TJDownloadTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B23440A1EC03095007A3AC1 /* TJDownloadTool.m */; };
 		0B23446A1EC03095007A3AC1 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B23440F1EC03095007A3AC1 /* Reachability.m */; };
 		0B23446C1EC03095007A3AC1 /* CTTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2344141EC03095007A3AC1 /* CTTool.m */; };
-		0B23446E1EC03095007A3AC1 /* TYKYLocalDataCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2344191EC03095007A3AC1 /* TYKYLocalDataCenter.m */; };
+		0B23446E1EC03095007A3AC1 /* AJLocalDataCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2344191EC03095007A3AC1 /* AJLocalDataCenter.m */; };
 		0B23447B1EC03095007A3AC1 /* AdjustScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2344421EC03095007A3AC1 /* AdjustScrollView.m */; };
 		0B23447C1EC03095007A3AC1 /* AutoRunLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2344441EC03095007A3AC1 /* AutoRunLabel.m */; };
 		0B302F561ECFE0D7006896CA /* AJHomeCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B302F4F1ECFE0D7006896CA /* AJHomeCellModel.m */; };
@@ -131,8 +131,8 @@
 		0B23440F1EC03095007A3AC1 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		0B2344131EC03095007A3AC1 /* CTTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTTool.h; sourceTree = "<group>"; };
 		0B2344141EC03095007A3AC1 /* CTTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTTool.m; sourceTree = "<group>"; };
-		0B2344181EC03095007A3AC1 /* TYKYLocalDataCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYKYLocalDataCenter.h; sourceTree = "<group>"; };
-		0B2344191EC03095007A3AC1 /* TYKYLocalDataCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYKYLocalDataCenter.m; sourceTree = "<group>"; };
+		0B2344181EC03095007A3AC1 /* AJLocalDataCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJLocalDataCenter.h; sourceTree = "<group>"; };
+		0B2344191EC03095007A3AC1 /* AJLocalDataCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJLocalDataCenter.m; sourceTree = "<group>"; };
 		0B2344411EC03095007A3AC1 /* AdjustScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdjustScrollView.h; sourceTree = "<group>"; };
 		0B2344421EC03095007A3AC1 /* AdjustScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdjustScrollView.m; sourceTree = "<group>"; };
 		0B2344431EC03095007A3AC1 /* AutoRunLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoRunLabel.h; sourceTree = "<group>"; };
@@ -387,8 +387,8 @@
 		0B2344171EC03095007A3AC1 /* LocalData */ = {
 			isa = PBXGroup;
 			children = (
-				0B2344181EC03095007A3AC1 /* TYKYLocalDataCenter.h */,
-				0B2344191EC03095007A3AC1 /* TYKYLocalDataCenter.m */,
+				0B2344181EC03095007A3AC1 /* AJLocalDataCenter.h */,
+				0B2344191EC03095007A3AC1 /* AJLocalDataCenter.m */,
 			);
 			path = LocalData;
 			sourceTree = "<group>";
@@ -887,7 +887,7 @@
 				0B2344601EC03095007A3AC1 /* UIView+SDXIBExtension.m in Sources */,
 				0B6E12C51EC4235300103571 /* AJLoginViewController.m in Sources */,
 				0B302F591ECFE0D7006896CA /* AJHouseViewController.m in Sources */,
-				0B23446E1EC03095007A3AC1 /* TYKYLocalDataCenter.m in Sources */,
+				0B23446E1EC03095007A3AC1 /* AJLocalDataCenter.m in Sources */,
 				0B2344591EC03095007A3AC1 /* NSMutableArray+CTExtension.m in Sources */,
 				0BE4D9EF1ECC6B8200E4ADCD /* AJHomeViewController.m in Sources */,
 				0B59A5491ED1C12E00E8E787 /* AJHouseDesViewController.m in Sources */,

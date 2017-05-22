@@ -35,9 +35,6 @@
 //手机号合法验证
 + (BOOL)isValidateMobile:(NSString *)mobile;
 
-//图片存储地址
-+ (NSString *)imagePathWithImageName:(NSString *)imageName;
-
 //根据文件ID删除文件
 + (void)deleteFile:(NSString *)fileId complete:(void(^)(void))completeHandle;
 @end

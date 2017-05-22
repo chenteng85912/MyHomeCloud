@@ -65,6 +65,9 @@
 
     return houseData;
 }
+- (IBAction)completeHouseInfo:(UIButton *)sender {
+    [self addHomeDes];
+}
 
 - (void)addHomeDes{
     [self.view endEditing:YES];
@@ -93,6 +96,8 @@
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
     
     if (textField.tag==0) {
+        [self.view endEditing:YES];
+
         AJAllHouseListViewController *houseList = [AJAllHouseListViewController new];
         houseList.delegate = self;
         APP_PUSH(houseList);

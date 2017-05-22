@@ -121,13 +121,13 @@ NSString  *const HEAD_URL = @"headUrl";
 }
 #pragma mark - CTONEPhotoDelegate
 - (void)sendOnePhoto:(UIImage *)image withImageName:(NSString *)imageName;{
-    [self saveUserHeadImage:[CTTool imageCompressForWidth:image targetWidth:450]];
+    [self saveUserHeadImage:[CTTool imageCompressForWidth:image targetWidth:600]];
     
 }
 #pragma mark 上传用户头像
 - (void)saveUserHeadImage:(UIImage *)image{
     
-    NSData *imgData = UIImageJPEGRepresentation(image, 1);
+    NSData *imgData = UIImageJPEGRepresentation(image, 0.8);
     AVFile *file = [AVFile fileWithName:[AVUser currentUser].mobilePhoneNumber data:imgData];
     
     [self.view showHUD:@"正在上传..."];

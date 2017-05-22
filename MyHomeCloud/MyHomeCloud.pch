@@ -24,6 +24,7 @@
 #import "UIAlertController+TYKYAlertBlock.h"
 #import <TYKYLibrary/TYKYLibrary.h>
 #import "UIImageView+WebCache.h"
+#import "AJLocalDataCenter.h"
 
 #endif /* MyHomeCloud_pch */
 

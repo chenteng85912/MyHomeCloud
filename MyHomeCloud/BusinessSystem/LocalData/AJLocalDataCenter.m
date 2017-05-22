@@ -6,14 +6,13 @@
 //  Copyright © 2017年 深圳太极云软有限公司. All rights reserved.
 //
 
-#import "TYKYLocalDataCenter.h"
-#import <SDWebImage/SDImageCache.h>
+#import "AJLocalDataCenter.h"
 
 NSString *const TIME_KEY = @"time_key";
 NSString *const ALLKEYS_KEY = @"allKeys";
-NSInteger const AUTOCLEAR_TIME = 24;//小时
+NSInteger const AUTOCLEAR_TIME = 5;//分钟
 
-@implementation TYKYLocalDataCenter
+@implementation AJLocalDataCenter
 //沙盒根目录地址
 + (NSString*)documentPath
 {
@@ -44,81 +43,24 @@ NSInteger const AUTOCLEAR_TIME = 24;//小时
     
     return imgPath;
 }
-//读取本地数据
-+ (id)readLocalData:(NSString *)localDataKey{
-    if (!localDataKey) {
-        NSLog(@"没有设置读取本地数据的key");
-        
-        return nil;
-    }
-    NSString *fileString = [[NSUserDefaults standardUserDefaults] objectForKey:localDataKey];
-    if (!fileString) {
-        NSLog(@"本地缓存为空");
-        return nil;
-        
-    }
-    NSLog(@"读取本地缓存成功");
-    return [self parseJSONString:fileString];
-}
 
-//保存本地数据
-+ (BOOL)saveLocalData:(id)localData forKey:(NSString *)localDataKey{
-    if (!localDataKey) {
-        NSLog(@"没有设置存储本地数据的key");
-
-        return NO;
-    }
-    if ([localData isKindOfClass:[NSNull class]]) {
-        return NO;
-    }
-    if (!localData) {
-        
-        return NO;
-    }
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:localData options:NSJSONWritingPrettyPrinted error:nil];
-    NSString *fileString = [[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding];
-    [[NSUserDefaults standardUserDefaults] setObject:fileString forKey:localDataKey];
-    NSLog(@"存储本地数据成功");
-    
-    //记录保存数据的时间
-    NSString *newKey = [TIME_KEY stringByAppendingString:localDataKey];
-    NSInteger time = [[NSDate new] timeIntervalSince1970];
-    [[NSUserDefaults standardUserDefaults] setInteger:time forKey:newKey];
-    
-    //保存key
-    NSArray *keyArray = [[NSUserDefaults standardUserDefaults] objectForKey:ALLKEYS_KEY];
-    NSMutableArray *newArray = [NSMutableArray new];
-    [newArray addObjectsFromArray:keyArray];
-
-    if (![keyArray containsObject:localDataKey]) {
-        [newArray addObject:localDataKey];
-        [[NSUserDefaults standardUserDefaults] setObject:newArray forKey:ALLKEYS_KEY];
-
-    }
-    return YES;
-    
-}
-//字符串转对象
-+ (id)parseJSONString:(NSString *)JSONString {
-    NSData *JSONData = [JSONString dataUsingEncoding:NSUTF8StringEncoding];
-    id responseJSON = [NSJSONSerialization JSONObjectWithData:JSONData options:NSJSONReadingMutableLeaves error:nil];
-    return responseJSON;
-}
 
 //检测本地数据时效性
 + (BOOL)checkLocalData:(NSString *)localKey{
     
-    NSString *newKey = [TIME_KEY stringByAppendingString:localKey];
+    NSString *timeKey = [TIME_KEY stringByAppendingString:localKey];
     
-    NSInteger oldTime = [[NSUserDefaults standardUserDefaults] integerForKey:newKey];
-    NSInteger time = [[NSDate new] timeIntervalSince1970];
+    NSInteger oldTime = [[NSUserDefaults standardUserDefaults] integerForKey:timeKey];
+    NSInteger nowTime = [[NSDate new] timeIntervalSince1970];
     
     //每天刷新一次
-    if ((time-oldTime)>=AUTOCLEAR_TIME*60*60) {
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:localKey];//清空数据
-        return YES;
+    if ((nowTime-oldTime)>=AUTOCLEAR_TIME*60) {
+        [MyUserDefaults setInteger:nowTime forKey:timeKey];
+
+        return NO;
     }
-    return NO;
+    
+    return YES;
     
 }
 //清理缓存

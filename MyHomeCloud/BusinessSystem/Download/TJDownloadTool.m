@@ -7,7 +7,6 @@
 //
 
 #import "TJDownloadTool.h"
-#import "TYKYLocalDataCenter.h"
 
 
 @interface TJDownloadTool ()<NSURLSessionDownloadDelegate>
@@ -93,7 +92,7 @@
 didFinishDownloadingToURL:(NSURL *)location
 {
     
-    NSString *createPath = [TYKYLocalDataCenter filePathWithURLstring:self.downloadURl.absoluteString];
+    NSString *createPath = [AJLocalDataCenter filePathWithURLstring:self.downloadURl.absoluteString];
     NSString *fileExten = [self fetchFilePathExtension];
     if (!fileExten) {
         return;
@@ -196,7 +195,7 @@ expectedTotalBytes:(int64_t)expectedTotalBytes
 //保存文件后缀名
 - (NSString *)fetchFilePathExtension{
     
-    NSString *createPath = [TYKYLocalDataCenter filePathWithURLstring:self.downloadURl.absoluteString];
+    NSString *createPath = [AJLocalDataCenter filePathWithURLstring:self.downloadURl.absoluteString];
     NSString *fileExten = [MyUserDefaults objectForKey:createPath];
     if (fileExten) {
         return fileExten;

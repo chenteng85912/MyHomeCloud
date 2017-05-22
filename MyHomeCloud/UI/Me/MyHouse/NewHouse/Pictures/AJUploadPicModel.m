@@ -21,7 +21,7 @@
             if ([self.delegate respondsToSelector:@selector(uploadSuccess:)]) {
                 [self.delegate uploadSuccess:YES];
             }
-            NSString *filePath = [CTTool imagePathWithImageName:weakSelf.picFile.name];
+            NSString *filePath = [AJLocalDataCenter imagePathWithImageName:weakSelf.picFile.name];
             if (![[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
                 [weakSelf.picFile.getData writeToFile:filePath atomically:YES];
                 

@@ -10,7 +10,6 @@
 #import "AJMeCenterData.h"
 #import "CTDelegateObj.h"
 #import "CTDataSourceObj.h"
-#import "TYKYLocalDataCenter.h"
 #import "AJMeModel.h"
 #import "AppDelegate.h"
 
@@ -84,6 +83,7 @@ static NSString *CellIdentifier = @"TJSettingsCellId";
         Class vcClass = NSClassFromString(model.className);//反射
         UIViewController *vc = [vcClass new];
         vc.title = model.title;
+       
         APP_PUSH(vc);
         
     }else{
@@ -92,15 +92,15 @@ static NSString *CellIdentifier = @"TJSettingsCellId";
     }
 }
 - (IBAction)logoutAction:(UIButton *)sender {
-    WeakSelf;
+
     [UIAlertController alertWithTitle:nil message:nil cancelButtonTitle:@"取消" otherButtonTitles:@[@"退出"] preferredStyle:UIAlertControllerStyleActionSheet block:^(NSInteger buttonIndex) {
         if (buttonIndex==1) {
-            [weakSelf.view showHUD:@"正在注销..."];
+            [CTTool showKeyWindowHUD:@"正在注销..."];
             [[AVUser currentUser] setObject:@0 forKey:USER_LOGIN_STATE];
             [[AVUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-                [weakSelf.view removeHUD];
+                [CTTool removeKeyWindowHUD];
                 [AVUser logOut];
-                [weakSelf.view showTips:@"注销成功" withState:TYKYHUDModeSuccess complete:^{
+                [[UIApplication sharedApplication].keyWindow showTips:@"注销成功" withState:TYKYHUDModeSuccess complete:^{
                     [(AppDelegate *)[UIApplication sharedApplication].delegate switchRootVC];
 
                 }];
@@ -117,7 +117,7 @@ static NSString *CellIdentifier = @"TJSettingsCellId";
     [UIAlertController alertWithTitle:@"确定清理?" message:nil cancelButtonTitle:@"取消" otherButtonTitles:@[@"清理缓存"] preferredStyle:UIAlertControllerStyleActionSheet block:^(NSInteger buttonIndex) {
         if (buttonIndex==1) {
             [weakSelf.view showHUD:@"正在清理..."];
-            [TYKYLocalDataCenter clearLocalData];
+            [AJLocalDataCenter clearLocalData];
             [AVQuery clearAllCachedResults];
 
             dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC));
@@ -142,7 +142,7 @@ static NSString *CellIdentifier = @"TJSettingsCellId";
     label.textAlignment = NSTextAlignmentRight;
     label.tag = 10001;
     [view addSubview:label];
-    label.text = [TYKYLocalDataCenter calcuteLocalDataSize];
+    label.text = [AJLocalDataCenter calcuteLocalDataSize];
 }
 - (UIView *)topView{
     

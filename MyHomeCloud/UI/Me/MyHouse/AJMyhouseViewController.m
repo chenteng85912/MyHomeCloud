@@ -31,6 +31,10 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshHomeData) name:kNewHouseNotification object:nil];
    
 }
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+}
 #pragma mark - AJTbViewProtocol
 - (BOOL)makeMJRefresh{
     return YES;
@@ -39,7 +43,7 @@
     return UITableViewStyleGrouped;
 }
 - (NSString *)requestClassName{
-    if (self.showModal==MyHouseModal||AllHouseModal) {
+    if (self.showModal==MyHouseModal||self.showModal==AllHouseModal) {
         return HOUSE_INFO;
 
     }else if (self.showModal == FavoriteModal){

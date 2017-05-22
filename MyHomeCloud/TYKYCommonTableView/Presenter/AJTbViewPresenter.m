@@ -8,6 +8,7 @@
 
 #import "AJTbViewPresenter.h"
 #import "AJTbViewCellModel.h"
+#import "AJLocalDataCenter.h"
 
 //默认分页大小
 NSInteger const defaultPageSize = 50;
@@ -31,12 +32,14 @@ NSInteger const defaultPageSize = 50;
     if (![_tbViewVC respondsToSelector:@selector(requestClassName)]) {
         return;
     }
+    self.query.className = [_tbViewVC requestClassName];
+
     if ([_tbViewVC respondsToSelector:@selector(pageSize)]) {
         _pageSize = [_tbViewVC pageSize];
     }else{
         _pageSize = defaultPageSize;
     }
-    
+
     if ([_tbViewVC respondsToSelector:@selector(requestKeyName)]&&[_tbViewVC requestKeyName]) {
         if ([[_tbViewVC requestKeyName] isEqualToString:USER_PHONE]) {
             [self.query whereKey:[_tbViewVC requestKeyName] equalTo:[AVUser currentUser].mobilePhoneNumber];
@@ -59,10 +62,19 @@ NSInteger const defaultPageSize = 50;
             self.query = mulQuery;
         }
 
+    }else{
+        //先读取本地 后读取网络
+        if ([AJLocalDataCenter checkLocalData:HOUSE_INFO ]&&self.query.hasCachedResult) {
+            self.query.cachePolicy = kAVCachePolicyCacheOnly;
+
+        }else{
+            self.query.cachePolicy = kAVCachePolicyNetworkOnly;
+
+        }
+      
     }
 
     _pageNo = 0;
-    self.query.className = [_tbViewVC requestClassName];
     self.query.skip = _pageSize *_pageNo;
     if (![self.query.className isEqualToString:HOUSE_INFO]) {
         [self.query includeKey:[NSString stringWithFormat:@"%@.%@",HOUSE_OBJECT,HOUSE_INFO]];
@@ -135,7 +147,6 @@ NSInteger const defaultPageSize = 50;
 - (AVQuery *)query{
     if (_query ==nil) {
         _query = [AVQuery new];
-//        _query.cachePolicy = kAVCachePolicyCacheElseNetwork;
         _query.limit = _pageSize;
         [_query orderByDescending:@"createdAt"];
     }

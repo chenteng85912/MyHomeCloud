@@ -8,19 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TYKYLocalDataCenter : NSObject
+@interface AJLocalDataCenter : NSObject
 
 //图片存储地址
 + (NSString *)imagePathWithImageName:(NSString *)imageName;
 
 //文件存储地址
 + (NSString *)filePathWithURLstring:(NSString *)fileUrl;
-
-//读取本地数据
-+ (id)readLocalData:(NSString *)localDataKey;
-
-//保存本地数据
-+ (BOOL)saveLocalData:(id)localData forKey:(NSString *)localDataKey;
 
 //检测本地数据时效性
 + (BOOL)checkLocalData:(NSString *)localKey;
