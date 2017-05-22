@@ -36,6 +36,7 @@ CGFloat const IMAGEHEIGHT  = 200.0f;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.dataArray = [AJMeCenterData userCenterData];
+    
     [self.tbView registerClass:[UITableViewCell class] forCellReuseIdentifier:CellIdentifier];
     self.tbView.tableHeaderView = self.headView;
     

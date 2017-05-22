@@ -88,7 +88,10 @@ NSInteger const defaultPageSize = 50;
 
         }else{
             self.requestState = RequestSuccessModal;
-            
+            if (![self.query.className isEqualToString:HOUSE_INFO]) {
+                [AJLocalDataCenter saveLocalDataTime:HOUSE_INFO];
+                
+            }
 
         }
         [_tbViewVC reloadTableView:[self processData:objects]  modal:StartInitDataModal];

@@ -9,7 +9,6 @@
 #import "AJLocalDataCenter.h"
 
 NSString *const TIME_KEY = @"time_key";
-NSString *const ALLKEYS_KEY = @"allKeys";
 NSInteger const AUTOCLEAR_TIME = 5;//分钟
 
 @implementation AJLocalDataCenter
@@ -43,16 +42,31 @@ NSInteger const AUTOCLEAR_TIME = 5;//分钟
     
     return imgPath;
 }
++ (void)saveLocalDataTime:(NSString *)localKey{
+    NSString *timeKey = [TIME_KEY stringByAppendingString:localKey];
 
+    NSInteger nowTime = [[NSDate new] timeIntervalSince1970];
+    [MyUserDefaults setInteger:nowTime forKey:timeKey];
 
+}
++ (void)removeLocalDataTime:(NSString *)localKey{
+    NSString *timeKey = [TIME_KEY stringByAppendingString:localKey];
+
+    [MyUserDefaults removeObjectForKey:timeKey];
+
+}
 //检测本地数据时效性
 + (BOOL)checkLocalData:(NSString *)localKey{
     
     NSString *timeKey = [TIME_KEY stringByAppendingString:localKey];
     
-    NSInteger oldTime = [[NSUserDefaults standardUserDefaults] integerForKey:timeKey];
+    NSInteger oldTime = [MyUserDefaults integerForKey:timeKey];
     NSInteger nowTime = [[NSDate new] timeIntervalSince1970];
     
+    if (!oldTime) {
+        return NO;
+
+    }
     //每天刷新一次
     if ((nowTime-oldTime)>=AUTOCLEAR_TIME*60) {
         [MyUserDefaults setInteger:nowTime forKey:timeKey];

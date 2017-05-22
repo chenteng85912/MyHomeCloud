@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString *const TIME_KEY;
 @interface AJLocalDataCenter : NSObject
 
 //图片存储地址
@@ -18,6 +19,12 @@
 
 //检测本地数据时效性
 + (BOOL)checkLocalData:(NSString *)localKey;
+
+//保存加载本地数据时间
++ (void)saveLocalDataTime:(NSString *)localKey;
+
+//删除加班本地数据时间
++ (void)removeLocalDataTime:(NSString *)localKey；
 
 //计算缓存大小
 + (NSString *)calcuteLocalDataSize;

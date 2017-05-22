@@ -108,8 +108,17 @@
                         [weakSelf.view showTips:@"网络错误,请重试" withState:TYKYHUDModeFail complete:nil];
                         return;
                     }
+
+                    //我的房源  所有房源
                     if ([[weakSelf requestClassName] isEqualToString:HOUSE_INFO]) {
                         [weakSelf deleteRecordData:model.objectData];
+                        
+                        //删除房屋信息后 清空缓存
+                        if (![weakSelf requestKeyName]) {
+                            [AJLocalDataCenter removeLocalDataTime:HOUSE_INFO];
+
+                        }
+
                     }
                     
                     [weakSelf.dataArray removeObjectAtIndex:indexPath.row];
@@ -136,12 +145,14 @@
     [self.baseQuery whereKey:HOUSE_ID equalTo:obj.objectId];
 
     WeakSelf;
+    //删除浏览记录
     [self.baseQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         if (objects.count>0) {
             for (AVObject *obje in objects) {
                 [obje deleteInBackground];
             }
         }
+        //删除收藏
         weakSelf.baseQuery.className = FAVORITE_HOUSE;
         [weakSelf.baseQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
             if (objects.count>0) {
