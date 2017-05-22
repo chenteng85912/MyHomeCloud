@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B15DE7E1ED2C8BE003A54E3 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B15DE7D1ED2C8BE003A54E3 /* AFNetworkReachabilityManager.m */; };
 		0B2343BD1EC01CA1007A3AC1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2343BC1EC01CA1007A3AC1 /* main.m */; };
 		0B2343C01EC01CA1007A3AC1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2343BF1EC01CA1007A3AC1 /* AppDelegate.m */; };
 		0B2343C91EC01CA1007A3AC1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B2343C71EC01CA1007A3AC1 /* Main.storyboard */; };
@@ -24,7 +25,6 @@
 		0B2344611EC03095007A3AC1 /* UIView+TYKYPrompt.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2343F81EC03095007A3AC1 /* UIView+TYKYPrompt.m */; };
 		0B2344631EC03095007A3AC1 /* Colours.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2343FD1EC03095007A3AC1 /* Colours.m */; };
 		0B2344681EC03095007A3AC1 /* TJDownloadTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B23440A1EC03095007A3AC1 /* TJDownloadTool.m */; };
-		0B23446A1EC03095007A3AC1 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B23440F1EC03095007A3AC1 /* Reachability.m */; };
 		0B23446C1EC03095007A3AC1 /* CTTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2344141EC03095007A3AC1 /* CTTool.m */; };
 		0B23446E1EC03095007A3AC1 /* AJLocalDataCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2344191EC03095007A3AC1 /* AJLocalDataCenter.m */; };
 		0B23447B1EC03095007A3AC1 /* AdjustScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2344421EC03095007A3AC1 /* AdjustScrollView.m */; };
@@ -94,6 +94,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B15DE7C1ED2C8BE003A54E3 /* AFNetworkReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkReachabilityManager.h; sourceTree = "<group>"; };
+		0B15DE7D1ED2C8BE003A54E3 /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
 		0B2343B81EC01CA1007A3AC1 /* MyHomeCloud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyHomeCloud.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B2343BC1EC01CA1007A3AC1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0B2343BE1EC01CA1007A3AC1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -127,8 +129,6 @@
 		0B2343FD1EC03095007A3AC1 /* Colours.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Colours.m; sourceTree = "<group>"; };
 		0B2344091EC03095007A3AC1 /* TJDownloadTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TJDownloadTool.h; sourceTree = "<group>"; };
 		0B23440A1EC03095007A3AC1 /* TJDownloadTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TJDownloadTool.m; sourceTree = "<group>"; };
-		0B23440E1EC03095007A3AC1 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
-		0B23440F1EC03095007A3AC1 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		0B2344131EC03095007A3AC1 /* CTTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTTool.h; sourceTree = "<group>"; };
 		0B2344141EC03095007A3AC1 /* CTTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTTool.m; sourceTree = "<group>"; };
 		0B2344181EC03095007A3AC1 /* AJLocalDataCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJLocalDataCenter.h; sourceTree = "<group>"; };
@@ -369,8 +369,8 @@
 		0B23440D1EC03095007A3AC1 /* InternetStatus */ = {
 			isa = PBXGroup;
 			children = (
-				0B23440E1EC03095007A3AC1 /* Reachability.h */,
-				0B23440F1EC03095007A3AC1 /* Reachability.m */,
+				0B15DE7C1ED2C8BE003A54E3 /* AFNetworkReachabilityManager.h */,
+				0B15DE7D1ED2C8BE003A54E3 /* AFNetworkReachabilityManager.m */,
 			);
 			path = InternetStatus;
 			sourceTree = "<group>";
@@ -890,6 +890,7 @@
 				0B23446E1EC03095007A3AC1 /* AJLocalDataCenter.m in Sources */,
 				0B2344591EC03095007A3AC1 /* NSMutableArray+CTExtension.m in Sources */,
 				0BE4D9EF1ECC6B8200E4ADCD /* AJHomeViewController.m in Sources */,
+				0B15DE7E1ED2C8BE003A54E3 /* AFNetworkReachabilityManager.m in Sources */,
 				0B59A5491ED1C12E00E8E787 /* AJHouseDesViewController.m in Sources */,
 				0B57F5A11EC1991800B89CE2 /* AjMainTabBarViewController.m in Sources */,
 				0B59A5551ED1CBA400E8E787 /* AJUploadPicModel.m in Sources */,
@@ -909,7 +910,6 @@
 				0B2343BD1EC01CA1007A3AC1 /* main.m in Sources */,
 				0B302F571ECFE0D7006896CA /* AJHomeTableViewCell.m in Sources */,
 				0B59A5511ED1CB5A00E8E787 /* PreviewUpLoadCollectionViewCell.m in Sources */,
-				0B23446A1EC03095007A3AC1 /* Reachability.m in Sources */,
 				A40B20CE1EC7395B0027399E /* AJMyhouseViewController.m in Sources */,
 				0B302F6E1ED04F47006896CA /* AJUserHeadViewController.m in Sources */,
 				A40B20BE1EC7383F0027399E /* AJTbViewCellModel.m in Sources */,

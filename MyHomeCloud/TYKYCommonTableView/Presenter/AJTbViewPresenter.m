@@ -42,6 +42,7 @@ NSInteger const defaultPageSize = 50;
 
     if ([_tbViewVC respondsToSelector:@selector(requestKeyName)]&&[_tbViewVC requestKeyName]) {
         if ([[_tbViewVC requestKeyName] isEqualToString:USER_PHONE]) {
+            //我的收藏 我的浏览记录
             [self.query whereKey:[_tbViewVC requestKeyName] equalTo:[AVUser currentUser].mobilePhoneNumber];
 
         }else{

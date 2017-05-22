@@ -41,14 +41,10 @@
     self.tableView.frame = self.view.bounds;
     
     if (!_isLoad) {
-        _isLoad = YES;
         
-        if (_mjRefresh) {
-            [self.tableView.mj_header beginRefreshing];
-
-        }else{
-            [self initStartData];
-        }
+        [self.tableView showHUD:nil];
+        [self initStartData];
+        
     }
 }
 - (void)viewWillDisappear:(BOOL)animated
@@ -174,9 +170,6 @@
 //重置上拉刷新
 - (void)reStupTableviewFooterView:(NSInteger)pageSize{
     
-    if (!_mjRefresh) {
-        return;
-    }
     self.tableView.tableFooterView = nil;
 
     if (self.dataArray.count%pageSize) {
@@ -202,7 +195,7 @@
 }
 //刷新数据
 - (void)reloadTableView:(NSArray *)dataArray modal:(TableViewInitDataModal)type{
-   
+    [self.tableView removeHUD];
     if (type==StartInitDataModal) {
         [self.dataArray removeAllObjects];
     }
@@ -291,6 +284,16 @@
 #pragma mark -private methods 加载数据
 //首次从网络请求数据
 - (void)initStartData{
+    if (!_isLoad) {
+        _isLoad = YES;
+
+    }else{
+        //手动下拉 清空本地数据
+        if ([[self requestClassName] isEqualToString:HOUSE_INFO]&&![self requestKeyName]) {
+            [AJLocalDataCenter removeLocalDataTime:HOUSE_INFO];
+
+        }
+    }
     _oldDataNum = 0;
     [self.presenter initStartData];
 }
