@@ -146,25 +146,18 @@ NSString  *const HEAD_URL = @"headUrl";
             [weakSelf backToPreVC];
         }];
         weakSelf.headImageView.image = image;
-        [weakSelf deleteOldHeadImg];
+        
+        //删除旧头像文件
+        [CTTool deleteFile:[AVUser currentUser][USER_HEAD_IMG_ID]];
+        
+        //保存新头像地址
         [[AVUser currentUser] setObject:file.url forKey:HEAD_URL];
         [[AVUser currentUser] setObject:file.objectId forKey:USER_HEAD_IMG_ID];
-        
         [[AVUser currentUser] saveInBackground];
         
     }];
 }
-//删除旧头像文件
-- (void)deleteOldHeadImg{
-    NSString *delCql = [NSString stringWithFormat:@"delete from _File where objectId = '%@'",[AVUser currentUser][USER_HEAD_IMG_ID]];
-    [AVQuery doCloudQueryInBackgroundWithCQL:delCql callback:^(AVCloudQueryResult *result, NSError *error) {
-        if (!error) {
-            debugLog(@"文件删除成功");
-        }
-        
-    }];
-    
-}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

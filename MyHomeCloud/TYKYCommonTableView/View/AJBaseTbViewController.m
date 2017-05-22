@@ -155,14 +155,7 @@
     //删除文件
     NSArray *fileArray = obj[HOUSE_FILE_ID];
     for (NSString *fileId in fileArray) {
-        NSString *delCql = [NSString stringWithFormat:@"delete from _File where objectId = '%@'",fileId];
-        [AVQuery doCloudQueryInBackgroundWithCQL:delCql callback:^(AVCloudQueryResult *result, NSError *error) {
-            // 如果 error 为空，说明保存成功
-            if (!error) {
-                debugLog(@"文件删除成功");
-            }
-            
-        }];
+        [CTTool deleteFile:fileId];
     }
     
 }

@@ -67,6 +67,7 @@
 }
 
 - (void)addHomeDes{
+    [self.view endEditing:YES];
     if (!self.houseName.hasText) {
         [self.view showTips:self.houseName.placeholder withState:TYKYHUDModeWarning complete:nil];
         return;

@@ -35,8 +35,24 @@
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     if (self.dataArray.count==0) {
-        [self.view addTipView:@"暂无图片"];
+        [self.colView addTipView:@"暂无图片"];
     }
+}
+- (void)backToPreVC{
+    if (self.dataArray.count>0&&[self checkAllPicture]) {
+        [UIAlertController alertWithTitle:@"温馨提示" message:@"图片已上传，退出将丢失，是否退出?" cancelButtonTitle:@"取消" otherButtonTitles:@[@"退出"] preferredStyle:UIAlertControllerStyleAlert block:^(NSInteger buttonIndex) {
+            if (buttonIndex==1) {
+                for (AJUploadPicModel *model in self.dataArray) {
+                    [CTTool deleteFile:model.picFile.objectId];
+
+                }
+                POPVC;
+
+            }
+        }];
+        return;
+    }
+    POPVC;
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
  
@@ -73,7 +89,7 @@
 }
 - (void)saveHouseData{
     if (self.dataArray.count==0) {
-        [self.view showTips:@"未上传图片" withState:TYKYHUDModeWarning complete:nil];
+        [self.view showTips:@"暂未上传图片" withState:TYKYHUDModeWarning complete:nil];
 
         return;
     }
@@ -166,7 +182,7 @@
     }
     [self.view removeHUD];
     if (self.dataArray.count>0) {
-        [self.view hiddenTipsView];
+        [self.colView hiddenTipsView];
 
     }
     [self.colView reloadData];
@@ -190,15 +206,8 @@
 - (void)deleteCell:(NSInteger)index{
     AJUploadPicModel *modal = self.dataArray[index];
 
-    NSString *delCql = [NSString stringWithFormat:@"delete from _File where objectId = '%@'",modal.picFile.objectId];
-    [AVQuery doCloudQueryInBackgroundWithCQL:delCql callback:^(AVCloudQueryResult *result, NSError *error) {
-        if (error) {
-            [self.view showTips:@"删除失败" withState:TYKYHUDModeFail complete:nil];
-            return ;
-        }
-        [self removeCollectionItem:index];
-        
-    }];
+    [CTTool deleteFile:modal.picFile.objectId];
+   
 }
 //删除单元格动画
 - (void)removeCollectionItem:(NSInteger)index{

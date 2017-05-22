@@ -169,4 +169,15 @@
     
     return imagePath;
 }
+//根据文件ID删除文件
++ (void)deleteFile:(NSString *)fileId{
+    NSString *delCql = [NSString stringWithFormat:@"delete from _File where objectId = '%@'",fileId];
+    [AVQuery doCloudQueryInBackgroundWithCQL:delCql callback:^(AVCloudQueryResult *result, NSError *error) {
+        if (!error) {
+            debugLog(@"文件删除成功");
+        }
+        
+    }];
+    
+}
 @end
