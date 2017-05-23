@@ -172,6 +172,7 @@
 //重置上拉刷新
 - (void)reStupTableviewFooterView:(NSInteger)pageSize{
     
+    
     self.tableView.tableFooterView = nil;
 
     if (self.dataArray.count%pageSize) {

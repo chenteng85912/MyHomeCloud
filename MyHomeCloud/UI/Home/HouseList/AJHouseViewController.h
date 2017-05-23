@@ -15,5 +15,6 @@ typedef NS_ENUM(NSInteger,HouseShowModal) {
 
 @interface AJHouseViewController : AJBaseTbViewController
 @property (assign, nonatomic) HouseShowModal showModal;
+@property (strong, nonatomic) NSString *searchKey;//房屋详情界面 进入查看更多相似房源 传入关键字
 
 @end

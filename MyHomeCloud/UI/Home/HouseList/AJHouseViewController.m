@@ -74,6 +74,9 @@ CGFloat const HEAD_BUTTON_HEIGHT  = 0.0;
 }
 - (NSString *)requestKeyName{
     if (self.showModal==SearchHouseModal) {
+        if (self.searchKey) {
+            return self.searchKey;
+        }
         return self.searchBar.text;
     }
     return nil;

@@ -8,8 +8,12 @@
 
 #import "AJHouseDetailsViewController.h"
 #import "AJMyhouseViewController.h"
+#import "AJHomeTableViewCell.h"
+#import "AJHomeCellModel.h"
+#import "AJHouseViewController.h"
 
 @interface AJHouseDetailsViewController ()
+@property (weak, nonatomic) IBOutlet UIButton *moreHouseBtn;
 
 @property (strong, nonatomic) UIButton *rightBtn;
 @property (strong, nonatomic) AVObject *likedObj;
@@ -23,6 +27,55 @@
     
     self.title = [NSString stringWithFormat:@"%@ %@ %@万",self.houseInfo[HOUSE_ESTATE_NAME],self.houseInfo[HOUSE_AMOUNT],self.houseInfo[HOUSE_TOTAL_PRICE]];
     
+    [self initNavRightButton];
+}
+#pragma mark - AJTbViewProtocol
+- (NSInteger)pageSize{
+    return 10;
+}
+- (UITableViewStyle)tableViewStyle{
+    return UITableViewStyleGrouped;
+}
+- (NSString *)requestClassName{
+    return HOUSE_INFO;
+    
+}
+- (NSString *)requestKeyName{
+   //同一个小区的房源
+    return self.houseInfo[HOUSE_ESTATE_NAME];
+}
+- (void)loadDataSuccess{
+    self.tableView.mj_footer = nil;
+    self.moreHouseBtn.hidden = NO;
+    self.tableView.tableFooterView = self.moreHouseBtn;
+    
+}
+- (NSString *)customeTbViewCellClassName{
+    return  NSStringFromClass([AJHomeTableViewCell class]);
+}
+- (NSString *)customeTbViewCellModelClassName{
+    return NSStringFromClass([AJHomeCellModel class]);
+}
+
+#pragma mark - UITableViewDelegate
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    AJHomeCellModel *model = (AJHomeCellModel *)self.dataArray[indexPath.row];
+    AJHouseDetailsViewController *details = [AJHouseDetailsViewController new];
+    
+    details.houseInfo = model.objectData;
+    
+    APP_PUSH(details);
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 0.01;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 0.01;
+}
+
+- (void) initNavRightButton{
     self.rightBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 22, 22)];
     [self.rightBtn setImage:LOADIMAGE(@"unlike") forState:UIControlStateNormal];
     [self.rightBtn setImage:LOADIMAGE(@"liked") forState:UIControlStateSelected];
@@ -30,7 +83,12 @@
     [self.rightBtn addTarget:self action:@selector(addLikeHouse) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.rightBtn];
     
-    [self checkLikeState];
+    if (self.isFromFav) {
+        self.rightBtn.selected = YES;
+    }else{
+        [self checkLikeState];
+        
+    }
 }
 - (void)checkLikeState{
     
@@ -61,6 +119,7 @@
             if (succeeded) {
                 weakSelf.rightBtn.selected = NO;
                 weakSelf.likedObj = nil;
+
                 [weakSelf refreshMyFavoriteList];
             }
         }];
@@ -86,6 +145,9 @@
 }
 //取消收藏后 刷新收藏列表
 - (void)refreshMyFavoriteList{
+    if (!self.isFromFav) {
+        return;
+    }
     for (id vc in self.navigationController.viewControllers) {
         if ([vc isKindOfClass:[AJMyhouseViewController class]]) {
             AJMyhouseViewController *house = (AJMyhouseViewController *)vc;
@@ -93,6 +155,11 @@
             break;
         }
     }
+}
+- (IBAction)showMoreHouse:(UIButton *)sender {
+    AJHouseViewController *more = [AJHouseViewController new];
+    more.showModal = SearchHouseModal;
+    more.searchKey = self.houseInfo[HOUSE_ESTATE_NAME];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
