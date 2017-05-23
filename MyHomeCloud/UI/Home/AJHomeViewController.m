@@ -49,10 +49,10 @@
 }
 
 - (void)chooseAreaAction{
-    CTLocationViewController *location = [CTLocationViewController new];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:location];
-    location.delegate = self;
-    APP_PRESENT(nav);
+//    CTLocationViewController *location = [CTLocationViewController new];
+//    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:location];
+//    location.delegate = self;
+//    APP_PRESENT(nav);
 }
 #pragma mark CTLocationViewControllerDelegate
 - (void)sendCityName:(NSString *)cityName{
