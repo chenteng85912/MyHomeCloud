@@ -12,6 +12,8 @@
 #import "AJHomeCellModel.h"
 #import "AJHouseViewController.h"
 
+NSInteger const MAX_HOUSE_NUMBER = 10;
+
 @interface AJHouseDetailsViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *moreHouseBtn;
 
@@ -31,7 +33,7 @@
 }
 #pragma mark - AJTbViewProtocol
 - (NSInteger)pageSize{
-    return 10;
+    return MAX_HOUSE_NUMBER;
 }
 - (UITableViewStyle)tableViewStyle{
     return UITableViewStyleGrouped;
@@ -45,9 +47,23 @@
     return self.houseInfo[HOUSE_ESTATE_NAME];
 }
 - (void)loadDataSuccess{
-    self.tableView.mj_footer = nil;
-    self.moreHouseBtn.hidden = NO;
-    self.tableView.tableFooterView = self.moreHouseBtn;
+    self.tableView.tableFooterView = nil;
+
+    //移除本房源
+    WeakSelf;
+    [self.dataArray enumerateObjectsUsingBlock:^(AJTbViewCellModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj.objectData.objectId isEqualToString:self.houseInfo.objectId]) {
+            [weakSelf.dataArray removeObject:obj];
+            [weakSelf.tableView reloadData];
+            if (self.dataArray.count==MAX_HOUSE_NUMBER) {
+                self.moreHouseBtn.hidden = NO;
+                self.tableView.tableFooterView = self.moreHouseBtn;
+                
+            }
+            *stop = YES;
+        }
+        
+    }];
     
 }
 - (NSString *)customeTbViewCellClassName{
@@ -160,6 +176,8 @@
     AJHouseViewController *more = [AJHouseViewController new];
     more.showModal = SearchHouseModal;
     more.searchKey = self.houseInfo[HOUSE_ESTATE_NAME];
+    APP_PUSH(more);
+  
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -212,25 +212,29 @@
     AJUploadPicModel *modal = self.dataArray[index];
 
     WeakSelf;
+    [self.view showHUD:nil];
     [CTTool deleteFile:modal.picFile.objectId complete:^{
+        [weakSelf.view removeHUD];
         [weakSelf removeCollectionItem:index];
+
     }];
    
 }
 //删除单元格动画
 - (void)removeCollectionItem:(NSInteger)index{
+    WeakSelf;
     [self.colView performBatchUpdates:^{
-        [self.dataArray removeObjectAtIndex:index];
+        [weakSelf.dataArray removeObjectAtIndex:index];
         
         NSIndexPath *indexpath = [NSIndexPath indexPathForRow:index inSection:0];
         
-        [self.colView deleteItemsAtIndexPaths:@[indexpath]];
+        [weakSelf.colView deleteItemsAtIndexPaths:@[indexpath]];
         
     } completion:^(BOOL finished) {
-        if (self.dataArray.count==0) {
-            [self.colView addTipView:@"暂无图片"];
+        if (weakSelf.dataArray.count==0) {
+            [weakSelf.colView addTipView:@"暂无图片"];
         }
-        [self.colView reloadData];
+        [weakSelf.colView reloadData];
         
     }];
 }

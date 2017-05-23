@@ -43,8 +43,8 @@
     search.isLoad = YES;
     UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:search];
     [nav setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
-    [self presentViewController:nav animated:YES completion:^{
-    }];
+    APP_PRESENT(nav);
+
     return NO;
 }
 

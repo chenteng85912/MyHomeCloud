@@ -35,9 +35,14 @@ CGFloat const HEAD_BUTTON_HEIGHT  = 0.0;
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshHomeData) name:kNewHouseNotification object:nil];
         self.tableView.tableHeaderView = self.headView;
     }else{
-        [self.view addGestureRecognizer:self.tapGes];
-        self.navigationItem.titleView = self.searchBar;
-        [self.searchBar becomeFirstResponder];
+        if (self.searchKey) {
+            self.title= @"更多相似房源";
+        }else{
+            [self.view addGestureRecognizer:self.tapGes];
+            self.navigationItem.titleView = self.searchBar;
+            [self.searchBar becomeFirstResponder];
+        }
+      
     }
    
 }
@@ -47,7 +52,7 @@ CGFloat const HEAD_BUTTON_HEIGHT  = 0.0;
 }
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    if (self.showModal==SearchHouseModal&&self.dataArray.count==0) {
+    if (self.showModal==SearchHouseModal&&self.dataArray.count==0&&!self.searchKey) {
         [self.tableView addNoDataTipView];
 
     }
@@ -58,7 +63,7 @@ CGFloat const HEAD_BUTTON_HEIGHT  = 0.0;
 
 #pragma mark - AJTbViewProtocol
 - (BOOL)makeMJRefresh{
-    if (self.showModal==HomeHouseModal) {
+    if (self.showModal==HomeHouseModal||self.searchKey) {
 
         return YES;
     }

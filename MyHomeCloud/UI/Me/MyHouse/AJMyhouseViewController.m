@@ -85,6 +85,9 @@
     }else{
         details.houseInfo = model.objectData;
 
+        if (self.showModal==FavoriteModal) {
+            details.isFromFav = YES;
+        }
     }
     details.hidesBottomBarWhenPushed = YES;
 
