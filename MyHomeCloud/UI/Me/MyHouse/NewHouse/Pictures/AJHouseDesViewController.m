@@ -228,7 +228,7 @@
         
     } completion:^(BOOL finished) {
         if (self.dataArray.count==0) {
-            [self.view addTipView:@"暂无图片"];
+            [self.colView addTipView:@"暂无图片"];
         }
         [self.colView reloadData];
         
