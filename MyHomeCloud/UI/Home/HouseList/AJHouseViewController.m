@@ -33,7 +33,6 @@ CGFloat const HEAD_BUTTON_HEIGHT  = 0.0;
     if (self.showModal==HomeHouseModal) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshHomeData) name:kHomeHouseNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshHomeData) name:kNewHouseNotification object:nil];
-        self.tableView.tableHeaderView = self.headView;
     }else{
         if (self.searchKey) {
             self.title= @"更多相似房源";
@@ -94,7 +93,12 @@ CGFloat const HEAD_BUTTON_HEIGHT  = 0.0;
 }
 - (void)loadDataSuccess{
     [self.view removeHUD];
-   
+    if (self.showModal==HomeHouseModal) {
+        self.tableView.tableHeaderView = self.headView;
+
+    }
+    [self.tableView showViewWithAnimation];
+
 }
 #pragma mark - UITableViewDelegate
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -211,7 +215,6 @@ CGFloat const HEAD_BUTTON_HEIGHT  = 0.0;
         [_headView addSubview:self.autoLoopView.view];
         _headBtnView.frame = CGRectMake(0, dHeight/4, dWidth,HEAD_BUTTON_HEIGHT);
         [_headView addSubview:self.headBtnView];
-
     }
     return _headView;
 }

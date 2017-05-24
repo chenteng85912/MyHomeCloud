@@ -72,6 +72,8 @@
 }
 - (void)loadDataSuccess{
     [self.view removeHUD];
+    [self.tableView showViewWithAnimation];
+
 }
 #pragma mark - UITableViewDelegate
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

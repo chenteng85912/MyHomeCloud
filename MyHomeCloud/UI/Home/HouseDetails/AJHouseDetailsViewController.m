@@ -47,6 +47,7 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
     return self.houseInfo[HOUSE_ESTATE_NAME];
 }
 - (void)loadDataSuccess{
+    
     self.tableView.tableFooterView = nil;
 
     //移除本房源
@@ -55,6 +56,7 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
         if ([obj.objectData.objectId isEqualToString:self.houseInfo.objectId]) {
             [weakSelf.dataArray removeObject:obj];
             [weakSelf.tableView reloadData];
+            [weakSelf.tableView showViewWithAnimation];
             if (self.dataArray.count==MAX_HOUSE_NUMBER) {
                 self.moreHouseBtn.hidden = NO;
                 self.tableView.tableFooterView = self.moreHouseBtn;
