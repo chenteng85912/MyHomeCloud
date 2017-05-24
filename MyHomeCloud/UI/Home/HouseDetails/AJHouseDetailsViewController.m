@@ -13,11 +13,35 @@
 #import "AJHouseViewController.h"
 
 NSInteger const MAX_HOUSE_NUMBER = 10;
+#define AUTOLOOP_HEIGHT     dHeight*2/5
 
-@interface AJHouseDetailsViewController ()
+@interface AJHouseDetailsViewController ()<UIScrollViewDelegate,CTAutoLoopViewDelegate>
+@property (weak, nonatomic) IBOutlet UIView *headView;
+
 @property (weak, nonatomic) IBOutlet UIButton *moreHouseBtn;
+@property (weak, nonatomic) IBOutlet UIView *houseInfoView;
+@property (weak, nonatomic) IBOutlet UIButton *rightBtn;
+@property (weak, nonatomic) IBOutlet UILabel *titleText;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *userHead;
+@property (weak, nonatomic) IBOutlet UILabel *totalLabel;
+@property (weak, nonatomic) IBOutlet UILabel *houseRooms;
+@property (weak, nonatomic) IBOutlet UILabel *houseAreaage;
+@property (weak, nonatomic) IBOutlet UILabel *houseDes;
+@property (weak, nonatomic) IBOutlet UILabel *unitPrice;
+@property (weak, nonatomic) IBOutlet UILabel *directionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *houseDerese;
+@property (weak, nonatomic) IBOutlet UILabel *houseShowTime;
+@property (weak, nonatomic) IBOutlet UILabel *houseFloor;
+@property (weak, nonatomic) IBOutlet UILabel *houseYear;
 
-@property (strong, nonatomic) UIButton *rightBtn;
+
+@property (strong, nonatomic) UIView *tbViewHeadView;
+
+// 滚动图片视图
+@property (strong, nonatomic) CTAutoLoopViewController * autoLoopView;
+@property (strong, nonatomic) NSMutableArray *autoLoopDataArray;
+
 @property (strong, nonatomic) AVObject *likedObj;
 
 @end
@@ -27,9 +51,14 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = [NSString stringWithFormat:@"%@ %@ %@万",self.houseInfo[HOUSE_ESTATE_NAME],self.houseInfo[HOUSE_AMOUNT],self.houseInfo[HOUSE_TOTAL_PRICE]];
-    
-    [self initNavRightButton];
+    [self initHouseDetailsInfo];
+
+}
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.view bringSubviewToFront:_headView];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+
 }
 #pragma mark - AJTbViewProtocol
 - (NSInteger)pageSize{
@@ -42,13 +71,16 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
     return HOUSE_INFO;
     
 }
+- (BOOL)firstShowAnimation{
+    return YES;
+}
 - (NSString *)requestKeyName{
    //同一个小区的房源
     return self.houseInfo[HOUSE_ESTATE_NAME];
 }
 - (void)loadDataSuccess{
-    
     self.tableView.tableFooterView = nil;
+    self.tableView.tableHeaderView = self.tbViewHeadView;
 
     //移除本房源
     WeakSelf;
@@ -56,7 +88,6 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
         if ([obj.objectData.objectId isEqualToString:self.houseInfo.objectId]) {
             [weakSelf.dataArray removeObject:obj];
             [weakSelf.tableView reloadData];
-            [weakSelf.tableView showViewWithAnimation];
             if (self.dataArray.count==MAX_HOUSE_NUMBER) {
                 self.moreHouseBtn.hidden = NO;
                 self.tableView.tableFooterView = self.moreHouseBtn;
@@ -93,20 +124,39 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
     return 0.01;
 }
 
-- (void) initNavRightButton{
-    self.rightBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 22, 22)];
-    [self.rightBtn setImage:LOADIMAGE(@"unlike") forState:UIControlStateNormal];
-    [self.rightBtn setImage:LOADIMAGE(@"liked") forState:UIControlStateSelected];
-    
-    [self.rightBtn addTarget:self action:@selector(addLikeHouse) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.rightBtn];
-    
+- (void)initHouseDetailsInfo{
+   
     if (self.isFromFav) {
         self.rightBtn.selected = YES;
     }else{
         [self checkLikeState];
         
     }
+    _titleText.text = [NSString stringWithFormat:@"%@ %@ %@万",_houseInfo[HOUSE_ESTATE_NAME],_houseInfo[HOUSE_AMOUNT],_houseInfo[HOUSE_TOTAL_PRICE]];
+    _titleLabel.text = _titleText.text;
+    _totalLabel.text = [NSString stringWithFormat:@"%@万",_houseInfo[HOUSE_TOTAL_PRICE]];
+    
+    //头像
+    AVObject *user = _houseInfo[HOUSE_AUTHOR];
+    if (user) {
+        [_userHead sd_setImageWithURL:user[HEAD_URL] placeholderImage:[CTTool iconImage]];
+
+    }
+    
+    _houseRooms.text = _houseInfo[HOUSE_AMOUNT];
+    _houseAreaage.text = [NSString stringWithFormat:@"%@平",_houseInfo[HOUSE_AREAAGE]];
+    
+    _unitPrice.text = [NSString stringWithFormat:@"%@元/平",_houseInfo[HOUSE_UNIT_PRICE]];
+    _directionLabel.text = _houseInfo[HOUSE_DIRECTION];
+    
+    _houseDes.text = _houseInfo[HOUSE_DESCRIBE];
+    
+//    _houseShowTime.text = _houseInfo.createdAt;
+    
+    _houseFloor.text = [NSString stringWithFormat:@"%@/%@",_houseInfo[HOUSE_FLOOR_NUM],_houseInfo[HOUSE_TOTAL_FLOOR]];
+    
+    _houseYear.text = _houseInfo[HOUSE_YEARS];
+    
 }
 - (void)checkLikeState{
     
@@ -131,9 +181,11 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
 - (void)addLikeHouse{
     WeakSelf;
 
+    [self.view showHUD:nil];
     if (self.rightBtn.selected) {
        
         [self.likedObj deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            [weakSelf.view removeHUD];
             if (succeeded) {
                 weakSelf.rightBtn.selected = NO;
                 weakSelf.likedObj = nil;
@@ -151,6 +203,8 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
         [houseInfo setObject:[AVObject objectWithClassName:HOUSE_INFO objectId:self.houseInfo.objectId] forKey:HOUSE_OBJECT];
         
         [houseInfo saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            [weakSelf.view removeHUD];
+
             if (succeeded) {
                 weakSelf.likedObj = houseInfo;
                 weakSelf.rightBtn.selected = YES;
@@ -174,12 +228,74 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
         }
     }
 }
+- (IBAction)buttonAction:(UIButton *)sender {
+    if (sender.tag==0) {
+        POPVC;
+    }else{
+        [self addLikeHouse];
+    }
+}
 - (IBAction)showMoreHouse:(UIButton *)sender {
     AJHouseViewController *more = [AJHouseViewController new];
     more.showModal = SearchHouseModal;
     more.searchKey = self.houseInfo[HOUSE_ESTATE_NAME];
     APP_PUSH(more);
   
+}
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    CGFloat offsetY = scrollView.contentOffset.y;
+    debugLog(@"%f",offsetY);
+    if (offsetY > 30) {
+        _headView.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:MIN(1, offsetY/150)];
+        _titleText.alpha = MIN(1, offsetY/100);
+    } else {
+        _headView.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0];
+        _titleText.alpha = 0;
+
+    }
+}
+- (IBAction)showAuthorHouses:(id)sender {
+}
+#pragma mark CTAutoLoopViewDelegate
+- (UIView *)CTAutoLoopViewController:(UICollectionViewCell *)collectionCell cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, dWidth, AUTOLOOP_HEIGHT)];
+    imgView.contentMode = UIViewContentModeScaleAspectFill;
+    NSString *imgUrlStr = self.autoLoopDataArray[indexPath.row];
+    [imgView sd_setImageWithURL:[NSURL URLWithString:imgUrlStr] placeholderImage:LOADIMAGE(@"defaultImg")];
+    return imgView;
+}
+- (void)CTAutoLoopViewController:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    [[CTImagePreviewViewController defaultShowPicture] showPictureWithUrlOrImages:self.autoLoopDataArray withCurrentPageNum:indexPath.row andRootViewController:self];
+}
+- (CTAutoLoopViewController*)autoLoopView
+{
+    if (!_autoLoopView) {
+        _autoLoopView = [[CTAutoLoopViewController alloc] initWithFrame:CGRectMake(0, 0, dWidth, AUTOLOOP_HEIGHT) onceLoopTime:0 cellDisplayModal:CTLoopCellDisplayCustomView scollDiretion:CTLoopScollDirectionHorizontal];
+        _autoLoopView.delegate = self;
+        //头部广告滚动视图数据源
+        [_autoLoopView addLocalModels:self.autoLoopDataArray];
+    }
+    return _autoLoopView;
+}
+- (NSMutableArray *)autoLoopDataArray{
+    if (!_autoLoopDataArray) {
+        _autoLoopDataArray = [NSMutableArray new];
+        NSArray *imgArray = self.houseInfo[HOUSE_FILE_ID];
+        
+        [_autoLoopDataArray addObjectsFromArray:imgArray];
+    }
+   
+    return _autoLoopDataArray;
+}
+- (UIView *)tbViewHeadView{
+    if (_tbViewHeadView == nil) {
+        _tbViewHeadView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, dWidth, AUTOLOOP_HEIGHT+350)];
+        [_tbViewHeadView addSubview:self.autoLoopView.view];
+        _houseInfoView.center = CGPointMake(dWidth/2, _tbViewHeadView.frame.size.height-175);
+        [_tbViewHeadView addSubview:_houseInfoView];
+    }
+    
+    return _tbViewHeadView;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

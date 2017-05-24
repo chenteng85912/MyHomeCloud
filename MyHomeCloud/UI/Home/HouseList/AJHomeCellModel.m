@@ -37,9 +37,10 @@ CGFloat const IMG_HEIGHT = 80.0;
     CGSize subSize = [self.subTitle sizeWithMaxSize:CGSizeMake(dWidth-cellX*3-IMG_WIDTH, MAXFLOAT) fontSize:SUB_FONT];
     self.subFrame = CGRectMake(lx, CGRectGetMaxY(self.nameFrame)+subY, subSize.width, subSize.height);
     
-    NSDictionary *desObj = object[HOUSE_DESCRIBE];
     //描述
-    self.houseDes = [NSString stringWithFormat:@"%@ %@ %@",desObj[YEARS_DES],desObj[WATCH_DES],desObj[DECORATE_DES]];
+//    NSDictionary *desObj = object[HOUSE_DESCRIBE];
+//    self.houseDes = [NSString stringWithFormat:@"%@ %@ %@",desObj[YEARS_DES],desObj[WATCH_DES],desObj[DECORATE_DES]];
+    self.houseDes = @"证满五年 随时看房 精装修";
     CGSize desSize = [self.houseDes sizeWithMaxSize:CGSizeMake(dWidth-cellX*3-IMG_WIDTH, MAXFLOAT) fontSize:DES_FONT];
     self.desFrame = CGRectMake(lx, CGRectGetMaxY(self.subFrame)+subY, desSize.width, desSize.height);
     
@@ -54,6 +55,8 @@ CGFloat const IMG_HEIGHT = 80.0;
     self.unitFrame = CGRectMake(CGRectGetMaxX(self.totalFrame)+ subY, CGRectGetMaxY(self.desFrame)+subY, unitSize.width, unitSize.height);
     
     self.cellHeight = CGRectGetMaxY(self.totalFrame)+cellY;
+    
+    self.userHeadFrame = CGRectMake(dWidth-45, self.cellHeight-45, 30, 30);
 }
 
 @end

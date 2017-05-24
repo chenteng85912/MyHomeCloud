@@ -11,5 +11,7 @@
 @interface AJHouseDetailsViewController : AJBaseTbViewController
 
 @property (strong, nonatomic) AVObject *houseInfo;
+
 @property (assign, nonatomic) BOOL isFromFav;//来自我的收藏
+
 @end

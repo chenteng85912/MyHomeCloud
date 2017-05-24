@@ -158,19 +158,17 @@ CGFloat const IMAGEHEIGHT  = 200.0f;
 }
 //角色信息
 - (void)initRoleData{
+    self.roleName.text  = [AVUser currentUser][USER_NICKNAME];
+
     NSInteger role = [[AVUser currentUser][USER_ROLE] integerValue];
     if (role==1) {
         self.roleIcon.image = LOADIMAGE(@"admin");
-        self.roleName.text  = @"管理员";
     }else if (role==2) {
         self.roleIcon.image = LOADIMAGE(@"estater");
-        self.roleName.text  = @"物业公司";
     }else if (role==3) {
         self.roleIcon.image = LOADIMAGE(@"agency");
-        self.roleName.text  = @"中介";
     }else{
         self.roleIcon.image = LOADIMAGE(@"visitor");
-        self.roleName.text  = @"游客";
     }
 }
 - (void)didReceiveMemoryWarning {

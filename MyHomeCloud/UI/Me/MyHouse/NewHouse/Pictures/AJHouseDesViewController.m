@@ -100,11 +100,11 @@
 
         return;
     }
-    NSMutableDictionary *houseDes = [NSMutableDictionary new];
-    [houseDes setObject:@"证满五年"      forKey:YEARS_DES];
-    [houseDes setObject:@"随时看房"      forKey:WATCH_DES];
-    [houseDes setObject:@"精装修"        forKey:DECORATE_DES];
-    [self.houseObj setObject:houseDes forKey:HOUSE_DESCRIBE];
+//    NSMutableDictionary *houseDes = [NSMutableDictionary new];
+//    [houseDes setObject:@"证满五年"      forKey:YEARS_DES];
+//    [houseDes setObject:@"随时看房"      forKey:WATCH_DES];
+//    [houseDes setObject:@"精装修"        forKey:DECORATE_DES];
+//    [self.houseObj setObject:houseDes forKey:HOUSE_DESCRIBE];
 
     if (![self checkAllPicture]) {
         [self.view showTips:@"图片未全部上传成功" withState:TYKYHUDModeWarning complete:nil];
@@ -143,7 +143,7 @@
             success = NO;
             break;
         }
-        [imgArray addObject:modal.picFile.objectId];
+        [imgArray addObject:modal.picFile.url];
     }
    
     if (success) {

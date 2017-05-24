@@ -14,12 +14,13 @@
                 <outlet property="houseAreaage" destination="aSo-pd-PJm" id="ObV-it-jdB"/>
                 <outlet property="houseBaseInfo" destination="8Tb-X0-Euw" id="9H2-j9-pod"/>
                 <outlet property="houseDesInfo" destination="eAg-8N-y3h" id="oOg-Zq-iaf"/>
+                <outlet property="houseDescribe" destination="6oC-0J-gkU" id="CD7-rU-2Vm"/>
                 <outlet property="houseDirection" destination="VkI-Ea-Lfg" id="Tih-rg-klK"/>
                 <outlet property="houseFloor" destination="PZj-nr-Xgv" id="YbH-B4-SKT"/>
                 <outlet property="houseName" destination="JsC-i0-moD" id="dJP-og-gtk"/>
                 <outlet property="houseRooms" destination="239-9Y-Uvo" id="dZd-i9-kda"/>
                 <outlet property="houseTotal" destination="O7Y-Gl-TjW" id="GB1-Mm-3qR"/>
-                <outlet property="houseTotalFloor" destination="PZj-nr-Xgv" id="anv-Yg-41x"/>
+                <outlet property="houseTotalFloor" destination="5al-0U-Lmi" id="CF2-py-4zF"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

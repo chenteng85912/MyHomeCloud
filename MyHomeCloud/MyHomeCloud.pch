@@ -40,7 +40,9 @@
 #define WeakSelf            __weak typeof(self) weakSelf = self;
 
 //本地用户名称
-#define USER_NAME                  @"UserName"
+#define USER_NAME               @"UserName"
+#define HEAD_URL                @"headUrl"
+#define USER_NICKNAME           @"nickname"
 
 #define USER_LOGIN_STATE           @"LoginState"//登录状态
 #define USER_HEAD_IMG_ID           @"UserHeadImgid"//头像文件id
@@ -52,6 +54,7 @@
 #define FAVORITE_HOUSE      @"FavoriteHouse"//用户收藏表
 #define HOUSE_DESCRIBE      @"HouseDescribe"//房屋描述
 #define HOUSE_BASE_INFO     @"HouseBaseInfo"//房屋基本信息
+#define USER_INFO           @"_User"//房屋发布者
 
 //浏览记录 收藏保存的房屋数据
 #define HOUSE_OBJECT        @"HouseObject"//房屋数据  浏览记录 收藏
@@ -76,6 +79,10 @@
 #define HOUSE_THUMB             @"HouseThumb"//房屋缩略图片
 #define HOUSE_FILE_ID           @"HouseFileId"//房屋缩略图片id
 #define HOUSE_YEARS             @"HouseYears"//房屋年代
+#define HOUSE_AUTHOR            @"HouseAuthor"//房屋发布者
+#define HOUSE_DIRECTION         @"HouseDirection"//房屋朝向
+#define HOUSE_DISCRIBE          @"HouseDescribe"//房屋装修
+
 
 #define YEARS_DES            @"YearsDes"//证满5年
 #define WATCH_DES            @"WatchDes"//随时看房

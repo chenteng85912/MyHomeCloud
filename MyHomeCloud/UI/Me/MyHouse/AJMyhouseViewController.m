@@ -39,6 +39,9 @@
 - (BOOL)makeMJRefresh{
     return YES;
 }
+- (BOOL)firstShowAnimation{
+    return YES;
+}
 - (UITableViewStyle)tableViewStyle{
     return UITableViewStyleGrouped;
 }
@@ -72,7 +75,6 @@
 }
 - (void)loadDataSuccess{
     [self.view removeHUD];
-    [self.tableView showViewWithAnimation];
 
 }
 #pragma mark - UITableViewDelegate

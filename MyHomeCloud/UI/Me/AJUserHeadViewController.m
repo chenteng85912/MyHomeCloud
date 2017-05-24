@@ -8,9 +8,6 @@
 
 #import "AJUserHeadViewController.h"
 
-NSString  *const HEAD_URL = @"headUrl";
-
-
 @interface AJUserHeadViewController ()<CTONEPhotoDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *scrView;
 @property (strong, nonatomic) UIImageView *headImageView;

@@ -49,7 +49,7 @@ static NSString * const reuseIdentifier = @"CTLoopViewCell";
     layout.minimumInteritemSpacing = 0;
     layout.minimumLineSpacing = 0;
     layout.sectionInset = UIEdgeInsetsZero;
-    if (self.loopScollDirection==0) {
+    if (self.loopScollDirection==CTLoopScollDirectionHorizontal) {
         layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
 
     }else{
@@ -71,7 +71,7 @@ static NSString * const reuseIdentifier = @"CTLoopViewCell";
     [self.view addSubview:colView];
     self.collectionView = colView;
     
-    if (_cellDisplayModal==CTLoopCellDisplayImage) {
+//    if (_cellDisplayModal==CTLoopCellDisplayImage) {
         //图片广告 添加页码指示
         UIPageControl *pageVC = [UIPageControl new];
         if (_loopScollDirection==CTLoopScollDirectionHorizontal) {//水平滚动
@@ -87,7 +87,7 @@ static NSString * const reuseIdentifier = @"CTLoopViewCell";
         pageVC.hidesForSinglePage = YES;
         self.pageCT = pageVC;
         [self.view addSubview:pageVC];
-    }
+//    }
 
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
     
@@ -96,7 +96,7 @@ static NSString * const reuseIdentifier = @"CTLoopViewCell";
     [super viewDidLoad];
 }
 //添加内容
-- (void)addModels:(NSArray *)array{
+- (void)addLocalModels:(NSArray *)array{
     if (!array) {
         return;
     }
@@ -125,17 +125,18 @@ static NSString * const reuseIdentifier = @"CTLoopViewCell";
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     [cell.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
 
-    if (self.cellDisplayModal==1) {
+    if (self.cellDisplayModal==CTLoopCellDisplayCustomView) {
         if ([self.delegate respondsToSelector:@selector(CTAutoLoopViewController:cellForItemAtIndexPath:)]) {
             
             NSIndexPath *newIndex = indexPath;
             if (newIndex.row == _dataArray.count) {
                 newIndex = [NSIndexPath indexPathForRow:0 inSection:0];
             }
-           return  [self.delegate CTAutoLoopViewController:cell cellForItemAtIndexPath:newIndex];
-        }else{
-            return cell;
+            UIView *customView = [self.delegate CTAutoLoopViewController:cell cellForItemAtIndexPath:newIndex];
+            [cell.contentView addSubview:customView];
         }
+        return cell;
+        
     }else{
         id model = nil;
         if (indexPath.row == _dataArray.count) {
@@ -172,6 +173,9 @@ static NSString * const reuseIdentifier = @"CTLoopViewCell";
 //添加定时器
 -(void)addNSTimer
 {
+    if (self.loopOnceTime==0) {
+        return;
+    }
     if (!self.timer) {
         NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:self.loopOnceTime target:self selector:@selector(nextPage) userInfo:nil repeats:YES];
         self.timer=timer;
@@ -199,12 +203,12 @@ static NSString * const reuseIdentifier = @"CTLoopViewCell";
     
 }
 -(void)startTimer{
-    NSLog(@"定时器又开始了");
+//    NSLog(@"定时器又开始了");
     //[self.timer setFireDate:[NSDate distantPast]];
     
 }
 -(void)stopTimer{
-    NSLog(@"定时器停止了");
+//    NSLog(@"定时器停止了");
     [self.timer invalidate];
     self.timer = nil;
     //[self.timer setFireDate:[NSDate distantFuture]];

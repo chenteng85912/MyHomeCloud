@@ -17,6 +17,8 @@
 @property (assign, nonatomic) NSInteger oldDataNum;
 //是否集成下拉刷新
 @property (assign, nonatomic) BOOL mjRefresh;
+//动画
+@property (assign, nonatomic) BOOL isAnimate;
 
 @end
 
@@ -203,6 +205,16 @@
     [self.dataArray addObjectsFromArray:dataArray];
     [self.tableView reloadData];
 
+    if ([self respondsToSelector:@selector(firstShowAnimation)]) {
+        if ([self firstShowAnimation]) {
+            if (!_isAnimate) {
+                _isAnimate = YES;
+                [self.tableView showViewWithAnimation];
+                
+            }
+        }
+    }
+   
 }
 //添加提示
 - (void)showTipView:(TableViewInitDataModal)type{

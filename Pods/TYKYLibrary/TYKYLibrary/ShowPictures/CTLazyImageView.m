@@ -136,6 +136,7 @@
     downBtn.layer.cornerRadius = 5.0;
     downBtn.layer.borderColor = [UIColor whiteColor].CGColor;
     downBtn.layer.borderWidth = 1.0;
+    downBtn.center = self.center;
     [downBtn setTitle:@"加载失败,点击重试" forState:UIControlStateNormal];
     [downBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     downBtn.titleLabel.font = [UIFont systemFontOfSize:15];

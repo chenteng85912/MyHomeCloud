@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *houseDesInfo;
 
 @property (weak, nonatomic) IBOutlet UILabel *houseBaseInfo;
+@property (weak, nonatomic) IBOutlet AJPickViewTextField *houseDescribe;
 
 @property (weak, nonatomic) IBOutlet UITextField *houseName;
 @property (weak, nonatomic) IBOutlet UITextField *houseAreaage;
@@ -52,13 +53,19 @@
     [houseData setObject:_houseTotalFloor.text          forKey:HOUSE_TOTAL_FLOOR];
     [houseData setObject:_houseName.text                forKey:HOUSE_ESTATE_NAME];
     [houseData setObject:self.houseInfoData[HOUSE_DEVELOPER]              forKey:HOUSE_DEVELOPER];
-    [houseData setObject:_houseTotalFloor.text          forKey:HOUSE_BUILD_NUMBER];
+    [houseData setObject:self.houseInfoData[HOUSE_AREA]                forKey:HOUSE_AREA];
+    [houseData setObject:self.houseInfoData[HOUSE_YEARS]                forKey:HOUSE_YEARS];
+
     [houseData setObject:_houseFloor.text               forKey:HOUSE_FLOOR_NUM];
     [houseData setObject:_houseRooms.text               forKey:HOUSE_AMOUNT];
-    [houseData setObject:self.houseInfoData[HOUSE_AREA]                forKey:HOUSE_AREA];
     [houseData setObject:_houseAreaage.text             forKey:HOUSE_AREAAGE];
     [houseData setObject:_houseTotal.text               forKey:HOUSE_TOTAL_PRICE];
-    
+    [houseData setObject:_houseDirection.text           forKey:HOUSE_DIRECTION];
+    [houseData setObject:_houseDescribe.text            forKey:HOUSE_DESCRIBE];
+
+    //发布者信息
+    [houseData setObject:[AVObject objectWithClassName:USER_INFO objectId:[AVUser currentUser].objectId] forKey:HOUSE_AUTHOR];
+
     //房屋单价
     NSInteger unitPrice = _houseTotal.text.integerValue*10000/_houseAreaage.text.integerValue;
     [houseData setObject:[NSString stringWithFormat:@"%ld",(long)unitPrice]        forKey:HOUSE_UNIT_PRICE];

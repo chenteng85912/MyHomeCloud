@@ -70,6 +70,9 @@ CGFloat const HEAD_BUTTON_HEIGHT  = 0.0;
     return NO;
     
 }
+- (BOOL)firstShowAnimation{
+    return YES;
+}
 - (UITableViewStyle)tableViewStyle{
     return UITableViewStyleGrouped;
 }
@@ -97,7 +100,6 @@ CGFloat const HEAD_BUTTON_HEIGHT  = 0.0;
         self.tableView.tableHeaderView = self.headView;
 
     }
-    [self.tableView showViewWithAnimation];
 
 }
 #pragma mark - UITableViewDelegate
@@ -204,7 +206,7 @@ CGFloat const HEAD_BUTTON_HEIGHT  = 0.0;
         _autoLoopView = [[CTAutoLoopViewController alloc] initWithFrame:CGRectMake(0, 0, dWidth, dHeight/4) onceLoopTime:3.0 cellDisplayModal:CTLoopCellDisplayImage scollDiretion:CTLoopScollDirectionHorizontal];
         _autoLoopView.delegate = self;
         //头部广告滚动视图数据源
-        [_autoLoopView addModels:self.autoLoopDataArray];
+        [_autoLoopView addLocalModels:self.autoLoopDataArray];
     }
     return _autoLoopView;
 }

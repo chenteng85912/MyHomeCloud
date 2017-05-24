@@ -8,8 +8,6 @@
 
 #import "CTBaseViewController.h"
 
-extern NSString *const  HEAD_URL;
-
 @protocol AJUserHeadViewControllerDelegate <NSObject>
 
 - (void)uploadSuccess:(UIImage *)image;

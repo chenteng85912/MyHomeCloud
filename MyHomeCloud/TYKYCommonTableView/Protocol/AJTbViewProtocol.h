@@ -58,6 +58,9 @@ typedef NS_ENUM(NSInteger,TableViewInitDataModal) {
 //是否集成下拉刷新
 - (BOOL)makeMJRefresh;
 
+//是否第一次显示动画
+- (BOOL)firstShowAnimation;
+
 //是否可以删除
 - (BOOL)canDeleteCell;
 
