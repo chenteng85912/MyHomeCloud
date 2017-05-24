@@ -110,12 +110,12 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    AJHomeCellModel *model = (AJHomeCellModel *)self.dataArray[indexPath.row];
-    AJHouseDetailsViewController *details = [AJHouseDetailsViewController new];
-    
-    details.houseInfo = model.objectData;
-    
-    APP_PUSH(details);
+//    AJHomeCellModel *model = (AJHomeCellModel *)self.dataArray[indexPath.row];
+//    AJHouseDetailsViewController *details = [AJHouseDetailsViewController new];
+//    
+//    details.houseInfo = model.objectData;
+//    
+//    APP_PUSH(details);
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 0.01;
@@ -255,6 +255,13 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
     }
 }
 - (IBAction)showAuthorHouses:(id)sender {
+//    if (!_houseInfo[HOUSE_AUTHOR]) {
+//        return;
+//    }
+//    AJHouseViewController *more = [AJHouseViewController new];
+//    more.showModal = SomeoneHouseModal;
+//    more.userObj = _houseInfo[HOUSE_AUTHOR];
+//    APP_PUSH(more);
 }
 #pragma mark CTAutoLoopViewDelegate
 - (UIView *)CTAutoLoopViewController:(UICollectionViewCell *)collectionCell cellForItemAtIndexPath:(NSIndexPath *)indexPath{

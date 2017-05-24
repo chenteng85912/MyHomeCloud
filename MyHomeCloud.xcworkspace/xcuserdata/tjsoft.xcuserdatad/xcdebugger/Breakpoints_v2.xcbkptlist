@@ -6,16 +6,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MyHomeCloud/UI/Home/HouseDetails/AJHouseDetailsViewController.m"
-            timestampString = "517323091.504797"
+            filePath = "MyHomeCloud/UI/SuperVC/CTBaseViewController.m"
+            timestampString = "517325475.43094"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "141"
-            endingLineNumber = "141"
-            landmarkName = "-initHouseDetailsInfo"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "-backToPreVC"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

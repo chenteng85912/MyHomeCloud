@@ -33,7 +33,7 @@ CGFloat const HEAD_BUTTON_HEIGHT  = 0.0;
     if (self.showModal==HomeHouseModal) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshHomeData) name:kHomeHouseNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshHomeData) name:kNewHouseNotification object:nil];
-    }else{
+    }else if (self.showModal==SearchHouseModal){
         if (self.searchKey) {
             self.title= @"更多相似房源";
         }else{
@@ -42,6 +42,10 @@ CGFloat const HEAD_BUTTON_HEIGHT  = 0.0;
             [self.searchBar becomeFirstResponder];
         }
       
+    }else{
+        if (_userObj) {
+            self.title = _userObj[USER_NICKNAME];
+        }
     }
    
 }
@@ -85,8 +89,12 @@ CGFloat const HEAD_BUTTON_HEIGHT  = 0.0;
             return self.searchKey;
         }
         return self.searchBar.text;
+    }else if(self.showModal==SomeoneHouseModal){
+        return _userObj.mobilePhoneNumber;
+    }else{
+        return nil;
+
     }
-    return nil;
 }
 - (NSString *)customeTbViewCellClassName{
     return  NSStringFromClass([AJHomeTableViewCell class]);

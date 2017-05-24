@@ -83,11 +83,11 @@
     
     AJHomeCellModel *model = (AJHomeCellModel *)self.dataArray[indexPath.row];
     AJHouseDetailsViewController *details = [AJHouseDetailsViewController new];
-    if (self.showModal!=MyHouseModal) {
-        details.houseInfo = model.objectData[HOUSE_OBJECT];
+    if (self.showModal==MyHouseModal||self.showModal==AllHouseModal) {
+        details.houseInfo = model.objectData;
 
     }else{
-        details.houseInfo = model.objectData;
+        details.houseInfo = model.objectData[HOUSE_OBJECT];
 
         if (self.showModal==FavoriteModal) {
             details.isFromFav = YES;
