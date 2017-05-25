@@ -123,7 +123,8 @@
 }
 #pragma mark 上传用户头像
 - (void)saveUserHeadImage:(UIImage *)image{
-    
+    self.headImageView.image = image;
+
     NSData *imgData = UIImageJPEGRepresentation(image, 0.8);
     AVFile *file = [AVFile fileWithName:[AVUser currentUser].mobilePhoneNumber data:imgData];
     
@@ -139,7 +140,6 @@
         if ([weakSelf.delegate respondsToSelector:@selector(uploadSuccess:)]) {
             [weakSelf.delegate uploadSuccess:image];
         }
-        weakSelf.headImageView.image = image;
 
         [weakSelf.view showTips:@"上传成功" withState:TYKYHUDModeSuccess complete:^{
             [weakSelf backToPreVC];

@@ -131,6 +131,8 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
    
     if (self.isFromFav) {
         self.rightBtn.selected = YES;
+        [self fetchAuthorData];
+
     }else{
         [self checkLikeState];
         
@@ -138,10 +140,6 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
     _titleText.text = [NSString stringWithFormat:@"%@ %@ %@万",_houseInfo[HOUSE_ESTATE_NAME],_houseInfo[HOUSE_AMOUNT],_houseInfo[HOUSE_TOTAL_PRICE]];
     _titleLabel.text = _titleText.text;
     _totalLabel.text = [NSString stringWithFormat:@"%@万",_houseInfo[HOUSE_TOTAL_PRICE]];
-    
-    //头像
-  
-    [_userHead sd_setImageWithURL:_houseInfo[HEAD_URL] placeholderImage:[CTTool iconImage]];
     
     _houseRooms.text = _houseInfo[HOUSE_AMOUNT];
     _houseAreaage.text = [NSString stringWithFormat:@"%@平",_houseInfo[HOUSE_AREAAGE]];
@@ -176,6 +174,7 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
             weakSelf.rightBtn.selected = NO;
 
         }
+        [weakSelf fetchAuthorData];
     }];
 
 }
@@ -260,30 +259,30 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
     }
 }
 //获取作者信息
-- (IBAction)showAuthorHouses:(id)sender {
-    [self.view showHUD:nil];
+- (void)fetchAuthorData{
     self.baseQuery.className = USER_INFO;
     WeakSelf;
     [self.baseQuery getObjectInBackgroundWithId:_houseInfo[HOUSE_AUTHOR] block:^(AVObject * _Nullable object, NSError * _Nullable error) {
-        [weakSelf.view removeHUD];
         if (object) {
             weakSelf.someUser = object;
-            [weakSelf goToSomeoneHouse];
-        }else{
-//            [weakSelf.view showTips:@"网络错误" withState:TYKYHUDModeFail complete:nil];
+            //头像
+            [_userHead sd_setImageWithURL:object[HEAD_URL] placeholderImage:[CTTool iconImage]];
         }
     }];
-  
 }
 //打开用户所有房源
-- (void)goToSomeoneHouse{
+
+- (IBAction)showAuthorHouses:(id)sender {
+    if (!self.someUser) {
+        return;
+    }
     AJMyhouseViewController *userHouse = [AJMyhouseViewController new];
     userHouse.showModal = SomeoneHouseModal;
     userHouse.someoneUser = self.someUser;
     userHouse.title = self.someUser[USER_NICKNAME];
     APP_PUSH(userHouse);
-
 }
+
 #pragma mark CTAutoLoopViewDelegate
 - (UIView *)CTAutoLoopViewController:(UICollectionViewCell *)collectionCell cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, dWidth, AUTOLOOP_HEIGHT)];

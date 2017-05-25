@@ -149,7 +149,9 @@ CGFloat const IMAGEHEIGHT  = 200.0f;
     AJUserHeadViewController *head = [AJUserHeadViewController new];
     head.headImg = self.userHead.image;
     head.delegate  = self;
-    APP_PRESENT(head);
+    
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:head];
+    APP_PRESENT(nav);
 
 //    head.hidesBottomBarWhenPushed = YES;
 //    APP_PUSH(head);
