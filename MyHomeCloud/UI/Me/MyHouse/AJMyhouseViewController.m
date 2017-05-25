@@ -23,9 +23,11 @@
     [super viewDidLoad];
     
     if (self.showModal==MyHouseModal) {
+        //添加新房源
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"add"] style:UIBarButtonItemStylePlain target:self action:@selector(addNewHouse)];
     }
     if (self.showModal ==AllHouseModal){
+        //搜索
          self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"search"] style:UIBarButtonItemStylePlain target:self action:@selector(addNewHouse)];
     }
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshHomeData) name:kNewHouseNotification object:nil];
@@ -91,19 +93,12 @@
     
     AJHomeCellModel *model = (AJHomeCellModel *)self.dataArray[indexPath.row];
     AJHouseDetailsViewController *details = [AJHouseDetailsViewController new];
-    if (self.showModal==FavoriteModal||self.showModal==UserRecordModal) {
-        details.houseInfo = model.objectData[HOUSE_OBJECT];
-        
-        if (self.showModal==FavoriteModal) {
-            details.isFromFav = YES;
-        }
-    }else{
-        details.houseInfo = model.objectData;
-
+    details.isSubVC = YES;
+    if (self.showModal==FavoriteModal) {
+        details.isFromFav = YES;
     }
-   
-    details.hidesBottomBarWhenPushed = YES;
 
+    details.houseInfo = model.objectData;
     APP_PUSH(details);
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -118,17 +113,19 @@
     [self initStartData];
 }
 - (void)addNewHouse{
+    UINavigationController *nav;
     if (self.showModal == AllHouseModal) {
+        //搜索
         AJHouseViewController *search = [AJHouseViewController new];
         search.showModal = SearchHouseModal;
         search.isLoad = YES;
-        UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:search];
+        nav = [[UINavigationController alloc]initWithRootViewController:search];
         [nav setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
-        [self presentViewController:nav animated:YES completion:^{
-        }];
-        return;
+
+    }else{
+        nav = [[UINavigationController alloc] initWithRootViewController:[AJNewHouserViewController new]];
+
     }
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[AJNewHouserViewController new]];
     APP_PRESENT(nav);
 }
 - (void)dealloc{

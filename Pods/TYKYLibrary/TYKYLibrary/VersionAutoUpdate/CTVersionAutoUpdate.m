@@ -75,61 +75,35 @@ static CTVersionAutoUpdate *version;
     if (!storeVersion) {
         return;
     }
-    NSArray *localArray = [localVersion componentsSeparatedByString:@"."];
-    NSArray *newArray = [storeVersion componentsSeparatedByString:@"."];
-    BOOL update = NO;
-    if (newArray.count==localArray.count) {
-        BOOL needUpdate = YES;
-        for (int i =0; i<localArray.count; i++) {
-            for (int j =0; j<newArray.count; j++) {
-                if (i==j) {
-                    
-                    if ([localArray[i] integerValue] >= [newArray[j] integerValue]) {
-                        needUpdate = NO;
-                    }else{
-                        if (needUpdate) {
-                            update = YES;
-                        }
-                    }
-                }
-            }
+    BOOL isNeedUpdate = NO;
+    //分割字符串
+    NSArray *curentVersionArr = [localVersion componentsSeparatedByString:@"."]; //当前版本
+    NSArray *appStoreVersionArr = [storeVersion componentsSeparatedByString:@"."];      //比较版本
+    NSInteger count = curentVersionArr.count>appStoreVersionArr.count?appStoreVersionArr.count:curentVersionArr.count;
+    
+    BOOL isEqual;
+    for (int i=0; i<count; i++) {
+        NSInteger curV = [curentVersionArr[i] integerValue];
+        NSInteger appV = [appStoreVersionArr[i] integerValue];
+        if (curV==appV) {
+            isEqual = YES;
+        }else{
+            isEqual = NO;
+            
         }
-
-    }else if (newArray.count>localArray.count){
-        for (int i =0; i<localArray.count; i++) {
-            for (int j =0; j<newArray.count; j++) {
-                if (i==j) {
-                    
-                    if ([localArray[i] integerValue] < [newArray[j] integerValue]) {
-                        update = YES;
-                        break;
-                    }
-                }else if (i==localArray.count-1&&j>i){
-                    if (!update) {
-                        update = YES;
-                    }
-                }
-            }
+        if (appV>curV) {
+            isNeedUpdate = YES;
+            break;
         }
-
-       
-    }else{
-        for (int i =0; i<newArray.count; i++) {
-            for (int j =0; j<localArray.count; j++) {
-                if (i==j) {
-                    
-                    if ([localArray[i] integerValue] < [newArray[j] integerValue]) {
-                        update = YES;
-                        break;
-                    }
-                }
-            }
-        }
-
     }
-    if (update) {
+    if (!isNeedUpdate&&isEqual&&appStoreVersionArr.count>curentVersionArr.count) {
+        
+        isNeedUpdate = YES;
+        
+    }
+    if (isNeedUpdate) {
         [self openAPPStore];
-       
+        
     }
     
 }

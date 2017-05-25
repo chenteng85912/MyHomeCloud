@@ -53,6 +53,9 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    if (_houseInfo[HOUSE_OBJECT]) {
+        _houseInfo = _houseInfo[HOUSE_OBJECT];
+    }
     [self initHouseDetailsInfo];
 
 }
