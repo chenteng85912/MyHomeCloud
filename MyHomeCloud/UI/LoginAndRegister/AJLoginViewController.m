@@ -12,9 +12,6 @@
 
 @end
 
-//NSString *const USERNAME = @"USERNAME";
-//NSString *const PASSWORD = @"PASSWORD";
-//
 NSString *const LOGIN_SUCCESS = @"登录成功";
 NSString *const LOGIN_FAIL = @"登录失败";
 NSString *const USER_ONLINE = @"该用户已在别处登录";
@@ -29,7 +26,6 @@ NSString *const USER_ONLINE = @"该用户已在别处登录";
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-//    [self.navigationController setNavigationBarHidden:YES animated:YES];
     
 }
 
@@ -103,12 +99,10 @@ NSString *const USER_ONLINE = @"该用户已在别处登录";
         if (error.code==210) {
             [self.view showTips:@"密码错误" withState:TYKYHUDModeFail complete:nil];
             return;
-        }
-        if (error.code==211) {
+        }else if (error.code==211) {
             [self.view showTips:@"该用户名不存在" withState:TYKYHUDModeFail complete:nil];
             return;
-        }
-        if (error.code==1) {
+        }else if (error.code==1) {
             [self.view showTips:@"登录失败次数超过限制，请稍候再试，或者通过忘记密码重设密码" withState:TYKYHUDModeFail complete:^{
                 
             }];
@@ -148,12 +142,7 @@ NSString *const USER_ONLINE = @"该用户已在别处登录";
         self.userNameTF.text = userName;
     }
 }
-- (void)backToPreVC{
-    if (![AVUser currentUser]) {
-        
-        return;
-    }
-}
+
 #pragma mark - getters and setters
 
 - (void)didReceiveMemoryWarning {
