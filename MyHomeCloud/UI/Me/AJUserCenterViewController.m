@@ -149,8 +149,10 @@ CGFloat const IMAGEHEIGHT  = 200.0f;
     AJUserHeadViewController *head = [AJUserHeadViewController new];
     head.headImg = self.userHead.image;
     head.delegate  = self;
-    head.hidesBottomBarWhenPushed = YES;
-    APP_PUSH(head);
+    APP_PRESENT(head);
+
+//    head.hidesBottomBarWhenPushed = YES;
+//    APP_PUSH(head);
 }
 
 - (void)uploadSuccess:(UIImage *)image{

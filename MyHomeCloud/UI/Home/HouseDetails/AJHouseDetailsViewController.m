@@ -150,11 +150,10 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
     _unitPrice.text = [NSString stringWithFormat:@"%@元/平",_houseInfo[HOUSE_UNIT_PRICE]];
     _directionLabel.text = _houseInfo[HOUSE_DIRECTION];
     
-    _houseDes.text = _houseInfo[HOUSE_DESCRIBE];
+    _houseDerese.text = _houseInfo[HOUSE_DESCRIBE];
     
     NSDateFormatter *formatter = [NSDateFormatter new];
     [formatter setDateFormat:@"yyyy-MM-dd"];
-
     _houseShowTime.text = [formatter stringFromDate:_houseInfo.createdAt];
     
     _houseFloor.text = [NSString stringWithFormat:@"%@/%@",_houseInfo[HOUSE_FLOOR_NUM],_houseInfo[HOUSE_TOTAL_FLOOR]];
