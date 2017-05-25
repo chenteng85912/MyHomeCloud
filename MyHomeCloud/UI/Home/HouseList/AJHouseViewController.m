@@ -89,8 +89,6 @@ CGFloat const HEAD_BUTTON_HEIGHT  = 0.0;
             return self.searchKey;
         }
         return self.searchBar.text;
-    }else if(self.showModal==SomeoneHouseModal){
-        return _userObj.mobilePhoneNumber;
     }else{
         return nil;
 
@@ -103,6 +101,10 @@ CGFloat const HEAD_BUTTON_HEIGHT  = 0.0;
     return NSStringFromClass([AJHomeCellModel class]);
 }
 - (void)loadDataSuccess{
+    if ([self.view.gestureRecognizers containsObject:self.tapGes]) {
+        [self.view removeGestureRecognizer:self.tapGes];
+
+    }
     [self.view removeHUD];
     if (self.showModal==HomeHouseModal) {
         self.tableView.tableHeaderView = self.headView;
@@ -140,7 +142,8 @@ CGFloat const HEAD_BUTTON_HEIGHT  = 0.0;
     [houseInfo setObject:[AVUser currentUser].mobilePhoneNumber forKey:USER_PHONE];
     
     [houseInfo setObject:[AVObject objectWithClassName:HOUSE_INFO objectId:object.objectId] forKey:HOUSE_OBJECT];
-    [houseInfo setObject:[AVObject objectWithClassName:USER_INFO objectId:[AVUser currentUser].objectId] forKey:HOUSE_AUTHOR];
+    [houseInfo setObject:[AVUser currentUser].objectId  forKey:HOUSE_AUTHOR];
+    [houseInfo setObject:[AVUser currentUser][HEAD_URL] forKey:HEAD_URL];
 
     self.baseQuery.className = RECORD_HOUSE;
     [self.baseQuery whereKey:HOUSE_ID equalTo:object.objectId];

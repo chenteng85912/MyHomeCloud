@@ -34,8 +34,11 @@ typedef NS_ENUM(NSInteger,TableViewInitDataModal) {
 //获取数据列表名称
 - (NSString *)requestClassName;
 
-//过滤参数
+//请求参数
 - (NSString *)requestKeyName;
+
+//过滤参数
+- (NSString *)equleKeyName;
 
 //获取分页大小
 - (NSInteger)pageSize;

@@ -64,7 +64,8 @@
     [houseData setObject:_houseDescribe.text            forKey:HOUSE_DESCRIBE];
 
     //发布者信息
-    [houseData setObject:[AVObject objectWithClassName:USER_INFO objectId:[AVUser currentUser].objectId] forKey:HOUSE_AUTHOR];
+    [houseData setObject:[AVUser currentUser].objectId      forKey:HOUSE_AUTHOR];
+    [houseData setObject:[AVUser currentUser][HEAD_URL]     forKey:HEAD_URL];
 
     //房屋单价
     NSInteger unitPrice = _houseTotal.text.integerValue*10000/_houseAreaage.text.integerValue;

@@ -11,6 +11,7 @@
 #import "AJHomeTableViewCell.h"
 #import "AJHomeCellModel.h"
 #import "AJHouseViewController.h"
+#import "AJMyhouseViewController.h"
 
 NSInteger const MAX_HOUSE_NUMBER = 10;
 #define AUTOLOOP_HEIGHT     dHeight*2/5
@@ -43,6 +44,7 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
 @property (strong, nonatomic) NSMutableArray *autoLoopDataArray;
 
 @property (strong, nonatomic) AVObject *likedObj;
+@property (strong, nonatomic) AVObject *someUser;
 
 @end
 
@@ -138,11 +140,8 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
     _totalLabel.text = [NSString stringWithFormat:@"%@万",_houseInfo[HOUSE_TOTAL_PRICE]];
     
     //头像
-    AVObject *user = _houseInfo[HOUSE_AUTHOR];
-    if (user) {
-        [_userHead sd_setImageWithURL:user[HEAD_URL] placeholderImage:[CTTool iconImage]];
-
-    }
+  
+    [_userHead sd_setImageWithURL:_houseInfo[HEAD_URL] placeholderImage:[CTTool iconImage]];
     
     _houseRooms.text = _houseInfo[HOUSE_AMOUNT];
     _houseAreaage.text = [NSString stringWithFormat:@"%@平",_houseInfo[HOUSE_AREAAGE]];
@@ -180,6 +179,7 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
     }];
 
 }
+
 //添加 取消收藏
 - (void)addLikeHouse{
     WeakSelf;
@@ -204,7 +204,8 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
         [houseInfo setObject:[AVUser currentUser].mobilePhoneNumber forKey:USER_PHONE];
         
         [houseInfo setObject:[AVObject objectWithClassName:HOUSE_INFO objectId:self.houseInfo.objectId] forKey:HOUSE_OBJECT];
-        [houseInfo setObject:[AVObject objectWithClassName:USER_INFO objectId:[AVUser currentUser].objectId] forKey:HOUSE_AUTHOR];
+        [houseInfo setObject:[AVUser currentUser].objectId  forKey:HOUSE_AUTHOR];
+        [houseInfo setObject:[AVUser currentUser][HEAD_URL] forKey:HEAD_URL];
 
         [houseInfo saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             [weakSelf.view removeHUD];
@@ -258,14 +259,30 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
 
     }
 }
+//获取作者信息
 - (IBAction)showAuthorHouses:(id)sender {
-//    if (!_houseInfo[HOUSE_AUTHOR]) {
-//        return;
-//    }
-//    AJHouseViewController *more = [AJHouseViewController new];
-//    more.showModal = SomeoneHouseModal;
-//    more.userObj = _houseInfo[HOUSE_AUTHOR];
-//    APP_PUSH(more);
+    [self.view showHUD:nil];
+    self.baseQuery.className = USER_INFO;
+    WeakSelf;
+    [self.baseQuery getObjectInBackgroundWithId:_houseInfo[HOUSE_AUTHOR] block:^(AVObject * _Nullable object, NSError * _Nullable error) {
+        [weakSelf.view removeHUD];
+        if (object) {
+            weakSelf.someUser = object;
+            [weakSelf goToSomeoneHouse];
+        }else{
+//            [weakSelf.view showTips:@"网络错误" withState:TYKYHUDModeFail complete:nil];
+        }
+    }];
+  
+}
+//打开用户所有房源
+- (void)goToSomeoneHouse{
+    AJMyhouseViewController *userHouse = [AJMyhouseViewController new];
+    userHouse.showModal = SomeoneHouseModal;
+    userHouse.someoneUser = self.someUser;
+    userHouse.title = self.someUser[USER_NICKNAME];
+    APP_PUSH(userHouse);
+
 }
 #pragma mark CTAutoLoopViewDelegate
 - (UIView *)CTAutoLoopViewController:(UICollectionViewCell *)collectionCell cellForItemAtIndexPath:(NSIndexPath *)indexPath{

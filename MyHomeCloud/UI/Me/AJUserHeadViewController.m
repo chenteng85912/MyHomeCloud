@@ -139,11 +139,12 @@
         if ([weakSelf.delegate respondsToSelector:@selector(uploadSuccess:)]) {
             [weakSelf.delegate uploadSuccess:image];
         }
+        weakSelf.headImageView.image = image;
+
         [weakSelf.view showTips:@"上传成功" withState:TYKYHUDModeSuccess complete:^{
             [weakSelf backToPreVC];
         }];
-        weakSelf.headImageView.image = image;
-        
+
         //删除旧头像文件
         [CTTool deleteFile:[AVUser currentUser][USER_HEAD_IMG_ID] complete:nil];
         

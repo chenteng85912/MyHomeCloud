@@ -42,8 +42,8 @@ NSInteger const defaultPageSize = 50;
 
     if ([_tbViewVC respondsToSelector:@selector(requestKeyName)]&&[_tbViewVC requestKeyName]) {
         if ([[_tbViewVC requestKeyName] isEqualToString:USER_PHONE]) {
-            //我的收藏 我的浏览记录
-            [self.query whereKey:[_tbViewVC requestKeyName] equalTo:[AVUser currentUser].mobilePhoneNumber];
+            //我的收藏 我的浏览记录 某人的房源
+            [self.query whereKey:[_tbViewVC requestKeyName] equalTo:[_tbViewVC equleKeyName]];
 
         }else{
             //搜索
@@ -56,7 +56,7 @@ NSInteger const defaultPageSize = 50;
             //地区
             AVQuery *area = [AVQuery queryWithClassName:[_tbViewVC requestClassName]];
             [area whereKey:HOUSE_AREA containsString:[_tbViewVC requestKeyName]];
-
+            
             AVQuery *mulQuery = [AVQuery orQueryWithSubqueries:@[estate,deve,area]];
             mulQuery.limit = _pageSize;
             [mulQuery orderByDescending:@"createdAt"];
@@ -82,7 +82,6 @@ NSInteger const defaultPageSize = 50;
         [self.query includeKey:[NSString stringWithFormat:@"%@.%@",HOUSE_OBJECT,HOUSE_INFO]];
 
     }
-    [self.query includeKey:[NSString stringWithFormat:@"%@.%@",HOUSE_AUTHOR,USER_INFO]];
 
     //查找对象
     [self.query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {

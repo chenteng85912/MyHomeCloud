@@ -11,7 +11,6 @@
 typedef NS_ENUM(NSInteger,HouseShowModal) {
     HomeHouseModal,      //首页房源
     SearchHouseModal,    //搜索房源
-    SomeoneHouseModal,   //某个用户的房源
 
 };
 

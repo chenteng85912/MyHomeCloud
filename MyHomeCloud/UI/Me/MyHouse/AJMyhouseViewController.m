@@ -46,7 +46,7 @@
     return UITableViewStyleGrouped;
 }
 - (NSString *)requestClassName{
-    if (self.showModal==MyHouseModal||self.showModal==AllHouseModal) {
+    if (self.showModal==MyHouseModal||self.showModal==AllHouseModal||self.showModal==SomeoneHouseModal) {
         return HOUSE_INFO;
 
     }else if (self.showModal == FavoriteModal){
@@ -63,8 +63,16 @@
     }
     return USER_PHONE;
 }
-
+- (NSString *)equleKeyName{
+    if (self.showModal==SomeoneHouseModal) {
+        return _someoneUser[@"mobilePhoneNumber"];
+    }
+    return [AVUser currentUser].mobilePhoneNumber;
+}
 - (BOOL)canDeleteCell{
+    if (self.showModal==SomeoneHouseModal) {
+        return NO;
+    }
     return YES;
 }
 - (NSString *)customeTbViewCellClassName{
@@ -83,16 +91,17 @@
     
     AJHomeCellModel *model = (AJHomeCellModel *)self.dataArray[indexPath.row];
     AJHouseDetailsViewController *details = [AJHouseDetailsViewController new];
-    if (self.showModal==MyHouseModal||self.showModal==AllHouseModal) {
-        details.houseInfo = model.objectData;
-
-    }else{
+    if (self.showModal==FavoriteModal||self.showModal==MyHouseModal) {
         details.houseInfo = model.objectData[HOUSE_OBJECT];
-
+        
         if (self.showModal==FavoriteModal) {
             details.isFromFav = YES;
         }
+    }else{
+        details.houseInfo = model.objectData;
+
     }
+   
     details.hidesBottomBarWhenPushed = YES;
 
     APP_PUSH(details);

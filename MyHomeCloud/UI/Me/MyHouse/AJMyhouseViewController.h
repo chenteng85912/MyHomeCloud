@@ -13,10 +13,13 @@ typedef NS_ENUM(NSInteger,MYHouseShowModal) {
     MyHouseModal,       //我的房源
     FavoriteModal,      //我的收藏
     UserRecordModal,    //浏览记录
+    SomeoneHouseModal,   //某个用户的房源
+
 };
 
 @interface AJMyhouseViewController : AJBaseTbViewController
 
 @property (assign, nonatomic) MYHouseShowModal showModal;
 
+@property (strong, nonatomic) AVObject *someoneUser;
 @end

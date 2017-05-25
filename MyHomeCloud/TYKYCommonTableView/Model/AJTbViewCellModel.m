@@ -20,9 +20,7 @@ CGFloat const UNIT_FONT = 13.0;
     if (objectData[HOUSE_OBJECT]) {
         self.subObj = objectData[HOUSE_OBJECT];
     }
-    if (objectData[HOUSE_AUTHOR]) {
-        self.userObj = objectData[HOUSE_AUTHOR];
-    }
+   
 }
 
 
