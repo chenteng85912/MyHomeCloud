@@ -133,7 +133,7 @@
     [file saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         [CTTool removeKeyWindowHUD];
         if (!succeeded) {
-            [weakSelf.view showTips:@"上传失败，请重试" withState:TYKYHUDModeSuccess complete:nil];
+            [[UIApplication sharedApplication].keyWindow showTips:@"上传失败，请重试" withState:TYKYHUDModeSuccess complete:nil];
             return;
         }
         
@@ -141,7 +141,7 @@
             [weakSelf.delegate uploadSuccess:image];
         }
 
-        [weakSelf.view showTips:@"上传成功" withState:TYKYHUDModeSuccess complete:^{
+        [[UIApplication sharedApplication].keyWindow showTips:@"上传成功" withState:TYKYHUDModeSuccess complete:^{
             [weakSelf backToPreVC];
         }];
 
