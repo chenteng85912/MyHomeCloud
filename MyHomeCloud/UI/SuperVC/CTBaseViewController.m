@@ -21,6 +21,8 @@
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    self.navigationController.interactivePopGestureRecognizer.delegate = self;
+
     if (self.isSubVC) {
         return;
     }
@@ -31,7 +33,6 @@
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
 
     self.navigationController.navigationBar.translucent = NO;
-    self.navigationController.interactivePopGestureRecognizer.delegate = self;
 
     [self.navigationController.navigationBar setTitleTextAttributes:
      @{NSFontAttributeName:[UIFont boldSystemFontOfSize:16],

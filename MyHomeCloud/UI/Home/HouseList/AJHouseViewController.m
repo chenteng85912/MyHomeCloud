@@ -118,6 +118,8 @@ CGFloat const HEAD_BUTTON_HEIGHT  = 0.0;
     AJHouseDetailsViewController *details = [AJHouseDetailsViewController new];
     details.houseInfo = model.objectData;
     details.hidesBottomBarWhenPushed = YES;
+    details.isSubVC = YES;
+
     APP_PUSH(details);
     [self addRecordData:model.objectData];
 
@@ -138,7 +140,8 @@ CGFloat const HEAD_BUTTON_HEIGHT  = 0.0;
     [houseInfo setObject:[AVUser currentUser].mobilePhoneNumber forKey:USER_PHONE];
     
     [houseInfo setObject:[AVObject objectWithClassName:HOUSE_INFO objectId:object.objectId] forKey:HOUSE_OBJECT];
-    
+    [houseInfo setObject:[AVObject objectWithClassName:USER_INFO objectId:[AVUser currentUser].objectId] forKey:HOUSE_AUTHOR];
+
     self.baseQuery.className = RECORD_HOUSE;
     [self.baseQuery whereKey:HOUSE_ID equalTo:object.objectId];
     [self.baseQuery whereKey:USER_PHONE equalTo:[AVUser currentUser].mobilePhoneNumber];

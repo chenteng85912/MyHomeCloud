@@ -77,15 +77,14 @@ NSInteger const defaultPageSize = 50;
 
     _pageNo = 0;
     self.query.skip = _pageSize *_pageNo;
+
     if (![self.query.className isEqualToString:HOUSE_INFO]) {
         [self.query includeKey:[NSString stringWithFormat:@"%@.%@",HOUSE_OBJECT,HOUSE_INFO]];
 
-    }else{
-        [self.query includeKey:[NSString stringWithFormat:@"%@.%@",HOUSE_AUTHOR,USER_INFO]];
-
     }
-    // 关键代码，同上，会返回 targetAVUser 对应的对象的详细信息，而不仅仅是 objectId
+    [self.query includeKey:[NSString stringWithFormat:@"%@.%@",HOUSE_AUTHOR,USER_INFO]];
 
+    //查找对象
     [self.query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error) {
             self.requestState = RequestFailModal;

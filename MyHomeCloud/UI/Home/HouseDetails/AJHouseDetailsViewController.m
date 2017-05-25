@@ -58,6 +58,7 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
     [super viewWillAppear:animated];
     [self.view bringSubviewToFront:_headView];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
 
 }
 #pragma mark - AJTbViewProtocol
@@ -110,12 +111,12 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-//    AJHomeCellModel *model = (AJHomeCellModel *)self.dataArray[indexPath.row];
-//    AJHouseDetailsViewController *details = [AJHouseDetailsViewController new];
-//    
-//    details.houseInfo = model.objectData;
-//    
-//    APP_PUSH(details);
+    AJHomeCellModel *model = (AJHomeCellModel *)self.dataArray[indexPath.row];
+    AJHouseDetailsViewController *details = [AJHouseDetailsViewController new];
+    
+    details.houseInfo = model.objectData;
+    details.isSubVC = YES;
+    APP_PUSH(details);
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 0.01;
@@ -151,7 +152,10 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
     
     _houseDes.text = _houseInfo[HOUSE_DESCRIBE];
     
-//    _houseShowTime.text = _houseInfo.createdAt;
+    NSDateFormatter *formatter = [NSDateFormatter new];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+
+    _houseShowTime.text = [formatter stringFromDate:_houseInfo.createdAt];
     
     _houseFloor.text = [NSString stringWithFormat:@"%@/%@",_houseInfo[HOUSE_FLOOR_NUM],_houseInfo[HOUSE_TOTAL_FLOOR]];
     
@@ -201,7 +205,8 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
         [houseInfo setObject:[AVUser currentUser].mobilePhoneNumber forKey:USER_PHONE];
         
         [houseInfo setObject:[AVObject objectWithClassName:HOUSE_INFO objectId:self.houseInfo.objectId] forKey:HOUSE_OBJECT];
-        
+        [houseInfo setObject:[AVObject objectWithClassName:USER_INFO objectId:[AVUser currentUser].objectId] forKey:HOUSE_AUTHOR];
+
         [houseInfo saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             [weakSelf.view removeHUD];
 
@@ -245,9 +250,9 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     CGFloat offsetY = scrollView.contentOffset.y;
     debugLog(@"%f",offsetY);
-    if (offsetY > 30) {
+    if (offsetY > 0) {
         _headView.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:MIN(1, offsetY/150)];
-        _titleText.alpha = MIN(1, offsetY/100);
+        _titleText.alpha = MIN(1, offsetY/150);
     } else {
         _headView.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0];
         _titleText.alpha = 0;
