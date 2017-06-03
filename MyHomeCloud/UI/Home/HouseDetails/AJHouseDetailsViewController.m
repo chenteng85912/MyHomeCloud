@@ -269,7 +269,7 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
         if (object) {
             weakSelf.someUser = object;
             //头像
-            [_userHead sd_setImageWithURL:object[HEAD_URL] placeholderImage:[CTTool iconImage]];
+            [weakSelf.userHead sd_setImageWithURL:object[HEAD_URL] placeholderImage:[CTTool iconImage]];
         }
     }];
 }

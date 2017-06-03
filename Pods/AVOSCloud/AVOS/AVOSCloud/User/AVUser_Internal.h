@@ -31,7 +31,7 @@
 -(NSString *)internalClassName;
 -(void)setNewFlag:(BOOL)isNew;
 
-+(void)removeCookies;
+//+(void)removeCookies;
 
 - (NSArray *)linkedServiceNames;
 @end
