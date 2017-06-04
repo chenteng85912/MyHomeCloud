@@ -25,13 +25,17 @@
     if (self.showModal==MyHouseModal) {
         //添加新房源
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"add"] style:UIBarButtonItemStylePlain target:self action:@selector(addNewHouse)];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshHomeData) name:kNewHouseNotification object:nil];
+
     }
     if (self.showModal ==AllHouseModal){
         //搜索
          self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"search"] style:UIBarButtonItemStylePlain target:self action:@selector(addNewHouse)];
     }
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshHomeData) name:kNewHouseNotification object:nil];
-   
+    if (self.showModal ==SomeoneHouseModal){
+        
+    }
+
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -39,6 +43,9 @@
 }
 #pragma mark - AJTbViewProtocol
 - (BOOL)makeMJRefresh{
+    if (self.showModal==SearchHouseModal) {
+        return NO;
+    }
     return YES;
 }
 - (BOOL)firstShowAnimation{
@@ -48,29 +55,27 @@
     return UITableViewStyleGrouped;
 }
 - (NSString *)requestClassName{
-    if (self.showModal==MyHouseModal||self.showModal==AllHouseModal||self.showModal==SomeoneHouseModal) {
-        return HOUSE_INFO;
-
-    }else if (self.showModal == FavoriteModal){
+    if (self.showModal == FavoriteModal){
         return FAVORITE_HOUSE;
 
-    }else{
+    }else if (self.showModal == UserRecordModal){
         return RECORD_HOUSE;
+
+    }else{
+        return HOUSE_INFO;
 
     }
 }
 - (NSString *)requestKeyName{
-    if (self.showModal==AllHouseModal) {
-        return nil;
-    }
-    return USER_PHONE;
-}
-- (NSString *)equleKeyName{
     if (self.showModal==SomeoneHouseModal) {
         return _someoneUser[@"mobilePhoneNumber"];
+    }else  if (self.showModal==FavoriteModal||self.showModal==UserRecordModal||self.showModal==MyHouseModal){
+        return [AVUser currentUser].mobilePhoneNumber;
+    }else{
+        return self.searchKey;
     }
-    return [AVUser currentUser].mobilePhoneNumber;
 }
+
 - (BOOL)canDeleteCell{
     if (self.showModal==SomeoneHouseModal) {
         return NO;
@@ -94,6 +99,7 @@
     AJHomeCellModel *model = (AJHomeCellModel *)self.dataArray[indexPath.row];
     AJHouseDetailsViewController *details = [AJHouseDetailsViewController new];
     details.isSubVC = YES;
+    details.showModal = SearchHouseModal;
     if (self.showModal==FavoriteModal) {
         details.isFromFav = YES;
     }

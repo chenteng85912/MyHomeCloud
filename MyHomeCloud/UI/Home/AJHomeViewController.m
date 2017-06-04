@@ -7,8 +7,7 @@
 //
 
 #import "AJHomeViewController.h"
-#import "AJHouseViewController.h"
-#import "AJSearchViewController.h"
+#import "AJMyhouseViewController.h"
 
 @interface AJHomeViewController ()<CTLocationViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
@@ -19,11 +18,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    AJHouseViewController *house = [AJHouseViewController new];
-    house.showModal = HomeHouseModal;
-    house.isSubVC = YES;
-    [self.view addSubview:house.view];
-    [self addChildViewController:house];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleDone target:self action:nil];
     self.navigationItem.titleView = self.searchBar;
@@ -38,9 +32,8 @@
 
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
     
-    AJHouseViewController *search = [AJHouseViewController new];
+    AJMyhouseViewController *search = [AJMyhouseViewController new];
     search.showModal = SearchHouseModal;
-    search.isLoad = YES;
     UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:search];
     [nav setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
     APP_PRESENT(nav);

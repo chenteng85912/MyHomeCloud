@@ -9,16 +9,28 @@
 #import <Foundation/Foundation.h>
 #import "AJTbViewProtocol.h"
 #import "AJTbViewPresenterProtocol.h"
+
 typedef NS_ENUM(NSInteger,RequestStateModal) {
     RequestSuccessModal,    //请求成功
     RequestTimeOutModal,    //请求超时
     RequestFailModal,       //请求失败
     NetworkHaveProblom,     //网络错误
 };
+typedef NS_ENUM(NSInteger,MYHouseShowModal) {
+    AllHouseModal,      //所有房源
+    MyHouseModal,       //我的房源
+    FavoriteModal,      //我的收藏
+    UserRecordModal,    //浏览记录
+    SomeoneHouseModal,  //某个用户的房源
+    SearchHouseModal    //搜索
 
+};
 @interface AJTbViewPresenter : NSObject<AJTbViewPresenterProtocol>
 
 @property (weak, nonatomic) id <AJTbViewProtocol,AJTbViewDataSourceProtocol,AJTbViewDelegateProtocol> tbViewVC;
 
+@property (assign, nonatomic) MYHouseShowModal showModal;
+
 @property (assign, nonatomic) RequestStateModal requestState;
+
 @end

@@ -11,7 +11,7 @@
 #import "AJHouseDetailsViewController.h"
 #import "AJHomeCellModel.h"
 
-CGFloat const HEAD_BUTTON_HEIGHT  = 0.0;
+CGFloat const HEAD_BUTTON_HEIGHT  = 100.0;
 
 @interface AJHouseViewController ()<UISearchBarDelegate,CTAutoLoopViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *headBtnView;
@@ -30,23 +30,18 @@ CGFloat const HEAD_BUTTON_HEIGHT  = 0.0;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    if (self.showModal==HomeHouseModal) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshHomeData) name:kHomeHouseNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshHomeData) name:kNewHouseNotification object:nil];
-    }else if (self.showModal==SearchHouseModal){
-        if (self.searchKey) {
-            self.title= @"更多相似房源";
-        }else{
+    
             [self.view addGestureRecognizer:self.tapGes];
             self.navigationItem.titleView = self.searchBar;
             [self.searchBar becomeFirstResponder];
-        }
+    
       
-    }else{
         if (_userObj) {
             self.title = _userObj[USER_NICKNAME];
         }
-    }
+    
    
 }
 - (void)viewWillAppear:(BOOL)animated{
@@ -65,15 +60,7 @@ CGFloat const HEAD_BUTTON_HEIGHT  = 0.0;
 }
 
 #pragma mark - AJTbViewProtocol
-- (BOOL)makeMJRefresh{
-    if (self.showModal==HomeHouseModal||self.searchKey) {
 
-        return YES;
-    }
-    
-    return NO;
-    
-}
 - (BOOL)firstShowAnimation{
     return YES;
 }
@@ -106,10 +93,7 @@ CGFloat const HEAD_BUTTON_HEIGHT  = 0.0;
 
     }
     [self.view removeHUD];
-    if (self.showModal==HomeHouseModal) {
-        self.tableView.tableHeaderView = self.headView;
-
-    }
+    
 
 }
 #pragma mark - UITableViewDelegate

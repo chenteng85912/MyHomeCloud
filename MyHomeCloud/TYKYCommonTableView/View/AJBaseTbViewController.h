@@ -12,6 +12,7 @@
 #import "AJTbViewCellProtocol.h"
 #import "AJTbViewPresenterProtocol.h"
 
+
 @class AJTbViewCellModel;
 
 @interface AJBaseTbViewController : CTBaseViewController<AJTbViewProtocol,AJTbViewDelegateProtocol,AJTbViewDataSourceProtocol>
@@ -21,6 +22,7 @@
 
 @property (strong, nonatomic) UITableView *tableView;
 
+@property (assign, nonatomic) MYHouseShowModal showModal;
 //调度
 @property (strong, nonatomic) AJTbViewPresenter *presenter;
 //页面加载一次

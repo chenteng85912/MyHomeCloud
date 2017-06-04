@@ -8,14 +8,8 @@
 
 #import "AJBaseTbViewController.h"
 
-typedef NS_ENUM(NSInteger,HouseShowModal) {
-    HomeHouseModal,      //首页房源
-    SearchHouseModal,    //搜索房源
-
-};
 
 @interface AJHouseViewController : AJBaseTbViewController
-@property (assign, nonatomic) HouseShowModal showModal;
 @property (strong, nonatomic) NSString *searchKey;//房屋详情界面 进入查看更多相似房源 传入关键字
 @property (strong, nonatomic) AVUser *userObj;
 

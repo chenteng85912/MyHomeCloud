@@ -38,7 +38,6 @@
 		0B302F5F1ED01835006896CA /* AJOtherViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B302F5D1ED01835006896CA /* AJOtherViewController.xib */; };
 		0B302F6E1ED04F47006896CA /* AJUserHeadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B302F6C1ED04F47006896CA /* AJUserHeadViewController.m */; };
 		0B302F6F1ED04F47006896CA /* AJUserHeadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B302F6D1ED04F47006896CA /* AJUserHeadViewController.xib */; };
-		0B57F57F1EC1919E00B89CE2 /* AJTbViewPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B57F56E1EC1919E00B89CE2 /* AJTbViewPresenter.m */; };
 		0B57F5801EC1919E00B89CE2 /* AJBaseTbViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B57F5781EC1919E00B89CE2 /* AJBaseTbViewController.m */; };
 		0B57F5941EC198D000B89CE2 /* AJUserCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B57F5921EC198D000B89CE2 /* AJUserCenterViewController.m */; };
 		0B57F5951EC198D000B89CE2 /* AJUserCenterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B57F5931EC198D000B89CE2 /* AJUserCenterViewController.xib */; };
@@ -79,7 +78,7 @@
 		A40B20CF1EC7395B0027399E /* AJMyhouseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A40B20C81EC7395B0027399E /* AJMyhouseViewController.xib */; };
 		A411B3C01EC4B0BD00244B6E /* AJSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A411B3BE1EC4B0BD00244B6E /* AJSettingViewController.m */; };
 		A411B3C11EC4B0BD00244B6E /* AJSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A411B3BF1EC4B0BD00244B6E /* AJSettingViewController.xib */; };
-		A466B1881EDD52BF0064ECC6 /* AJCloud.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A466B1861EDD52BF0064ECC6 /* AJCloud.xcdatamodeld */; };
+		A4B6803A1EE406840002F845 /* AJTbViewPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B680391EE406840002F845 /* AJTbViewPresenter.m */; };
 		A4E6A4941EC61243006B882A /* AJSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E6A4921EC61243006B882A /* AJSearchViewController.m */; };
 		A4E6A4951EC61243006B882A /* AJSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4E6A4931EC61243006B882A /* AJSearchViewController.xib */; };
 /* End PBXBuildFile section */
@@ -154,7 +153,6 @@
 		0B302F6C1ED04F47006896CA /* AJUserHeadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJUserHeadViewController.m; sourceTree = "<group>"; };
 		0B302F6D1ED04F47006896CA /* AJUserHeadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJUserHeadViewController.xib; sourceTree = "<group>"; };
 		0B57F56D1EC1919E00B89CE2 /* AJTbViewPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJTbViewPresenter.h; sourceTree = "<group>"; };
-		0B57F56E1EC1919E00B89CE2 /* AJTbViewPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJTbViewPresenter.m; sourceTree = "<group>"; };
 		0B57F5711EC1919E00B89CE2 /* AJTbViewCellProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJTbViewCellProtocol.h; sourceTree = "<group>"; };
 		0B57F5741EC1919E00B89CE2 /* AJTbViewPresenterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJTbViewPresenterProtocol.h; sourceTree = "<group>"; };
 		0B57F5751EC1919E00B89CE2 /* AJTbViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJTbViewProtocol.h; sourceTree = "<group>"; };
@@ -227,7 +225,7 @@
 		A411B3BD1EC4B0BD00244B6E /* AJSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJSettingViewController.h; sourceTree = "<group>"; };
 		A411B3BE1EC4B0BD00244B6E /* AJSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJSettingViewController.m; sourceTree = "<group>"; };
 		A411B3BF1EC4B0BD00244B6E /* AJSettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJSettingViewController.xib; sourceTree = "<group>"; };
-		A466B1871EDD52BF0064ECC6 /* AJCloud.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AJCloud.xcdatamodel; sourceTree = "<group>"; };
+		A4B680391EE406840002F845 /* AJTbViewPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJTbViewPresenter.m; sourceTree = "<group>"; };
 		A4BACE141EC6EEAC00D17074 /* AJTbViewCellModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJTbViewCellModelProtocol.h; sourceTree = "<group>"; };
 		A4E6A4911EC61243006B882A /* AJSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJSearchViewController.h; sourceTree = "<group>"; };
 		A4E6A4921EC61243006B882A /* AJSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJSearchViewController.m; sourceTree = "<group>"; };
@@ -321,7 +319,6 @@
 				0B2344101EC03095007A3AC1 /* Library */,
 				0B2344171EC03095007A3AC1 /* LocalData */,
 				0B2344401EC03095007A3AC1 /* Subclass */,
-				A466B1861EDD52BF0064ECC6 /* AJCloud.xcdatamodeld */,
 			);
 			path = BusinessSystem;
 			sourceTree = "<group>";
@@ -439,7 +436,7 @@
 			isa = PBXGroup;
 			children = (
 				0B57F56D1EC1919E00B89CE2 /* AJTbViewPresenter.h */,
-				0B57F56E1EC1919E00B89CE2 /* AJTbViewPresenter.m */,
+				A4B680391EE406840002F845 /* AJTbViewPresenter.m */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -909,7 +906,6 @@
 				0B2344631EC03095007A3AC1 /* Colours.m in Sources */,
 				0B2344681EC03095007A3AC1 /* TJDownloadTool.m in Sources */,
 				A411B3C01EC4B0BD00244B6E /* AJSettingViewController.m in Sources */,
-				A466B1881EDD52BF0064ECC6 /* AJCloud.xcdatamodeld in Sources */,
 				A40B20B61EC733280027399E /* AJHouseDetailsViewController.m in Sources */,
 				0B2343BD1EC01CA1007A3AC1 /* main.m in Sources */,
 				0B302F571ECFE0D7006896CA /* AJHomeTableViewCell.m in Sources */,
@@ -918,9 +914,9 @@
 				0B302F6E1ED04F47006896CA /* AJUserHeadViewController.m in Sources */,
 				A40B20BE1EC7383F0027399E /* AJTbViewCellModel.m in Sources */,
 				0B23446C1EC03095007A3AC1 /* CTTool.m in Sources */,
+				A4B6803A1EE406840002F845 /* AJTbViewPresenter.m in Sources */,
 				0B302F561ECFE0D7006896CA /* AJHomeCellModel.m in Sources */,
 				0B59A5361ED197FE00E8E787 /* AJNewHouserViewController.m in Sources */,
-				0B57F57F1EC1919E00B89CE2 /* AJTbViewPresenter.m in Sources */,
 				0BE2A35C1EC2D2CD00519840 /* AJMeCenterData.m in Sources */,
 				0B23447B1EC03095007A3AC1 /* AdjustScrollView.m in Sources */,
 				0B57F5991EC198DB00B89CE2 /* AJNewsViewController.m in Sources */,
@@ -1156,19 +1152,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		A466B1861EDD52BF0064ECC6 /* AJCloud.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				A466B1871EDD52BF0064ECC6 /* AJCloud.xcdatamodel */,
-			);
-			currentVersion = A466B1871EDD52BF0064ECC6 /* AJCloud.xcdatamodel */;
-			path = AJCloud.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 0B2343B01EC01CA1007A3AC1 /* Project object */;
 }

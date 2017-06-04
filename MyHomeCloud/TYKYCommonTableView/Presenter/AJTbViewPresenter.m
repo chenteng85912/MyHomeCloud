@@ -39,13 +39,9 @@ NSInteger const defaultPageSize = 50;
     }else{
         _pageSize = defaultPageSize;
     }
-
-    if ([_tbViewVC respondsToSelector:@selector(requestKeyName)]&&[_tbViewVC requestKeyName]) {
-        if ([[_tbViewVC requestKeyName] isEqualToString:USER_PHONE]) {
-            //我的收藏 我的浏览记录 某人的房源
-            [self.query whereKey:[_tbViewVC requestKeyName] equalTo:[_tbViewVC equleKeyName]];
-
-        }else{
+    
+    if(self.showModal!=AllHouseModal){
+        if (self.showModal==SearchHouseModal) {
             //搜索
             //小区名称
             AVQuery *estate = [AVQuery queryWithClassName:[_tbViewVC requestClassName]];
@@ -61,24 +57,17 @@ NSInteger const defaultPageSize = 50;
             mulQuery.limit = _pageSize;
             [mulQuery orderByDescending:@"createdAt"];
             self.query = mulQuery;
-        }
-
-    }else{
-        //先读取本地 后读取网络
-        if ([AJLocalDataCenter checkLocalData:HOUSE_INFO ]&&self.query.hasCachedResult) {
-            self.query.cachePolicy = kAVCachePolicyCacheOnly;
-
         }else{
-            self.query.cachePolicy = kAVCachePolicyNetworkOnly;
+            [self.query whereKey:USER_PHONE equalTo:[_tbViewVC requestKeyName]];
 
         }
-      
-    }
 
+    }
+    
     _pageNo = 0;
     self.query.skip = _pageSize *_pageNo;
-
-    if (![self.query.className isEqualToString:HOUSE_INFO]) {
+    //收藏 浏览记录
+    if (self.showModal==FavoriteModal||self.showModal==UserRecordModal) {
         [self.query includeKey:[NSString stringWithFormat:@"%@.%@",HOUSE_OBJECT,HOUSE_INFO]];
 
     }
@@ -153,6 +142,7 @@ NSInteger const defaultPageSize = 50;
     if (_query ==nil) {
         _query = [AVQuery new];
         _query.limit = _pageSize;
+        _query.cachePolicy = kAVCachePolicyIgnoreCache;
         [_query orderByDescending:@"createdAt"];
     }
     return _query;

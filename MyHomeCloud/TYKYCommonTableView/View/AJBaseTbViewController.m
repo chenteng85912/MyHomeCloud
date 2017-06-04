@@ -358,6 +358,7 @@
     if (!_presenter) {
         _presenter = [AJTbViewPresenter new];
         _presenter.tbViewVC = self;
+        _presenter.showModal = self.showModal;
     }
     return _presenter;
 }
