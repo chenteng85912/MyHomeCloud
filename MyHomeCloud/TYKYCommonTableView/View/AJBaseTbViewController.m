@@ -108,12 +108,12 @@
                     }
 
                     //我的房源  所有房源
-                    if ([[weakSelf requestClassName] isEqualToString:HOUSE_INFO]) {
+                    if ([[weakSelf requestClassName] isEqualToString:SECOND_HAND_HOUSE]) {
                         [weakSelf deleteRecordData:model.objectData];
                         
                         //删除房屋信息后 清空缓存
                         if (![weakSelf requestKeyName]) {
-                            [AJLocalDataCenter removeLocalDataTime:HOUSE_INFO];
+                            [AJLocalDataCenter removeLocalDataTime:SECOND_HAND_HOUSE];
 
                         }
 
@@ -139,7 +139,7 @@
 }
 //删除浏览记录 用户收藏 图片文件
 - (void)deleteRecordData:(AVObject *)obj{
-    self.baseQuery.className = RECORD_HOUSE;
+    self.baseQuery.className = USER_RECORD;
     [self.baseQuery whereKey:HOUSE_ID equalTo:obj.objectId];
 
     WeakSelf;
@@ -151,7 +151,7 @@
             }
         }
         //删除收藏
-        weakSelf.baseQuery.className = FAVORITE_HOUSE;
+        weakSelf.baseQuery.className = USER_FAVORITE;
         [weakSelf.baseQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
             if (objects.count>0) {
                 for (AVObject *obje in objects) {
@@ -303,8 +303,8 @@
 
     }else{
         //手动下拉 清空本地数据
-        if ([[self requestClassName] isEqualToString:HOUSE_INFO]&&![self requestKeyName]) {
-            [AJLocalDataCenter removeLocalDataTime:HOUSE_INFO];
+        if ([[self requestClassName] isEqualToString:SECOND_HAND_HOUSE]&&![self requestKeyName]) {
+            [AJLocalDataCenter removeLocalDataTime:SECOND_HAND_HOUSE];
 
         }
     }

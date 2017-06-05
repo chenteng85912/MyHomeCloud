@@ -68,7 +68,7 @@ CGFloat const HEAD_BUTTON_HEIGHT  = 100.0;
     return UITableViewStyleGrouped;
 }
 - (NSString *)requestClassName{
-    return HOUSE_INFO;
+    return SECOND_HAND_HOUSE;
 }
 - (NSString *)requestKeyName{
     if (self.showModal==SearchHouseModal) {
@@ -121,15 +121,15 @@ CGFloat const HEAD_BUTTON_HEIGHT  = 100.0;
 
 //保存浏览记录
 - (void)addRecordData:(AVObject *)object{
-    AVObject *houseInfo = [[AVObject alloc] initWithClassName:RECORD_HOUSE];
+    AVObject *houseInfo = [[AVObject alloc] initWithClassName:USER_RECORD];
     [houseInfo setObject:object.objectId forKey:HOUSE_ID];
     [houseInfo setObject:[AVUser currentUser].mobilePhoneNumber forKey:USER_PHONE];
     
-    [houseInfo setObject:[AVObject objectWithClassName:HOUSE_INFO objectId:object.objectId] forKey:HOUSE_OBJECT];
+    [houseInfo setObject:[AVObject objectWithClassName:SECOND_HAND_HOUSE objectId:object.objectId] forKey:HOUSE_OBJECT];
     [houseInfo setObject:[AVUser currentUser].objectId  forKey:HOUSE_AUTHOR];
     [houseInfo setObject:[AVUser currentUser][HEAD_URL] forKey:HEAD_URL];
 
-    self.baseQuery.className = RECORD_HOUSE;
+    self.baseQuery.className = USER_RECORD;
     [self.baseQuery whereKey:HOUSE_ID equalTo:object.objectId];
     [self.baseQuery whereKey:USER_PHONE equalTo:[AVUser currentUser].mobilePhoneNumber];
 

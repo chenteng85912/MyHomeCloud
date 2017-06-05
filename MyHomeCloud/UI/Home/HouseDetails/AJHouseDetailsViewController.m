@@ -74,7 +74,7 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
     return UITableViewStyleGrouped;
 }
 - (NSString *)requestClassName{
-    return HOUSE_INFO;
+    return SECOND_HAND_HOUSE;
     
 }
 - (BOOL)firstShowAnimation{
@@ -164,7 +164,7 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
 - (void)checkLikeState{
     
     [self.view showHUD:nil];
-    self.baseQuery.className = FAVORITE_HOUSE;
+    self.baseQuery.className = USER_FAVORITE;
     [self.baseQuery whereKey:USER_PHONE equalTo:[AVUser currentUser].mobilePhoneNumber];
     [self.baseQuery whereKey:HOUSE_ID equalTo:self.houseInfo.objectId];
     WeakSelf;
@@ -200,12 +200,12 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
         }];
 
     }else{
-        AVObject *houseInfo = [[AVObject alloc] initWithClassName:FAVORITE_HOUSE];
+        AVObject *houseInfo = [[AVObject alloc] initWithClassName:USER_FAVORITE];
 
         [houseInfo setObject:self.houseInfo.objectId forKey:HOUSE_ID];
         [houseInfo setObject:[AVUser currentUser].mobilePhoneNumber forKey:USER_PHONE];
         
-        [houseInfo setObject:[AVObject objectWithClassName:HOUSE_INFO objectId:self.houseInfo.objectId] forKey:HOUSE_OBJECT];
+        [houseInfo setObject:[AVObject objectWithClassName:SECOND_HAND_HOUSE objectId:self.houseInfo.objectId] forKey:HOUSE_OBJECT];
         [houseInfo setObject:[AVUser currentUser].objectId  forKey:HOUSE_AUTHOR];
         [houseInfo setObject:[AVUser currentUser][HEAD_URL] forKey:HEAD_URL];
 

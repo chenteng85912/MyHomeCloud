@@ -68,7 +68,7 @@ NSInteger const defaultPageSize = 50;
     self.query.skip = _pageSize *_pageNo;
     //收藏 浏览记录
     if (self.showModal==FavoriteModal||self.showModal==UserRecordModal) {
-        [self.query includeKey:[NSString stringWithFormat:@"%@.%@",HOUSE_OBJECT,HOUSE_INFO]];
+        [self.query includeKey:[NSString stringWithFormat:@"%@.%@",HOUSE_OBJECT,SECOND_HAND_HOUSE]];
 
     }
 
@@ -79,8 +79,8 @@ NSInteger const defaultPageSize = 50;
 
         }else{
             self.requestState = RequestSuccessModal;
-            if (![self.query.className isEqualToString:HOUSE_INFO]) {
-                [AJLocalDataCenter saveLocalDataTime:HOUSE_INFO];
+            if (![self.query.className isEqualToString:SECOND_HAND_HOUSE]) {
+                [AJLocalDataCenter saveLocalDataTime:SECOND_HAND_HOUSE];
                 
             }
 

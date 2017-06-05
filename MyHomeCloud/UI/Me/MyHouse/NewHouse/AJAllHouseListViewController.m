@@ -30,7 +30,7 @@
     return UITableViewStyleGrouped;
 }
 - (NSString *)requestClassName{
-    return HOUSE_BASE_INFO;
+    return ALL_HOUSE_INFO;
     
 }
 

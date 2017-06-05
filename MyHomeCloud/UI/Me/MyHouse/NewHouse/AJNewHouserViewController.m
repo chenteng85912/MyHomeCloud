@@ -46,7 +46,7 @@
 //保存房源
 - (AVObject *)creatHouseInfo{
 
-    AVObject *houseData = [AVObject objectWithClassName:HOUSE_INFO];
+    AVObject *houseData = [AVObject objectWithClassName:SECOND_HAND_HOUSE];
     
     [houseData setObject:[AVUser currentUser].mobilePhoneNumber      forKey:USER_PHONE];
     

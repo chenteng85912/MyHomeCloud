@@ -56,13 +56,13 @@
 }
 - (NSString *)requestClassName{
     if (self.showModal == FavoriteModal){
-        return FAVORITE_HOUSE;
+        return USER_FAVORITE;
 
     }else if (self.showModal == UserRecordModal){
-        return RECORD_HOUSE;
+        return USER_RECORD;
 
     }else{
-        return HOUSE_INFO;
+        return SECOND_HAND_HOUSE;
 
     }
 }
