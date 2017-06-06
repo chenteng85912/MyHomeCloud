@@ -25,6 +25,7 @@
 #import <TYKYLibrary/TYKYLibrary.h>
 #import "UIImageView+WebCache.h"
 #import "AJLocalDataCenter.h"
+#import "AJTbViewPresenter.h"
 
 #endif /* MyHomeCloud_pch */
 

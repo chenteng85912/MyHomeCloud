@@ -10,4 +10,7 @@
 
 @interface AJLetHouseViewController : AJBaseTbViewController
 
+@property (strong, nonatomic) NSString *someonePhone;
+@property (strong, nonatomic) NSString *searchKey;
+
 @end

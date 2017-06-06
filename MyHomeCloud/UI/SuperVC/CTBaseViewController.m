@@ -17,7 +17,7 @@
 #pragma mark - lift cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -28,15 +28,15 @@
     }
     [self.navigationController setNavigationBarHidden:NO animated:YES];
 
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
-    self.navigationController.navigationBar.tintColor = NavigationBarColor;
-    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.barTintColor = NavigationBarColor;
 
     self.navigationController.navigationBar.translucent = NO;
 
     [self.navigationController.navigationBar setTitleTextAttributes:
      @{NSFontAttributeName:[UIFont boldSystemFontOfSize:16],
-       NSForegroundColorAttributeName:[UIColor blackColor]}];
+       NSForegroundColorAttributeName:[UIColor whiteColor]}];
     
     if (self.navigationItem.leftBarButtonItem) {
         return;
@@ -47,13 +47,16 @@
         self.navigationItem.leftBarButtonItem = nil;
         
     }else{
+        UIButton *left = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
         UIImage *backImg = [UIImage imageNamed:@"close"];
         if (self.navigationController.viewControllers.count>1) {
             backImg = [UIImage imageNamed:@"back"];
         }
-        
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:backImg style:UIBarButtonItemStylePlain target:self action:@selector(backToPreVC)];
-//        self.navigationItem.leftBarButtonItem.imageInsets = UIEdgeInsetsMake(0, -5, 0, 5);
+        [left setImage:backImg forState:UIControlStateNormal];
+        left.imageEdgeInsets = UIEdgeInsetsMake(0, -5, 0, 5);
+
+        [left addTarget:self action:@selector(backToPreVC) forControlEvents:UIControlEventTouchUpInside];
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:left];
     }
 }
 

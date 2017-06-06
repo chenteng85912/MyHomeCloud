@@ -16,7 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *houseYear;
 
 @end
-@implementation AJNewHouseTableViewCell
+@implementation AJHouseInfoTableViewCell
 
 - (void)processCellData:(AJNewHouseModel *)data{
     AVObject *object = data.objectData;

@@ -9,5 +9,6 @@
 #import "AJBaseTbViewController.h"
 
 @interface AJNewHouseViewController : AJBaseTbViewController
+@property (strong, nonatomic) NSString *searchKey;
 
 @end

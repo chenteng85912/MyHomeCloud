@@ -18,13 +18,13 @@
     CGFloat width = [title sizeWithMaxSize:CGSizeMake(200, 25) fontSize:15].width;
     UIButton *right = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, width+8, 25)];
     [right setTitle:title forState:UIControlStateNormal];
-    [right setTitleColor:NavigationBarColor forState:UIControlStateNormal];
+    [right setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     
     right.titleLabel.font = [UIFont boldSystemFontOfSize:14];
     right.layer.masksToBounds = YES;
     right.layer.cornerRadius = 5.0;
     right.layer.borderWidth = 1;
-    right.layer.borderColor = NavigationBarColor.CGColor;
+    right.layer.borderColor = [UIColor whiteColor].CGColor;
     
     [right addTarget:target action:actionName forControlEvents:UIControlEventTouchUpInside];
     return right;

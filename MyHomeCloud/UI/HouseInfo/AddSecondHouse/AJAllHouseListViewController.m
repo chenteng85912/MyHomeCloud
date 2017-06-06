@@ -7,7 +7,7 @@
 //
 
 #import "AJAllHouseListViewController.h"
-#import "AJNewHouseTableViewCell.h"
+#import "AJHouseInfoTableViewCell.h"
 #import "AJNewHouseModel.h"
 
 @interface AJAllHouseListViewController ()
@@ -38,7 +38,7 @@
     return YES;
 }
 - (NSString *)customeTbViewCellClassName{
-    return  NSStringFromClass([AJNewHouseTableViewCell class]);
+    return  NSStringFromClass([AJHouseInfoTableViewCell class]);
 }
 - (NSString *)customeTbViewCellModelClassName{
     return NSStringFromClass([AJNewHouseModel class]);

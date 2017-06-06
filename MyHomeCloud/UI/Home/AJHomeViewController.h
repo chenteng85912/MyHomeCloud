@@ -6,8 +6,7 @@
 //  Copyright © 2017年 TENG. All rights reserved.
 //
 
-#import "CTHomeBaseViewController.h"
 
-@interface AJHomeViewController : CTHomeBaseViewController
+@interface AJHomeViewController : CTBaseViewController
 
 @end

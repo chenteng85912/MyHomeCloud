@@ -20,9 +20,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     if (self.showModal==MyHouseModal) {
-        //添加新房源
-//        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"add"] style:UIBarButtonItemStylePlain target:self action:@selector(addNewHouse)];
+ 
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshHomeData) name:kNewHouseNotification object:nil];
         
     }
@@ -30,16 +30,16 @@
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    
+
 }
 #pragma mark - AJTbViewProtocol
 - (BOOL)makeMJRefresh{
    
     return YES;
 }
-- (BOOL)firstShowAnimation{
-    return YES;
-}
+//- (BOOL)firstShowAnimation{
+//    return YES;
+//}
 - (UITableViewStyle)tableViewStyle{
     return UITableViewStyleGrouped;
 }
@@ -101,7 +101,7 @@
     details.houseInfo = model.objectData;
     APP_PUSH(details);
     
-    if (self.showModal==AllHouseModal) {
+    if (self.showModal==AllHouseModal||self.showModal==SomeoneHouseModal) {
         [self addRecordData:model.objectData];
     }
 }

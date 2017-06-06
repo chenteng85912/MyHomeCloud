@@ -28,6 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
+
     [self initTableView];
 
 }
@@ -44,9 +45,10 @@
     
     if (!_isLoad) {
         
-        [self.tableView showHUD:nil];
-        [self initStartData];
-        
+//        [self.tableView showHUD:nil];
+//        [self initStartData];
+        _isLoad = YES;
+        [self.tableView.mj_header beginRefreshing];
     }
 }
 - (void)viewWillDisappear:(BOOL)animated
@@ -291,17 +293,7 @@
 #pragma mark -private methods 加载数据
 //首次从网络请求数据
 - (void)initStartData{
-    if (!_isLoad) {
-        
-        _isLoad = YES;
-
-    }else{
-        //手动下拉 清空本地数据
-//        if ([[self requestClassName] isEqualToString:SECOND_HAND_HOUSE]&&![self requestKeyName]) {
-//            [AJLocalDataCenter removeLocalDataTime:SECOND_HAND_HOUSE];
-//
-//        }
-    }
+   
     _oldDataNum = 0;
     [self.presenter initStartData];
 }
@@ -344,6 +336,7 @@
         _tableView.separatorInset = UIEdgeInsetsMake(0, 15, 0, 15);
         _tableView.delegate = self;
         _tableView.dataSource = self;
+        _tableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
         
     }
     return _tableView;

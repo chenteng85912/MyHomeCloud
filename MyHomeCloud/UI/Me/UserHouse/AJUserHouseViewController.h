@@ -10,4 +10,6 @@
 
 @interface AJUserHouseViewController : CTBaseViewController
 
+@property (assign, nonatomic) HouseShowModal showModal;
+
 @end

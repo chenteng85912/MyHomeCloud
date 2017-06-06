@@ -10,6 +10,7 @@
 #import "AJMeCenterData.h"
 #import "AJMeModel.h"
 #import "AJUserHeadViewController.h"
+#import "AJUserHouseViewController.h"
 
 static NSString *CellIdentifier = @"AJUserCellId";
 
@@ -47,7 +48,6 @@ CGFloat const IMAGEHEIGHT  = 200.0f;
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
 
 }
 
@@ -70,6 +70,8 @@ CGFloat const IMAGEHEIGHT  = 200.0f;
     NSArray *temp = self.dataArray[indexPath.section];
     AJMeModel *model = temp[indexPath.row];
     cell.textLabel.text = model.title;
+    cell.textLabel.font = [UIFont systemFontOfSize:16];
+    
     cell.imageView.image = [CTTool scaleImage:LOADIMAGE(model.iconName) toSize:CGSizeMake(25, 25)];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
@@ -106,22 +108,11 @@ CGFloat const IMAGEHEIGHT  = 200.0f;
     }
     UIViewController *vc = [NSClassFromString(model.className) new];
     vc.title = model.title;
-//    if ([model.className isEqualToString: NSStringFromClass([AJMyhouseViewController class])]) {
-//        AJMyhouseViewController *house = (AJMyhouseViewController *)vc;
-//        if (indexPath.row==0) {
-//            house.showModal = MyHouseModal;
-//        }else if (indexPath.row==1){
-//            house.showModal = FavoriteModal;
-//
-//        }else if (indexPath.row==2){
-//            house.showModal = UserRecordModal;
-//
-//        }else{
-//            house.showModal = AllHouseModal;
-//
-//        }
-//        vc = house;
-//    }
+    if ([model.className isEqualToString: NSStringFromClass([AJUserHouseViewController class])]) {
+        AJUserHouseViewController *house = (AJUserHouseViewController *)vc;
+        house.showModal = model.showModal;
+        vc = house;
+    }
     
     vc.hidesBottomBarWhenPushed = YES;
     APP_PUSH(vc);

@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AJTableViewCell.h"
 
-@interface AJNewHouseTableViewCell : UITableViewCell
+@interface AJNewHouseTableViewCell : AJTableViewCell
 
 @end

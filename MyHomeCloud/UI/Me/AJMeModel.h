@@ -7,11 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-
 @interface AJMeModel : NSObject
 
 @property (strong, nonatomic) NSString *title;//标题
 @property (strong, nonatomic) NSString *iconName;//图标名称
 @property (strong, nonatomic) NSString *className;//类名
+@property (assign, nonatomic) HouseShowModal showModal;
 
 @end

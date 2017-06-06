@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0B15DE7E1ED2C8BE003A54E3 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B15DE7D1ED2C8BE003A54E3 /* AFNetworkReachabilityManager.m */; };
 		0B1904A11EE6546E004C46EE /* AJSecondHouseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B19049F1EE6546E004C46EE /* AJSecondHouseViewController.m */; };
-		0B1904A21EE6546E004C46EE /* AJSecondHouseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B1904A01EE6546E004C46EE /* AJSecondHouseViewController.xib */; };
 		0B1904A81EE65EC1004C46EE /* AJSecondHouseCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1904A41EE65EC1004C46EE /* AJSecondHouseCellModel.m */; };
 		0B1904A91EE65EC1004C46EE /* AJSecondHouseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1904A61EE65EC1004C46EE /* AJSecondHouseTableViewCell.m */; };
 		0B1904AA1EE65EC1004C46EE /* AJSecondHouseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B1904A71EE65EC1004C46EE /* AJSecondHouseTableViewCell.xib */; };
@@ -18,8 +17,8 @@
 		0B1904C41EE66192004C46EE /* AJAllHouseListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1904B01EE66192004C46EE /* AJAllHouseListViewController.m */; };
 		0B1904C51EE66192004C46EE /* AJAllHouseListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B1904B11EE66192004C46EE /* AJAllHouseListViewController.xib */; };
 		0B1904C61EE66192004C46EE /* AJNewHouseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1904B31EE66192004C46EE /* AJNewHouseModel.m */; };
-		0B1904C71EE66192004C46EE /* AJNewHouseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1904B51EE66192004C46EE /* AJNewHouseTableViewCell.m */; };
-		0B1904C81EE66192004C46EE /* AJNewHouseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B1904B61EE66192004C46EE /* AJNewHouseTableViewCell.xib */; };
+		0B1904C71EE66192004C46EE /* AJHouseInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1904B51EE66192004C46EE /* AJHouseInfoTableViewCell.m */; };
+		0B1904C81EE66192004C46EE /* AJHouseInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B1904B61EE66192004C46EE /* AJHouseInfoTableViewCell.xib */; };
 		0B1904C91EE66192004C46EE /* AJHouseDesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1904B91EE66192004C46EE /* AJHouseDesViewController.m */; };
 		0B1904CA1EE66192004C46EE /* AJHouseDesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B1904BA1EE66192004C46EE /* AJHouseDesViewController.xib */; };
 		0B1904CB1EE66192004C46EE /* AJUploadPicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1904BC1EE66192004C46EE /* AJUploadPicModel.m */; };
@@ -66,7 +65,6 @@
 		0B6E12C61EC4235300103571 /* AJLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B6E12C41EC4235300103571 /* AJLoginViewController.xib */; };
 		0BE2A35C1EC2D2CD00519840 /* AJMeCenterData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BE2A35B1EC2D2CD00519840 /* AJMeCenterData.m */; };
 		0BE2A35F1EC2DE1700519840 /* AJMeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BE2A35E1EC2DE1700519840 /* AJMeModel.m */; };
-		0BE4D9A11ECBEA9700E4ADCD /* CTHomeBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BE4D9A01ECBEA9700E4ADCD /* CTHomeBaseViewController.m */; };
 		0BE4D9EF1ECC6B8200E4ADCD /* AJHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BE4D9ED1ECC6B8200E4ADCD /* AJHomeViewController.m */; };
 		0BE4D9F01ECC6B8200E4ADCD /* AJHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BE4D9EE1ECC6B8200E4ADCD /* AJHomeViewController.xib */; };
 		9E8788EDDBF16621BCB775EC /* libPods-MyHomeCloud.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 28918ABEED7A893430DD718E /* libPods-MyHomeCloud.a */; };
@@ -75,8 +73,17 @@
 		A40B20B71EC733280027399E /* AJHouseDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A40B20B51EC733280027399E /* AJHouseDetailsViewController.xib */; };
 		A411B3C01EC4B0BD00244B6E /* AJSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A411B3BE1EC4B0BD00244B6E /* AJSettingViewController.m */; };
 		A411B3C11EC4B0BD00244B6E /* AJSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A411B3BF1EC4B0BD00244B6E /* AJSettingViewController.xib */; };
+		A4B864491EE6E63800E3CE5E /* AJUserHouseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B864471EE6E63800E3CE5E /* AJUserHouseViewController.m */; };
+		A4B864551EE6EFFD00E3CE5E /* AJLetHouseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B864531EE6EFFD00E3CE5E /* AJLetHouseViewController.m */; };
+		A4B8645A1EE6F00E00E3CE5E /* AJNewHouseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B864581EE6F00E00E3CE5E /* AJNewHouseViewController.m */; };
 		A4E6A4941EC61243006B882A /* AJSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E6A4921EC61243006B882A /* AJSearchViewController.m */; };
 		A4E6A4951EC61243006B882A /* AJSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4E6A4931EC61243006B882A /* AJSearchViewController.xib */; };
+		A4FC23491EE6F2BA00924EEE /* AJLetHouseCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A4FC23481EE6F2BA00924EEE /* AJLetHouseCellModel.m */; };
+		A4FC23501EE6F31200924EEE /* AJLetHouseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A4FC234E1EE6F31200924EEE /* AJLetHouseTableViewCell.m */; };
+		A4FC23511EE6F31200924EEE /* AJLetHouseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4FC234F1EE6F31200924EEE /* AJLetHouseTableViewCell.xib */; };
+		A4FC23551EE6F37400924EEE /* AJNewHouseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A4FC23531EE6F37400924EEE /* AJNewHouseTableViewCell.m */; };
+		A4FC23561EE6F37400924EEE /* AJNewHouseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4FC23541EE6F37400924EEE /* AJNewHouseTableViewCell.xib */; };
+		A4FC23591EE6F39000924EEE /* AJNewHouseCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A4FC23581EE6F39000924EEE /* AJNewHouseCellModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,7 +101,6 @@
 		0B15DE7D1ED2C8BE003A54E3 /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
 		0B19049E1EE6546E004C46EE /* AJSecondHouseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJSecondHouseViewController.h; sourceTree = "<group>"; };
 		0B19049F1EE6546E004C46EE /* AJSecondHouseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJSecondHouseViewController.m; sourceTree = "<group>"; };
-		0B1904A01EE6546E004C46EE /* AJSecondHouseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJSecondHouseViewController.xib; sourceTree = "<group>"; };
 		0B1904A31EE65EC1004C46EE /* AJSecondHouseCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJSecondHouseCellModel.h; sourceTree = "<group>"; };
 		0B1904A41EE65EC1004C46EE /* AJSecondHouseCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJSecondHouseCellModel.m; sourceTree = "<group>"; };
 		0B1904A51EE65EC1004C46EE /* AJSecondHouseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJSecondHouseTableViewCell.h; sourceTree = "<group>"; };
@@ -108,9 +114,9 @@
 		0B1904B11EE66192004C46EE /* AJAllHouseListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJAllHouseListViewController.xib; sourceTree = "<group>"; };
 		0B1904B21EE66192004C46EE /* AJNewHouseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJNewHouseModel.h; sourceTree = "<group>"; };
 		0B1904B31EE66192004C46EE /* AJNewHouseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJNewHouseModel.m; sourceTree = "<group>"; };
-		0B1904B41EE66192004C46EE /* AJNewHouseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJNewHouseTableViewCell.h; sourceTree = "<group>"; };
-		0B1904B51EE66192004C46EE /* AJNewHouseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJNewHouseTableViewCell.m; sourceTree = "<group>"; };
-		0B1904B61EE66192004C46EE /* AJNewHouseTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJNewHouseTableViewCell.xib; sourceTree = "<group>"; };
+		0B1904B41EE66192004C46EE /* AJHouseInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJHouseInfoTableViewCell.h; sourceTree = "<group>"; };
+		0B1904B51EE66192004C46EE /* AJHouseInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJHouseInfoTableViewCell.m; sourceTree = "<group>"; };
+		0B1904B61EE66192004C46EE /* AJHouseInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJHouseInfoTableViewCell.xib; sourceTree = "<group>"; };
 		0B1904B81EE66192004C46EE /* AJHouseDesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJHouseDesViewController.h; sourceTree = "<group>"; };
 		0B1904B91EE66192004C46EE /* AJHouseDesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJHouseDesViewController.m; sourceTree = "<group>"; };
 		0B1904BA1EE66192004C46EE /* AJHouseDesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJHouseDesViewController.xib; sourceTree = "<group>"; };
@@ -201,8 +207,6 @@
 		0BE2A35B1EC2D2CD00519840 /* AJMeCenterData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJMeCenterData.m; sourceTree = "<group>"; };
 		0BE2A35D1EC2DE1700519840 /* AJMeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJMeModel.h; sourceTree = "<group>"; };
 		0BE2A35E1EC2DE1700519840 /* AJMeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJMeModel.m; sourceTree = "<group>"; };
-		0BE4D99F1ECBEA9700E4ADCD /* CTHomeBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTHomeBaseViewController.h; sourceTree = "<group>"; };
-		0BE4D9A01ECBEA9700E4ADCD /* CTHomeBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTHomeBaseViewController.m; sourceTree = "<group>"; };
 		0BE4D9EC1ECC6B8200E4ADCD /* AJHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJHomeViewController.h; sourceTree = "<group>"; };
 		0BE4D9ED1ECC6B8200E4ADCD /* AJHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJHomeViewController.m; sourceTree = "<group>"; };
 		0BE4D9EE1ECC6B8200E4ADCD /* AJHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJHomeViewController.xib; sourceTree = "<group>"; };
@@ -217,9 +221,25 @@
 		A411B3BD1EC4B0BD00244B6E /* AJSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJSettingViewController.h; sourceTree = "<group>"; };
 		A411B3BE1EC4B0BD00244B6E /* AJSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJSettingViewController.m; sourceTree = "<group>"; };
 		A411B3BF1EC4B0BD00244B6E /* AJSettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJSettingViewController.xib; sourceTree = "<group>"; };
+		A4B864461EE6E63800E3CE5E /* AJUserHouseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJUserHouseViewController.h; sourceTree = "<group>"; };
+		A4B864471EE6E63800E3CE5E /* AJUserHouseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJUserHouseViewController.m; sourceTree = "<group>"; };
+		A4B864521EE6EFFD00E3CE5E /* AJLetHouseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJLetHouseViewController.h; sourceTree = "<group>"; };
+		A4B864531EE6EFFD00E3CE5E /* AJLetHouseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJLetHouseViewController.m; sourceTree = "<group>"; };
+		A4B864571EE6F00E00E3CE5E /* AJNewHouseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJNewHouseViewController.h; sourceTree = "<group>"; };
+		A4B864581EE6F00E00E3CE5E /* AJNewHouseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJNewHouseViewController.m; sourceTree = "<group>"; };
 		A4E6A4911EC61243006B882A /* AJSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJSearchViewController.h; sourceTree = "<group>"; };
 		A4E6A4921EC61243006B882A /* AJSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJSearchViewController.m; sourceTree = "<group>"; };
 		A4E6A4931EC61243006B882A /* AJSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJSearchViewController.xib; sourceTree = "<group>"; };
+		A4FC23471EE6F2BA00924EEE /* AJLetHouseCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJLetHouseCellModel.h; sourceTree = "<group>"; };
+		A4FC23481EE6F2BA00924EEE /* AJLetHouseCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJLetHouseCellModel.m; sourceTree = "<group>"; };
+		A4FC234D1EE6F31200924EEE /* AJLetHouseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJLetHouseTableViewCell.h; sourceTree = "<group>"; };
+		A4FC234E1EE6F31200924EEE /* AJLetHouseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJLetHouseTableViewCell.m; sourceTree = "<group>"; };
+		A4FC234F1EE6F31200924EEE /* AJLetHouseTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJLetHouseTableViewCell.xib; sourceTree = "<group>"; };
+		A4FC23521EE6F37400924EEE /* AJNewHouseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJNewHouseTableViewCell.h; sourceTree = "<group>"; };
+		A4FC23531EE6F37400924EEE /* AJNewHouseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJNewHouseTableViewCell.m; sourceTree = "<group>"; };
+		A4FC23541EE6F37400924EEE /* AJNewHouseTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJNewHouseTableViewCell.xib; sourceTree = "<group>"; };
+		A4FC23571EE6F39000924EEE /* AJNewHouseCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJNewHouseCellModel.h; sourceTree = "<group>"; };
+		A4FC23581EE6F39000924EEE /* AJNewHouseCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJNewHouseCellModel.m; sourceTree = "<group>"; };
 		B6A1BBA8A047697D99556676 /* Pods-MyHomeCloud.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyHomeCloud.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyHomeCloud/Pods-MyHomeCloud.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -246,26 +266,12 @@
 		0B19049A1EE6542B004C46EE /* HouseInfo */ = {
 			isa = PBXGroup;
 			children = (
+				A4B864501EE6EFF000E3CE5E /* LetHouse */,
+				A4B864511EE6EFF000E3CE5E /* NewHouse */,
 				0B1904AB1EE66192004C46EE /* AddSecondHouse */,
-				0B19049B1EE6542B004C46EE /* LetHouse */,
-				0B19049C1EE6542B004C46EE /* NewHouse */,
 				0B19049D1EE6542B004C46EE /* SecondHouse */,
 			);
 			path = HouseInfo;
-			sourceTree = "<group>";
-		};
-		0B19049B1EE6542B004C46EE /* LetHouse */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = LetHouse;
-			sourceTree = "<group>";
-		};
-		0B19049C1EE6542B004C46EE /* NewHouse */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = NewHouse;
 			sourceTree = "<group>";
 		};
 		0B19049D1EE6542B004C46EE /* SecondHouse */ = {
@@ -273,7 +279,6 @@
 			children = (
 				0B19049E1EE6546E004C46EE /* AJSecondHouseViewController.h */,
 				0B19049F1EE6546E004C46EE /* AJSecondHouseViewController.m */,
-				0B1904A01EE6546E004C46EE /* AJSecondHouseViewController.xib */,
 				0B1904A31EE65EC1004C46EE /* AJSecondHouseCellModel.h */,
 				0B1904A41EE65EC1004C46EE /* AJSecondHouseCellModel.m */,
 				0B1904A51EE65EC1004C46EE /* AJSecondHouseTableViewCell.h */,
@@ -294,9 +299,9 @@
 				0B1904B11EE66192004C46EE /* AJAllHouseListViewController.xib */,
 				0B1904B21EE66192004C46EE /* AJNewHouseModel.h */,
 				0B1904B31EE66192004C46EE /* AJNewHouseModel.m */,
-				0B1904B41EE66192004C46EE /* AJNewHouseTableViewCell.h */,
-				0B1904B51EE66192004C46EE /* AJNewHouseTableViewCell.m */,
-				0B1904B61EE66192004C46EE /* AJNewHouseTableViewCell.xib */,
+				0B1904B41EE66192004C46EE /* AJHouseInfoTableViewCell.h */,
+				0B1904B51EE66192004C46EE /* AJHouseInfoTableViewCell.m */,
+				0B1904B61EE66192004C46EE /* AJHouseInfoTableViewCell.xib */,
 				0B1904B71EE66192004C46EE /* Pictures */,
 			);
 			path = AddSecondHouse;
@@ -551,6 +556,7 @@
 		0B57F58A1EC1989400B89CE2 /* Me */ = {
 			isa = PBXGroup;
 			children = (
+				A4B864451EE6E61D00E3CE5E /* UserHouse */,
 				A411B3BC1EC4B0A900244B6E /* Setting */,
 				0BE2A35A1EC2D2CD00519840 /* AJMeCenterData.h */,
 				0BE2A35B1EC2D2CD00519840 /* AJMeCenterData.m */,
@@ -583,8 +589,6 @@
 				0B57F5A01EC1991800B89CE2 /* AjMainTabBarViewController.m */,
 				0B57F59C1EC198F100B89CE2 /* CTBaseViewController.h */,
 				0B57F59D1EC198F100B89CE2 /* CTBaseViewController.m */,
-				0BE4D99F1ECBEA9700E4ADCD /* CTHomeBaseViewController.h */,
-				0BE4D9A01ECBEA9700E4ADCD /* CTHomeBaseViewController.m */,
 			);
 			path = SuperVC;
 			sourceTree = "<group>";
@@ -640,6 +644,43 @@
 				0B302F5D1ED01835006896CA /* AJOtherViewController.xib */,
 			);
 			path = Setting;
+			sourceTree = "<group>";
+		};
+		A4B864451EE6E61D00E3CE5E /* UserHouse */ = {
+			isa = PBXGroup;
+			children = (
+				A4B864461EE6E63800E3CE5E /* AJUserHouseViewController.h */,
+				A4B864471EE6E63800E3CE5E /* AJUserHouseViewController.m */,
+			);
+			path = UserHouse;
+			sourceTree = "<group>";
+		};
+		A4B864501EE6EFF000E3CE5E /* LetHouse */ = {
+			isa = PBXGroup;
+			children = (
+				A4B864521EE6EFFD00E3CE5E /* AJLetHouseViewController.h */,
+				A4B864531EE6EFFD00E3CE5E /* AJLetHouseViewController.m */,
+				A4FC23471EE6F2BA00924EEE /* AJLetHouseCellModel.h */,
+				A4FC23481EE6F2BA00924EEE /* AJLetHouseCellModel.m */,
+				A4FC234D1EE6F31200924EEE /* AJLetHouseTableViewCell.h */,
+				A4FC234E1EE6F31200924EEE /* AJLetHouseTableViewCell.m */,
+				A4FC234F1EE6F31200924EEE /* AJLetHouseTableViewCell.xib */,
+			);
+			path = LetHouse;
+			sourceTree = "<group>";
+		};
+		A4B864511EE6EFF000E3CE5E /* NewHouse */ = {
+			isa = PBXGroup;
+			children = (
+				A4B864571EE6F00E00E3CE5E /* AJNewHouseViewController.h */,
+				A4B864581EE6F00E00E3CE5E /* AJNewHouseViewController.m */,
+				A4FC23521EE6F37400924EEE /* AJNewHouseTableViewCell.h */,
+				A4FC23531EE6F37400924EEE /* AJNewHouseTableViewCell.m */,
+				A4FC23541EE6F37400924EEE /* AJNewHouseTableViewCell.xib */,
+				A4FC23571EE6F39000924EEE /* AJNewHouseCellModel.h */,
+				A4FC23581EE6F39000924EEE /* AJNewHouseCellModel.m */,
+			);
+			path = NewHouse;
 			sourceTree = "<group>";
 		};
 		A4E6A4901EC61236006B882A /* Search */ = {
@@ -749,19 +790,20 @@
 			files = (
 				0B2343CE1EC01CA1007A3AC1 /* LaunchScreen.storyboard in Resources */,
 				0B2343CB1EC01CA1007A3AC1 /* Assets.xcassets in Resources */,
-				0B1904C81EE66192004C46EE /* AJNewHouseTableViewCell.xib in Resources */,
+				0B1904C81EE66192004C46EE /* AJHouseInfoTableViewCell.xib in Resources */,
 				A4E6A4951EC61243006B882A /* AJSearchViewController.xib in Resources */,
 				0B57F59A1EC198DB00B89CE2 /* AJNewsViewController.xib in Resources */,
 				0B2343C91EC01CA1007A3AC1 /* Main.storyboard in Resources */,
 				0B302F6F1ED04F47006896CA /* AJUserHeadViewController.xib in Resources */,
-				0B1904A21EE6546E004C46EE /* AJSecondHouseViewController.xib in Resources */,
 				0B1904C31EE66192004C46EE /* AJAddSecondHouserViewController.xib in Resources */,
 				0B1904C51EE66192004C46EE /* AJAllHouseListViewController.xib in Resources */,
 				A411B3C11EC4B0BD00244B6E /* AJSettingViewController.xib in Resources */,
 				0B1904CD1EE66192004C46EE /* PreviewUpLoadCollectionViewCell.xib in Resources */,
 				A40B20B71EC733280027399E /* AJHouseDetailsViewController.xib in Resources */,
 				0B1904AA1EE65EC1004C46EE /* AJSecondHouseTableViewCell.xib in Resources */,
+				A4FC23561EE6F37400924EEE /* AJNewHouseTableViewCell.xib in Resources */,
 				0B1904CA1EE66192004C46EE /* AJHouseDesViewController.xib in Resources */,
+				A4FC23511EE6F31200924EEE /* AJLetHouseTableViewCell.xib in Resources */,
 				0BE4D9F01ECC6B8200E4ADCD /* AJHomeViewController.xib in Resources */,
 				0B6E12C61EC4235300103571 /* AJLoginViewController.xib in Resources */,
 				0B57F5951EC198D000B89CE2 /* AJUserCenterViewController.xib in Resources */,
@@ -884,6 +926,7 @@
 				0B2343C01EC01CA1007A3AC1 /* AppDelegate.m in Sources */,
 				0B2344601EC03095007A3AC1 /* UIView+SDXIBExtension.m in Sources */,
 				0B1904C91EE66192004C46EE /* AJHouseDesViewController.m in Sources */,
+				A4FC23491EE6F2BA00924EEE /* AJLetHouseCellModel.m in Sources */,
 				0B6E12C51EC4235300103571 /* AJLoginViewController.m in Sources */,
 				0B23446E1EC03095007A3AC1 /* AJLocalDataCenter.m in Sources */,
 				0B2344591EC03095007A3AC1 /* NSMutableArray+CTExtension.m in Sources */,
@@ -894,15 +937,19 @@
 				0B1904E01EE668EC004C46EE /* AJTbViewCellModel.m in Sources */,
 				0B2344611EC03095007A3AC1 /* UIView+TYKYPrompt.m in Sources */,
 				0B1904C21EE66192004C46EE /* AJAddSecondHouserViewController.m in Sources */,
+				A4FC23501EE6F31200924EEE /* AJLetHouseTableViewCell.m in Sources */,
 				0B59A52C1ED17D8600E8E787 /* AJPickViewTextField.m in Sources */,
 				0B23447C1EC03095007A3AC1 /* AutoRunLabel.m in Sources */,
 				0B23445D1EC03095007A3AC1 /* UIImage+Scale.m in Sources */,
 				0B302F5E1ED01835006896CA /* AJOtherViewController.m in Sources */,
+				A4B864491EE6E63800E3CE5E /* AJUserHouseViewController.m in Sources */,
+				A4B864551EE6EFFD00E3CE5E /* AJLetHouseViewController.m in Sources */,
 				0B23445A1EC03095007A3AC1 /* NSMutableDictionary+IHateNil.m in Sources */,
 				0BE2A35F1EC2DE1700519840 /* AJMeModel.m in Sources */,
 				0B2344631EC03095007A3AC1 /* Colours.m in Sources */,
 				0B1904CC1EE66192004C46EE /* PreviewUpLoadCollectionViewCell.m in Sources */,
 				0B1904E31EE668EC004C46EE /* AJTableViewCell.m in Sources */,
+				A4FC23551EE6F37400924EEE /* AJNewHouseTableViewCell.m in Sources */,
 				0B2344681EC03095007A3AC1 /* TJDownloadTool.m in Sources */,
 				A411B3C01EC4B0BD00244B6E /* AJSettingViewController.m in Sources */,
 				A40B20B61EC733280027399E /* AJHouseDetailsViewController.m in Sources */,
@@ -910,7 +957,8 @@
 				0B1904A11EE6546E004C46EE /* AJSecondHouseViewController.m in Sources */,
 				0B2343BD1EC01CA1007A3AC1 /* main.m in Sources */,
 				0B1904E21EE668EC004C46EE /* AJBaseTbViewController.m in Sources */,
-				0B1904C71EE66192004C46EE /* AJNewHouseTableViewCell.m in Sources */,
+				0B1904C71EE66192004C46EE /* AJHouseInfoTableViewCell.m in Sources */,
+				A4FC23591EE6F39000924EEE /* AJNewHouseCellModel.m in Sources */,
 				0B302F6E1ED04F47006896CA /* AJUserHeadViewController.m in Sources */,
 				0B23446C1EC03095007A3AC1 /* CTTool.m in Sources */,
 				0BE2A35C1EC2D2CD00519840 /* AJMeCenterData.m in Sources */,
@@ -919,11 +967,11 @@
 				0B57F5991EC198DB00B89CE2 /* AJNewsViewController.m in Sources */,
 				0B23445B1EC03095007A3AC1 /* NSString+Extension.m in Sources */,
 				0B57F5941EC198D000B89CE2 /* AJUserCenterViewController.m in Sources */,
+				A4B8645A1EE6F00E00E3CE5E /* AJNewHouseViewController.m in Sources */,
 				A4E6A4941EC61243006B882A /* AJSearchViewController.m in Sources */,
 				0B23445F1EC03095007A3AC1 /* UITableView+NoMoreDataInFooter.m in Sources */,
 				0B23445E1EC03095007A3AC1 /* UIScrollView+UITouchEvent.m in Sources */,
 				0B1904A81EE65EC1004C46EE /* AJSecondHouseCellModel.m in Sources */,
-				0BE4D9A11ECBEA9700E4ADCD /* CTHomeBaseViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -222,6 +222,9 @@ CGFloat const  TITLE_SCALE = 0.1;
         return;
     }
     _selectedIndex = btn.tag;
+    if (self.scrollBlock) {
+        self.scrollBlock(_selectedIndex);
+    }
     _curruntBtn.transform = CGAffineTransformMakeScale(1.0, 1.0);
 
     [_curruntBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
