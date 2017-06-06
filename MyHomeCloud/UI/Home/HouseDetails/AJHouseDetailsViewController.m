@@ -7,11 +7,8 @@
 //
 
 #import "AJHouseDetailsViewController.h"
-#import "AJMyhouseViewController.h"
-#import "AJHomeTableViewCell.h"
-#import "AJHomeCellModel.h"
-#import "AJHouseViewController.h"
-#import "AJMyhouseViewController.h"
+#import "AJSecondHouseTableViewCell.h"
+#import "AJSecondHouseCellModel.h"
 
 NSInteger const MAX_HOUSE_NUMBER = 10;
 #define AUTOLOOP_HEIGHT     dHeight*2/5
@@ -74,7 +71,7 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
     return UITableViewStyleGrouped;
 }
 - (NSString *)requestClassName{
-    return HOUSE_INFO;
+    return SECOND_HAND_HOUSE;
     
 }
 - (BOOL)firstShowAnimation{
@@ -106,17 +103,17 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
     
 }
 - (NSString *)customeTbViewCellClassName{
-    return  NSStringFromClass([AJHomeTableViewCell class]);
+    return  NSStringFromClass([AJSecondHouseTableViewCell class]);
 }
 - (NSString *)customeTbViewCellModelClassName{
-    return NSStringFromClass([AJHomeCellModel class]);
+    return NSStringFromClass([AJSecondHouseCellModel class]);
 }
 
 #pragma mark - UITableViewDelegate
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    AJHomeCellModel *model = (AJHomeCellModel *)self.dataArray[indexPath.row];
+    AJSecondHouseCellModel *model = (AJSecondHouseCellModel *)self.dataArray[indexPath.row];
     AJHouseDetailsViewController *details = [AJHouseDetailsViewController new];
     
     details.houseInfo = model.objectData;
@@ -164,7 +161,7 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
 - (void)checkLikeState{
     
     [self.view showHUD:nil];
-    self.baseQuery.className = FAVORITE_HOUSE;
+    self.baseQuery.className = USER_FAVORITE;
     [self.baseQuery whereKey:USER_PHONE equalTo:[AVUser currentUser].mobilePhoneNumber];
     [self.baseQuery whereKey:HOUSE_ID equalTo:self.houseInfo.objectId];
     WeakSelf;
@@ -200,12 +197,12 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
         }];
 
     }else{
-        AVObject *houseInfo = [[AVObject alloc] initWithClassName:FAVORITE_HOUSE];
+        AVObject *houseInfo = [[AVObject alloc] initWithClassName:USER_FAVORITE];
 
         [houseInfo setObject:self.houseInfo.objectId forKey:HOUSE_ID];
         [houseInfo setObject:[AVUser currentUser].mobilePhoneNumber forKey:USER_PHONE];
         
-        [houseInfo setObject:[AVObject objectWithClassName:HOUSE_INFO objectId:self.houseInfo.objectId] forKey:HOUSE_OBJECT];
+        [houseInfo setObject:[AVObject objectWithClassName:SECOND_HAND_HOUSE objectId:self.houseInfo.objectId] forKey:HOUSE_OBJECT];
         [houseInfo setObject:[AVUser currentUser].objectId  forKey:HOUSE_AUTHOR];
         [houseInfo setObject:[AVUser currentUser][HEAD_URL] forKey:HEAD_URL];
 
@@ -227,13 +224,7 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
     if (!self.isFromFav) {
         return;
     }
-    for (id vc in self.navigationController.viewControllers) {
-        if ([vc isKindOfClass:[AJMyhouseViewController class]]) {
-            AJMyhouseViewController *house = (AJMyhouseViewController *)vc;
-            house.isLoad = NO;
-            break;
-        }
-    }
+   
 }
 - (IBAction)buttonAction:(UIButton *)sender {
     if (sender.tag==0) {
@@ -243,11 +234,7 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
     }
 }
 - (IBAction)showMoreHouse:(UIButton *)sender {
-    AJHouseViewController *more = [AJHouseViewController new];
-    more.showModal = SearchHouseModal;
-    more.searchKey = self.houseInfo[HOUSE_ESTATE_NAME];
-    APP_PUSH(more);
-  
+    
 }
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     CGFloat offsetY = scrollView.contentOffset.y;
@@ -269,7 +256,7 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
         if (object) {
             weakSelf.someUser = object;
             //头像
-            [_userHead sd_setImageWithURL:object[HEAD_URL] placeholderImage:[CTTool iconImage]];
+            [weakSelf.userHead sd_setImageWithURL:object[HEAD_URL] placeholderImage:[CTTool iconImage]];
         }
     }];
 }
@@ -279,11 +266,7 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
     if (!self.someUser) {
         return;
     }
-    AJMyhouseViewController *userHouse = [AJMyhouseViewController new];
-    userHouse.showModal = SomeoneHouseModal;
-    userHouse.someoneUser = self.someUser;
-    userHouse.title = self.someUser[USER_NICKNAME];
-    APP_PUSH(userHouse);
+   
 }
 
 #pragma mark CTAutoLoopViewDelegate

@@ -454,6 +454,8 @@ static id<AVGroupDelegate> _defaultDelegate = nil;
         event = AVGroupEventMemberJoined;
     } else if ([operation isEqualToString:AVRoomOperationMembersLeft]) {
         event = AVGroupEventMemberLeft;
+    }else{
+        event = 1;
     }
     [self receiveEvent:event peerIds:command.roomPeerIds];
 }

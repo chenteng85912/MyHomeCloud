@@ -49,16 +49,19 @@
 #define USER_ROLE                  @"userRole"//用户角色
 
 //数据表
-#define HOUSE_INFO          @"HouseInfo"//所有房屋数据表
-#define RECORD_HOUSE        @"RecordHouse"//浏览记录表
-#define FAVORITE_HOUSE      @"FavoriteHouse"//用户收藏表
+#define SECOND_HAND_HOUSE          @"SecondHandHouse"//二手房屋数据表
+#define NEW_HOUSE           @"NewHouse"//新房
+#define LET_HOUSE           @"LetHouse"//租房
+#define USER_RECORD         @"UserRecord"//用户收藏表
+#define USER_FAVORITE       @"UserFavorite"//用户收藏表
 #define HOUSE_DESCRIBE      @"HouseDescribe"//房屋描述
-#define HOUSE_BASE_INFO     @"HouseBaseInfo"//房屋基本信息
+#define ALL_HOUSE_INFO      @"AllHouseInfo"//房屋基本信息
 #define USER_INFO           @"_User"//房屋发布者
 
 //浏览记录 收藏保存的房屋数据
 #define HOUSE_OBJECT        @"HouseObject"//房屋数据  浏览记录 收藏
 #define HOUSE_ID            @"HouseId"//房屋数据Id  浏览记录 收藏
+#define HOUSE_TYPE          @"HouseType"//房屋类型  浏览记录 收藏
 
 //房屋数据
 #define USER_PHONE          @"UserPhone"//用户电话

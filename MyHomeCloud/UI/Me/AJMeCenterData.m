@@ -8,7 +8,6 @@
 
 #import "AJMeCenterData.h"
 #import "AJMeModel.h"
-#import "AJMyhouseViewController.h"
 #import "AJSettingViewController.h"
 #import "AJOtherViewController.h"
 
@@ -24,19 +23,19 @@
     AJMeModel *model = [AJMeModel new];
     model.title = @"我的房源";
     model.iconName = @"house";
-    model.className = NSStringFromClass([AJMyhouseViewController class]);
+//    model.className = NSStringFromClass([AJMyhouseViewController class]);
     [temp addObject:model];
     
     model = [AJMeModel new];
     model.title = @"我的收藏";
     model.iconName = @"liked";
-    model.className = NSStringFromClass([AJMyhouseViewController class]);
+//    model.className = NSStringFromClass([AJMyhouseViewController class]);
     [temp addObject:model];
     
     model = [AJMeModel new];
     model.title = @"浏览记录";
     model.iconName = @"record";
-    model.className = NSStringFromClass([AJMyhouseViewController class]);
+//    model.className = NSStringFromClass([AJMyhouseViewController class]);
     [temp addObject:model];
     
     //管理员
@@ -44,7 +43,7 @@
         model = [AJMeModel new];
         model.title = @"所有房源";
         model.iconName = @"allHouse";
-        model.className = NSStringFromClass([AJMyhouseViewController class]);
+//        model.className = NSStringFromClass([AJMyhouseViewController class]);
         [temp addObject:model];
         
     }

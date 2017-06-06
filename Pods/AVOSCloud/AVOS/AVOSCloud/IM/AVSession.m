@@ -727,6 +727,8 @@ static dispatch_queue_t _sessionQueue = 0;
             [_onlinePeerIds removeObject:peerId];
         }
         status = AVPeerStatusOffline;
+    }else{
+        status = 1;
     }
     [self receiveStatus:status peerIds:command.sessionPeerIds];
 }

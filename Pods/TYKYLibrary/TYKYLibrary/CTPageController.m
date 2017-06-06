@@ -6,17 +6,23 @@
 #import "CTPageController.h"
 
 #define  DEVICE_HEIGHT   [[UIScreen mainScreen] bounds].size.height
+
 #define  DEVICE_WIDTH    [[UIScreen mainScreen] bounds].size.width
-#define  HEAD_HEIGHT 45.0
+CGFloat const  PAGE_HEAD_HEIGHT = 45.0;
+CGFloat const  FITER_BUTTON_WIDTH = 60.0;
+CGFloat const  TITLE_SCALE = 0.1;
 
 #define  TITILE_FONT  DEVICE_WIDTH==320?13:15
 
 @interface CTPageController ()<UIScrollViewDelegate>
-@property (assign, nonatomic) CGFloat titleWidth;           //标题按钮宽度
+@property (assign, nonatomic) CGFloat titleBtnWidth;           //标题按钮宽度
 @property (strong, nonatomic) UIScrollView *contentScrView; //内容底部滚动视图
 @property (strong, nonatomic) UIScrollView *headScrView;    //头部按钮底部视图
 @property (strong, nonatomic) UIButton *curruntBtn;         //当前选中按钮
 @property (strong, nonatomic) NSArray *RGBArray;            //按钮选中颜色RGB
+@property (strong, nonatomic) UIView *bottomLine;           //底部线条
+@property (assign, nonatomic) CGFloat titleWidth;           //底部线条宽度
+
 @end
 
 @implementation CTPageController
@@ -24,16 +30,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _titleWidth = DEVICE_WIDTH/_viewControllers.count;
-
+    _titleBtnWidth = DEVICE_WIDTH/_viewControllers.count;
+    if (self.fiterBtnBlock) {
+        _titleBtnWidth = (DEVICE_WIDTH-FITER_BUTTON_WIDTH)/_viewControllers.count;
+    }
     if (!_lineHeight) {
-        _lineHeight = 2;
+        _lineHeight = 3;
     }
     if (!_selectedColor) {
         _selectedColor = [UIColor redColor];
     }
     if (!_headBackColor) {
-        _headBackColor = [UIColor whiteColor];
+        _headBackColor = [UIColor groupTableViewBackgroundColor];
     }
     
     if (_selectedIndex>_viewControllers.count-1) {
@@ -51,14 +59,19 @@
     CGFloat H = self.view.frame.size.height;
     
     //头部标题
-    UIScrollView *headScrView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, W, HEAD_HEIGHT)];
+   
+    UIScrollView *headScrView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, W, PAGE_HEAD_HEIGHT)];
+  
     headScrView.backgroundColor = _headBackColor;
+    headScrView.scrollEnabled = NO;
     for (int i = 0; i <_viewControllers.count; i++) {
-        UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(_titleWidth*i, 0, _titleWidth, HEAD_HEIGHT)];
+        UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(_titleBtnWidth*i, 0, _titleBtnWidth, PAGE_HEAD_HEIGHT)];
         btn.tag = i;
         [btn addTarget:self action:@selector(switchViewControllers:) forControlEvents:UIControlEventTouchUpInside];
         UIViewController *vc = _viewControllers[i];
+        btn.backgroundColor = [UIColor whiteColor];
         [btn setTitle:vc.title forState:UIControlStateNormal];
+        
         btn.titleLabel.font = [UIFont systemFontOfSize:TITILE_FONT];
         if (i==_selectedIndex) {
             _curruntBtn = btn;
@@ -68,29 +81,45 @@
 
         }
         [headScrView addSubview:btn];
-
+        if (!_titleWidth) {
+            _titleWidth = [self strLenth:btn.currentTitle]*(1+TITLE_SCALE);
+        }
+    }
+    //筛选按钮
+    if (self.fiterBtnBlock) {
+    
+        UIButton *fiterBtn = [[UIButton alloc] initWithFrame:CGRectMake(_titleBtnWidth*_viewControllers.count+1, 0, FITER_BUTTON_WIDTH, PAGE_HEAD_HEIGHT)];
+        fiterBtn.backgroundColor = [UIColor whiteColor];
+        [fiterBtn addTarget:self action:@selector(showFiterView) forControlEvents:UIControlEventTouchUpInside];
+        [fiterBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+        [fiterBtn setTitle:@"筛选" forState:UIControlStateNormal];
+        fiterBtn.titleLabel.font = [UIFont systemFontOfSize:TITILE_FONT];
+        
+        [headScrView addSubview:fiterBtn];
     }
     //添加底部线条
     if (_lineShowMode!=UnDisplayMode) {
-        UIView *bottom = [[UIView alloc] initWithFrame:CGRectMake(0, HEAD_HEIGHT-_lineHeight/2, W, _lineHeight/2)];
+        UIView *bottom = [[UIView alloc] initWithFrame:CGRectMake(0, PAGE_HEAD_HEIGHT-_lineHeight/2, W, _lineHeight/2)];
         bottom.backgroundColor = [UIColor lightGrayColor];
         [headScrView addSubview:bottom];
         UIView *line = [UIView new];
         line.tag = 891101;
         line.backgroundColor = _selectedColor;
         if (_lineShowMode == AboveShowMode) {
-            line.frame = CGRectMake(0, 0, _titleWidth, _lineHeight);
+            line.frame = CGRectMake(_titleBtnWidth/2-_titleWidth/2, 0, _titleWidth, _lineHeight);
         }else{
-            line.frame = CGRectMake(0, HEAD_HEIGHT-_lineHeight, _titleWidth, _lineHeight);
-            
+//            line.frame = CGRectMake(0, PAGE_HEAD_HEIGHT-_lineHeight, _titleBtnWidth, _lineHeight);
+            line.frame = CGRectMake(_titleBtnWidth/2-_titleWidth/2, PAGE_HEAD_HEIGHT-_lineHeight, _titleWidth, _lineHeight);
+
         }
+        self.bottomLine = line;
         [headScrView addSubview:line];
     }
 
     self.headScrView = headScrView;
     [self.view addSubview:headScrView];
     //内容
-    UIScrollView *pageScrView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, HEAD_HEIGHT, W , H-HEAD_HEIGHT-64)];
+    UIScrollView *pageScrView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, PAGE_HEAD_HEIGHT, W , H-PAGE_HEAD_HEIGHT-64)];
     pageScrView.contentSize = CGSizeMake(W*_viewControllers.count, pageScrView.frame.size.height);
     pageScrView.pagingEnabled = YES;
     pageScrView.showsHorizontalScrollIndicator = NO;
@@ -130,6 +159,9 @@
     _curruntBtn = self.headScrView.subviews[index];
     _selectedIndex = index;
 
+    if (self.scrollBlock) {
+        self.scrollBlock(index);
+    }
     UIViewController *willShowVc = self.childViewControllers[index];
     
     if([willShowVc isViewLoaded]) return;
@@ -179,7 +211,7 @@
     if (_lineShowMode!=UnDisplayMode) {
        
         UIView *line = (UIView *)[self.headScrView viewWithTag:891101];
-        line.center = CGPointMake(_titleWidth*scale+_titleWidth/2, line.center.y);
+        line.center = CGPointMake(_titleBtnWidth*scale+_titleBtnWidth/2, line.center.y);
     }
 }
 
@@ -221,11 +253,15 @@
     [btn setTitleColor:[UIColor colorWithRed:red1 green:green1 blue:blue1 alpha:1.0] forState:UIControlStateNormal];
     
     // 大小缩放比例
-    CGFloat transformScale = 1 + (scale * 0.1);
+    CGFloat transformScale = 1 + (scale * TITLE_SCALE);
     btn.transform = CGAffineTransformMakeScale(transformScale, transformScale);
 }
+- (void)initHeadBtnAndLineColor{
+    self.bottomLine.backgroundColor = _selectedColor;
+    self.RGBArray = [self getRGBWithColor:_selectedColor];
 
-
+    [_curruntBtn setTitleColor:self.selectedColor forState:UIControlStateNormal];
+}
 #pragma mark 获取RGB颜色数值
 - (NSArray *)getRGBWithColor:(UIColor *)color
 {
@@ -235,6 +271,17 @@
     CGFloat alpha = 0.0;
     [color getRed:&red green:&green blue:&blue alpha:&alpha];
     return @[@(red), @(green), @(blue), @(alpha)];
+}
+
+//筛选按钮动作
+- (void)showFiterView{
+    if (self.fiterBtnBlock) {
+        self.fiterBtnBlock();
+    }
+}
+- (CGFloat)strLenth:(NSString *)string
+{
+    return [string boundingRectWithSize:CGSizeMake(MAXFLOAT, PAGE_HEAD_HEIGHT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:TITILE_FONT]} context:nil].size.width;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
