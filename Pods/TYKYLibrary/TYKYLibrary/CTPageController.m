@@ -99,7 +99,7 @@ CGFloat const  TITLE_SCALE = 0.1;
     }
     //添加底部线条
     if (_lineShowMode!=UnDisplayMode) {
-        UIView *bottom = [[UIView alloc] initWithFrame:CGRectMake(0, PAGE_HEAD_HEIGHT-_lineHeight/2, W, _lineHeight/2)];
+        UIView *bottom = [[UIView alloc] initWithFrame:CGRectMake(0, PAGE_HEAD_HEIGHT-0.5, W, 0.5)];
         bottom.backgroundColor = [UIColor lightGrayColor];
         [headScrView addSubview:bottom];
         UIView *line = [UIView new];
@@ -108,10 +108,11 @@ CGFloat const  TITLE_SCALE = 0.1;
         if (_lineShowMode == AboveShowMode) {
             line.frame = CGRectMake(_titleBtnWidth/2-_titleWidth/2, 0, _titleWidth, _lineHeight);
         }else{
-//            line.frame = CGRectMake(0, PAGE_HEAD_HEIGHT-_lineHeight, _titleBtnWidth, _lineHeight);
             line.frame = CGRectMake(_titleBtnWidth/2-_titleWidth/2, PAGE_HEAD_HEIGHT-_lineHeight, _titleWidth, _lineHeight);
 
         }
+        line.layer.masksToBounds = YES;
+        line.layer.cornerRadius = 2.0;
         self.bottomLine = line;
         [headScrView addSubview:line];
     }
