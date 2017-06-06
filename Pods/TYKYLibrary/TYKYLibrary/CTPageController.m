@@ -31,9 +31,7 @@ CGFloat const  TITLE_SCALE = 0.1;
     [super viewDidLoad];
     
     _titleBtnWidth = DEVICE_WIDTH/_viewControllers.count;
-    if (self.fiterBtnBlock) {
-        _titleBtnWidth = (DEVICE_WIDTH-FITER_BUTTON_WIDTH)/_viewControllers.count;
-    }
+    
     if (!_lineHeight) {
         _lineHeight = 3;
     }
@@ -85,18 +83,7 @@ CGFloat const  TITLE_SCALE = 0.1;
             _titleWidth = [self strLenth:btn.currentTitle]*(1+TITLE_SCALE);
         }
     }
-    //筛选按钮
-    if (self.fiterBtnBlock) {
-    
-        UIButton *fiterBtn = [[UIButton alloc] initWithFrame:CGRectMake(_titleBtnWidth*_viewControllers.count+1, 0, FITER_BUTTON_WIDTH, PAGE_HEAD_HEIGHT)];
-        fiterBtn.backgroundColor = [UIColor whiteColor];
-        [fiterBtn addTarget:self action:@selector(showFiterView) forControlEvents:UIControlEventTouchUpInside];
-        [fiterBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-        [fiterBtn setTitle:@"筛选" forState:UIControlStateNormal];
-        fiterBtn.titleLabel.font = [UIFont systemFontOfSize:TITILE_FONT];
-        
-        [headScrView addSubview:fiterBtn];
-    }
+   
     //添加底部线条
     if (_lineShowMode!=UnDisplayMode) {
         UIView *bottom = [[UIView alloc] initWithFrame:CGRectMake(0, PAGE_HEAD_HEIGHT-0.5, W, 0.5)];
@@ -260,12 +247,7 @@ CGFloat const  TITLE_SCALE = 0.1;
     CGFloat transformScale = 1 + (scale * TITLE_SCALE);
     btn.transform = CGAffineTransformMakeScale(transformScale, transformScale);
 }
-- (void)initHeadBtnAndLineColor{
-    self.bottomLine.backgroundColor = _selectedColor;
-    self.RGBArray = [self getRGBWithColor:_selectedColor];
 
-    [_curruntBtn setTitleColor:self.selectedColor forState:UIControlStateNormal];
-}
 #pragma mark 获取RGB颜色数值
 - (NSArray *)getRGBWithColor:(UIColor *)color
 {
@@ -277,12 +259,6 @@ CGFloat const  TITLE_SCALE = 0.1;
     return @[@(red), @(green), @(blue), @(alpha)];
 }
 
-//筛选按钮动作
-- (void)showFiterView{
-    if (self.fiterBtnBlock) {
-        self.fiterBtnBlock();
-    }
-}
 - (CGFloat)strLenth:(NSString *)string
 {
     return [string boundingRectWithSize:CGSizeMake(MAXFLOAT, PAGE_HEAD_HEIGHT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:TITILE_FONT]} context:nil].size.width;

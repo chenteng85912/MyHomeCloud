@@ -8,7 +8,6 @@
 #import <UIKit/UIKit.h>
 
 typedef void (^ScrollCallBackBlock)(NSInteger pageNum);
-typedef void (^FiterBtnTouchBlock)(void);
 
 typedef NS_ENUM(NSInteger,SelectedLineStyle) {
     UnDisplayMode,      //不显示
@@ -25,7 +24,5 @@ typedef NS_ENUM(NSInteger,SelectedLineStyle) {
 @property (nonatomic, assign) CGFloat lineHeight;                //标题线高度
 @property (nonatomic, assign) NSInteger selectedIndex;           //初始化视图的编号
 @property (nonatomic, strong) ScrollCallBackBlock scrollBlock;
-@property (nonatomic, strong) FiterBtnTouchBlock fiterBtnBlock;
 
-- (void)initHeadBtnAndLineColor;
 @end
