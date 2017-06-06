@@ -6,10 +6,10 @@
 //  Copyright © 2017年 TENG. All rights reserved.
 //
 
-#import "AJNewHouseTableViewCell.h"
+#import "AJHouseInfoTableViewCell.h"
 #import "AJNewHouseModel.h"
 
-@interface AJNewHouseTableViewCell ()
+@interface AJHouseInfoTableViewCell ()
 @property (weak, nonatomic) IBOutlet UILabel *houseName;
 @property (weak, nonatomic) IBOutlet UILabel *devlopName;
 @property (weak, nonatomic) IBOutlet UILabel *areaName;
