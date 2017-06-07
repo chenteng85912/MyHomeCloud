@@ -10,7 +10,7 @@
 #import "AJSecondHouseViewController.h"
 #import "AJLetHouseViewController.h"
 #import "AJNewHouseViewController.h"
-#import "AJAddSecondHouserViewController.h"
+#import "AJAddHouserViewController.h"
 
 @interface AJUserHouseViewController ()
 
@@ -31,13 +31,18 @@
     [self initRootVC];
 }
 - (void)addNewHouse{
+    AJAddHouserViewController *add = [AJAddHouserViewController new];
     if (_currentPageNum==0) {
         
-        AJAddSecondHouserViewController *add = [AJAddSecondHouserViewController new];
-        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:add];
-        APP_PRESENT(nav);
+        add.addModal = SecondHouseModal;
+    }else{
+        add.addModal = LetHouseModal;
+
     }
-    
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:add];
+
+    APP_PRESENT(nav);
+
 }
 - (void)initRootVC{
     

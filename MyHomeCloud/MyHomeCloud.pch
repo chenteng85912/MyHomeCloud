@@ -13,7 +13,6 @@
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
-
 #import <AVOSCloud/AVOSCloud.h>
 #import <MJRefresh/MJRefresh.h>
 #import "UITableView+NoMoreDataInFooter.h"
@@ -64,7 +63,7 @@
 #define HOUSE_ID            @"HouseId"//房屋数据Id  浏览记录 收藏
 #define HOUSE_TYPE          @"HouseType"//房屋类型  浏览记录 收藏
 
-//房屋数据
+//二手房屋数据
 #define USER_PHONE          @"UserPhone"//用户电话
 #define HOUSE_DEVELOPER     @"Developer"//小区开发商
 #define HOUSE_ESTATE_NAME   @"EstateName"//小区名称
@@ -87,6 +86,8 @@
 #define HOUSE_DIRECTION         @"HouseDirection"//房屋朝向
 #define HOUSE_DISCRIBE          @"HouseDescribe"//房屋装修
 
+//租房信息
+#define LET_HOUSE_PRICE         @"LetHousePrice"//房屋租金
 
 #define YEARS_DES            @"YearsDes"//证满5年
 #define WATCH_DES            @"WatchDes"//随时看房

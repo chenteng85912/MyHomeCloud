@@ -10,7 +10,6 @@
 #import "AJSecondHouseTableViewCell.h"
 #import "AJSecondHouseCellModel.h"
 #import "AJHouseDetailsViewController.h"
-#import "AJAddSecondHouserViewController.h"
 
 @interface AJSecondHouseViewController ()
 

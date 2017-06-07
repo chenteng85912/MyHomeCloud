@@ -12,8 +12,8 @@
 		0B1904A81EE65EC1004C46EE /* AJSecondHouseCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1904A41EE65EC1004C46EE /* AJSecondHouseCellModel.m */; };
 		0B1904A91EE65EC1004C46EE /* AJSecondHouseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1904A61EE65EC1004C46EE /* AJSecondHouseTableViewCell.m */; };
 		0B1904AA1EE65EC1004C46EE /* AJSecondHouseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B1904A71EE65EC1004C46EE /* AJSecondHouseTableViewCell.xib */; };
-		0B1904C21EE66192004C46EE /* AJAddSecondHouserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1904AD1EE66192004C46EE /* AJAddSecondHouserViewController.m */; };
-		0B1904C31EE66192004C46EE /* AJAddSecondHouserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B1904AE1EE66192004C46EE /* AJAddSecondHouserViewController.xib */; };
+		0B1904C21EE66192004C46EE /* AJAddHouserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1904AD1EE66192004C46EE /* AJAddHouserViewController.m */; };
+		0B1904C31EE66192004C46EE /* AJAddHouserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B1904AE1EE66192004C46EE /* AJAddHouserViewController.xib */; };
 		0B1904C41EE66192004C46EE /* AJAllHouseListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1904B01EE66192004C46EE /* AJAllHouseListViewController.m */; };
 		0B1904C51EE66192004C46EE /* AJAllHouseListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B1904B11EE66192004C46EE /* AJAllHouseListViewController.xib */; };
 		0B1904C61EE66192004C46EE /* AJNewHouseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1904B31EE66192004C46EE /* AJNewHouseModel.m */; };
@@ -106,9 +106,9 @@
 		0B1904A51EE65EC1004C46EE /* AJSecondHouseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJSecondHouseTableViewCell.h; sourceTree = "<group>"; };
 		0B1904A61EE65EC1004C46EE /* AJSecondHouseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJSecondHouseTableViewCell.m; sourceTree = "<group>"; };
 		0B1904A71EE65EC1004C46EE /* AJSecondHouseTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJSecondHouseTableViewCell.xib; sourceTree = "<group>"; };
-		0B1904AC1EE66192004C46EE /* AJAddSecondHouserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJAddSecondHouserViewController.h; sourceTree = "<group>"; };
-		0B1904AD1EE66192004C46EE /* AJAddSecondHouserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJAddSecondHouserViewController.m; sourceTree = "<group>"; };
-		0B1904AE1EE66192004C46EE /* AJAddSecondHouserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJAddSecondHouserViewController.xib; sourceTree = "<group>"; };
+		0B1904AC1EE66192004C46EE /* AJAddHouserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJAddHouserViewController.h; sourceTree = "<group>"; };
+		0B1904AD1EE66192004C46EE /* AJAddHouserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJAddHouserViewController.m; sourceTree = "<group>"; };
+		0B1904AE1EE66192004C46EE /* AJAddHouserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJAddHouserViewController.xib; sourceTree = "<group>"; };
 		0B1904AF1EE66192004C46EE /* AJAllHouseListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJAllHouseListViewController.h; sourceTree = "<group>"; };
 		0B1904B01EE66192004C46EE /* AJAllHouseListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJAllHouseListViewController.m; sourceTree = "<group>"; };
 		0B1904B11EE66192004C46EE /* AJAllHouseListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJAllHouseListViewController.xib; sourceTree = "<group>"; };
@@ -291,9 +291,9 @@
 		0B1904AB1EE66192004C46EE /* AddSecondHouse */ = {
 			isa = PBXGroup;
 			children = (
-				0B1904AC1EE66192004C46EE /* AJAddSecondHouserViewController.h */,
-				0B1904AD1EE66192004C46EE /* AJAddSecondHouserViewController.m */,
-				0B1904AE1EE66192004C46EE /* AJAddSecondHouserViewController.xib */,
+				0B1904AC1EE66192004C46EE /* AJAddHouserViewController.h */,
+				0B1904AD1EE66192004C46EE /* AJAddHouserViewController.m */,
+				0B1904AE1EE66192004C46EE /* AJAddHouserViewController.xib */,
 				0B1904AF1EE66192004C46EE /* AJAllHouseListViewController.h */,
 				0B1904B01EE66192004C46EE /* AJAllHouseListViewController.m */,
 				0B1904B11EE66192004C46EE /* AJAllHouseListViewController.xib */,
@@ -795,7 +795,7 @@
 				0B57F59A1EC198DB00B89CE2 /* AJNewsViewController.xib in Resources */,
 				0B2343C91EC01CA1007A3AC1 /* Main.storyboard in Resources */,
 				0B302F6F1ED04F47006896CA /* AJUserHeadViewController.xib in Resources */,
-				0B1904C31EE66192004C46EE /* AJAddSecondHouserViewController.xib in Resources */,
+				0B1904C31EE66192004C46EE /* AJAddHouserViewController.xib in Resources */,
 				0B1904C51EE66192004C46EE /* AJAllHouseListViewController.xib in Resources */,
 				A411B3C11EC4B0BD00244B6E /* AJSettingViewController.xib in Resources */,
 				0B1904CD1EE66192004C46EE /* PreviewUpLoadCollectionViewCell.xib in Resources */,
@@ -936,7 +936,7 @@
 				0B1904C61EE66192004C46EE /* AJNewHouseModel.m in Sources */,
 				0B1904E01EE668EC004C46EE /* AJTbViewCellModel.m in Sources */,
 				0B2344611EC03095007A3AC1 /* UIView+TYKYPrompt.m in Sources */,
-				0B1904C21EE66192004C46EE /* AJAddSecondHouserViewController.m in Sources */,
+				0B1904C21EE66192004C46EE /* AJAddHouserViewController.m in Sources */,
 				A4FC23501EE6F31200924EEE /* AJLetHouseTableViewCell.m in Sources */,
 				0B59A52C1ED17D8600E8E787 /* AJPickViewTextField.m in Sources */,
 				0B23447C1EC03095007A3AC1 /* AutoRunLabel.m in Sources */,
