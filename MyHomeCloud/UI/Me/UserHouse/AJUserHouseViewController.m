@@ -65,6 +65,10 @@
                 _currentPageNum = pageNum;
             };
         }
+        if (_showModal==SomeoneHouseModal) {
+            second.someonePhone = _someonePhone;
+            let.someonePhone  = _someonePhone;
+        }
 
     }
     self.pageVC.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);

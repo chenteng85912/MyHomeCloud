@@ -37,9 +37,9 @@
    
     return YES;
 }
-//- (BOOL)firstShowAnimation{
-//    return YES;
-//}
+- (BOOL)firstShowAnimation{
+    return YES;
+}
 - (UITableViewStyle)tableViewStyle{
     return UITableViewStyleGrouped;
 }
@@ -61,7 +61,7 @@
         return _someonePhone;
     }else  if (self.showModal==SearchHouseModal){
         return _searchKey;
-    }else if (self.showModal==UserFavoriteModal||self.showModal==UserRecordModal){
+    }else if (self.showModal==UserFavoriteModal||self.showModal==UserRecordModal||self.showModal ==MyHouseModal){
         return [AVUser currentUser].mobilePhoneNumber;
     }else{
         return nil;
@@ -92,7 +92,6 @@
     
     AJSecondHouseCellModel *model = (AJSecondHouseCellModel *)self.dataArray[indexPath.row];
     AJHouseDetailsViewController *details = [AJHouseDetailsViewController new];
-    details.isSubVC = YES;
     details.showModal = SearchHouseModal;
     if (self.showModal==UserFavoriteModal) {
         details.isFromFav = YES;

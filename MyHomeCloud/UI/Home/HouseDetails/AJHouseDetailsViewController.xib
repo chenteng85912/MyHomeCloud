@@ -48,7 +48,7 @@
                         <action selector="showMoreHouse:" destination="-1" eventType="touchUpInside" id="63m-vk-u9I"/>
                     </connections>
                 </button>
-                <view clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZVE-fE-2JJ">
+                <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZVE-fE-2JJ">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <subviews>

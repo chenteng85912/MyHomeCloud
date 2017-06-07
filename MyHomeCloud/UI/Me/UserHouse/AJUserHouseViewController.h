@@ -11,5 +11,6 @@
 @interface AJUserHouseViewController : CTBaseViewController
 
 @property (assign, nonatomic) HouseShowModal showModal;
+@property (strong, nonatomic) NSString *someonePhone;
 
 @end

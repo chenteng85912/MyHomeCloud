@@ -31,9 +31,9 @@
     
     return YES;
 }
-//- (BOOL)firstShowAnimation{
-//    return YES;
-//}
+- (BOOL)firstShowAnimation{
+    return YES;
+}
 - (UITableViewStyle)tableViewStyle{
     return UITableViewStyleGrouped;
 }

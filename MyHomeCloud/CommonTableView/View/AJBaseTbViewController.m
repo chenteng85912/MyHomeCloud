@@ -45,10 +45,8 @@
     
     if (!_isLoad) {
         
-//        [self.tableView showHUD:nil];
-//        [self initStartData];
-        _isLoad = YES;
-        [self.tableView.mj_header beginRefreshing];
+        [self.tableView showHUD:nil];
+        [self initStartData];
     }
 }
 - (void)viewWillDisappear:(BOOL)animated
@@ -293,7 +291,10 @@
 #pragma mark -private methods 加载数据
 //首次从网络请求数据
 - (void)initStartData{
-   
+    if (!_isLoad) {
+        _isLoad = YES;
+
+    }
     _oldDataNum = 0;
     [self.presenter initStartData];
 }

@@ -58,9 +58,6 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.view bringSubviewToFront:_headView];
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
 
 }
 #pragma mark - AJTbViewProtocol
@@ -91,7 +88,7 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
         if ([obj.objectData.objectId isEqualToString:self.houseInfo.objectId]) {
             [weakSelf.dataArray removeObject:obj];
             [weakSelf.tableView reloadData];
-            if (self.dataArray.count==MAX_HOUSE_NUMBER) {
+            if (self.dataArray.count>MAX_HOUSE_NUMBER) {
                 self.moreHouseBtn.hidden = NO;
                 self.tableView.tableFooterView = self.moreHouseBtn;
                 
@@ -137,7 +134,7 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
         [self checkLikeState];
         
     }
-    _titleText.text = [NSString stringWithFormat:@"%@ %@ %@万",_houseInfo[HOUSE_ESTATE_NAME],_houseInfo[HOUSE_AMOUNT],_houseInfo[HOUSE_TOTAL_PRICE]];
+    self.title = [NSString stringWithFormat:@"%@ %@ %@万",_houseInfo[HOUSE_ESTATE_NAME],_houseInfo[HOUSE_AMOUNT],_houseInfo[HOUSE_TOTAL_PRICE]];
     _titleLabel.text = _titleText.text;
     _totalLabel.text = [NSString stringWithFormat:@"%@万",_houseInfo[HOUSE_TOTAL_PRICE]];
     
@@ -236,18 +233,18 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
 - (IBAction)showMoreHouse:(UIButton *)sender {
     
 }
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    CGFloat offsetY = scrollView.contentOffset.y;
-    debugLog(@"%f",offsetY);
-    if (offsetY > 0) {
-        _headView.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:MIN(1, offsetY/150)];
-        _titleText.alpha = MIN(1, offsetY/150);
-    } else {
-        _headView.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0];
-        _titleText.alpha = 0;
-
-    }
-}
+//- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+//    CGFloat offsetY = scrollView.contentOffset.y;
+//    debugLog(@"%f",offsetY);
+//    if (offsetY > 0) {
+//        _headView.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:MIN(1, offsetY/150)];
+//        _titleText.alpha = MIN(1, offsetY/150);
+//    } else {
+//        _headView.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0];
+//        _titleText.alpha = 0;
+//
+//    }
+//}
 //获取作者信息
 - (void)fetchAuthorData{
     self.baseQuery.className = USER_INFO;
