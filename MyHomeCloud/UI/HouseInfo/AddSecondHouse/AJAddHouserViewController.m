@@ -114,8 +114,12 @@
         [self.view showTips:self.houseRooms.placeholder withState:TYKYHUDModeWarning complete:nil];
         return;
     }
-    if (!self.houseTotal.hasText) {
+    if (!self.houseTotal.hasText&&_addModal==SecondHouseModal) {
         [self.view showTips:self.houseTotal.placeholder withState:TYKYHUDModeWarning complete:nil];
+        return;
+    }
+    if (!self.letHousePrice.hasText&&_addModal==LetHouseModal) {
+        [self.view showTips:self.letHousePrice.placeholder withState:TYKYHUDModeWarning complete:nil];
         return;
     }
     AJHouseDesViewController *des = [AJHouseDesViewController new];

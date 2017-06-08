@@ -15,6 +15,13 @@ extern CGFloat const DES_FONT;
 extern CGFloat const TOTAL_FONT;
 extern CGFloat const UNIT_FONT;
 
+extern CGFloat const cellX;
+extern CGFloat const cellY;
+extern CGFloat const subY;
+
+extern CGFloat const IMG_WIDTH;
+extern CGFloat const IMG_HEIGHT;
+
 @interface AJTbViewCellModel : NSObject<AJTbViewCellModelProtocol>
 
 @property (strong, nonatomic) AVObject *objectData;     //单元格原始数据

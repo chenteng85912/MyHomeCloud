@@ -60,7 +60,7 @@
         return _someonePhone;
     }else  if (self.showModal==SearchHouseModal){
         return _searchKey;
-    }else if (self.showModal==UserFavoriteModal||self.showModal==UserRecordModal){
+    }else if (self.showModal==UserFavoriteModal||self.showModal==UserRecordModal||self.showModal ==MyHouseModal){
         return [AVUser currentUser].mobilePhoneNumber;
     }else{
         return nil;

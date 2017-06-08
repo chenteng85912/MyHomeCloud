@@ -8,13 +8,6 @@
 
 #import "AJSecondHouseCellModel.h"
 
-CGFloat const cellX = 20.0;
-CGFloat const cellY = 15.0;
-CGFloat const subY = 8.0;
-
-CGFloat const IMG_WIDTH = 100.0;
-CGFloat const IMG_HEIGHT = 80.0;
-
 @implementation AJSecondHouseCellModel
 - (void)calculateSizeConstrainedToSize{
     
@@ -56,7 +49,6 @@ CGFloat const IMG_HEIGHT = 80.0;
     
     self.cellHeight = CGRectGetMaxY(self.totalFrame)+cellY;
     
-    self.userHeadFrame = CGRectMake(dWidth-45, self.cellHeight-45, 30, 30);
 }
 
 @end

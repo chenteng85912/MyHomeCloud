@@ -22,7 +22,5 @@
 @property (assign, nonatomic) CGRect totalFrame;
 @property (assign, nonatomic) CGRect unitFrame;
 @property (assign, nonatomic) CGRect imgFrame;
-@property (assign, nonatomic) CGRect userHeadFrame;
-
 
 @end

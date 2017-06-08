@@ -20,8 +20,6 @@
 //@property (strong, nonatomic) UILabel *houseTime;//时间
 
 @property (strong, nonatomic) UIImageView *houseImg;//图片
-@property (strong, nonatomic) UIImageView *userHeadImg;//头像
-
 
 
 @end
@@ -51,14 +49,9 @@
     if (model.subObj) {
         imgStr = model.subObj[HOUSE_THUMB];
     }
-    self.houseImg.layer.masksToBounds = YES;
-    self.houseImg.layer.cornerRadius = 2.0;
-    self.houseImg.clipsToBounds = YES;
+   
     [self.houseImg sd_setImageWithURL:[NSURL URLWithString:imgStr] placeholderImage:LOADIMAGE(@"defaultImg")];
     
-//    self.userHeadImg.frame = model.userHeadFrame;
-//    [self.userHeadImg sd_setImageWithURL:[NSURL URLWithString:model.userObj[HEAD_URL]] placeholderImage:LOADIMAGE(@"userDefault")];
-
 }
 
 - (void)awakeFromNib {
@@ -125,20 +118,11 @@
         _houseImg = [UIImageView new];
         _houseImg.clipsToBounds = YES;
         _houseImg.contentMode = UIViewContentModeScaleAspectFill;
+        _houseImg.layer.masksToBounds = YES;
+        _houseImg.layer.cornerRadius = 2.0;
         [self addSubview:_houseImg];
     }
     return _houseImg;
-}
-- (UIImageView *)userHeadImg{
-    if (_userHeadImg ==nil) {
-        _userHeadImg = [UIImageView new] ;
-        _userHeadImg.clipsToBounds = YES;
-        _userHeadImg.layer.masksToBounds = YES;
-        _userHeadImg.layer.cornerRadius = 15;
-        _userHeadImg.contentMode = UIViewContentModeScaleAspectFill;
-        [self addSubview:_userHeadImg];
-    }
-    return _userHeadImg;
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
