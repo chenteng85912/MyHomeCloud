@@ -10,6 +10,7 @@
 #import "AJLetHouseCellModel.h"
 #import "AJLetHouseTableViewCell.h"
 #import "AJHouseDetailsViewController.h"
+#import "AJHomeDataCenter.h"
 
 @interface AJLetHouseViewController ()
 
@@ -19,6 +20,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"租房";
 
     if (self.showModal==MyHouseModal) {
         
@@ -44,10 +46,10 @@
 }
 - (NSString *)requestClassName{
     if (self.showModal == UserFavoriteModal){
-        return USER_FAVORITE;
+        return LET_FAVORITE;
         
     }else if (self.showModal == UserRecordModal){
-        return USER_RECORD;
+        return LET_RECORD;
         
     }else{
         return LET_HOUSE;
@@ -68,6 +70,12 @@
 }
 - (NSString *)pointClassName{
     return LET_HOUSE;
+}
+- (NSString *)recordClassName{
+    return LET_RECORD;
+}
+- (NSString *)favoriteClassName{
+    return LET_FAVORITE;
 }
 - (BOOL)canDeleteCell{
     if (self.showModal==SomeoneHouseModal||self.showModal ==SearchHouseModal||self.showModal==AllHouseModal) {
@@ -92,7 +100,7 @@
     AJLetHouseCellModel *model = (AJLetHouseCellModel *)self.dataArray[indexPath.row];
     
     if (self.showModal==AllHouseModal||self.showModal==SomeoneHouseModal) {
-        [self addRecordData:model.objectData];
+        [[AJHomeDataCenter new] addRecordData:model.objectData objectClassName:[self requestClassName] recordClassName:[self recordClassName]];
     }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -101,35 +109,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     return 0.01;
 }
-//保存浏览记录
-- (void)addRecordData:(AVObject *)object{
-    AVObject *houseInfo = [[AVObject alloc] initWithClassName:USER_RECORD];
-    [houseInfo setObject:object.objectId        forKey:HOUSE_ID];
-    [houseInfo setObject:LET_HOUSE      forKey:HOUSE_TYPE];
-    
-    [houseInfo setObject:[AVUser currentUser].mobilePhoneNumber forKey:USER_PHONE];
-    
-    [houseInfo setObject:[AVObject objectWithClassName:SECOND_HAND_HOUSE objectId:object.objectId] forKey:HOUSE_OBJECT];
-    [houseInfo setObject:[AVUser currentUser].objectId  forKey:HOUSE_AUTHOR];
-    [houseInfo setObject:[AVUser currentUser][HEAD_URL] forKey:HEAD_URL];
-    
-    self.baseQuery.className = USER_RECORD;
-    [self.baseQuery whereKey:HOUSE_ID equalTo:object.objectId];
-    [self.baseQuery whereKey:USER_PHONE equalTo:[AVUser currentUser].mobilePhoneNumber];
-    
-    [self.baseQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
-        if (objects.count>0) {
-            return;
-            
-        }
-        [houseInfo saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-            if (succeeded) {
-                
-            }
-        }];
-    }];
-    
-}
+
 - (void)refreshHomeData{
     [self.view showHUD:nil];
     [self initStartData];

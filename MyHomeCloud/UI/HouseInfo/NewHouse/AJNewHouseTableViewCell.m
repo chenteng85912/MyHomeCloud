@@ -9,7 +9,9 @@
 #import "AJNewHouseTableViewCell.h"
 
 @implementation AJNewHouseTableViewCell
+- (void)processCellData:(id <AJTbViewCellModelProtocol>)data{
 
+}
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code

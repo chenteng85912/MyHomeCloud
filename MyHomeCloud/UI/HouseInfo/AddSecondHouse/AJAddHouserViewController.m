@@ -72,7 +72,7 @@
         [houseData setObject:_letHousePrice.text               forKey:LET_HOUSE_PRICE];
 
     }else{
-        houseData = [AVObject objectWithClassName:NEW_HOUSE];
+        houseData = [AVObject objectWithClassName:N_HOUSE];
         [houseData setObject:@"14000"        forKey:HOUSE_UNIT_PRICE];
 
     }

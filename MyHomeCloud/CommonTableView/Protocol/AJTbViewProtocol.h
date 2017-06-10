@@ -40,6 +40,12 @@ typedef NS_ENUM(NSInteger,TableViewInitDataModal) {
 //关联类名称
 - (NSString *)pointClassName;
 
+//浏览记录名称
+- (NSString *)recordClassName;
+
+//收藏记录名称
+- (NSString *)favoriteClassName;
+
 //获取分页大小
 - (NSInteger)pageSize;
 

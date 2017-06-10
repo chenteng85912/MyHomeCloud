@@ -11,15 +11,12 @@
 #import "AJSecondHouseCellModel.h"
 
 NSInteger const MAX_HOUSE_NUMBER = 10;
-#define AUTOLOOP_HEIGHT     dHeight*2/5
+#define AUTOLOOP_HEIGHT     dHeight/3
 
 @interface AJHouseDetailsViewController ()<UIScrollViewDelegate,CTAutoLoopViewDelegate>
-@property (weak, nonatomic) IBOutlet UIView *headView;
 
 @property (weak, nonatomic) IBOutlet UIButton *moreHouseBtn;
 @property (weak, nonatomic) IBOutlet UIView *houseInfoView;
-@property (weak, nonatomic) IBOutlet UIButton *rightBtn;
-@property (weak, nonatomic) IBOutlet UILabel *titleText;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *userHead;
 @property (weak, nonatomic) IBOutlet UILabel *totalLabel;
@@ -33,6 +30,7 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
 @property (weak, nonatomic) IBOutlet UILabel *houseFloor;
 @property (weak, nonatomic) IBOutlet UILabel *houseYear;
 
+@property (strong, nonatomic) UIButton *rightBtn;
 
 @property (strong, nonatomic) UIView *tbViewHeadView;
 
@@ -54,6 +52,8 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
         _houseInfo = _houseInfo[HOUSE_OBJECT];
     }
     [self initHouseDetailsInfo];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.rightBtn];
 
 }
 - (void)viewWillAppear:(BOOL)animated{
@@ -68,7 +68,14 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
     return UITableViewStyleGrouped;
 }
 - (NSString *)requestClassName{
-    return SECOND_HAND_HOUSE;
+    
+    if (_detailsModal==SecondHouseModal) {
+        return SECOND_HAND_HOUSE;
+
+    }else{
+        return LET_HOUSE;
+
+    }
     
 }
 - (BOOL)firstShowAnimation{
@@ -135,9 +142,8 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
         
     }
     self.title = [NSString stringWithFormat:@"%@ %@ %@万",_houseInfo[HOUSE_ESTATE_NAME],_houseInfo[HOUSE_AMOUNT],_houseInfo[HOUSE_TOTAL_PRICE]];
-    _titleLabel.text = _titleText.text;
     _totalLabel.text = [NSString stringWithFormat:@"%@万",_houseInfo[HOUSE_TOTAL_PRICE]];
-    
+    _titleLabel.text = self.title;
     _houseRooms.text = _houseInfo[HOUSE_AMOUNT];
     _houseAreaage.text = [NSString stringWithFormat:@"%@平",_houseInfo[HOUSE_AREAAGE]];
     
@@ -158,7 +164,13 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
 - (void)checkLikeState{
     
     [self.view showHUD:nil];
-    self.baseQuery.className = USER_FAVORITE;
+    if (_detailsModal== SecondHouseModal) {
+        self.baseQuery.className = SECOND_FAVORITE;
+
+    }else{
+        self.baseQuery.className = LET_FAVORITE;
+
+    }
     [self.baseQuery whereKey:USER_PHONE equalTo:[AVUser currentUser].mobilePhoneNumber];
     [self.baseQuery whereKey:HOUSE_ID equalTo:self.houseInfo.objectId];
     WeakSelf;
@@ -177,16 +189,16 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
 }
 
 //添加 取消收藏
-- (void)addLikeHouse{
+- (void)addLikeHouse:(UIButton *)likeBtn{
     WeakSelf;
 
     [self.view showHUD:nil];
-    if (self.rightBtn.selected) {
+    if (likeBtn.selected) {
        
         [self.likedObj deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             [weakSelf.view removeHUD];
             if (succeeded) {
-                weakSelf.rightBtn.selected = NO;
+                likeBtn.selected = NO;
                 weakSelf.likedObj = nil;
 
                 [weakSelf refreshMyFavoriteList];
@@ -194,8 +206,12 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
         }];
 
     }else{
-        AVObject *houseInfo = [[AVObject alloc] initWithClassName:USER_FAVORITE];
-
+        AVObject *houseInfo;
+        if (_detailsModal== SecondHouseModal) {
+            houseInfo = [[AVObject alloc] initWithClassName:SECOND_FAVORITE];
+        }else{
+            houseInfo = [[AVObject alloc] initWithClassName:LET_FAVORITE];
+        }
         [houseInfo setObject:self.houseInfo.objectId forKey:HOUSE_ID];
         [houseInfo setObject:[AVUser currentUser].mobilePhoneNumber forKey:USER_PHONE];
         
@@ -227,7 +243,7 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
     if (sender.tag==0) {
         POPVC;
     }else{
-        [self addLikeHouse];
+        [self addLikeHouse:self.rightBtn];
     }
 }
 - (IBAction)showMoreHouse:(UIButton *)sender {
@@ -306,6 +322,15 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
     }
     
     return _tbViewHeadView;
+}
+- (UIButton *)rightBtn{
+    if (_rightBtn ==nil) {
+        _rightBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
+        [_rightBtn setImage:LOADIMAGE(@"unFav") forState:UIControlStateNormal];
+        [_rightBtn setImage:LOADIMAGE(@"fav") forState:UIControlStateSelected];
+        [_rightBtn addTarget:self action:@selector(addLikeHouse:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _rightBtn;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

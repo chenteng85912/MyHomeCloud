@@ -132,7 +132,8 @@
 }
 //删除浏览记录 用户收藏 图片文件
 - (void)deleteRecordData:(AVObject *)obj{
-    self.baseQuery.className = USER_RECORD;
+    
+    self.baseQuery.className = [self recordClassName];
     [self.baseQuery whereKey:HOUSE_ID   equalTo:obj.objectId];
     [self.baseQuery whereKey:HOUSE_TYPE equalTo:[self pointClassName]];
 
@@ -145,7 +146,7 @@
             }
         }
         //删除收藏
-        weakSelf.baseQuery.className = USER_FAVORITE;
+        weakSelf.baseQuery.className = [self favoriteClassName];
         [weakSelf.baseQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
             if (objects.count>0) {
                 for (AVObject *obje in objects) {
