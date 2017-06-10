@@ -60,6 +60,7 @@
     [self.ColView reloadData];
     [self changeComfirnTitie];
 
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
 }
 
 - (void)back{

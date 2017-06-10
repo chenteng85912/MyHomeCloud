@@ -25,7 +25,7 @@ NSInteger const MAX_NUM = 5;
     self.query.className = SECOND_HAND_HOUSE;
     [self.query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         if (objects&&afterRequest) {
-            NSArray *dataArray = [self processData:objects cellModalClass:[AJSecondHouseCellModel new]];
+            NSArray *dataArray = [self processData:objects className:[AJSecondHouseCellModel class]];
             afterRequest(YES,dataArray);
         }
         
@@ -36,7 +36,7 @@ NSInteger const MAX_NUM = 5;
     self.query.className = LET_HOUSE;
 
     [self.query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
-        NSArray *dataArray = [self processData:objects cellModalClass:[AJLetHouseCellModel new]];
+        NSArray *dataArray = [self processData:objects className:NSStringFromClass([AJLetHouseCellModel class])];
         afterRequest(YES,dataArray);
 
     }];
@@ -47,23 +47,23 @@ NSInteger const MAX_NUM = 5;
 
     [self.query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         if (objects&&afterRequest) {
-            NSArray *dataArray = [self processData:objects cellModalClass:[AJNewHouseModel new]];
+            NSArray *dataArray = [self processData:objects className:NSStringFromClass([AJNewHouseModel class])];
             afterRequest(YES,dataArray);
         }
     }];
 }
 //数据处理
-- (NSMutableArray*)processData:(NSArray *)objects cellModalClass:(AJTbViewCellModel *)cellModel{
+- (NSMutableArray*)processData:(NSArray *)objects className:(NSString *)className{
     NSMutableArray *dataArray = [NSMutableArray new];
     
     for (AVObject *obj in objects) {
+        AJTbViewCellModel *modal = (AJTbViewCellModel *)[NSClassFromString(className)  new];
+        modal.objectData = obj;
         
-        cellModel.objectData = obj;
-        
-        if ([cellModel respondsToSelector:@selector(calculateSizeConstrainedToSize)]) {
-            [cellModel calculateSizeConstrainedToSize];
+        if ([modal respondsToSelector:@selector(calculateSizeConstrainedToSize)]) {
+            [modal calculateSizeConstrainedToSize];
         }
-        [dataArray addObject:cellModel];
+        [dataArray addObject:modal];
     }
     return dataArray;
 }
