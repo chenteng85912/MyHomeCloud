@@ -8,6 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSInteger,SearchModal) {
+    SHouseModal,    //二手房
+    LHouseModal,       //租房
+    NHouseModal,         //新房
+
+};
+
 extern NSString *const TIME_KEY;
 @interface AJLocalDataCenter : NSObject
 
@@ -31,5 +38,17 @@ extern NSString *const TIME_KEY;
 
 //清理缓存
 + (void)clearLocalData;
+
+//读取搜索关键词
++ (NSMutableArray *)readLocalSearchData:(SearchModal)searchModal;
+
+//保存搜索关键词
++ (void)saveLocalSearchKey:(NSMutableArray *)searchArray searchModal:(SearchModal)searchModal;
+
+//清空搜索关键词
++ (void)clearLocalSearchKeys:(SearchModal)searchModal;
+
+//删除某条搜索关键词
++ (void)deleteSearchKey:(NSMutableArray *)searchArray searchModal:(SearchModal)searchModal;
 
 @end

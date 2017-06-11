@@ -25,86 +25,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MyHomeCloud/UI/Home/AJHomeDataCenter.m"
-            timestampString = "518780796.90708"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
-            landmarkName = "-addRecordData:objectClassName:recordClassName:"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[AJHomeDataCenter addRecordData:objectClassName:recordClassName:]"
-                  moduleName = "MyHomeCloud"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Teng/Documents/Teng/MyHomeCloud/MyHomeCloud/UI/Home/AJHomeDataCenter.m"
-                  timestampString = "518782841.194391"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "84"
-                  endingLineNumber = "84"
-                  offsetFromSymbolStart = "1254">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__66-[AJHomeDataCenter addRecordData:objectClassName:recordClassName:]_block_invoke"
-                  moduleName = "MyHomeCloud"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Teng/Documents/Teng/MyHomeCloud/MyHomeCloud/UI/Home/AJHomeDataCenter.m"
-                  timestampString = "518782841.197236"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "85"
-                  endingLineNumber = "85"
-                  offsetFromSymbolStart = "75">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MyHomeCloud/UI/Home/AJHomeDataCenter.m"
-            timestampString = "518780796.90708"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
-            landmarkName = "-addRecordData:objectClassName:recordClassName:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MyHomeCloud/UI/Home/AJHomeDataCenter.m"
-            timestampString = "518780796.90708"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
-            landmarkName = "-addRecordData:objectClassName:recordClassName:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "MyHomeCloud/UI/HouseInfo/LetHouse/AJLetHouseViewController.m"
             timestampString = "518780725.382941"
             startingColumnNumber = "9223372036854775807"
@@ -138,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MyHomeCloud/UI/Home/HouseDetails/AJHouseDetailsViewController.m"
-            timestampString = "518782827.034237"
+            timestampString = "518844104.797798"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "167"
-            endingLineNumber = "167"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
             landmarkName = "-checkLikeState"
             landmarkType = "7">
          </BreakpointContent>
@@ -154,12 +74,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MyHomeCloud/UI/Home/HouseDetails/AJHouseDetailsViewController.m"
-            timestampString = "518782828.867227"
+            timestampString = "518844104.797798"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "179"
-            endingLineNumber = "179"
+            startingLineNumber = "180"
+            endingLineNumber = "180"
             landmarkName = "-checkLikeState"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyHomeCloud/UI/Home/Search/AJSearchViewController.m"
+            timestampString = "518878345.872669"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
+            landmarkName = "-chooseHouseType"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

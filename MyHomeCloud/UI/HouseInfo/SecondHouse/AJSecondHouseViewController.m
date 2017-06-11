@@ -12,7 +12,9 @@
 #import "AJHouseDetailsViewController.h"
 #import "AJHomeDataCenter.h"
 
-@interface AJSecondHouseViewController ()
+@interface AJSecondHouseViewController ()<UISearchBarDelegate>
+
+@property (strong, nonatomic)UISearchBar *searchBar;
 
 @end
 
@@ -21,11 +23,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.title = @"二手房";
-    if (self.showModal==MyHouseModal) {
- 
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshHomeData) name:kNewHouseNotification object:nil];
-        
+    if (self.showModal==SearchHouseModal) {
+        self.navigationItem.titleView = self.searchBar;
+    }else{
+        if (self.showModal==MyHouseModal) {
+            
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshHomeData) name:kNewHouseNotification object:nil];
+            
+        }
+        self.title = @"二手房";
+
     }
 
 }
@@ -100,6 +107,8 @@
     AJSecondHouseCellModel *model = (AJSecondHouseCellModel *)self.dataArray[indexPath.row];
     AJHouseDetailsViewController *details = [AJHouseDetailsViewController new];
     details.showModal = SearchHouseModal;
+    details.detailsModal = SecondHouseModal;
+
     if (self.showModal==UserFavoriteModal) {
         details.isFromFav = YES;
     }
@@ -128,7 +137,20 @@
 //    
 //    APP_PRESENT(nav);
 //}
-
+- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
+    
+    POPVC;
+    return NO;
+}
+- (UISearchBar *)searchBar{
+    if (_searchBar ==nil) {
+        _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, dWidth, 30)];
+        _searchBar.placeholder = @"区域/小区/开发商";
+        _searchBar.barTintColor = NavigationBarColor;
+        _searchBar.delegate = self;
+    }
+    return _searchBar;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

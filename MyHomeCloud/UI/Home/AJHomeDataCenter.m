@@ -25,7 +25,7 @@ NSInteger const MAX_NUM = 5;
     self.query.className = SECOND_HAND_HOUSE;
     [self.query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         if (objects&&afterRequest) {
-            NSArray *dataArray = [self processData:objects className:[AJSecondHouseCellModel class]];
+            NSArray *dataArray = [self processData:objects className:NSStringFromClass([AJSecondHouseCellModel class])];
             afterRequest(YES,dataArray);
         }
         

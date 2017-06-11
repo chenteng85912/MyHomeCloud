@@ -78,6 +78,7 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
     }
     
 }
+
 - (BOOL)firstShowAnimation{
     return YES;
 }

@@ -11,6 +11,10 @@
 NSString *const TIME_KEY = @"time_key";
 NSString *const ALLKEYS_KEY = @"ajCloudAllKeys";
 
+NSString *const SECOND_HOUSE_KEY = @"second_search_key";
+NSString *const LET_HOUSE_KEY = @"let_search_key";
+NSString *const N_HOUSE_KEY = @"n_house_key";
+
 NSInteger const AUTOCLEAR_TIME = 5;//分钟
 
 @implementation AJLocalDataCenter
@@ -146,5 +150,65 @@ NSInteger const AUTOCLEAR_TIME = 5;//分钟
     }
     
     return fileSizeString;
+}
+
+//读取搜索关键词
++ (NSMutableArray *)readLocalSearchData:(SearchModal)searchModal{
+   
+    NSMutableArray *temp = [NSMutableArray new];
+    
+    NSString *fileString = [MyUserDefaults objectForKey:[self userSearchKey:searchModal]];
+    if (!fileString) {
+        NSLog(@"本地搜索为空");
+        return temp;
+    }
+    
+    NSData *JSONData = [fileString dataUsingEncoding:NSUTF8StringEncoding];
+    NSArray *responseJSON = [NSJSONSerialization JSONObjectWithData:JSONData options:NSJSONReadingMutableLeaves error:nil];
+    if (responseJSON.count>0) {
+        [temp addObjectsFromArray:responseJSON];
+    }
+    NSLog(@"读取搜索数据成功");
+    return temp;
+
+}
++ (NSString *)userSearchKey:(SearchModal)searchModal{
+    NSString *searchKey;
+    if (searchModal==SHouseModal) {
+        searchKey = [NSString stringWithFormat:@"%@_%@",[AVUser currentUser].mobilePhoneNumber,SECOND_HOUSE_KEY];
+    }else if (searchModal==LHouseModal){
+        searchKey = [NSString stringWithFormat:@"%@_%@",[AVUser currentUser].mobilePhoneNumber,LET_HOUSE_KEY];
+        
+    }else{
+        searchKey = [NSString stringWithFormat:@"%@_%@",[AVUser currentUser].mobilePhoneNumber,N_HOUSE_KEY];
+        
+    }
+    return searchKey;
+}
+//保存搜索关键词
++ (void)saveLocalSearchKey:(NSMutableArray *)searchArray searchModal:(SearchModal)searchModal{
+
+    
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:searchArray options:NSJSONWritingPrettyPrinted error:nil];
+    NSString *fileString = [[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding];
+    [MyUserDefaults setObject:fileString forKey:[self userSearchKey:searchModal]];}
+
+//清空搜索关键词
++ (void)clearLocalSearchKeys:(SearchModal)searchModal{
+    [MyUserDefaults removeObjectForKey:[self userSearchKey:searchModal]];
+}
+
+//删除某条搜索关键词
++ (void)deleteSearchKey:(NSMutableArray *)searchArray searchModal:(SearchModal)searchModal{
+    
+    if (searchArray.count==0) {
+        [MyUserDefaults removeObjectForKey:[self userSearchKey:searchModal]];
+        debugLog(@"搜索数据被清空");
+        return;
+    }
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:searchArray options:NSJSONWritingPrettyPrinted error:nil];
+    NSString *fileString = [[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding];
+    [MyUserDefaults setObject:fileString forKey:[self userSearchKey:searchModal]];
+
 }
 @end

@@ -85,51 +85,6 @@
 
 }
 #pragma mark - UITableViewDelegate
-
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
-    if ([self respondsToSelector:@selector(canDeleteCell)]) {
-        return [self canDeleteCell];
-    }
-    return NO;
-}
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        WeakSelf;
-
-        [UIAlertController alertWithTitle:@"温馨提示" message:@"确定删除该房源?" cancelButtonTitle:@"取消" otherButtonTitles:@[@"删除"] preferredStyle:UIAlertControllerStyleAlert block:^(NSInteger buttonIndex) {
-            if (buttonIndex==1) {
-                AJTbViewCellModel *model = weakSelf.dataArray[indexPath.row];
-                [weakSelf.view showHUD:@"正在删除..."];
-                [model.objectData deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-                    [weakSelf.view removeHUD];
-                    if (!succeeded) {
-                        [weakSelf.view showTips:@"网络错误,请重试" withState:TYKYHUDModeFail complete:nil];
-                        return;
-                    }
-
-                    //删除浏览记录 收藏数据
-                    if (self.showModal==MyHouseModal) {
-                        [weakSelf deleteRecordData:model.subObj];
-
-                    }
-                    
-                    [weakSelf.dataArray removeObjectAtIndex:indexPath.row];
-                    [weakSelf.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-
-                    if (weakSelf.dataArray.count==0) {
-                        [weakSelf.tableView addNoDataTipView];
-                    }
-                    
-                    
-                }];
-            }else{
-                [self.tableView setEditing:NO animated:YES];
-            }
-        }];
-       
-        
-    }
-}
 //删除浏览记录 用户收藏 图片文件
 - (void)deleteRecordData:(AVObject *)obj{
     
@@ -286,6 +241,12 @@
         }
         
     }
+    if ([self respondsToSelector:@selector(canDeleteCell)]&&[self canDeleteCell]) {
+        //长按手势
+        UILongPressGestureRecognizer *longPressGr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressAction:)];
+        longPressGr.minimumPressDuration = 0.5;
+        [self.tableView addGestureRecognizer:longPressGr];
+    }
 
 }
 
@@ -319,7 +280,54 @@
     header.refreshingAction = methodName;
     return header;
 }
-
+//长按手势
+-(void)longPressAction:(UILongPressGestureRecognizer *)gesture
+{
+    if(gesture.state == UIGestureRecognizerStateBegan)
+    {
+        CGPoint point = [gesture locationInView:self.tableView];
+        NSIndexPath * indexPath = [self.tableView indexPathForRowAtPoint:point];
+        if(indexPath == nil){
+            return ;
+            
+        }
+        [self showAlertView:indexPath];
+    }
+}
+- (void)showAlertView:(NSIndexPath *)indexPath{
+    WeakSelf;
+    [UIAlertController alertWithTitle:@"温馨提示" message:@"确定删除该房源?" cancelButtonTitle:@"取消" otherButtonTitles:@[@"删除"] preferredStyle:UIAlertControllerStyleAlert block:^(NSInteger buttonIndex) {
+        if (buttonIndex==1) {
+            AJTbViewCellModel *model = weakSelf.dataArray[indexPath.row];
+            [weakSelf.view showHUD:@"正在删除..."];
+            [model.objectData deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                [weakSelf.view removeHUD];
+                if (!succeeded) {
+                    [weakSelf.view showTips:@"网络错误,请重试" withState:TYKYHUDModeFail complete:nil];
+                    return;
+                }
+                
+                //删除浏览记录 收藏数据
+                if (self.showModal==MyHouseModal) {
+                    [weakSelf deleteRecordData:model.subObj];
+                    
+                }
+                
+                [weakSelf.dataArray removeObjectAtIndex:indexPath.row];
+                [weakSelf.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+                
+                if (weakSelf.dataArray.count==0) {
+                    [weakSelf.tableView addNoDataTipView];
+                }
+                
+                
+            }];
+        }else{
+            [self.tableView setEditing:NO animated:YES];
+        }
+    }];
+    
+}
 #pragma mark - getters and setters
 - (NSMutableArray <AJTbViewCellModel *>*)dataArray{
     if (!_dataArray) {

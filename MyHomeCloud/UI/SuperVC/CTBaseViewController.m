@@ -22,13 +22,13 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.interactivePopGestureRecognizer.delegate = self;
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
 
     if (self.isSubVC) {
         return;
     }
     [self.navigationController setNavigationBarHidden:NO animated:YES];
 
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationController.navigationBar.barTintColor = NavigationBarColor;
 
