@@ -21,12 +21,12 @@ NSString *const USER_ONLINE = @"该用户已在别处登录";
 #pragma mark -life cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     [self initUI];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -85,35 +85,41 @@ NSString *const USER_ONLINE = @"该用户已在别处登录";
             //用户已经登录
             if ([[AVUser currentUser][USER_LOGIN_STATE] integerValue]>0) {
                 [AVUser logOut];
-                [self.view showTips:USER_ONLINE withState:TYKYHUDModeFail complete:nil];
+                [[UIApplication sharedApplication].keyWindow showTips:USER_ONLINE withState:TYKYHUDModeFail complete:nil];
                 return;
             }
             //登录成功
             [[AVUser currentUser] setObject:@1 forKey:USER_LOGIN_STATE];
             [[AVUser currentUser] saveInBackground];
-            [self.view showTips:LOGIN_SUCCESS withState:TYKYHUDModeSuccess complete:^{
-                [(AppDelegate *)[UIApplication sharedApplication].delegate switchRootVC];
+            [[UIApplication sharedApplication].keyWindow showTips:LOGIN_SUCCESS withState:TYKYHUDModeSuccess complete:^{
+                [self loginSuccess];
             }];
             return;
         }
         if (error.code==210) {
-            [self.view showTips:@"密码错误" withState:TYKYHUDModeFail complete:nil];
+            [[UIApplication sharedApplication].keyWindow showTips:@"密码错误" withState:TYKYHUDModeFail complete:nil];
             return;
         }else if (error.code==211) {
-            [self.view showTips:@"该用户名不存在" withState:TYKYHUDModeFail complete:nil];
+            [[UIApplication sharedApplication].keyWindow showTips:@"该用户名不存在" withState:TYKYHUDModeFail complete:nil];
             return;
         }else if (error.code==1) {
-            [self.view showTips:@"登录失败次数超过限制，请稍候再试，或者通过忘记密码重设密码" withState:TYKYHUDModeFail complete:^{
+            [[UIApplication sharedApplication].keyWindow showTips:@"登录失败次数超过限制，请稍候再试，或者通过忘记密码重设密码" withState:TYKYHUDModeFail complete:^{
                 
             }];
         }else{
-            [self.view showTips:@"网络错误，请重试" withState:TYKYHUDModeFail complete:nil];
+            [[UIApplication sharedApplication].keyWindow showTips:@"网络错误，请重试" withState:TYKYHUDModeFail complete:nil];
             
         }
         
     }];
 }
 
+- (void)loginSuccess{
+    if (_backBlock) {
+        _backBlock();
+    }
+    [self backToPreVC];
+}
 //找回密码
 - (IBAction)findPswAction:(UIButton *)sender {
     
@@ -136,6 +142,8 @@ NSString *const USER_ONLINE = @"该用户已在别处登录";
 }
 #pragma mark - private methods
 - (void)initUI{
+    
+    self.title = @"登录";
     self.headImg.image = [CTTool iconImage];
     NSString *userName = [MyUserDefaults objectForKey:USER_NAME];
     if (userName) {

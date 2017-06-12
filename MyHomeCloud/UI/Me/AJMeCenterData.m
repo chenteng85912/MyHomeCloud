@@ -25,33 +25,33 @@
     model.title = @"我的房源";
     model.iconName = @"house";
     model.showModal = MyHouseModal;
+    model.isNeedLogin = YES;
     model.className = NSStringFromClass([AJUserHouseViewController class]);
     [temp addObject:model];
     
     model = [AJMeModel new];
     model.title = @"我的收藏";
     model.showModal = UserFavoriteModal;
-    model.iconName = @"liked";
+    model.iconName = @"favorite";
+    model.isNeedLogin = YES;
     model.className = NSStringFromClass([AJUserHouseViewController class]);
     [temp addObject:model];
     
     model = [AJMeModel new];
     model.title = @"浏览记录";
     model.iconName = @"record";
+    model.isNeedLogin = YES;
     model.showModal = UserRecordModal;
     model.className = NSStringFromClass([AJUserHouseViewController class]);
     [temp addObject:model];
     
-    //管理员
-    if ([[AVUser currentUser][USER_ROLE] integerValue]==1) {
-        model = [AJMeModel new];
-        model.title = @"所有房源";
-        model.iconName = @"allHouse";
-        model.showModal = AllHouseModal;
-        model.className = NSStringFromClass([AJUserHouseViewController class]);
-        [temp addObject:model];
-        
-    }
+    model = [AJMeModel new];
+    model.title = @"我的预约";
+    model.iconName = @"reserver";
+    model.isNeedLogin = YES;
+    model.className = NSStringFromClass([AJOtherViewController class]);
+    [temp addObject:model];
+    
     [dataArray addObject:temp];
     
     //section1

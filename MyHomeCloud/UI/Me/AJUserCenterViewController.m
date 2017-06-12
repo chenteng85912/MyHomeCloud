@@ -14,7 +14,7 @@
 
 static NSString *CellIdentifier = @"AJUserCellId";
 
-CGFloat const IMAGEHEIGHT  = 200.0f;
+CGFloat const IMAGEHEIGHT  = 240.0f;
 
 @interface AJUserCenterViewController ()<AJUserHeadViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tbView;
@@ -22,10 +22,9 @@ CGFloat const IMAGEHEIGHT  = 200.0f;
 @property (weak, nonatomic) IBOutlet UIImageView *headImg;
 @property (weak, nonatomic) IBOutlet UIImageView *userHead;
 @property (weak, nonatomic) IBOutlet UIView *headInfoView;
-@property (weak, nonatomic) IBOutlet UILabel *userName;
-
+@property (weak, nonatomic) IBOutlet UIButton *userName;
 @property (weak, nonatomic) IBOutlet UIImageView *roleIcon;
-@property (weak, nonatomic) IBOutlet UILabel *roleName;
+
 @property (strong, nonatomic) NSArray *dataArray;//数据源
 
 @end
@@ -39,15 +38,12 @@ CGFloat const IMAGEHEIGHT  = 200.0f;
     [self.tbView registerClass:[UITableViewCell class] forCellReuseIdentifier:CellIdentifier];
     self.tbView.tableHeaderView = self.headView;
     
-    self.userName.text = [AVUser currentUser].mobilePhoneNumber;
-    [self.userHead sd_setImageWithURL:[NSURL URLWithString:[AVUser currentUser][HEAD_URL]] placeholderImage:LOADIMAGE(@"lauchIcon")];
-    
-    [self initRoleData];
-
+   
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
+    [self initUserData];
 
 }
 
@@ -104,8 +100,18 @@ CGFloat const IMAGEHEIGHT  = 200.0f;
     NSArray *temp = self.dataArray[indexPath.section];
     AJMeModel *model = temp[indexPath.row];
     if (!model.className) {
+      
         return;
     }
+    
+    if (model.isNeedLogin&&![AVUser currentUser]) {
+        [AJSB goLoginViewComplete:^{
+            
+        }];
+        //打开登录界面
+        return;
+    }
+    
     UIViewController *vc = [NSClassFromString(model.className) new];
     vc.title = model.title;
     if ([model.className isEqualToString: NSStringFromClass([AJUserHouseViewController class])]) {
@@ -135,6 +141,16 @@ CGFloat const IMAGEHEIGHT  = 200.0f;
     }
 }
 - (IBAction)buttonAction:(UIButton *)sender {
+    if (![AVUser currentUser]) {
+        [AJSB goLoginViewComplete:^{
+            
+        }];
+        //打开登录界面
+        return;
+    }
+    if (sender.tag==1) {
+        return;
+    }
     AJUserHeadViewController *head = [AJUserHeadViewController new];
     head.headImg = self.userHead.image;
     head.delegate  = self;
@@ -150,19 +166,30 @@ CGFloat const IMAGEHEIGHT  = 200.0f;
     self.userHead.image = image;
 }
 //角色信息
-- (void)initRoleData{
-    self.roleName.text  = [AVUser currentUser][USER_NICKNAME];
+- (void)initUserData{
 
-    NSInteger role = [[AVUser currentUser][USER_ROLE] integerValue];
-    if (role==1) {
-        self.roleIcon.image = LOADIMAGE(@"admin");
-    }else if (role==2) {
-        self.roleIcon.image = LOADIMAGE(@"estater");
-    }else if (role==3) {
-        self.roleIcon.image = LOADIMAGE(@"agency");
+    _roleIcon.hidden = ![AVUser currentUser];
+   
+    if ([AVUser currentUser]) {
+        [_userName setTitle:[AVUser currentUser][USER_NICKNAME] forState:UIControlStateNormal];
+        [self.userHead sd_setImageWithURL:[NSURL URLWithString:[AVUser currentUser][HEAD_URL]] placeholderImage:LOADIMAGE(@"lauchIcon")];
+        NSInteger role = [[AVUser currentUser][USER_ROLE] integerValue];
+        if (role==1) {
+            self.roleIcon.image = LOADIMAGE(@"estater");
+        }else if (role==2) {
+            self.roleIcon.image = LOADIMAGE(@"agency");
+        }else{
+            self.roleIcon.image = LOADIMAGE(@"admin");
+            
+        }
     }else{
         self.roleIcon.image = LOADIMAGE(@"visitor");
+        [_userName setTitle:@"登录/注册" forState:UIControlStateNormal];
+        self.userHead.image = LOADIMAGE(@"lauchIcon");
+
     }
+    
+
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

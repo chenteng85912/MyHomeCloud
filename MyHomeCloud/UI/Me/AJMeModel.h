@@ -13,5 +13,6 @@
 @property (strong, nonatomic) NSString *iconName;//图标名称
 @property (strong, nonatomic) NSString *className;//类名
 @property (assign, nonatomic) HouseShowModal showModal;
+@property (assign, nonatomic) BOOL isNeedLogin;
 
 @end

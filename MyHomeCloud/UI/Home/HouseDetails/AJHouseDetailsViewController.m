@@ -9,6 +9,7 @@
 #import "AJHouseDetailsViewController.h"
 #import "AJSecondHouseTableViewCell.h"
 #import "AJSecondHouseCellModel.h"
+#import "AJHomeDataCenter.h"
 
 NSInteger const MAX_HOUSE_NUMBER = 10;
 #define AUTOLOOP_HEIGHT     dHeight/3
@@ -18,7 +19,6 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
 @property (weak, nonatomic) IBOutlet UIButton *moreHouseBtn;
 @property (weak, nonatomic) IBOutlet UIView *houseInfoView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *userHead;
 @property (weak, nonatomic) IBOutlet UILabel *totalLabel;
 @property (weak, nonatomic) IBOutlet UILabel *houseRooms;
 @property (weak, nonatomic) IBOutlet UILabel *houseAreaage;
@@ -118,11 +118,14 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    AJSecondHouseCellModel *model = (AJSecondHouseCellModel *)self.dataArray[indexPath.row];
     AJHouseDetailsViewController *details = [AJHouseDetailsViewController new];
-    
-    details.houseInfo = model.objectData;
-    details.isSubVC = YES;
+    details.houseInfo = self.dataArray[indexPath.row].objectData;
+    details.detailsModal = SecondHouseModal;
+    details.showModal = SearchHouseModal;
+    //保存浏览记录
+    AJTbViewCellModel *model = self.dataArray[indexPath.row];
+    [[AJHomeDataCenter new] addRecordData:model.objectData objectClassName:SECOND_HAND_HOUSE recordClassName:SECOND_RECORD];
+
     APP_PUSH(details);
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -136,9 +139,9 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
    
     if (self.isFromFav) {
         self.rightBtn.selected = YES;
-        [self fetchAuthorData];
 
-    }else{
+    }else if ([AVUser currentUser]) {
+        
         [self checkLikeState];
         
     }
@@ -162,6 +165,7 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
     _houseYear.text = _houseInfo[HOUSE_YEARS];
     
 }
+//检测登录状态
 - (void)checkLikeState{
     
     [self.view showHUD:nil];
@@ -184,7 +188,7 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
             weakSelf.rightBtn.selected = NO;
 
         }
-        [weakSelf fetchAuthorData];
+//        [weakSelf fetchAuthorData];
     }];
 
 }
@@ -192,7 +196,12 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
 //添加 取消收藏
 - (void)addLikeHouse:(UIButton *)likeBtn{
     WeakSelf;
-
+    if (![AVUser currentUser]) {
+        [AJSB goLoginViewComplete:^{
+            [weakSelf addLikeHouse:_rightBtn];
+        }];
+        return;
+    }
     [self.view showHUD:nil];
     if (likeBtn.selected) {
        
@@ -250,38 +259,20 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
 - (IBAction)showMoreHouse:(UIButton *)sender {
     
 }
-//- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-//    CGFloat offsetY = scrollView.contentOffset.y;
-//    debugLog(@"%f",offsetY);
-//    if (offsetY > 0) {
-//        _headView.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:MIN(1, offsetY/150)];
-//        _titleText.alpha = MIN(1, offsetY/150);
-//    } else {
-//        _headView.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0];
-//        _titleText.alpha = 0;
-//
-//    }
-//}
-//获取作者信息
-- (void)fetchAuthorData{
-    self.baseQuery.className = USER_INFO;
-    WeakSelf;
-    [self.baseQuery getObjectInBackgroundWithId:_houseInfo[HOUSE_AUTHOR] block:^(AVObject * _Nullable object, NSError * _Nullable error) {
-        if (object) {
-            weakSelf.someUser = object;
-            //头像
-            [weakSelf.userHead sd_setImageWithURL:object[HEAD_URL] placeholderImage:[CTTool iconImage]];
-        }
-    }];
-}
-//打开用户所有房源
 
-- (IBAction)showAuthorHouses:(id)sender {
-    if (!self.someUser) {
-        return;
-    }
-   
-}
+//获取作者信息
+//- (void)fetchAuthorData{
+//    self.baseQuery.className = USER_INFO;
+//    WeakSelf;
+//    [self.baseQuery getObjectInBackgroundWithId:_houseInfo[HOUSE_AUTHOR] block:^(AVObject * _Nullable object, NSError * _Nullable error) {
+//        if (object) {
+//            weakSelf.someUser = object;
+//            //头像
+//            [weakSelf.userHead sd_setImageWithURL:object[HEAD_URL] placeholderImage:[CTTool iconImage]];
+//        }
+//    }];
+//}
+
 
 #pragma mark CTAutoLoopViewDelegate
 - (UIView *)CTAutoLoopViewController:(UICollectionViewCell *)collectionCell cellForItemAtIndexPath:(NSIndexPath *)indexPath{

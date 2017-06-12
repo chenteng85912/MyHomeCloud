@@ -39,11 +39,16 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeContentViewFrame:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeContentViewFrame:) name:UIKeyboardWillHideNotification object:nil];
 
+
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.searchBar becomeFirstResponder];
     [self readLocalData];
+
+}
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [self.searchBar becomeFirstResponder];
 
 }
 #pragma mark UITableViewDelegate UITableViewDatasource

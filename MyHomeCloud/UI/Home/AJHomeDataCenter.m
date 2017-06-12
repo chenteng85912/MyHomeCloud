@@ -69,6 +69,9 @@ NSInteger const MAX_NUM = 5;
 }
 //保存浏览记录
 - (void)addRecordData:(AVObject *)object objectClassName:(NSString *)className recordClassName:(NSString *)recordClassName{
+    if (![AVUser currentUser]) {
+        return;
+    }
     AVObject *houseInfo = [[AVObject alloc] initWithClassName:recordClassName];
     [houseInfo setObject:object.objectId        forKey:HOUSE_ID];
     

@@ -90,7 +90,6 @@
     
     self.baseQuery.className = [self recordClassName];
     [self.baseQuery whereKey:HOUSE_ID   equalTo:obj.objectId];
-    [self.baseQuery whereKey:HOUSE_TYPE equalTo:[self pointClassName]];
 
     WeakSelf;
     //删除浏览记录

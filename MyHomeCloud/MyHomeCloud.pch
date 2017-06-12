@@ -25,6 +25,7 @@
 #import "UIImageView+WebCache.h"
 #import "AJLocalDataCenter.h"
 #import "AJTbViewPresenter.h"
+#import "AJSB.h"
 
 #endif /* MyHomeCloud_pch */
 
@@ -68,7 +69,6 @@
 //浏览记录 收藏保存的房屋数据
 #define HOUSE_OBJECT        @"HouseObject"//房屋数据  浏览记录 收藏
 #define HOUSE_ID            @"HouseId"//房屋数据Id  浏览记录 收藏
-#define HOUSE_TYPE          @"HouseType"//房屋类型  浏览记录 收藏
 
 //二手房屋数据
 #define USER_PHONE          @"UserPhone"//用户电话

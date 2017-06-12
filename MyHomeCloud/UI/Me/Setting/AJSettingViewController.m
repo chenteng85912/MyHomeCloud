@@ -101,7 +101,7 @@ static NSString *CellIdentifier = @"TJSettingsCellId";
                 [CTTool removeKeyWindowHUD];
                 [AVUser logOut];
                 [[UIApplication sharedApplication].keyWindow showTips:@"注销成功" withState:TYKYHUDModeSuccess complete:^{
-                    [(AppDelegate *)[UIApplication sharedApplication].delegate switchRootVC];
+                    [self backToPreVC];
 
                 }];
 

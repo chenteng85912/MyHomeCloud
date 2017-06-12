@@ -67,6 +67,7 @@
 		0BE2A35F1EC2DE1700519840 /* AJMeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BE2A35E1EC2DE1700519840 /* AJMeModel.m */; };
 		0BE4D9EF1ECC6B8200E4ADCD /* AJHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BE4D9ED1ECC6B8200E4ADCD /* AJHomeViewController.m */; };
 		0BE4D9F01ECC6B8200E4ADCD /* AJHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BE4D9EE1ECC6B8200E4ADCD /* AJHomeViewController.xib */; };
+		0BF95A0D1EEE55F00031D958 /* AJSB.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF95A0C1EEE55F00031D958 /* AJSB.m */; };
 		9E8788EDDBF16621BCB775EC /* libPods-MyHomeCloud.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 28918ABEED7A893430DD718E /* libPods-MyHomeCloud.a */; };
 		9FC8B56C676C33C132BD175B /* libPods-MyHomeCloudTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8195A483A5A5B25BE92F9997 /* libPods-MyHomeCloudTests.a */; };
 		A40B20B61EC733280027399E /* AJHouseDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A40B20B41EC733280027399E /* AJHouseDetailsViewController.m */; };
@@ -215,6 +216,8 @@
 		0BE4D9EC1ECC6B8200E4ADCD /* AJHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJHomeViewController.h; sourceTree = "<group>"; };
 		0BE4D9ED1ECC6B8200E4ADCD /* AJHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJHomeViewController.m; sourceTree = "<group>"; };
 		0BE4D9EE1ECC6B8200E4ADCD /* AJHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJHomeViewController.xib; sourceTree = "<group>"; };
+		0BF95A0B1EEE55F00031D958 /* AJSB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJSB.h; sourceTree = "<group>"; };
+		0BF95A0C1EEE55F00031D958 /* AJSB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJSB.m; sourceTree = "<group>"; };
 		1AAB7260269F8CCA93F199B4 /* Pods-MyHomeCloudTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyHomeCloudTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyHomeCloudTests/Pods-MyHomeCloudTests.release.xcconfig"; sourceTree = "<group>"; };
 		28918ABEED7A893430DD718E /* libPods-MyHomeCloud.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyHomeCloud.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BD76340FB7FEF978B1E1792 /* Pods-MyHomeCloud.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyHomeCloud.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyHomeCloud/Pods-MyHomeCloud.debug.xcconfig"; sourceTree = "<group>"; };
@@ -516,6 +519,8 @@
 			children = (
 				0B2344131EC03095007A3AC1 /* CTTool.h */,
 				0B2344141EC03095007A3AC1 /* CTTool.m */,
+				0BF95A0B1EEE55F00031D958 /* AJSB.h */,
+				0BF95A0C1EEE55F00031D958 /* AJSB.m */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -956,6 +961,7 @@
 				0B23446E1EC03095007A3AC1 /* AJLocalDataCenter.m in Sources */,
 				0B2344591EC03095007A3AC1 /* NSMutableArray+CTExtension.m in Sources */,
 				0BE4D9EF1ECC6B8200E4ADCD /* AJHomeViewController.m in Sources */,
+				0BF95A0D1EEE55F00031D958 /* AJSB.m in Sources */,
 				0B15DE7E1ED2C8BE003A54E3 /* AFNetworkReachabilityManager.m in Sources */,
 				0B57F5A11EC1991800B89CE2 /* AjMainTabBarViewController.m in Sources */,
 				0B1904C61EE66192004C46EE /* AJNewHouseModel.m in Sources */,

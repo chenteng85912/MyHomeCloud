@@ -30,12 +30,12 @@
     return YES;
 }
 - (void)switchRootVC{
-    if ([AVUser currentUser ]) {
+//    if ([AVUser currentUser ]) {
         self.window.rootViewController = [AjMainTabBarViewController new];
 
-    }else{
-        self.window.rootViewController = [AJLoginViewController new];
-    }
+//    }else{
+//        self.window.rootViewController = [AJLoginViewController new];
+//    }
 }
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
