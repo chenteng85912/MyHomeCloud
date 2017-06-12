@@ -57,38 +57,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MyHomeCloud/UI/Home/HouseDetails/AJHouseDetailsViewController.m"
-            timestampString = "518969438.692583"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "179"
-            endingLineNumber = "179"
-            landmarkName = "-checkLikeState"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MyHomeCloud/UI/Home/HouseDetails/AJHouseDetailsViewController.m"
-            timestampString = "518969438.692583"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "191"
-            endingLineNumber = "191"
-            landmarkName = "-checkLikeState"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "MyHomeCloud/UI/Home/Search/AJSearchViewController.m"
             timestampString = "518878345.872669"
             startingColumnNumber = "9223372036854775807"
@@ -96,70 +64,6 @@
             startingLineNumber = "137"
             endingLineNumber = "137"
             landmarkName = "-showSearchResult"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MyHomeCloud/UI/Home/HouseDetails/AJHouseDetailsViewController.m"
-            timestampString = "518969484.37765"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "219"
-            endingLineNumber = "219"
-            landmarkName = "-addLikeHouse:"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[AJHouseDetailsViewController addLikeHouse:]"
-                  moduleName = "MyHomeCloud"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Teng/Documents/Teng/MyHomeCloud/MyHomeCloud/UI/Home/HouseDetails/AJHouseDetailsViewController.m"
-                  timestampString = "518969567.616244"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "219"
-                  endingLineNumber = "219"
-                  offsetFromSymbolStart = "536">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__45-[AJHouseDetailsViewController addLikeHouse:]_block_invoke.190"
-                  moduleName = "MyHomeCloud"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Teng/Documents/Teng/MyHomeCloud/MyHomeCloud/UI/Home/HouseDetails/AJHouseDetailsViewController.m"
-                  timestampString = "518969567.618449"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "220"
-                  endingLineNumber = "220"
-                  offsetFromSymbolStart = "55">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MyHomeCloud/UI/Home/HouseDetails/AJHouseDetailsViewController.m"
-            timestampString = "518969485.373643"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "220"
-            endingLineNumber = "220"
-            landmarkName = "-addLikeHouse:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

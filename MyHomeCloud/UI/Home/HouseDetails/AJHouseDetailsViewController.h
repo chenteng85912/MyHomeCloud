@@ -15,6 +15,7 @@ typedef NS_ENUM(NSInteger,DetailsHouseModal) {
 @interface AJHouseDetailsViewController : AJBaseTbViewController
 
 @property (strong, nonatomic) AVObject *houseInfo;
+@property (strong, nonatomic) AJBaseTbViewController *tbView;
 
 @property (assign, nonatomic) BOOL isFromFav;//来自我的收藏
 @property (assign, nonatomic) DetailsHouseModal detailsModal;

@@ -111,6 +111,7 @@
 
     if (self.showModal==UserFavoriteModal) {
         details.isFromFav = YES;
+        details.tbView = self;
     }
     
     details.houseInfo = model.objectData;

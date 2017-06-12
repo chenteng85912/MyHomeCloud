@@ -14,6 +14,8 @@
 #import "AJLocation.h"
 
 NSInteger const MAX_HOUSE_NUMBER = 10;
+CGFloat const HOUSE_INFO_HEITHT = 590;
+
 #define AUTOLOOP_HEIGHT     dHeight/3
 
 @interface AJHouseDetailsViewController ()<UIScrollViewDelegate,CTAutoLoopViewDelegate>
@@ -179,7 +181,6 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
 //检测登录状态
 - (void)checkLikeState{
     
-    [self.view showHUD:nil];
     if (_detailsModal== SecondHouseModal) {
         self.baseQuery.className = SECOND_FAVORITE;
 
@@ -191,7 +192,6 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
     [self.baseQuery whereKey:HOUSE_ID equalTo:self.houseInfo.objectId];
     WeakSelf;
     [self.baseQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
-        [weakSelf.view removeHUD];
         if (objects.count>0) {
             weakSelf.likedObj = objects[0];
             weakSelf.rightBtn.selected = YES;
@@ -222,7 +222,9 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
                 likeBtn.selected = NO;
                 weakSelf.likedObj = nil;
 
-                [weakSelf refreshMyFavoriteList];
+                if (weakSelf.isFromFav) {
+                    weakSelf.tbView.isLoad = NO;
+                }
             }
         }];
 
@@ -253,20 +255,7 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
     }
    
 }
-//取消收藏后 刷新收藏列表
-- (void)refreshMyFavoriteList{
-    if (!self.isFromFav) {
-        return;
-    }
-    for (id vc  in self.navigationController.viewControllers) {
-        if ([vc isKindOfClass:[AJBaseTbViewController class]]) {
-            AJBaseTbViewController *tbView = (AJBaseTbViewController *)vc;
-            tbView.isLoad = NO;
-            break;
-        }
-    }
-   
-}
+
 - (IBAction)buttonAction:(UIButton *)sender {
     if (sender.tag==0) {
         POPVC;
@@ -337,9 +326,9 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
 }
 - (UIView *)tbViewHeadView{
     if (_tbViewHeadView == nil) {
-        _tbViewHeadView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, dWidth, AUTOLOOP_HEIGHT+350)];
+        _tbViewHeadView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, dWidth, AUTOLOOP_HEIGHT+HOUSE_INFO_HEITHT)];
         [_tbViewHeadView addSubview:self.autoLoopView.view];
-        _houseInfoView.center = CGPointMake(dWidth/2, _tbViewHeadView.frame.size.height-175);
+        _houseInfoView.center = CGPointMake(dWidth/2, _tbViewHeadView.frame.size.height-HOUSE_INFO_HEITHT/2);
         [_tbViewHeadView addSubview:_houseInfoView];
     }
     

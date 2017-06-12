@@ -98,7 +98,10 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     AJLetHouseCellModel *model = (AJLetHouseCellModel *)self.dataArray[indexPath.row];
-    
+    if (self.showModal==UserFavoriteModal) {
+//        details.isFromFav = YES;
+//        details.tbView = self;
+    }
     if (self.showModal==AllHouseModal||self.showModal==SomeoneHouseModal) {
         [[AJHomeDataCenter new] addRecordData:model.objectData objectClassName:[self requestClassName] recordClassName:[self recordClassName]];
     }
