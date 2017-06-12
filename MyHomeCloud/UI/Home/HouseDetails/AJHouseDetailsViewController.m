@@ -10,6 +10,8 @@
 #import "AJSecondHouseTableViewCell.h"
 #import "AJSecondHouseCellModel.h"
 #import "AJHomeDataCenter.h"
+#import "AJLocationViewController.h"
+#import "AJLocation.h"
 
 NSInteger const MAX_HOUSE_NUMBER = 10;
 #define AUTOLOOP_HEIGHT     dHeight/3
@@ -29,6 +31,8 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
 @property (weak, nonatomic) IBOutlet UILabel *houseShowTime;
 @property (weak, nonatomic) IBOutlet UILabel *houseFloor;
 @property (weak, nonatomic) IBOutlet UILabel *houseYear;
+@property (weak, nonatomic) IBOutlet UIView *mapBackView;
+@property (weak, nonatomic) IBOutlet UIButton *mapBtn;
 
 @property (strong, nonatomic) UIButton *rightBtn;
 
@@ -40,6 +44,8 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
 
 @property (strong, nonatomic) AVObject *likedObj;
 @property (strong, nonatomic) AVObject *someUser;
+@property (strong, nonatomic) AJLocationViewController *mapView;
+
 
 @end
 
@@ -49,9 +55,15 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
     [super viewDidLoad];
     
     if (_houseInfo[HOUSE_OBJECT]) {
+        _likedObj = _houseInfo;
         _houseInfo = _houseInfo[HOUSE_OBJECT];
     }
     [self initHouseDetailsInfo];
+    
+    //添加地图
+    self.mapView.view.frame = _mapBackView.bounds;
+    [_mapBackView addSubview:self.mapView.view];
+    [_mapBackView bringSubviewToFront:_mapBtn];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.rightBtn];
 
@@ -139,7 +151,6 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
    
     if (self.isFromFav) {
         self.rightBtn.selected = YES;
-
     }else if ([AVUser currentUser]) {
         
         [self checkLikeState];
@@ -247,6 +258,13 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
     if (!self.isFromFav) {
         return;
     }
+    for (id vc  in self.navigationController.viewControllers) {
+        if ([vc isKindOfClass:[AJBaseTbViewController class]]) {
+            AJBaseTbViewController *tbView = (AJBaseTbViewController *)vc;
+            tbView.isLoad = NO;
+            break;
+        }
+    }
    
 }
 - (IBAction)buttonAction:(UIButton *)sender {
@@ -257,6 +275,17 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
     }
 }
 - (IBAction)showMoreHouse:(UIButton *)sender {
+    if (sender.tag==0) {
+        //房屋简介
+        
+    }else if (sender.tag==1){
+        //地图
+        _mapView =nil;
+        APP_PUSH(self.mapView);
+
+    }else{
+        //更多房屋
+    }
     
 }
 
@@ -285,6 +314,7 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
 - (void)CTAutoLoopViewController:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     [[CTImagePreviewViewController defaultShowPicture] showPictureWithUrlOrImages:self.autoLoopDataArray withCurrentPageNum:indexPath.row andRootViewController:self];
 }
+
 - (CTAutoLoopViewController*)autoLoopView
 {
     if (!_autoLoopView) {
@@ -323,6 +353,13 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
         [_rightBtn addTarget:self action:@selector(addLikeHouse:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _rightBtn;
+}
+- (AJLocationViewController *)mapView{
+    if (_mapView ==nil) {
+        _mapView = [AJLocationViewController new];
+        _mapView.houseObj = self.houseInfo;
+    }
+    return _mapView;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

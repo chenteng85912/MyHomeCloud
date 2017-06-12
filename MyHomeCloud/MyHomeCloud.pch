@@ -92,9 +92,12 @@
 #define HOUSE_AUTHOR            @"HouseAuthor"//房屋发布者
 #define HOUSE_DIRECTION         @"HouseDirection"//房屋朝向
 #define HOUSE_DISCRIBE          @"HouseDescribe"//房屋装修
+#define HOUSE_LATITUDE          @"Latitude"//维度
+#define HOUSE_LONGITUDE         @"Longitude"//经度
 
 //租房信息
 #define LET_HOUSE_PRICE         @"LetHousePrice"//房屋租金
+
 
 #define YEARS_DES            @"YearsDes"//证满5年
 #define WATCH_DES            @"WatchDes"//随时看房
