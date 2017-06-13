@@ -295,9 +295,9 @@ static NSString * const reuseIdentifier = @"CTLoopViewCell";
         _pageLabel.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
         _pageLabel.textColor = [UIColor whiteColor];
         _pageLabel.font = [UIFont systemFontOfSize:12];
-        _pageLabel.clipsToBounds = YES;
+//        _pageLabel.clipsToBounds = YES;
         _pageLabel.layer.masksToBounds = YES;
-        _pageLabel.layer.cornerRadius = 8.0;
+        _pageLabel.layer.cornerRadius = 10.0;
         
     }
     return _pageLabel;

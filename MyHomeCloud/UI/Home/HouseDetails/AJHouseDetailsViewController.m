@@ -14,7 +14,7 @@
 #import "AJLocation.h"
 
 NSInteger const MAX_HOUSE_NUMBER = 10;
-CGFloat const HOUSE_INFO_HEITHT = 590;
+CGFloat const HOUSE_INFO_HEITHT = 650;
 
 #define AUTOLOOP_HEIGHT     dHeight/3
 
@@ -35,8 +35,8 @@ CGFloat const HOUSE_INFO_HEITHT = 590;
 @property (weak, nonatomic) IBOutlet UILabel *houseYear;
 @property (weak, nonatomic) IBOutlet UIView *mapBackView;
 @property (weak, nonatomic) IBOutlet UIButton *mapBtn;
-
-@property (strong, nonatomic) UIButton *rightBtn;
+@property (weak, nonatomic) IBOutlet UIButton *likeBtn;
+@property (weak, nonatomic) IBOutlet UILabel *likeLabel;
 
 @property (strong, nonatomic) UIView *tbViewHeadView;
 
@@ -65,13 +65,22 @@ CGFloat const HOUSE_INFO_HEITHT = 590;
     //添加地图
     self.mapView.view.frame = _mapBackView.bounds;
     [_mapBackView addSubview:self.mapView.view];
+    self.mapView.locationBtn.hidden = YES;
+    self.mapView.navBtn.hidden = YES;
+
     [_mapBackView bringSubviewToFront:_mapBtn];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.rightBtn];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:LOADIMAGE(@"share") style:UIBarButtonItemStyleDone target:self action:@selector(shareAction)];
 
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+
+
+}
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    self.tableView.frame = CGRectMake(0, 0, dWidth, dHeight-50-64);
 
 }
 #pragma mark - AJTbViewProtocol
@@ -101,6 +110,7 @@ CGFloat const HOUSE_INFO_HEITHT = 590;
     return self.houseInfo[HOUSE_ESTATE_NAME];
 }
 - (void)loadDataSuccess{
+    self.tableView.frame = CGRectMake(0, 0, dWidth, dHeight-50-64);
     self.tableView.tableFooterView = nil;
     self.tableView.tableHeaderView = self.tbViewHeadView;
 
@@ -152,7 +162,8 @@ CGFloat const HOUSE_INFO_HEITHT = 590;
 - (void)initHouseDetailsInfo{
    
     if (self.isFromFav) {
-        self.rightBtn.selected = YES;
+        _likeBtn.selected = YES;
+        _likeLabel.text = @"已关注";
     }else if ([AVUser currentUser]) {
         
         [self checkLikeState];
@@ -190,13 +201,16 @@ CGFloat const HOUSE_INFO_HEITHT = 590;
     }
     [self.baseQuery whereKey:USER_PHONE equalTo:[AVUser currentUser].mobilePhoneNumber];
     [self.baseQuery whereKey:HOUSE_ID equalTo:self.houseInfo.objectId];
-    WeakSelf;
+
     [self.baseQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         if (objects.count>0) {
-            weakSelf.likedObj = objects[0];
-            weakSelf.rightBtn.selected = YES;
+            _likedObj = objects[0];
+            _likeBtn.selected = YES;
+            _likeLabel.text = @"已关注";
+
         }else{
-            weakSelf.rightBtn.selected = NO;
+            _likeBtn.selected = NO;
+            _likeLabel.text = @"关注";
 
         }
 //        [weakSelf fetchAuthorData];
@@ -205,75 +219,89 @@ CGFloat const HOUSE_INFO_HEITHT = 590;
 }
 
 //添加 取消收藏
-- (void)addLikeHouse:(UIButton *)likeBtn{
+- (IBAction)bottomAction:(UIButton *)likeBtn{
     WeakSelf;
-    if (![AVUser currentUser]) {
-        [AJSB goLoginViewComplete:^{
-            [weakSelf addLikeHouse:_rightBtn];
-        }];
-        return;
-    }
-    [self.view showHUD:nil];
-    if (likeBtn.selected) {
-       
-        [self.likedObj deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-            [weakSelf.view removeHUD];
-            if (succeeded) {
-                likeBtn.selected = NO;
-                weakSelf.likedObj = nil;
 
-                if (weakSelf.isFromFav) {
-                    weakSelf.tbView.isLoad = NO;
-                }
-            }
-        }];
-
-    }else{
-        AVObject *houseInfo;
-        if (_detailsModal== SecondHouseModal) {
-            houseInfo = [[AVObject alloc] initWithClassName:SECOND_FAVORITE];
-        }else{
-            houseInfo = [[AVObject alloc] initWithClassName:LET_FAVORITE];
+    if (likeBtn.tag<2) {
+        if (![AVUser currentUser]) {
+            [AJSB goLoginViewComplete:^{
+                [weakSelf bottomAction:_likeBtn];
+            }];
+            return;
         }
-        [houseInfo setObject:self.houseInfo.objectId forKey:HOUSE_ID];
-        [houseInfo setObject:[AVUser currentUser].mobilePhoneNumber forKey:USER_PHONE];
-        
-        [houseInfo setObject:[AVObject objectWithClassName:SECOND_HAND_HOUSE objectId:self.houseInfo.objectId] forKey:HOUSE_OBJECT];
-        [houseInfo setObject:[AVUser currentUser].objectId  forKey:HOUSE_AUTHOR];
-        [houseInfo setObject:[AVUser currentUser][HEAD_URL] forKey:HEAD_URL];
-
-        [houseInfo saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-            [weakSelf.view removeHUD];
-
-            if (succeeded) {
-                weakSelf.likedObj = houseInfo;
-                weakSelf.rightBtn.selected = YES;
-
-            }
-
-        }];
     }
+    
+    //收藏
+    if (likeBtn.tag==0) {
+        [self.view showHUD:nil];
+        if (likeBtn.selected) {
+            
+            [self.likedObj deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                [weakSelf.view removeHUD];
+                if (succeeded) {
+                    likeBtn.selected = NO;
+                    _likedObj = nil;
+                    _likeLabel.text = @"关注";
+
+                    if (weakSelf.isFromFav) {
+                        weakSelf.tbView.isLoad = NO;
+                    }
+                }
+            }];
+            
+        }else{
+            AVObject *houseInfo;
+            if (_detailsModal== SecondHouseModal) {
+                houseInfo = [[AVObject alloc] initWithClassName:SECOND_FAVORITE];
+            }else{
+                houseInfo = [[AVObject alloc] initWithClassName:LET_FAVORITE];
+            }
+            [houseInfo setObject:self.houseInfo.objectId forKey:HOUSE_ID];
+            [houseInfo setObject:[AVUser currentUser].mobilePhoneNumber forKey:USER_PHONE];
+            
+            [houseInfo setObject:[AVObject objectWithClassName:SECOND_HAND_HOUSE objectId:self.houseInfo.objectId] forKey:HOUSE_OBJECT];
+            [houseInfo setObject:[AVUser currentUser].objectId  forKey:HOUSE_AUTHOR];
+            [houseInfo setObject:[AVUser currentUser][HEAD_URL] forKey:HEAD_URL];
+            
+            [houseInfo saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                [weakSelf.view removeHUD];
+                
+                if (succeeded) {
+                    _likedObj = houseInfo;
+                    _likeBtn.selected = YES;
+                    _likeLabel.text = @"已关注";
+
+                }
+                
+            }];
+        }
+    }else if (likeBtn.tag==1){
+        debugLog(@"预约看房");
+    }else{
+        debugLog(@"咨询经纪人");
+
+    }
+   
    
 }
 
-- (IBAction)buttonAction:(UIButton *)sender {
-    if (sender.tag==0) {
-        POPVC;
-    }else{
-        [self addLikeHouse:self.rightBtn];
-    }
-}
 - (IBAction)showMoreHouse:(UIButton *)sender {
     if (sender.tag==0) {
         //房屋简介
-        
+        debugLog(@"房源简介");
+
     }else if (sender.tag==1){
         //地图
         _mapView =nil;
         APP_PUSH(self.mapView);
 
-    }else{
+    }else if (sender.tag==2){
         //更多房屋
+        debugLog(@"更多房源");
+
+    }else{
+        //更多房源信息
+        debugLog(@"更多房源信息");
     }
     
 }
@@ -304,6 +332,9 @@ CGFloat const HOUSE_INFO_HEITHT = 590;
     [[CTImagePreviewViewController defaultShowPicture] showPictureWithUrlOrImages:self.autoLoopDataArray withCurrentPageNum:indexPath.row andRootViewController:self];
 }
 
+- (void)shareAction{
+    debugLog(@"分享");
+}
 - (CTAutoLoopViewController*)autoLoopView
 {
     if (!_autoLoopView) {
@@ -329,20 +360,13 @@ CGFloat const HOUSE_INFO_HEITHT = 590;
         _tbViewHeadView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, dWidth, AUTOLOOP_HEIGHT+HOUSE_INFO_HEITHT)];
         [_tbViewHeadView addSubview:self.autoLoopView.view];
         _houseInfoView.center = CGPointMake(dWidth/2, _tbViewHeadView.frame.size.height-HOUSE_INFO_HEITHT/2);
+        _houseInfoView.hidden = NO;
         [_tbViewHeadView addSubview:_houseInfoView];
     }
     
     return _tbViewHeadView;
 }
-- (UIButton *)rightBtn{
-    if (_rightBtn ==nil) {
-        _rightBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
-        [_rightBtn setImage:LOADIMAGE(@"unFav") forState:UIControlStateNormal];
-        [_rightBtn setImage:LOADIMAGE(@"fav") forState:UIControlStateSelected];
-        [_rightBtn addTarget:self action:@selector(addLikeHouse:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _rightBtn;
-}
+
 - (AJLocationViewController *)mapView{
     if (_mapView ==nil) {
         _mapView = [AJLocationViewController new];

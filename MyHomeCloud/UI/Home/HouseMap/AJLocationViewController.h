@@ -10,5 +10,7 @@
 @interface AJLocationViewController : CTBaseViewController
 
 @property (nonatomic,strong) AVObject *houseObj;
+@property (weak, nonatomic) IBOutlet UIView *locationBtn;
+@property (weak, nonatomic) IBOutlet UIView *navBtn;
 
 @end

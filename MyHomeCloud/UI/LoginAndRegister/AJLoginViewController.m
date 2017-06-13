@@ -82,14 +82,22 @@ NSString *const USER_ONLINE = @"该用户已在别处登录";
         [CTTool removeKeyWindowHUD];
         [MyUserDefaults setObject:self.userNameTF.text forKey:USER_NAME];
         if (user) {
+            //本地uuid
+            NSString *luuid = [[NSUUID UUID] UUIDString];
+
+            NSInteger state = [[AVUser currentUser][USER_LOGIN_STATE] integerValue];
+            NSString *uuid = [AVUser currentUser][USER_UUID];
+
             //用户已经登录
-            if ([[AVUser currentUser][USER_LOGIN_STATE] integerValue]>0) {
+            if (state>0&&![uuid isEqualToString:luuid]) {
                 [AVUser logOut];
                 [[UIApplication sharedApplication].keyWindow showTips:USER_ONLINE withState:TYKYHUDModeFail complete:nil];
                 return;
             }
             //登录成功
             [[AVUser currentUser] setObject:@1 forKey:USER_LOGIN_STATE];
+            [[AVUser currentUser] setObject:luuid forKey:USER_UUID];
+
             [[AVUser currentUser] saveInBackground];
             [[UIApplication sharedApplication].keyWindow showTips:LOGIN_SUCCESS withState:TYKYHUDModeSuccess complete:^{
                 [self loginSuccess];

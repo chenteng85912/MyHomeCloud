@@ -40,11 +40,9 @@
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-  
-    self.tableView.frame = self.view.bounds;
-    
     if (!_isLoad) {
-        
+        self.tableView.frame = self.view.bounds;
+
         [self.tableView showHUD:nil];
         [self initStartData];
     }

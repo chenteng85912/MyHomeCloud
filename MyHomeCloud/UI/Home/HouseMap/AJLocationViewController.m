@@ -20,8 +20,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = self.houseObj[HOUSE_ESTATE_NAME];
+    
     [self showLocation];
-        
+
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -39,7 +40,19 @@
     [super viewWillDisappear:animated];
     
 }
-
+- (void)showNavigation{
+    //当前位置
+    MKMapItem *currentLocation = [MKMapItem mapItemForCurrentLocation];
+    
+    //目的地位置
+    CLLocationCoordinate2D coor = CLLocationCoordinate2DMake([self.houseObj[HOUSE_LATITUDE] doubleValue],[self.houseObj[HOUSE_LONGITUDE] doubleValue]);
+    MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:coor addressDictionary:nil];
+    MKMapItem *toLocation = [[MKMapItem alloc] initWithPlacemark:placemark];
+    toLocation.name = self.houseObj[HOUSE_ESTATE_NAME];
+    
+    [MKMapItem openMapsWithItems:@[currentLocation, toLocation]
+                   launchOptions:@{MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving,MKLaunchOptionsShowsTrafficKey: [NSNumber numberWithBool:YES]}];
+}
 - (void)showLocation{
     //创建CLLocation 设置经纬度
     CLLocation *loc = [[CLLocation alloc] initWithLatitude:[self.houseObj[HOUSE_LATITUDE] doubleValue] longitude:[self.houseObj[HOUSE_LONGITUDE] floatValue]];
@@ -61,6 +74,15 @@
 #pragma mark - event response
 
 #pragma mark - private methods
+- (IBAction)autoLoactionAction:(UIButton *)sender {
+    if (sender.tag==0) {
+        [self showLocation];
+
+    }else{
+        [self showNavigation];
+    }
+
+}
 
 #pragma mark - getters and setters
 

@@ -45,9 +45,11 @@
 #define HEAD_URL                @"headUrl"
 #define USER_NICKNAME           @"nickname"
 
-#define USER_LOGIN_STATE           @"LoginState"//登录状态
-#define USER_HEAD_IMG_ID           @"UserHeadImgid"//头像文件id
-#define USER_ROLE                  @"userRole"//用户角色
+#define USER_LOGIN_STATE        @"LoginState"//登录状态
+#define USER_UUID               @"UserUuid"//用户uuid
+
+#define USER_HEAD_IMG_ID        @"UserHeadImgid"//头像文件id
+#define USER_ROLE               @"userRole"//用户角色
 
 //数据表
 #define SECOND_HAND_HOUSE   @"SecondHouse"//二手房屋数据表
