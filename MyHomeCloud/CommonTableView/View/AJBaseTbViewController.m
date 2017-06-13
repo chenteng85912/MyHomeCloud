@@ -113,7 +113,7 @@
     //删除文件
     NSArray *fileArray = obj[HOUSE_FILE_ID];
     for (NSString *fileId in fileArray) {
-        [CTTool deleteFile:fileId complete:nil];
+        [AJSB deleteFile:fileId complete:nil];
     }
     
 }
@@ -243,7 +243,7 @@
     if ([self respondsToSelector:@selector(canDeleteCell)]&&[self canDeleteCell]) {
         //长按手势
         UILongPressGestureRecognizer *longPressGr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressAction:)];
-        longPressGr.minimumPressDuration = 0.5;
+        longPressGr.minimumPressDuration = 0.2;
         [self.tableView addGestureRecognizer:longPressGr];
     }
 

@@ -10,6 +10,22 @@
 
 @implementation AJHomeHeadView
 
++ (instancetype)initWithSection:(NSInteger)section{
+   
+    AJHomeHeadView *headView = (AJHomeHeadView *)[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class]) owner:self options:nil].firstObject;
+    if (section==0) {
+        headView.heatTitle.text = @"为您推荐二手房";
+        
+    }else if (section==1){
+        headView.heatTitle.text = @"为您推荐出租房";
+        
+    }else{
+        headView.heatTitle.text = @"为您推荐新房";
+        
+    }
+    headView.headBtn.tag = section;
+    return headView;
+}
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

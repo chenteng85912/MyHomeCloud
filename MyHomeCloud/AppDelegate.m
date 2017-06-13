@@ -8,7 +8,9 @@
 
 #import "AppDelegate.h"
 #import "AjMainTabBarViewController.h"
-#import "AJLoginViewController.h"
+
+NSString *const AVOSCloudID = @"Q4xx9Pczn6UbtkFQttUzGfOV-gzGzoHsz";
+NSString *const AVOSCloudKey = @"YUlG0aQ4gwl7DcuwopUraSnz";
 
 @interface AppDelegate ()
 
@@ -18,25 +20,18 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [AVOSCloud setApplicationId:@"Q4xx9Pczn6UbtkFQttUzGfOV-gzGzoHsz" clientKey:@"YUlG0aQ4gwl7DcuwopUraSnz"];
+    [AVOSCloud setApplicationId:AVOSCloudID clientKey:AVOSCloudKey];
     [AVAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     
-    [self switchRootVC];
+    self.window.rootViewController = [AjMainTabBarViewController new];
     [self.window makeKeyAndVisible];
 
     return YES;
 }
-- (void)switchRootVC{
-//    if ([AVUser currentUser ]) {
-        self.window.rootViewController = [AjMainTabBarViewController new];
 
-//    }else{
-//        self.window.rootViewController = [AJLoginViewController new];
-//    }
-}
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.

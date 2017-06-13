@@ -44,7 +44,7 @@
         [UIAlertController alertWithTitle:@"温馨提示" message:@"退出将丢失已经上传的图片，是否退出?" cancelButtonTitle:@"取消" otherButtonTitles:@[@"退出"] preferredStyle:UIAlertControllerStyleAlert block:^(NSInteger buttonIndex) {
             if (buttonIndex==1) {
                 for (AJUploadPicModel *model in self.dataArray) {
-                    [CTTool deleteFile:model.picFile.objectId complete:nil];
+                    [AJSB deleteFile:model.picFile.objectId complete:nil];
 
                 }
                 POPVC;
@@ -213,7 +213,7 @@
 
     WeakSelf;
     [self.view showHUD:nil];
-    [CTTool deleteFile:modal.picFile.objectId complete:^{
+    [AJSB deleteFile:modal.picFile.objectId complete:^{
         [weakSelf.view removeHUD];
         [weakSelf removeCollectionItem:index];
 

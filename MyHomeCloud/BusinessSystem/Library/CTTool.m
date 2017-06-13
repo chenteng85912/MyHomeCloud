@@ -79,6 +79,7 @@
     NSString *iconStr = [[infoDic valueForKeyPath:@"CFBundleIcons.CFBundlePrimaryIcon.CFBundleIconFiles"] lastObject];
     return [UIImage imageNamed:iconStr];
 }
+
 //裁剪图片
 + (UIImage *)scaleImage:(UIImage *)img toSize:(CGSize)size{
     UIGraphicsBeginImageContextWithOptions(size, NO,0.0);
@@ -146,19 +147,5 @@
     }
 }
 
-//根据文件ID删除文件
-+ (void)deleteFile:(NSString *)fileId complete:(void(^)(void))completeHandle{
-    NSString *delCql = [NSString stringWithFormat:@"delete from _File where objectId = '%@'",fileId];
-    [AVQuery doCloudQueryInBackgroundWithCQL:delCql callback:^(AVCloudQueryResult *result, NSError *error) {
-        if (!error) {
-            if (completeHandle) {
-                completeHandle();
-            }
-            debugLog(@"文件删除成功");
-        }
-        
-    }];
-    
-}
 
 @end

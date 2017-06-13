@@ -225,19 +225,8 @@ CGFloat const HEAD_BTN_HEIGHT = 100;
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     
-    AJHomeHeadView *headView = (AJHomeHeadView *)[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([AJHomeHeadView class]) owner:self options:nil].firstObject;
+    AJHomeHeadView *headView = [AJHomeHeadView initWithSection:section];
     
-    if (section==0) {
-        headView.heatTitle.text = @"为您推荐二手房";
-
-    }else if (section==1){
-        headView.heatTitle.text = @"为您推荐出租房";
-
-    }else{
-        headView.heatTitle.text = @"为您推荐新房";
-
-    }
-    headView.headBtn.tag = section;
     BUTTON_ACTION(headView.headBtn, self, @selector(openMoreHouseData:));
     
     return headView;

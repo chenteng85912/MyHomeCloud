@@ -9,7 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface AJHomeHeadView : UIView
+
 @property (weak, nonatomic) IBOutlet UIButton *headBtn;
 @property (weak, nonatomic) IBOutlet UILabel *heatTitle;
+
++ (instancetype)initWithSection:(NSInteger)section;
 
 @end

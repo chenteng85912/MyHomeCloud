@@ -27,7 +27,7 @@
 + (UIImage *)iconImage;
 
 //按宽度裁剪图片
-+(UIImage *) imageCompressForWidth:(UIImage *)sourceImage targetWidth:(CGFloat)defineWidth;
++ (UIImage *) imageCompressForWidth:(UIImage *)sourceImage targetWidth:(CGFloat)defineWidth;
 
 //裁剪图片
 + (UIImage *)scaleImage:(UIImage *)img toSize:(CGSize)size;
@@ -35,6 +35,5 @@
 //手机号合法验证
 + (BOOL)isValidateMobile:(NSString *)mobile;
 
-//根据文件ID删除文件
-+ (void)deleteFile:(NSString *)fileId complete:(void(^)(void))completeHandle;
+
 @end
