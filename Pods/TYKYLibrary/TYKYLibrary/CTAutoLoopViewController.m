@@ -17,6 +17,7 @@
 @property (assign, nonatomic) CTLoopScollDirection loopScollDirection;//滚动方向
 @property (assign, nonatomic) CTLoopCellDisplayModal cellDisplayModal;//单元格显示视图模式
 @property (strong, nonatomic) UIPageControl *pageCT;//页码显示（显示为图片时才显示）
+@property (strong, nonatomic) UILabel *pageLabel;//页码显示
 
 @end
 
@@ -31,7 +32,6 @@ static NSString * const reuseIdentifier = @"CTLoopViewCell";
     self = [super init];
     if (self) {
         self.view.frame = frame;
-        self.dataArray = [NSMutableArray new];
         self.itemSize = frame.size;
         self.loopOnceTime = onceLoopTime;
         self.loopScollDirection = loopScollDirection;
@@ -41,53 +41,23 @@ static NSString * const reuseIdentifier = @"CTLoopViewCell";
     return self;
     
 }
+
 //初始化
 - (void)initCollectionWithFrame:(CGRect)frame{
-   
-    UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
-    layout.itemSize = CGSizeMake(frame.size.width, frame.size.height);
-    layout.minimumInteritemSpacing = 0;
-    layout.minimumLineSpacing = 0;
-    layout.sectionInset = UIEdgeInsetsZero;
-    if (self.loopScollDirection==CTLoopScollDirectionHorizontal) {
-        layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-
+    
+    [self.view addSubview:self.collectionView];
+    
+    //图片广告 添加页码指示
+    if (_loopScollDirection==CTLoopScollDirectionHorizontal) {//水平滚动
+//        self.pageCT.frame = CGRectMake(0, frame.size.height-20, frame.size.width, 20);
+        [self.view addSubview:self.pageLabel];
     }else{
-        layout.scrollDirection = UICollectionViewScrollDirectionVertical;
+        //竖向滚动
+        self.pageCT.frame = CGRectMake(frame.size.width/2-20, frame.size.height/2-10, frame.size.width, 20);
+        self.pageCT.transform = CGAffineTransformMakeRotation(M_PI/2);
+        [self.view addSubview:self.pageCT];
 
     }
-    
-    UICollectionView *colView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height) collectionViewLayout:layout];
-
-    colView.backgroundColor  = [UIColor whiteColor];
-    colView.pagingEnabled = YES;
-    colView.delegate = self;
-    colView.dataSource = self;
-    colView.showsVerticalScrollIndicator = NO;
-    colView.showsHorizontalScrollIndicator = NO;
-    colView.directionalLockEnabled  = YES;
-    colView.scrollsToTop = NO;
-    
-    [self.view addSubview:colView];
-    self.collectionView = colView;
-    
-//    if (_cellDisplayModal==CTLoopCellDisplayImage) {
-        //图片广告 添加页码指示
-        UIPageControl *pageVC = [UIPageControl new];
-        if (_loopScollDirection==CTLoopScollDirectionHorizontal) {//水平滚动
-            pageVC.frame = CGRectMake(0, frame.size.height-20, frame.size.width, 20);
-            
-        }else{//竖向滚动
-            pageVC.frame = CGRectMake(frame.size.width/2-20, frame.size.height/2-10, frame.size.width, 20);
-            pageVC.transform = CGAffineTransformMakeRotation(M_PI/2);
-            
-        }
-        pageVC.currentPageIndicatorTintColor = [UIColor whiteColor];
-        pageVC.pageIndicatorTintColor = [UIColor lightGrayColor];
-        pageVC.hidesForSinglePage = YES;
-        self.pageCT = pageVC;
-        [self.view addSubview:pageVC];
-//    }
 
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
     
@@ -100,15 +70,17 @@ static NSString * const reuseIdentifier = @"CTLoopViewCell";
     if (!array) {
         return;
     }
-    _dataArray = [NSMutableArray new];
+    [self.dataArray removeAllObjects];
     
-    [_dataArray addObjectsFromArray:array];
-    self.pageCT.numberOfPages = _dataArray.count;
-    if (_dataArray.count>1) {
+    [self.dataArray addObjectsFromArray:array];
+    self.pageCT.numberOfPages = self.dataArray.count;
+    if (self.dataArray.count>1) {
         [self addNSTimer];
     }else{
         [self stopTimer];
     }
+    _pageLabel.text = [NSString stringWithFormat:@"1/%lu",(unsigned long)self.dataArray.count];
+
     [self.collectionView reloadData];
     
 }
@@ -267,8 +239,68 @@ static NSString * const reuseIdentifier = @"CTLoopViewCell";
     if (pageNum==_dataArray.count) {
         pageNum = 0;
     }
+    _pageLabel.text = [NSString stringWithFormat:@"%ld/%lu",pageNum+1,(unsigned long)self.dataArray.count];
+
     self.pageCT.currentPage = pageNum;
    
+}
+
+- (NSMutableArray *)dataArray{
+    if (_dataArray ==nil) {
+        _dataArray = [NSMutableArray new];
+    }
+    return _dataArray;
+}
+- (UIPageControl *)pageCT{
+    if (_pageCT ==nil) {
+        _pageCT = [UIPageControl new];
+        _pageCT.currentPageIndicatorTintColor = [UIColor whiteColor];
+        _pageCT.pageIndicatorTintColor = [UIColor lightGrayColor];
+        _pageCT.hidesForSinglePage = YES;
+        
+    }
+    return _pageCT;
+}
+- (UICollectionView *)collectionView{
+    if (_collectionView ==nil) {
+        UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
+        layout.itemSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height);
+        layout.minimumInteritemSpacing = 0;
+        layout.minimumLineSpacing = 0;
+        layout.sectionInset = UIEdgeInsetsZero;
+        if (self.loopScollDirection==CTLoopScollDirectionHorizontal) {
+            layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+            
+        }else{
+            layout.scrollDirection = UICollectionViewScrollDirectionVertical;
+            
+        }
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) collectionViewLayout:layout];
+        _collectionView.backgroundColor  = [UIColor whiteColor];
+        _collectionView.pagingEnabled = YES;
+        _collectionView.delegate = self;
+        _collectionView.dataSource = self;
+        _collectionView.showsVerticalScrollIndicator = NO;
+        _collectionView.showsHorizontalScrollIndicator = NO;
+        _collectionView.directionalLockEnabled  = YES;
+        _collectionView.scrollsToTop = NO;
+        
+    }
+    return _collectionView;
+}
+- (UILabel *)pageLabel{
+    if (_pageLabel==nil) {
+        _pageLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width-40, self.view.frame.size.height-30, 30, 20)];
+        _pageLabel.textAlignment = NSTextAlignmentCenter;
+        _pageLabel.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+        _pageLabel.textColor = [UIColor whiteColor];
+        _pageLabel.font = [UIFont systemFontOfSize:12];
+        _pageLabel.clipsToBounds = YES;
+        _pageLabel.layer.masksToBounds = YES;
+        _pageLabel.layer.cornerRadius = 8.0;
+        
+    }
+    return _pageLabel;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
