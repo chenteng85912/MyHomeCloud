@@ -67,11 +67,13 @@
 - (void)backToPreVC{
     
     if (self.navigationController.viewControllers.count>1) {
+        [self.view endEditing:YES];
+
         [self.navigationController popViewControllerAnimated:YES];
         
     }else if (self.navigationController.presentingViewController) {
         
-       
+        [self.view endEditing:YES];
         [self.navigationController dismissViewControllerAnimated:YES completion:nil];
     }
     

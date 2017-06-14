@@ -12,6 +12,8 @@
 #import "AJOtherViewController.h"
 #import "AJUserHouseViewController.h"
 
+NSString *const ServicePhone = @"4006005555";
+
 @implementation AJMeCenterData
 
 + (NSMutableArray *)userCenterData
@@ -63,8 +65,9 @@
 //    [temp addObject:model];
     
     model = [AJMeModel new];
-    model.title = @"客服热线";
+    model.title = [NSString stringWithFormat:@"客服热线(%@)",ServicePhone];
     model.iconName = @"service_phone";
+    model.phoneNumber = ServicePhone;
     [temp addObject:model];
     [dataArray addObject:temp];
 

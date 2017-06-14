@@ -63,6 +63,7 @@ CGFloat const IMAGEHEIGHT  = 240.0f;
     if (cell==nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
+    [cell.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     NSArray *temp = self.dataArray[indexPath.section];
     AJMeModel *model = temp[indexPath.row];
     cell.textLabel.text = model.title;
@@ -70,7 +71,14 @@ CGFloat const IMAGEHEIGHT  = 240.0f;
     
     cell.imageView.image = [CTTool scaleImage:LOADIMAGE(model.iconName) toSize:CGSizeMake(25, 25)];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    
+    if ([model.title isEqualToString:@"客服热线"]) {
+        UILabel *phone = [[UILabel alloc] initWithFrame:CGRectMake(dWidth-120,0, dWidth-120-40, 50)];
+        phone.textAlignment = NSTextAlignmentRight;
+        phone.textColor = [UIColor lightGrayColor];
+        phone.font = [UIFont systemFontOfSize:12];
+        phone.text = @"400-600-5555";
+        [cell.contentView addSubview:phone];
+    }
     return cell;
 }
 #pragma mark UITableViewDelegate UITableViewDatasource
@@ -99,8 +107,13 @@ CGFloat const IMAGEHEIGHT  = 240.0f;
     
     NSArray *temp = self.dataArray[indexPath.section];
     AJMeModel *model = temp[indexPath.row];
-    if (!model.className) {
+    
+    if (model.phoneNumber) {
+        [CTTool takePhoneNumber:model.phoneNumber];
       
+        return;
+    }
+    if (!model.className) {
         return;
     }
     

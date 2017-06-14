@@ -35,5 +35,6 @@
 //手机号合法验证
 + (BOOL)isValidateMobile:(NSString *)mobile;
 
-
+//拨打电话
++ (void)takePhoneNumber:(NSString *)phoneNum;
 @end

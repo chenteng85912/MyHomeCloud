@@ -12,6 +12,7 @@
 @property (strong, nonatomic) NSString *title;//标题
 @property (strong, nonatomic) NSString *iconName;//图标名称
 @property (strong, nonatomic) NSString *className;//类名
+@property (strong, nonatomic) NSString *phoneNumber;//客服电话
 @property (assign, nonatomic) HouseShowModal showModal;
 @property (assign, nonatomic) BOOL isNeedLogin;
 

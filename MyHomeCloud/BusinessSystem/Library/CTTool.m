@@ -147,5 +147,15 @@
     }
 }
 
+//拨打电话
++ (void)takePhoneNumber:(NSString *)phoneNum{
+    debugLog(@"准备拨打电话======%@",phoneNum);
+    if (!phoneNum) {
+        return;
+    }
+    NSMutableString *str=[[NSMutableString alloc] initWithFormat:@"tel:%@",phoneNum];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+   
+}
 
 @end

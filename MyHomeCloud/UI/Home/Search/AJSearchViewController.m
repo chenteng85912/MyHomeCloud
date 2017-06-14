@@ -91,8 +91,11 @@
     
 }
 - (BOOL)searchBar:(UISearchBar *)searchBar shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    if (_typeView.alpha) {
+        [self chooseHouseType];
+    }
     if ([text isEqualToString:@"\n"]) {
-       
+      
         [self showSearchResult];
         return NO;
     }

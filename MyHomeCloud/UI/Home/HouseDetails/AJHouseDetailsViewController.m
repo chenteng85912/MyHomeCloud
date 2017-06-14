@@ -223,19 +223,17 @@ CGFloat const HOUSE_INFO_HEITHT = 650;
 
 //添加 取消收藏
 - (IBAction)bottomAction:(UIButton *)likeBtn{
+    
     WeakSelf;
-
-    if (likeBtn.tag<2) {
+    //收藏
+    if (likeBtn.tag==0) {
         if (![AVUser currentUser]) {
             [AJSB goLoginViewComplete:^{
-                [weakSelf bottomAction:_likeBtn];
+                [weakSelf checkLikeState];
             }];
             return;
         }
-    }
-    
-    //收藏
-    if (likeBtn.tag==0) {
+
         [self.view showHUD:nil];
         if (likeBtn.selected) {
             
@@ -279,9 +277,15 @@ CGFloat const HOUSE_INFO_HEITHT = 650;
             }];
         }
     }else if (likeBtn.tag==1){
+        if (![AVUser currentUser]) {
+            [AJSB goLoginViewComplete:^{
+            }];
+            return;
+        }
         debugLog(@"预约看房");
     }else{
         debugLog(@"咨询经纪人");
+        [CTTool takePhoneNumber:self.houseInfo[USER_PHONE]];
 
     }
    
@@ -349,8 +353,10 @@ CGFloat const HOUSE_INFO_HEITHT = 650;
     debugLog(@"%f",offsetY);
     if(offsetY >0) {
         CGFloat ap = MIN(offsetY/120.0, 1.0);
-        _titleLb.alpha = ap>0?ap:0;
-        _headBtnView.backgroundColor = [UIColor colorWithRed:246.0/255.0 green:146.0/255.0 blue:51.0/255.0 alpha:ap];
+      
+        _titleLb.alpha = offsetY>AUTOLOOP_HEIGHT-64+45?1.0:0.0;
+        
+        _headBtnView.backgroundColor = [UIColor colorWithRed:246.0/255.0 green:146.0/255.0 blue:51.0/255.0 alpha:ap>0?ap:0];
     }
 }
 - (CTAutoLoopViewController*)autoLoopView
