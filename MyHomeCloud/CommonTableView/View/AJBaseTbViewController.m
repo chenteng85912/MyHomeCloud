@@ -366,10 +366,11 @@
                     return;
                 }
                 
-                //删除浏览记录 收藏数据
+                //删除我的房源
                 if (self.showModal==MyHouseModal) {
                     [weakSelf deleteRecordData:model.subObj];
-                    
+                    [[NSNotificationCenter defaultCenter] postNotificationName:kNewHouseNotification object:nil];
+
                 }
                 
                 [weakSelf.dataArray removeObjectAtIndex:indexPath.row];
