@@ -238,13 +238,18 @@ CGFloat const HEAD_BTN_HEIGHT = 100;
     if (indexPath.section==0) {
         AJHouseDetailsViewController *details = [AJHouseDetailsViewController new];
         details.houseInfo = self.secondArray[indexPath.row].objectData;
-        details.detailsModal = SecondHouseModal;
+        details.detailsModal = SecondModal;
         details.showModal = SearchHouseModal;
         vc = details;
         //保存浏览记录
         AJTbViewCellModel *model = self.secondArray[indexPath.row];
         [[AJHomeDataCenter new] addRecordData:model.objectData objectClassName:SECOND_HAND_HOUSE recordClassName:SECOND_RECORD];
     }else if (indexPath.section==1){
+        AJHouseDetailsViewController *details = [AJHouseDetailsViewController new];
+        details.houseInfo = self.letArray[indexPath.row].objectData;
+        details.detailsModal = SecondModal;
+        details.showModal = SearchHouseModal;
+        vc = details;
         AJTbViewCellModel *model = self.letArray[indexPath.row];
         [[AJHomeDataCenter new] addRecordData:model.objectData objectClassName:LET_HOUSE recordClassName:LET_RECORD];
     }else{

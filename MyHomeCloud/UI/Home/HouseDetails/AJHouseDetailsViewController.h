@@ -9,8 +9,8 @@
 #import "AJBaseTbViewController.h"
 
 typedef NS_ENUM(NSInteger,DetailsHouseModal) {
-    SecondHouseModal,    //二手房
-    LetHouseModal,       //租房
+    SecondModal,    //二手房
+    LetModal,       //租房
 };
 @interface AJHouseDetailsViewController : AJBaseTbViewController
 

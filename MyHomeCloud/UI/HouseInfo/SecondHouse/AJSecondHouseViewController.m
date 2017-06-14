@@ -107,7 +107,7 @@
     AJSecondHouseCellModel *model = (AJSecondHouseCellModel *)self.dataArray[indexPath.row];
     AJHouseDetailsViewController *details = [AJHouseDetailsViewController new];
     details.showModal = SearchHouseModal;
-    details.detailsModal = SecondHouseModal;
+    details.detailsModal = SecondModal;
 
     if (self.showModal==UserFavoriteModal) {
         details.isFromFav = YES;

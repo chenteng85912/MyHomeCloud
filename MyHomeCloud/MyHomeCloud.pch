@@ -99,6 +99,7 @@
 
 //租房信息
 #define LET_HOUSE_PRICE         @"LetHousePrice"//房屋租金
+#define LET_ESTATE_PRICE        @"LetEstatePrice"//房屋物业费
 
 
 #define YEARS_DES            @"YearsDes"//证满5年

@@ -85,10 +85,13 @@
     [houseData setObject:self.houseInfoData[HOUSE_DEVELOPER]              forKey:HOUSE_DEVELOPER];
     [houseData setObject:self.houseInfoData[HOUSE_AREA]                forKey:HOUSE_AREA];
     [houseData setObject:self.houseInfoData[HOUSE_YEARS]                forKey:HOUSE_YEARS];
+    //物业费
+    [houseData setObject:self.houseInfoData[LET_ESTATE_PRICE]                forKey:LET_ESTATE_PRICE];
+
     //经度纬度
     [houseData setObject:self.houseInfoData[HOUSE_LATITUDE]                forKey:HOUSE_LATITUDE];
     [houseData setObject:self.houseInfoData[HOUSE_LONGITUDE]                forKey:HOUSE_LONGITUDE];
-
+    
     [houseData setObject:_houseFloor.text               forKey:HOUSE_FLOOR_NUM];
     [houseData setObject:_houseRooms.text               forKey:HOUSE_AMOUNT];
     [houseData setObject:_houseAreaage.text             forKey:HOUSE_AREAAGE];

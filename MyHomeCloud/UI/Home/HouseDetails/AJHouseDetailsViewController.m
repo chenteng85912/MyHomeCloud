@@ -43,6 +43,10 @@ CGFloat const HOUSE_INFO_HEITHT = 650;
 @property (weak, nonatomic) IBOutlet UILabel *titleLb;
 @property (weak, nonatomic) IBOutlet UIView *footerBtnView;
 
+@property (weak, nonatomic) IBOutlet UILabel *priceLabel;
+@property (weak, nonatomic) IBOutlet UILabel *unitPriceLabel;
+
+
 // 滚动图片视图
 @property (strong, nonatomic) CTAutoLoopViewController * autoLoopView;
 @property (strong, nonatomic) NSMutableArray *autoLoopDataArray;
@@ -93,7 +97,7 @@ CGFloat const HOUSE_INFO_HEITHT = 650;
 }
 - (NSString *)requestClassName{
     
-    if (_detailsModal==SecondHouseModal) {
+    if (_detailsModal==SecondModal) {
         return SECOND_HAND_HOUSE;
 
     }else{
@@ -147,7 +151,7 @@ CGFloat const HOUSE_INFO_HEITHT = 650;
     
     AJHouseDetailsViewController *details = [AJHouseDetailsViewController new];
     details.houseInfo = self.dataArray[indexPath.row].objectData;
-    details.detailsModal = SecondHouseModal;
+    details.detailsModal = SecondModal;
     details.showModal = SearchHouseModal;
     //保存浏览记录
     AJTbViewCellModel *model = self.dataArray[indexPath.row];
@@ -172,13 +176,28 @@ CGFloat const HOUSE_INFO_HEITHT = 650;
         [self checkLikeState];
         
     }
-    _titleLabel.text = [NSString stringWithFormat:@"%@ %@ %@万",_houseInfo[HOUSE_ESTATE_NAME],_houseInfo[HOUSE_AMOUNT],_houseInfo[HOUSE_TOTAL_PRICE]];
-    _totalLabel.text = [NSString stringWithFormat:@"%@万",_houseInfo[HOUSE_TOTAL_PRICE]];
-    _titleLb.text =  _titleLabel.text;
+    if (self.detailsModal==SecondModal) {
+        _titleLabel.text = [NSString stringWithFormat:@"%@ %@ %@万",_houseInfo[HOUSE_ESTATE_NAME],_houseInfo[HOUSE_AMOUNT],_houseInfo[HOUSE_TOTAL_PRICE]];
+        _totalLabel.text = [NSString stringWithFormat:@"%@万",_houseInfo[HOUSE_TOTAL_PRICE]];
+        _titleLb.text =  _titleLabel.text;
+        _unitPrice.text = [NSString stringWithFormat:@"%@元/平",_houseInfo[HOUSE_UNIT_PRICE]];
+
+    }else{
+        _priceLabel.text = @"租金";
+        _unitPriceLabel.text = @"物业";
+        _titleLabel.text = [NSString stringWithFormat:@"%@ %@ %@元/月",_houseInfo[HOUSE_ESTATE_NAME],_houseInfo[HOUSE_AMOUNT],_houseInfo[LET_HOUSE_PRICE]];
+        _totalLabel.text = [NSString stringWithFormat:@"%@元/月",_houseInfo[LET_HOUSE_PRICE]];
+        _titleLb.text =  _titleLabel.text;
+        if (_houseInfo[LET_ESTATE_PRICE]) {
+            _unitPrice.text = [NSString stringWithFormat:@"%@元/平",_houseInfo[LET_ESTATE_PRICE]];
+
+        }
+
+    }
+   
     _houseRooms.text = _houseInfo[HOUSE_AMOUNT];
     _houseAreaage.text = [NSString stringWithFormat:@"%@平",_houseInfo[HOUSE_AREAAGE]];
     
-    _unitPrice.text = [NSString stringWithFormat:@"%@元/平",_houseInfo[HOUSE_UNIT_PRICE]];
     _directionLabel.text = _houseInfo[HOUSE_DIRECTION];
     
     _houseDerese.text = _houseInfo[HOUSE_DESCRIBE];
@@ -195,7 +214,7 @@ CGFloat const HOUSE_INFO_HEITHT = 650;
 //检测登录状态
 - (void)checkLikeState{
     
-    if (_detailsModal== SecondHouseModal) {
+    if (_detailsModal== SecondModal) {
         self.baseQuery.className = SECOND_FAVORITE;
 
     }else{
@@ -252,15 +271,18 @@ CGFloat const HOUSE_INFO_HEITHT = 650;
             
         }else{
             AVObject *houseInfo;
-            if (_detailsModal== SecondHouseModal) {
+            if (_detailsModal== SecondModal) {
                 houseInfo = [[AVObject alloc] initWithClassName:SECOND_FAVORITE];
+                [houseInfo setObject:[AVObject objectWithClassName:SECOND_HAND_HOUSE objectId:self.houseInfo.objectId] forKey:HOUSE_OBJECT];
+
             }else{
                 houseInfo = [[AVObject alloc] initWithClassName:LET_FAVORITE];
+                [houseInfo setObject:[AVObject objectWithClassName:LET_HOUSE objectId:self.houseInfo.objectId] forKey:HOUSE_OBJECT];
+
             }
             [houseInfo setObject:self.houseInfo.objectId forKey:HOUSE_ID];
             [houseInfo setObject:[AVUser currentUser].mobilePhoneNumber forKey:USER_PHONE];
             
-            [houseInfo setObject:[AVObject objectWithClassName:SECOND_HAND_HOUSE objectId:self.houseInfo.objectId] forKey:HOUSE_OBJECT];
             [houseInfo setObject:[AVUser currentUser].objectId  forKey:HOUSE_AUTHOR];
             [houseInfo setObject:[AVUser currentUser][HEAD_URL] forKey:HEAD_URL];
             
