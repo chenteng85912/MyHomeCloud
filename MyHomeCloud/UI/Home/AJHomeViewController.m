@@ -247,7 +247,7 @@ CGFloat const HEAD_BTN_HEIGHT = 100;
     }else if (indexPath.section==1){
         AJHouseDetailsViewController *details = [AJHouseDetailsViewController new];
         details.houseInfo = self.letArray[indexPath.row].objectData;
-        details.detailsModal = SecondModal;
+        details.detailsModal = LetModal;
         details.showModal = SearchHouseModal;
         vc = details;
         AJTbViewCellModel *model = self.letArray[indexPath.row];

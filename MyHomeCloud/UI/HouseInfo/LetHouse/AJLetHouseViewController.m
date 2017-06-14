@@ -100,7 +100,7 @@
     AJLetHouseCellModel *model = (AJLetHouseCellModel *)self.dataArray[indexPath.row];
     AJHouseDetailsViewController *details = [AJHouseDetailsViewController new];
     details.houseInfo = self.dataArray[indexPath.row].objectData;
-    details.detailsModal = SecondModal;
+    details.detailsModal = LetModal;
     details.showModal = SearchHouseModal;
 
     if (self.showModal==UserFavoriteModal) {
