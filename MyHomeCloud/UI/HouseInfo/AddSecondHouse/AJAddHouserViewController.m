@@ -80,9 +80,14 @@
     
     [houseData setObject:_houseTotalFloor.text          forKey:HOUSE_TOTAL_FLOOR];
     [houseData setObject:_houseName.text                forKey:HOUSE_ESTATE_NAME];
+    
+    //房源基本信息
     [houseData setObject:self.houseInfoData[HOUSE_DEVELOPER]              forKey:HOUSE_DEVELOPER];
     [houseData setObject:self.houseInfoData[HOUSE_AREA]                forKey:HOUSE_AREA];
     [houseData setObject:self.houseInfoData[HOUSE_YEARS]                forKey:HOUSE_YEARS];
+    //经度纬度
+    [houseData setObject:self.houseInfoData[HOUSE_LATITUDE]                forKey:HOUSE_LATITUDE];
+    [houseData setObject:self.houseInfoData[HOUSE_LONGITUDE]                forKey:HOUSE_LONGITUDE];
 
     [houseData setObject:_houseFloor.text               forKey:HOUSE_FLOOR_NUM];
     [houseData setObject:_houseRooms.text               forKey:HOUSE_AMOUNT];

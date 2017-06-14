@@ -30,7 +30,7 @@
     [temp addObject:model];
     
     model = [AJMeModel new];
-    model.title = @"我的收藏";
+    model.title = @"我的关注";
     model.showModal = UserFavoriteModal;
     model.iconName = @"favorite";
     model.isNeedLogin = YES;
