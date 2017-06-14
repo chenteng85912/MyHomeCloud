@@ -15,7 +15,7 @@
 
 @class AJTbViewCellModel;
 
-@interface AJBaseTbViewController : CTBaseViewController<AJTbViewProtocol,AJTbViewDelegateProtocol,AJTbViewDataSourceProtocol>
+@interface AJBaseTbViewController : UIViewController<AJTbViewProtocol,AJTbViewDelegateProtocol,AJTbViewDataSourceProtocol>
 
 //列表数据源
 @property (strong, nonatomic) NSMutableArray <AJTbViewCellModel *>*dataArray;
@@ -27,6 +27,11 @@
 @property (strong, nonatomic) AJTbViewPresenter *presenter;
 //页面加载一次
 @property (assign, nonatomic) BOOL isLoad;
+
+@property (assign, nonatomic) BOOL isDetails;
+
+@property (strong, nonatomic) AVQuery *baseQuery;
+
 //首次从网络请求数据
 - (void)initStartData;
 

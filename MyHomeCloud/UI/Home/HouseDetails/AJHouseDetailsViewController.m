@@ -39,6 +39,9 @@ CGFloat const HOUSE_INFO_HEITHT = 650;
 @property (weak, nonatomic) IBOutlet UILabel *likeLabel;
 
 @property (strong, nonatomic) UIView *tbViewHeadView;
+@property (weak, nonatomic) IBOutlet UIView *headBtnView;
+@property (weak, nonatomic) IBOutlet UILabel *titleLb;
+@property (weak, nonatomic) IBOutlet UIView *footerBtnView;
 
 // 滚动图片视图
 @property (strong, nonatomic) CTAutoLoopViewController * autoLoopView;
@@ -56,6 +59,7 @@ CGFloat const HOUSE_INFO_HEITHT = 650;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.isDetails = YES;
     if (_houseInfo[HOUSE_OBJECT]) {
         _likedObj = _houseInfo;
         _houseInfo = _houseInfo[HOUSE_OBJECT];
@@ -69,18 +73,15 @@ CGFloat const HOUSE_INFO_HEITHT = 650;
     self.mapView.navBtn.hidden = YES;
 
     [_mapBackView bringSubviewToFront:_mapBtn];
-    
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:LOADIMAGE(@"share") style:UIBarButtonItemStyleDone target:self action:@selector(shareAction)];
+    [self.view bringSubviewToFront:_headBtnView];
 
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
 
-
 }
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    self.tableView.frame = CGRectMake(0, 0, dWidth, dHeight-50-64);
 
 }
 #pragma mark - AJTbViewProtocol
@@ -110,10 +111,12 @@ CGFloat const HOUSE_INFO_HEITHT = 650;
     return self.houseInfo[HOUSE_ESTATE_NAME];
 }
 - (void)loadDataSuccess{
-    self.tableView.frame = CGRectMake(0, 0, dWidth, dHeight-50-64);
     self.tableView.tableFooterView = nil;
     self.tableView.tableHeaderView = self.tbViewHeadView;
+    [UIView animateWithDuration:0.3 animations:^{
+        _footerBtnView.alpha = 1.0;
 
+    }];
     //移除本房源
     WeakSelf;
     [self.dataArray enumerateObjectsUsingBlock:^(AJTbViewCellModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -169,9 +172,9 @@ CGFloat const HOUSE_INFO_HEITHT = 650;
         [self checkLikeState];
         
     }
-    self.title = [NSString stringWithFormat:@"%@ %@ %@万",_houseInfo[HOUSE_ESTATE_NAME],_houseInfo[HOUSE_AMOUNT],_houseInfo[HOUSE_TOTAL_PRICE]];
+    _titleLabel.text = [NSString stringWithFormat:@"%@ %@ %@万",_houseInfo[HOUSE_ESTATE_NAME],_houseInfo[HOUSE_AMOUNT],_houseInfo[HOUSE_TOTAL_PRICE]];
     _totalLabel.text = [NSString stringWithFormat:@"%@万",_houseInfo[HOUSE_TOTAL_PRICE]];
-    _titleLabel.text = self.title;
+    _titleLb.text =  _titleLabel.text;
     _houseRooms.text = _houseInfo[HOUSE_AMOUNT];
     _houseAreaage.text = [NSString stringWithFormat:@"%@平",_houseInfo[HOUSE_AREAAGE]];
     
@@ -332,8 +335,23 @@ CGFloat const HOUSE_INFO_HEITHT = 650;
     [[CTImagePreviewViewController defaultShowPicture] showPictureWithUrlOrImages:self.autoLoopDataArray withCurrentPageNum:indexPath.row andRootViewController:self];
 }
 
-- (void)shareAction{
-    debugLog(@"分享");
+- (IBAction)shareAction:(UIButton *)sender{
+    if (sender.tag==0) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }else{
+        debugLog(@"分享");
+
+    }
+}
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    CGFloat offsetY = scrollView.contentOffset.y;
+    debugLog(@"%f",offsetY);
+    if(offsetY >0) {
+        CGFloat ap = MIN(offsetY/120.0, 1.0);
+        _titleLb.alpha = ap>0?ap:0;
+        _headBtnView.backgroundColor = [UIColor colorWithRed:246.0/255.0 green:146.0/255.0 blue:51.0/255.0 alpha:ap];
+    }
 }
 - (CTAutoLoopViewController*)autoLoopView
 {

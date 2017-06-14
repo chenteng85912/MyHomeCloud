@@ -88,7 +88,7 @@ CGFloat const IMAGEHEIGHT  = 240.0f;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    if (section==3) {
+    if (section==2) {
         return 10;
     }
     return 0.01;

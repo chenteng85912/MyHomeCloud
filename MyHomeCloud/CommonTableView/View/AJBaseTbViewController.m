@@ -11,7 +11,7 @@
 #import "UITableView+NoMoreDataInFooter.h"
 #import <MJRefresh/MJRefresh.h>
 
-@interface AJBaseTbViewController ()
+@interface AJBaseTbViewController ()<UIGestureRecognizerDelegate>
 
 //上一次单元格数量
 @property (assign, nonatomic) NSInteger oldDataNum;
@@ -35,13 +35,55 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-
+    self.navigationController.interactivePopGestureRecognizer.delegate = self;
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+    
+    [self.navigationController setNavigationBarHidden:_isDetails animated:YES];
+    if (_isDetails) {
+        return;
+    }
+    
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.barTintColor = NavigationBarColor;
+    
+    self.navigationController.navigationBar.translucent = NO;
+    
+    [self.navigationController.navigationBar setTitleTextAttributes:
+     @{NSFontAttributeName:[UIFont boldSystemFontOfSize:16],
+       NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    
+    if (self.navigationItem.leftBarButtonItem) {
+        return;
+    }
+    
+    //添加返回键
+    if (self.navigationController.viewControllers.count<2&&!self.navigationController.presentingViewController) {
+        self.navigationItem.leftBarButtonItem = nil;
+        
+    }else{
+        UIButton *left = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+        UIImage *backImg = [UIImage imageNamed:@"close"];
+        if (self.navigationController.viewControllers.count>1) {
+            backImg = [UIImage imageNamed:@"back"];
+        }
+        [left setImage:backImg forState:UIControlStateNormal];
+        left.imageEdgeInsets = UIEdgeInsetsMake(0, -5, 0, 5);
+        
+        [left addTarget:self action:@selector(backToPreVC) forControlEvents:UIControlEventTouchUpInside];
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:left];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     if (!_isLoad) {
-        self.tableView.frame = self.view.bounds;
+        if (self.isDetails) {
+            self.tableView.frame = CGRectMake(0, 0, dWidth, dHeight-50);
+
+        }else{
+            self.tableView.frame = self.view.bounds;
+
+        }
 
         [self.tableView showHUD:nil];
         [self initStartData];
@@ -246,7 +288,27 @@
     }
 
 }
-
+- (void)backToPreVC{
+    
+    if (self.navigationController.viewControllers.count>1) {
+        [self.navigationController popViewControllerAnimated:YES];
+        
+    }else if (self.navigationController.presentingViewController) {
+        
+        
+        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    }
+    
+}
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognize
+{
+    if (self.navigationController.viewControllers.count==0) {
+        return NO;
+    }else{
+       
+        return YES;
+    }
+}
 #pragma mark -private methods 加载数据
 //首次从网络请求数据
 - (void)initStartData{
@@ -356,7 +418,16 @@
     }
     return _presenter;
 }
-
+- (AVQuery *)baseQuery{
+    if (_baseQuery==nil) {
+        _baseQuery = [AVQuery new];
+        //        _baseQuery.cachePolicy = kAVCachePolicyCacheElseNetwork;
+        _baseQuery.limit = 50;;
+        [_baseQuery orderByDescending:@"createdAt"];
+        
+    }
+    return _baseQuery;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
