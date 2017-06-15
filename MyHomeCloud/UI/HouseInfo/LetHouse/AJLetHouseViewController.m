@@ -12,7 +12,8 @@
 #import "AJHouseDetailsViewController.h"
 #import "AJHomeDataCenter.h"
 
-@interface AJLetHouseViewController ()
+@interface AJLetHouseViewController ()<UISearchBarDelegate>
+@property (strong, nonatomic) UISearchBar *searchBar;
 
 @end
 
@@ -20,12 +21,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"租房";
 
-    if (self.showModal==MyHouseModal) {
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshHomeData) name:kNewHouseNotification object:nil];
-        
+    if (self.showModal==SearchHouseModal) {
+        self.navigationItem.titleView = self.searchBar;
+    }else{
+        if (self.showModal==MyHouseModal) {
+            
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshHomeData) name:kNewHouseNotification object:nil];
+            
+        }
+        self.title = @"租房";
+
     }
 }
 - (void)viewWillAppear:(BOOL)animated{
@@ -129,7 +135,20 @@
     [self.view showHUD:nil];
     [self initStartData];
 }
-
+- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
+    
+    POPVC;
+    return NO;
+}
+- (UISearchBar *)searchBar{
+    if (_searchBar ==nil) {
+        _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, dWidth, 30)];
+        _searchBar.placeholder = @"区域/小区/开发商";
+        _searchBar.barTintColor = NavigationBarColor;
+        _searchBar.delegate = self;
+    }
+    return _searchBar;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

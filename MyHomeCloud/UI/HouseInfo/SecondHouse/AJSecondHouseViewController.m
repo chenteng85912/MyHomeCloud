@@ -14,7 +14,7 @@
 
 @interface AJSecondHouseViewController ()<UISearchBarDelegate>
 
-@property (strong, nonatomic)UISearchBar *searchBar;
+@property (strong, nonatomic) UISearchBar *searchBar;
 
 @end
 
