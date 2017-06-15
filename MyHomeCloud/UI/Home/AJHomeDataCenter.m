@@ -12,7 +12,9 @@
 #import "AJLetHouseCellModel.h"
 #import "AJNewHouseModel.h"
 
-NSInteger const MAX_NUM = 5;
+NSInteger const MAX_NUM = 100;
+NSInteger const SHOW_NUM = 5;
+
 @interface AJHomeDataCenter ()
 
 @property (strong, nonatomic) AVQuery *query;
@@ -25,8 +27,16 @@ NSInteger const MAX_NUM = 5;
     self.query.className = SECOND_HAND_HOUSE;
     [self.query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         if (objects&&afterRequest) {
-            NSArray *dataArray = [self processData:objects className:NSStringFromClass([AJSecondHouseCellModel class])];
+            NSArray *dataArray;
+            if (objects.count<=SHOW_NUM) {
+                dataArray = [self processData:objects className:NSStringFromClass([AJSecondHouseCellModel class])];
+            }else{
+                
+                dataArray = [self processData:[self randomArray:objects] className:NSStringFromClass([AJSecondHouseCellModel class])];
+
+            }
             afterRequest(YES,dataArray);
+
         }
         
     }];
@@ -36,7 +46,14 @@ NSInteger const MAX_NUM = 5;
     self.query.className = LET_HOUSE;
 
     [self.query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
-        NSArray *dataArray = [self processData:objects className:NSStringFromClass([AJLetHouseCellModel class])];
+        NSArray *dataArray;
+        if (objects.count<=SHOW_NUM) {
+            dataArray = [self processData:objects className:NSStringFromClass([AJLetHouseCellModel class])];
+        }else{
+            
+            dataArray = [self processData:[self randomArray:objects] className:NSStringFromClass([AJLetHouseCellModel class])];
+            
+        }
         afterRequest(YES,dataArray);
 
     }];
@@ -46,10 +63,15 @@ NSInteger const MAX_NUM = 5;
     self.query.className = N_HOUSE;
 
     [self.query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
-        if (objects&&afterRequest) {
-            NSArray *dataArray = [self processData:objects className:NSStringFromClass([AJNewHouseModel class])];
-            afterRequest(YES,dataArray);
+        NSArray *dataArray;
+        if (objects.count<=SHOW_NUM) {
+            dataArray = [self processData:objects className:NSStringFromClass([AJNewHouseModel class])];
+        }else{
+            
+            dataArray = [self processData:[self randomArray:objects] className:NSStringFromClass([AJNewHouseModel class])];
+            
         }
+        afterRequest(YES,dataArray);
     }];
 }
 //数据处理
@@ -131,6 +153,29 @@ NSInteger const MAX_NUM = 5;
     }
     return houseData;
 }
+
+//随机选取5个结果
+- (NSMutableArray *)randomArray:(NSArray *)temp
+{
+    //随机数从这里边产生
+    NSMutableArray *startArray=[temp mutableCopy];
+    //随机数产生结果
+    NSMutableArray *resultArray=[NSMutableArray new];
+    //随机数个数
+    for (int i=0; i<SHOW_NUM; i++) {
+        int t = arc4random()%startArray.count;
+        resultArray[i] = startArray[t];
+        startArray[t] = [startArray lastObject]; //为更好的乱序，故交换下位置
+        [startArray removeLastObject];
+    }
+    return resultArray;
+}
+//获取一个随机整数，范围在[from,to]，包括from，包括to
+- (NSInteger)getRandomNumber:(NSInteger)from to:(NSInteger)to
+{
+    return (NSInteger)(from + (arc4random() % (to - from + 1)));
+}
+
 #pragma mark -geter and setter
 - (AVQuery *)query{
     if (_query ==nil) {

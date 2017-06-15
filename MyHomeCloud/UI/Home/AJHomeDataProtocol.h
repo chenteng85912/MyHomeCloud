@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void (^RequestBlock) (BOOL success, NSArray*returnValue);
+typedef void (^RequestBlock) (BOOL success, NSArray *returnValue);
 
 @protocol AJHomeDataProtocol <NSObject>
 
