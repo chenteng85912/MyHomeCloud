@@ -70,7 +70,6 @@ CGFloat const IMAGEHEIGHT  = 240.0f;
     cell.textLabel.font = [UIFont systemFontOfSize:16];
     
     cell.imageView.image = [CTTool scaleImage:LOADIMAGE(model.iconName) toSize:CGSizeMake(25, 25)];
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     if ([model.title isEqualToString:@"客服热线"]) {
         UILabel *phone = [[UILabel alloc] initWithFrame:CGRectMake(dWidth-120,0, dWidth-120-40, 50)];
         phone.textAlignment = NSTextAlignmentRight;
@@ -79,6 +78,8 @@ CGFloat const IMAGEHEIGHT  = 240.0f;
         phone.text = @"400-600-5555";
         [cell.contentView addSubview:phone];
     }
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 #pragma mark UITableViewDelegate UITableViewDatasource

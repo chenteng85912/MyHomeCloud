@@ -24,9 +24,7 @@
     
     AJLetHouseCellModel *model = (AJLetHouseCellModel *)data;
     NSString *imgStr = model.objectData[HOUSE_THUMB];
-    if (model.subObj) {
-        imgStr = model.subObj[HOUSE_THUMB];
-    }
+  
     
     self.houseImg.frame = model.imgFrame;
     [self.houseImg sd_setImageWithURL:[NSURL URLWithString:imgStr] placeholderImage:LOADIMAGE(@"defaultImg")];

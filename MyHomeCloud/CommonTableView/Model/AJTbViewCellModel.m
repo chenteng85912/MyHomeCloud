@@ -22,11 +22,9 @@ CGFloat const IMG_WIDTH = 100.0;
 CGFloat const IMG_HEIGHT = 80.0;
 
 @implementation AJTbViewCellModel
+
 - (void)setObjectData:(AVObject *)objectData{
     _objectData = objectData;
-    if (objectData[HOUSE_OBJECT]) {
-        self.subObj = objectData[HOUSE_OBJECT];
-    }
    
 }
 

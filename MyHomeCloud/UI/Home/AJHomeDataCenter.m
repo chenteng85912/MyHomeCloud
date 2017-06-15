@@ -67,34 +67,69 @@ NSInteger const MAX_NUM = 5;
     }
     return dataArray;
 }
+//添加收藏
+- (void)addFavoriteData:(AVObject *)object favClassName:(NSString *)favClassName complete:(RequestBlock)afterRequest{
+    AVObject *houseData = [self creatHouseInfo:object withClassName:favClassName];
+    [houseData saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if (afterRequest) {
+            afterRequest(succeeded,nil);
+        }
+        
+    }];
+}
 //保存浏览记录
-- (void)addRecordData:(AVObject *)object objectClassName:(NSString *)className recordClassName:(NSString *)recordClassName{
+- (void)addRecordData:(AVObject *)object recordClassName:(NSString *)recordClassName{
     if (![AVUser currentUser]) {
         return;
     }
-    AVObject *houseInfo = [[AVObject alloc] initWithClassName:recordClassName];
-    [houseInfo setObject:object.objectId        forKey:HOUSE_ID];
-    
-    [houseInfo setObject:[AVUser currentUser].mobilePhoneNumber forKey:USER_PHONE];
-    
-    [houseInfo setObject:[AVObject objectWithClassName:className objectId:object.objectId] forKey:HOUSE_OBJECT];
-    [houseInfo setObject:[AVUser currentUser].objectId  forKey:HOUSE_AUTHOR];
-    [houseInfo setObject:[AVUser currentUser][HEAD_URL] forKey:HEAD_URL];
+    AVObject *houseData = [self creatHouseInfo:object withClassName:recordClassName];
     
     self.query.className = recordClassName;
     [self.query whereKey:HOUSE_ID equalTo:object.objectId];
     [self.query whereKey:USER_PHONE equalTo:[AVUser currentUser].mobilePhoneNumber];
+    //先查询是否已经保存
     [self.query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         if (objects.count>0) {
             return;
             
         }
-        [houseInfo saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        [houseData saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             if (succeeded) {
                 
             }
         }];
     }];
+}
+- (AVObject *)creatHouseInfo:(AVObject *)object withClassName:(NSString *)className{
+    AVObject *houseData = [[AVObject alloc] initWithClassName:className];
+    
+    [houseData setObject:object.objectId        forKey:HOUSE_ID];
+    
+    [houseData setObject:[AVUser currentUser].mobilePhoneNumber      forKey:USER_PHONE];
+    [houseData setObject:object[HOUSE_AMOUNT]               forKey:HOUSE_AMOUNT];
+    [houseData setObject:object[HOUSE_AREAAGE]              forKey:HOUSE_AREAAGE];
+    [houseData setObject:object[HOUSE_ESTATE_NAME]                forKey:HOUSE_ESTATE_NAME];
+    [houseData setObject:object[HOUSE_THUMB]                forKey:HOUSE_THUMB];
+    
+    if ([className isEqualToString:LET_RECORD]||[className isEqualToString:LET_FAVORITE]) {
+        //租金
+        [houseData setObject:object[LET_HOUSE_PRICE]         forKey:LET_HOUSE_PRICE];
+        [houseData setObject:object[HOUSE_DIRECTION]           forKey:HOUSE_DIRECTION];
+        
+    }else if ([className isEqualToString:SECOND_RECORD]||[className isEqualToString:SECOND_FAVORITE]){
+        //总价
+        [houseData setObject:object[HOUSE_TOTAL_PRICE]       forKey:HOUSE_TOTAL_PRICE];
+        //房屋单价
+        [houseData setObject:object[HOUSE_UNIT_PRICE]        forKey:HOUSE_UNIT_PRICE];
+        [houseData setObject:object[HOUSE_DESCRIBE]            forKey:HOUSE_DESCRIBE];
+        
+    }else{
+        //总价
+        [houseData setObject:object[HOUSE_TOTAL_PRICE]       forKey:HOUSE_TOTAL_PRICE];
+        //房屋单价
+        [houseData setObject:object[HOUSE_UNIT_PRICE]        forKey:HOUSE_UNIT_PRICE];
+    }
+    return houseData;
 }
 #pragma mark -geter and setter
 - (AVQuery *)query{

@@ -56,7 +56,6 @@ CGFloat const HEAD_BTN_HEIGHT = 100;
     
     [self initTbViewData];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fetchData) name:kNewHouseNotification object:nil];
     [self.view showHUD:nil];
     [self fetchData];
 }
@@ -237,24 +236,26 @@ CGFloat const HEAD_BTN_HEIGHT = 100;
     UIViewController *vc;
     if (indexPath.section==0) {
         AJHouseDetailsViewController *details = [AJHouseDetailsViewController new];
-        details.houseInfo = self.secondArray[indexPath.row].objectData;
+        details.houseId = self.secondArray[indexPath.row].objectData.objectId;
+        details.searchKey = self.secondArray[indexPath.row].objectData[HOUSE_ESTATE_NAME];
         details.detailsModal = SecondModal;
         details.showModal = SearchHouseModal;
         vc = details;
         //保存浏览记录
         AJTbViewCellModel *model = self.secondArray[indexPath.row];
-        [[AJHomeDataCenter new] addRecordData:model.objectData objectClassName:SECOND_HAND_HOUSE recordClassName:SECOND_RECORD];
+        [[AJHomeDataCenter new] addRecordData:model.objectData recordClassName:SECOND_RECORD];
     }else if (indexPath.section==1){
         AJHouseDetailsViewController *details = [AJHouseDetailsViewController new];
-        details.houseInfo = self.letArray[indexPath.row].objectData;
+        details.houseId = self.letArray[indexPath.row].objectData.objectId;
+        details.searchKey = self.letArray[indexPath.row].objectData[HOUSE_ESTATE_NAME];
         details.detailsModal = LetModal;
         details.showModal = SearchHouseModal;
         vc = details;
         AJTbViewCellModel *model = self.letArray[indexPath.row];
-        [[AJHomeDataCenter new] addRecordData:model.objectData objectClassName:LET_HOUSE recordClassName:LET_RECORD];
+        [[AJHomeDataCenter new] addRecordData:model.objectData recordClassName:LET_RECORD];
     }else{
         AJTbViewCellModel *model = self.newhouseArray[indexPath.row];
-        [[AJHomeDataCenter new] addRecordData:model.objectData objectClassName:N_HOUSE recordClassName:N_RECORD];
+        [[AJHomeDataCenter new] addRecordData:model.objectData recordClassName:N_RECORD];
     }
     vc.hidesBottomBarWhenPushed = YES;
     APP_PUSH(vc);

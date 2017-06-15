@@ -9,6 +9,8 @@
 #import "AJHouseDetailsViewController.h"
 #import "AJSecondHouseTableViewCell.h"
 #import "AJSecondHouseCellModel.h"
+#import "AJLetHouseTableViewCell.h"
+#import "AJLetHouseCellModel.h"
 #import "AJHomeDataCenter.h"
 #import "AJLocationViewController.h"
 #import "AJLocation.h"
@@ -51,9 +53,10 @@ CGFloat const HOUSE_INFO_HEITHT = 650;
 @property (strong, nonatomic) CTAutoLoopViewController * autoLoopView;
 @property (strong, nonatomic) NSMutableArray *autoLoopDataArray;
 
-@property (strong, nonatomic) AVObject *likedObj;
-@property (strong, nonatomic) AVObject *someUser;
+//@property (strong, nonatomic) AVObject *someUser;
 @property (strong, nonatomic) AJLocationViewController *mapView;
+@property (strong, nonatomic) AVObject *likeHouse;
+@property (strong, nonatomic) AVObject *houseInfo;//当前房源信息
 
 
 @end
@@ -64,20 +67,6 @@ CGFloat const HOUSE_INFO_HEITHT = 650;
     [super viewDidLoad];
     
     self.isDetails = YES;
-    if (_houseInfo[HOUSE_OBJECT]) {
-        _likedObj = _houseInfo;
-        _houseInfo = _houseInfo[HOUSE_OBJECT];
-    }
-    [self initHouseDetailsInfo];
-    
-    //添加地图
-    self.mapView.view.frame = _mapBackView.bounds;
-    [_mapBackView addSubview:self.mapView.view];
-    self.mapView.locationBtn.hidden = YES;
-    self.mapView.navBtn.hidden = YES;
-
-    [_mapBackView bringSubviewToFront:_mapBtn];
-    [self.view bringSubviewToFront:_headBtnView];
 
 }
 - (void)viewWillAppear:(BOOL)animated{
@@ -95,6 +84,7 @@ CGFloat const HOUSE_INFO_HEITHT = 650;
 - (UITableViewStyle)tableViewStyle{
     return UITableViewStyleGrouped;
 }
+
 - (NSString *)requestClassName{
     
     if (_detailsModal==SecondModal) {
@@ -112,37 +102,83 @@ CGFloat const HOUSE_INFO_HEITHT = 650;
 }
 - (NSString *)requestKeyName{
    //同一个小区的房源
-    return self.houseInfo[HOUSE_ESTATE_NAME];
+    return _searchKey;
+}
+- (NSString *)recordClassName{
+    if (_detailsModal==SecondModal) {
+        return SECOND_RECORD;
+        
+    }else{
+        return LET_RECORD;
+        
+    }
+}
+- (NSString *)favoriteClassName{
+    if (_detailsModal==SecondModal) {
+        return SECOND_FAVORITE;
+        
+    }else{
+        return LET_FAVORITE;
+        
+    }
 }
 - (void)loadDataSuccess{
+  
+    BOOL suc = false;
+    AJTbViewCellModel *selfModal;
+   
+    for (AJTbViewCellModel *modal in self.dataArray) {
+        if ([modal.objectData.objectId isEqualToString:_houseId]) {
+            selfModal = modal;
+            _houseInfo = modal.objectData;
+            suc = YES;
+            break;
+        }
+    }
+    if (!suc) {
+        self.tableView.hidden = YES;
+        //本房源已经失效
+        [UIAlertController alertWithTitle:@"温馨提示" message:@"该房源已经失效" cancelButtonTitle:nil otherButtonTitles:@[@"确定"] preferredStyle:UIAlertControllerStyleAlert block:^(NSInteger buttonIndex) {
+            if (buttonIndex==1) {
+                POPVC;
+            }
+        }];
+        return;
+    }
+    [self initHouseDetailsInfo];
     self.tableView.tableFooterView = nil;
     self.tableView.tableHeaderView = self.tbViewHeadView;
     [UIView animateWithDuration:0.3 animations:^{
         _footerBtnView.alpha = 1.0;
-
-    }];
-    //移除本房源
-    WeakSelf;
-    [self.dataArray enumerateObjectsUsingBlock:^(AJTbViewCellModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if ([obj.objectData.objectId isEqualToString:self.houseInfo.objectId]) {
-            [weakSelf.dataArray removeObject:obj];
-            [weakSelf.tableView reloadData];
-            if (self.dataArray.count>MAX_HOUSE_NUMBER) {
-                self.moreHouseBtn.hidden = NO;
-                self.tableView.tableFooterView = self.moreHouseBtn;
-                
-            }
-            *stop = YES;
-        }
         
     }];
+    //移除本房源
+    [self.dataArray removeObject:selfModal];
+    [self.tableView reloadData];
+    if (self.dataArray.count>MAX_HOUSE_NUMBER) {
+        self.moreHouseBtn.hidden = NO;
+        self.tableView.tableFooterView = self.moreHouseBtn;
+        
+    }
     
 }
 - (NSString *)customeTbViewCellClassName{
-    return  NSStringFromClass([AJSecondHouseTableViewCell class]);
+    if (_detailsModal==SecondModal) {
+        return  NSStringFromClass([AJSecondHouseTableViewCell class]);
+
+    }else{
+        return  NSStringFromClass([AJLetHouseTableViewCell class]);
+
+    }
 }
 - (NSString *)customeTbViewCellModelClassName{
-    return NSStringFromClass([AJSecondHouseCellModel class]);
+    if (_detailsModal==SecondModal) {
+        return NSStringFromClass([AJSecondHouseCellModel class]);
+
+    }else{
+        return NSStringFromClass([AJLetHouseCellModel class]);
+
+    }
 }
 
 #pragma mark - UITableViewDelegate
@@ -150,12 +186,15 @@ CGFloat const HOUSE_INFO_HEITHT = 650;
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     AJHouseDetailsViewController *details = [AJHouseDetailsViewController new];
-    details.houseInfo = self.dataArray[indexPath.row].objectData;
-    details.detailsModal = SecondModal;
+
+    details.houseId = self.dataArray[indexPath.row].objectData.objectId;
+    details.detailsModal = self.detailsModal;
     details.showModal = SearchHouseModal;
+    details.searchKey = self.dataArray[indexPath.row].objectData[HOUSE_ESTATE_NAME];
+
     //保存浏览记录
     AJTbViewCellModel *model = self.dataArray[indexPath.row];
-    [[AJHomeDataCenter new] addRecordData:model.objectData objectClassName:SECOND_HAND_HOUSE recordClassName:SECOND_RECORD];
+    [[AJHomeDataCenter new] addRecordData:model.objectData recordClassName:[self recordClassName]];
 
     APP_PUSH(details);
 }
@@ -168,10 +207,16 @@ CGFloat const HOUSE_INFO_HEITHT = 650;
 
 - (void)initHouseDetailsInfo{
    
-    if (self.isFromFav) {
-        _likeBtn.selected = YES;
-        _likeLabel.text = @"已关注";
-    }else if ([AVUser currentUser]) {
+    //添加地图
+    self.mapView.view.frame = _mapBackView.bounds;
+    [_mapBackView addSubview:self.mapView.view];
+    self.mapView.locationBtn.hidden = YES;
+    self.mapView.navBtn.hidden = YES;
+    
+    [_mapBackView bringSubviewToFront:_mapBtn];
+    [self.view bringSubviewToFront:_headBtnView];
+    
+    if ([AVUser currentUser]) {
         
         [self checkLikeState];
         
@@ -211,7 +256,7 @@ CGFloat const HOUSE_INFO_HEITHT = 650;
     _houseYear.text = _houseInfo[HOUSE_YEARS];
     
 }
-//检测登录状态
+//检测关注状态
 - (void)checkLikeState{
     
     if (_detailsModal== SecondModal) {
@@ -222,11 +267,11 @@ CGFloat const HOUSE_INFO_HEITHT = 650;
 
     }
     [self.baseQuery whereKey:USER_PHONE equalTo:[AVUser currentUser].mobilePhoneNumber];
-    [self.baseQuery whereKey:HOUSE_ID equalTo:self.houseInfo.objectId];
+    [self.baseQuery whereKey:HOUSE_ID   equalTo:_houseId];
 
     [self.baseQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         if (objects.count>0) {
-            _likedObj = objects[0];
+            _likeHouse = objects[0];
             _likeBtn.selected = YES;
             _likeLabel.text = @"已关注";
 
@@ -256,47 +301,29 @@ CGFloat const HOUSE_INFO_HEITHT = 650;
         [self.view showHUD:nil];
         if (likeBtn.selected) {
             
-            [self.likedObj deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            [_likeHouse deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
                 [weakSelf.view removeHUD];
                 if (succeeded) {
                     likeBtn.selected = NO;
-                    _likedObj = nil;
                     _likeLabel.text = @"关注";
-
-                    if (weakSelf.isFromFav) {
-                        weakSelf.tbView.isLoad = NO;
-                    }
+                    weakSelf.tbView.isLoad = NO;
+                    
                 }
             }];
             
         }else{
-            AVObject *houseInfo;
-            if (_detailsModal== SecondModal) {
-                houseInfo = [[AVObject alloc] initWithClassName:SECOND_FAVORITE];
-                [houseInfo setObject:[AVObject objectWithClassName:SECOND_HAND_HOUSE objectId:self.houseInfo.objectId] forKey:HOUSE_OBJECT];
-
-            }else{
-                houseInfo = [[AVObject alloc] initWithClassName:LET_FAVORITE];
-                [houseInfo setObject:[AVObject objectWithClassName:LET_HOUSE objectId:self.houseInfo.objectId] forKey:HOUSE_OBJECT];
-
-            }
-            [houseInfo setObject:self.houseInfo.objectId forKey:HOUSE_ID];
-            [houseInfo setObject:[AVUser currentUser].mobilePhoneNumber forKey:USER_PHONE];
-            
-            [houseInfo setObject:[AVUser currentUser].objectId  forKey:HOUSE_AUTHOR];
-            [houseInfo setObject:[AVUser currentUser][HEAD_URL] forKey:HEAD_URL];
-            
-            [houseInfo saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            [[AJHomeDataCenter new] addFavoriteData:_houseInfo favClassName:[self favoriteClassName] complete:^(BOOL success, NSArray *returnValue) {
                 [weakSelf.view removeHUD];
-                
-                if (succeeded) {
-                    _likedObj = houseInfo;
+                if (success) {
                     _likeBtn.selected = YES;
                     _likeLabel.text = @"已关注";
-
+                    
+                }else{
+                    [self.view showTips:@"关注失败" withState:TYKYHUDModeFail complete:nil];
                 }
-                
+
             }];
+            
         }
     }else if (likeBtn.tag==1){
         if (![AVUser currentUser]) {
@@ -372,7 +399,7 @@ CGFloat const HOUSE_INFO_HEITHT = 650;
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     CGFloat offsetY = scrollView.contentOffset.y;
-    debugLog(@"%f",offsetY);
+//    debugLog(@"%f",offsetY);
     if(offsetY >0) {
         CGFloat ap = MIN(offsetY/120.0, 1.0);
       

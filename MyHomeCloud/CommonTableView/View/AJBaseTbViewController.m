@@ -128,33 +128,27 @@
 //删除浏览记录 用户收藏 图片文件
 - (void)deleteRecordData:(AVObject *)obj{
     
-    self.baseQuery.className = [self recordClassName];
-    [self.baseQuery whereKey:HOUSE_ID   equalTo:obj.objectId];
-
-    WeakSelf;
-    //删除浏览记录
-    [self.baseQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
-        if (objects.count>0) {
-            for (AVObject *obje in objects) {
-                [obje deleteInBackground];
-            }
-        }
-        //删除收藏
-        weakSelf.baseQuery.className = [self favoriteClassName];
-        [weakSelf.baseQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
-            if (objects.count>0) {
-                for (AVObject *obje in objects) {
-                    [obje deleteInBackground];
-                }
-            }
-        }];
-    }];
-    
-    //删除文件
-    NSArray *fileArray = obj[HOUSE_FILE_ID];
-    for (NSString *fileId in fileArray) {
-        [AJSB deleteFile:fileId complete:nil];
-    }
+//    self.baseQuery.className = [self recordClassName];
+//    [self.baseQuery whereKey:HOUSE_ID   equalTo:obj.objectId];
+//
+//    WeakSelf;
+//    //删除浏览记录
+//    [self.baseQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+//        if (objects.count>0) {
+//            for (AVObject *obje in objects) {
+//                [obje deleteInBackground];
+//            }
+//        }
+//        //删除收藏
+//        weakSelf.baseQuery.className = [self favoriteClassName];
+//        [weakSelf.baseQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+//            if (objects.count>0) {
+//                for (AVObject *obje in objects) {
+//                    [obje deleteInBackground];
+//                }
+//            }
+//        }];
+//    }];
     
 }
 #pragma mark - TYKYTableViewProtocol
@@ -368,8 +362,12 @@
                 
                 //删除我的房源
                 if (self.showModal==MyHouseModal) {
-                    [weakSelf deleteRecordData:model.subObj];
-                    [[NSNotificationCenter defaultCenter] postNotificationName:kNewHouseNotification object:nil];
+//                    [weakSelf deleteRecordData:model.subObj];
+                    //删除图片文件
+                    NSArray *fileArray = model.objectData[HOUSE_FILE_ID];
+                    for (NSString *fileId in fileArray) {
+                        [AJSB deleteFile:fileId complete:nil];
+                    }
 
                 }
                 

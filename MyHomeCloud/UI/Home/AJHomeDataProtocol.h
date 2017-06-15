@@ -24,6 +24,9 @@ typedef void (^RequestBlock) (BOOL success, NSArray*returnValue);
 - (void)fetchNewHouseDataCompleteHander:(RequestBlock)afterRequest;
 
 //保存浏览记录
-//保存浏览记录
-- (void)addRecordData:(AVObject *)object objectClassName:(NSString *)className recordClassName:(NSString *)recordClassName;
+- (void)addRecordData:(AVObject *)object recordClassName:(NSString *)recordClassName;
+
+//添加收藏
+- (void)addFavoriteData:(AVObject *)object favClassName:(NSString *)favClassName complete:(RequestBlock)afterRequest;
+
 @end

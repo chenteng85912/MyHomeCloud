@@ -68,9 +68,9 @@
         return nil;
     }
 }
-- (NSString *)pointClassName{
-    return LET_HOUSE;
-}
+//- (NSString *)pointClassName{
+//    return LET_HOUSE;
+//}
 - (NSString *)recordClassName{
     return LET_RECORD;
 }
@@ -99,18 +99,23 @@
     
     AJLetHouseCellModel *model = (AJLetHouseCellModel *)self.dataArray[indexPath.row];
     AJHouseDetailsViewController *details = [AJHouseDetailsViewController new];
-    details.houseInfo = self.dataArray[indexPath.row].objectData;
     details.detailsModal = LetModal;
     details.showModal = SearchHouseModal;
+    details.searchKey = self.dataArray[indexPath.row].objectData[HOUSE_ESTATE_NAME];
 
-    if (self.showModal==UserFavoriteModal) {
-        details.isFromFav = YES;
+    if (self.showModal==UserFavoriteModal||self.showModal==UserRecordModal) {
         details.tbView = self;
+        details.houseId = self.dataArray[indexPath.row].objectData[HOUSE_ID];
+        
+    }else{
+        details.houseId = self.dataArray[indexPath.row].objectData.objectId;
+        
     }
+
     APP_PUSH(details);
 
     if (self.showModal==AllHouseModal||self.showModal==SomeoneHouseModal) {
-        [[AJHomeDataCenter new] addRecordData:model.objectData objectClassName:[self requestClassName] recordClassName:[self recordClassName]];
+        [[AJHomeDataCenter new] addRecordData:model.objectData recordClassName:[self recordClassName]];
     }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{

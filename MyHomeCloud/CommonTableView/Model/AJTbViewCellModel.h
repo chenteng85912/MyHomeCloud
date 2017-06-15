@@ -25,7 +25,6 @@ extern CGFloat const IMG_HEIGHT;
 @interface AJTbViewCellModel : NSObject<AJTbViewCellModelProtocol>
 
 @property (strong, nonatomic) AVObject *objectData;     //单元格原始数据
-@property (strong, nonatomic) AVObject *subObj;         //收藏里面的房屋信息
 
 @property (assign, nonatomic) CGFloat cellHeight;
 

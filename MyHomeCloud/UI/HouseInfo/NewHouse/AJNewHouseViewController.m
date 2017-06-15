@@ -60,9 +60,9 @@
         return nil;
     }
 }
-- (NSString *)pointClassName{
-    return N_HOUSE;
-}
+//- (NSString *)pointClassName{
+//    return N_HOUSE;
+//}
 - (NSString *)recordClassName{
     return N_RECORD;
 }
@@ -92,7 +92,7 @@
     AJNewHouseCellModel *model = (AJNewHouseCellModel *)self.dataArray[indexPath.row];
     
     if (self.showModal==AllHouseModal||self.showModal==SomeoneHouseModal) {
-        [[AJHomeDataCenter new] addRecordData:model.objectData objectClassName:[self requestClassName] recordClassName:[self recordClassName]];
+        [[AJHomeDataCenter new] addRecordData:model.objectData recordClassName:[self recordClassName]];
     }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{

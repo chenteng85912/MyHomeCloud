@@ -12,10 +12,7 @@
 - (void)calculateSizeConstrainedToSize{
     
     AVObject *object = self.objectData;
-    if (self.subObj) {
-        object = self.subObj;
-        
-    }
+   
     //图片
     self.imgFrame = CGRectMake(cellX, cellY, IMG_WIDTH, IMG_HEIGHT);
     CGFloat lx = CGRectGetMaxX(self.imgFrame) +cellX;
