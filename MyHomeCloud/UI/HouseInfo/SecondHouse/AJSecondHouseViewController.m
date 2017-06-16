@@ -11,6 +11,7 @@
 #import "AJSecondHouseCellModel.h"
 #import "AJHouseDetailsViewController.h"
 #import "AJHomeDataCenter.h"
+#import "AJSearchViewController.h"
 
 @interface AJSecondHouseViewController ()<UISearchBarDelegate>
 
@@ -23,7 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    if (self.showModal==SearchHouseModal) {
+    if (self.showModal==SearchHouseModal||self.showModal==AllHouseModal) {
         self.navigationItem.titleView = self.searchBar;
     }else{
         if (self.showModal==MyHouseModal) {
@@ -146,6 +147,13 @@
 //}
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
     
+    if (self.showModal==AllHouseModal) {
+        AJSearchViewController *search = [AJSearchViewController new];
+        UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:search];
+        [nav setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
+        APP_PRESENT(nav);
+        return NO;
+    }
     POPVC;
     return NO;
 }

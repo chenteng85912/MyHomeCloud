@@ -27,14 +27,8 @@ NSInteger const SHOW_NUM = 5;
     self.query.className = SECOND_HAND_HOUSE;
     [self.query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         if (objects&&afterRequest) {
-            NSArray *dataArray;
-            if (objects.count<=SHOW_NUM) {
-                dataArray = [self processData:objects className:NSStringFromClass([AJSecondHouseCellModel class])];
-            }else{
-                
-                dataArray = [self processData:[self randomArray:objects] className:NSStringFromClass([AJSecondHouseCellModel class])];
+            NSArray *dataArray = [self processData:[self randomArray:objects] className:NSStringFromClass([AJSecondHouseCellModel class])];
 
-            }
             afterRequest(YES,dataArray);
 
         }
@@ -46,14 +40,8 @@ NSInteger const SHOW_NUM = 5;
     self.query.className = LET_HOUSE;
 
     [self.query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
-        NSArray *dataArray;
-        if (objects.count<=SHOW_NUM) {
-            dataArray = [self processData:objects className:NSStringFromClass([AJLetHouseCellModel class])];
-        }else{
-            
-            dataArray = [self processData:[self randomArray:objects] className:NSStringFromClass([AJLetHouseCellModel class])];
-            
-        }
+        NSArray *dataArray = [self processData:[self randomArray:objects] className:NSStringFromClass([AJLetHouseCellModel class])];
+        
         afterRequest(YES,dataArray);
 
     }];
@@ -63,14 +51,8 @@ NSInteger const SHOW_NUM = 5;
     self.query.className = N_HOUSE;
 
     [self.query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
-        NSArray *dataArray;
-        if (objects.count<=SHOW_NUM) {
-            dataArray = [self processData:objects className:NSStringFromClass([AJNewHouseModel class])];
-        }else{
+        NSArray *dataArray = [self processData:[self randomArray:objects] className:NSStringFromClass([AJNewHouseModel class])];
             
-            dataArray = [self processData:[self randomArray:objects] className:NSStringFromClass([AJNewHouseModel class])];
-            
-        }
         afterRequest(YES,dataArray);
     }];
 }
@@ -155,8 +137,11 @@ NSInteger const SHOW_NUM = 5;
 }
 
 //随机选取5个结果
-- (NSMutableArray *)randomArray:(NSArray *)temp
+- (NSArray *)randomArray:(NSArray *)temp
 {
+    if (temp.count<=SHOW_NUM) {
+        return temp;
+    }
     //随机数从这里边产生
     NSMutableArray *startArray=[temp mutableCopy];
     //随机数产生结果
