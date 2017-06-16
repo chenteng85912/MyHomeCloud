@@ -20,7 +20,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *clearAllBtn;
 
 @property (strong, nonatomic) UIButton *typeBtn;
-@property (strong, nonatomic) NSNumber *type;
 @property (strong, nonatomic) NSMutableArray *searchArray;
 
 @end
@@ -30,6 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+   
     self.navigationItem.titleView = self.searchBar;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.typeBtn];
     [_tbView registerNib:[UINib nibWithNibName:NSStringFromClass([AJSearchTableViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([AJSearchTableViewCell class])];
@@ -176,18 +176,26 @@
     [self chooseHouseType];
     [self readLocalData];
 }
+
 - (void)readLocalData{
     if (_type.integerValue==0) {
         self.searchArray = [AJLocalDataCenter readLocalSearchData:SHouseModal];
+        self.searchBar.placeholder = @"小区/开发商/区域";
+
     }else if (_type.integerValue==1){
         self.searchArray = [AJLocalDataCenter readLocalSearchData:LHouseModal];
-        
+        self.searchBar.placeholder = @"小区/开发商/区域";
+
     }else{
         self.searchArray = [AJLocalDataCenter readLocalSearchData:NHouseModal];
-        
+        self.searchBar.placeholder = @"楼盘/开发商/区域";
+
     }
+
     [_tbView reloadData];
 }
+
+//删除某条搜索记录
 - (void)deleteSearchKey:(UIButton *)sender{
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:sender.tag inSection:0];
     [self.searchArray removeObjectAtIndex:indexPath.row];
@@ -211,6 +219,8 @@
 - (IBAction)hiddenTypeView:(UITapGestureRecognizer *)sender {
     [self chooseHouseType];
 }
+
+//删除搜索记录
 - (IBAction)deleteAllAction:(UIButton *)sender {
     if (_type.integerValue==0) {
         [AJLocalDataCenter clearLocalSearchKeys:SHouseModal];
@@ -247,7 +257,16 @@
 - (UIButton *)typeBtn{
     if (_typeBtn ==nil) {
         _typeBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 30)];
-        [_typeBtn setTitle:@"二手房" forState:UIControlStateNormal];
+        if (_type.integerValue==0) {
+            [_typeBtn setTitle:@"二手房" forState:UIControlStateNormal];
+
+        }else if (_type.integerValue==1){
+            [_typeBtn setTitle:@"租房" forState:UIControlStateNormal];
+
+        }else{
+            [_typeBtn setTitle:@"新房" forState:UIControlStateNormal];
+
+        }
         [_typeBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         _typeBtn.titleLabel.font = [UIFont boldSystemFontOfSize:13];
         [_typeBtn setImage:LOADIMAGE(@"down") forState:UIControlStateNormal];

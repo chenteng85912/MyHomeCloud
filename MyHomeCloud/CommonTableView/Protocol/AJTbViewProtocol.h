@@ -73,6 +73,12 @@ typedef NS_ENUM(NSInteger,TableViewInitDataModal) {
 //是否可以删除
 - (BOOL)canDeleteCell;
 
+//是否加载缓存
+- (BOOL)canSaveLocalCach;
+
+//是否清理缓存
+- (BOOL)canClearLocalCach;
+
 //数据初始化加成功
 - (void)loadDataSuccess;
 

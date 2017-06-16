@@ -31,7 +31,7 @@
                         <outlet property="delegate" destination="-1" id="pWy-sr-ysR"/>
                     </connections>
                 </tableView>
-                <searchBar clipsSubviews="YES" contentMode="redraw" fixedFrame="YES" placeholder="区域/小区/开发商" translatesAutoresizingMaskIntoConstraints="NO" id="Lhz-o9-8Nm">
+                <searchBar clipsSubviews="YES" contentMode="redraw" fixedFrame="YES" placeholder="小区/开发商/区域" translatesAutoresizingMaskIntoConstraints="NO" id="Lhz-o9-8Nm">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <color key="barTintColor" red="0.96470588239999999" green="0.57254901960000004" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>

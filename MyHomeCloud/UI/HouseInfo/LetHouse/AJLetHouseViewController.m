@@ -140,6 +140,7 @@
     
     if (self.showModal==AllHouseModal) {
         AJSearchViewController *search = [AJSearchViewController new];
+        search.type = @1;
         UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:search];
         [nav setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
         APP_PRESENT(nav);
@@ -151,7 +152,7 @@
 - (UISearchBar *)searchBar{
     if (_searchBar ==nil) {
         _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, dWidth, 30)];
-        _searchBar.placeholder = @"区域/小区/开发商";
+        _searchBar.placeholder = @"小区/开发商/区域";
         _searchBar.barTintColor = NavigationBarColor;
         _searchBar.delegate = self;
     }

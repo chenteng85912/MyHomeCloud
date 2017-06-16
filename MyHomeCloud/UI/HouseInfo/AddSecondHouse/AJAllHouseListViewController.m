@@ -26,6 +26,19 @@
 - (BOOL)makeMJRefresh{
     return YES;
 }
+- (NSInteger)pageSize{
+    return 100;
+}
+
+- (BOOL)canSaveLocalCach{
+    
+    return YES;
+   
+}
+//第一次读取缓存 手动下拉先清理缓存
+- (BOOL)canClearLocalCach{
+    return self.isLoad;
+}
 - (UITableViewStyle)tableViewStyle{
     return UITableViewStyleGrouped;
 }

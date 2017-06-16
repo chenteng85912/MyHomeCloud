@@ -125,32 +125,7 @@
 
 }
 #pragma mark - UITableViewDelegate
-//删除浏览记录 用户收藏 图片文件
-- (void)deleteRecordData:(AVObject *)obj{
-    
-//    self.baseQuery.className = [self recordClassName];
-//    [self.baseQuery whereKey:HOUSE_ID   equalTo:obj.objectId];
-//
-//    WeakSelf;
-//    //删除浏览记录
-//    [self.baseQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
-//        if (objects.count>0) {
-//            for (AVObject *obje in objects) {
-//                [obje deleteInBackground];
-//            }
-//        }
-//        //删除收藏
-//        weakSelf.baseQuery.className = [self favoriteClassName];
-//        [weakSelf.baseQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
-//            if (objects.count>0) {
-//                for (AVObject *obje in objects) {
-//                    [obje deleteInBackground];
-//                }
-//            }
-//        }];
-//    }];
-    
-}
+
 #pragma mark - TYKYTableViewProtocol
 //重置上拉刷新
 - (void)reStupTableviewFooterView:(NSInteger)pageSize{

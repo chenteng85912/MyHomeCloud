@@ -39,6 +39,14 @@ NSInteger const defaultPageSize = 50;
         _pageSize = defaultPageSize;
     }
     
+    
+    if ([_tbViewVC respondsToSelector:@selector(canClearLocalCach)]&&[_tbViewVC canClearLocalCach]) {
+        [self.query clearCachedResult];
+    }
+    if ([_tbViewVC respondsToSelector:@selector(canSaveLocalCach)]&&[_tbViewVC canSaveLocalCach]) {
+        self.query.cachePolicy = kAVCachePolicyCacheElseNetwork;
+    }
+    
     if(self.showModal!=AllHouseModal){
         if (self.showModal==SearchHouseModal) {
             //搜索
