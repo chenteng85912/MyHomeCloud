@@ -8,6 +8,11 @@
 
 #import "AJBaseTbViewController.h"
 
+typedef NS_ENUM(NSInteger,HouseListModal) {
+    DefaultListModal,    //默认
+    SearchListModal      //搜索
+};
+
 @protocol AJAllHouseListViewControllerDelegate <NSObject>
 
 - (void)chooseHouseInfo:(AVObject *)houseInfo;
@@ -17,5 +22,7 @@
 @interface AJAllHouseListViewController : AJBaseTbViewController
 
 @property (nonatomic,weak) id <AJAllHouseListViewControllerDelegate> delegate;
+
+@property (nonatomic,assign) HouseListModal listModal;
 
 @end

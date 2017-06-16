@@ -10,7 +10,7 @@
 
 typedef NS_ENUM(NSInteger,DetailsHouseModal) {
     SecondModal,    //二手房
-    LetModal,       //租房
+    LetModal       //租房
 };
 @interface AJHouseDetailsViewController : AJBaseTbViewController
 

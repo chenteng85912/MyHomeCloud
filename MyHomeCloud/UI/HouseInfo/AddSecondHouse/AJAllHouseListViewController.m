@@ -29,7 +29,9 @@
 - (NSInteger)pageSize{
     return 100;
 }
-
+- (BOOL)firstShowAnimation{
+    return YES;
+}
 - (BOOL)canSaveLocalCach{
     
     return YES;
