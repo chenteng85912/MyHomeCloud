@@ -11,6 +11,7 @@
 #import "AJLetHouseViewController.h"
 #import "AJNewHouseViewController.h"
 #import "AJAddHouserViewController.h"
+#import "AJMyReserverViewController.h"
 
 @interface AJUserHouseViewController ()
 
@@ -61,6 +62,16 @@
         house.title  =@"新房";
 
         self.pageVC.viewControllers = @[second,let,house];
+
+    }else if (_showModal==ReserverHouseModal){
+        AJMyReserverViewController *second = [AJMyReserverViewController new];
+        second.reserverModal = SecondReserverModal;
+        second.title  =@"二手房";
+        
+        AJMyReserverViewController *let = [AJMyReserverViewController new];
+        let.reserverModal = LetReserverModal;
+        let.title  =@"租房";
+        self.pageVC.viewControllers = @[second,let];
 
     }else{
         //二手房 出租房

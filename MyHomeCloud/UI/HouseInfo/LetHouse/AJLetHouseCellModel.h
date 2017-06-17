@@ -10,11 +10,11 @@
 
 @interface AJLetHouseCellModel : AJTbViewCellModel
 
-@property (strong, nonatomic) NSString *houseName;
-@property (strong, nonatomic) NSString *houseInfo;
-@property (strong, nonatomic) NSString *houseDes;
-@property (strong, nonatomic) NSString *letPrice;
-@property (strong, nonatomic) NSString *houseTag;
+@property (strong, nonatomic) NSString *houseName;//名称
+@property (strong, nonatomic) NSString *houseInfo;//基本信息
+@property (strong, nonatomic) NSString *houseDes;//描述
+@property (strong, nonatomic) NSString *letPrice;//租金
+@property (strong, nonatomic) NSString *houseTag;//标签
 
 @property (assign, nonatomic) CGRect nameFrame;
 @property (assign, nonatomic) CGRect infoFrame;

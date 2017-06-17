@@ -10,11 +10,11 @@
 
 @interface AJSecondHouseCellModel : AJTbViewCellModel
 
-@property (strong, nonatomic) NSString *houseName;
-@property (strong, nonatomic) NSString *subTitle;
-@property (strong, nonatomic) NSString *houseDes;
-@property (strong, nonatomic) NSString *totalPrice;
-@property (strong, nonatomic) NSString *unitPrice;
+@property (strong, nonatomic) NSString *houseName;//名称
+@property (strong, nonatomic) NSString *subTitle;//副标题
+@property (strong, nonatomic) NSString *houseDes;//描述
+@property (strong, nonatomic) NSString *totalPrice;//总价
+@property (strong, nonatomic) NSString *unitPrice;//单价
 
 @property (assign, nonatomic) CGRect nameFrame;
 @property (assign, nonatomic) CGRect subFrame;

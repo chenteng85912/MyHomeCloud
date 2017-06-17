@@ -45,9 +45,9 @@
         
     }else{
         UIButton *left = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-        UIImage *backImg = [UIImage imageNamed:@"close"];
+        UIImage *backImg = LOADIMAGE(@"close");
         if (self.navigationController.viewControllers.count>1) {
-            backImg = [UIImage imageNamed:@"back"];
+            backImg = LOADIMAGE(@"back");
         }
         [left setImage:backImg forState:UIControlStateNormal];
         left.imageEdgeInsets = UIEdgeInsetsMake(0, -5, 0, 5);

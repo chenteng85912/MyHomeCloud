@@ -77,6 +77,19 @@
 		A44AEBCF1EEEC72A00109FB8 /* AJLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = A44AEBCB1EEEC72A00109FB8 /* AJLocation.m */; };
 		A44AEBD01EEEC72A00109FB8 /* AJLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A44AEBCD1EEEC72A00109FB8 /* AJLocationViewController.m */; };
 		A44AEBD11EEEC72A00109FB8 /* AJLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A44AEBCE1EEEC72A00109FB8 /* AJLocationViewController.xib */; };
+		A4AE33011EF51C0C004B0A54 /* AJWKWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AE33001EF51C0C004B0A54 /* AJWKWebViewController.m */; };
+		A4AE33031EF51C61004B0A54 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4AE33021EF51C61004B0A54 /* WebKit.framework */; };
+		A4AE33081EF51EEC004B0A54 /* AJNewReserverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AE33061EF51EEC004B0A54 /* AJNewReserverViewController.m */; };
+		A4AE33091EF51EEC004B0A54 /* AJNewReserverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4AE33071EF51EEC004B0A54 /* AJNewReserverViewController.xib */; };
+		A4AE330D1EF51F4A004B0A54 /* AJMyReserverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AE330B1EF51F4A004B0A54 /* AJMyReserverViewController.m */; };
+		A4AE330E1EF51F4A004B0A54 /* AJMyReserverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4AE330C1EF51F4A004B0A54 /* AJMyReserverViewController.xib */; };
+		A4AE33121EF51F6F004B0A54 /* AJReserverTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AE33101EF51F6F004B0A54 /* AJReserverTableViewCell.m */; };
+		A4AE33131EF51F6F004B0A54 /* AJReserverTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4AE33111EF51F6F004B0A54 /* AJReserverTableViewCell.xib */; };
+		A4AE33161EF52572004B0A54 /* AJReserverCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AE33151EF52572004B0A54 /* AJReserverCellModel.m */; };
+		A4AE331A1EF52DF9004B0A54 /* AJEstateDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AE33181EF52DF9004B0A54 /* AJEstateDetailsViewController.m */; };
+		A4AE331B1EF52DF9004B0A54 /* AJEstateDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4AE33191EF52DF9004B0A54 /* AJEstateDetailsViewController.xib */; };
+		A4AE331F1EF52E7A004B0A54 /* AJReserverDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AE331D1EF52E7A004B0A54 /* AJReserverDetailsViewController.m */; };
+		A4AE33201EF52E7A004B0A54 /* AJReserverDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4AE331E1EF52E7A004B0A54 /* AJReserverDetailsViewController.xib */; };
 		A4B864491EE6E63800E3CE5E /* AJUserHouseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B864471EE6E63800E3CE5E /* AJUserHouseViewController.m */; };
 		A4B864551EE6EFFD00E3CE5E /* AJLetHouseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B864531EE6EFFD00E3CE5E /* AJLetHouseViewController.m */; };
 		A4B8645A1EE6F00E00E3CE5E /* AJNewHouseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4B864581EE6F00E00E3CE5E /* AJNewHouseViewController.m */; };
@@ -237,6 +250,26 @@
 		A44AEBCC1EEEC72A00109FB8 /* AJLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJLocationViewController.h; sourceTree = "<group>"; };
 		A44AEBCD1EEEC72A00109FB8 /* AJLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJLocationViewController.m; sourceTree = "<group>"; };
 		A44AEBCE1EEEC72A00109FB8 /* AJLocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJLocationViewController.xib; sourceTree = "<group>"; };
+		A4AE32FF1EF51C0C004B0A54 /* AJWKWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJWKWebViewController.h; sourceTree = "<group>"; };
+		A4AE33001EF51C0C004B0A54 /* AJWKWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJWKWebViewController.m; sourceTree = "<group>"; };
+		A4AE33021EF51C61004B0A54 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		A4AE33051EF51EEC004B0A54 /* AJNewReserverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJNewReserverViewController.h; sourceTree = "<group>"; };
+		A4AE33061EF51EEC004B0A54 /* AJNewReserverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJNewReserverViewController.m; sourceTree = "<group>"; };
+		A4AE33071EF51EEC004B0A54 /* AJNewReserverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJNewReserverViewController.xib; sourceTree = "<group>"; };
+		A4AE330A1EF51F4A004B0A54 /* AJMyReserverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJMyReserverViewController.h; sourceTree = "<group>"; };
+		A4AE330B1EF51F4A004B0A54 /* AJMyReserverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJMyReserverViewController.m; sourceTree = "<group>"; };
+		A4AE330C1EF51F4A004B0A54 /* AJMyReserverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJMyReserverViewController.xib; sourceTree = "<group>"; };
+		A4AE330F1EF51F6F004B0A54 /* AJReserverTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJReserverTableViewCell.h; sourceTree = "<group>"; };
+		A4AE33101EF51F6F004B0A54 /* AJReserverTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJReserverTableViewCell.m; sourceTree = "<group>"; };
+		A4AE33111EF51F6F004B0A54 /* AJReserverTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJReserverTableViewCell.xib; sourceTree = "<group>"; };
+		A4AE33141EF52572004B0A54 /* AJReserverCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJReserverCellModel.h; sourceTree = "<group>"; };
+		A4AE33151EF52572004B0A54 /* AJReserverCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJReserverCellModel.m; sourceTree = "<group>"; };
+		A4AE33171EF52DF9004B0A54 /* AJEstateDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJEstateDetailsViewController.h; sourceTree = "<group>"; };
+		A4AE33181EF52DF9004B0A54 /* AJEstateDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJEstateDetailsViewController.m; sourceTree = "<group>"; };
+		A4AE33191EF52DF9004B0A54 /* AJEstateDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJEstateDetailsViewController.xib; sourceTree = "<group>"; };
+		A4AE331C1EF52E7A004B0A54 /* AJReserverDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJReserverDetailsViewController.h; sourceTree = "<group>"; };
+		A4AE331D1EF52E7A004B0A54 /* AJReserverDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJReserverDetailsViewController.m; sourceTree = "<group>"; };
+		A4AE331E1EF52E7A004B0A54 /* AJReserverDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJReserverDetailsViewController.xib; sourceTree = "<group>"; };
 		A4B864461EE6E63800E3CE5E /* AJUserHouseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJUserHouseViewController.h; sourceTree = "<group>"; };
 		A4B864471EE6E63800E3CE5E /* AJUserHouseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJUserHouseViewController.m; sourceTree = "<group>"; };
 		A4B864521EE6EFFD00E3CE5E /* AJLetHouseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJLetHouseViewController.h; sourceTree = "<group>"; };
@@ -273,6 +306,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4AE33031EF51C61004B0A54 /* WebKit.framework in Frameworks */,
 				9E8788EDDBF16621BCB775EC /* libPods-MyHomeCloud.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -558,6 +592,8 @@
 		0B57F5881EC1989400B89CE2 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				A4AE33041EF51DA8004B0A54 /* MyReserver */,
+				A4AE32FE1EF51C0C004B0A54 /* WebView */,
 				0B19049A1EE6542B004C46EE /* HouseInfo */,
 				0B6E12B71EC421A700103571 /* LoginAndRegister */,
 				0B57F59B1EC198F100B89CE2 /* SuperVC */,
@@ -651,6 +687,7 @@
 		7C85C11C537F6C90A6EF472C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A4AE33021EF51C61004B0A54 /* WebKit.framework */,
 				28918ABEED7A893430DD718E /* libPods-MyHomeCloud.a */,
 				8195A483A5A5B25BE92F9997 /* libPods-MyHomeCloudTests.a */,
 			);
@@ -663,6 +700,9 @@
 				A40B20B31EC733280027399E /* AJHouseDetailsViewController.h */,
 				A40B20B41EC733280027399E /* AJHouseDetailsViewController.m */,
 				A40B20B51EC733280027399E /* AJHouseDetailsViewController.xib */,
+				A4AE33171EF52DF9004B0A54 /* AJEstateDetailsViewController.h */,
+				A4AE33181EF52DF9004B0A54 /* AJEstateDetailsViewController.m */,
+				A4AE33191EF52DF9004B0A54 /* AJEstateDetailsViewController.xib */,
 			);
 			path = HouseDetails;
 			sourceTree = "<group>";
@@ -690,6 +730,36 @@
 				A44AEBCE1EEEC72A00109FB8 /* AJLocationViewController.xib */,
 			);
 			path = HouseMap;
+			sourceTree = "<group>";
+		};
+		A4AE32FE1EF51C0C004B0A54 /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				A4AE32FF1EF51C0C004B0A54 /* AJWKWebViewController.h */,
+				A4AE33001EF51C0C004B0A54 /* AJWKWebViewController.m */,
+			);
+			path = WebView;
+			sourceTree = "<group>";
+		};
+		A4AE33041EF51DA8004B0A54 /* MyReserver */ = {
+			isa = PBXGroup;
+			children = (
+				A4AE33051EF51EEC004B0A54 /* AJNewReserverViewController.h */,
+				A4AE33061EF51EEC004B0A54 /* AJNewReserverViewController.m */,
+				A4AE33071EF51EEC004B0A54 /* AJNewReserverViewController.xib */,
+				A4AE330A1EF51F4A004B0A54 /* AJMyReserverViewController.h */,
+				A4AE330B1EF51F4A004B0A54 /* AJMyReserverViewController.m */,
+				A4AE330C1EF51F4A004B0A54 /* AJMyReserverViewController.xib */,
+				A4AE331C1EF52E7A004B0A54 /* AJReserverDetailsViewController.h */,
+				A4AE331D1EF52E7A004B0A54 /* AJReserverDetailsViewController.m */,
+				A4AE331E1EF52E7A004B0A54 /* AJReserverDetailsViewController.xib */,
+				A4AE33141EF52572004B0A54 /* AJReserverCellModel.h */,
+				A4AE33151EF52572004B0A54 /* AJReserverCellModel.m */,
+				A4AE330F1EF51F6F004B0A54 /* AJReserverTableViewCell.h */,
+				A4AE33101EF51F6F004B0A54 /* AJReserverTableViewCell.m */,
+				A4AE33111EF51F6F004B0A54 /* AJReserverTableViewCell.xib */,
+			);
+			path = MyReserver;
 			sourceTree = "<group>";
 		};
 		A4B864451EE6E61D00E3CE5E /* UserHouse */ = {
@@ -843,18 +913,23 @@
 				0B1904C81EE66192004C46EE /* AJHouseInfoTableViewCell.xib in Resources */,
 				A4E6A4951EC61243006B882A /* AJSearchViewController.xib in Resources */,
 				0B57F59A1EC198DB00B89CE2 /* AJNewsViewController.xib in Resources */,
+				A4AE33131EF51F6F004B0A54 /* AJReserverTableViewCell.xib in Resources */,
 				0B2343C91EC01CA1007A3AC1 /* Main.storyboard in Resources */,
 				0B302F6F1ED04F47006896CA /* AJUserHeadViewController.xib in Resources */,
 				0B1904C31EE66192004C46EE /* AJAddHouserViewController.xib in Resources */,
 				0B1904C51EE66192004C46EE /* AJAllHouseListViewController.xib in Resources */,
+				A4AE33091EF51EEC004B0A54 /* AJNewReserverViewController.xib in Resources */,
 				A44AEBD11EEEC72A00109FB8 /* AJLocationViewController.xib in Resources */,
+				A4AE330E1EF51F4A004B0A54 /* AJMyReserverViewController.xib in Resources */,
 				A411B3C11EC4B0BD00244B6E /* AJSettingViewController.xib in Resources */,
 				0B1904CD1EE66192004C46EE /* PreviewUpLoadCollectionViewCell.xib in Resources */,
 				A40B20B71EC733280027399E /* AJHouseDetailsViewController.xib in Resources */,
+				A4AE331B1EF52DF9004B0A54 /* AJEstateDetailsViewController.xib in Resources */,
 				0B1904AA1EE65EC1004C46EE /* AJSecondHouseTableViewCell.xib in Resources */,
 				A4FC23561EE6F37400924EEE /* AJNewHouseTableViewCell.xib in Resources */,
 				0B1904CA1EE66192004C46EE /* AJHouseDesViewController.xib in Resources */,
 				A4C3AF531EED418800DBBB4C /* AJSearchTableViewCell.xib in Resources */,
+				A4AE33201EF52E7A004B0A54 /* AJReserverDetailsViewController.xib in Resources */,
 				A4FC23511EE6F31200924EEE /* AJLetHouseTableViewCell.xib in Resources */,
 				0BE4D9F01ECC6B8200E4ADCD /* AJHomeViewController.xib in Resources */,
 				0B6E12C61EC4235300103571 /* AJLoginViewController.xib in Resources */,
@@ -972,9 +1047,11 @@
 			files = (
 				0B1904E11EE668EC004C46EE /* AJTbViewPresenter.m in Sources */,
 				0B1904A91EE65EC1004C46EE /* AJSecondHouseTableViewCell.m in Sources */,
+				A4AE33081EF51EEC004B0A54 /* AJNewReserverViewController.m in Sources */,
 				0B57F59E1EC198F100B89CE2 /* CTBaseViewController.m in Sources */,
 				0B23445C1EC03095007A3AC1 /* UIAlertController+TYKYAlertBlock.m in Sources */,
 				0B1904CE1EE66192004C46EE /* TJCircleView.m in Sources */,
+				A4AE331A1EF52DF9004B0A54 /* AJEstateDetailsViewController.m in Sources */,
 				0B2343C01EC01CA1007A3AC1 /* AppDelegate.m in Sources */,
 				0B2344601EC03095007A3AC1 /* UIView+SDXIBExtension.m in Sources */,
 				0B1904C91EE66192004C46EE /* AJHouseDesViewController.m in Sources */,
@@ -985,6 +1062,7 @@
 				0BE4D9EF1ECC6B8200E4ADCD /* AJHomeViewController.m in Sources */,
 				0BF95A0D1EEE55F00031D958 /* AJSB.m in Sources */,
 				0B15DE7E1ED2C8BE003A54E3 /* AFNetworkReachabilityManager.m in Sources */,
+				A4AE33121EF51F6F004B0A54 /* AJReserverTableViewCell.m in Sources */,
 				0B57F5A11EC1991800B89CE2 /* AjMainTabBarViewController.m in Sources */,
 				A44AEBD01EEEC72A00109FB8 /* AJLocationViewController.m in Sources */,
 				0B1904C61EE66192004C46EE /* AJNewHouseModel.m in Sources */,
@@ -1010,6 +1088,7 @@
 				A44AEBCF1EEEC72A00109FB8 /* AJLocation.m in Sources */,
 				A411B3C01EC4B0BD00244B6E /* AJSettingViewController.m in Sources */,
 				A40B20B61EC733280027399E /* AJHouseDetailsViewController.m in Sources */,
+				A4AE33011EF51C0C004B0A54 /* AJWKWebViewController.m in Sources */,
 				0B1904C41EE66192004C46EE /* AJAllHouseListViewController.m in Sources */,
 				0B1904A11EE6546E004C46EE /* AJSecondHouseViewController.m in Sources */,
 				0B2343BD1EC01CA1007A3AC1 /* main.m in Sources */,
@@ -1021,9 +1100,12 @@
 				A4C3AF521EED418800DBBB4C /* AJSearchTableViewCell.m in Sources */,
 				0BE2A35C1EC2D2CD00519840 /* AJMeCenterData.m in Sources */,
 				0B23447B1EC03095007A3AC1 /* AdjustScrollView.m in Sources */,
+				A4AE330D1EF51F4A004B0A54 /* AJMyReserverViewController.m in Sources */,
+				A4AE33161EF52572004B0A54 /* AJReserverCellModel.m in Sources */,
 				0B1904CB1EE66192004C46EE /* AJUploadPicModel.m in Sources */,
 				0B57F5991EC198DB00B89CE2 /* AJNewsViewController.m in Sources */,
 				0B23445B1EC03095007A3AC1 /* NSString+Extension.m in Sources */,
+				A4AE331F1EF52E7A004B0A54 /* AJReserverDetailsViewController.m in Sources */,
 				0B57F5941EC198D000B89CE2 /* AJUserCenterViewController.m in Sources */,
 				A4B8645A1EE6F00E00E3CE5E /* AJNewHouseViewController.m in Sources */,
 				A4E6A4941EC61243006B882A /* AJSearchViewController.m in Sources */,

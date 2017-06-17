@@ -58,7 +58,10 @@ NSString *const USER_ONLINE = @"该用户已在别处登录";
     }
     return YES;
 }
-
+- (BOOL)textFieldShouldClear:(UITextField *)textField{
+    _pswTF.text = nil;
+    return YES;
+}
 #pragma mark - event response
 //登陆
 - (IBAction)loginAction:(UIButton *)sender {

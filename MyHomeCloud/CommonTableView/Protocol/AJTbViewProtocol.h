@@ -46,6 +46,9 @@ typedef NS_ENUM(NSInteger,TableViewInitDataModal) {
 //收藏记录名称
 - (NSString *)favoriteClassName;
 
+//预约类型
+- (NSString *)reserverTypeName;
+
 //获取分页大小
 - (NSInteger)pageSize;
 

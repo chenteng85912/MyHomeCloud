@@ -51,6 +51,7 @@
 #define USER_ROLE               @"userRole"//用户角色
 
 //数据表
+#define USER_RESERVER           @"UserReserver"//用户预约
 #define SECOND_HAND_HOUSE   @"SecondHouse"//二手房屋数据表
 #define N_HOUSE             @"NHouse"//新房
 #define LET_HOUSE           @"LetHouse"//租房
@@ -95,6 +96,7 @@
 #define HOUSE_DISCRIBE          @"HouseDescribe"//房屋装修
 #define HOUSE_LATITUDE          @"Latitude"//维度
 #define HOUSE_LONGITUDE         @"Longitude"//经度
+#define ESTATE_ID               @"EstateId"//小区ID
 
 //租房信息
 #define LET_HOUSE_PRICE         @"LetHousePrice"//房屋租金

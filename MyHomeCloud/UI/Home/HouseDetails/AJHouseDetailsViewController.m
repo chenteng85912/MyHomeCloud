@@ -14,6 +14,8 @@
 #import "AJHomeDataCenter.h"
 #import "AJLocationViewController.h"
 #import "AJLocation.h"
+#import "AJEstateDetailsViewController.h"
+#import "AJNewReserverViewController.h"
 
 NSInteger const MAX_HOUSE_NUMBER = 10;
 CGFloat const HOUSE_INFO_HEITHT = 650;
@@ -332,6 +334,9 @@ CGFloat const HOUSE_INFO_HEITHT = 650;
             return;
         }
         debugLog(@"预约看房");
+        AJNewReserverViewController *reserver = [AJNewReserverViewController new];
+        reserver.houseInfo = _houseInfo;
+        APP_PUSH(reserver);
     }else{
         debugLog(@"咨询经纪人");
         [CTTool takePhoneNumber:self.houseInfo[USER_PHONE]];
@@ -358,6 +363,9 @@ CGFloat const HOUSE_INFO_HEITHT = 650;
     }else{
         //更多房源信息
         debugLog(@"更多房源信息");
+        AJEstateDetailsViewController *estate = [AJEstateDetailsViewController new];
+        estate.estateId = _houseInfo[ESTATE_ID];
+        APP_PUSH(estate);
     }
     
 }
