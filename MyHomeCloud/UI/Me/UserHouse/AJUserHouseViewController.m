@@ -24,7 +24,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
     if (self.showModal==MyHouseModal) {
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"add"] style:UIBarButtonItemStylePlain target:self action:@selector(addNewHouse)];
 
@@ -64,14 +64,17 @@
         self.pageVC.viewControllers = @[second,let,house];
 
     }else if (_showModal==ReserverHouseModal){
-        AJMyReserverViewController *second = [AJMyReserverViewController new];
-        second.reserverModal = SecondReserverModal;
-        second.title  =@"二手房";
-        
-        AJMyReserverViewController *let = [AJMyReserverViewController new];
-        let.reserverModal = LetReserverModal;
-        let.title  =@"租房";
-        self.pageVC.viewControllers = @[second,let];
+        AJMyReserverViewController *secondr = [AJMyReserverViewController new];
+        secondr.reserverModal = SecondReserverModal;
+        secondr.title  =@"二手房";
+        secondr.showModal = _showModal;
+
+        AJMyReserverViewController *letr = [AJMyReserverViewController new];
+        letr.reserverModal = LetReserverModal;
+        letr.title  =@"租房";
+        letr.showModal = _showModal;
+
+        self.pageVC.viewControllers = @[secondr,letr];
 
     }else{
         //二手房 出租房

@@ -158,7 +158,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                    <textInputTraits key="textInputTraits" keyboardType="phonePad" secureTextEntry="YES"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                     <connections>
                                         <outlet property="delegate" destination="-1" id="LXr-zq-9ew"/>
                                     </connections>

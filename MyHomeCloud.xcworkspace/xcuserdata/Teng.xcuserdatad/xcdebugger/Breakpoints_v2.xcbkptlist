@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MyHomeCloud/UI/HouseInfo/LetHouse/AJLetHouseViewController.m"
-            timestampString = "518780745.532511"
+            filePath = "MyHomeCloud/UI/Home/Search/AJSearchViewController.m"
+            timestampString = "518878345.872669"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
-            landmarkName = "-requestKeyName"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
+            landmarkName = "-showSearchResult"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MyHomeCloud/UI/Home/Search/AJSearchViewController.m"
-            timestampString = "518878345.872669"
+            filePath = "MyHomeCloud/UI/MyReserver/AJMyReserverViewController.m"
+            timestampString = "519404446.968346"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
-            landmarkName = "-showSearchResult"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "-reserverTypeName"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

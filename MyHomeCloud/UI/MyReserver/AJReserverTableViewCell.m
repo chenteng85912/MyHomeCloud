@@ -29,7 +29,7 @@
     _reserverTime.text = modal.rTime;
     _agenterName.text = modal.agenterName;
     _agenterPhone.text = modal.agenterPhone;
-    _reserverState.text = modal.state;
+    _reserverState.text = modal.stateStr;
     _reserverState.backgroundColor = modal.stateColor;
     
 }

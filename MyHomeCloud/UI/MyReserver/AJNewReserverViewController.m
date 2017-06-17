@@ -76,9 +76,11 @@
         [obj setObject:_houseName.text      forKey:HOUSE_ESTATE_NAME];
         [obj setObject:_agenterName.text    forKey:AGENTER_NAME];
         [obj setObject:_agenterPhone.text   forKey:AGENTER_PHONE];
-        [obj setObject:_userName.text       forKey:USER_NAME];
+        [obj setObject:_userName.text       forKey:RESERVER_NAME];
+        [obj setObject:_userPhone.text       forKey:RESERVER_PHONE];
         [obj setObject:_reserverTime.text   forKey:RESERVER_TIME];
         [obj setObject:_houseInfo[ESTATE_ID]   forKey:ESTATE_ID];
+        [obj setObject:[AVUser currentUser].mobilePhoneNumber   forKey:USER_PHONE];
 
         [obj setObject:@"0"                 forKey:RESERVER_STATE];
 

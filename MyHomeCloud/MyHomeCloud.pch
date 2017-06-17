@@ -107,6 +107,8 @@
 #define RESERVER_TIME       @"reserverTime"//预约时间
 #define RESERVER_STATE      @"reserverState"//预约状态
 #define RESERVER_TYPE       @"reserverType"//预约类型
+#define RESERVER_NAME       @"reserverName"//预约人姓名
+#define RESERVER_PHONE       @"reserverPhne"//预约人电话
 
 #define YEARS_DES            @"YearsDes"//证满5年
 #define WATCH_DES            @"WatchDes"//随时看房
