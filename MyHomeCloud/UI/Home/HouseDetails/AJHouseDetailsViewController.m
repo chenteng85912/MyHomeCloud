@@ -59,6 +59,7 @@ CGFloat const HOUSE_INFO_HEITHT = 650;
 @property (strong, nonatomic) AJLocationViewController *mapView;
 @property (strong, nonatomic) AVObject *likeHouse;
 @property (strong, nonatomic) AVObject *houseInfo;//当前房源信息
+@property (strong, nonatomic) AJNewReserverViewController *userReserer;//新预约
 
 
 @end
@@ -334,12 +335,14 @@ CGFloat const HOUSE_INFO_HEITHT = 650;
             return;
         }
         debugLog(@"预约看房");
-        AJNewReserverViewController *reserver = [AJNewReserverViewController new];
-        reserver.houseInfo = _houseInfo;
-        APP_PUSH(reserver);
+        [self addChildViewController:self.userReserer];
+        [UIView animateWithDuration:0.3 animations:^{
+            self.userReserer.view.alpha = 1.0;
+        }];
+    
     }else{
         debugLog(@"咨询经纪人");
-        [CTTool takePhoneNumber:self.houseInfo[USER_PHONE]];
+        [CTTool takePhoneNumber:self.houseInfo[AGENTER_PHONE]];
 
     }
    
@@ -462,6 +465,24 @@ CGFloat const HOUSE_INFO_HEITHT = 650;
         _mapView.houseObj = self.houseInfo;
     }
     return _mapView;
+}
+- (AJNewReserverViewController *)userReserer{
+    if (_userReserer ==nil) {
+        _userReserer = [AJNewReserverViewController new];
+        _userReserer.houseInfo = _houseInfo;
+        if (self.showModal==SecondModal) {
+            _userReserer.reserverModal = SecondReserverModal;
+        }else{
+            _userReserer.reserverModal = LetReserverModal;
+
+        }
+        _userReserer.view.alpha = 0;
+        [self.view addSubview:_userReserer.view];
+        _userReserer.view.frame = self.view.bounds;
+
+    }
+
+    return _userReserer;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

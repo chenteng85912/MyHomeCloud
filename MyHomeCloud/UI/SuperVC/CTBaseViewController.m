@@ -17,7 +17,7 @@
 #pragma mark - lift cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
+//    self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];

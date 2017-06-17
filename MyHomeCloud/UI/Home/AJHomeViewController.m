@@ -68,7 +68,7 @@ CGFloat const HEAD_BTN_HEIGHT = 100;
     
     AJSearchViewController *search = [AJSearchViewController new];
     UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:search];
-    [nav setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
+    nav.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     APP_PRESENT(nav);
 
     return NO;

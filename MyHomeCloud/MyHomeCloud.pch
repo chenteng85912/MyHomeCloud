@@ -97,11 +97,16 @@
 #define HOUSE_LATITUDE          @"Latitude"//维度
 #define HOUSE_LONGITUDE         @"Longitude"//经度
 #define ESTATE_ID               @"EstateId"//小区ID
-
+#define AGENTER_NAME            @"agenterName"//经纪人姓名
+#define AGENTER_PHONE           @"agenterPhone"//经纪人电话
 //租房信息
 #define LET_HOUSE_PRICE         @"LetHousePrice"//房屋租金
 #define LET_ESTATE_PRICE        @"LetEstatePrice"//房屋物业费
 
+
+#define RESERVER_TIME       @"reserverTime"//预约时间
+#define RESERVER_STATE      @"reserverState"//预约状态
+#define RESERVER_TYPE       @"reserverType"//预约类型
 
 #define YEARS_DES            @"YearsDes"//证满5年
 #define WATCH_DES            @"WatchDes"//随时看房

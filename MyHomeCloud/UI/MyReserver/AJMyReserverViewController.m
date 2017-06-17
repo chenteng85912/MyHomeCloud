@@ -19,7 +19,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    if (_isNewReserver) {
+        self.title = @"我的预约";
+
+        UIButton *left = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+        [left setImage:LOADIMAGE(@"back") forState:UIControlStateNormal];
+        left.imageEdgeInsets = UIEdgeInsetsMake(0, -5, 0, 5);
+        
+        [left addTarget:self action:@selector(backToPreVC) forControlEvents:UIControlEventTouchUpInside];
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:left];
+    }
     // Do any additional setup after loading the view from its nib.
+}
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+
 }
 #pragma mark - AJTbViewProtocol
 - (BOOL)makeMJRefresh{
@@ -77,6 +91,9 @@
     return 0.01;
 }
 
+- (void)backToPreVC{
+    POPVC;
+}
 - (AJReserverDetailsViewController *)details{
     if (_details ==nil) {
         _details = [AJReserverDetailsViewController new];

@@ -7,8 +7,18 @@
 //
 
 #import "AJNewReserverViewController.h"
+#import "AJPickViewTextField.h"
 
 @interface AJNewReserverViewController ()
+@property (weak, nonatomic) IBOutlet UIView *infoView;
+@property (weak, nonatomic) IBOutlet UILabel *agenterName;
+@property (weak, nonatomic) IBOutlet UILabel *agenterPhone;
+@property (weak, nonatomic) IBOutlet UIButton *confirmBut;
+@property (weak, nonatomic) IBOutlet UIButton *closeBtn;
+@property (weak, nonatomic) IBOutlet UILabel *houseName;
+@property (weak, nonatomic) IBOutlet UITextField *userName;
+@property (weak, nonatomic) IBOutlet UITextField *userPhone;
+@property (weak, nonatomic) IBOutlet AJPickViewTextField *reserverTime;
 
 @end
 
@@ -16,11 +26,78 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"预约看房";
+//    self.title = @"预约看房";
     
+    _houseName.text = _houseInfo[HOUSE_ESTATE_NAME];
+    _agenterName.text = _houseInfo[AGENTER_NAME];
+    _agenterPhone.text = _houseInfo[AGENTER_PHONE];
+
     // Do any additional setup after loading the view from its nib.
 }
+#pragma mark -life UITextFieldDelegate
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+        if ([string isEqualToString:@"\n"]) {
+            [textField resignFirstResponder];
+        return NO;
+    }
+    return YES;
+}
+
 - (IBAction)confirmAction:(UIButton *)sender {
+    [self.view endEditing:YES];
+
+    if (sender.tag==1) {
+        [UIView animateWithDuration:0.2 animations:^{
+            self.view.alpha = 0;
+        } completion:^(BOOL finished) {
+            [self removeFromParentViewController];
+
+        }];
+    }else{
+        if (!_userName.hasText) {
+            [self.view showTips:_userName.placeholder withState:TYKYHUDModeWarning complete:nil];
+            return;
+        }
+        if (!_userPhone.hasText) {
+            [self.view showTips:_userPhone.placeholder withState:TYKYHUDModeWarning complete:nil];
+            return;
+        }
+        if (!_reserverTime.hasText) {
+            [self.view showTips:_reserverTime.placeholder withState:TYKYHUDModeWarning complete:nil];
+            return;
+        }
+        
+        AVObject *obj = [[AVObject alloc] initWithClassName:USER_RESERVER];
+        [obj setObject:_houseName.text      forKey:HOUSE_ESTATE_NAME];
+        [obj setObject:_agenterName.text    forKey:AGENTER_NAME];
+        [obj setObject:_agenterPhone.text   forKey:AGENTER_PHONE];
+        [obj setObject:_userName.text       forKey:USER_NAME];
+        [obj setObject:_reserverTime.text   forKey:RESERVER_TIME];
+        [obj setObject:_houseInfo[ESTATE_ID]   forKey:ESTATE_ID];
+
+        [obj setObject:@"0"                 forKey:RESERVER_STATE];
+
+        if (_reserverModal ==SecondReserverModal) {
+            [obj setObject:SECOND_HAND_HOUSE    forKey:RESERVER_TYPE];
+
+        }else{
+            [obj setObject:LET_HOUSE            forKey:RESERVER_TYPE];
+
+        }
+        
+        [obj saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            if (!succeeded) {
+                [self.view showTips:@"提交预约失败" withState:TYKYHUDModeFail complete:nil];
+
+                return ;
+            }
+            AJMyReserverViewController *myReserver = [AJMyReserverViewController new];
+            myReserver.reserverModal =  _reserverModal;
+            myReserver.isNewReserver = YES;
+            APP_PUSH(myReserver);
+        }];
+        
+    }
 }
 
 - (void)didReceiveMemoryWarning {

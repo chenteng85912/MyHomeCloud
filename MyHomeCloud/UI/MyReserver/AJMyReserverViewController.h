@@ -15,5 +15,6 @@ typedef NS_ENUM(NSInteger,UserReserverModal) {
 @interface AJMyReserverViewController : AJBaseTbViewController
 
 @property (assign, nonatomic) UserReserverModal reserverModal;
+@property (assign, nonatomic) BOOL isNewReserver;
 
 @end

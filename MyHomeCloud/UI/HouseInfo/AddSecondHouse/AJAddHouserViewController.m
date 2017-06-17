@@ -20,12 +20,14 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *houseBaseInfo;
 @property (weak, nonatomic) IBOutlet AJPickViewTextField *houseDescribe;
+@property (weak, nonatomic) IBOutlet UITextField *agenterPhone;
 
 @property (weak, nonatomic) IBOutlet UITextField *houseName;
 @property (weak, nonatomic) IBOutlet UITextField *houseAreaage;
 @property (weak, nonatomic) IBOutlet UITextField *houseTotal;
 @property (weak, nonatomic) IBOutlet UIView *letView;
 @property (weak, nonatomic) IBOutlet UIView *secondView;
+@property (weak, nonatomic) IBOutlet UITextField *agenterName;
 
 @property (weak, nonatomic) IBOutlet AJPickViewTextField *houseRooms;
 @property (weak, nonatomic) IBOutlet AJPickViewTextField *houseDirection;
@@ -124,20 +126,32 @@
         [self.view showTips:self.houseRooms.placeholder withState:TYKYHUDModeWarning complete:nil];
         return;
     }
-    if (!self.houseTotal.hasText&&_addModal==SecondHouseModal) {
-        [self.view showTips:self.houseTotal.placeholder withState:TYKYHUDModeWarning complete:nil];
+    if (!_agenterName.hasText) {
+        [self.view showTips:_agenterName.placeholder withState:TYKYHUDModeWarning complete:nil];
+        return;
+    }
+    if (!_agenterPhone.hasText&&_addModal==SecondHouseModal) {
+        [self.view showTips:_agenterPhone.placeholder withState:TYKYHUDModeWarning complete:nil];
         return;
     }
     if (!self.letHousePrice.hasText&&_addModal==LetHouseModal) {
         [self.view showTips:self.letHousePrice.placeholder withState:TYKYHUDModeWarning complete:nil];
         return;
     }
+   
     AJHouseDesViewController *des = [AJHouseDesViewController new];
     des.houseObj = [self creatHouseInfo];
     
     APP_PUSH(des);
 }
-
+#pragma mark -life UITextFieldDelegate
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    if ([string isEqualToString:@"\n"]) {
+        [textField resignFirstResponder];
+        return NO;
+    }
+    return YES;
+}
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
     
     if (textField.tag==0) {

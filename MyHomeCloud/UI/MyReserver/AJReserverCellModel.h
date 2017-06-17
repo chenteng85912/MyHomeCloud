@@ -8,6 +8,7 @@
 
 #import "AJTbViewCellModel.h"
 
+
 @interface AJReserverCellModel : AJTbViewCellModel
 
 @property (strong, nonatomic) NSString *houseName;

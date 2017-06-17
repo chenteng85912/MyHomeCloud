@@ -10,22 +10,6 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MyHomeCloud/UI/HouseInfo/LetHouse/AJLetHouseViewController.m"
-            timestampString = "518780725.382941"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
-            landmarkName = "-tableViewStyle"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MyHomeCloud/UI/HouseInfo/LetHouse/AJLetHouseViewController.m"
             timestampString = "518780745.532511"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"

@@ -13,6 +13,7 @@ CGFloat const PICKVIEW_HEIGHT = 200.0;
 @interface AJPickViewTextField ()<UIPickerViewDelegate,UIPickerViewDataSource>
 
 @property (strong, nonatomic) UIPickerView *pickView;
+@property (strong, nonatomic) UIDatePicker *datePick;
 
 @property (strong, nonatomic) UIToolbar *toolBar;
 
@@ -29,26 +30,31 @@ CGFloat const PICKVIEW_HEIGHT = 200.0;
 - (void)drawRect:(CGRect)rect
 {
    
-    if (self.tag!=2) {
-        [self.pickView selectRow:self.firstArray.count/2 inComponent:0 animated:NO];
-        [self pickerView:self.pickView didSelectRow:self.firstArray.count/2 inComponent:0];
-    }else{
-        self.first = self.firstArray[2];
-        self.second = self.secondArray[2];
-        self.third = self.thirdArray[2];
-        
-        [self.pickView selectRow:2 inComponent:0 animated:NO];
-        [self pickerView:self.pickView didSelectRow:2 inComponent:0];
-        
-        [self.pickView selectRow:2 inComponent:1 animated:NO];
-        [self pickerView:self.pickView didSelectRow:2 inComponent:1];
-        
-        [self.pickView selectRow:2 inComponent:2 animated:NO];
-        [self pickerView:self.pickView didSelectRow:2 inComponent:2];
-      
-    }
+    if (self.tag==7) {
+        self.inputView = self.datePick;
 
-    self.inputView = self.pickView;
+    }else{
+        if (self.tag!=2) {
+            [self.pickView selectRow:self.firstArray.count/2 inComponent:0 animated:NO];
+            [self pickerView:self.pickView didSelectRow:self.firstArray.count/2 inComponent:0];
+        }else{
+            self.first = self.firstArray[2];
+            self.second = self.secondArray[2];
+            self.third = self.thirdArray[2];
+            
+            [self.pickView selectRow:2 inComponent:0 animated:NO];
+            [self pickerView:self.pickView didSelectRow:2 inComponent:0];
+            
+            [self.pickView selectRow:2 inComponent:1 animated:NO];
+            [self pickerView:self.pickView didSelectRow:2 inComponent:1];
+            
+            [self.pickView selectRow:2 inComponent:2 animated:NO];
+            [self pickerView:self.pickView didSelectRow:2 inComponent:2];
+            
+        }
+        self.inputView = self.pickView;
+    }
+    
     self.inputAccessoryView = self.toolBar;
     
 }
@@ -128,6 +134,26 @@ CGFloat const PICKVIEW_HEIGHT = 200.0;
     [self resignFirstResponder];
     [super resignFirstResponder];
     
+}
+- (void)dateChanged:(UIDatePicker *)sender{
+
+    NSDateFormatter *formatter = [NSDateFormatter new];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    self.text = [formatter stringFromDate:sender.date];
+}
+- (UIDatePicker *)datePick{
+    if (_datePick ==nil) {
+        _datePick = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+        _datePick.datePickerMode = UIDatePickerModeDateAndTime;
+        _datePick.minuteInterval = 30;
+        _datePick.minimumDate = [NSDate new];
+        _datePick.maximumDate = [NSDate dateWithTimeIntervalSinceNow:30*24*60*60];
+        _datePick.date = [NSDate new];
+        [_datePick addTarget:self action:@selector(dateChanged:) forControlEvents:UIControlEventValueChanged ];
+        _datePick.backgroundColor = [UIColor whiteColor];
+
+    }
+    return _datePick;
 }
 - (UIPickerView *)pickView{
     if (_pickView ==nil) {

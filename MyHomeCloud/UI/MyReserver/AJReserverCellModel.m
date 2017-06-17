@@ -8,11 +8,6 @@
 
 #import "AJReserverCellModel.h"
 
-NSString *const AGENTER_NAME = @"agenterName";
-NSString *const AGENTER_PHONE = @"agenterPhone";
-NSString *const RESERVER_TIME = @"reserverTime";
-NSString *const RESERVER_STATE = @"reserverState";
-
 
 @implementation AJReserverCellModel
 
@@ -35,9 +30,7 @@ NSString *const RESERVER_STATE = @"reserverState";
     }
     _estateId = self.objectData[ESTATE_ID];
     
-    NSDateFormatter *formatter = [NSDateFormatter new];
-    [formatter setDateFormat:@"yyyy-MM-dd hh:mm"];
-    _rTime = [formatter stringFromDate:self.objectData[RESERVER_TIME]];
+    _rTime = self.objectData[RESERVER_TIME];
 
 }
 @end

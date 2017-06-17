@@ -7,8 +7,10 @@
 //
 
 #import "CTBaseViewController.h"
+#import "AJMyReserverViewController.h"
 
 @interface AJNewReserverViewController : CTBaseViewController
 @property (strong, nonatomic) AVObject *houseInfo;//房源信息
+@property (assign, nonatomic) UserReserverModal reserverModal;
 
 @end

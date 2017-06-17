@@ -51,7 +51,8 @@ NSString *const ServicePhone = @"4006005555";
     model.title = @"我的预约";
     model.iconName = @"reserver";
     model.isNeedLogin = YES;
-    model.className = NSStringFromClass([AJOtherViewController class]);
+    model.showModal = ReserverHouseModal;
+    model.className = NSStringFromClass([AJUserHouseViewController class]);
     [temp addObject:model];
     
     [dataArray addObject:temp];
