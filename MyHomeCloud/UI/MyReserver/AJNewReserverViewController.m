@@ -92,7 +92,9 @@
 
         }
         
+        [self.view showHUD:@"正在提交..."];
         [obj saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            [self.view removeHUD];
             if (!succeeded) {
                 [self.view showTips:@"提交预约失败" withState:TYKYHUDModeFail complete:nil];
 
@@ -103,6 +105,7 @@
                 AJMyReserverViewController *myReserver = [AJMyReserverViewController new];
                 myReserver.reserverModal =  _reserverModal;
                 myReserver.isNewReserver = YES;
+                myReserver.reserverModal = _reserverModal;
                 APP_PUSH(myReserver);
                 [UIView animateWithDuration:0.2 animations:^{
                     self.view.alpha = 0;
