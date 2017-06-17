@@ -20,7 +20,9 @@
 @property (strong, nonatomic) NSString *estateId;
 @property (strong, nonatomic) NSString *creatTime;
 
-@property (strong, nonatomic) NSString *state;//0待确认 1已确认 2已撤销 
+@property (strong, nonatomic) NSString *state;//0待确认 1已确认 2已撤销
+@property (strong, nonatomic) NSString *stateStr;//0待确认 1已确认 2已撤销
+
 @property (strong, nonatomic) UIColor *stateColor;
 
 @end

@@ -21,11 +21,16 @@
 
     _state = self.objectData[RESERVER_STATE];
     if (_state.integerValue==0) {
+        _stateStr = @"待确认";
         _stateColor = [UIColor lightGrayColor];
 
     }else if(_state.integerValue==1){
+        _stateStr = @"已确认";
+
         _stateColor = [UIColor greenColor];
     }else{
+        _stateStr = @"已撤销";
+
         _stateColor = [UIColor redColor];
     }
     _estateId = self.objectData[ESTATE_ID];
