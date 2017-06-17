@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *reserverTime;
 @property (weak, nonatomic) IBOutlet UILabel *agenterName;
 @property (weak, nonatomic) IBOutlet UILabel *agenterPhone;
+@property (weak, nonatomic) IBOutlet UILabel *creatTime;
 
 @property (weak, nonatomic) IBOutlet UILabel *reserverState;
 @end
@@ -23,6 +24,7 @@
 - (void)processCellData:(id<AJTbViewCellModelProtocol>)data{
     
     AJReserverCellModel *modal = (AJReserverCellModel *)data;
+    _creatTime.text = modal.creatTime;
     _houseName.text = modal.houseName;
     _reserverTime.text = modal.rTime;
     _agenterName.text = modal.agenterName;

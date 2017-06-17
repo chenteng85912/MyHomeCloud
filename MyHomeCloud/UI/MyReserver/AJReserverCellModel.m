@@ -31,6 +31,12 @@
     _estateId = self.objectData[ESTATE_ID];
     
     _rTime = self.objectData[RESERVER_TIME];
+    
+    NSDateFormatter *formatter = [NSDateFormatter new];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    _creatTime = [formatter stringFromDate:self.objectData.createdAt];
+    
+    self.cellHeight  =200;
 
 }
 @end

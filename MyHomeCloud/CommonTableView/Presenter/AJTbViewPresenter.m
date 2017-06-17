@@ -67,12 +67,16 @@ NSInteger const defaultPageSize = 50;
         }else{
             self.query.className = [_tbViewVC requestClassName];
             [self.query whereKey:USER_PHONE equalTo:[_tbViewVC requestKeyName]];
+            if (self.showModal==ReserverHouseModal) {
+                [self.query whereKey:RESERVER_TYPE equalTo:[_tbViewVC reserverTypeName]];
 
+            }
         }
 
     }else{
+        
         self.query.className = [_tbViewVC requestClassName];
-
+        
     }
     
     _pageNo = 0;

@@ -34,6 +34,11 @@
 
     // Do any additional setup after loading the view from its nib.
 }
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+
+}
 #pragma mark -life UITextFieldDelegate
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
         if ([string isEqualToString:@"\n"]) {
@@ -91,10 +96,20 @@
 
                 return ;
             }
-            AJMyReserverViewController *myReserver = [AJMyReserverViewController new];
-            myReserver.reserverModal =  _reserverModal;
-            myReserver.isNewReserver = YES;
-            APP_PUSH(myReserver);
+            [self.view showTips:@"提交预约成功" withState:TYKYHUDModeSuccess complete:^{
+               
+                AJMyReserverViewController *myReserver = [AJMyReserverViewController new];
+                myReserver.reserverModal =  _reserverModal;
+                myReserver.isNewReserver = YES;
+                APP_PUSH(myReserver);
+                [UIView animateWithDuration:0.2 animations:^{
+                    self.view.alpha = 0;
+                } completion:^(BOOL finished) {
+                    [self removeFromParentViewController];
+                    
+                }];
+            }];
+          
         }];
         
     }

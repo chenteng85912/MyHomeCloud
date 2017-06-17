@@ -126,6 +126,7 @@
             <connections>
                 <outlet property="agenterName" destination="Tu4-N9-IJe" id="UC5-Gp-vgf"/>
                 <outlet property="agenterPhone" destination="Ldc-OG-W0f" id="2nf-Nn-C8Z"/>
+                <outlet property="creatTime" destination="8lc-bg-NZP" id="bRi-97-lt3"/>
                 <outlet property="houseName" destination="agX-FG-6dM" id="CAP-V4-xd8"/>
                 <outlet property="reserverState" destination="ECj-mA-aeo" id="hAU-4z-eoy"/>
                 <outlet property="reserverTime" destination="zcK-j6-XpV" id="vtO-B8-6u9"/>

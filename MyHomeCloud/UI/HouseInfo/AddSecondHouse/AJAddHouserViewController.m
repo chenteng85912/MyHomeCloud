@@ -82,6 +82,9 @@
     
     [houseData setObject:_houseTotalFloor.text          forKey:HOUSE_TOTAL_FLOOR];
     [houseData setObject:_houseName.text                forKey:HOUSE_ESTATE_NAME];
+    [houseData setObject:_agenterName.text              forKey:AGENTER_NAME];
+    [houseData setObject:_agenterPhone.text             forKey:AGENTER_PHONE];
+
     //房源基本信息
     [houseData setObject:self.houseInfoData[HOUSE_DEVELOPER]           forKey:HOUSE_DEVELOPER];
     [houseData setObject:self.houseInfoData[HOUSE_AREA]                forKey:HOUSE_AREA];
@@ -130,7 +133,7 @@
         [self.view showTips:_agenterName.placeholder withState:TYKYHUDModeWarning complete:nil];
         return;
     }
-    if (!_agenterPhone.hasText&&_addModal==SecondHouseModal) {
+    if (!_agenterPhone.hasText) {
         [self.view showTips:_agenterPhone.placeholder withState:TYKYHUDModeWarning complete:nil];
         return;
     }
