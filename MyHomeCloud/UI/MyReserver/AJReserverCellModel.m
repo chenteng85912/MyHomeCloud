@@ -41,7 +41,7 @@
     [formatter setDateFormat:@"yyyy-MM-dd"];
     _creatTime = [formatter stringFromDate:self.objectData.createdAt];
     
-    self.cellHeight  =200;
+    self.cellHeight  = 180;
 
 }
 @end

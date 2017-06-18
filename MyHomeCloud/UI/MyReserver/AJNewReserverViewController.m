@@ -104,13 +104,16 @@
                
                 AJMyReserverViewController *myReserver = [AJMyReserverViewController new];
                 myReserver.reserverModal =  _reserverModal;
+                myReserver.showModal = ReserverHouseModal;
                 myReserver.isNewReserver = YES;
-                myReserver.reserverModal = _reserverModal;
                 APP_PUSH(myReserver);
                 [UIView animateWithDuration:0.2 animations:^{
                     self.view.alpha = 0;
                 } completion:^(BOOL finished) {
                     [self removeFromParentViewController];
+                    _agenterPhone.text = nil;
+                    _agenterName.text = nil;
+                    _reserverTime.text = nil;
                     
                 }];
             }];

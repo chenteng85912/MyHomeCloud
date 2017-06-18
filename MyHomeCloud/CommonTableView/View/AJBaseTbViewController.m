@@ -348,7 +348,7 @@
                 
                 [weakSelf.dataArray removeObjectAtIndex:indexPath.row];
                 [weakSelf.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-                
+                [weakSelf reStupTableviewFooterView:50];
                 if (weakSelf.dataArray.count==0) {
                     [weakSelf.tableView addNoDataTipView];
                 }

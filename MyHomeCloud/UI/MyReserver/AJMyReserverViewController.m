@@ -21,6 +21,7 @@
     [super viewDidLoad];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     if (_isNewReserver) {
+        
         self.title = @"我的预约";
 
         UIButton *left = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
@@ -50,7 +51,7 @@
 - (NSString *)requestClassName{
         return USER_RESERVER;
     
-    }
+}
 - (NSString *)requestKeyName{
     return [AVUser currentUser].mobilePhoneNumber;
 }
@@ -82,7 +83,7 @@
     
     AJReserverCellModel *model = (AJReserverCellModel *)self.dataArray[indexPath.row];
     
-    self.details.reserverModal = model;
+//    self.details.reserverModal = model;
   
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{

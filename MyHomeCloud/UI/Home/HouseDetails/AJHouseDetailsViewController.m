@@ -470,7 +470,7 @@ CGFloat const HOUSE_INFO_HEITHT = 650;
     if (_userReserer ==nil) {
         _userReserer = [AJNewReserverViewController new];
         _userReserer.houseInfo = _houseInfo;
-        if (self.showModal==SecondModal) {
+        if (self.detailsModal==SecondModal) {
             _userReserer.reserverModal = SecondReserverModal;
         }else{
             _userReserer.reserverModal = LetReserverModal;
