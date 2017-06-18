@@ -10,4 +10,9 @@
 
 @interface AJNewHouseModel : AJTbViewCellModel
 
+@property (strong, nonatomic) NSString *houseName;//名称
+@property (strong, nonatomic) NSString *devlopName;//开发商
+@property (strong, nonatomic) NSString *areaName;//区域
+@property (strong, nonatomic) NSString *houseYear;//年代
+
 @end

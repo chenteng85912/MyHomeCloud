@@ -7,8 +7,11 @@
 //
 
 #import "CTBaseViewController.h"
+#import "AJHouseDetailsViewController.h"
 
 @interface AJEstateDetailsViewController : CTBaseViewController
 
-@property (strong, nonatomic) NSString *estateId;
+@property (strong, nonatomic) AVObject *houseInfo;
+@property (assign, nonatomic) DetailsHouseModal detailsModal;
+
 @end

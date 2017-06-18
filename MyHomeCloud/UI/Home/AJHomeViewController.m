@@ -307,7 +307,14 @@ CGFloat const HEAD_BTN_HEIGHT = 100;
 - (IBAction)btnAction:(UIButton *)sender {
     [self openMoreHouseData:sender];
 }
--(CTAutoLoopViewController*)autoLoopView
+-(void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset
+
+{
+
+    [self.navigationController setNavigationBarHidden:velocity.y>0?YES:NO animated:NO];
+        
+}
+- (CTAutoLoopViewController*)autoLoopView
 {
     if (!_autoLoopView) {
         _autoLoopView = [[CTAutoLoopViewController alloc] initWithFrame:CGRectMake(0, 0, dWidth, AutoLoopHeight) onceLoopTime:3.0 cellDisplayModal:CTLoopCellDisplayImage scollDiretion:CTLoopScollDirectionHorizontal];

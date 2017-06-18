@@ -131,6 +131,9 @@ CGFloat const PICKVIEW_HEIGHT = 200.0;
 }
 
 - (void)comfirnAction{
+    if (self.tag==7) {
+        [self dateChanged:self.datePick];
+    }
     [self resignFirstResponder];
     [super resignFirstResponder];
     

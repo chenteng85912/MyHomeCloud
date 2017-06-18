@@ -24,12 +24,18 @@ NSString *const ServicePhone = @"4006005555";
     
     //section0
     AJMeModel *model = [AJMeModel new];
-    model.title = @"我的房源";
-    model.iconName = @"house";
-    model.showModal = MyHouseModal;
-    model.isNeedLogin = YES;
-    model.className = NSStringFromClass([AJUserHouseViewController class]);
-    [temp addObject:model];
+    if ([AVUser currentUser]) {
+        NSInteger role = [[AVUser currentUser][USER_ROLE] integerValue];
+        if (role<=3) {
+            model.title = @"我的房源";
+            model.iconName = @"house";
+            model.showModal = MyHouseModal;
+            model.isNeedLogin = YES;
+            model.className = NSStringFromClass([AJUserHouseViewController class]);
+            [temp addObject:model];
+
+        }
+    }
     
     model = [AJMeModel new];
     model.title = @"我的关注";

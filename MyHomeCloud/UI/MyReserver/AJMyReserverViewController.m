@@ -42,6 +42,10 @@
     [super viewWillAppear:animated];
 
 }
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+
+}
 #pragma mark - AJTbViewProtocol
 - (BOOL)makeMJRefresh{
     
@@ -80,6 +84,7 @@
 }
 - (void)loadDataSuccess{
     [self.view removeHUD];
+    [self.tableView reloadData];
     
 }
 #pragma mark - UITableViewDelegate
@@ -88,7 +93,14 @@
     
     AJReserverCellModel *model = (AJReserverCellModel *)self.dataArray[indexPath.row];
     
-//    self.details.reserverModal = model;
+    [self addChildViewController:self.details];
+    self.details.reserverModal = model;
+
+    [self.details refreshView];
+    [UIView animateWithDuration:0.3 animations:^{
+        self.details.view.alpha = 1.0;
+    }];
+
   
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -104,7 +116,11 @@
 - (AJReserverDetailsViewController *)details{
     if (_details ==nil) {
         _details = [AJReserverDetailsViewController new];
-        [self addChildViewController:_details];
+        _details.view.alpha = 0;
+        
+        [self.view addSubview:_details.view];
+        _details.view.frame = self.view.bounds;
+
     }
     return _details;
 }

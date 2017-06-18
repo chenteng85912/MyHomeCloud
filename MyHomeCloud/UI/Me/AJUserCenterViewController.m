@@ -33,7 +33,6 @@ CGFloat const IMAGEHEIGHT  = 240.0f;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.dataArray = [AJMeCenterData userCenterData];
     
     [self.tbView registerClass:[UITableViewCell class] forCellReuseIdentifier:CellIdentifier];
     self.tbView.tableHeaderView = self.headView;
@@ -192,17 +191,20 @@ CGFloat const IMAGEHEIGHT  = 240.0f;
             self.roleIcon.image = LOADIMAGE(@"estater");
         }else if (role==2) {
             self.roleIcon.image = LOADIMAGE(@"agency");
-        }else{
+        }else if (role==3){
             self.roleIcon.image = LOADIMAGE(@"admin");
             
+        }else{
+            self.roleIcon.image = LOADIMAGE(@"visitor");
+
         }
     }else{
-        self.roleIcon.image = LOADIMAGE(@"visitor");
         [_userName setTitle:@"登录/注册" forState:UIControlStateNormal];
         self.userHead.image = LOADIMAGE(@"lauchIcon");
 
     }
-    
+    self.dataArray = [AJMeCenterData userCenterData];
+    [self.tbView reloadData];
 
 }
 - (void)didReceiveMemoryWarning {

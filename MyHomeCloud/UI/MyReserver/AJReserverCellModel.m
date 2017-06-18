@@ -16,8 +16,8 @@
     _agenterName = self.objectData[AGENTER_NAME];
     _agenterPhone = self.objectData[AGENTER_PHONE];
     
-    _rUserName = self.objectData[USER_NAME];
-    _rUserPhone = self.objectData[USER_PHONE];
+    _rUserName = self.objectData[RESERVER_NAME];
+    _rUserPhone = self.objectData[RESERVER_PHONE];
 
     _state = self.objectData[RESERVER_STATE];
     if (_state.integerValue==0) {
@@ -27,7 +27,7 @@
     }else if(_state.integerValue==1){
         _stateStr = @"已确认";
 
-        _stateColor = [UIColor greenColor];
+        _stateColor = [UIColor colorWithRed:0 green:128.0/255.0 blue:0 alpha:1];
     }else{
         _stateStr = @"已撤销";
 

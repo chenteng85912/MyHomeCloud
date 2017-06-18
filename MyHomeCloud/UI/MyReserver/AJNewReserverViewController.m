@@ -41,9 +41,16 @@
 }
 #pragma mark -life UITextFieldDelegate
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
-        if ([string isEqualToString:@"\n"]) {
-            [textField resignFirstResponder];
+    NSString *resultStr = [textField.text stringByAppendingString:string];
+    if (textField==_userPhone&&resultStr.length>11) {
+        [textField resignFirstResponder];
+        [self.view showTips:@"手机号码为11位数字" withState:TYKYHUDModeWarning complete:nil];
         return NO;
+        
+    }
+    if ([string isEqualToString:@"\n"]) {
+        [textField resignFirstResponder];
+    return NO;
     }
     return YES;
 }
@@ -73,11 +80,17 @@
         }
         
         AVObject *obj = [[AVObject alloc] initWithClassName:USER_RESERVER];
+        
+        [obj setObject:_houseInfo[HOUSE_AMOUNT]      forKey:HOUSE_AMOUNT];
+        [obj setObject:_houseInfo[HOUSE_AREAAGE]     forKey:HOUSE_AREAAGE];
+        
         [obj setObject:_houseName.text      forKey:HOUSE_ESTATE_NAME];
         [obj setObject:_agenterName.text    forKey:AGENTER_NAME];
         [obj setObject:_agenterPhone.text   forKey:AGENTER_PHONE];
         [obj setObject:_userName.text       forKey:RESERVER_NAME];
-        [obj setObject:_userPhone.text       forKey:RESERVER_PHONE];
+        [obj setObject:_userPhone.text      forKey:RESERVER_PHONE];
+       
+
         [obj setObject:_reserverTime.text   forKey:RESERVER_TIME];
         [obj setObject:_houseInfo[ESTATE_ID]   forKey:ESTATE_ID];
         [obj setObject:[AVUser currentUser].mobilePhoneNumber   forKey:USER_PHONE];

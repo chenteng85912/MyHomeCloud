@@ -103,6 +103,11 @@
 #define LET_HOUSE_PRICE         @"LetHousePrice"//房屋租金
 #define LET_ESTATE_PRICE        @"LetEstatePrice"//房屋物业费
 
+#define HOUSE_SALES_POINT    @"HouseSalingPoint"//核心卖点
+#define ESTATE_INTR          @"EstateIntroduction"//小区简介
+#define TRAFFIC_INFO         @"TrafficInfo"//交通信息
+#define SUPPORT_MEASURES     @"SupportMeasures"//周边配套
+#define TITLE_NAME           @"TitleName"//标题
 
 #define RESERVER_TIME       @"reserverTime"//预约时间
 #define RESERVER_STATE      @"reserverState"//预约状态

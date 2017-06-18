@@ -149,6 +149,15 @@
 }
 #pragma mark -life UITextFieldDelegate
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    
+    NSString *resultStr = [textField.text stringByAppendingString:string];
+    if (textField==_agenterPhone&&resultStr.length>11) {
+        [textField resignFirstResponder];
+        [self.view showTips:@"手机号码为11位数字" withState:TYKYHUDModeWarning complete:nil];
+        return NO;
+        
+    }
+
     if ([string isEqualToString:@"\n"]) {
         [textField resignFirstResponder];
         return NO;

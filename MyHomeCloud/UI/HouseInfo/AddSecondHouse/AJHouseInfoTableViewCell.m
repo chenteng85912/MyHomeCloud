@@ -19,11 +19,10 @@
 @implementation AJHouseInfoTableViewCell
 
 - (void)processCellData:(AJNewHouseModel *)data{
-    AVObject *object = data.objectData;
-    _houseName.text  = object[HOUSE_ESTATE_NAME];
-    _devlopName.text = object[HOUSE_DEVELOPER];
-    _areaName.text = object[HOUSE_AREA];
-    _houseYear.text = object[HOUSE_YEARS];
+    _houseName.text  = data.houseName;
+    _devlopName.text = data.devlopName;
+    _areaName.text = data.areaName;
+    _houseYear.text = data.houseYear;
     
 }
 - (void)awakeFromNib {

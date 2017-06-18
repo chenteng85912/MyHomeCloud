@@ -7,6 +7,8 @@
 //
 
 #import "AJHouseDetailsViewController.h"
+#import "AJSecondHouseViewController.h"
+#import "AJLetHouseViewController.h"
 #import "AJSecondHouseTableViewCell.h"
 #import "AJSecondHouseCellModel.h"
 #import "AJLetHouseTableViewCell.h"
@@ -18,7 +20,7 @@
 #import "AJNewReserverViewController.h"
 
 NSInteger const MAX_HOUSE_NUMBER = 10;
-CGFloat const HOUSE_INFO_HEITHT = 650;
+CGFloat const HOUSE_INFO_HEITHT = 610;
 
 #define AUTOLOOP_HEIGHT     dHeight/3
 
@@ -351,24 +353,34 @@ CGFloat const HOUSE_INFO_HEITHT = 650;
 
 - (IBAction)showMoreHouse:(UIButton *)sender {
     if (sender.tag==0) {
-        //房屋简介
-        debugLog(@"房源简介");
+        //更多房源信息
+        debugLog(@"更多房源信息");
+        AJEstateDetailsViewController *estate = [AJEstateDetailsViewController new];
+        estate.title = _houseInfo[HOUSE_ESTATE_NAME];
+        estate.houseInfo = _houseInfo;
+        estate.detailsModal = _detailsModal;
+        
+        APP_PUSH(estate);
 
     }else if (sender.tag==1){
         //地图
         _mapView =nil;
         APP_PUSH(self.mapView);
 
-    }else if (sender.tag==2){
+    }else {
         //更多房屋
+        if (_detailsModal==SecondModal) {
+            AJSecondHouseViewController *second = [AJSecondHouseViewController new];
+            second.showModal = AllHouseModal;
+            APP_PUSH(second);
+        }else {
+            AJLetHouseViewController *let = [AJLetHouseViewController new];
+            let.showModal = AllHouseModal;
+            APP_PUSH(let);
+            
+        }
         debugLog(@"更多房源");
 
-    }else{
-        //更多房源信息
-        debugLog(@"更多房源信息");
-        AJEstateDetailsViewController *estate = [AJEstateDetailsViewController new];
-        estate.estateId = _houseInfo[ESTATE_ID];
-        APP_PUSH(estate);
     }
     
 }

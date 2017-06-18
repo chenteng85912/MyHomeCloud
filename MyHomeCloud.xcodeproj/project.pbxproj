@@ -77,6 +77,9 @@
 		A44AEBCF1EEEC72A00109FB8 /* AJLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = A44AEBCB1EEEC72A00109FB8 /* AJLocation.m */; };
 		A44AEBD01EEEC72A00109FB8 /* AJLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A44AEBCD1EEEC72A00109FB8 /* AJLocationViewController.m */; };
 		A44AEBD11EEEC72A00109FB8 /* AJLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A44AEBCE1EEEC72A00109FB8 /* AJLocationViewController.xib */; };
+		A4AC724B1EF6718200772D42 /* AJEstateInfoModal.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AC724A1EF6718200772D42 /* AJEstateInfoModal.m */; };
+		A4AC724F1EF6728C00772D42 /* AJEstateTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AC724D1EF6728C00772D42 /* AJEstateTableViewCell.m */; };
+		A4AC72501EF6728C00772D42 /* AJEstateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4AC724E1EF6728C00772D42 /* AJEstateTableViewCell.xib */; };
 		A4AE33011EF51C0C004B0A54 /* AJWKWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AE33001EF51C0C004B0A54 /* AJWKWebViewController.m */; };
 		A4AE33031EF51C61004B0A54 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4AE33021EF51C61004B0A54 /* WebKit.framework */; };
 		A4AE33081EF51EEC004B0A54 /* AJNewReserverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AE33061EF51EEC004B0A54 /* AJNewReserverViewController.m */; };
@@ -250,6 +253,11 @@
 		A44AEBCC1EEEC72A00109FB8 /* AJLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJLocationViewController.h; sourceTree = "<group>"; };
 		A44AEBCD1EEEC72A00109FB8 /* AJLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJLocationViewController.m; sourceTree = "<group>"; };
 		A44AEBCE1EEEC72A00109FB8 /* AJLocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJLocationViewController.xib; sourceTree = "<group>"; };
+		A4AC72491EF6718200772D42 /* AJEstateInfoModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJEstateInfoModal.h; sourceTree = "<group>"; };
+		A4AC724A1EF6718200772D42 /* AJEstateInfoModal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJEstateInfoModal.m; sourceTree = "<group>"; };
+		A4AC724C1EF6728C00772D42 /* AJEstateTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJEstateTableViewCell.h; sourceTree = "<group>"; };
+		A4AC724D1EF6728C00772D42 /* AJEstateTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJEstateTableViewCell.m; sourceTree = "<group>"; };
+		A4AC724E1EF6728C00772D42 /* AJEstateTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJEstateTableViewCell.xib; sourceTree = "<group>"; };
 		A4AE32FF1EF51C0C004B0A54 /* AJWKWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJWKWebViewController.h; sourceTree = "<group>"; };
 		A4AE33001EF51C0C004B0A54 /* AJWKWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJWKWebViewController.m; sourceTree = "<group>"; };
 		A4AE33021EF51C61004B0A54 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
@@ -703,6 +711,11 @@
 				A4AE33171EF52DF9004B0A54 /* AJEstateDetailsViewController.h */,
 				A4AE33181EF52DF9004B0A54 /* AJEstateDetailsViewController.m */,
 				A4AE33191EF52DF9004B0A54 /* AJEstateDetailsViewController.xib */,
+				A4AC72491EF6718200772D42 /* AJEstateInfoModal.h */,
+				A4AC724A1EF6718200772D42 /* AJEstateInfoModal.m */,
+				A4AC724C1EF6728C00772D42 /* AJEstateTableViewCell.h */,
+				A4AC724D1EF6728C00772D42 /* AJEstateTableViewCell.m */,
+				A4AC724E1EF6728C00772D42 /* AJEstateTableViewCell.xib */,
 			);
 			path = HouseDetails;
 			sourceTree = "<group>";
@@ -933,6 +946,7 @@
 				A4FC23511EE6F31200924EEE /* AJLetHouseTableViewCell.xib in Resources */,
 				0BE4D9F01ECC6B8200E4ADCD /* AJHomeViewController.xib in Resources */,
 				0B6E12C61EC4235300103571 /* AJLoginViewController.xib in Resources */,
+				A4AC72501EF6728C00772D42 /* AJEstateTableViewCell.xib in Resources */,
 				0B57F5951EC198D000B89CE2 /* AJUserCenterViewController.xib in Resources */,
 				0B302F5F1ED01835006896CA /* AJOtherViewController.xib in Resources */,
 			);
@@ -1045,6 +1059,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4AC724B1EF6718200772D42 /* AJEstateInfoModal.m in Sources */,
 				0B1904E11EE668EC004C46EE /* AJTbViewPresenter.m in Sources */,
 				0B1904A91EE65EC1004C46EE /* AJSecondHouseTableViewCell.m in Sources */,
 				A4AE33081EF51EEC004B0A54 /* AJNewReserverViewController.m in Sources */,
@@ -1108,6 +1123,7 @@
 				A4AE331F1EF52E7A004B0A54 /* AJReserverDetailsViewController.m in Sources */,
 				0B57F5941EC198D000B89CE2 /* AJUserCenterViewController.m in Sources */,
 				A4B8645A1EE6F00E00E3CE5E /* AJNewHouseViewController.m in Sources */,
+				A4AC724F1EF6728C00772D42 /* AJEstateTableViewCell.m in Sources */,
 				A4E6A4941EC61243006B882A /* AJSearchViewController.m in Sources */,
 				0B23445F1EC03095007A3AC1 /* UITableView+NoMoreDataInFooter.m in Sources */,
 				0B23445E1EC03095007A3AC1 /* UIScrollView+UITouchEvent.m in Sources */,
