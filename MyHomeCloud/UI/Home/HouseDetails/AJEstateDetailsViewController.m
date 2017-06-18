@@ -25,6 +25,7 @@
 @property (strong, nonatomic) AJLocationViewController *mapView;
 @property (strong, nonatomic) NSString *estateId;
 @property (strong, nonatomic) NSMutableArray <AJEstateInfoModal *> *dataArray;
+@property (strong, nonatomic) AVObject *currentHouse;
 
 @end
 
@@ -80,6 +81,7 @@
             [self.view showTips:@"数据加载失败" withState:TYKYHUDModeFail complete:nil];
             return ;
         }
+        _currentHouse = object;
         [weakSelf refreshView:object];
         
     }];
@@ -157,7 +159,8 @@
 - (AJLocationViewController *)mapView{
     if (_mapView ==nil) {
         _mapView = [AJLocationViewController new];
-        _mapView.houseObj = self.houseInfo;
+        _mapView.houseObj = _currentHouse;
+
     }
     return _mapView;
 }
