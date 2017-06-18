@@ -111,8 +111,8 @@
                     self.view.alpha = 0;
                 } completion:^(BOOL finished) {
                     [self removeFromParentViewController];
-                    _agenterPhone.text = nil;
-                    _agenterName.text = nil;
+                    _userName.text = nil;
+                    _userPhone.text = nil;
                     _reserverTime.text = nil;
                     
                 }];

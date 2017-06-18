@@ -141,7 +141,7 @@ CGFloat const HOUSE_INFO_HEITHT = 650;
     if (!suc) {
         self.tableView.hidden = YES;
         //本房源已经失效
-        [UIAlertController alertWithTitle:@"温馨提示" message:@"该房源已经失效" cancelButtonTitle:nil otherButtonTitles:@[@"确定"] preferredStyle:UIAlertControllerStyleAlert block:^(NSInteger buttonIndex) {
+        [UIAlertController alertWithTitle:@"温馨提示" message:@"很抱歉，该房源已失效，请查看其它房源" cancelButtonTitle:nil otherButtonTitles:@[@"确定"] preferredStyle:UIAlertControllerStyleAlert block:^(NSInteger buttonIndex) {
             if (buttonIndex==1) {
                 POPVC;
             }

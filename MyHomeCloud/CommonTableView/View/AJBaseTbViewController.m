@@ -324,7 +324,17 @@
 }
 - (void)showAlertView:(NSIndexPath *)indexPath{
     WeakSelf;
-    [UIAlertController alertWithTitle:@"温馨提示" message:@"确定删除该房源?" cancelButtonTitle:@"取消" otherButtonTitles:@[@"删除"] preferredStyle:UIAlertControllerStyleAlert block:^(NSInteger buttonIndex) {
+    NSString *message;
+    if (self.showModal==UserFavoriteModal) {
+        message = @"确定删除此条关注记录?";
+    }else if (self.showModal==UserRecordModal) {
+        message = @"确定删除此条浏览记录?";
+    }else if (self.showModal==ReserverHouseModal) {
+        message = @"确定删除此预约信息?";
+    }else{
+        message = @"确定删除该房源信息?";
+    }
+    [UIAlertController alertWithTitle:@"温馨提示" message:message cancelButtonTitle:@"取消" otherButtonTitles:@[@"删除"] preferredStyle:UIAlertControllerStyleAlert block:^(NSInteger buttonIndex) {
         if (buttonIndex==1) {
             AJTbViewCellModel *model = weakSelf.dataArray[indexPath.row];
             [weakSelf.view showHUD:@"正在删除..."];

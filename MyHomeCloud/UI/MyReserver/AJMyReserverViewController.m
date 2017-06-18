@@ -21,8 +21,13 @@
     [super viewDidLoad];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     if (_isNewReserver) {
-        
-        self.title = @"我的预约";
+        if (_reserverModal==SecondReserverModal) {
+            self.title = @"我的预约(二手房)";
+
+        }else{
+            self.title = @"我的预约(租房)";
+
+        }
 
         UIButton *left = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
         [left setImage:LOADIMAGE(@"back") forState:UIControlStateNormal];
