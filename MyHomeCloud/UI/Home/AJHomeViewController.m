@@ -311,7 +311,7 @@ CGFloat const HEAD_BTN_HEIGHT = 100;
 
 {
 
-    [self.navigationController setNavigationBarHidden:velocity.y>0?YES:NO animated:NO];
+    [self.navigationController setNavigationBarHidden:velocity.y>0?YES:NO animated:YES];
         
 }
 - (CTAutoLoopViewController*)autoLoopView
