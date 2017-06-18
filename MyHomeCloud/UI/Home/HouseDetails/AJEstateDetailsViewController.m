@@ -96,15 +96,15 @@
         [infoDic setObject:object[HOUSE_SALES_POINT] forKey:@"content"];
         [infoDic setObject:@"核心卖点" forKey:@"titleName"];
         [temp addObject:infoDic];
-    }else{
-        _mapBackView.hidden = NO;
-        self.mapView.view.frame = _mapBackView.bounds;
-        [_mapBackView addSubview:self.mapView.view];
-        self.mapView.locationBtn.hidden = YES;
-        self.mapView.navBtn.hidden = YES;
-        [_mapBackView bringSubviewToFront:_mapBtn];
-        self.tbView.tableFooterView = _mapBackView;
     }
+    _mapBackView.hidden = NO;
+    self.mapView.view.frame = CGRectMake(0, 40, dWidth, 200);
+    [_mapBackView addSubview:self.mapView.view];
+    self.mapView.locationBtn.hidden = YES;
+    self.mapView.navBtn.hidden = YES;
+    [_mapBackView bringSubviewToFront:_mapBtn];
+    self.tbView.tableFooterView = _mapBackView;
+    
     
     infoDic = [NSMutableDictionary new];
     [infoDic setObject:object[ESTATE_INTR] forKey:@"content"];

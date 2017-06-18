@@ -117,6 +117,7 @@
     if (_details ==nil) {
         _details = [AJReserverDetailsViewController new];
         _details.view.alpha = 0;
+        _details.rModal = _reserverModal;
         
         [self.view addSubview:_details.view];
         _details.view.frame = self.view.bounds;

@@ -53,7 +53,7 @@
     if (sender.tag==0) {
         AJEstateDetailsViewController *estate = [AJEstateDetailsViewController new];
         estate.title = _houseName.text;
-        if (_reserverModal==SecondReserverModal) {
+        if (_rModal==SecondReserverModal) {
             estate.detailsModal = SecondModal;
             
         }else{
@@ -62,6 +62,8 @@
         }
         estate.houseInfo = _reserverModal.objectData;
         APP_PUSH(estate);
+        [self hiddenView];
+
     }else if (sender.tag==1){
        
         WeakSelf;
@@ -77,12 +79,8 @@
                     }
                     [weakSelf.view showTips:@"取消成功" withState:TYKYHUDModeSuccess complete:^{
                         
-                        [UIView animateWithDuration:0.2 animations:^{
-                            weakSelf.view.alpha = 0;
-                        } completion:^(BOOL finished) {
-                            [weakSelf removeFromParentViewController];
-                            
-                        }];
+                        [self hiddenView];
+
                         [weakSelf.reserverModal calculateSizeConstrainedToSize];
                         AJMyReserverViewController *myReserver = (AJMyReserverViewController *)self.parentViewController;
                         [myReserver loadDataSuccess];
@@ -93,13 +91,18 @@
         }];
         
     }else{
-        [UIView animateWithDuration:0.2 animations:^{
-            self.view.alpha = 0;
-        } completion:^(BOOL finished) {
-            [self removeFromParentViewController];
-            
-        }];
+        [self hiddenView];
+        
     }
+}
+- (void)hiddenView{
+    [UIView animateWithDuration:0.2 animations:^{
+        self.view.alpha = 0;
+    } completion:^(BOOL finished) {
+        [self removeFromParentViewController];
+        
+    }];
+
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

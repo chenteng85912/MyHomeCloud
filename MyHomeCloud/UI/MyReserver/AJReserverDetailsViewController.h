@@ -7,12 +7,15 @@
 //
 
 #import "CTBaseViewController.h"
+#import "AJMyReserverViewController.h"
 
 @class AJReserverCellModel;
 
 @interface AJReserverDetailsViewController : CTBaseViewController
 
 @property (strong, nonatomic) AJReserverCellModel *reserverModal;
+@property (assign, nonatomic) UserReserverModal rModal;
+
 
 - (void)refreshView;
 @end
