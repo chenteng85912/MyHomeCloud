@@ -9,6 +9,10 @@
 @property (weak, nonatomic) IBOutlet UITextField *userNameTF;
 @property (weak, nonatomic) IBOutlet UITextField *pswTF;
 @property (weak, nonatomic) IBOutlet UIImageView *headImg;
+@property (weak, nonatomic) IBOutlet UIButton *logBtn;
+@property (weak, nonatomic) IBOutlet UIButton *headLogBtn;
+@property (weak, nonatomic) IBOutlet UIButton *headRegBtn;
+@property (weak, nonatomic) IBOutlet UITextField *confirmPswTextField;
 
 @end
 
@@ -27,6 +31,8 @@ NSString *const USER_ONLINE = @"该用户已在别处登录";
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+//    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -68,7 +74,7 @@ NSString *const USER_ONLINE = @"该用户已在别处登录";
     [self.view endEditing:YES];
 
     if (!self.userNameTF.hasText) {
-       [self.view showTips:@"请输入手机号" withState:TYKYHUDModeWarning complete:nil];
+       [self.view showTips:self.userNameTF.placeholder withState:TYKYHUDModeWarning complete:nil];
         return;
     }
     if (![CTTool isValidateMobile:[self.userNameTF.text stringByReplacingOccurrencesOfString:@" " withString:@""]]) {
@@ -76,21 +82,66 @@ NSString *const USER_ONLINE = @"该用户已在别处登录";
         return;
     }
     if (!self.pswTF.hasText) {
-       [self.view showTips:@"请输入密码"  withState:TYKYHUDModeWarning complete:nil];
+       [self.view showTips:self.pswTF.placeholder  withState:TYKYHUDModeWarning complete:nil];
         return;
     }
     
+    if (_headRegBtn.selected) {
+        if (!self.confirmPswTextField.hasText) {
+            [self.view showTips:self.confirmPswTextField.placeholder  withState:TYKYHUDModeWarning complete:nil];
+            return;
+        }
+        if (![_confirmPswTextField.text isEqualToString:_pswTF.text]) {
+            [self.view showTips:@"两次密码不一致，请确认您输入的密码"  withState:TYKYHUDModeWarning complete:nil];
+            return;
+        }
+        [self goRegisterAction];
+    }else{
+        [self goLoginAction];
+    }
+    
+}
+-(void)goRegisterAction{
+    [CTTool showKeyWindowHUD:@"正在注册..."];
+    AVUser *user = [AVUser user];
+    user.username = _userNameTF.text;
+    user.password =  _pswTF.text;
+    user.mobilePhoneNumber = _userNameTF.text;
+    
+    WeakSelf;
+    [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        [CTTool removeKeyWindowHUD];
+
+        if (succeeded) {
+            [[UIApplication sharedApplication].keyWindow showTips:@"注册成功" withState:TYKYHUDModeSuccess complete:^{
+                weakSelf.pswTF.text = nil;
+                weakSelf.confirmPswTextField.text = nil;
+                [weakSelf findPswAction:weakSelf.headLogBtn];
+            }];
+        } else {
+            // 失败的原因可能有多种，常见的是用户名已经存在。
+            if (error.code==214) {
+                [[UIApplication sharedApplication].keyWindow showTips:@"该用户已注册" withState:TYKYHUDModeFail complete:nil];
+            }else{
+                [[UIApplication sharedApplication].keyWindow showTips:@"注册失败" withState:TYKYHUDModeFail complete:nil];
+
+            }
+        }
+    }];
+}
+- (void)goLoginAction{
     [CTTool showKeyWindowHUD:@"正在登录..."];
+
     [AVUser logInWithUsernameInBackground:[_userNameTF.text stringByReplacingOccurrencesOfString:@" " withString:@""] password:self.pswTF.text block:^(AVUser *user, NSError *error) {
         [CTTool removeKeyWindowHUD];
         [MyUserDefaults setObject:self.userNameTF.text forKey:USER_NAME];
         if (user) {
             //本地uuid
             NSString *luuid = [[NSUUID UUID] UUIDString];
-
+            
             NSInteger state = [[AVUser currentUser][USER_LOGIN_STATE] integerValue];
             NSString *uuid = [AVUser currentUser][USER_UUID];
-
+            
             //用户已经登录
             if (state>0&&![uuid isEqualToString:luuid]) {
                 [AVUser logOut];
@@ -100,7 +151,7 @@ NSString *const USER_ONLINE = @"该用户已在别处登录";
             //登录成功
             [[AVUser currentUser] setObject:@1 forKey:USER_LOGIN_STATE];
             [[AVUser currentUser] setObject:luuid forKey:USER_UUID];
-
+            
             [[AVUser currentUser] saveInBackground];
             [[UIApplication sharedApplication].keyWindow showTips:LOGIN_SUCCESS withState:TYKYHUDModeSuccess complete:^{
                 [self loginSuccess];
@@ -121,19 +172,53 @@ NSString *const USER_ONLINE = @"该用户已在别处登录";
             [[UIApplication sharedApplication].keyWindow showTips:@"网络错误，请重试" withState:TYKYHUDModeFail complete:nil];
             
         }
-        
     }];
-}
 
+}
 - (void)loginSuccess{
-    if (_backBlock) {
-        _backBlock();
-    }
-    [self backToPreVC];
+    
+    [self dismissViewControllerAnimated:YES completion:^{
+        if (_backBlock) {
+            _backBlock();
+        }
+    }];
 }
 //找回密码
 - (IBAction)findPswAction:(UIButton *)sender {
-    
+    if (sender.tag==2) {
+       
+    }else if (sender.tag==3) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }else{
+        if (sender.selected) {
+            return;
+        }
+        sender.titleLabel.font = [UIFont boldSystemFontOfSize:16];
+        sender.selected = YES;
+        if (sender.tag==0) {
+           
+            _headRegBtn.selected = NO;
+            _headRegBtn.titleLabel.font = [UIFont systemFontOfSize:16];
+
+            [UIView animateWithDuration:0.3 animations:^{
+                _logBtn.center = CGPointMake(dWidth/2, 302.5);
+                [_logBtn setTitle:@"登录" forState:UIControlStateNormal];
+
+            }];
+        }else{
+            _headLogBtn.selected = NO;
+            _headLogBtn.titleLabel.font = [UIFont systemFontOfSize:16];
+
+            [UIView animateWithDuration:0.3 animations:^{
+                _logBtn.center = CGPointMake(dWidth/2, 362.5);
+                [_logBtn setTitle:@"注册" forState:UIControlStateNormal];
+                
+            }];
+          
+            
+        }
+      
+    }
     
 }
 //添加或者删除空格

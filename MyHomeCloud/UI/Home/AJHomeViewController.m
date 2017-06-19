@@ -89,23 +89,6 @@ CGFloat const HEAD_BTN_HEIGHT = 100;
     }
     [self.areaBtn setTitle:cityName forState:UIControlStateNormal];;
 }
-- (UIButton *)areaBtn{
-    if (_areaBtn ==nil) {
-        _areaBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 30)];
-        [_areaBtn setTitle:@"东莞" forState:UIControlStateNormal];
-        [_areaBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        _areaBtn.titleLabel.font = [UIFont boldSystemFontOfSize:15];
-        _areaBtn.titleEdgeInsets = UIEdgeInsetsMake(0, -25, 0, 0);
-        [_areaBtn setImage:LOADIMAGE(@"down") forState:UIControlStateNormal];
-        _areaBtn.imageEdgeInsets = UIEdgeInsetsMake(0, 35, 0, 0);
-        [_areaBtn addTarget:self action:@selector(chooseAreaAction) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _areaBtn;
-}
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 - (void)fetchData{
 
@@ -372,6 +355,24 @@ CGFloat const HEAD_BTN_HEIGHT = 100;
     }
     return _newhouseArray;
 }
+- (UIButton *)areaBtn{
+    if (_areaBtn ==nil) {
+        _areaBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 30)];
+        [_areaBtn setTitle:@"东莞" forState:UIControlStateNormal];
+        [_areaBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        _areaBtn.titleLabel.font = [UIFont boldSystemFontOfSize:15];
+        _areaBtn.titleEdgeInsets = UIEdgeInsetsMake(0, -25, 0, 0);
+        [_areaBtn setImage:LOADIMAGE(@"down") forState:UIControlStateNormal];
+        _areaBtn.imageEdgeInsets = UIEdgeInsetsMake(0, 35, 0, 0);
+        [_areaBtn addTarget:self action:@selector(chooseAreaAction) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _areaBtn;
+}
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
 /*
 #pragma mark - Navigation
 

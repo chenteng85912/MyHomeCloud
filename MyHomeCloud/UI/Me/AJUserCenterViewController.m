@@ -41,6 +41,7 @@ CGFloat const IMAGEHEIGHT  = 240.0f;
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
     [self initUserData];
 
@@ -200,7 +201,7 @@ CGFloat const IMAGEHEIGHT  = 240.0f;
         }
     }else{
         [_userName setTitle:@"登录/注册" forState:UIControlStateNormal];
-        self.userHead.image = LOADIMAGE(@"lauchIcon");
+        self.userHead.image = LOADIMAGE(@"defaultHead");
 
     }
     self.dataArray = [AJMeCenterData userCenterData];

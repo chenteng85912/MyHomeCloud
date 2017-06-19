@@ -14,14 +14,15 @@
 + (void)goLoginViewComplete:(void (^)(void))callBack{
     dispatch_async(dispatch_get_main_queue(), ^{
         
-        AJLoginViewController *vc  = [AJLoginViewController new];
-        vc.backBlock = callBack;
-        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+        AJLoginViewController *login  = [AJLoginViewController new];
+        login.backBlock = callBack;
+        login.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+
         if ([UIApplication sharedApplication].keyWindow.rootViewController.presentedViewController) {
-            [[UIApplication sharedApplication].keyWindow.rootViewController.presentedViewController presentViewController:nav animated:YES completion:nil];
+            [[UIApplication sharedApplication].keyWindow.rootViewController.presentedViewController presentViewController:login animated:YES completion:nil];
             
         }else{
-            [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:nav animated:YES completion:nil];
+            [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:login animated:YES completion:nil];
             
         }
     });
