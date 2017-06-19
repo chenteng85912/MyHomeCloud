@@ -67,8 +67,12 @@ CGFloat const IMAGEHEIGHT  = 240.0f;
     NSArray *temp = self.dataArray[indexPath.section];
     AJMeModel *model = temp[indexPath.row];
     cell.textLabel.text = model.title;
-    cell.textLabel.font = [UIFont systemFontOfSize:16];
-    
+    if (dWidth==320) {
+        cell.textLabel.font = [UIFont systemFontOfSize:14];
+    }else{
+        cell.textLabel.font = [UIFont systemFontOfSize:16];
+
+    }
     cell.imageView.image = [CTTool scaleImage:LOADIMAGE(model.iconName) toSize:CGSizeMake(25, 25)];
     if ([model.title isEqualToString:@"客服热线"]) {
         UILabel *phone = [[UILabel alloc] initWithFrame:CGRectMake(dWidth-120,0, dWidth-120-40, 50)];

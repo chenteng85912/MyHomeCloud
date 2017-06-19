@@ -31,7 +31,9 @@
     
     self.houseName.text =  model.houseName;
     self.houseName.frame = model.nameFrame;
-    
+    if (dWidth==320) {
+        self.houseName.font = [UIFont systemFontOfSize:14];
+    }
     self.houseInfo.text = model.subTitle;
     self.houseInfo.frame = model.subFrame;
     

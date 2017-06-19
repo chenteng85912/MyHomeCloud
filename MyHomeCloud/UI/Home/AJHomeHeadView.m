@@ -23,6 +23,9 @@
         headView.heatTitle.text = @"为您推荐新房";
         
     }
+    if (dWidth==320) {
+        headView.heatTitle.font = [UIFont systemFontOfSize:18];
+    }
     headView.headBtn.tag = section;
     return headView;
 }

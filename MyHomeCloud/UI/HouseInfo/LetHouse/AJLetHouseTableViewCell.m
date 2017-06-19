@@ -31,7 +31,9 @@
     
     self.houseDes.frame = model.desFrame;
     self.houseDes.text = model.houseDes;
-    
+    if (dWidth==320) {
+        self.houseDes.font = [UIFont systemFontOfSize:14];
+    }
     self.houseInfo.frame = model.infoFrame;
     self.houseInfo.text = model.houseInfo;
     

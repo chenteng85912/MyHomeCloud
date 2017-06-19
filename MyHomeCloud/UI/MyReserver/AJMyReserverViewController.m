@@ -119,8 +119,8 @@
         _details.view.alpha = 0;
         _details.rModal = _reserverModal;
         
-        [self.view addSubview:_details.view];
-        _details.view.frame = self.view.bounds;
+        [[UIApplication sharedApplication].keyWindow addSubview:_details.view];
+        _details.view.frame = [UIApplication sharedApplication].keyWindow.bounds;
 
     }
     return _details;
