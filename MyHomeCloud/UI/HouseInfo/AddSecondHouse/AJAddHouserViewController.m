@@ -137,6 +137,10 @@
         [self.view showTips:_agenterPhone.placeholder withState:TYKYHUDModeWarning complete:nil];
         return;
     }
+    if (_agenterPhone.text.length!=11) {
+        [self.view showTips:@"请输入正确的手机号" withState:TYKYHUDModeWarning complete:nil];
+        return;
+    }
     if (!self.letHousePrice.hasText&&_addModal==LetHouseModal) {
         [self.view showTips:self.letHousePrice.placeholder withState:TYKYHUDModeWarning complete:nil];
         return;

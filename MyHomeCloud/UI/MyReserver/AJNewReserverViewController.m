@@ -31,6 +31,7 @@
     _houseName.text = _houseInfo[HOUSE_ESTATE_NAME];
     _agenterName.text = _houseInfo[AGENTER_NAME];
     _agenterPhone.text = _houseInfo[AGENTER_PHONE];
+    _userPhone.text = [AVUser currentUser].mobilePhoneNumber;
 
     // Do any additional setup after loading the view from its nib.
 }
@@ -74,6 +75,10 @@
             [self.view showTips:_userPhone.placeholder withState:TYKYHUDModeWarning complete:nil];
             return;
         }
+        if (_userPhone.text.length!=11) {
+            [self.view showTips:@"请输入正确的手机号" withState:TYKYHUDModeWarning complete:nil];
+            return;
+        }
         if (!_reserverTime.hasText) {
             [self.view showTips:_reserverTime.placeholder withState:TYKYHUDModeWarning complete:nil];
             return;
@@ -83,25 +88,25 @@
         
         [obj setObject:_houseInfo[HOUSE_AMOUNT]      forKey:HOUSE_AMOUNT];
         [obj setObject:_houseInfo[HOUSE_AREAAGE]     forKey:HOUSE_AREAAGE];
-        
+        [obj setObject:_houseInfo[ESTATE_ID]         forKey:ESTATE_ID];
+
         [obj setObject:_houseName.text      forKey:HOUSE_ESTATE_NAME];
         [obj setObject:_agenterName.text    forKey:AGENTER_NAME];
         [obj setObject:_agenterPhone.text   forKey:AGENTER_PHONE];
         [obj setObject:_userName.text       forKey:RESERVER_NAME];
         [obj setObject:_userPhone.text      forKey:RESERVER_PHONE];
-       
-
         [obj setObject:_reserverTime.text   forKey:RESERVER_TIME];
-        [obj setObject:_houseInfo[ESTATE_ID]   forKey:ESTATE_ID];
         [obj setObject:[AVUser currentUser].mobilePhoneNumber   forKey:USER_PHONE];
-
         [obj setObject:@"0"                 forKey:RESERVER_STATE];
 
         if (_reserverModal ==SecondReserverModal) {
             [obj setObject:SECOND_HAND_HOUSE    forKey:RESERVER_TYPE];
+            [obj setObject:_houseInfo[HOUSE_TOTAL_PRICE]         forKey:HOUSE_TOTAL_PRICE];
+
 
         }else{
             [obj setObject:LET_HOUSE            forKey:RESERVER_TYPE];
+            [obj setObject:_houseInfo[LET_HOUSE_PRICE]         forKey:LET_HOUSE_PRICE];
 
         }
         

@@ -13,5 +13,5 @@
 
 @property (strong, nonatomic) AVObject *houseInfo;
 @property (assign, nonatomic) DetailsHouseModal detailsModal;
-
+@property (assign, nonatomic) BOOL isFromReserver;
 @end

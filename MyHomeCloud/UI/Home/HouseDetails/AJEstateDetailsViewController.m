@@ -97,14 +97,16 @@
         [infoDic setObject:@"核心卖点" forKey:@"titleName"];
         [temp addObject:infoDic];
     }
-    _mapBackView.hidden = NO;
-    self.mapView.view.frame = CGRectMake(0, 40, dWidth, 200);
-    [_mapBackView addSubview:self.mapView.view];
-    self.mapView.locationBtn.hidden = YES;
-    self.mapView.navBtn.hidden = YES;
-    [_mapBackView bringSubviewToFront:_mapBtn];
-    self.tbView.tableFooterView = _mapBackView;
-    
+    if (_isFromReserver) {
+        _mapBackView.hidden = NO;
+        self.mapView.view.frame = CGRectMake(0, 40, dWidth, 200);
+        [_mapBackView addSubview:self.mapView.view];
+        self.mapView.locationBtn.hidden = YES;
+        self.mapView.navBtn.hidden = YES;
+        [_mapBackView bringSubviewToFront:_mapBtn];
+        self.tbView.tableFooterView = _mapBackView;
+
+    }
     
     infoDic = [NSMutableDictionary new];
     [infoDic setObject:object[ESTATE_INTR] forKey:@"content"];
@@ -134,14 +136,6 @@
     _mapView =nil;
     APP_PUSH(self.mapView);
 }
-//房屋简介
-//- (void)addHouseInfoView{
-//    CGSize infoSize = [self.houseMaodel.houseInfo sizeWithMaxSize:CGSizeMake(dWidth-X*2, MAXFLOAT) fontSize:labelFont];
-//    self.houseInfoLabel.frame = CGRectMake(X,LY, dWidth-X, infoSize.height);
-//    self.houseInfoLabel.text = self.houseMaodel.houseInfo;
-//    [self.view addSubview:self.houseInfoLabel];
-//
-//}
 
 - (AJNewHouseModel *)houseMaodel{
     if (_houseMaodel ==nil) {

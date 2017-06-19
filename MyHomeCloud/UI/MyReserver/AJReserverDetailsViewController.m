@@ -12,6 +12,9 @@
 #import "AJMyReserverViewController.h"
 
 @interface AJReserverDetailsViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *priceType;
+@property (weak, nonatomic) IBOutlet UILabel *housePrice;
+@property (weak, nonatomic) IBOutlet UILabel *houseAreaage;
 @property (weak, nonatomic) IBOutlet UILabel *reserverTime;
 @property (weak, nonatomic) IBOutlet UILabel *houseName;
 @property (weak, nonatomic) IBOutlet UILabel *agenterName;
@@ -30,6 +33,9 @@
     
 }
 - (void)refreshView{
+    _housePrice.text = _reserverModal.housePrice;
+    _priceType.text = _reserverModal.houseType;
+    _houseAreaage.text = _reserverModal.houseAreaage;
     _houseName.text = _reserverModal.houseName;
     _agenterName.text = _reserverModal.agenterName;
     _agenterPhone.text = _reserverModal.agenterPhone;
@@ -60,6 +66,7 @@
             estate.detailsModal = LetModal;
 
         }
+        estate.isFromReserver = YES;
         estate.houseInfo = _reserverModal.objectData;
         APP_PUSH(estate);
         [self hiddenView];

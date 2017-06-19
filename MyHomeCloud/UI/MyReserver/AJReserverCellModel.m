@@ -37,11 +37,23 @@
     
     _rTime = self.objectData[RESERVER_TIME];
     
+    _houseAreaage = [NSString stringWithFormat:@"%@m²",self.objectData[HOUSE_AREAAGE]];
+    NSString *type = self.objectData[RESERVER_TYPE];
+    if ([type isEqualToString:SECOND_HAND_HOUSE]) {
+        _houseType = @"房屋总价";
+        _housePrice = [NSString stringWithFormat:@"%@万",self.objectData[HOUSE_TOTAL_PRICE]];
+
+    }else{
+        _houseType = @"房屋租金";
+        _housePrice = [NSString stringWithFormat:@"%@元/月",self.objectData[LET_HOUSE_PRICE]];
+
+    }
+    
     NSDateFormatter *formatter = [NSDateFormatter new];
     [formatter setDateFormat:@"yyyy-MM-dd"];
     _creatTime = [formatter stringFromDate:self.objectData.createdAt];
     
-    self.cellHeight  = 180;
+    self.cellHeight  = 255;
 
 }
 @end

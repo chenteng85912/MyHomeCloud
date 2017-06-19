@@ -15,8 +15,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *agenterName;
 @property (weak, nonatomic) IBOutlet UILabel *agenterPhone;
 @property (weak, nonatomic) IBOutlet UILabel *creatTime;
+@property (weak, nonatomic) IBOutlet UILabel *housePrice;
+@property (weak, nonatomic) IBOutlet UILabel *priceType;
+@property (weak, nonatomic) IBOutlet UILabel *userName;
 
 @property (weak, nonatomic) IBOutlet UILabel *reserverState;
+@property (weak, nonatomic) IBOutlet UILabel *houseAreaage;
 @end
 @implementation AJReserverTableViewCell
 
@@ -31,6 +35,11 @@
     _agenterPhone.text = modal.agenterPhone;
     _reserverState.text = modal.stateStr;
     _reserverState.backgroundColor = modal.stateColor;
+    
+    _priceType.text = modal.houseType;
+    _housePrice.text = modal.housePrice;
+    _houseAreaage.text = modal.houseAreaage;
+    _userName.text = modal.rUserName;
     
 }
 - (void)awakeFromNib {
