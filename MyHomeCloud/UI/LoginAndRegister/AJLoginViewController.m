@@ -106,7 +106,7 @@ NSString *const USER_ONLINE = @"该用户已在别处登录";
     user.username = [_userNameTF.text stringByReplacingOccurrencesOfString:@" " withString:@""];
     user.password =  _pswTF.text;
     user.mobilePhoneNumber = [_userNameTF.text stringByReplacingOccurrencesOfString:@" " withString:@""];
-    user[USER_ROLE] = @0;
+    user[USER_ROLE] = @4;
     user[USER_NICKNAME] = @"游客";
     WeakSelf;
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
