@@ -36,7 +36,7 @@
     _reserverState.text = modal.stateStr;
     _reserverState.backgroundColor = modal.stateColor;
     
-    _priceType.text = modal.houseType;
+    _priceType.text = [NSString stringWithFormat:@"%@：",modal.houseType];
     _housePrice.text = modal.housePrice;
     _houseAreaage.text = modal.houseAreaage;
     _userName.text = modal.rUserName;
