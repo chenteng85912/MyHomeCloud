@@ -8,7 +8,6 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *userNameTF;
 @property (weak, nonatomic) IBOutlet UITextField *pswTF;
-@property (weak, nonatomic) IBOutlet UIImageView *headImg;
 @property (weak, nonatomic) IBOutlet UIButton *logBtn;
 @property (weak, nonatomic) IBOutlet UIButton *headLogBtn;
 @property (weak, nonatomic) IBOutlet UIButton *headRegBtn;
@@ -104,10 +103,11 @@ NSString *const USER_ONLINE = @"该用户已在别处登录";
 -(void)goRegisterAction{
     [CTTool showKeyWindowHUD:@"正在注册..."];
     AVUser *user = [AVUser user];
-    user.username = _userNameTF.text;
+    user.username = [_userNameTF.text stringByReplacingOccurrencesOfString:@" " withString:@""];
     user.password =  _pswTF.text;
-    user.mobilePhoneNumber = _userNameTF.text;
-    
+    user.mobilePhoneNumber = [_userNameTF.text stringByReplacingOccurrencesOfString:@" " withString:@""];
+    user[USER_ROLE] = @0;
+    user[USER_NICKNAME] = @"游客";
     WeakSelf;
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         [CTTool removeKeyWindowHUD];
@@ -239,8 +239,6 @@ NSString *const USER_ONLINE = @"该用户已在别处登录";
 #pragma mark - private methods
 - (void)initUI{
     
-    self.title = @"登录";
-    self.headImg.image = [CTTool iconImage];
     NSString *userName = [MyUserDefaults objectForKey:USER_NAME];
     if (userName) {
         self.userNameTF.text = userName;

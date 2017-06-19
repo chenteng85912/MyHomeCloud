@@ -186,7 +186,7 @@ CGFloat const IMAGEHEIGHT  = 240.0f;
    
     if ([AVUser currentUser]) {
         [_userName setTitle:[AVUser currentUser][USER_NICKNAME] forState:UIControlStateNormal];
-        [self.userHead sd_setImageWithURL:[NSURL URLWithString:[AVUser currentUser][HEAD_URL]] placeholderImage:LOADIMAGE(@"lauchIcon")];
+        [self.userHead sd_setImageWithURL:[NSURL URLWithString:[AVUser currentUser][HEAD_URL]] placeholderImage:LOADIMAGE(@"defaultHead")];
         NSInteger role = [[AVUser currentUser][USER_ROLE] integerValue];
         if (role==1) {
             self.roleIcon.image = LOADIMAGE(@"estater");
