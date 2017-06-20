@@ -11,21 +11,23 @@
 #import "AJNewHouseModel.h"
 #import "AJEstateInfoModal.h"
 #import "AJEstateTableViewCell.h"
+#import "AJLocalDataCenter.h"
+
+NSString *const TITLE_KEY = @"titleName";
+NSString *const CONTENT_KEY = @"content";
+
 
 @interface AJEstateDetailsViewController ()
-@property (strong, nonatomic) AJNewHouseModel *houseMaodel;
+
 @property (weak, nonatomic) IBOutlet UIView *mapBackView;
 @property (weak, nonatomic) IBOutlet UIButton *mapBtn;
-
 @property (weak, nonatomic) IBOutlet UILabel *houseRooms;
 @property (weak, nonatomic) IBOutlet UILabel *houseAreaage;
 @property (weak, nonatomic) IBOutlet UITableView *tbView;
 @property (weak, nonatomic) IBOutlet UIView *headView;
 
 @property (strong, nonatomic) AJLocationViewController *mapView;
-@property (strong, nonatomic) NSString *estateId;
 @property (strong, nonatomic) NSMutableArray <AJEstateInfoModal *> *dataArray;
-@property (strong, nonatomic) AVObject *currentHouse;
 
 @end
 
@@ -38,8 +40,6 @@
     _houseAreaage.text = _houseInfo[HOUSE_AREAAGE];
     _houseAreaage.text = [NSString stringWithFormat:@"%@m²",_houseInfo[HOUSE_AREAAGE]];
 
-    _estateId = _houseInfo[ESTATE_ID];
-    
     [_tbView registerNib:[UINib nibWithNibName:NSStringFromClass([AJEstateTableViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([AJEstateTableViewCell class])];
     [self fetchHouseInfo];
 }
@@ -70,33 +70,44 @@
     
     return 0.01;
 }
+//获取数据
 - (void)fetchHouseInfo{
+    if (!_isFromReserver) {
+        NSArray *houseInfo = [AJLocalDataCenter readLocalHouseInfo:_houseInfo[ESTATE_ID]];
+        if (houseInfo) {
+            [self refreshView:houseInfo];
+            return;
+        }
+    }
+   
     [self.view showHUD:nil];
-    
     self.baseQuery.className = ALL_HOUSE_INFO;
     WeakSelf;
-    [self.baseQuery getObjectInBackgroundWithId:_estateId block:^(AVObject * _Nullable object, NSError * _Nullable error) {
+    [self.baseQuery getObjectInBackgroundWithId:_houseInfo[ESTATE_ID] block:^(AVObject * _Nullable object, NSError * _Nullable error) {
         [weakSelf.view removeHUD];
         if (!object) {
             [self.view showTips:@"数据加载失败" withState:TYKYHUDModeFail complete:nil];
             return ;
         }
-        _currentHouse = object;
-        [weakSelf refreshView:object];
+        self.mapView.houseObj = object;
+
+        [weakSelf creatHouseInfo:object];
         
     }];
     
 }
-- (void)refreshView:(AVObject *)object{
+//刷新界面
+- (void)refreshView:(NSArray *)houseInfo{
    
-    NSMutableArray *temp = [NSMutableArray new];
-    
-    NSMutableDictionary *infoDic = [NSMutableDictionary new];
-    if (_detailsModal == SecondModal) {
-        [infoDic setObject:object[HOUSE_SALES_POINT] forKey:@"content"];
-        [infoDic setObject:@"核心卖点" forKey:@"titleName"];
-        [temp addObject:infoDic];
+    for (NSDictionary *dic in houseInfo) {
+        if ([dic[TITLE_KEY] isEqualToString:@"核心卖点"]&&_detailsModal == LetModal) {
+            continue;
+        }
+        AJEstateInfoModal *modal = [[AJEstateInfoModal alloc] initValueWithDictionary:dic];
+        [modal calculateSizeConstrainedToSize];
+        [self.dataArray addObject:modal];
     }
+    
     if (_isFromReserver) {
         _mapBackView.hidden = NO;
         self.mapView.view.frame = CGRectMake(0, 40, dWidth, 200);
@@ -105,43 +116,45 @@
         self.mapView.navBtn.hidden = YES;
         [_mapBackView bringSubviewToFront:_mapBtn];
         self.tbView.tableFooterView = _mapBackView;
-
-    }
-    
-    infoDic = [NSMutableDictionary new];
-    [infoDic setObject:object[ESTATE_INTR] forKey:@"content"];
-    [infoDic setObject:@"小区介绍" forKey:@"titleName"];
-    [temp addObject:infoDic];
-    
-    infoDic = [NSMutableDictionary new];
-    [infoDic setObject:object[TRAFFIC_INFO] forKey:@"content"];
-    [infoDic setObject:@"交通出行" forKey:@"titleName"];
-    [temp addObject:infoDic];
-    
-    infoDic = [NSMutableDictionary new];
-    [infoDic setObject:object[SUPPORT_MEASURES] forKey:@"content"];
-    [infoDic setObject:@"周边配套" forKey:@"titleName"];
-    [temp addObject:infoDic];
-    
-    for (NSDictionary *dic in temp) {
-        AJEstateInfoModal *modal = [[AJEstateInfoModal alloc] initValueWithDictionary:dic];
-        [modal calculateSizeConstrainedToSize];
-        [self.dataArray addObject:modal];
+        
     }
     self.tbView.tableHeaderView = _headView;
     [self.tbView reloadData];
 
 }
+//生成数据
+- (void)creatHouseInfo:(AVObject *)object{
+   
+    NSMutableArray *temp = [NSMutableArray new];
+    NSMutableDictionary *infoDic = [NSMutableDictionary new];
+    if (_detailsModal == SecondModal) {
+        [infoDic setObject:object[HOUSE_SALES_POINT] forKey:CONTENT_KEY];
+        [infoDic setObject:@"核心卖点" forKey:TITLE_KEY];
+        [temp addObject:infoDic];
+    }
+    
+    infoDic = [NSMutableDictionary new];
+    [infoDic setObject:object[ESTATE_INTR] forKey:CONTENT_KEY];
+    [infoDic setObject:@"小区介绍" forKey:TITLE_KEY];
+    [temp addObject:infoDic];
+    
+    infoDic = [NSMutableDictionary new];
+    [infoDic setObject:object[TRAFFIC_INFO] forKey:CONTENT_KEY];
+    [infoDic setObject:@"交通出行" forKey:TITLE_KEY];
+    [temp addObject:infoDic];
+    
+    infoDic = [NSMutableDictionary new];
+    [infoDic setObject:object[SUPPORT_MEASURES] forKey:CONTENT_KEY];
+    [infoDic setObject:@"周边配套" forKey:TITLE_KEY];
+    [temp addObject:infoDic];
+    
+    [AJLocalDataCenter saveLocalHouseInfo:temp withHouseId:object.objectId];
+    [self refreshView:temp];
+}
+
 - (IBAction)btnAction:(UIButton *)sender {
     _mapView =nil;
     APP_PUSH(self.mapView);
-}
-
-- (AJNewHouseModel *)houseMaodel{
-    if (_houseMaodel ==nil) {
-        _houseMaodel = [AJNewHouseModel new];
-    }
-    return _houseMaodel;
 }
 
 - (NSMutableArray <AJEstateInfoModal *> *)dataArray{
@@ -153,7 +166,6 @@
 - (AJLocationViewController *)mapView{
     if (_mapView ==nil) {
         _mapView = [AJLocationViewController new];
-        _mapView.houseObj = _currentHouse;
 
     }
     return _mapView;

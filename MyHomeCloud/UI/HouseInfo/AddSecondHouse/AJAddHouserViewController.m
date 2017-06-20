@@ -53,6 +53,9 @@
         self.title = @"添加新楼盘";
 
     }
+    _agenterName.text = [AVUser currentUser][USER_NICKNAME];
+    _agenterPhone.text = [AVUser currentUser].mobilePhoneNumber;
+    
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:[CTTool makeCustomRightBtn:@"下一步" target:self sel:@selector(addHomeDes)]];
 }
 

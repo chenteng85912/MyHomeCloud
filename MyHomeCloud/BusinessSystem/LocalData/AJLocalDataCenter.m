@@ -48,46 +48,57 @@ NSInteger const AUTOCLEAR_TIME = 5;//分钟
     
     return imgPath;
 }
-+ (void)saveLocalDataTime:(NSString *)localKey{
-    NSString *timeKey = [TIME_KEY stringByAppendingString:localKey];
+//读取本地房屋数据
++ (NSArray *)readLocalHouseInfo:(NSString *)houseId{
+    if (!houseId) {
+        return nil;
+    }
+    NSString *houseStr = [MyUserDefaults objectForKey:houseId];
+    if (!houseStr) {
+        debugLog(@"本地房屋数据为空");
+        return nil;
+    }
+    NSData *JSONData = [houseStr dataUsingEncoding:NSUTF8StringEncoding];
 
-    NSInteger nowTime = [[NSDate new] timeIntervalSince1970];
-    [MyUserDefaults setInteger:nowTime forKey:timeKey];
+    NSArray *responseJSON = [NSJSONSerialization JSONObjectWithData:JSONData options:NSJSONReadingMutableLeaves error:nil];
+    if (responseJSON.count>0) {
+        debugLog(@"读取房屋数据成功");
+
+        return responseJSON;
+    }
+    return nil;
+    
+}
+//保存本地房屋数据
++ (void)saveLocalHouseInfo:(NSArray *)houseInfo withHouseId:(NSString *)houseId{
+    if (!houseId||!houseInfo) {
+        return;
+    }
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:houseInfo options:NSJSONWritingPrettyPrinted error:nil];
+    NSString *fileString = [[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding];
+
+    [MyUserDefaults setObject:fileString forKey:houseId];
+    [MyUserDefaults synchronize];
+    [self saveLocalKey:houseId];
 
 }
-+ (void)removeLocalDataTime:(NSString *)localKey{
-    NSString *timeKey = [TIME_KEY stringByAppendingString:localKey];
-
-    [MyUserDefaults removeObjectForKey:timeKey];
-
-}
-//检测本地数据时效性
-+ (BOOL)checkLocalData:(NSString *)localKey{
-    
-    NSString *timeKey = [TIME_KEY stringByAppendingString:localKey];
-    
-    NSInteger oldTime = [MyUserDefaults integerForKey:timeKey];
-    NSInteger nowTime = [[NSDate new] timeIntervalSince1970];
-    
-    if (!oldTime) {
-        return NO;
-
+//保存所有KEY
++ (void)saveLocalKey:(NSString *)localKey{
+    NSMutableArray *temp = [NSMutableArray new];
+    NSArray *keyArray = [[NSUserDefaults standardUserDefaults] objectForKey:ALLKEYS_KEY];
+    if (keyArray.count>0) {
+        [temp addObjectsFromArray:keyArray];
     }
-    //每天刷新一次
-    if ((nowTime-oldTime)>=AUTOCLEAR_TIME*60) {
-        [MyUserDefaults setInteger:nowTime forKey:timeKey];
+    [temp addObject:localKey];
+    [MyUserDefaults setObject:temp forKey:ALLKEYS_KEY];
+    [MyUserDefaults synchronize];
 
-        return NO;
-    }
-    
-    return YES;
-    
 }
 //清理缓存
 + (void)clearLocalData{
     
     //情况数据缓存
-    NSArray *keyArray = [[NSUserDefaults standardUserDefaults] objectForKey:ALLKEYS_KEY];
+    NSArray *keyArray = [MyUserDefaults objectForKey:ALLKEYS_KEY];
     for (NSString *key in keyArray) {
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:key];
         
@@ -159,7 +170,7 @@ NSInteger const AUTOCLEAR_TIME = 5;//分钟
     
     NSString *fileString = [MyUserDefaults objectForKey:[self userSearchKey:searchModal]];
     if (!fileString) {
-        NSLog(@"本地搜索为空");
+        debugLog(@"本地搜索为空");
         return temp;
     }
     
@@ -168,7 +179,7 @@ NSInteger const AUTOCLEAR_TIME = 5;//分钟
     if (responseJSON.count>0) {
         [temp addObjectsFromArray:responseJSON];
     }
-    NSLog(@"读取搜索数据成功");
+    debugLog(@"读取搜索数据成功");
     return temp;
 
 }
@@ -191,7 +202,10 @@ NSInteger const AUTOCLEAR_TIME = 5;//分钟
     
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:searchArray options:NSJSONWritingPrettyPrinted error:nil];
     NSString *fileString = [[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding];
-    [MyUserDefaults setObject:fileString forKey:[self userSearchKey:searchModal]];}
+    [MyUserDefaults setObject:fileString forKey:[self userSearchKey:searchModal]];
+    [MyUserDefaults synchronize];
+
+}
 
 //清空搜索关键词
 + (void)clearLocalSearchKeys:(SearchModal)searchModal{
@@ -209,6 +223,7 @@ NSInteger const AUTOCLEAR_TIME = 5;//分钟
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:searchArray options:NSJSONWritingPrettyPrinted error:nil];
     NSString *fileString = [[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding];
     [MyUserDefaults setObject:fileString forKey:[self userSearchKey:searchModal]];
+    [MyUserDefaults synchronize];
 
 }
 @end

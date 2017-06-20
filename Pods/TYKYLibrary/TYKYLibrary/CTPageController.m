@@ -15,13 +15,15 @@ CGFloat const  TITLE_SCALE = 0.1;
 #define  TITILE_FONT  DEVICE_WIDTH==320?13:15
 
 @interface CTPageController ()<UIScrollViewDelegate>
-@property (assign, nonatomic) CGFloat titleBtnWidth;           //标题按钮宽度
+
+@property (assign, nonatomic) CGFloat titleBtnWidth;        //标题按钮宽度
 @property (strong, nonatomic) UIScrollView *contentScrView; //内容底部滚动视图
 @property (strong, nonatomic) UIScrollView *headScrView;    //头部按钮底部视图
 @property (strong, nonatomic) UIButton *curruntBtn;         //当前选中按钮
 @property (strong, nonatomic) NSArray *RGBArray;            //按钮选中颜色RGB
 @property (strong, nonatomic) UIView *bottomLine;           //底部线条
 @property (assign, nonatomic) CGFloat titleWidth;           //底部线条宽度
+@property (assign, nonatomic) BOOL isLoad;
 
 @end
 
@@ -30,6 +32,23 @@ CGFloat const  TITLE_SCALE = 0.1;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+}
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    if (!_isLoad) {
+        _isLoad = YES;
+        if (!_viewControllers) {
+            return;
+        }
+        [self initUI];
+    }
+}
+
+#pragma mark 界面布局
+- (void)initUI{
+    if (!_viewControllers) {
+        return;
+    }
     _titleBtnWidth = DEVICE_WIDTH/_viewControllers.count;
     
     if (!_lineHeight) {
@@ -46,22 +65,7 @@ CGFloat const  TITLE_SCALE = 0.1;
         _selectedIndex = 0;
     }
     
-    self.RGBArray = [self getRGBWithColor:_selectedColor];
-    [self initUI];
-}
-
-#pragma mark 界面布局
-- (void)initUI{
-    
-    CGFloat W = self.view.frame.size.width;
-    CGFloat H = self.view.frame.size.height;
-    
     //头部标题
-   
-    UIScrollView *headScrView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, W, PAGE_HEAD_HEIGHT)];
-  
-    headScrView.backgroundColor = _headBackColor;
-    headScrView.scrollEnabled = NO;
     for (int i = 0; i <_viewControllers.count; i++) {
         UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(_titleBtnWidth*i, 0, _titleBtnWidth, PAGE_HEAD_HEIGHT)];
         btn.tag = i;
@@ -78,7 +82,7 @@ CGFloat const  TITLE_SCALE = 0.1;
             [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
 
         }
-        [headScrView addSubview:btn];
+        [self.headScrView addSubview:btn];
         if (!_titleWidth) {
             _titleWidth = [self strLenth:btn.currentTitle]*(1+TITLE_SCALE);
         }
@@ -86,9 +90,9 @@ CGFloat const  TITLE_SCALE = 0.1;
    
     //添加底部线条
     if (_lineShowMode!=UnDisplayMode) {
-        UIView *bottom = [[UIView alloc] initWithFrame:CGRectMake(0, PAGE_HEAD_HEIGHT-0.5, W, 0.5)];
+        UIView *bottom = [[UIView alloc] initWithFrame:CGRectMake(0, PAGE_HEAD_HEIGHT-0.5, self.view.frame.size.width, 0.5)];
         bottom.backgroundColor = [UIColor lightGrayColor];
-        [headScrView addSubview:bottom];
+        [self.headScrView addSubview:bottom];
         UIView *line = [UIView new];
         line.tag = 891101;
         line.backgroundColor = _selectedColor;
@@ -101,21 +105,12 @@ CGFloat const  TITLE_SCALE = 0.1;
         line.layer.masksToBounds = YES;
         line.layer.cornerRadius = 2.0;
         self.bottomLine = line;
-        [headScrView addSubview:line];
+        [self.headScrView addSubview:line];
     }
 
-    self.headScrView = headScrView;
-    [self.view addSubview:headScrView];
-    //内容
-    UIScrollView *pageScrView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, PAGE_HEAD_HEIGHT, W , H-PAGE_HEAD_HEIGHT-64)];
-    pageScrView.contentSize = CGSizeMake(W*_viewControllers.count, pageScrView.frame.size.height);
-    pageScrView.pagingEnabled = YES;
-    pageScrView.showsHorizontalScrollIndicator = NO;
-    pageScrView.directionalLockEnabled = YES;
-    
-    pageScrView.delegate = self;
-    self.contentScrView = pageScrView;
-    [self.view addSubview:pageScrView];
+    [self.view addSubview:self.headScrView];
+  
+    [self.view addSubview:self.contentScrView];
     
     for (UIViewController *vc in _viewControllers) {
         [self addChildViewController:vc];
@@ -248,20 +243,41 @@ CGFloat const  TITLE_SCALE = 0.1;
     btn.transform = CGAffineTransformMakeScale(transformScale, transformScale);
 }
 
-#pragma mark 获取RGB颜色数值
-- (NSArray *)getRGBWithColor:(UIColor *)color
-{
-    CGFloat red = 0.0;
-    CGFloat green = 0.0;
-    CGFloat blue = 0.0;
-    CGFloat alpha = 0.0;
-    [color getRed:&red green:&green blue:&blue alpha:&alpha];
-    return @[@(red), @(green), @(blue), @(alpha)];
-}
-
 - (CGFloat)strLenth:(NSString *)string
 {
     return [string boundingRectWithSize:CGSizeMake(MAXFLOAT, PAGE_HEAD_HEIGHT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:TITILE_FONT]} context:nil].size.width;
+}
+
+- (UIScrollView *)headScrView{
+    if (_headScrView==nil) {
+        _headScrView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, PAGE_HEAD_HEIGHT)];
+        _headScrView.backgroundColor = _headBackColor;
+        _headScrView.scrollEnabled = NO;
+    }
+    return _headScrView;
+}
+- (UIScrollView *)contentScrView{
+    if (_contentScrView==nil) {
+        _contentScrView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, PAGE_HEAD_HEIGHT, self.view.frame.size.width , self.view.frame.size.height-PAGE_HEAD_HEIGHT-64)];
+        _contentScrView.contentSize = CGSizeMake(self.view.frame.size.width*_viewControllers.count, _contentScrView.frame.size.height);
+        _contentScrView.pagingEnabled = YES;
+        _contentScrView.showsHorizontalScrollIndicator = NO;
+        _contentScrView.directionalLockEnabled = YES;
+        
+        _contentScrView.delegate = self;
+    }
+    return _contentScrView;
+}
+- (NSArray *)RGBArray{
+    if (_RGBArray==nil) {
+        CGFloat red = 0.0;
+        CGFloat green = 0.0;
+        CGFloat blue = 0.0;
+        CGFloat alpha = 0.0;
+        [_selectedColor getRed:&red green:&green blue:&blue alpha:&alpha];
+        _RGBArray = @[@(red), @(green), @(blue), @(alpha)];
+    }
+    return _RGBArray;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

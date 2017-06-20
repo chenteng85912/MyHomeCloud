@@ -24,14 +24,11 @@ extern NSString *const TIME_KEY;
 //文件存储地址
 + (NSString *)filePathWithURLstring:(NSString *)fileUrl;
 
-//检测本地数据时效性
-+ (BOOL)checkLocalData:(NSString *)localKey;
+//保存本地房屋数据
++ (void)saveLocalHouseInfo:(NSArray *)houseInfo withHouseId:(NSString *)houseId;
 
-//保存加载本地数据时间
-+ (void)saveLocalDataTime:(NSString *)localKey;
-
-//删除加班本地数据时间
-+ (void)removeLocalDataTime:(NSString *)localKey;
+//读取本地房屋数据
++ (NSMutableArray *)readLocalHouseInfo:(NSString *)houseId;
 
 //计算缓存大小
 + (NSString *)calcuteLocalDataSize;
