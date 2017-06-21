@@ -12,6 +12,7 @@
 #import "CTDataSourceObj.h"
 #import "AJMeModel.h"
 #import "AppDelegate.h"
+#import "AJWechatViewController.h"
 
 static NSString *CellIdentifier = @"TJSettingsCellId";
 
@@ -23,6 +24,7 @@ static NSString *CellIdentifier = @"TJSettingsCellId";
 @property (strong, nonatomic) CTDelegateObj *tableDelegate;
 @property (strong, nonatomic) CTDataSourceObj *tableDatasource;
 @property (strong, nonatomic) NSArray *tableList;
+@property (strong, nonatomic) AJWechatViewController *wechatVC;
 
 @end
 
@@ -53,7 +55,7 @@ static NSString *CellIdentifier = @"TJSettingsCellId";
             
         }
         cell.textLabel.text = [(AJMeModel *)model title];
-        if (indexPath.row==2) {
+        if (indexPath.row==3) {
             [self initLocalDataSizeLabel:cell.contentView];
         }
     }];
@@ -92,6 +94,7 @@ static NSString *CellIdentifier = @"TJSettingsCellId";
 
         }else{
             //微信分享
+            [self.wechatVC showOrHiddenView];
         }
         
     }
@@ -173,6 +176,16 @@ static NSString *CellIdentifier = @"TJSettingsCellId";
         [_topView addSubview:icon];
     }
     return _topView;
+}
+- (AJWechatViewController *)wechatVC{
+    if (_wechatVC ==nil) {
+        _wechatVC = [AJWechatViewController new];
+        _wechatVC.view.alpha = 0.0;
+        [self addChildViewController:_wechatVC];
+        _wechatVC.view.frame = self.view.bounds;
+        [self.view addSubview:_wechatVC.view];
+    }
+    return _wechatVC;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -11,6 +11,7 @@
 
 @interface AJWechatViewController ()
 @property (weak, nonatomic) IBOutlet UIView *wechatView;
+@property (assign, nonatomic) BOOL isShow;
 
 @end
 
@@ -21,7 +22,7 @@
     // Do any additional setup after loading the view from its nib.
 }
 - (IBAction)shareWechat:(UIButton *)sender {
-    [self hiddenView];
+    [self showOrHiddenView];
     if (sender.tag==0) {
         [AJUMShareUtil shareWechatSession];
     }else{
@@ -30,12 +31,26 @@
     }
 }
 
-- (void)hiddenView{
+- (IBAction)tapAcion:(UITapGestureRecognizer *)sender {
+    
+    [self showOrHiddenView];
+}
+- (void)showOrHiddenView{
+    _isShow = !_isShow;
     [UIView animateWithDuration:0.25 animations:^{
         [UIView setAnimationBeginsFromCurrentState:YES];
         [UIView setAnimationCurve:7];
-        self.view.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.0];
-        _wechatView.center = CGPointMake(dWidth/2, dHeight-64+40);
+        if (_isShow) {
+            self.view.alpha = 1.0;
+            self.view.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
+            _wechatView.center = CGPointMake(dWidth/2, dHeight-64-40);
+        }else{
+            self.view.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.0];
+            _wechatView.center = CGPointMake(dWidth/2, dHeight-64+40);
+            self.view.alpha = 0.0;
+            
+        }
+        
     }];
     
 }

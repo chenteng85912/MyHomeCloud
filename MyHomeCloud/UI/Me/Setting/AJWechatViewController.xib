@@ -21,7 +21,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h2E-2F-UGO">
-                    <rect key="frame" x="0.0" y="478" width="320" height="90"/>
+                    <rect key="frame" x="0.0" y="568" width="320" height="90"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="882-W3-n5n">
@@ -36,14 +36,26 @@
                             <rect key="frame" x="200" y="15" width="60" height="60"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <state key="normal" image="firend"/>
+                            <connections>
+                                <action selector="shareWechat:" destination="-1" eventType="touchUpInside" id="coh-hZ-F6L"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
             </subviews>
-            <color key="backgroundColor" white="0.0" alpha="0.20121464416058393" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <gestureRecognizers/>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="RQZ-1I-K2R" appends="YES" id="46V-tx-Ykd"/>
+            </connections>
             <point key="canvasLocation" x="-230" y="53"/>
         </view>
+        <tapGestureRecognizer id="RQZ-1I-K2R">
+            <connections>
+                <action selector="tapAcion:" destination="-1" id="7dL-3Y-vgT"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="firend" width="50" height="50"/>

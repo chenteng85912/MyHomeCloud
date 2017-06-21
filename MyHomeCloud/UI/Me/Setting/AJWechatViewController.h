@@ -10,4 +10,6 @@
 
 @interface AJWechatViewController : CTBaseViewController
 
+- (void)showOrHiddenView;
+
 @end
