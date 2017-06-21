@@ -26,6 +26,9 @@
 //应用图标
 + (UIImage *)iconImage;
 
+//应用名称
++ (NSString *)appName;
+
 //按宽度裁剪图片
 + (UIImage *) imageCompressForWidth:(UIImage *)sourceImage targetWidth:(CGFloat)defineWidth;
 

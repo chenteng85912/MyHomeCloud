@@ -17,7 +17,6 @@
 #import <MJRefresh/MJRefresh.h>
 #import "UITableView+NoMoreDataInFooter.h"
 #import "UIView+TYKYPrompt.h"
-#import "CTTool.h"
 #import "NSString+Extension.h"
 #import "CTBaseViewController.h"
 #import "UIAlertController+TYKYAlertBlock.h"
@@ -26,6 +25,7 @@
 #import "AJLocalDataCenter.h"
 #import "AJTbViewPresenter.h"
 #import "AJSB.h"
+#import "CTTool.h"
 
 #endif /* MyHomeCloud_pch */
 
@@ -38,6 +38,7 @@
 #define dHeight             [[UIScreen mainScreen] bounds].size.height
 #define dWidth              [[UIScreen mainScreen] bounds].size.width
 #define WeakSelf            __weak typeof(self) weakSelf = self;
+#define KEYWINDOW           [UIApplication  sharedApplication].keyWindow
 
 //本地用户名称
 #define USER_NAME               @"UserName"

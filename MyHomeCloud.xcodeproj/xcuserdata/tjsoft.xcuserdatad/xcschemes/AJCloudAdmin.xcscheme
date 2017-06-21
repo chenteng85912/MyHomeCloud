@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0B2343B71EC01CA1007A3AC1"
-               BuildableName = "MyHomeCloud.app"
-               BlueprintName = "MyHomeCloud"
+               BlueprintIdentifier = "0BF2C6821EFA5A4400EA46AF"
+               BuildableName = "AJCloudAdmin.app"
+               BlueprintName = "AJCloudAdmin"
                ReferencedContainer = "container:MyHomeCloud.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,23 +28,13 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0B2343D31EC01CA1007A3AC1"
-               BuildableName = "MyHomeCloudTests.xctest"
-               BlueprintName = "MyHomeCloudTests"
-               ReferencedContainer = "container:MyHomeCloud.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0B2343B71EC01CA1007A3AC1"
-            BuildableName = "MyHomeCloud.app"
-            BlueprintName = "MyHomeCloud"
+            BlueprintIdentifier = "0BF2C6821EFA5A4400EA46AF"
+            BuildableName = "AJCloudAdmin.app"
+            BlueprintName = "AJCloudAdmin"
             ReferencedContainer = "container:MyHomeCloud.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -65,9 +55,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0B2343B71EC01CA1007A3AC1"
-            BuildableName = "MyHomeCloud.app"
-            BlueprintName = "MyHomeCloud"
+            BlueprintIdentifier = "0BF2C6821EFA5A4400EA46AF"
+            BuildableName = "AJCloudAdmin.app"
+            BlueprintName = "AJCloudAdmin"
             ReferencedContainer = "container:MyHomeCloud.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -84,9 +74,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0B2343B71EC01CA1007A3AC1"
-            BuildableName = "MyHomeCloud.app"
-            BlueprintName = "MyHomeCloud"
+            BlueprintIdentifier = "0BF2C6821EFA5A4400EA46AF"
+            BuildableName = "AJCloudAdmin.app"
+            BlueprintName = "AJCloudAdmin"
             ReferencedContainer = "container:MyHomeCloud.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

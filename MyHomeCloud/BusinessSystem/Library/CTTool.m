@@ -79,7 +79,13 @@
     NSString *iconStr = [[infoDic valueForKeyPath:@"CFBundleIcons.CFBundlePrimaryIcon.CFBundleIconFiles"] lastObject];
     return [UIImage imageNamed:iconStr];
 }
-
+//应用名称
++ (NSString *)appName{
+    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+    CFShow((__bridge CFTypeRef)(infoDictionary));
+    NSString *app_Name = [infoDictionary objectForKey:@"CFBundleDisplayName"];
+    return app_Name;
+}
 //裁剪图片
 + (UIImage *)scaleImage:(UIImage *)img toSize:(CGSize)size{
     UIGraphicsBeginImageContextWithOptions(size, NO,0.0);

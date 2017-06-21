@@ -87,7 +87,12 @@ static NSString *CellIdentifier = @"TJSettingsCellId";
         APP_PUSH(vc);
         
     }else{
-        [self clearLocalData];
+        if ([model.title isEqualToString:@"清理缓存"]) {
+            [self clearLocalData];
+
+        }else{
+            //微信分享
+        }
         
     }
 }

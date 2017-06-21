@@ -78,7 +78,6 @@ NSString *const ServicePhone = @"4006005555";
     [temp addObject:model];
     [dataArray addObject:temp];
 
-
     //section2
     temp = [NSMutableArray array];
     model = [AJMeModel new];
@@ -103,6 +102,11 @@ NSString *const ServicePhone = @"4006005555";
     model = [AJMeModel new];
     model.title = @"隐私说明";
     model.className = NSStringFromClass([AJOtherViewController class]);
+    [temp addObject:model];
+    
+    
+    model = [AJMeModel new];
+    model.title = @"分享App";
     [temp addObject:model];
     
     model = [AJMeModel new];
