@@ -186,8 +186,9 @@ NSString *const USER_ONLINE = @"该用户已在别处登录";
 //找回密码
 - (IBAction)findPswAction:(UIButton *)sender {
     if (sender.tag==2) {
-       
+       //找回密码
     }else if (sender.tag==3) {
+        [self.view endEditing:YES];
         [self dismissViewControllerAnimated:YES completion:nil];
     }else{
         if (sender.selected) {

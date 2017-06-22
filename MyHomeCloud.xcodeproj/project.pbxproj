@@ -48,7 +48,6 @@
 		0B2344681EC03095007A3AC1 /* TJDownloadTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B23440A1EC03095007A3AC1 /* TJDownloadTool.m */; };
 		0B23446C1EC03095007A3AC1 /* CTTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2344141EC03095007A3AC1 /* CTTool.m */; };
 		0B23446E1EC03095007A3AC1 /* AJLocalDataCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2344191EC03095007A3AC1 /* AJLocalDataCenter.m */; };
-		0B23447B1EC03095007A3AC1 /* AdjustScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2344421EC03095007A3AC1 /* AdjustScrollView.m */; };
 		0B23447C1EC03095007A3AC1 /* AutoRunLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2344441EC03095007A3AC1 /* AutoRunLabel.m */; };
 		0B302F5E1ED01835006896CA /* AJOtherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B302F5C1ED01835006896CA /* AJOtherViewController.m */; };
 		0B302F5F1ED01835006896CA /* AJOtherViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B302F5D1ED01835006896CA /* AJOtherViewController.xib */; };
@@ -125,7 +124,6 @@
 		0BF2C6BA1EFA5A4400EA46AF /* CTTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2344141EC03095007A3AC1 /* CTTool.m */; };
 		0BF2C6BB1EFA5A4400EA46AF /* AJSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A4C3AF501EED418800DBBB4C /* AJSearchTableViewCell.m */; };
 		0BF2C6BC1EFA5A4400EA46AF /* AJMeCenterData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BE2A35B1EC2D2CD00519840 /* AJMeCenterData.m */; };
-		0BF2C6BD1EFA5A4400EA46AF /* AdjustScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2344421EC03095007A3AC1 /* AdjustScrollView.m */; };
 		0BF2C6BE1EFA5A4400EA46AF /* AJAutoPositionScrollview.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BE1160A1EF919610094FB65 /* AJAutoPositionScrollview.m */; };
 		0BF2C6BF1EFA5A4400EA46AF /* AJMyReserverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AE330B1EF51F4A004B0A54 /* AJMyReserverViewController.m */; };
 		0BF2C6C01EFA5A4400EA46AF /* AJReserverCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AE33151EF52572004B0A54 /* AJReserverCellModel.m */; };
@@ -307,8 +305,6 @@
 		0B2344141EC03095007A3AC1 /* CTTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTTool.m; sourceTree = "<group>"; };
 		0B2344181EC03095007A3AC1 /* AJLocalDataCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJLocalDataCenter.h; sourceTree = "<group>"; };
 		0B2344191EC03095007A3AC1 /* AJLocalDataCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJLocalDataCenter.m; sourceTree = "<group>"; };
-		0B2344411EC03095007A3AC1 /* AdjustScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdjustScrollView.h; sourceTree = "<group>"; };
-		0B2344421EC03095007A3AC1 /* AdjustScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdjustScrollView.m; sourceTree = "<group>"; };
 		0B2344431EC03095007A3AC1 /* AutoRunLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoRunLabel.h; sourceTree = "<group>"; };
 		0B2344441EC03095007A3AC1 /* AutoRunLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoRunLabel.m; sourceTree = "<group>"; };
 		0B2344841EC04296007A3AC1 /* MyHomeCloud.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyHomeCloud.pch; sourceTree = "<group>"; };
@@ -713,8 +709,6 @@
 		0B2344401EC03095007A3AC1 /* Subclass */ = {
 			isa = PBXGroup;
 			children = (
-				0B2344411EC03095007A3AC1 /* AdjustScrollView.h */,
-				0B2344421EC03095007A3AC1 /* AdjustScrollView.m */,
 				0B2344431EC03095007A3AC1 /* AutoRunLabel.h */,
 				0B2344441EC03095007A3AC1 /* AutoRunLabel.m */,
 				0BE116091EF919610094FB65 /* AJAutoPositionScrollview.h */,
@@ -1358,7 +1352,6 @@
 				0B23446C1EC03095007A3AC1 /* CTTool.m in Sources */,
 				A4C3AF521EED418800DBBB4C /* AJSearchTableViewCell.m in Sources */,
 				0BE2A35C1EC2D2CD00519840 /* AJMeCenterData.m in Sources */,
-				0B23447B1EC03095007A3AC1 /* AdjustScrollView.m in Sources */,
 				0BE1160B1EF919610094FB65 /* AJAutoPositionScrollview.m in Sources */,
 				A4AE330D1EF51F4A004B0A54 /* AJMyReserverViewController.m in Sources */,
 				A4AE33161EF52572004B0A54 /* AJReserverCellModel.m in Sources */,
@@ -1444,7 +1437,6 @@
 				0BF2C6BA1EFA5A4400EA46AF /* CTTool.m in Sources */,
 				0BF2C6BB1EFA5A4400EA46AF /* AJSearchTableViewCell.m in Sources */,
 				0BF2C6BC1EFA5A4400EA46AF /* AJMeCenterData.m in Sources */,
-				0BF2C6BD1EFA5A4400EA46AF /* AdjustScrollView.m in Sources */,
 				0BF2C6BE1EFA5A4400EA46AF /* AJAutoPositionScrollview.m in Sources */,
 				0BF2C6BF1EFA5A4400EA46AF /* AJMyReserverViewController.m in Sources */,
 				0BF2C6C01EFA5A4400EA46AF /* AJReserverCellModel.m in Sources */,

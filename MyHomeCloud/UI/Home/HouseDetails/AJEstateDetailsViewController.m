@@ -28,7 +28,7 @@ NSString *const CONTENT_KEY = @"content";
 
 @property (strong, nonatomic) AJLocationViewController *mapView;
 @property (strong, nonatomic) NSMutableArray <AJEstateInfoModal *> *dataArray;
-
+@property (strong, nonatomic) AVObject *currentObj;
 @end
 
 @implementation AJEstateDetailsViewController
@@ -89,7 +89,7 @@ NSString *const CONTENT_KEY = @"content";
             [self.view showTips:@"数据加载失败" withState:TYKYHUDModeFail complete:nil];
             return ;
         }
-        self.mapView.houseObj = object;
+        _currentObj = object;
 
         [weakSelf creatHouseInfo:object];
         
@@ -166,6 +166,7 @@ NSString *const CONTENT_KEY = @"content";
 - (AJLocationViewController *)mapView{
     if (_mapView ==nil) {
         _mapView = [AJLocationViewController new];
+        _mapView.houseObj = _currentObj;
 
     }
     return _mapView;
