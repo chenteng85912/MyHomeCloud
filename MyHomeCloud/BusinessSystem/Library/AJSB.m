@@ -16,7 +16,7 @@
         
         AJLoginViewController *login  = [AJLoginViewController new];
         login.backBlock = callBack;
-        login.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+//        login.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
 
         if ([UIApplication sharedApplication].keyWindow.rootViewController.presentedViewController) {
             [[UIApplication sharedApplication].keyWindow.rootViewController.presentedViewController presentViewController:login animated:YES completion:nil];

@@ -73,14 +73,18 @@ static NSString * const reuseIdentifier = @"CTLoopViewCell";
     [self.dataArray removeAllObjects];
     
     [self.dataArray addObjectsFromArray:array];
-    self.pageCT.numberOfPages = self.dataArray.count;
     if (self.dataArray.count>1) {
         [self addNSTimer];
     }else{
         [self stopTimer];
     }
-    _pageLabel.text = [NSString stringWithFormat:@"1/%lu",(unsigned long)self.dataArray.count];
-
+    if (_loopScollDirection==CTLoopScollDirectionHorizontal) {
+        self.pageLabel.text = [NSString stringWithFormat:@"1/%lu",(unsigned long)self.dataArray.count];
+        
+    }else{
+        self.pageCT.numberOfPages = self.dataArray.count;
+        
+    }
     [self.collectionView reloadData];
     
 }
@@ -88,9 +92,9 @@ static NSString * const reuseIdentifier = @"CTLoopViewCell";
 #pragma mark <UICollectionViewDataSource>
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     if (self.dataArray.count<2) {
-        return _dataArray.count;
+        return self.dataArray.count;
     }
-    return _dataArray.count+1;
+    return self.dataArray.count+1;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -239,10 +243,14 @@ static NSString * const reuseIdentifier = @"CTLoopViewCell";
     if (pageNum==_dataArray.count) {
         pageNum = 0;
     }
-    _pageLabel.text = [NSString stringWithFormat:@"%ld/%lu",pageNum+1,(unsigned long)self.dataArray.count];
+    if (_loopScollDirection==CTLoopScollDirectionHorizontal) {
+        self.pageLabel.text = [NSString stringWithFormat:@"%ld/%lu",pageNum+1,(unsigned long)self.dataArray.count];
 
-    self.pageCT.currentPage = pageNum;
-   
+    }else{
+        self.pageCT.currentPage = pageNum;
+
+    }
+
 }
 
 - (NSMutableArray *)dataArray{
@@ -295,7 +303,6 @@ static NSString * const reuseIdentifier = @"CTLoopViewCell";
         _pageLabel.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
         _pageLabel.textColor = [UIColor whiteColor];
         _pageLabel.font = [UIFont systemFontOfSize:12];
-//        _pageLabel.clipsToBounds = YES;
         _pageLabel.layer.masksToBounds = YES;
         _pageLabel.layer.cornerRadius = 10.0;
         

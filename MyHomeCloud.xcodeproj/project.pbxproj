@@ -342,7 +342,7 @@
 		0BF2C67F1EFA544100EA46AF /* AJUMShareUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJUMShareUtil.h; sourceTree = "<group>"; };
 		0BF2C6801EFA544100EA46AF /* AJUMShareUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJUMShareUtil.m; sourceTree = "<group>"; };
 		0BF2C6F21EFA5A4400EA46AF /* AJCloudAdmin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AJCloudAdmin.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		0BF2C6F31EFA5A4400EA46AF /* MyHomeCloud copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "MyHomeCloud copy-Info.plist"; path = "/Users/tjsoft/Documents/teng/MyHomeCloud/MyHomeCloud copy-Info.plist"; sourceTree = "<absolute>"; };
+		0BF2C6F31EFA5A4400EA46AF /* admin.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = admin.plist; path = /Users/tjsoft/Documents/teng/MyHomeCloud/admin.plist; sourceTree = "<absolute>"; };
 		0BF2C6F41EFA5D4800EA46AF /* AJWechatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJWechatViewController.h; sourceTree = "<group>"; };
 		0BF2C6F51EFA5D4800EA46AF /* AJWechatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJWechatViewController.m; sourceTree = "<group>"; };
 		0BF2C6F61EFA5D4800EA46AF /* AJWechatViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJWechatViewController.xib; sourceTree = "<group>"; };
@@ -570,7 +570,6 @@
 				0B2343B91EC01CA1007A3AC1 /* Products */,
 				5F0155942F2DC918E5FBA1EF /* Pods */,
 				7C85C11C537F6C90A6EF472C /* Frameworks */,
-				0BF2C6F31EFA5A4400EA46AF /* MyHomeCloud copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -597,6 +596,7 @@
 				0B2343CA1EC01CA1007A3AC1 /* Assets.xcassets */,
 				0B2343CC1EC01CA1007A3AC1 /* LaunchScreen.storyboard */,
 				0B2343CF1EC01CA1007A3AC1 /* Info.plist */,
+				0BF2C6F31EFA5A4400EA46AF /* admin.plist */,
 				0B2343BB1EC01CA1007A3AC1 /* Supporting Files */,
 			);
 			path = MyHomeCloud;
@@ -1662,11 +1662,11 @@
 					"COCOAPODS=1",
 					AJCLOUDADMIN,
 				);
-				INFOPLIST_FILE = "MyHomeCloud copy-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/admin.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.chenteng.AJCloud;
+				PRODUCT_BUNDLE_IDENTIFIER = com.chenteng.AJCloudAdmin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
@@ -1686,11 +1686,11 @@
 					"COCOAPODS=1",
 					AJCLOUDADMIN,
 				);
-				INFOPLIST_FILE = "MyHomeCloud copy-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/admin.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.chenteng.AJCloud;
+				PRODUCT_BUNDLE_IDENTIFIER = com.chenteng.AJCloudAdmin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};

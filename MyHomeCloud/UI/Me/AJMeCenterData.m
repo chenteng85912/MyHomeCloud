@@ -11,6 +11,7 @@
 #import "AJSettingViewController.h"
 #import "AJOtherViewController.h"
 #import "AJUserHouseViewController.h"
+#import "AJUMShareUtil.h"
 
 NSString *const ServicePhone = @"4006005555";
 
@@ -104,11 +105,12 @@ NSString *const ServicePhone = @"4006005555";
     model.className = NSStringFromClass([AJOtherViewController class]);
     [temp addObject:model];
     
-    
-    model = [AJMeModel new];
-    model.title = @"分享App";
-    [temp addObject:model];
-    
+    if ([AJUMShareUtil isWechatInstalled]) {
+        model = [AJMeModel new];
+        model.title = @"分享App";
+        [temp addObject:model];
+    }
+   
     model = [AJMeModel new];
     model.title = @"清理缓存";
     [temp addObject:model];

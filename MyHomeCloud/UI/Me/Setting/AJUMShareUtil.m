@@ -8,8 +8,7 @@
 
 #import "AJUMShareUtil.h"
 
-NSString *const UMWEIXINKEY = @"";
-NSString *const APP_STORE_URL = @"https://itunes.apple.com/cn/app/长春办事大厅/id1173813889?mt=8";
+NSString *const APP_STORE_URL = @"https://itunes.apple.com/cn/app/安家屋/id1251844754?mt=8";
 
 @implementation AJUMShareUtil
 
