@@ -26,6 +26,10 @@ NSString *const USER_ONLINE = @"该用户已在别处登录";
     [super viewDidLoad];
 
     [self initUI];
+#if AJCLOUDADMIN
+    _headRegBtn.enabled = NO;
+
+#endif
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -80,11 +84,19 @@ NSString *const USER_ONLINE = @"该用户已在别处登录";
         [self.view showTips:@"请输入正确的手机号" withState:TYKYHUDModeWarning complete:nil];
         return;
     }
+
     if (!self.pswTF.hasText) {
        [self.view showTips:self.pswTF.placeholder  withState:TYKYHUDModeWarning complete:nil];
         return;
     }
     
+#if AJCLOUDADMIN
+    NSString *name = [_userNameTF.text stringByReplacingOccurrencesOfString:@" " withString:@""];
+    if (![name isEqualToString:@"13712121212"]) {
+        [self.view showTips:@"请使用管理员帐号登录" withState:TYKYHUDModeWarning complete:nil];
+        return;
+    }
+#endif
     if (_headRegBtn.selected) {
         if (!self.confirmPswTextField.hasText) {
             [self.view showTips:self.confirmPswTextField.placeholder  withState:TYKYHUDModeWarning complete:nil];

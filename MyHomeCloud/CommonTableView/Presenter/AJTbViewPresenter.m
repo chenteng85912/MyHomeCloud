@@ -66,7 +66,10 @@ NSInteger const defaultPageSize = 50;
             self.query = mulQuery;
         }else{
             self.query.className = [_tbViewVC requestClassName];
-            [self.query whereKey:USER_PHONE equalTo:[_tbViewVC requestKeyName]];
+            if ([_tbViewVC requestKeyName]) {
+                [self.query whereKey:USER_PHONE equalTo:[_tbViewVC requestKeyName]];
+
+            }
             if (self.showModal==ReserverHouseModal) {
                 [self.query whereKey:RESERVER_TYPE equalTo:[_tbViewVC reserverTypeName]];
 

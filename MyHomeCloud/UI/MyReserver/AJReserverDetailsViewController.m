@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *userPhone;
 @property (weak, nonatomic) IBOutlet UILabel *state;
 @property (weak, nonatomic) IBOutlet UIButton *reserverBtn;
+@property (weak, nonatomic) IBOutlet UIButton *cancelBtn;
 
 @end
 
@@ -30,7 +31,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+#if AJCLOUDADMIN
+    _reserverBtn.hidden = NO;
+    _cancelBtn.hidden = NO;
     
+#endif
 }
 - (void)refreshView{
     _housePrice.text = _reserverModal.housePrice;
@@ -45,13 +50,20 @@
     _state.text = _reserverModal.stateStr;
     _state.backgroundColor = _reserverModal.stateColor;
     
-    if (_reserverModal.state.integerValue>1) {
+    if (_reserverModal.state.integerValue>0) {
         _reserverBtn.enabled = NO;
         _reserverBtn.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
-    }else{
+    }
+    if (_reserverModal.state.integerValue>1) {
+        _cancelBtn.enabled = NO;
+        _cancelBtn.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
+        
+    }
+    else{
         _reserverBtn.enabled = YES;
         _reserverBtn.backgroundColor = [UIColor colorWithRed:0 green:128.0/255.0 blue:0 alpha:1];
-
+        _cancelBtn.enabled = YES;
+        _cancelBtn.backgroundColor = [UIColor darkGrayColor];
     }
     
 }
@@ -72,35 +84,50 @@
         [self hiddenView];
 
     }else if (sender.tag==1){
-       
-        WeakSelf;
-        [UIAlertController alertWithTitle:@"温馨提示" message:@"确定取消该预约？" cancelButtonTitle:@"取消" otherButtonTitles:@[@"确定"] preferredStyle:UIAlertControllerStyleAlert block:^(NSInteger buttonIndex) {
-            if (buttonIndex==1) {
-                //取消预约
-                [weakSelf.reserverModal.objectData setObject:@"2" forKey:RESERVER_STATE];
-                [weakSelf.reserverModal.objectData saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-                    if (!succeeded) {
-                        [weakSelf.view showTips:@"取消预约失败" withState:TYKYHUDModeFail complete:nil];
+        //确认预约
+        [self changeReserverStateAction:@"1"];
 
-                        return;
-                    }
-                    [weakSelf.view showTips:@"取消成功" withState:TYKYHUDModeSuccess complete:^{
-                        
-                        [self hiddenView];
-
-                        [weakSelf.reserverModal calculateSizeConstrainedToSize];
-                        AJMyReserverViewController *myReserver = (AJMyReserverViewController *)self.parentViewController;
-                        [myReserver loadDataSuccess];
-                    }];
-                    
-                }];
-            }
-        }];
         
+    }else if (sender.tag==2){
+        [self changeReserverStateAction:@"2"];
     }else{
         [self hiddenView];
         
     }
+}
+
+- (void)changeReserverStateAction:(NSString *)state{
+    WeakSelf;
+    NSString *msg;
+    if (state.integerValue==1) {
+        msg = @"确定确认该预约？";
+    }else{
+        msg = @"确定取消该预约？";
+
+    }
+    [UIAlertController alertWithTitle:@"温馨提示" message:msg cancelButtonTitle:@"取消" otherButtonTitles:@[@"确定"] preferredStyle:UIAlertControllerStyleAlert block:^(NSInteger buttonIndex) {
+        if (buttonIndex==1) {
+            //取消预约
+            [weakSelf.reserverModal.objectData setObject:state forKey:RESERVER_STATE];
+            [weakSelf.reserverModal.objectData saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                if (!succeeded) {
+                    [weakSelf.view showTips:@"操作失败,请重试" withState:TYKYHUDModeFail complete:nil];
+                    
+                    return;
+                }
+                [weakSelf.view showTips:@"操作成功" withState:TYKYHUDModeSuccess complete:^{
+                    
+                    [self hiddenView];
+                    
+                    [weakSelf.reserverModal calculateSizeConstrainedToSize];
+                    AJMyReserverViewController *myReserver = (AJMyReserverViewController *)self.parentViewController;
+                    [myReserver loadDataSuccess];
+                }];
+                
+            }];
+        }
+    }];
+
 }
 - (void)hiddenView{
     [UIView animateWithDuration:0.2 animations:^{

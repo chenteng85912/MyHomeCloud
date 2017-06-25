@@ -62,7 +62,13 @@
     
 }
 - (NSString *)requestKeyName{
+#if AJCLOUDADMIN
+    return nil;
+    
+#else
     return [AVUser currentUser].mobilePhoneNumber;
+    
+#endif
 }
 
 - (NSString *)reserverTypeName{
@@ -119,8 +125,15 @@
         _details.view.alpha = 0;
         _details.rModal = _reserverModal;
         
-        [[UIApplication sharedApplication].keyWindow addSubview:_details.view];
+#if AJCLOUDADMIN
+        _details.view.frame = self.view.bounds;
+        [self.view addSubview:_details.view];
+
+#else
         _details.view.frame = [UIApplication sharedApplication].keyWindow.bounds;
+        [[UIApplication sharedApplication].keyWindow addSubview:_details.view];
+
+#endif
 
     }
     return _details;

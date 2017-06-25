@@ -64,6 +64,10 @@
 		0B59A52C1ED17D8600E8E787 /* AJPickViewTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B59A52B1ED17D8600E8E787 /* AJPickViewTextField.m */; };
 		0B6E12C51EC4235300103571 /* AJLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B6E12C31EC4235300103571 /* AJLoginViewController.m */; };
 		0B6E12C61EC4235300103571 /* AJLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B6E12C41EC4235300103571 /* AJLoginViewController.xib */; };
+		0BB93A6D1EFFD1F800B32320 /* AJWechatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF2C6F51EFA5D4800EA46AF /* AJWechatViewController.m */; };
+		0BB93A6E1EFFD1FB00B32320 /* AJWechatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BF2C6F61EFA5D4800EA46AF /* AJWechatViewController.xib */; };
+		0BB93A6F1EFFD22300B32320 /* AJTagsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4F881C1EFF89390092BF18 /* AJTagsViewController.m */; };
+		0BB93A701EFFD22300B32320 /* AJTagsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B4F881D1EFF89390092BF18 /* AJTagsViewController.xib */; };
 		0BE1160B1EF919610094FB65 /* AJAutoPositionScrollview.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BE1160A1EF919610094FB65 /* AJAutoPositionScrollview.m */; };
 		0BE2A35C1EC2D2CD00519840 /* AJMeCenterData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BE2A35B1EC2D2CD00519840 /* AJMeCenterData.m */; };
 		0BE2A35F1EC2DE1700519840 /* AJMeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BE2A35E1EC2DE1700519840 /* AJMeModel.m */; };
@@ -1130,9 +1134,11 @@
 				0BF2C6D01EFA5A4400EA46AF /* LaunchScreen.storyboard in Resources */,
 				0BF2C6D11EFA5A4400EA46AF /* Assets.xcassets in Resources */,
 				0BF2C6D21EFA5A4400EA46AF /* AJHomeHeadView.xib in Resources */,
+				0BB93A6E1EFFD1FB00B32320 /* AJWechatViewController.xib in Resources */,
 				0BF2C6D31EFA5A4400EA46AF /* AJHouseInfoTableViewCell.xib in Resources */,
 				0BF2C6D41EFA5A4400EA46AF /* AJSearchViewController.xib in Resources */,
 				0BF2C6D51EFA5A4400EA46AF /* AJNewsViewController.xib in Resources */,
+				0BB93A701EFFD22300B32320 /* AJTagsViewController.xib in Resources */,
 				0BF2C6D61EFA5A4400EA46AF /* AJReserverTableViewCell.xib in Resources */,
 				0BF2C6D71EFA5A4400EA46AF /* Main.storyboard in Resources */,
 				0BF2C6D81EFA5A4400EA46AF /* AJUserHeadViewController.xib in Resources */,
@@ -1417,6 +1423,7 @@
 				0BF2C69C1EFA5A4400EA46AF /* AJTbViewCellModel.m in Sources */,
 				0BF2C69D1EFA5A4400EA46AF /* UIView+TYKYPrompt.m in Sources */,
 				0BF2C69E1EFA5A4400EA46AF /* AJAddHouserViewController.m in Sources */,
+				0BB93A6F1EFFD22300B32320 /* AJTagsViewController.m in Sources */,
 				0BF2C69F1EFA5A4400EA46AF /* AJLetHouseTableViewCell.m in Sources */,
 				0BF2C6A01EFA5A4400EA46AF /* AJHomeDataCenter.m in Sources */,
 				0BF2C6A11EFA5A4400EA46AF /* AJPickViewTextField.m in Sources */,
@@ -1461,6 +1468,7 @@
 				0BF2C6C91EFA5A4400EA46AF /* UITableView+NoMoreDataInFooter.m in Sources */,
 				0BF2C6CA1EFA5A4400EA46AF /* UIScrollView+UITouchEvent.m in Sources */,
 				0BF2C6CB1EFA5A4400EA46AF /* AJSecondHouseCellModel.m in Sources */,
+				0BB93A6D1EFFD1F800B32320 /* AJWechatViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

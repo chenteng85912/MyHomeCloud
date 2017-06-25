@@ -25,6 +25,7 @@ NSString *const ServicePhone = @"4006005555";
     
     //section0
     AJMeModel *model = [AJMeModel new];
+#if AJCLOUD
     if ([AVUser currentUser]) {
         NSInteger role = [[AVUser currentUser][USER_ROLE] integerValue];
         if (role<=3) {
@@ -34,10 +35,12 @@ NSString *const ServicePhone = @"4006005555";
             model.isNeedLogin = YES;
             model.className = NSStringFromClass([AJUserHouseViewController class]);
             [temp addObject:model];
-
+            
         }
     }
     
+#endif
+
     model = [AJMeModel new];
     model.title = @"我的关注";
     model.showModal = UserFavoriteModal;
@@ -53,9 +56,15 @@ NSString *const ServicePhone = @"4006005555";
     model.showModal = UserRecordModal;
     model.className = NSStringFromClass([AJUserHouseViewController class]);
     [temp addObject:model];
-    
+
     model = [AJMeModel new];
+#if AJCLOUDADMIN
+    model.title = @"预约确认";
+    
+#else
     model.title = @"我的预约";
+    
+#endif
     model.iconName = @"reserver";
     model.isNeedLogin = YES;
     model.showModal = ReserverHouseModal;

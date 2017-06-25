@@ -342,6 +342,7 @@ CGFloat const HOUSE_INFO_HEITHT = 610;
             
         }
     }else if (likeBtn.tag==1){
+#if AJCLOUD
         if (![AVUser currentUser]) {
             [AJSB goLoginViewComplete:^{
             }];
@@ -352,7 +353,8 @@ CGFloat const HOUSE_INFO_HEITHT = 610;
         [UIView animateWithDuration:0.3 animations:^{
             self.userReserer.view.alpha = 1.0;
         }];
-    
+#endif
+       
     }else{
         debugLog(@"咨询经纪人");
         [CTTool takePhoneNumber:self.houseInfo[AGENTER_PHONE]];
