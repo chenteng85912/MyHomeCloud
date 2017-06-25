@@ -38,11 +38,34 @@
     self.priceFrame = CGRectMake(dWidth-cellX-priceSize.width-20, CGRectGetMaxY(self.infoFrame)+subY, priceSize.width+20, priceSize.height);
     
     //标签
-    self.houseTag = @"随时看房";
-    CGSize tagSize = [self.houseTag sizeWithMaxSize:CGSizeMake(dWidth-cellX*3-IMG_WIDTH, MAXFLOAT) fontSize:DES_FONT];
-    self.tagFrame = CGRectMake(lx, CGRectGetMaxY(self.nameFrame)+subY, tagSize.width+4, tagSize.height+2);
+    NSArray *desArray = object[HOUSE_TAGS];
+    if (desArray&&desArray.count>0) {
+        self.houseTag1 = desArray[0];
+        if (desArray.count==2) {
+            self.houseTag2 = desArray[1];
+        }
+        if (desArray.count==3) {
+            self.houseTag2 = desArray[1];
+            self.houseTag3 = desArray[2];
+
+        }
+    }else{
+        self.houseTag1 = @"随时看房";
+
+    }
+  
+    CGSize tag1Size = [self.houseTag1 sizeWithMaxSize:CGSizeMake(dWidth-cellX*3-IMG_WIDTH, MAXFLOAT) fontSize:SUB_FONT];
+    self.tag1Frame = CGRectMake(lx, CGRectGetMaxY(self.nameFrame)+subY, tag1Size.width+4, tag1Size.height+2);
     
-    self.cellHeight = CGRectGetMaxY(self.tagFrame)+cellY;
+    if (self.houseTag2) {
+        CGSize tag2Size = [self.houseTag2 sizeWithMaxSize:CGSizeMake(dWidth-cellX*3-IMG_WIDTH, MAXFLOAT) fontSize:SUB_FONT];
+        self.tag2Frame = CGRectMake(CGRectGetMaxX(self.tag1Frame)+5, CGRectGetMaxY(self.nameFrame)+subY, tag2Size.width+4, tag2Size.height+2);
+    }
+    if (self.houseTag3) {
+        CGSize tag3Size = [self.houseTag3 sizeWithMaxSize:CGSizeMake(dWidth-cellX*3-IMG_WIDTH, MAXFLOAT) fontSize:SUB_FONT];
+        self.tag3Frame = CGRectMake(CGRectGetMaxX(self.tag2Frame)+5, CGRectGetMaxY(self.nameFrame)+subY, tag3Size.width+4, tag3Size.height+2);
+    }
+    self.cellHeight = CGRectGetMaxY(self.tag1Frame)+cellY;
     
 }
 @end

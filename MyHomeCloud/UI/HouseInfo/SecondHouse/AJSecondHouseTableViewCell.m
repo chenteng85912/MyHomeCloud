@@ -14,7 +14,10 @@
 
 @property (strong, nonatomic) UILabel *houseName;//名称
 @property (strong, nonatomic) UILabel *houseInfo;//基本信息
-@property (strong, nonatomic) UILabel *houseDes;//描述
+@property (strong, nonatomic) UILabel *houseTag1;
+@property (strong, nonatomic) UILabel *houseTag2;
+@property (strong, nonatomic) UILabel *houseTag3;
+
 @property (strong, nonatomic) UILabel *totalPrice;//总价格
 @property (strong, nonatomic) UILabel *unitPrice;//单价格
 //@property (strong, nonatomic) UILabel *houseTime;//时间
@@ -37,9 +40,21 @@
     self.houseInfo.text = model.subTitle;
     self.houseInfo.frame = model.subFrame;
     
-    self.houseDes.text = model.houseDes;
-    self.houseDes.frame = model.desFrame;
+    self.houseTag1.frame  = model.tag1Frame;
+    self.houseTag1.text = model.houseTag1;
+    self.houseTag1.textColor = [APPDELEGATE desInfo][model.houseTag1];
+    self.houseTag1.layer.borderColor = self.houseTag1.textColor.CGColor;
     
+    self.houseTag2.frame  = model.tag2Frame;
+    self.houseTag2.text = model.houseTag2;
+    self.houseTag2.textColor = [APPDELEGATE desInfo][model.houseTag2];
+    self.houseTag2.layer.borderColor = self.houseTag2.textColor.CGColor;
+
+    self.houseTag3.frame  = model.tag3Frame;
+    self.houseTag3.text = model.houseTag3;
+    self.houseTag3.textColor = [APPDELEGATE desInfo][model.houseTag3];
+    self.houseTag3.layer.borderColor = self.houseTag3.textColor.CGColor;
+
     self.totalPrice.text = model.totalPrice;
     self.totalPrice.frame = model.totalFrame;
     
@@ -81,16 +96,43 @@
     return _houseInfo;
 }
 
-- (UILabel *)houseDes{
-    if (_houseDes == nil) {
-        _houseDes = [UILabel new];
-        _houseDes.font = [UIFont systemFontOfSize:DES_FONT];
-        _houseDes.numberOfLines = 0;
-        _houseDes.textColor = [UIColor lightGrayColor];
-        [self addSubview:_houseDes];;
-
+- (UILabel *)houseTag1{
+    if (_houseTag1 == nil) {
+        _houseTag1 = [UILabel new];
+        _houseTag1.font = [UIFont systemFontOfSize:SUB_FONT];
+        _houseTag1.layer.borderWidth = 1.0;
+        _houseTag1.layer.cornerRadius = 2.0;
+        _houseTag1.layer.masksToBounds = YES;
+        _houseTag1.textAlignment = NSTextAlignmentCenter;
+        [self addSubview:_houseTag1];;
     }
-    return _houseDes;
+    return _houseTag1;
+}
+- (UILabel *)houseTag2{
+    if (_houseTag2 == nil) {
+        _houseTag2 = [UILabel new];
+        _houseTag2.font = [UIFont systemFontOfSize:SUB_FONT];
+        _houseTag2.layer.borderWidth = 1.0;
+        _houseTag2.layer.cornerRadius = 2.0;
+        _houseTag2.layer.masksToBounds = YES;
+        _houseTag2.textAlignment = NSTextAlignmentCenter;
+
+        [self addSubview:_houseTag2];;
+    }
+    return _houseTag2;
+}
+- (UILabel *)houseTag3{
+    if (_houseTag3 == nil) {
+        _houseTag3 = [UILabel new];
+        _houseTag3.font = [UIFont systemFontOfSize:SUB_FONT];
+        _houseTag3.layer.borderWidth = 1.0;
+        _houseTag3.layer.cornerRadius = 2.0;
+        _houseTag3.layer.masksToBounds = YES;
+        _houseTag3.textAlignment = NSTextAlignmentCenter;
+
+        [self addSubview:_houseTag3];;
+    }
+    return _houseTag3;
 }
 - (UILabel *)totalPrice{
     if (_totalPrice == nil) {

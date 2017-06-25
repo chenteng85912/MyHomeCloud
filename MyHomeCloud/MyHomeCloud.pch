@@ -15,18 +15,20 @@
 #import <Foundation/Foundation.h>
 #import <AVOSCloud/AVOSCloud.h>
 #import <MJRefresh/MJRefresh.h>
-#import "UITableView+NoMoreDataInFooter.h"
-#import "UIView+TYKYPrompt.h"
-#import "NSString+Extension.h"
-#import "CTBaseViewController.h"
-#import "UIAlertController+TYKYAlertBlock.h"
 #import <TYKYLibrary/TYKYLibrary.h>
+
+#import "CTBaseViewController.h"
 #import "UIImageView+WebCache.h"
 #import "AJLocalDataCenter.h"
 #import "AJTbViewPresenter.h"
 #import "AJSB.h"
 #import "CTTool.h"
+#import "AppDelegate.h"
 
+#import "UIAlertController+TYKYAlertBlock.h"
+#import "UIView+TYKYPrompt.h"
+#import "UITableView+NoMoreDataInFooter.h"
+#import "NSString+Extension.h"
 #endif /* MyHomeCloud_pch */
 
 #define UIColorFromRGB(rgbValue)    [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
@@ -41,6 +43,7 @@
 #define dWidth              [[UIScreen mainScreen] bounds].size.width
 #define WeakSelf            __weak typeof(self) weakSelf = self;
 #define KEYWINDOW           [UIApplication  sharedApplication].keyWindow
+#define APPDELEGATE         (AppDelegate *)[UIApplication sharedApplication].delegate
 
 //本地用户名称
 #define USER_NAME               @"UserName"
@@ -55,19 +58,21 @@
 
 //数据表
 #define USER_RESERVER           @"UserReserver"//用户预约
-#define SECOND_HAND_HOUSE   @"SecondHouse"//二手房屋数据表
-#define N_HOUSE             @"NHouse"//新房
-#define LET_HOUSE           @"LetHouse"//租房
+#define SECOND_HAND_HOUSE       @"SecondHouse"//二手房屋数据表
+#define N_HOUSE                 @"NHouse"//新房
+#define LET_HOUSE               @"LetHouse"//租房
 
 #define SECOND_RECORD       @"SecondHouseRecord"//用户浏览记录表
 #define LET_RECORD          @"LetHouseRecord"//用户浏览记录表
-#define N_RECORD           @"NHouseRecord"//用户浏览记录表
+#define N_RECORD            @"NHouseRecord"//用户浏览记录表
 
-#define SECOND_FAVORITE    @"SecondHouseFav"//用户收藏表
-#define LET_FAVORITE       @"LetHouseFav"//用户收藏表
-#define N_FAVORITE         @"NHouseFav"//用户收藏表
+#define SECOND_FAVORITE     @"SecondHouseFav"//用户收藏表
+#define LET_FAVORITE        @"LetHouseFav"//用户收藏表
+#define N_FAVORITE          @"NHouseFav"//用户收藏表
 
-#define HOUSE_DESCRIBE      @"HouseDescribe"//房屋描述
+#define HOUSE_DESCRIBE      @"HouseDescribe"//房屋装修
+#define HOUSE_TAGS          @"HouseTags"//房屋标签
+
 #define ALL_HOUSE_INFO      @"AllHouseInfo"//房屋基本信息
 #define USER_INFO           @"_User"//房屋发布者
 
@@ -112,19 +117,32 @@
 #define SUPPORT_MEASURES     @"SupportMeasures"//周边配套
 #define TITLE_NAME           @"TitleName"//标题
 
-#define RESERVER_TIME       @"reserverTime"//预约时间
-#define RESERVER_STATE      @"reserverState"//预约状态
-#define RESERVER_TYPE       @"reserverType"//预约类型
-#define RESERVER_NAME       @"reserverName"//预约人姓名
+#define RESERVER_TIME        @"reserverTime"//预约时间
+#define RESERVER_STATE       @"reserverState"//预约状态
+#define RESERVER_TYPE        @"reserverType"//预约类型
+#define RESERVER_NAME        @"reserverName"//预约人姓名
 #define RESERVER_PHONE       @"reserverPhne"//预约人电话
 
-#define YEARS_DES            @"YearsDes"//证满5年
-#define WATCH_DES            @"WatchDes"//随时看房
-#define TRAFFIC_DES          @"TrafficDes"//交通情况
-#define DECORATE_DES         @"DecorateDes"//精装修
-#define BUSSINESS_DES        @"BussinessDes"//商业中心
-#define GOOD_LIVE_DES        @"GoodLiveDes"//宜居小区
-#define SCHOOL_DES           @"SchoolDes"//学区房
+
+//访问标签 颜色值
+#define YEARS_DES            @"证满五年"//证满5年
+#define WATCH_DES            @"随时看房"//随时看房
+#define TRAFFIC_DES          @"地铁口"//交通情况
+#define DECORATE_DES         @"精装修"//精装修
+#define BUSSINESS_DES        @"商业中心"//商业中心
+#define GOOD_LIVE_DES        @"宜居小区"//宜居小区
+#define SCHOOL_DES           @"学区房"//学区房
+#define SUPPORT_ALL          @"配套完善"//配套完善
+#define RIPE_COMMUNITY       @"成熟社区"//成熟社区
+
+#define YEARS_COLOR         UIColorFromRGB(0xFF0000)
+#define WATCH_COLOR         UIColorFromRGB(0x800000)
+#define TRAFFIC_COLOR       UIColorFromRGB(0x0080FF)
+#define DECORATE_COLOR      UIColorFromRGB(0x000000)
+#define BUSSINESS_COLOR     UIColorFromRGB(0xF69233)
+#define GOOD_LIVE_COLOR     UIColorFromRGB(0x008040)
+#define SCHOOL_COLOR        UIColorFromRGB(0xE235F9)
+#define SUPPORT_COLOR       UIColorFromRGB(0x555555)
 
 #ifdef DEBUG
 

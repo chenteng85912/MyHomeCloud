@@ -244,7 +244,18 @@ CGFloat const HOUSE_INFO_HEITHT = 610;
         }
 
     }
-   
+    
+    //房屋标签
+    NSArray *desArray = _houseInfo[HOUSE_TAGS];
+    if (desArray&&desArray.count>0) {
+        NSString *desStr = @"";
+        for (NSString *str in desArray) {
+            desStr = [NSString stringWithFormat:@"%@ %@",desStr,str];
+        }
+        _houseDes.text = [desStr substringFromIndex:1];
+
+    }
+    
     _houseRooms.text = _houseInfo[HOUSE_AMOUNT];
     _houseAreaage.text = [NSString stringWithFormat:@"%@平",_houseInfo[HOUSE_AREAAGE]];
     

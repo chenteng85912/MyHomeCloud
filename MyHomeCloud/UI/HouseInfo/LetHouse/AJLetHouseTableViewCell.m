@@ -14,9 +14,11 @@
 @property (strong, nonatomic) UILabel *houseDes;
 @property (strong, nonatomic) UILabel *houseInfo;
 @property (strong, nonatomic) UILabel *houseName;
-@property (strong, nonatomic) UILabel *houseTag;
 @property (strong, nonatomic) UILabel *housePrice;
 
+@property (strong, nonatomic) UILabel *houseTag1;
+@property (strong, nonatomic) UILabel *houseTag2;
+@property (strong, nonatomic) UILabel *houseTag3;
 @end
 @implementation AJLetHouseTableViewCell
 
@@ -43,8 +45,21 @@
     self.housePrice.frame = model.priceFrame;
     self.housePrice.text = model.letPrice;
     
-    self.houseTag.frame  = model.tagFrame;
-    self.houseTag.text = model.houseTag;
+    self.houseTag1.frame  = model.tag1Frame;
+    self.houseTag1.text = model.houseTag1;
+    self.houseTag1.textColor = [APPDELEGATE desInfo][model.houseTag1];
+    self.houseTag1.layer.borderColor = self.houseTag1.textColor.CGColor;
+    
+    self.houseTag2.frame  = model.tag2Frame;
+    self.houseTag2.text = model.houseTag2;
+    self.houseTag2.textColor = [APPDELEGATE desInfo][model.houseTag2];
+    self.houseTag2.layer.borderColor = self.houseTag2.textColor.CGColor;
+
+    self.houseTag3.frame  = model.tag3Frame;
+    self.houseTag3.text = model.houseTag3;
+    self.houseTag3.textColor = [APPDELEGATE desInfo][model.houseTag3];
+    self.houseTag3.layer.borderColor = self.houseTag3.textColor.CGColor;
+
 }
 
 - (UILabel *)houseName{
@@ -94,18 +109,44 @@
     return _housePrice;
 }
 
-- (UILabel *)houseTag{
-    if (_houseTag == nil) {
-        _houseTag = [UILabel new];
-        _houseTag.font = [UIFont boldSystemFontOfSize:SUB_FONT];
-        _houseTag.textColor = NavigationBarColor;
-        _houseTag.layer.borderWidth = 1.0;
-//        _houseTag.layer.cornerRadius = 2.0;
-        _houseTag.layer.borderColor  = NavigationBarColor.CGColor;
-        _houseTag.textAlignment = NSTextAlignmentCenter;
-        [self addSubview:_houseTag];;
+- (UILabel *)houseTag1{
+    if (_houseTag1 == nil) {
+        _houseTag1 = [UILabel new];
+        _houseTag1.font = [UIFont systemFontOfSize:SUB_FONT];
+        _houseTag1.layer.borderWidth = 1.0;
+        _houseTag1.layer.cornerRadius = 2.0;
+        _houseTag1.layer.masksToBounds = YES;
+        _houseTag1.textAlignment = NSTextAlignmentCenter;
+
+        [self addSubview:_houseTag1];;
     }
-    return _houseTag;
+    return _houseTag1;
+}
+- (UILabel *)houseTag2{
+    if (_houseTag2 == nil) {
+        _houseTag2 = [UILabel new];
+        _houseTag2.font = [UIFont systemFontOfSize:SUB_FONT];
+        _houseTag2.layer.borderWidth = 1.0;
+        _houseTag2.layer.cornerRadius = 2.0;
+        _houseTag2.layer.masksToBounds = YES;
+        _houseTag2.textAlignment = NSTextAlignmentCenter;
+
+        [self addSubview:_houseTag2];;
+    }
+    return _houseTag2;
+}
+- (UILabel *)houseTag3{
+    if (_houseTag3 == nil) {
+        _houseTag3 = [UILabel new];
+        _houseTag3.font = [UIFont systemFontOfSize:SUB_FONT];
+        _houseTag3.layer.borderWidth = 1.0;
+        _houseTag3.layer.cornerRadius = 2.0;
+        _houseTag3.layer.masksToBounds = YES;
+        _houseTag3.textAlignment = NSTextAlignmentCenter;
+
+        [self addSubview:_houseTag3];;
+    }
+    return _houseTag3;
 }
 - (UIImageView *)houseImg{
     if (_houseImg ==nil) {

@@ -53,6 +53,8 @@
 		0B302F5F1ED01835006896CA /* AJOtherViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B302F5D1ED01835006896CA /* AJOtherViewController.xib */; };
 		0B302F6E1ED04F47006896CA /* AJUserHeadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B302F6C1ED04F47006896CA /* AJUserHeadViewController.m */; };
 		0B302F6F1ED04F47006896CA /* AJUserHeadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B302F6D1ED04F47006896CA /* AJUserHeadViewController.xib */; };
+		0B4F881E1EFF89390092BF18 /* AJTagsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4F881C1EFF89390092BF18 /* AJTagsViewController.m */; };
+		0B4F881F1EFF89390092BF18 /* AJTagsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B4F881D1EFF89390092BF18 /* AJTagsViewController.xib */; };
 		0B57F5941EC198D000B89CE2 /* AJUserCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B57F5921EC198D000B89CE2 /* AJUserCenterViewController.m */; };
 		0B57F5951EC198D000B89CE2 /* AJUserCenterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B57F5931EC198D000B89CE2 /* AJUserCenterViewController.xib */; };
 		0B57F5991EC198DB00B89CE2 /* AJNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B57F5971EC198DA00B89CE2 /* AJNewsViewController.m */; };
@@ -314,6 +316,9 @@
 		0B302F6B1ED04F47006896CA /* AJUserHeadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJUserHeadViewController.h; sourceTree = "<group>"; };
 		0B302F6C1ED04F47006896CA /* AJUserHeadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJUserHeadViewController.m; sourceTree = "<group>"; };
 		0B302F6D1ED04F47006896CA /* AJUserHeadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJUserHeadViewController.xib; sourceTree = "<group>"; };
+		0B4F881B1EFF89390092BF18 /* AJTagsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJTagsViewController.h; sourceTree = "<group>"; };
+		0B4F881C1EFF89390092BF18 /* AJTagsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJTagsViewController.m; sourceTree = "<group>"; };
+		0B4F881D1EFF89390092BF18 /* AJTagsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJTagsViewController.xib; sourceTree = "<group>"; };
 		0B57F5911EC198D000B89CE2 /* AJUserCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJUserCenterViewController.h; sourceTree = "<group>"; };
 		0B57F5921EC198D000B89CE2 /* AJUserCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJUserCenterViewController.m; sourceTree = "<group>"; };
 		0B57F5931EC198D000B89CE2 /* AJUserCenterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJUserCenterViewController.xib; sourceTree = "<group>"; };
@@ -484,6 +489,9 @@
 				0B1904AF1EE66192004C46EE /* AJAllHouseListViewController.h */,
 				0B1904B01EE66192004C46EE /* AJAllHouseListViewController.m */,
 				0B1904B11EE66192004C46EE /* AJAllHouseListViewController.xib */,
+				0B4F881B1EFF89390092BF18 /* AJTagsViewController.h */,
+				0B4F881C1EFF89390092BF18 /* AJTagsViewController.m */,
+				0B4F881D1EFF89390092BF18 /* AJTagsViewController.xib */,
 				0B1904B21EE66192004C46EE /* AJNewHouseModel.h */,
 				0B1904B31EE66192004C46EE /* AJNewHouseModel.m */,
 				0B1904B41EE66192004C46EE /* AJHouseInfoTableViewCell.h */,
@@ -1081,6 +1089,7 @@
 				0B1904C81EE66192004C46EE /* AJHouseInfoTableViewCell.xib in Resources */,
 				A4E6A4951EC61243006B882A /* AJSearchViewController.xib in Resources */,
 				0B57F59A1EC198DB00B89CE2 /* AJNewsViewController.xib in Resources */,
+				0B4F881F1EFF89390092BF18 /* AJTagsViewController.xib in Resources */,
 				A4AE33131EF51F6F004B0A54 /* AJReserverTableViewCell.xib in Resources */,
 				0B2343C91EC01CA1007A3AC1 /* Main.storyboard in Resources */,
 				0B302F6F1ED04F47006896CA /* AJUserHeadViewController.xib in Resources */,
@@ -1321,6 +1330,7 @@
 				0B1904E01EE668EC004C46EE /* AJTbViewCellModel.m in Sources */,
 				0B2344611EC03095007A3AC1 /* UIView+TYKYPrompt.m in Sources */,
 				0B1904C21EE66192004C46EE /* AJAddHouserViewController.m in Sources */,
+				0B4F881E1EFF89390092BF18 /* AJTagsViewController.m in Sources */,
 				A4FC23501EE6F31200924EEE /* AJLetHouseTableViewCell.m in Sources */,
 				A4E6BB411EEBCDC000CC37B1 /* AJHomeDataCenter.m in Sources */,
 				0B59A52C1ED17D8600E8E787 /* AJPickViewTextField.m in Sources */,

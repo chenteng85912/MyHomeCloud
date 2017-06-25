@@ -15,7 +15,7 @@
                 <outlet property="agenterPhone" destination="Doh-4E-qgn" id="6bc-G1-Jdf"/>
                 <outlet property="houseAreaage" destination="aSo-pd-PJm" id="ObV-it-jdB"/>
                 <outlet property="houseBaseInfo" destination="8Tb-X0-Euw" id="9H2-j9-pod"/>
-                <outlet property="houseDesInfo" destination="eAg-8N-y3h" id="oOg-Zq-iaf"/>
+                <outlet property="houseDesInfo" destination="a3w-Ra-khu" id="uDB-Ie-eLa"/>
                 <outlet property="houseDescribe" destination="6oC-0J-gkU" id="CD7-rU-2Vm"/>
                 <outlet property="houseDirection" destination="VkI-Ea-Lfg" id="Tih-rg-klK"/>
                 <outlet property="houseFloor" destination="PZj-nr-Xgv" id="YbH-B4-SKT"/>
@@ -151,8 +151,8 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请选择小区" textAlignment="right" minimumFontSize="17" id="JsC-i0-moD">
-                                    <rect key="frame" x="90" y="0.0" width="170" height="50"/>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请选择小区" textAlignment="right" minimumFontSize="17" id="JsC-i0-moD">
+                                    <rect key="frame" x="100" y="0.0" width="160" height="50"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -342,18 +342,11 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="房屋描述" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jFN-ZC-q9y">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="房屋标签" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jFN-ZC-q9y">
                                     <rect key="frame" x="15" y="350" width="70" height="50"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                     <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="证满5年 随时看房" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eAg-8N-y3h">
-                                    <rect key="frame" x="85" y="350" width="175" height="50"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="概况" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WLJ-NM-Lkd">
@@ -426,6 +419,16 @@
                                     <rect key="frame" x="255" y="465" width="20" height="20"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                 </imageView>
+                                <textField opaque="NO" clipsSubviews="YES" tag="8" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请选择房屋标签" textAlignment="right" minimumFontSize="17" id="a3w-Ra-khu">
+                                    <rect key="frame" x="100" y="350" width="160" height="50"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="RRn-Ty-2gw"/>
+                                    </connections>
+                                </textField>
                                 <view clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" id="Gnz-78-8Zi">
                                     <rect key="frame" x="0.0" y="500" width="280" height="50"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -478,6 +481,10 @@
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                 </view>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="arrow" id="SW9-W5-v9o">
+                                    <rect key="frame" x="255" y="365" width="20" height="20"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                </imageView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <userDefinedRuntimeAttributes>
@@ -491,7 +498,7 @@
                 </scrollView>
             </subviews>
             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-            <point key="canvasLocation" x="-31.5" y="22.5"/>
+            <point key="canvasLocation" x="-32" y="22"/>
         </view>
     </objects>
     <resources>

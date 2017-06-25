@@ -12,5 +12,8 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
+//房屋标签
+@property (strong, nonatomic) NSMutableDictionary *desInfo;
+
 @end
 

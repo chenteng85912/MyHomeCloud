@@ -10,31 +10,31 @@
 #import "AJHouseDesViewController.h"
 #import "AJPickViewTextField.h"
 #import "AJAllHouseListViewController.h"
+#import "AJTagsViewController.h"
 
-@interface AJAddHouserViewController ()<AJAllHouseListViewControllerDelegate>
+@interface AJAddHouserViewController ()<AJAllHouseListViewControllerDelegate,AJTagsViewControllerDelegate>
 
-@property (strong, nonatomic) AVObject *houseData;
-@property (strong, nonatomic) AVObject *houseInfoData;
+@property (strong, nonatomic) AVObject *houseData;//新房源信息
+@property (strong, nonatomic)AJTagsViewController *tagVC;
 
-@property (weak, nonatomic) IBOutlet UILabel *houseDesInfo;
-
+@property (weak, nonatomic) IBOutlet UIView *letView;
+@property (weak, nonatomic) IBOutlet UIView *secondView;
 @property (weak, nonatomic) IBOutlet UILabel *houseBaseInfo;
-@property (weak, nonatomic) IBOutlet AJPickViewTextField *houseDescribe;
-@property (weak, nonatomic) IBOutlet UITextField *agenterPhone;
 
+@property (weak, nonatomic) IBOutlet UITextField *houseDesInfo;
+@property (weak, nonatomic) IBOutlet UITextField *agenterPhone;
 @property (weak, nonatomic) IBOutlet UITextField *houseName;
 @property (weak, nonatomic) IBOutlet UITextField *houseAreaage;
 @property (weak, nonatomic) IBOutlet UITextField *houseTotal;
-@property (weak, nonatomic) IBOutlet UIView *letView;
-@property (weak, nonatomic) IBOutlet UIView *secondView;
 @property (weak, nonatomic) IBOutlet UITextField *agenterName;
+@property (weak, nonatomic) IBOutlet UITextField *letHousePrice;
 
 @property (weak, nonatomic) IBOutlet AJPickViewTextField *houseRooms;
 @property (weak, nonatomic) IBOutlet AJPickViewTextField *houseDirection;
 @property (weak, nonatomic) IBOutlet AJPickViewTextField *houseFloor;
-@property (weak, nonatomic) IBOutlet AJPickViewTextField *houseDes;
 @property (weak, nonatomic) IBOutlet AJPickViewTextField *houseTotalFloor;
-@property (weak, nonatomic) IBOutlet UITextField *letHousePrice;
+@property (weak, nonatomic) IBOutlet AJPickViewTextField *houseDescribe;
+
 
 @end
 
@@ -62,57 +62,39 @@
 //保存房源
 - (AVObject *)creatHouseInfo{
 
-    AVObject *houseData;
     if (_addModal==SecondHouseModal) {
-        houseData = [AVObject objectWithClassName:SECOND_HAND_HOUSE];
         //总价
-        [houseData setObject:_houseTotal.text               forKey:HOUSE_TOTAL_PRICE];
+        [self.houseData setObject:_houseTotal.text               forKey:HOUSE_TOTAL_PRICE];
         //房屋单价
         NSInteger unitPrice = _houseTotal.text.integerValue*10000/_houseAreaage.text.integerValue;
-        [houseData setObject:[NSString stringWithFormat:@"%ld",(long)unitPrice]        forKey:HOUSE_UNIT_PRICE];
+        [self.houseData setObject:[NSString stringWithFormat:@"%ld",(long)unitPrice]        forKey:HOUSE_UNIT_PRICE];
 
     }else if (_addModal==LetHouseModal){
-        houseData = [AVObject objectWithClassName:LET_HOUSE];
         //租金
-        [houseData setObject:_letHousePrice.text               forKey:LET_HOUSE_PRICE];
+        [self.houseData setObject:_letHousePrice.text               forKey:LET_HOUSE_PRICE];
 
     }else{
-        houseData = [AVObject objectWithClassName:N_HOUSE];
-        [houseData setObject:@"14000"        forKey:HOUSE_UNIT_PRICE];
+        [self.houseData setObject:@"14000"        forKey:HOUSE_UNIT_PRICE];
 
     }
-    [houseData setObject:[AVUser currentUser].mobilePhoneNumber      forKey:USER_PHONE];
     
-    [houseData setObject:_houseTotalFloor.text          forKey:HOUSE_TOTAL_FLOOR];
-    [houseData setObject:_houseName.text                forKey:HOUSE_ESTATE_NAME];
-    [houseData setObject:_agenterName.text              forKey:AGENTER_NAME];
-    [houseData setObject:_agenterPhone.text             forKey:AGENTER_PHONE];
+    [self.houseData setObject:_houseTotalFloor.text          forKey:HOUSE_TOTAL_FLOOR];
+    [self.houseData setObject:_houseName.text                forKey:HOUSE_ESTATE_NAME];
+    [self.houseData setObject:_agenterName.text              forKey:AGENTER_NAME];
+    [self.houseData setObject:_agenterPhone.text             forKey:AGENTER_PHONE];
 
-    //房源基本信息
-    [houseData setObject:self.houseInfoData[HOUSE_DEVELOPER]           forKey:HOUSE_DEVELOPER];
-    [houseData setObject:self.houseInfoData[HOUSE_AREA]                forKey:HOUSE_AREA];
-    [houseData setObject:self.houseInfoData[HOUSE_YEARS]               forKey:HOUSE_YEARS];
-    //小区id
-    [houseData setObject:self.houseInfoData.objectId               forKey:ESTATE_ID];
-
-    //物业费
-    [houseData setObject:self.houseInfoData[LET_ESTATE_PRICE]                forKey:LET_ESTATE_PRICE];
-
-    //经度纬度
-    [houseData setObject:self.houseInfoData[HOUSE_LATITUDE]                forKey:HOUSE_LATITUDE];
-    [houseData setObject:self.houseInfoData[HOUSE_LONGITUDE]                forKey:HOUSE_LONGITUDE];
     
-    [houseData setObject:_houseFloor.text               forKey:HOUSE_FLOOR_NUM];
-    [houseData setObject:_houseRooms.text               forKey:HOUSE_AMOUNT];
-    [houseData setObject:_houseAreaage.text             forKey:HOUSE_AREAAGE];
-    [houseData setObject:_houseDirection.text           forKey:HOUSE_DIRECTION];
-    [houseData setObject:_houseDescribe.text            forKey:HOUSE_DESCRIBE];
+    [self.houseData setObject:_houseFloor.text               forKey:HOUSE_FLOOR_NUM];
+    [self.houseData setObject:_houseRooms.text               forKey:HOUSE_AMOUNT];
+    [self.houseData setObject:_houseAreaage.text             forKey:HOUSE_AREAAGE];
+    [self.houseData setObject:_houseDirection.text           forKey:HOUSE_DIRECTION];
+    [self.houseData setObject:_houseDescribe.text            forKey:HOUSE_DIRECTION];
 
     //发布者信息
-    [houseData setObject:[AVUser currentUser].objectId      forKey:HOUSE_AUTHOR];
-    [houseData setObject:[AVUser currentUser][HEAD_URL]     forKey:HEAD_URL];
+    [self.houseData setObject:[AVUser currentUser].objectId      forKey:HOUSE_AUTHOR];
+    [self.houseData setObject:[AVUser currentUser][HEAD_URL]     forKey:HEAD_URL];
 
-    return houseData;
+    return self.houseData;
 }
 - (IBAction)completeHouseInfo:(UIButton *)sender {
     [self addHomeDes];
@@ -130,6 +112,10 @@
     }
     if (!self.houseRooms.hasText) {
         [self.view showTips:self.houseRooms.placeholder withState:TYKYHUDModeWarning complete:nil];
+        return;
+    }
+    if (!_houseDesInfo.hasText) {
+        [self.view showTips:_houseDesInfo.placeholder withState:TYKYHUDModeWarning complete:nil];
         return;
     }
     if (!_agenterName.hasText) {
@@ -181,16 +167,73 @@
         APP_PUSH(houseList);
         return NO;
     }
+    if (textField.tag==8) {
+        [self.view endEditing:YES];
+        self.tagVC.view.alpha = 0.0;
+        [UIView animateWithDuration:0.3 animations:^{
+            self.tagVC.view.alpha = 1.0;
+        }];
+      
+        return NO;
+    }
     return YES;;
 }
 
 #pragma mark - AJAllHouseListViewControllerDelegate
 - (void)chooseHouseInfo:(AVObject *)houseInfo{
     
-    self.houseInfoData = houseInfo;
+    //房源基本信息
+    [self.houseData setObject:houseInfo[HOUSE_DEVELOPER]           forKey:HOUSE_DEVELOPER];
+    [self.houseData setObject:houseInfo[HOUSE_AREA]                forKey:HOUSE_AREA];
+    [self.houseData setObject:houseInfo[HOUSE_YEARS]               forKey:HOUSE_YEARS];
+    //小区id
+    [self.houseData setObject:houseInfo.objectId               forKey:ESTATE_ID];
+    
+    //物业费
+    [self.houseData setObject:houseInfo[LET_ESTATE_PRICE]                forKey:LET_ESTATE_PRICE];
+    
+    //经度纬度
+    [self.houseData setObject:houseInfo[HOUSE_LATITUDE]                forKey:HOUSE_LATITUDE];
+    [self.houseData setObject:houseInfo[HOUSE_LONGITUDE]                forKey:HOUSE_LONGITUDE];
+
     _houseName.text = houseInfo[HOUSE_ESTATE_NAME];
     _houseBaseInfo.text = [NSString stringWithFormat:@"%@ %@ %@",houseInfo[HOUSE_AREA],houseInfo[HOUSE_DEVELOPER],houseInfo[HOUSE_YEARS]];
     
+}
+#pragma mark - AJTagsViewControllerDelegate
+- (void)confirmTags:(NSArray *)tagArray{
+    [self.houseData setObject:tagArray   forKey:HOUSE_TAGS];
+    NSString *desStr = @"";
+    for (NSString *str in tagArray) {
+        desStr = [NSString stringWithFormat:@"%@ %@",desStr,str];
+    }
+    _houseDesInfo.text = [desStr substringFromIndex:1];
+
+}
+- (AVObject *)houseData{
+    if (_houseData ==nil) {
+        if (_addModal==SecondHouseModal) {
+            _houseData = [AVObject objectWithClassName:SECOND_HAND_HOUSE];
+        }else if (_addModal==LetHouseModal) {
+            _houseData = [AVObject objectWithClassName:SECOND_HAND_HOUSE];
+        }else{
+            _houseData = [AVObject objectWithClassName:N_HOUSE];
+        }
+        [_houseData setObject:[AVUser currentUser].mobilePhoneNumber      forKey:USER_PHONE];
+
+    }
+    return _houseData;
+}
+- (AJTagsViewController *)tagVC{
+    if (_tagVC==nil) {
+        _tagVC = [AJTagsViewController new];
+        _tagVC.delegate = self;
+        _tagVC.addModal = self.addModal;
+        _tagVC.view.frame = self.view.bounds;
+        [self addChildViewController:_tagVC];
+        [self.view addSubview:_tagVC.view];
+    }
+    return _tagVC;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

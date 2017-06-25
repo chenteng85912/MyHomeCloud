@@ -47,6 +47,22 @@ NSString *const UMWEIXINAPPSECRET = @"1b701ce273624810d0f55296f19cd384";
                                        appSecret:UMWEIXINAPPSECRET redirectURL:@"http://mobile.umeng.com/social"];
     
 }
+- (NSMutableDictionary *)desInfo{
+    if (_desInfo ==nil) {
+        _desInfo = [NSMutableDictionary new];
+        [_desInfo setObject:YEARS_COLOR         forKey:YEARS_DES];
+        [_desInfo setObject:WATCH_COLOR         forKey:WATCH_DES];
+        [_desInfo setObject:DECORATE_COLOR      forKey:DECORATE_DES];
+        [_desInfo setObject:TRAFFIC_COLOR       forKey:TRAFFIC_DES];
+        [_desInfo setObject:SCHOOL_COLOR        forKey:SCHOOL_DES];
+        [_desInfo setObject:BUSSINESS_COLOR     forKey:BUSSINESS_DES];
+        [_desInfo setObject:GOOD_LIVE_COLOR     forKey:GOOD_LIVE_DES];
+        [_desInfo setObject:SUPPORT_COLOR       forKey:SUPPORT_ALL];
+        [_desInfo setObject:SCHOOL_COLOR        forKey:RIPE_COMMUNITY];
+
+    }
+    return _desInfo;
+}
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
