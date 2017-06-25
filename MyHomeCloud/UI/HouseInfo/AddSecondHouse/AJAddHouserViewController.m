@@ -83,12 +83,10 @@
     [self.houseData setObject:_agenterName.text              forKey:AGENTER_NAME];
     [self.houseData setObject:_agenterPhone.text             forKey:AGENTER_PHONE];
 
-    
     [self.houseData setObject:_houseFloor.text               forKey:HOUSE_FLOOR_NUM];
     [self.houseData setObject:_houseRooms.text               forKey:HOUSE_AMOUNT];
     [self.houseData setObject:_houseAreaage.text             forKey:HOUSE_AREAAGE];
     [self.houseData setObject:_houseDirection.text           forKey:HOUSE_DIRECTION];
-    [self.houseData setObject:_houseDescribe.text            forKey:HOUSE_DIRECTION];
 
     //发布者信息
     [self.houseData setObject:[AVUser currentUser].objectId      forKey:HOUSE_AUTHOR];
