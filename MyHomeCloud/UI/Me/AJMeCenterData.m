@@ -38,7 +38,16 @@ NSString *const ServicePhone = @"4006005555";
             
         }
     }
-    
+#else
+    if ([AVUser currentUser]) {
+        model.title = @"所有房源";
+        model.iconName = @"house";
+        model.showModal = AllHouseModal;
+        model.isNeedLogin = YES;
+        model.className = NSStringFromClass([AJUserHouseViewController class]);
+        [temp addObject:model];
+        
+    }
 #endif
 
     model = [AJMeModel new];
@@ -113,12 +122,14 @@ NSString *const ServicePhone = @"4006005555";
     model.title = @"隐私说明";
     model.className = NSStringFromClass([AJOtherViewController class]);
     [temp addObject:model];
-    
+#if AJCLOUD
     if ([AJUMShareUtil isWechatInstalled]) {
         model = [AJMeModel new];
         model.title = @"分享App";
         [temp addObject:model];
     }
+    
+#endif
    
     model = [AJMeModel new];
     model.title = @"清理缓存";

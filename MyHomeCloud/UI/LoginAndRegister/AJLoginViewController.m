@@ -2,7 +2,8 @@
 
 #import "AJLoginViewController.h"
 #import "AppDelegate.h"
-#import <UMSocialCore/UMSocialCore.h>
+#import "KeychainItemWrapper.h"
+#import <Security/Security.h>
 
 @interface AJLoginViewController ()
 
@@ -12,6 +13,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *headLogBtn;
 @property (weak, nonatomic) IBOutlet UIButton *headRegBtn;
 @property (weak, nonatomic) IBOutlet UITextField *confirmPswTextField;
+@property (strong, nonatomic) KeychainItemWrapper *keyChainWrapper;
+@property (strong, nonatomic) NSString *luuid;
 
 @end
 
@@ -24,7 +27,8 @@ NSString *const USER_ONLINE = @"该用户已在别处登录";
 #pragma mark -life cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+   
+    [self saveUUId];
     [self initUI];
 #if AJCLOUDADMIN
     _headRegBtn.enabled = NO;
@@ -148,21 +152,19 @@ NSString *const USER_ONLINE = @"该用户已在别处登录";
         [CTTool removeKeyWindowHUD];
         [MyUserDefaults setObject:self.userNameTF.text forKey:USER_NAME];
         if (user) {
-            //本地uuid
-            NSString *luuid = [[NSUUID UUID] UUIDString];
             
             NSInteger state = [[AVUser currentUser][USER_LOGIN_STATE] integerValue];
             NSString *uuid = [AVUser currentUser][USER_UUID];
             
             //用户已经登录
-            if (state>0&&![uuid isEqualToString:luuid]) {
+            if (state>0&&![uuid isEqualToString:_luuid]) {
                 [AVUser logOut];
                 [[UIApplication sharedApplication].keyWindow showTips:USER_ONLINE withState:TYKYHUDModeFail complete:nil];
                 return;
             }
             //登录成功
             [[AVUser currentUser] setObject:@1 forKey:USER_LOGIN_STATE];
-            [[AVUser currentUser] setObject:luuid forKey:USER_UUID];
+            [[AVUser currentUser] setObject:_luuid forKey:USER_UUID];
             
             [[AVUser currentUser] saveInBackground];
             [[UIApplication sharedApplication].keyWindow showTips:LOGIN_SUCCESS withState:TYKYHUDModeSuccess complete:^{
@@ -248,6 +250,20 @@ NSString *const USER_ONLINE = @"该用户已在别处登录";
 
         }
     }
+}
+
+- (void)saveUUId{
+    self.keyChainWrapper = [[KeychainItemWrapper alloc] initWithIdentifier:[CTTool appName] accessGroup:nil];
+    
+    NSString *uuidStr = [self.keyChainWrapper objectForKey:(id)kSecAttrAccount];
+    if (!uuidStr||[uuidStr isEqualToString:@""]) {
+        _luuid = [[NSUUID UUID] UUIDString];
+        [self.keyChainWrapper setObject:_luuid forKey:(id)kSecAttrAccount];
+
+    }else{
+        _luuid = uuidStr;
+    }
+    
 }
 #pragma mark - private methods
 - (void)initUI{

@@ -85,7 +85,13 @@
     return LET_FAVORITE;
 }
 - (BOOL)canDeleteCell{
-    if (self.showModal==SomeoneHouseModal||self.showModal ==SearchHouseModal||self.showModal==AllHouseModal) {
+    if (self.showModal==SomeoneHouseModal||self.showModal ==SearchHouseModal) {
+        return NO;
+    }
+    if (self.showModal==AllHouseModal) {
+        if (_isAmindModal) {
+            return YES;
+        }
         return NO;
     }
     return YES;

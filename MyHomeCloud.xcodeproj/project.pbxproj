@@ -62,6 +62,9 @@
 		0B57F59E1EC198F100B89CE2 /* CTBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B57F59D1EC198F100B89CE2 /* CTBaseViewController.m */; };
 		0B57F5A11EC1991800B89CE2 /* AjMainTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B57F5A01EC1991800B89CE2 /* AjMainTabBarViewController.m */; };
 		0B59A52C1ED17D8600E8E787 /* AJPickViewTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B59A52B1ED17D8600E8E787 /* AJPickViewTextField.m */; };
+		0B5FDBB51EFFE11F00F9A1E2 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B5FDBB41EFFE11F00F9A1E2 /* KeychainItemWrapper.m */; };
+		0B5FDBB61EFFE11F00F9A1E2 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B5FDBB41EFFE11F00F9A1E2 /* KeychainItemWrapper.m */; };
+		0B5FDBB81EFFE30300F9A1E2 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B5FDBB71EFFE30300F9A1E2 /* Security.framework */; };
 		0B6E12C51EC4235300103571 /* AJLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B6E12C31EC4235300103571 /* AJLoginViewController.m */; };
 		0B6E12C61EC4235300103571 /* AJLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B6E12C41EC4235300103571 /* AJLoginViewController.xib */; };
 		0BB93A6D1EFFD1F800B32320 /* AJWechatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF2C6F51EFA5D4800EA46AF /* AJWechatViewController.m */; };
@@ -335,6 +338,9 @@
 		0B57F5A01EC1991800B89CE2 /* AjMainTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AjMainTabBarViewController.m; sourceTree = "<group>"; };
 		0B59A52A1ED17D8600E8E787 /* AJPickViewTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJPickViewTextField.h; sourceTree = "<group>"; };
 		0B59A52B1ED17D8600E8E787 /* AJPickViewTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJPickViewTextField.m; sourceTree = "<group>"; };
+		0B5FDBB31EFFE11F00F9A1E2 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
+		0B5FDBB41EFFE11F00F9A1E2 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
+		0B5FDBB71EFFE30300F9A1E2 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		0B6E12C21EC4235300103571 /* AJLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJLoginViewController.h; sourceTree = "<group>"; };
 		0B6E12C31EC4235300103571 /* AJLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJLoginViewController.m; sourceTree = "<group>"; };
 		0B6E12C41EC4235300103571 /* AJLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJLoginViewController.xib; sourceTree = "<group>"; };
@@ -434,6 +440,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B5FDBB81EFFE30300F9A1E2 /* Security.framework in Frameworks */,
 				A4AE33031EF51C61004B0A54 /* WebKit.framework in Frameworks */,
 				9E8788EDDBF16621BCB775EC /* libPods-MyHomeCloud.a in Frameworks */,
 			);
@@ -705,6 +712,8 @@
 				0B2344141EC03095007A3AC1 /* CTTool.m */,
 				0BF95A0B1EEE55F00031D958 /* AJSB.h */,
 				0BF95A0C1EEE55F00031D958 /* AJSB.m */,
+				0B5FDBB31EFFE11F00F9A1E2 /* KeychainItemWrapper.h */,
+				0B5FDBB41EFFE11F00F9A1E2 /* KeychainItemWrapper.m */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -829,6 +838,7 @@
 		7C85C11C537F6C90A6EF472C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0B5FDBB71EFFE30300F9A1E2 /* Security.framework */,
 				A4AE33021EF51C61004B0A54 /* WebKit.framework */,
 				28918ABEED7A893430DD718E /* libPods-MyHomeCloud.a */,
 				8195A483A5A5B25BE92F9997 /* libPods-MyHomeCloudTests.a */,
@@ -1366,6 +1376,7 @@
 				A4FC23591EE6F39000924EEE /* AJNewHouseCellModel.m in Sources */,
 				0B302F6E1ED04F47006896CA /* AJUserHeadViewController.m in Sources */,
 				0B23446C1EC03095007A3AC1 /* CTTool.m in Sources */,
+				0B5FDBB51EFFE11F00F9A1E2 /* KeychainItemWrapper.m in Sources */,
 				A4C3AF521EED418800DBBB4C /* AJSearchTableViewCell.m in Sources */,
 				0BE2A35C1EC2D2CD00519840 /* AJMeCenterData.m in Sources */,
 				0BE1160B1EF919610094FB65 /* AJAutoPositionScrollview.m in Sources */,
@@ -1453,6 +1464,7 @@
 				0BF2C6B91EFA5A4400EA46AF /* AJUserHeadViewController.m in Sources */,
 				0BF2C6BA1EFA5A4400EA46AF /* CTTool.m in Sources */,
 				0BF2C6BB1EFA5A4400EA46AF /* AJSearchTableViewCell.m in Sources */,
+				0B5FDBB61EFFE11F00F9A1E2 /* KeychainItemWrapper.m in Sources */,
 				0BF2C6BC1EFA5A4400EA46AF /* AJMeCenterData.m in Sources */,
 				0BF2C6BE1EFA5A4400EA46AF /* AJAutoPositionScrollview.m in Sources */,
 				0BF2C6BF1EFA5A4400EA46AF /* AJMyReserverViewController.m in Sources */,

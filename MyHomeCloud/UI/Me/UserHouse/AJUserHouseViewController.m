@@ -60,7 +60,7 @@
         AJNewHouseViewController *house = [AJNewHouseViewController new];
         house.showModal = _showModal;
         house.title  =@"新房";
-
+       
         self.pageVC.viewControllers = @[second,let,house];
 
     }else if (_showModal==ReserverHouseModal){
@@ -87,6 +87,19 @@
         if (_showModal==SomeoneHouseModal) {
             second.someonePhone = _someonePhone;
             let.someonePhone  = _someonePhone;
+        }
+        if (_showModal==AllHouseModal) {
+            //二手房 新房 租房
+            AJNewHouseViewController *house = [AJNewHouseViewController new];
+            house.showModal = _showModal;
+            house.title  =@"新房";
+            
+            self.pageVC.viewControllers = @[second,let,house];
+#if AJCLOUDADMIN
+            second.isAmindModal = YES;
+            let.isAmindModal = YES;
+            house.isAmindModal = YES;
+#endif
         }
 
     }

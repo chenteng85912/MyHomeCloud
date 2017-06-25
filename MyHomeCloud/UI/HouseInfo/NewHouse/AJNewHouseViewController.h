@@ -11,5 +11,6 @@
 @interface AJNewHouseViewController : AJBaseTbViewController
 
 @property (strong, nonatomic) NSString *searchKey;
+@property (assign, nonatomic) BOOL isAmindModal;
 
 @end
