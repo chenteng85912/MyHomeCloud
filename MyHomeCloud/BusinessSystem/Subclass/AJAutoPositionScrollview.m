@@ -25,9 +25,7 @@
     [super awakeFromNib];
 }
 - (void)setup {
-    
-    [self addGestureRecognizer:self.tapGesture];
-    
+        
     if (CGSizeEqualToSize(self.contentSize, CGSizeZero) ) {
         self.contentSize = self.bounds.size;
         
@@ -52,10 +50,17 @@
         [UIView setAnimationCurve:[curve intValue]];
         
         if (keyBoardEndY<dHeight) {
+            if (![self.gestureRecognizers containsObject:self.tapGesture]) {
+                [self addGestureRecognizer:self.tapGesture];
+                
+            }
             self.contentInset = UIEdgeInsetsMake(0, 0, keyRece.size.height, 0);
         }else{
             self.contentInset = UIEdgeInsetsZero;
-            
+            if ([self.gestureRecognizers containsObject:self.tapGesture]) {
+                [self removeGestureRecognizer:self.tapGesture];
+                
+            }
         }
         
     }];
