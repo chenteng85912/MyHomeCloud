@@ -187,6 +187,10 @@
 		A40B20B71EC733280027399E /* AJHouseDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A40B20B51EC733280027399E /* AJHouseDetailsViewController.xib */; };
 		A411B3C01EC4B0BD00244B6E /* AJSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A411B3BE1EC4B0BD00244B6E /* AJSettingViewController.m */; };
 		A411B3C11EC4B0BD00244B6E /* AJSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A411B3BF1EC4B0BD00244B6E /* AJSettingViewController.xib */; };
+		A44A8C181F03EE7A00BE6D89 /* AJFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A44A8C161F03EE7A00BE6D89 /* AJFilterViewController.m */; };
+		A44A8C191F03EE7A00BE6D89 /* AJFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A44A8C161F03EE7A00BE6D89 /* AJFilterViewController.m */; };
+		A44A8C1A1F03EE7A00BE6D89 /* AJFilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A44A8C171F03EE7A00BE6D89 /* AJFilterViewController.xib */; };
+		A44A8C1B1F03EE7A00BE6D89 /* AJFilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A44A8C171F03EE7A00BE6D89 /* AJFilterViewController.xib */; };
 		A44AEBCF1EEEC72A00109FB8 /* AJLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = A44AEBCB1EEEC72A00109FB8 /* AJLocation.m */; };
 		A44AEBD01EEEC72A00109FB8 /* AJLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A44AEBCD1EEEC72A00109FB8 /* AJLocationViewController.m */; };
 		A44AEBD11EEEC72A00109FB8 /* AJLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A44AEBCE1EEEC72A00109FB8 /* AJLocationViewController.xib */; };
@@ -374,6 +378,9 @@
 		A411B3BD1EC4B0BD00244B6E /* AJSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJSettingViewController.h; sourceTree = "<group>"; };
 		A411B3BE1EC4B0BD00244B6E /* AJSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJSettingViewController.m; sourceTree = "<group>"; };
 		A411B3BF1EC4B0BD00244B6E /* AJSettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJSettingViewController.xib; sourceTree = "<group>"; };
+		A44A8C151F03EE7A00BE6D89 /* AJFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJFilterViewController.h; sourceTree = "<group>"; };
+		A44A8C161F03EE7A00BE6D89 /* AJFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJFilterViewController.m; sourceTree = "<group>"; };
+		A44A8C171F03EE7A00BE6D89 /* AJFilterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJFilterViewController.xib; sourceTree = "<group>"; };
 		A44AEBCA1EEEC72A00109FB8 /* AJLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJLocation.h; sourceTree = "<group>"; };
 		A44AEBCB1EEEC72A00109FB8 /* AJLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJLocation.m; sourceTree = "<group>"; };
 		A44AEBCC1EEEC72A00109FB8 /* AJLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJLocationViewController.h; sourceTree = "<group>"; };
@@ -469,6 +476,7 @@
 		0B19049A1EE6542B004C46EE /* HouseInfo */ = {
 			isa = PBXGroup;
 			children = (
+				A44A8C141F03EE5600BE6D89 /* FilterSystem */,
 				A4B864501EE6EFF000E3CE5E /* LetHouse */,
 				A4B864511EE6EFF000E3CE5E /* NewHouse */,
 				0B1904AB1EE66192004C46EE /* AddSecondHouse */,
@@ -882,6 +890,16 @@
 			path = Setting;
 			sourceTree = "<group>";
 		};
+		A44A8C141F03EE5600BE6D89 /* FilterSystem */ = {
+			isa = PBXGroup;
+			children = (
+				A44A8C151F03EE7A00BE6D89 /* AJFilterViewController.h */,
+				A44A8C161F03EE7A00BE6D89 /* AJFilterViewController.m */,
+				A44A8C171F03EE7A00BE6D89 /* AJFilterViewController.xib */,
+			);
+			path = FilterSystem;
+			sourceTree = "<group>";
+		};
 		A44AEBC91EEEC72A00109FB8 /* HouseMap */ = {
 			isa = PBXGroup;
 			children = (
@@ -1123,6 +1141,7 @@
 				A4AE33201EF52E7A004B0A54 /* AJReserverDetailsViewController.xib in Resources */,
 				A4FC23511EE6F31200924EEE /* AJLetHouseTableViewCell.xib in Resources */,
 				0BE4D9F01ECC6B8200E4ADCD /* AJHomeViewController.xib in Resources */,
+				A44A8C1A1F03EE7A00BE6D89 /* AJFilterViewController.xib in Resources */,
 				0B6E12C61EC4235300103571 /* AJLoginViewController.xib in Resources */,
 				A4AC72501EF6728C00772D42 /* AJEstateTableViewCell.xib in Resources */,
 				0B57F5951EC198D000B89CE2 /* AJUserCenterViewController.xib in Resources */,
@@ -1168,6 +1187,7 @@
 				0BF2C6E61EFA5A4400EA46AF /* AJReserverDetailsViewController.xib in Resources */,
 				0BF2C6E71EFA5A4400EA46AF /* AJLetHouseTableViewCell.xib in Resources */,
 				0BF2C6E81EFA5A4400EA46AF /* AJHomeViewController.xib in Resources */,
+				A44A8C1B1F03EE7A00BE6D89 /* AJFilterViewController.xib in Resources */,
 				0BF2C6E91EFA5A4400EA46AF /* AJLoginViewController.xib in Resources */,
 				0BF2C6EA1EFA5A4400EA46AF /* AJEstateTableViewCell.xib in Resources */,
 				0BF2C6EB1EFA5A4400EA46AF /* AJUserCenterViewController.xib in Resources */,
@@ -1341,6 +1361,7 @@
 				0B15DE7E1ED2C8BE003A54E3 /* AFNetworkReachabilityManager.m in Sources */,
 				A4AE33121EF51F6F004B0A54 /* AJReserverTableViewCell.m in Sources */,
 				0B57F5A11EC1991800B89CE2 /* AjMainTabBarViewController.m in Sources */,
+				A44A8C181F03EE7A00BE6D89 /* AJFilterViewController.m in Sources */,
 				A44AEBD01EEEC72A00109FB8 /* AJLocationViewController.m in Sources */,
 				0B1904C61EE66192004C46EE /* AJNewHouseModel.m in Sources */,
 				0B1904E01EE668EC004C46EE /* AJTbViewCellModel.m in Sources */,
@@ -1429,6 +1450,7 @@
 				0BF2C6971EFA5A4400EA46AF /* AFNetworkReachabilityManager.m in Sources */,
 				0BF2C6981EFA5A4400EA46AF /* AJReserverTableViewCell.m in Sources */,
 				0BF2C6991EFA5A4400EA46AF /* AjMainTabBarViewController.m in Sources */,
+				A44A8C191F03EE7A00BE6D89 /* AJFilterViewController.m in Sources */,
 				0BF2C69A1EFA5A4400EA46AF /* AJLocationViewController.m in Sources */,
 				0BF2C69B1EFA5A4400EA46AF /* AJNewHouseModel.m in Sources */,
 				0BF2C69C1EFA5A4400EA46AF /* AJTbViewCellModel.m in Sources */,
