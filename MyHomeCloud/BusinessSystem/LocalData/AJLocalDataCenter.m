@@ -9,13 +9,10 @@
 #import "AJLocalDataCenter.h"
 
 NSString *const TIME_KEY = @"time_key";
-NSString *const ALLKEYS_KEY = @"ajCloudAllKeys";
 
 NSString *const SECOND_HOUSE_KEY = @"second_search_key";
 NSString *const LET_HOUSE_KEY = @"let_search_key";
 NSString *const N_HOUSE_KEY = @"n_house_key";
-
-NSInteger const AUTOCLEAR_TIME = 5;//分钟
 
 @implementation AJLocalDataCenter
 //沙盒根目录地址
@@ -79,31 +76,14 @@ NSInteger const AUTOCLEAR_TIME = 5;//分钟
 
     [MyUserDefaults setObject:fileString forKey:houseId];
     [MyUserDefaults synchronize];
-    [self saveLocalKey:houseId];
 
 }
-//保存所有KEY
-+ (void)saveLocalKey:(NSString *)localKey{
-    NSMutableArray *temp = [NSMutableArray new];
-    NSArray *keyArray = [[NSUserDefaults standardUserDefaults] objectForKey:ALLKEYS_KEY];
-    if (keyArray.count>0) {
-        [temp addObjectsFromArray:keyArray];
-    }
-    [temp addObject:localKey];
-    [MyUserDefaults setObject:temp forKey:ALLKEYS_KEY];
-    [MyUserDefaults synchronize];
 
-}
 //清理缓存
 + (void)clearLocalData{
     
-    //情况数据缓存
-    NSArray *keyArray = [MyUserDefaults objectForKey:ALLKEYS_KEY];
-    for (NSString *key in keyArray) {
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:key];
-        
-    }
-    
+    [NSUserDefaults resetStandardUserDefaults];
+
     //清楚图片缓存1
     [[SDImageCache sharedImageCache] clearDiskOnCompletion:nil];
     
@@ -114,11 +94,28 @@ NSInteger const AUTOCLEAR_TIME = 5;//分钟
     
     [[NSFileManager defaultManager] removeItemAtPath:cachePath error:nil];
 }
+//清空 NSUserDefaults
++ (void)resetDefaults {
 
+    //方法一
+    NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
+    [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
+    //方法二
+//    NSUserDefaults * defs = [NSUserDefaults standardUserDefaults];
+//    NSDictionary * dict = [defs dictionaryRepresentation];
+//    for (id key in dict) {
+//        [defs removeObjectForKey:key];
+//    }
+//    [defs synchronize];
+    
+//    // 方法三
+//    [[NSUserDefaults standardUserDefaults] setPersistentDomain:[NSDictionary dictionary] forName:[[NSBundle mainBundle] bundleIdentifier]];
+}
 //计算缓存大小
 + (NSString *)calcuteLocalDataSize{
+    
     NSString *executableFile = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleExecutableKey];
-    //图片大小1
+    //本地缓存大小
     NSFileManager *fileMan = [NSFileManager defaultManager];
     NSString *cachePath = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:executableFile];
     NSArray *fileArray = [fileMan contentsOfDirectoryAtPath:cachePath error:nil];
@@ -133,27 +130,27 @@ NSInteger const AUTOCLEAR_TIME = 5;//分钟
         }
     }
     
-    //图片大小2
+    //SDImageCache图片大小
     long long sdSize= [[SDImageCache sharedImageCache] getSize];
     
-    //本地数据大小
-    NSArray *keyArray = [[NSUserDefaults standardUserDefaults] objectForKey:ALLKEYS_KEY];
+    //NSUserDefaults数据大小
     long long localSize = 0.0;
-    for (NSString *key in keyArray) {
-        NSString *value = [[NSUserDefaults standardUserDefaults] objectForKey:key];
-        if (value) {
+    NSDictionary * dict = [MyUserDefaults dictionaryRepresentation];
+    for (id value in dict) {
+        if ([value isKindOfClass:[NSString class]]) {
             NSData *valueData = [value dataUsingEncoding:NSUTF8StringEncoding];
             localSize += valueData.length;
         }
-        
     }
+
     return [self makeSizeString:allSize+sdSize+localSize];
     
 }
 
 + (NSString *)makeSizeString:(float)filesize{
     NSString *fileSizeString = @"0 M";
-    
+    debugLog(@"本地缓存大小:%.fK",filesize/1024);
+
     if(filesize/1024>=1024)
     {
         filesize = filesize/1024/1024;
