@@ -11,11 +11,14 @@
 
 @interface AJFilterViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tbView;
+@property (weak, nonatomic) IBOutlet UIView *backView;
+@property (weak, nonatomic) IBOutlet UIView *headView;
 
 @property (strong, nonatomic)NSArray *roomsArray;
 @property (strong, nonatomic)NSArray *priceArray;
 @property (strong, nonatomic)NSArray *areasArray;
 @property (assign, nonatomic)NSInteger currentIndex;
+@property (weak, nonatomic) IBOutlet UIButton *priceBtn;
 
 @end
 
@@ -23,15 +26,27 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _headView.backgroundColor = NavigationBarColor;
     self.roomsArray = @[@"不限",@"一房",@"两房",@"三房",@"四房",@"五房",@"五房以上"];
     if ([self.className isEqualToString:SECOND_HAND_HOUSE]) {
-        
-    }else{
-        
+        [_priceBtn setTitle:@"总价" forState:UIControlStateNormal];
+    }else if([self.className isEqualToString:LET_HOUSE]){
+        [_priceBtn setTitle:@"租金" forState:UIControlStateNormal];
+
+    }
+    else{
+        [_priceBtn setTitle:@"单价" forState:UIControlStateNormal];
+
     }
     [self.tbView registerClass:[UITableViewCell class] forCellReuseIdentifier:NSStringFromClass([self class])];
 }
 - (IBAction)btnAction:(UIButton *)sender {
+    if (_currentIndex==sender.tag&&_tbView.alpha) {
+        
+        [self showOrHiddenTbView:NO];
+
+        return;
+    }
     _currentIndex=sender.tag;
     //0区域 1租金 总价 2房型 3更多
     if (sender.tag==0) {
@@ -106,13 +121,22 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
+    debugLog(@"touch");
 }
 
 - (void)showOrHiddenTbView:(BOOL)isShow{
+    if (isShow) {
+        self.view.frame = CGRectMake(0, 0, dWidth, dHeight-64);
+
+    }
+    
     [UIView animateWithDuration:0.3 animations:^{
-        self.view.alpha = isShow;
-        
+        self.backView.alpha = isShow;
+        self.tbView.alpha = isShow;
+    } completion:^(BOOL finished) {
+        if (!isShow) {
+            self.view.frame = _headView.bounds;
+        }
     }];
 }
 - (void)didReceiveMemoryWarning {

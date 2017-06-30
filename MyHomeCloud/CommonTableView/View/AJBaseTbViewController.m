@@ -10,6 +10,7 @@
 #import "AJTbViewCellModel.h"
 #import "UITableView+NoMoreDataInFooter.h"
 #import <MJRefresh/MJRefresh.h>
+#import "AJFilterViewController.h"
 
 @interface AJBaseTbViewController ()<UIGestureRecognizerDelegate>
 
@@ -19,6 +20,7 @@
 @property (assign, nonatomic) BOOL mjRefresh;
 //动画
 @property (assign, nonatomic) BOOL isAnimate;
+@property (strong, nonatomic) AJFilterViewController *filterVC;
 
 @end
 
@@ -35,9 +37,12 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    
     self.navigationController.interactivePopGestureRecognizer.delegate = self;
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
-    
+    //去除导航栏黑线
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
     [self.navigationController setNavigationBarHidden:_isDetails animated:YES];
     if (_isDetails) {
         return;
@@ -80,10 +85,11 @@
         if (self.isDetails) {
             self.tableView.frame = CGRectMake(0, 0, dWidth, dHeight-50);
 
-        }else{
-            self.tableView.frame = self.view.bounds;
-
         }
+//        else{
+//            self.tableView.frame = self.view.bounds;
+//
+//        }
 
         [self.tableView showHUD:nil];
         [self initStartData];
@@ -92,6 +98,8 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setShadowImage:nil];
 }
 
 #pragma mark - TableviewDataSource
@@ -235,7 +243,10 @@
 - (void)initTableView{
     
     [self.view addSubview:self.tableView];
-    
+    if (_showFilter) {
+        self.tableView.frame = CGRectMake(0, 40, dWidth, dHeight-64-40);
+        [self.view addSubview:self.filterVC.view];
+    }
     if ([self respondsToSelector:@selector(customeTbViewCellClassName)]) {
         [self.tableView registerNib:[UINib nibWithNibName:[self customeTbViewCellClassName] bundle:nil] forCellReuseIdentifier:[self customeTbViewCellClassName]];
 
@@ -386,7 +397,7 @@
             
         }
         _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:tbViewStyle];
-        _tableView.separatorInset = UIEdgeInsetsMake(0, 15, 0, 15);
+               _tableView.separatorInset = UIEdgeInsetsMake(0, 15, 0, 15);
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
@@ -414,6 +425,16 @@
         
     }
     return _baseQuery;
+}
+- (AJFilterViewController *)filterVC{
+    if (_filterVC ==nil) {
+        _filterVC = [AJFilterViewController new];
+        _filterVC.className = _className;
+        _filterVC.view.frame = CGRectMake(0, 0, dWidth, 40+64);
+
+        [self addChildViewController:_filterVC];
+    }
+    return _filterVC;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

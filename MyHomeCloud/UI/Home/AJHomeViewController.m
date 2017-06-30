@@ -254,15 +254,24 @@ CGFloat const HEAD_BTN_HEIGHT = 100;
     if (btn.tag==0) {
         AJSecondHouseViewController *second = [AJSecondHouseViewController new];
         second.showModal = AllHouseModal;
+        second.className = SECOND_HAND_HOUSE;
+        second.showFilter = YES;
         vc = second;
     }else if (btn.tag==1){
         AJLetHouseViewController *let = [AJLetHouseViewController new];
         let.showModal = AllHouseModal;
+        let.className = LET_HOUSE;
+        let.showFilter = YES;
+
         vc = let;
 
     }else if (btn.tag==2){
         AJNewHouseViewController *newHouse = [AJNewHouseViewController new];
         newHouse.showModal = AllHouseModal;
+        newHouse.className = N_HOUSE;
+
+        newHouse.showFilter = YES;
+
         vc = newHouse;
     }else{
         AJOtherViewController *other = [AJOtherViewController new];
@@ -273,10 +282,10 @@ CGFloat const HEAD_BTN_HEIGHT = 100;
     APP_PUSH(vc);
 }
 - (void)initTbViewData{
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleDone target:self action:nil];
     self.navigationItem.titleView = self.searchBar;
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.areaBtn];
-    
+//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.areaBtn];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"安家云" style:UIBarButtonItemStylePlain target:self action:nil];
+
     [_tbView registerNib:[UINib nibWithNibName:NSStringFromClass([AJSecondHouseTableViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([AJSecondHouseTableViewCell class])];
     
     [_tbView registerNib:[UINib nibWithNibName:NSStringFromClass([AJLetHouseTableViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([AJLetHouseTableViewCell class])];

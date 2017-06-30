@@ -10,6 +10,8 @@
 
 @interface AJFilterViewController : CTBaseViewController
 
-@property (strong, nonatomic) NSString *className;
+@property (assign, nonatomic) NSString *className;
+
+- (void)showOrHiddenTbView:(BOOL)isShow;
 
 @end

@@ -25,10 +25,15 @@
 @property (assign, nonatomic) HouseShowModal showModal;
 //调度
 @property (strong, nonatomic) AJTbViewPresenter *presenter;
+
+@property (assign, nonatomic) NSString *className;
+
 //页面加载一次
 @property (assign, nonatomic) BOOL isLoad;
 
-@property (assign, nonatomic) BOOL isDetails;
+@property (assign, nonatomic) BOOL isDetails;//详情界面
+
+@property (assign, nonatomic) BOOL showFilter;//显示筛选视图
 
 @property (strong, nonatomic) AVQuery *baseQuery;
 
