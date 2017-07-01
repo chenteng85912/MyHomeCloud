@@ -115,6 +115,7 @@
             if (idx==0) {
                 self.dataArray = temp;
                 if (self.dataArray.count==0) {
+                    self.tableView.tableFooterView = nil;
                     [self.tableView addNoDataTipView];
                 }else{
                     [self.tableView hiddenTipsView];

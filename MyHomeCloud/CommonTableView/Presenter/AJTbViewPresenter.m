@@ -188,6 +188,58 @@ NSInteger const defaultPageSize = 50;
                 [areaHouse whereKey:HOUSE_AMOUNT containsString:rooms];
                 [queryArray addObject:areaHouse];
             }
+            
+            //更多
+            NSDictionary *moreDic = filterDic[FILTER_MORE];
+            if (moreDic.count>0) {
+                //朝向
+                NSString *dir = moreDic[HOUSE_DIRECTION];
+                if (dir) {
+                    AVQuery *areaHouse = [AVQuery queryWithClassName:[_tbViewVC requestClassName]];
+                    [areaHouse whereKey:HOUSE_DIRECTION containsString:dir];
+                    [queryArray addObject:areaHouse];
+
+                }
+                
+                //装修
+                NSString *des = moreDic[HOUSE_DESCRIBE];
+                if (des) {
+                    AVQuery *areaHouse = [AVQuery queryWithClassName:[_tbViewVC requestClassName]];
+                    [areaHouse whereKey:HOUSE_DESCRIBE containsString:des];
+                    [queryArray addObject:areaHouse];
+                    
+                }
+                
+                //楼层情况
+//                NSString *floor = moreDic[HOUSE_DESCRIBE];
+//                if (floor) {
+//                    AVQuery *areaHouse = [AVQuery queryWithClassName:[_tbViewVC requestClassName]];
+//                    [areaHouse whereKey:HOUSE_DESCRIBE containsString:floor];
+//                    [queryArray addObject:areaHouse];
+//                    
+//                }
+                //面积
+                NSString *areaAge = moreDic[HOUSE_AREAAGE];
+                if (areaAge) {
+                    NSDictionary *areaAgeDic = filterDic[FILTER_PRICE];
+                    if (areaAgeDic.count>0) {
+                        AVQuery *areaHouse = [AVQuery queryWithClassName:[_tbViewVC requestClassName]];
+                        
+                        if (areaAgeDic[FILTER_MIN]) {
+                            [areaHouse whereKey:HOUSE_AREAAGE greaterThanOrEqualTo:areaAgeDic[FILTER_MIN]];
+                            
+                        }
+                        if (areaAgeDic[FILTER_MAX]) {
+                            [areaHouse whereKey:HOUSE_AREAAGE lessThan:areaAgeDic[FILTER_MAX]];
+                            
+                        }
+                        
+                        [queryArray addObject:areaHouse];
+                    }
+      
+                }
+                
+            }
            
         }
         
