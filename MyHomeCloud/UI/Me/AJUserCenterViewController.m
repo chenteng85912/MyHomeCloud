@@ -11,6 +11,7 @@
 #import "AJMeModel.h"
 #import "AJUserHeadViewController.h"
 #import "AJUserHouseViewController.h"
+#import "AJFeedbackViewController.h"
 
 static NSString *CellIdentifier = @"AJUserCellId";
 
@@ -134,6 +135,11 @@ CGFloat const IMAGEHEIGHT  = 240.0f;
     vc.title = model.title;
     if ([model.className isEqualToString: NSStringFromClass([AJUserHouseViewController class])]) {
         AJUserHouseViewController *house = (AJUserHouseViewController *)vc;
+        house.showModal = model.showModal;
+        vc = house;
+    }
+    if ([model.className isEqualToString: NSStringFromClass([AJFeedbackViewController class])]) {
+        AJFeedbackViewController *house = (AJFeedbackViewController *)vc;
         house.showModal = model.showModal;
         vc = house;
     }

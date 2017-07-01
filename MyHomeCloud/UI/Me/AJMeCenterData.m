@@ -12,6 +12,8 @@
 #import "AJOtherViewController.h"
 #import "AJUserHouseViewController.h"
 #import "AJUMShareUtil.h"
+#import "AJFeedbackViewController.h"
+#import "AJSendFeecbackViewController.h"
 
 NSString *const ServicePhone = @"4006005555";
 
@@ -80,6 +82,16 @@ NSString *const ServicePhone = @"4006005555";
     model.className = NSStringFromClass([AJUserHouseViewController class]);
     [temp addObject:model];
     
+#if AJCLOUDADMIN
+    model = [AJMeModel new];
+    model.title = @"用户建议";
+    model.iconName = @"advice";
+    model.isNeedLogin = YES;
+    model.showModal = UserFeedbackModal;
+    model.className = NSStringFromClass([AJFeedbackViewController class]);
+    [temp addObject:model];
+#endif
+    
     [dataArray addObject:temp];
     
     //section1
@@ -123,12 +135,17 @@ NSString *const ServicePhone = @"4006005555";
     model.className = NSStringFromClass([AJOtherViewController class]);
     [temp addObject:model];
 #if AJCLOUD
+    
+    model = [AJMeModel new];
+    model.title = @"问题反馈";
+    model.className = NSStringFromClass([AJSendFeecbackViewController class]);
+    [temp addObject:model];
+    
     if ([AJUMShareUtil isWechatInstalled]) {
         model = [AJMeModel new];
         model.title = @"分享App";
         [temp addObject:model];
     }
-    
 #endif
    
     model = [AJMeModel new];

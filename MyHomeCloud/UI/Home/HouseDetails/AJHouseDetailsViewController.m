@@ -443,10 +443,7 @@ CGFloat const HOUSE_INFO_HEITHT = 610;
         
         _headBtnView.backgroundColor = [UIColor colorWithRed:246.0/255.0 green:146.0/255.0 blue:51.0/255.0 alpha:ap>0?ap:0];
     }else{
-//        CGRect currentFrame = self.autoLoopView.view.frame;
-//        currentFrame.origin.y = offsetY;
-//        currentFrame.size.height = AUTOLOOP_HEIGHT-offsetY;
-//        self.autoLoopView.view.frame = currentFrame;
+
         _headBtnView.backgroundColor = [UIColor colorWithRed:246.0/255.0 green:146.0/255.0 blue:51.0/255.0 alpha:0];
         _titleLb.alpha = 0;
     }

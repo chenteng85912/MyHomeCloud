@@ -55,7 +55,7 @@ static NSString *CellIdentifier = @"TJSettingsCellId";
             
         }
         cell.textLabel.text = [(AJMeModel *)model title];
-        if (indexPath.row==3) {
+        if ([cell.textLabel.text isEqualToString:@"清理缓存"]) {
             [self initLocalDataSizeLabel:cell.contentView];
         }
     }];

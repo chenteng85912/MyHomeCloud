@@ -90,9 +90,11 @@
         
     }else if (sender.tag==2){
         [self changeReserverStateAction:@"2"];
-    }else{
+    }else if (sender.tag==3){
         [self hiddenView];
-        
+    }
+    else{
+        [CTTool takePhoneNumber:_agenterPhone.text];
     }
 }
 

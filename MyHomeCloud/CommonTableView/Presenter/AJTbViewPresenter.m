@@ -84,11 +84,6 @@ NSInteger const defaultPageSize = 50;
     
     _pageNo = 0;
     self.query.skip = _pageSize *_pageNo;
-    //收藏 浏览记录
-//    if (self.showModal==UserFavoriteModal||self.showModal==UserRecordModal) {
-//        [self.query includeKey:[NSString stringWithFormat:@"%@.%@",HOUSE_OBJECT,[_tbViewVC pointClassName]]];
-//
-//    }
 
     //查找对象
     [self.query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {

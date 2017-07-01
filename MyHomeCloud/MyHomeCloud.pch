@@ -24,6 +24,7 @@
 #import "AJSB.h"
 #import "CTTool.h"
 #import "AppDelegate.h"
+#import "AJTableViewCell.h"
 
 #import "UIAlertController+TYKYAlertBlock.h"
 #import "UIView+TYKYPrompt.h"
@@ -58,6 +59,8 @@
 
 //数据表
 #define USER_RESERVER           @"UserReserver"//用户预约
+#define USER_FEEDBACK           @"UserFeedBack"//用户建议
+
 #define SECOND_HAND_HOUSE       @"SecondHouse"//二手房屋数据表
 #define N_HOUSE                 @"NHouse"//新房
 #define LET_HOUSE               @"LetHouse"//租房
@@ -77,10 +80,9 @@
 #define USER_INFO           @"_User"//房屋发布者
 
 //浏览记录 收藏保存的房屋数据
-#define HOUSE_OBJECT        @"HouseObject"//房屋数据  浏览记录 收藏
 #define HOUSE_ID            @"HouseId"//房屋数据Id  浏览记录 收藏
 
-//二手房屋数据
+//提交房屋数据
 #define USER_PHONE          @"UserPhone"//用户电话
 #define HOUSE_DEVELOPER     @"Developer"//小区开发商
 #define HOUSE_ESTATE_NAME   @"EstateName"//小区名称
@@ -107,16 +109,19 @@
 #define ESTATE_ID               @"EstateId"//小区ID
 #define AGENTER_NAME            @"agenterName"//经纪人姓名
 #define AGENTER_PHONE           @"agenterPhone"//经纪人电话
+
 //租房信息
 #define LET_HOUSE_PRICE         @"LetHousePrice"//房屋租金
 #define LET_ESTATE_PRICE        @"LetEstatePrice"//房屋物业费
 
+//房屋基本信息
 #define HOUSE_SALES_POINT    @"HouseSalingPoint"//核心卖点
 #define ESTATE_INTR          @"EstateIntroduction"//小区简介
 #define TRAFFIC_INFO         @"TrafficInfo"//交通信息
 #define SUPPORT_MEASURES     @"SupportMeasures"//周边配套
 #define TITLE_NAME           @"TitleName"//标题
 
+//提交预约信息
 #define RESERVER_TIME        @"reserverTime"//预约时间
 #define RESERVER_STATE       @"reserverState"//预约状态
 #define RESERVER_TYPE        @"reserverType"//预约类型
@@ -143,6 +148,12 @@
 #define GOOD_LIVE_COLOR     UIColorFromRGB(0x008040)
 #define SCHOOL_COLOR        UIColorFromRGB(0xE235F9)
 #define SUPPORT_COLOR       UIColorFromRGB(0x555555)
+
+//用户提交建议
+#define FEEDBACK_TITLE           @"FeedbackTitle"//建议主题
+#define FEEDBACK_CONTENT         @"FeedbackContent"//建议内容
+#define FEEDBACK_STATE           @"FeedbackState"//建议状态
+
 
 #ifdef DEBUG
 

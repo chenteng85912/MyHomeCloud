@@ -112,12 +112,11 @@
 - (UILabel *)houseTag1{
     if (_houseTag1 == nil) {
         _houseTag1 = [UILabel new];
-        _houseTag1.font = [UIFont systemFontOfSize:SUB_FONT];
-        _houseTag1.layer.borderWidth = 1.0;
+        _houseTag1.font = [UIFont fontWithName:@"Helvetica-light" size:SUB_FONT];
+        _houseTag1.layer.borderWidth = 0.5;
         _houseTag1.layer.cornerRadius = 2.0;
         _houseTag1.layer.masksToBounds = YES;
         _houseTag1.textAlignment = NSTextAlignmentCenter;
-
         [self addSubview:_houseTag1];;
     }
     return _houseTag1;
@@ -125,8 +124,8 @@
 - (UILabel *)houseTag2{
     if (_houseTag2 == nil) {
         _houseTag2 = [UILabel new];
-        _houseTag2.font = [UIFont systemFontOfSize:SUB_FONT];
-        _houseTag2.layer.borderWidth = 1.0;
+        _houseTag2.font = [UIFont fontWithName:@"Helvetica-light" size:SUB_FONT];
+        _houseTag2.layer.borderWidth = 0.5;
         _houseTag2.layer.cornerRadius = 2.0;
         _houseTag2.layer.masksToBounds = YES;
         _houseTag2.textAlignment = NSTextAlignmentCenter;
@@ -138,8 +137,8 @@
 - (UILabel *)houseTag3{
     if (_houseTag3 == nil) {
         _houseTag3 = [UILabel new];
-        _houseTag3.font = [UIFont systemFontOfSize:SUB_FONT];
-        _houseTag3.layer.borderWidth = 1.0;
+        _houseTag3.font = [UIFont fontWithName:@"Helvetica-light" size:SUB_FONT];
+        _houseTag3.layer.borderWidth = 0.5;
         _houseTag3.layer.cornerRadius = 2.0;
         _houseTag3.layer.masksToBounds = YES;
         _houseTag3.textAlignment = NSTextAlignmentCenter;

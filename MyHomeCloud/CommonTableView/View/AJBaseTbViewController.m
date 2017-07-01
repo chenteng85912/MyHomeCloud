@@ -86,10 +86,12 @@
             self.tableView.frame = CGRectMake(0, 0, dWidth, dHeight-50);
 
         }
-//        else{
-//            self.tableView.frame = self.view.bounds;
-//
-//        }
+        else if(!_showFilter){
+            self.tableView.frame = self.view.bounds;
+
+        }else{
+            
+        }
 
         [self.tableView showHUD:nil];
         [self initStartData];
@@ -337,13 +339,16 @@
     WeakSelf;
     NSString *message;
     if (self.showModal==UserFavoriteModal) {
-        message = @"确定删除此条关注记录?";
+        message = @"是否删除此条关注记录?";
     }else if (self.showModal==UserRecordModal) {
-        message = @"确定删除此条浏览记录?";
+        message = @"是否删除此条浏览记录?";
     }else if (self.showModal==ReserverHouseModal) {
-        message = @"确定删除此预约信息?";
-    }else{
-        message = @"确定删除该房源信息?";
+        message = @"是否删除此预约信息?";
+    }else if (self.showModal==UserFeedbackModal) {
+        message = @"是否删除该反馈信息?";
+    }
+    else{
+        message = @"是否删除该房源信息?";
     }
     [UIAlertController alertWithTitle:@"温馨提示" message:message cancelButtonTitle:@"取消" otherButtonTitles:@[@"删除"] preferredStyle:UIAlertControllerStyleAlert block:^(NSInteger buttonIndex) {
         if (buttonIndex==1) {
@@ -397,13 +402,10 @@
             
         }
         _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:tbViewStyle];
-               _tableView.separatorInset = UIEdgeInsetsMake(0, 15, 0, 15);
+        _tableView.separatorInset = UIEdgeInsetsMake(0, 15, 0, 15);
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
-        _tableView.showsVerticalScrollIndicator = NO;
-        _tableView.showsHorizontalScrollIndicator = NO;
-
         
     }
     return _tableView;

@@ -17,13 +17,14 @@ typedef NS_ENUM(NSInteger,RequestStateModal) {
     NetworkHaveProblom,     //网络错误
 };
 typedef NS_ENUM(NSInteger,HouseShowModal) {
-    AllHouseModal,      //所有房源
-    MyHouseModal,       //我的房源
-    UserFavoriteModal,  //我的收藏
-    UserRecordModal,    //浏览记录
-    SomeoneHouseModal,  //某个用户的房源
-    SearchHouseModal,    //搜索
-    ReserverHouseModal   //预约
+    AllHouseModal,          //所有房源
+    MyHouseModal,           //我的房源
+    UserFavoriteModal,      //我的收藏
+    UserRecordModal,        //浏览记录
+    SomeoneHouseModal,      //某个用户的房源
+    SearchHouseModal,       //搜索
+    UserFeedbackModal,      //用户反馈
+    ReserverHouseModal      //预约
 
 };
 @interface AJTbViewPresenter : NSObject<AJTbViewPresenterProtocol>
