@@ -12,7 +12,7 @@
 #import <MJRefresh/MJRefresh.h>
 #import "AJFilterViewController.h"
 
-@interface AJBaseTbViewController ()<UIGestureRecognizerDelegate>
+@interface AJBaseTbViewController ()<UIGestureRecognizerDelegate,AJFilterViewControllerDelegate>
 
 //上一次单元格数量
 @property (assign, nonatomic) NSInteger oldDataNum;
@@ -135,7 +135,9 @@
 
 }
 #pragma mark - UITableViewDelegate
-
+- (NSDictionary *)filterDic{
+    return self.filterVC.filterDic;
+}
 #pragma mark - TYKYTableViewProtocol
 //重置上拉刷新
 - (void)reStupTableviewFooterView:(NSInteger)pageSize{
@@ -387,6 +389,10 @@
     }];
     
 }
+#pragma mark - AJFilterViewControllerDelegate
+- (void)refreshTbView{
+    [_tableView.mj_header beginRefreshing];
+}
 #pragma mark - getters and setters
 - (NSMutableArray <AJTbViewCellModel *>*)dataArray{
     if (!_dataArray) {
@@ -433,7 +439,7 @@
         _filterVC = [AJFilterViewController new];
         _filterVC.className = _className;
         _filterVC.view.frame = CGRectMake(0, 0, dWidth, 40+64);
-
+        _filterVC.delegate = self;
         [self addChildViewController:_filterVC];
     }
     return _filterVC;

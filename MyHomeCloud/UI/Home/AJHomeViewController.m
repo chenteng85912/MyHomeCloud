@@ -67,6 +67,7 @@ CGFloat const HEAD_BTN_HEIGHT = 100;
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
     
     AJSearchViewController *search = [AJSearchViewController new];
+
     UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:search];
     nav.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     APP_PRESENT(nav);
@@ -269,8 +270,6 @@ CGFloat const HEAD_BTN_HEIGHT = 100;
         AJNewHouseViewController *newHouse = [AJNewHouseViewController new];
         newHouse.showModal = AllHouseModal;
         newHouse.className = N_HOUSE;
-
-        newHouse.showFilter = YES;
 
         vc = newHouse;
     }else{

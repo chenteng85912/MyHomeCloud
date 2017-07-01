@@ -8,9 +8,17 @@
 
 #import "CTBaseViewController.h"
 
+@protocol AJFilterViewControllerDelegate <NSObject>
+
+- (void)refreshTbView;
+
+@end
 @interface AJFilterViewController : CTBaseViewController
 
 @property (assign, nonatomic) NSString *className;
+@property (strong, nonatomic) NSMutableDictionary  *filterDic;//条件
+
+@property (weak, nonatomic) id <AJFilterViewControllerDelegate> delegate;
 
 - (void)showOrHiddenTbView:(BOOL)isShow;
 

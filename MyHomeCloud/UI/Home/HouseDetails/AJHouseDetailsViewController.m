@@ -353,6 +353,10 @@ CGFloat const HOUSE_INFO_HEITHT = 610;
         [UIView animateWithDuration:0.3 animations:^{
             self.userReserer.view.alpha = 1.0;
         }];
+        
+#else
+        [self.view showTips:@"管理员禁止预约" withState:TYKYHUDModeWarning complete:nil];
+
 #endif
        
     }else{

@@ -28,7 +28,7 @@ NSInteger const defaultPageSize = 50;
 
 #pragma mark -AJTbViewPresenterProtocol
 - (void)initStartData {
-    
+    _query = nil;
     if (![_tbViewVC respondsToSelector:@selector(requestClassName)]) {
         return;
     }
@@ -39,7 +39,6 @@ NSInteger const defaultPageSize = 50;
         _pageSize = defaultPageSize;
     }
     
-    
     if ([_tbViewVC respondsToSelector:@selector(canClearLocalCach)]&&[_tbViewVC canClearLocalCach]) {
         [self.query clearCachedResult];
     }
@@ -47,44 +46,10 @@ NSInteger const defaultPageSize = 50;
         self.query.cachePolicy = kAVCachePolicyCacheElseNetwork;
     }
     
-    if(self.showModal!=AllHouseModal){
-        if (self.showModal==SearchHouseModal) {
-            //搜索
-            //小区名称
-            AVQuery *estate = [AVQuery queryWithClassName:[_tbViewVC requestClassName]];
-            [estate whereKey:HOUSE_ESTATE_NAME containsString:[_tbViewVC requestKeyName]];
-            //开发商名称
-            AVQuery *deve = [AVQuery queryWithClassName:[_tbViewVC requestClassName]];
-            [deve whereKey:HOUSE_DEVELOPER containsString:[_tbViewVC requestKeyName]];
-            //地区
-            AVQuery *area = [AVQuery queryWithClassName:[_tbViewVC requestClassName]];
-            [area whereKey:HOUSE_AREA containsString:[_tbViewVC requestKeyName]];
-            
-            AVQuery *mulQuery = [AVQuery orQueryWithSubqueries:@[estate,deve,area]];
-            mulQuery.limit = _pageSize;
-            [mulQuery orderByDescending:@"createdAt"];
-            self.query = mulQuery;
-        }else{
-            self.query.className = [_tbViewVC requestClassName];
-            if ([_tbViewVC requestKeyName]) {
-                [self.query whereKey:USER_PHONE equalTo:[_tbViewVC requestKeyName]];
-
-            }
-            if (self.showModal==ReserverHouseModal) {
-                [self.query whereKey:RESERVER_TYPE equalTo:[_tbViewVC reserverTypeName]];
-
-            }
-        }
-
-    }else{
-        
-        self.query.className = [_tbViewVC requestClassName];
-        
-    }
+    [self initPostParameters];
     
     _pageNo = 0;
     self.query.skip = _pageSize *_pageNo;
-
     //查找对象
     [self.query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error) {
@@ -125,6 +90,115 @@ NSInteger const defaultPageSize = 50;
 
     }];
 
+}
+//请求参数初始化
+- (void)initPostParameters{
+    
+    if(self.showModal==AllHouseModal){
+        self.query.className = [_tbViewVC requestClassName];
+
+        
+    }else if (self.showModal==SearchHouseModal) {
+        NSMutableArray *queryArray = [NSMutableArray new];
+
+        //小区名称
+        AVQuery *estate = [AVQuery queryWithClassName:[_tbViewVC requestClassName]];
+        [estate whereKey:HOUSE_ESTATE_NAME containsString:[_tbViewVC requestKeyName]];
+        [queryArray addObject:estate];
+        
+        //开发商名称
+        AVQuery *deve = [AVQuery queryWithClassName:[_tbViewVC requestClassName]];
+        [deve whereKey:HOUSE_DEVELOPER containsString:[_tbViewVC requestKeyName]];
+        [queryArray addObject:deve];
+        
+        //地区
+        AVQuery *area = [AVQuery queryWithClassName:[_tbViewVC requestClassName]];
+        [area whereKey:HOUSE_AREA containsString:[_tbViewVC requestKeyName]];
+        [queryArray addObject:area];
+        
+        AVQuery *mulQuery = [AVQuery orQueryWithSubqueries:queryArray];
+        mulQuery.limit = _pageSize;
+        [mulQuery orderByDescending:@"createdAt"];
+        self.query = mulQuery;
+       
+    }else{
+        self.query.className = [_tbViewVC requestClassName];
+        if ([_tbViewVC requestKeyName]) {
+            [self.query whereKey:USER_PHONE equalTo:[_tbViewVC requestKeyName]];
+            
+        }
+        if (self.showModal==ReserverHouseModal) {
+            [self.query whereKey:RESERVER_TYPE equalTo:[_tbViewVC reserverTypeName]];
+            
+        }
+    }
+    [self addFilter];
+   
+}
+//添加筛选条件
+- (void)addFilter{
+    
+    NSMutableArray *queryArray = [NSMutableArray new];
+   
+    if ([_tbViewVC respondsToSelector:@selector(filterDic)]) {
+        NSDictionary *filterDic = [_tbViewVC filterDic];
+        if (filterDic.count>1) {
+            //区域
+            NSString *area = filterDic[[NSNumber numberWithInteger:0]];
+            if (area) {
+                AVQuery *areaHouse = [AVQuery queryWithClassName:[_tbViewVC requestClassName]];
+                [areaHouse whereKey:HOUSE_AREA containsString:area];
+                [queryArray addObject:areaHouse];
+            }
+            //价格
+            NSString *price = filterDic[[NSNumber numberWithInteger:1]];
+            if (price) {
+                NSDictionary *priceDic = filterDic[FILTER_PRICE];
+                if (priceDic.count>0) {
+                    AVQuery *areaHouse = [AVQuery queryWithClassName:[_tbViewVC requestClassName]];
+                    if ([[_tbViewVC requestClassName] isEqualToString:SECOND_HAND_HOUSE]) {
+                        if (priceDic[FILTER_MIN]) {
+                            [areaHouse whereKey:HOUSE_TOTAL_PRICE greaterThanOrEqualTo:priceDic[FILTER_MIN]];
+                            
+                        }
+                        if (priceDic[FILTER_MAX]) {
+                            [areaHouse whereKey:HOUSE_TOTAL_PRICE lessThan:priceDic[FILTER_MAX]];
+                            
+                        }
+                        
+                    }else{
+                        if (priceDic[FILTER_MIN]) {
+                            [areaHouse whereKey:LET_HOUSE_PRICE greaterThanOrEqualTo:priceDic[FILTER_MIN]];
+                            
+                        }
+                        if (priceDic[FILTER_MAX]) {
+                            [areaHouse whereKey:LET_HOUSE_PRICE lessThan:priceDic[FILTER_MAX]];
+                            
+                        }
+                        
+                    }
+                    [queryArray addObject:areaHouse];
+                }
+                
+            }
+            //房型
+            NSString *rooms = filterDic[[NSNumber numberWithInteger:2]];
+            if (rooms) {
+                AVQuery *areaHouse = [AVQuery queryWithClassName:[_tbViewVC requestClassName]];
+                [areaHouse whereKey:HOUSE_AMOUNT containsString:rooms];
+                [queryArray addObject:areaHouse];
+            }
+           
+        }
+        
+    }
+    if (queryArray.count==0) {
+        return;
+    }
+    AVQuery *mulQuery = [AVQuery andQueryWithSubqueries:queryArray];
+    mulQuery.limit = _pageSize;
+    [mulQuery orderByDescending:@"createdAt"];
+    self.query = mulQuery;
 }
 
 //数据处理

@@ -49,6 +49,9 @@ typedef NS_ENUM(NSInteger,TableViewInitDataModal) {
 //预约类型
 - (NSString *)reserverTypeName;
 
+//筛选条件
+- (NSDictionary *)filterDic;
+
 //获取分页大小
 - (NSInteger)pageSize;
 

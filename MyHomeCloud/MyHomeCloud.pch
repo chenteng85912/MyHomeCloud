@@ -154,6 +154,10 @@
 #define FEEDBACK_CONTENT         @"FeedbackContent"//建议内容
 #define FEEDBACK_STATE           @"FeedbackState"//建议状态
 
+//条件查询 价格
+#define FILTER_MAX           @"max_number"//最大值
+#define FILTER_MIN           @"min_number"//最小值
+#define FILTER_PRICE         @"filter_price"//价格区间
 
 #ifdef DEBUG
 

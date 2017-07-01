@@ -33,6 +33,12 @@ NSString *const UMWEIXINAPPSECRET = @"1b701ce273624810d0f55296f19cd384";
     self.window.rootViewController = [AjMainTabBarViewController new];
 
     [self setUMWXSDK];
+    
+    self.areaArray = @[@"不限",@"莞城区",@"南城区",@"东城区",@"茶山镇",@"大朗镇",@"寮步镇",
+                       @"常平镇",@"横沥镇",@"东坑镇",@"石排镇",@"企石镇",@"桥头镇",@"谢岗镇",
+                       @"塘厦镇",@"樟木头镇",@"清溪镇",@"黄江镇",@"凤岗镇",
+                       @"万江区",@"高埗镇",@"石碣镇",@"石龙镇",@"麻涌镇",@"中堂镇",@"望牛墩镇",@"洪梅镇",@"道滘镇",
+                       @"虎门镇",@"厚街镇",@"长安镇",@"沙田镇"];
     [self.window makeKeyAndVisible];
 
     return YES;

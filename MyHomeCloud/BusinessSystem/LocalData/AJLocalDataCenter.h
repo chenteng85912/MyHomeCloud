@@ -9,9 +9,9 @@
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM(NSInteger,SearchModal) {
-    SHouseModal,    //二手房
-    LHouseModal,       //租房
-    NHouseModal,         //新房
+    SHouseModal,     //二手房
+    LHouseModal,     //租房
+    NHouseModal,     //新房
 
 };
 

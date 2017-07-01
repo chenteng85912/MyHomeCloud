@@ -78,16 +78,7 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    NSString *searchKey = self.searchArray[indexPath.row];
-    if (_type.integerValue==0) {
-        [self openSecondHouse:searchKey];
-
-    }else if (_type.integerValue==1){
-        [self openLetHouse:searchKey];
-
-    }else{
-        
-    }
+    [self showHouseList:self.searchArray[indexPath.row]];
     
 }
 - (BOOL)searchBar:(UISearchBar *)searchBar shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
@@ -101,44 +92,55 @@
     }
     return YES;
 }
-- (void)openSecondHouse:(NSString *)searchKey{
+
+- (void)showHouseList:(NSString *)searchKey{
     [_searchBar resignFirstResponder];
-    AJSecondHouseViewController *second = [AJSecondHouseViewController new];
-    second.showModal = SearchHouseModal;
-    second.searchKey = searchKey;
-    APP_PUSH(second);
-    if ([self.searchArray containsObject:searchKey]) {
-        [self.searchArray removeObject:searchKey];
-    }
-    [self.searchArray insertObject:searchKey atIndex:0];
-    [AJLocalDataCenter saveLocalSearchKey:self.searchArray searchModal:SHouseModal];
-
-}
-- (void)openLetHouse:(NSString *)searchKey{
-    [_searchBar resignFirstResponder];
-
-    AJLetHouseViewController *let = [AJLetHouseViewController new];
-    let.showModal = SearchHouseModal;
-    let.searchKey = searchKey;
-    APP_PUSH(let);
-    if ([self.searchArray containsObject:searchKey]) {
-        [self.searchArray removeObject:searchKey];
-    }
-    [self.searchArray insertObject:searchKey atIndex:0];
-    [AJLocalDataCenter saveLocalSearchKey:self.searchArray searchModal:LHouseModal];
-
-}
-- (void)showSearchResult{
-    
-    [self.searchBar resignFirstResponder];
+    UIViewController *vc;
     if (_type.integerValue==0) {
-        [self openSecondHouse:_searchBar.text];
+        AJSecondHouseViewController *second = [AJSecondHouseViewController new];
+        second.showModal = SearchHouseModal;
+        second.searchKey = searchKey;
+        second.showFilter = YES;
+        second.className = SECOND_HAND_HOUSE;
+        vc = second;
+    }else if (_type.integerValue==1) {
+        AJLetHouseViewController *let = [AJLetHouseViewController new];
+        let.showModal = SearchHouseModal;
+        let.searchKey = searchKey;
+        let.showFilter = YES;
+        let.className = LET_HOUSE;
+
+        vc = let;
+    }else{
+        AJNewHouseViewController *newHouse = [AJNewHouseViewController new];
+        newHouse.showModal = AllHouseModal;
+        newHouse.className = N_HOUSE;
+        vc = newHouse;
+    }
+   
+    APP_PUSH(vc);
+    if ([self.searchArray containsObject:searchKey]) {
+        [self.searchArray removeObject:searchKey];
+    }
+    [self.searchArray insertObject:searchKey atIndex:0];
+    
+    if (_type.integerValue==0) {
+        [AJLocalDataCenter saveLocalSearchKey:self.searchArray searchModal:SHouseModal];
+
     }else if (_type.integerValue==1){
-        [self openLetHouse:_searchBar.text];
+        [AJLocalDataCenter saveLocalSearchKey:self.searchArray searchModal:LHouseModal];
 
     }else{
-        
+        [AJLocalDataCenter saveLocalSearchKey:self.searchArray searchModal:NHouseModal];
+
     }
+}
+//前往搜索结果界面
+- (void)showSearchResult{
+    
+    [_searchBar resignFirstResponder];
+    [self showHouseList:_searchBar.text];
+   
 }
 
 - (void)chooseHouseType{
