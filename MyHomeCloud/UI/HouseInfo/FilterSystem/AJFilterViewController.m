@@ -53,11 +53,11 @@
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     if (CGRectGetMaxY(_clearBtn.frame)>dHeight-64-80) {
-        _moreFilterView.contentSize = CGSizeMake(dWidth, CGRectGetMaxY(_clearBtn.frame)+50);
+        _moreFilterView.contentSize = CGSizeMake(dWidth, CGRectGetMaxY(_clearBtn.frame)+45);
         _moreFilterView.alwaysBounceVertical = YES;
         
     }else{
-        _clearBtn.center = CGPointMake(dWidth/2, dHeight-64-80-30);
+        _clearBtn.center = CGPointMake(dWidth/2, dHeight-64-80-25);
     }
 }
 //初始化参数
