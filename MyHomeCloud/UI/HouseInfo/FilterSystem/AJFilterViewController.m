@@ -21,6 +21,9 @@
 @property (weak, nonatomic) IBOutlet UIView *areaageView;
 @property (weak, nonatomic) IBOutlet UIView *describeView;
 @property (weak, nonatomic) IBOutlet UIView *floorView;
+@property (weak, nonatomic) IBOutlet UIButton *clearBtn;
+@property (weak, nonatomic) IBOutlet UIButton *comfirnBtn;
+@property (weak, nonatomic) IBOutlet UIScrollView *moreFilterView;
 
 @property (strong, nonatomic) NSArray *roomsArray;//房型
 @property (strong, nonatomic) NSArray *priceArray;//价格
@@ -39,10 +42,24 @@
     [super viewDidLoad];
     _headView.backgroundColor = NavigationBarColor;
     [self initFilterParamaters];
-   
+    
+
     [self.tbView registerClass:[UITableViewCell class] forCellReuseIdentifier:NSStringFromClass([self class])];
 }
-
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+  
+}
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    if (CGRectGetMaxY(_clearBtn.frame)>dHeight-64-80) {
+        _moreFilterView.contentSize = CGSizeMake(dWidth, CGRectGetMaxY(_clearBtn.frame)+50);
+        _moreFilterView.alwaysBounceVertical = YES;
+        
+    }else{
+        _clearBtn.center = CGPointMake(dWidth/2, dHeight-64-80-30);
+    }
+}
 //初始化参数
 - (void)initFilterParamaters{
     self.roomsArray = @[@"不限",@"1房",@"2房",@"3房",@"4房",@"5房",@"5房以上"];
@@ -63,10 +80,13 @@
     if (sender.tag<4) {
         if (sender.tag==3) {
             //更多
-            [UIView animateWithDuration:0.3 animations:^{
-                _tbView.alpha = 0;
-                _backView.alpha = 0;
-            }];
+            if (_tbView.alpha) {
+                [UIView animateWithDuration:0.3 animations:^{
+                    _tbView.alpha = 0;
+                    _backView.alpha = 0;
+                }];
+            }
+            
             if (_currentIndex==3&&_moreView.alpha) {
                 
                 [UIView animateWithDuration:0.3 animations:^{
@@ -80,22 +100,28 @@
 
                 [UIView animateWithDuration:0.3 animations:^{
                     _moreView.alpha = 1;
+
                 }];
             }
         }else{
-            [UIView animateWithDuration:0.3 animations:^{
-                _moreView.alpha = 0;
-            }];
+
+            if (_moreView.alpha) {
+                [UIView animateWithDuration:0.3 animations:^{
+                    _moreView.alpha = 0;
+
+                }];
+            }
+           
             if (_currentIndex==sender.tag&&_tbView.alpha) {
                 
                 [self showOrHiddenTbView:NO];
                 return;
             }
             [self showOrHiddenTbView:YES];
-            [self.tbView reloadData];
 
         }
         _currentIndex=sender.tag;
+        [self.tbView reloadData];
 
     }else if (sender.tag==4){
         //清空条件

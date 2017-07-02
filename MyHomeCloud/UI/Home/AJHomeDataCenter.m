@@ -165,7 +165,7 @@ NSInteger const SHOW_NUM = 5;
 #pragma mark -geter and setter
 - (AVQuery *)query{
     if (_query ==nil) {
-        _query = [AVQuery new];
+        _query = [[AVQuery alloc] init];
         _query.limit = MAX_NUM;
         _query.skip = 0;
         _query.cachePolicy = kAVCachePolicyIgnoreCache;

@@ -283,7 +283,7 @@ CGFloat const HEAD_BTN_HEIGHT = 100;
 - (void)initTbViewData{
     self.navigationItem.titleView = self.searchBar;
 //    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.areaBtn];
-//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"安家屋" style:UIBarButtonItemStylePlain target:self action:nil];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"安家屋" style:UIBarButtonItemStylePlain target:self action:nil];
 
     [_tbView registerNib:[UINib nibWithNibName:NSStringFromClass([AJSecondHouseTableViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([AJSecondHouseTableViewCell class])];
     
