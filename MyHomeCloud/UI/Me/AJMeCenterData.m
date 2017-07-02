@@ -139,6 +139,7 @@ NSString *const ServicePhone = @"4006005555";
     model = [AJMeModel new];
     model.title = @"问题反馈";
     model.className = NSStringFromClass([AJSendFeecbackViewController class]);
+    model.isNeedLogin = YES;
     [temp addObject:model];
     
     if ([AJUMShareUtil isWechatInstalled]) {

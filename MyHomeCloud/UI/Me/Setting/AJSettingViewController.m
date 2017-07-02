@@ -85,7 +85,13 @@ static NSString *CellIdentifier = @"TJSettingsCellId";
         Class vcClass = NSClassFromString(model.className);//反射
         UIViewController *vc = [vcClass new];
         vc.title = model.title;
-       
+        if (model.isNeedLogin&&![AVUser currentUser]) {
+            [AJSB goLoginViewComplete:^{
+                APP_PUSH(vc);
+
+            }];
+            return;
+        }
         APP_PUSH(vc);
         
     }else{
