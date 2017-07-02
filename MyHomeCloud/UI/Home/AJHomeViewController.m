@@ -55,15 +55,24 @@ CGFloat const HEAD_BTN_HEIGHT = 100;
     [super viewDidLoad];
     
     [self initTbViewData];
-    
-    [self.view showHUD:nil];
+       [self.view showHUD:nil];
     [self fetchData];
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-   
+    [self setStatusBarColor:NavigationBarColor];
 }
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [self setStatusBarColor:[UIColor clearColor]];
+}
+- (void)setStatusBarColor:(UIColor *)color{
+    UIView *statusBar = [[[UIApplication sharedApplication] valueForKey:@"statusBarWindow"] valueForKey:@"statusBar"];
+    if ([statusBar respondsToSelector:@selector(setBackgroundColor:)]) {
+        statusBar.backgroundColor = color;
+    }
 
+}
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
     
     AJSearchViewController *search = [AJSearchViewController new];
