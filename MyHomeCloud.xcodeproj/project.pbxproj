@@ -61,6 +61,8 @@
 		0B57F59E1EC198F100B89CE2 /* CTBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B57F59D1EC198F100B89CE2 /* CTBaseViewController.m */; };
 		0B57F5A11EC1991800B89CE2 /* AjMainTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B57F5A01EC1991800B89CE2 /* AjMainTabBarViewController.m */; };
 		0B59A52C1ED17D8600E8E787 /* AJPickViewTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B59A52B1ED17D8600E8E787 /* AJPickViewTextField.m */; };
+		0B5F6C2C1F0A3C84001C93D0 /* AJRemoteNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B5F6C2B1F0A3C84001C93D0 /* AJRemoteNotification.m */; };
+		0B5F6C2D1F0A3C84001C93D0 /* AJRemoteNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B5F6C2B1F0A3C84001C93D0 /* AJRemoteNotification.m */; };
 		0B5FDBB51EFFE11F00F9A1E2 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B5FDBB41EFFE11F00F9A1E2 /* KeychainItemWrapper.m */; };
 		0B5FDBB61EFFE11F00F9A1E2 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B5FDBB41EFFE11F00F9A1E2 /* KeychainItemWrapper.m */; };
 		0B5FDBB81EFFE30300F9A1E2 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B5FDBB71EFFE30300F9A1E2 /* Security.framework */; };
@@ -353,6 +355,8 @@
 		0B57F5A01EC1991800B89CE2 /* AjMainTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AjMainTabBarViewController.m; sourceTree = "<group>"; };
 		0B59A52A1ED17D8600E8E787 /* AJPickViewTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJPickViewTextField.h; sourceTree = "<group>"; };
 		0B59A52B1ED17D8600E8E787 /* AJPickViewTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJPickViewTextField.m; sourceTree = "<group>"; };
+		0B5F6C2A1F0A3C84001C93D0 /* AJRemoteNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJRemoteNotification.h; sourceTree = "<group>"; };
+		0B5F6C2B1F0A3C84001C93D0 /* AJRemoteNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJRemoteNotification.m; sourceTree = "<group>"; };
 		0B5FDBB31EFFE11F00F9A1E2 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
 		0B5FDBB41EFFE11F00F9A1E2 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
 		0B5FDBB71EFFE30300F9A1E2 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -671,6 +675,7 @@
 		0B2343E31EC03095007A3AC1 /* BusinessSystem */ = {
 			isa = PBXGroup;
 			children = (
+				0B5F6C291F0A3C84001C93D0 /* RemoteNotification */,
 				0B2343E41EC03095007A3AC1 /* Category */,
 				0B2343FB1EC03095007A3AC1 /* Colours */,
 				0B2344081EC03095007A3AC1 /* Download */,
@@ -842,6 +847,15 @@
 				0B57F59D1EC198F100B89CE2 /* CTBaseViewController.m */,
 			);
 			path = SuperVC;
+			sourceTree = "<group>";
+		};
+		0B5F6C291F0A3C84001C93D0 /* RemoteNotification */ = {
+			isa = PBXGroup;
+			children = (
+				0B5F6C2A1F0A3C84001C93D0 /* AJRemoteNotification.h */,
+				0B5F6C2B1F0A3C84001C93D0 /* AJRemoteNotification.m */,
+			);
+			path = RemoteNotification;
 			sourceTree = "<group>";
 		};
 		0B6E12B71EC421A700103571 /* LoginAndRegister */ = {
@@ -1422,6 +1436,7 @@
 				A4B864491EE6E63800E3CE5E /* AJUserHouseViewController.m in Sources */,
 				A46422521F0748F800459294 /* AJFeedbackTableViewCell.m in Sources */,
 				A464225D1F07591F00459294 /* AJSendFeecbackViewController.m in Sources */,
+				0B5F6C2C1F0A3C84001C93D0 /* AJRemoteNotification.m in Sources */,
 				A4B864551EE6EFFD00E3CE5E /* AJLetHouseViewController.m in Sources */,
 				A464224B1F0747B800459294 /* AJFeedbackViewController.m in Sources */,
 				0B23445A1EC03095007A3AC1 /* NSMutableDictionary+IHateNil.m in Sources */,
@@ -1515,6 +1530,7 @@
 				0BF2C6A51EFA5A4400EA46AF /* AJUserHouseViewController.m in Sources */,
 				A46422531F0748F800459294 /* AJFeedbackTableViewCell.m in Sources */,
 				A464225E1F07591F00459294 /* AJSendFeecbackViewController.m in Sources */,
+				0B5F6C2D1F0A3C84001C93D0 /* AJRemoteNotification.m in Sources */,
 				0BF2C6A61EFA5A4400EA46AF /* AJLetHouseViewController.m in Sources */,
 				A464224C1F0747B800459294 /* AJFeedbackViewController.m in Sources */,
 				0BF2C6A71EFA5A4400EA46AF /* NSMutableDictionary+IHateNil.m in Sources */,

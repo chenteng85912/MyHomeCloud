@@ -35,7 +35,8 @@
 #define UIColorFromRGB(rgbValue)    [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 #define NavigationBarColor  UIColorFromRGB(0xF69233)//UIColorFromRGB(0x1CB464)
 
-#define UMWEIXINKEY  @"wx82d7c82f28299bef"
+#define UMWEIXINKEY   @"wx82d7c82f28299bef"
+#define JPUSH_AppKey  @"11f9e8873ee0df970777330e"
 
 #define kNewHouseNotification       @"kNewHouseNotification"
 
@@ -167,11 +168,13 @@
 
 #define debugLog(...) NSLog(__VA_ARGS__)
 #define debugMethod() NSLog(@"%s", __func__)
+#define jPushMode    NO
 
 #else
 
 #define debugLog(...)
 #define debugMethod()
+#define jPushMode    YES
 
 #endif
 

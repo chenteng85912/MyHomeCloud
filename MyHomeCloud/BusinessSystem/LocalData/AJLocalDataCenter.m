@@ -8,7 +8,6 @@
 
 #import "AJLocalDataCenter.h"
 
-NSString *const TIME_KEY = @"time_key";
 
 NSString *const SECOND_HOUSE_KEY = @"second_search_key";
 NSString *const LET_HOUSE_KEY = @"let_search_key";

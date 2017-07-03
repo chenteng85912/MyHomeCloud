@@ -11,6 +11,8 @@ target "MyHomeCloud" do
     pod 'TYKYLibrary'
     pod 'UMengUShare/Social/ReducedWeChat'
     pod 'UMengAnalytics-NO-IDFA'
+    pod 'JPush'
+
 end
 
 target "MyHomeCloudTests" do
@@ -22,4 +24,6 @@ target "MyHomeCloudTests" do
     pod 'TYKYLibrary'
     pod 'UMengUShare/Social/ReducedWeChat'
     pod 'UMengAnalytics-NO-IDFA'
+    pod 'JPush'
+
 end

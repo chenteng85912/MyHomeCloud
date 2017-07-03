@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "AjMainTabBarViewController.h"
+#import "AJRemoteNotification.h"
 #import "UMMobClick/MobClick.h" //友盟统计
 #import <UMSocialCore/UMSocialCore.h>//友盟集成 微信分享
 
@@ -33,7 +34,9 @@ NSString *const UMWEIXINAPPSECRET = @"1b701ce273624810d0f55296f19cd384";
     self.window.rootViewController = [AjMainTabBarViewController new];
 
     [self setUMWXSDK];
-    
+    [AJRemoteNotification registerRemoteNotification];
+    [AJRemoteNotification registerJPush];
+
     self.areaArray = @[@"不限",@"莞城区",@"南城区",@"东城区",@"茶山镇",@"大朗镇",@"寮步镇",
                        @"常平镇",@"横沥镇",@"东坑镇",@"石排镇",@"企石镇",@"桥头镇",@"谢岗镇",
                        @"塘厦镇",@"樟木头镇",@"清溪镇",@"黄江镇",@"凤岗镇",
@@ -51,6 +54,14 @@ NSString *const UMWEIXINAPPSECRET = @"1b701ce273624810d0f55296f19cd384";
     [[UMSocialManager defaultManager] setUmSocialAppkey:UMWEIXINKEY];
     [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:UMWEIXINKEY
                                        appSecret:UMWEIXINAPPSECRET redirectURL:@"http://mobile.umeng.com/social"];
+    
+}
+#pragma mark 注册推送
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    debugLog(@"注册设备推送deviceToken:%@",deviceToken);
+
+    [AJRemoteNotification registerJGNotification:deviceToken];
     
 }
 - (NSMutableDictionary *)desInfo{
@@ -88,6 +99,7 @@ NSString *const UMWEIXINAPPSECRET = @"1b701ce273624810d0f55296f19cd384";
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    [AJRemoteNotification checkUserNotificationSetting];
 }
 
 
