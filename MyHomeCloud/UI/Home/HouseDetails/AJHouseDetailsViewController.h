@@ -17,8 +17,6 @@ typedef NS_ENUM(NSInteger,DetailsHouseModal) {
 @property (strong, nonatomic) NSString *houseId;
 @property (strong, nonatomic) NSString *searchKey;
 
-@property (strong, nonatomic) AJBaseTbViewController *tbView;
-
 @property (assign, nonatomic) DetailsHouseModal detailsModal;
 
 @end

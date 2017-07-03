@@ -322,8 +322,8 @@ CGFloat const HOUSE_INFO_HEITHT = 610;
                 if (succeeded) {
                     likeBtn.selected = NO;
                     _likeLabel.text = @"关注";
-                    weakSelf.tbView.isLoad = NO;
-                    
+                    [[NSNotificationCenter defaultCenter] postNotificationName:kNewHouseNotification object:nil];
+
                 }
             }];
             

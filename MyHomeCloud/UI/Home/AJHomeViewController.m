@@ -55,12 +55,17 @@ CGFloat const HEAD_BTN_HEIGHT = 100;
     [super viewDidLoad];
     
     [self initTbViewData];
-       [self.view showHUD:nil];
+    
+    [self.view showHUD:nil];
     [self fetchData];
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+}
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
     [self setStatusBarColor:NavigationBarColor];
+
 }
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];

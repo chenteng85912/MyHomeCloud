@@ -26,7 +26,7 @@
     if (self.showModal==SearchHouseModal||self.showModal==AllHouseModal) {
         self.navigationItem.titleView = self.searchBar;
     }else{
-        if (self.showModal==MyHouseModal) {
+        if (self.showModal==MyHouseModal||self.showModal==UserFavoriteModal) {
             
             [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshHomeData) name:kNewHouseNotification object:nil];
             

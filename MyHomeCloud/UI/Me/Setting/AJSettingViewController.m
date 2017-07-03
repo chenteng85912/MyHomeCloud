@@ -36,6 +36,7 @@ static NSString *CellIdentifier = @"TJSettingsCellId";
     [self initTableView];
     // Do any additional setup after loading the view from its nib.
 }
+
 //初始化表视图 配置代理
 - (void)initTableView{
     [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CellIdentifier];
@@ -86,7 +87,10 @@ static NSString *CellIdentifier = @"TJSettingsCellId";
         UIViewController *vc = [vcClass new];
         vc.title = model.title;
         if (model.isNeedLogin&&![AVUser currentUser]) {
+            WeakSelf;
             [AJSB goLoginViewComplete:^{
+                weakSelf.footerView.hidden = NO;
+                weakSelf.tableView.tableFooterView = weakSelf.footerView;
                 APP_PUSH(vc);
 
             }];
