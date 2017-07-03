@@ -7,6 +7,7 @@
 //
 
 #import "AJNewsViewController.h"
+#import "AJRemoteNotification.h"
 
 @interface AJNewsViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tbView;
@@ -30,6 +31,10 @@
         [self.tbView.mj_header beginRefreshing];
     }
     
+}
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [AJRemoteNotification checkUserNotificationSetting];
 }
 - (void)loadNews{
     [self.tbView.mj_header endRefreshing];

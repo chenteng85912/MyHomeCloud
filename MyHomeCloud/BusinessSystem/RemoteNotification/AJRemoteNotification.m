@@ -51,6 +51,7 @@ NSString *const TIME_KEY = @"time_key";
     
     //打开了通知
     if ([[UIApplication sharedApplication] currentUserNotificationSettings].types != UIUserNotificationTypeNone) {
+        
         return;
     }
     NSInteger oldTime = [MyUserDefaults integerForKey:TIME_KEY];

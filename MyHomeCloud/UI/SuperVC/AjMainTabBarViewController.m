@@ -39,7 +39,7 @@
     AJUserCenterViewController *user = [AJUserCenterViewController new];
     user.title = @"我";
     
-    NSArray *normalImgs = @[@"home",@"msg",@"user"];
+    NSArray *normalImgs = @[@"home_nor",@"msg",@"user"];
     NSArray *selectedImgs = @[@"home_sel",@"msg_sel",@"user_sel"];
     NSArray *viewControllers = @[home,news,user];
     
@@ -50,6 +50,7 @@
 
         vc.tabBarItem.selectedImage = [[UIImage imageNamed:selectedImgs[i]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         [vc.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:NavigationBarColor} forState:UIControlStateSelected];
+        vc.tabBarItem.titlePositionAdjustment = UIOffsetMake(0, -3);
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
         [newArray addObject:nav];
     }

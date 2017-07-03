@@ -34,6 +34,7 @@ NSString *const UMWEIXINAPPSECRET = @"1b701ce273624810d0f55296f19cd384";
     self.window.rootViewController = [AjMainTabBarViewController new];
 
     [self setUMWXSDK];
+    
     [AJRemoteNotification registerRemoteNotification];
     [AJRemoteNotification registerJPush];
 
@@ -99,9 +100,7 @@ NSString *const UMWEIXINAPPSECRET = @"1b701ce273624810d0f55296f19cd384";
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    [AJRemoteNotification checkUserNotificationSetting];
-}
-
+  }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
