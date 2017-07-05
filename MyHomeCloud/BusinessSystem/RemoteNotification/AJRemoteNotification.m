@@ -7,7 +7,7 @@
 //
 
 #import "AJRemoteNotification.h"
-//#import "JPUSHService.h"
+#import "JPUSHService.h"
 
 NSString *const TIME_KEY = @"time_key";
 
@@ -25,24 +25,24 @@ NSString *const TIME_KEY = @"time_key";
 + (void)registerJPush{
     
     //触发 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
-//    JPUSHRegisterEntity * entity = [[JPUSHRegisterEntity alloc] init];
-//    entity.types = JPAuthorizationOptionAlert|JPAuthorizationOptionSound;
-//    [JPUSHService registerForRemoteNotificationConfig:entity delegate:nil];
-//    
-//    [JPUSHService setupWithOption:nil appKey:JPUSH_AppKey
-//                          channel:@"App Store"
-//                 apsForProduction:jPushMode];
+    JPUSHRegisterEntity * entity = [[JPUSHRegisterEntity alloc] init];
+    entity.types = JPAuthorizationOptionAlert|JPAuthorizationOptionSound;
+    [JPUSHService registerForRemoteNotificationConfig:entity delegate:nil];
+    
+    [JPUSHService setupWithOption:nil appKey:JPUSH_AppKey
+                          channel:@"App Store"
+                 apsForProduction:jPushMode];
     
     
 }
 //2极光推送注册通道ID
 + (void)registerJGNotification:(NSData *)deviceToken{
 
-//    [JPUSHService registerDeviceToken:deviceToken];
-//    [JPUSHService registrationIDCompletionHandler:^(int resCode, NSString *registrationID) {
-//        debugLog(@"极光推送registrationID==%@",registrationID);
-//
-//    }];
+    [JPUSHService registerDeviceToken:deviceToken];
+    [JPUSHService registrationIDCompletionHandler:^(int resCode, NSString *registrationID) {
+        debugLog(@"极光推送registrationID========== %@",registrationID);
+
+    }];
     
 }
 

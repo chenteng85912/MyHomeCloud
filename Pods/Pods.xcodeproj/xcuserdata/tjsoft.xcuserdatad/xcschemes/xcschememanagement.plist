@@ -8,57 +8,41 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>2</integer>
 		</dict>
 		<key>FMDB.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>3</integer>
 		</dict>
 		<key>MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>4</integer>
 		</dict>
 		<key>MJRefresh.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>5</integer>
 		</dict>
-		<key>Pods-MyHomeCloud.xcscheme</key>
+		<key>Pods-AJCloud.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>6</integer>
 		</dict>
-		<key>Pods-MyHomeCloudTests.xcscheme</key>
+		<key>Pods-AJCloudAdmin.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>7</integer>
 		</dict>
 		<key>SDWebImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>8</integer>
 		</dict>
 		<key>TYKYLibrary.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>9</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
@@ -68,7 +52,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>328F44C19D752A2E40980DB9C0A0D44E</key>
+		<key>269FCCAC87980BA5B1D6B935EE22D92E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -78,22 +62,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6836204FBF12593A11B025F006D4BFE6</key>
+		<key>5989E2EA0F498D15F075502721300115</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5EA567771512763C7B133E4F4CBD846D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7E639E1A799B66C2338D70880FC93BF0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>8642CC820CE8C5B88C113D7F47AF4BC3</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>987AF2A017F11D01E00E65364EE01141</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>AD1D0BD1E9ECDBCFE5F6A8C34F2FE08A</key>
 		<dict>
 			<key>primary</key>
 			<true/>

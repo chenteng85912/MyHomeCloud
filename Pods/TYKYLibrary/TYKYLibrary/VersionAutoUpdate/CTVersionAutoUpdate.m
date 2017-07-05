@@ -81,7 +81,7 @@ static CTVersionAutoUpdate *version;
     NSArray *appStoreVersionArr = [storeVersion componentsSeparatedByString:@"."];      //比较版本
     NSInteger count = curentVersionArr.count>appStoreVersionArr.count?appStoreVersionArr.count:curentVersionArr.count;
     
-    BOOL isEqual;
+    BOOL isEqual=false;
     for (int i=0; i<count; i++) {
         NSInteger curV = [curentVersionArr[i] integerValue];
         NSInteger appV = [appStoreVersionArr[i] integerValue];
@@ -103,7 +103,7 @@ static CTVersionAutoUpdate *version;
     }
     if (isNeedUpdate) {
         [self openAPPStore];
-        
+       
     }
     
 }

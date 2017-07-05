@@ -27,3 +27,5 @@
 #import "CTVersionAutoUpdate.h"
 //保存图片
 #import "CTSavePhotos.h"
+//跑马灯
+#import "AutoRunLabel.h"

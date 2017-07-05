@@ -164,4 +164,16 @@
    
 }
 
+//字典过滤
++ (NSMutableDictionary *)filterDic:(NSDictionary *)inputDic{
+    NSMutableDictionary *newDic = [inputDic mutableCopy];
+    for (id key in inputDic.allKeys) {
+        id value  = inputDic[key];
+        if ([value isKindOfClass:[NSNull class]]||!value) {
+            [newDic setObject:@"" forKey:key];
+        }
+    }
+    
+    return newDic;
+}
 @end

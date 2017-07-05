@@ -19,16 +19,19 @@
 @interface CTCustomAlbumViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate,ListGroupViewControllerDelegate,UICollectionViewDelegate,UICollectionViewDataSource,BigCollectionViewControllerDelegate>
 
 @property (nonatomic,strong) UICollectionView *ColView;
-@property (nonatomic,strong) UIView *backView;//底部蒙层
-@property (nonatomic,strong) NSMutableArray *albumArray;//相册数组
 @property (nonatomic,strong) UILabel *titleLabel;//标题
 @property (nonatomic,strong) UIImageView *titleLImg;//标题小箭头
 @property (nonatomic,strong) UIButton *titleBtn;//标题按钮
+@property (nonatomic,strong) UIView *waringView;//提示警告
+@property (nonatomic,strong) UIView *backView;//底部蒙层
+
 @property (nonatomic,strong) ListGroupViewController *albumGroup;//相册列表
 @property (nonatomic,strong) ALAssetsLibrary *assetsLibrary;
-@property (nonatomic,assign) NSInteger selectedNum;//选中照片数量
-@property (nonatomic,strong) UIView *waringView;//提示警告
+
+@property (nonatomic,strong) NSMutableArray <ALAsset *> *albumArray;//相册数组
+
 @property (nonatomic,assign) BOOL isLoad;
+@property (nonatomic,assign) NSInteger selectedNum;//选中照片数量
 
 @end
 
@@ -41,101 +44,49 @@
         return;
     }
     [self initCollectionView];//初始化相册
-    [self initWarningView];//初始化警告视图
     [self initAlbumGroupData];//初始化相册列表
     [self initNavigationItem];//初始化导航栏按钮
     
+    [self.view bringSubviewToFront:self.waringView];
+
 }
 #pragma mark 初始化导航栏按钮
 - (void)initNavigationItem{
-    self.navigationController.navigationBar.translucent = YES;
+    
     self.navigationController.navigationBar.tintColor = [UIColor blackColor];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(back)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(backToPreVC)];
     
     NSString *rightTitle = [NSString stringWithFormat:@"确认(%ld/%ld)",(long)self.picDataDic.count,(long)self.totalNum];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:rightTitle style:UIBarButtonItemStylePlain target:self action:@selector(comfirnChoose)];
 }
+
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.ColView reloadData];
     [self changeComfirnTitie];
 
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
 }
 
-- (void)back{
+- (void)backToPreVC{
+    
+   
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    
+    
 }
 
-#pragma mark 懒加载
-- (NSMutableDictionary *)picDataDic{
-    if (!_picDataDic) {
-        _picDataDic = [NSMutableDictionary new];
-        
-    }
-    return _picDataDic;
-}
-- (NSMutableArray *)albumArray{
-    if (!_albumArray) {
-        _albumArray = [NSMutableArray new];
-    }
-    return _albumArray;
-}
 #pragma mark collectionview
 - (void)initCollectionView{
-    UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
-    layout.sectionInset =  UIEdgeInsetsMake(1, 1, 1, 1);
-    layout.minimumLineSpacing = 1.0;
-    layout.minimumInteritemSpacing = 1.0;
-    layout.itemSize = CGSizeMake((Device_width-4)/3, (Device_width-4)/3);
-    
-    CGRect colFrame = CGRectMake(0, 0, Device_width, Device_height-64);
-    if (self.navigationController.navigationBar.translucent) {
-        colFrame = CGRectMake(0, 0, Device_width, Device_height);
-    }
-    UICollectionView *colView = [[UICollectionView alloc] initWithFrame:colFrame collectionViewLayout:layout];
-    colView.delegate = self;
-    colView.dataSource = self;
-    [self.view addSubview:colView];
-    colView.backgroundColor= [UIColor whiteColor];
-    colView.alwaysBounceVertical = YES;
-    [colView registerNib:[UINib nibWithNibName:@"AlbumCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"AlbumCollectionViewCell"];
-    self.ColView = colView;
-    self.ColView.backgroundColor= [UIColor groupTableViewBackgroundColor];
-    self.ColView.alwaysBounceVertical = YES;
-    [self.ColView registerNib:[UINib nibWithNibName:@"AlbumCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"AlbumCollectionViewCell"];
-    
-    UIView *backview = [[UIView alloc] initWithFrame:colView.frame];
+    [self.view addSubview:self.ColView];
+
+    UIView *backview = [[UIView alloc] initWithFrame:self.ColView.frame];
     backview.backgroundColor = [UIColor blackColor];
-    backview.alpha = 0;
+    backview.alpha = 0.0;
     [self.view addSubview:backview];
     self.backView = backview;
     
 }
-#pragma mark 初始化警告视图
-- (void)initWarningView{
-    UIView *warning = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 180, 120)];
-    warning.center = self.view.center;
-    warning.alpha = 0.0;
-    warning.backgroundColor = [UIColor blackColor];
-    warning.layer.masksToBounds = YES;
-    warning.layer.cornerRadius = 5.0;
-    
-    UIImageView *warningImg = [[UIImageView alloc] initWithFrame:CGRectMake(warning.frame.size.width/2-15, 25, 30, 30)];
-    warningImg.image = [UIImage imageNamed:@"max_warinig"];
-    
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 70, warning.frame.size.width, 20)];
-    label.textAlignment = NSTextAlignmentCenter;
-    label.textColor  = [UIColor whiteColor];
-    label.text = @"照片数量已到上限";
-    
-    [warning addSubview:warningImg];
-    [warning addSubview:label];
-    
-    [self.navigationController.view addSubview:warning];
-    [self.navigationController.view bringSubviewToFront:warning];
-    self.waringView = warning;
-}
+
 #pragma mark 初始化标题按钮
 - (void)initTitleView:(ALAssetsGroup *)group{
     
@@ -157,6 +108,7 @@
     self.navigationItem.titleView = customTitle;
     
 }
+
 #pragma mark 初始化相册分组列表
 - (void)initAlbumGroupData{
     
@@ -171,20 +123,8 @@
 
             }
         }else{
-            
-            ListGroupViewController *tbView = [ListGroupViewController new];
-            tbView.delegate = self;
-            self.albumGroup = tbView;
-            tbView.view.frame = CGRectMake(0,  -Device_height/2, Device_width, Device_height/2);
-            tbView.TbView.frame = CGRectMake(0, 0, Device_width, Device_height/2);
+            self.albumGroup.groupArray = [groupArray mutableCopy];
 
-            tbView.groupArray = [groupArray mutableCopy];
-            [tbView.TbView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
-            
-            [self.view addSubview:tbView.view];
-            [self.view bringSubviewToFront:tbView.view];
-            [self addChildViewController:tbView];
-            
             ALAssetsGroup *group = groupArray[groupArray.count-1];
 
             [self initGroupDetailsData:group];
@@ -231,29 +171,24 @@
         [UIView setAnimationBeginsFromCurrentState:YES];
         [UIView setAnimationCurve:7];
         if (!btn.selected) {
-            self.albumGroup.view.center = CGPointMake(Device_width/2, Device_height/4);
+            self.albumGroup.view.center = CGPointMake(Device_width/2, Device_height/4+64);
 
-            if (self.navigationController.navigationBar.translucent) {
-                self.albumGroup.view.center = CGPointMake(Device_width/2, Device_height/4+64);
-
-            }
             self.titleLImg.transform=CGAffineTransformMakeRotation(M_PI);
 
-            self.backView.alpha = 0.5;
+            self.backView.alpha = 0.3;
             btn.selected = YES;
         }else{
             self.titleLImg.transform=CGAffineTransformMakeRotation(-M_PI*2);
 
             self.albumGroup.view.center = CGPointMake(Device_width/2, -Device_height/4);
             btn.selected = NO;
-             self.backView.alpha = 0;
+            self.backView.alpha = 0.0;
         }
     }];
 }
 
 #pragma mark  BigCollectionViewControllerDelegate 图片确认选择
 - (void)comfirnChoose{
-    
     [self.navigationController dismissViewControllerAnimated:YES completion:^{
         if ([self.delegate respondsToSelector:@selector(sendImageDictionary:)]) {
             
@@ -261,7 +196,7 @@
             
         }
     }];
-    
+  
 }
 
 #pragma mark UICollectionViewDelegate
@@ -329,7 +264,7 @@
     [self.navigationController pushViewController:big animated:YES];
     
 }
-#pragma mark 选择照片
+#pragma mark 选择照片动作
 - (void)choosePicture:(UIButton *)btn{
     ALAsset *asset = self.albumArray[btn.tag-1];
     NSIndexPath *indexPath = [NSIndexPath indexPathForItem:btn.tag inSection:0];
@@ -409,7 +344,10 @@
 #pragma mark 下拉超过一定距离返回
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     if (scrollView.contentOffset.y<-100) {
-        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+        if (self.navigationController.presentingViewController){
+            [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+
+        }
     }
 }
 
@@ -460,6 +398,7 @@
     }
 
 }
+
 #pragma mark 标题居中
 - (UILabel *)fixLabelWithGroup:(ALAssetsGroup *)group andFontSize:(CGFloat)fontSize{
     
@@ -494,6 +433,82 @@
 
 }
 
+#pragma mark 懒加载
+- (UICollectionView *)ColView{
+    if (_ColView ==nil) {
+        UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
+        layout.sectionInset =  UIEdgeInsetsMake(1, 1, 1, 1);
+        layout.minimumLineSpacing = 1.0;
+        layout.minimumInteritemSpacing = 1.0;
+        layout.itemSize = CGSizeMake((Device_width-4)/3, (Device_width-4)/3);
+        
+        CGRect colFrame = CGRectMake(0, 0, Device_width, Device_height);
+      
+        _ColView = [[UICollectionView alloc] initWithFrame:colFrame collectionViewLayout:layout];
+        _ColView.delegate = self;
+        _ColView.dataSource = self;
+        _ColView.backgroundColor= [UIColor whiteColor];
+        _ColView.alwaysBounceVertical = YES;
+        [_ColView registerNib:[UINib nibWithNibName:NSStringFromClass([AlbumCollectionViewCell class]) bundle:nil] forCellWithReuseIdentifier:NSStringFromClass([AlbumCollectionViewCell class])];
+        _ColView.backgroundColor= [UIColor groupTableViewBackgroundColor];
+        _ColView.alwaysBounceVertical = YES;
+    }
+    return _ColView;
+}
+- (NSMutableDictionary <NSString*,UIImage*> *)picDataDic{
+    if (!_picDataDic) {
+        _picDataDic = [NSMutableDictionary new];
+        
+    }
+    return _picDataDic;
+}
+- (NSMutableArray <ALAsset *> *)albumArray{
+    if (!_albumArray) {
+        _albumArray = [NSMutableArray new];
+    }
+    return _albumArray;
+}
+- (ListGroupViewController *)albumGroup{
+    if (_albumGroup==nil) {
+        _albumGroup =  [ListGroupViewController new];
+        _albumGroup.delegate = self;
+        _albumGroup.view.frame = CGRectMake(0,  -Device_height/2, Device_width, Device_height/2);
+        _albumGroup.TbView.frame = CGRectMake(0, 0, Device_width, Device_height/2);
+        
+        [_albumGroup.TbView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+        
+        [self.view addSubview:_albumGroup.view];
+        [self.view bringSubviewToFront:_albumGroup.view];
+        [self addChildViewController:_albumGroup];
+        
+    }
+    return _albumGroup;
+}
+
+- (UIView *)waringView{
+    if (_waringView ==nil) {
+        _waringView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 180, 120)];
+        _waringView.center = self.view.center;
+        _waringView.alpha = 0.0;
+        _waringView.backgroundColor = [UIColor blackColor];
+        _waringView.layer.masksToBounds = YES;
+        _waringView.layer.cornerRadius = 5.0;
+        
+        UIImageView *warningImg = [[UIImageView alloc] initWithFrame:CGRectMake(_waringView.frame.size.width/2-15, 25, 30, 30)];
+        warningImg.image = [UIImage imageNamed:@"max_warinig"];
+        
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 70, _waringView.frame.size.width, 20)];
+        label.textAlignment = NSTextAlignmentCenter;
+        label.textColor  = [UIColor whiteColor];
+        label.text = @"照片数量已到上限";
+        
+        [_waringView addSubview:warningImg];
+        [_waringView addSubview:label];
+        
+        [self.view addSubview:_waringView];
+    }
+    return _waringView;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

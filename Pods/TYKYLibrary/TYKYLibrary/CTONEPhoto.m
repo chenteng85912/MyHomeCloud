@@ -42,15 +42,13 @@ static CTONEPhoto *onePhoto = nil;
     
     onePhoto.imagePicker.sourceType=UIImagePickerControllerSourceTypeCamera;
     onePhoto.imagePicker.allowsEditing = enableEdit;
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+  
     [rootVC presentViewController:onePhoto.imagePicker animated:YES completion:nil];
 }
 - (void)openAlbum:(UIViewController *)rootVC editModal:(BOOL)enableEdit{
     if (![[CTSavePhotos new] checkAuthorityOfAblum]) {
         return;
     }
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
-
     //onePhoto.imagePicker.sourceType=UIImagePickerControllerSourceTypeSavedPhotosAlbum;
     onePhoto.imagePicker.sourceType=UIImagePickerControllerSourceTypePhotoLibrary;
     onePhoto.imagePicker.allowsEditing = enableEdit;

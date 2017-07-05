@@ -10,7 +10,7 @@
 @protocol CTCustomAlbumViewControllerDelegate <NSObject>
 
 //传出图片字典，key为图片名称，value为对应的图片
-- (void)sendImageDictionary:(NSDictionary *)imageDic;
+- (void)sendImageDictionary:(NSDictionary <NSString*,UIImage*> *)imageDic;
 
 @end
 /**
@@ -20,8 +20,10 @@
  */
 @interface CTCustomAlbumViewController : UIViewController
 
+@property (nonatomic,strong) NSMutableDictionary <NSString*,UIImage*> *picDataDic;//已经选中的图片字典
+
 @property (nonatomic,assign) NSInteger totalNum;//照片最大选择张数
-@property (nonatomic,strong) NSMutableDictionary *picDataDic;//已经选中的图片字典
+
 @property (nonatomic,weak) id <CTCustomAlbumViewControllerDelegate> delegate;
 
 @end

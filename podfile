@@ -2,26 +2,26 @@ platform :ios,'8.0'
 
 project 'MyHomeCloud.xcodeproj'
 
-target "MyHomeCloud" do
+target "AJCloud" do
     pod 'AVOSCloud'
     pod 'MJRefresh'
     pod 'MBProgressHUD'
     pod 'SDWebImage'
     pod 'FMDB'
-    pod 'TYKYLibrary'
+    pod 'TYKYLibrary', '~> 1.2.8'
     pod 'UMengUShare/Social/ReducedWeChat'
     pod 'UMengAnalytics-NO-IDFA'
     pod 'JPush'
 
 end
 
-target "MyHomeCloudTests" do
+target "AJCloudAdmin" do
     pod 'AVOSCloud'
     pod 'MJRefresh'
     pod 'MBProgressHUD'
     pod 'SDWebImage'
     pod 'FMDB'
-    pod 'TYKYLibrary'
+    pod 'TYKYLibrary', '~> 1.2.8'
     pod 'UMengUShare/Social/ReducedWeChat'
     pod 'UMengAnalytics-NO-IDFA'
     pod 'JPush'

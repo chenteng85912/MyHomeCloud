@@ -3,41 +3,46 @@ PODS:
   - FMDB (2.6.2):
     - FMDB/standard (= 2.6.2)
   - FMDB/standard (2.6.2)
+  - JCore (1.1.5)
+  - JPush (3.0.6):
+    - JCore (~> 1.1.1)
   - MBProgressHUD (1.0.0)
   - MJRefresh (3.1.12)
   - SDWebImage (4.0.0):
     - SDWebImage/Core (= 4.0.0)
   - SDWebImage/Core (4.0.0)
-  - TYKYLibrary (1.2.5):
-    - TYKYLibrary/AutoLocation (= 1.2.5)
-    - TYKYLibrary/AutoLoop (= 1.2.5)
-    - TYKYLibrary/CustomAlbum (= 1.2.5)
-    - TYKYLibrary/CustomCamera (= 1.2.5)
-    - TYKYLibrary/Download (= 1.2.5)
-    - TYKYLibrary/LeftMenu (= 1.2.5)
-    - TYKYLibrary/ONEPhoto (= 1.2.5)
-    - TYKYLibrary/PageViewController (= 1.2.5)
-    - TYKYLibrary/Request (= 1.2.5)
-    - TYKYLibrary/ShowPictures (= 1.2.5)
-    - TYKYLibrary/TableViewDelegate (= 1.2.5)
-    - TYKYLibrary/TouchIDAuthorize (= 1.2.5)
-    - TYKYLibrary/VersionAutoUpdate (= 1.2.5)
-  - TYKYLibrary/AutoLocation (1.2.5)
-  - TYKYLibrary/AutoLoop (1.2.5)
-  - TYKYLibrary/CustomAlbum (1.2.5)
-  - TYKYLibrary/CustomCamera (1.2.5):
+  - TYKYLibrary (1.2.8):
+    - TYKYLibrary/AutoLocation (= 1.2.8)
+    - TYKYLibrary/AutoLoop (= 1.2.8)
+    - TYKYLibrary/AutoRunLabel (= 1.2.8)
+    - TYKYLibrary/CustomAlbum (= 1.2.8)
+    - TYKYLibrary/CustomCamera (= 1.2.8)
+    - TYKYLibrary/Download (= 1.2.8)
+    - TYKYLibrary/LeftMenu (= 1.2.8)
+    - TYKYLibrary/ONEPhoto (= 1.2.8)
+    - TYKYLibrary/PageViewController (= 1.2.8)
+    - TYKYLibrary/Request (= 1.2.8)
+    - TYKYLibrary/ShowPictures (= 1.2.8)
+    - TYKYLibrary/TableViewDelegate (= 1.2.8)
+    - TYKYLibrary/TouchIDAuthorize (= 1.2.8)
+    - TYKYLibrary/VersionAutoUpdate (= 1.2.8)
+  - TYKYLibrary/AutoLocation (1.2.8)
+  - TYKYLibrary/AutoLoop (1.2.8)
+  - TYKYLibrary/AutoRunLabel (1.2.8)
+  - TYKYLibrary/CustomAlbum (1.2.8)
+  - TYKYLibrary/CustomCamera (1.2.8):
     - TYKYLibrary/CustomAlbum
-  - TYKYLibrary/Download (1.2.5)
-  - TYKYLibrary/LeftMenu (1.2.5)
-  - TYKYLibrary/ONEPhoto (1.2.5):
+  - TYKYLibrary/Download (1.2.8)
+  - TYKYLibrary/LeftMenu (1.2.8)
+  - TYKYLibrary/ONEPhoto (1.2.8):
     - TYKYLibrary/CustomAlbum
-  - TYKYLibrary/PageViewController (1.2.5)
-  - TYKYLibrary/Request (1.2.5)
-  - TYKYLibrary/ShowPictures (1.2.5):
+  - TYKYLibrary/PageViewController (1.2.8)
+  - TYKYLibrary/Request (1.2.8)
+  - TYKYLibrary/ShowPictures (1.2.8):
     - TYKYLibrary/Download
-  - TYKYLibrary/TableViewDelegate (1.2.5)
-  - TYKYLibrary/TouchIDAuthorize (1.2.5)
-  - TYKYLibrary/VersionAutoUpdate (1.2.5):
+  - TYKYLibrary/TableViewDelegate (1.2.8)
+  - TYKYLibrary/TouchIDAuthorize (1.2.8)
+  - TYKYLibrary/VersionAutoUpdate (1.2.8):
     - TYKYLibrary/Request
   - UMengAnalytics-NO-IDFA (4.2.5)
   - UMengUShare/Core (6.4.3):
@@ -49,23 +54,26 @@ PODS:
 DEPENDENCIES:
   - AVOSCloud
   - FMDB
+  - JPush
   - MBProgressHUD
   - MJRefresh
   - SDWebImage
-  - TYKYLibrary
+  - TYKYLibrary (~> 1.2.8)
   - UMengAnalytics-NO-IDFA
   - UMengUShare/Social/ReducedWeChat
 
 SPEC CHECKSUMS:
   AVOSCloud: c2cbba727f10776c995108d7e8fd3142d703ebaa
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
+  JCore: 9bd9c770c877c583d98b90a68792b8361974c231
+  JPush: c41be50eb1a574a66aeb68d237f00a4ec6ec3a82
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
-  TYKYLibrary: 9133b79f7bb524868a9a8bcdb1ce50d1f48a9015
+  TYKYLibrary: 47b5a7eb88aa42aa44fc27bbeadab28acdbc9694
   UMengAnalytics-NO-IDFA: 16666e32edce5be44ae5b14aaaa7f3582e09d6ab
   UMengUShare: d39cb682598df87ebdd3c055d03d00eb0102d42c
 
-PODFILE CHECKSUM: 2115793b4949198032158bbf5bbcab212a9379d8
+PODFILE CHECKSUM: 15238ac12c56516ac0ed946447eea23d94a6bd80
 
 COCOAPODS: 1.2.0

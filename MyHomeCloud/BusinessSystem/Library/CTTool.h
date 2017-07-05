@@ -40,4 +40,7 @@
 
 //拨打电话
 + (void)takePhoneNumber:(NSString *)phoneNum;
+
+//字典过滤
++ (NSMutableDictionary *)filterDic:(NSDictionary *)inputDic;
 @end

@@ -6,10 +6,8 @@
 #import "CTPageController.h"
 
 #define  DEVICE_HEIGHT   [[UIScreen mainScreen] bounds].size.height
-
 #define  DEVICE_WIDTH    [[UIScreen mainScreen] bounds].size.width
-CGFloat const  PAGE_HEAD_HEIGHT = 45.0;
-CGFloat const  FITER_BUTTON_WIDTH = 60.0;
+
 CGFloat const  TITLE_SCALE = 0.1;
 
 #define  TITILE_FONT  DEVICE_WIDTH==320?13:15
@@ -18,11 +16,11 @@ CGFloat const  TITLE_SCALE = 0.1;
 
 @property (assign, nonatomic) CGFloat titleBtnWidth;        //标题按钮宽度
 @property (strong, nonatomic) UIScrollView *contentScrView; //内容底部滚动视图
-@property (strong, nonatomic) UIScrollView *headScrView;    //头部按钮底部视图
 @property (strong, nonatomic) UIButton *curruntBtn;         //当前选中按钮
 @property (strong, nonatomic) NSArray *RGBArray;            //按钮选中颜色RGB
 @property (strong, nonatomic) UIView *bottomLine;           //底部线条
 @property (assign, nonatomic) CGFloat titleWidth;           //底部线条宽度
+
 @property (assign, nonatomic) BOOL isLoad;
 
 @end
@@ -54,11 +52,11 @@ CGFloat const  TITLE_SCALE = 0.1;
     if (!_lineHeight) {
         _lineHeight = 3;
     }
+    if (!_headBtnHeigth) {
+        _headBtnHeigth = 45;
+    }
     if (!_selectedColor) {
         _selectedColor = [UIColor redColor];
-    }
-    if (!_headBackColor) {
-        _headBackColor = [UIColor groupTableViewBackgroundColor];
     }
     
     if (_selectedIndex>_viewControllers.count-1) {
@@ -66,12 +64,23 @@ CGFloat const  TITLE_SCALE = 0.1;
     }
     
     //头部标题
+    if (_headBtnStyle==NavigationButtonView) {
+     
+        _titleBtnWidth = self.headScrView.frame.size.width/_viewControllers.count;
+        
+    }else{
+        [self.view addSubview:self.headScrView];
+        
+    }
     for (int i = 0; i <_viewControllers.count; i++) {
-        UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(_titleBtnWidth*i, 0, _titleBtnWidth, PAGE_HEAD_HEIGHT)];
-        btn.tag = i;
+        UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(_titleBtnWidth*i, 0, _titleBtnWidth, _headBtnHeigth)];
+        btn.tag = i+100;
+        if (_headBtnStyle==NavigationButtonView) {
+            btn.titleEdgeInsets = UIEdgeInsetsMake(5, 0, 0, 0);
+        }
         [btn addTarget:self action:@selector(switchViewControllers:) forControlEvents:UIControlEventTouchUpInside];
         UIViewController *vc = _viewControllers[i];
-        btn.backgroundColor = [UIColor whiteColor];
+        btn.backgroundColor = self.headScrView.backgroundColor;
         [btn setTitle:vc.title forState:UIControlStateNormal];
         
         btn.titleLabel.font = [UIFont systemFontOfSize:TITILE_FONT];
@@ -88,18 +97,22 @@ CGFloat const  TITLE_SCALE = 0.1;
         }
     }
    
+    
     //添加底部线条
     if (_lineShowMode!=UnDisplayMode) {
-        UIView *bottom = [[UIView alloc] initWithFrame:CGRectMake(0, PAGE_HEAD_HEIGHT-0.5, self.view.frame.size.width, 0.5)];
-        bottom.backgroundColor = [UIColor lightGrayColor];
-        [self.headScrView addSubview:bottom];
+        if (_headBtnStyle!=NavigationButtonView) {
+            UIView *bottom = [[UIView alloc] initWithFrame:CGRectMake(0, _headBtnHeigth-0.5, self.view.frame.size.width, 0.5)];
+            bottom.backgroundColor = [UIColor lightGrayColor];
+            [self.headScrView addSubview:bottom];
+        }
+      
         UIView *line = [UIView new];
         line.tag = 891101;
         line.backgroundColor = _selectedColor;
         if (_lineShowMode == AboveShowMode) {
             line.frame = CGRectMake(_titleBtnWidth/2-_titleWidth/2, 0, _titleWidth, _lineHeight);
         }else{
-            line.frame = CGRectMake(_titleBtnWidth/2-_titleWidth/2, PAGE_HEAD_HEIGHT-_lineHeight, _titleWidth, _lineHeight);
+            line.frame = CGRectMake(_titleBtnWidth/2-_titleWidth/2, _headBtnHeigth-_lineHeight, _titleWidth, _lineHeight);
 
         }
         line.layer.masksToBounds = YES;
@@ -108,8 +121,6 @@ CGFloat const  TITLE_SCALE = 0.1;
         [self.headScrView addSubview:line];
     }
 
-    [self.view addSubview:self.headScrView];
-  
     [self.view addSubview:self.contentScrView];
     
     for (UIViewController *vc in _viewControllers) {
@@ -139,7 +150,7 @@ CGFloat const  TITLE_SCALE = 0.1;
     
     NSInteger index = offsetX / width;
     
-    _curruntBtn = self.headScrView.subviews[index];
+    _curruntBtn = [self.headScrView viewWithTag:index+100];
     _selectedIndex = index;
 
     if (self.scrollBlock) {
@@ -175,11 +186,11 @@ CGFloat const  TITLE_SCALE = 0.1;
     }
     // 获取需要操作的的左边的button
     NSInteger leftIndex = scale;
-    UIButton *leftBtn = self.headScrView.subviews[leftIndex];
+    UIButton *leftBtn = [self.headScrView viewWithTag:leftIndex+100];
   
     // 获取需要操作的右边的button
     NSInteger rightIndex = scale+1;
-    UIButton *rightBtn = (rightIndex == _viewControllers.count) ?  nil : self.headScrView.subviews[rightIndex];
+    UIButton *rightBtn = (rightIndex == _viewControllers.count) ?  nil : [self.headScrView viewWithTag:rightIndex+100];
 
 
     // 右边的比例
@@ -227,6 +238,9 @@ CGFloat const  TITLE_SCALE = 0.1;
 
 #pragma mark 设置头部按钮大小渐变
 - (void)setButScale:(UIButton *)btn withScale:(CGFloat)scale {
+    if (![btn isKindOfClass:[UIButton class]]) {
+        return;
+    }
     
     CGFloat red = [self.RGBArray[0] floatValue];
     CGFloat green = [self.RGBArray[1] floatValue];
@@ -245,20 +259,26 @@ CGFloat const  TITLE_SCALE = 0.1;
 
 - (CGFloat)strLenth:(NSString *)string
 {
-    return [string boundingRectWithSize:CGSizeMake(MAXFLOAT, PAGE_HEAD_HEIGHT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:TITILE_FONT]} context:nil].size.width;
+    return [string boundingRectWithSize:CGSizeMake(MAXFLOAT, _headBtnHeigth) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:TITILE_FONT]} context:nil].size.width;
 }
 
 - (UIScrollView *)headScrView{
     if (_headScrView==nil) {
-        _headScrView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, PAGE_HEAD_HEIGHT)];
-        _headScrView.backgroundColor = _headBackColor;
+        _headScrView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, _headBtnHeigth)];
+        if (_headBtnStyle==NavigationButtonView) {
+            _headScrView.frame = CGRectMake(0, 0, DEVICE_WIDTH-180, _headBtnHeigth);
+        }
+        _headScrView.backgroundColor = [UIColor clearColor];
         _headScrView.scrollEnabled = NO;
     }
     return _headScrView;
 }
 - (UIScrollView *)contentScrView{
     if (_contentScrView==nil) {
-        _contentScrView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, PAGE_HEAD_HEIGHT, self.view.frame.size.width , self.view.frame.size.height-PAGE_HEAD_HEIGHT-64)];
+        _contentScrView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, _headBtnHeigth, self.view.frame.size.width , self.view.frame.size.height-_headBtnHeigth)];
+        if (_headBtnStyle==NavigationButtonView) {
+            _contentScrView.frame = CGRectMake(0, 0, self.view.frame.size.width , self.view.frame.size.height);
+        }
         _contentScrView.contentSize = CGSizeMake(self.view.frame.size.width*_viewControllers.count, _contentScrView.frame.size.height);
         _contentScrView.pagingEnabled = YES;
         _contentScrView.showsHorizontalScrollIndicator = NO;

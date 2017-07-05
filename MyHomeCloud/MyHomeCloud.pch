@@ -37,8 +37,10 @@
 
 #define UMWEIXINKEY   @"wx82d7c82f28299bef"
 #define JPUSH_AppKey  @"11f9e8873ee0df970777330e"
+#define DEFAULT_USERID  @"19891127"
 
 #define kNewHouseNotification       @"kNewHouseNotification"
+#define kNotificationUpdateMessage  @"updateNotificaitonMessage"
 
 #define MyUserDefaults      [NSUserDefaults standardUserDefaults]
 #define dHeight             [[UIScreen mainScreen] bounds].size.height

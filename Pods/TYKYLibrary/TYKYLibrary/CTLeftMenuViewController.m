@@ -69,8 +69,11 @@
     if ([gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]]) {
         CGPoint point = [gestureRecognizer locationInView:self.view];
         
-        if (point.x>LEFTMENU_WIDTH) {
+        if (!self.isShowMenu&&point.x>LEFTMENU_WIDTH/4) {
             return NO;
+        }else if (point.x>LEFTMENU_WIDTH){
+            return NO;
+            
         }
         self.backView.hidden = NO;
         self.leftMenuView.hidden = NO;

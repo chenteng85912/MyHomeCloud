@@ -44,14 +44,11 @@
     
     UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-    layout.itemSize = CGSizeMake(Device_width+10, Device_height-64);
+    layout.itemSize = CGSizeMake(Device_width+10, Device_height);
     layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 10);
 
-    CGRect colFrame = CGRectMake(0, 0, Device_width+20, Device_height-64);
-    if (self.navigationController.navigationBar.translucent) {
-        colFrame = CGRectMake(0, 0, Device_width+20, Device_height);
+    CGRect colFrame = CGRectMake(0, 0, Device_width+20, Device_height);
 
-    }
     UICollectionView *colView = [[UICollectionView alloc] initWithFrame:colFrame collectionViewLayout:layout];
     colView.pagingEnabled = YES;
     colView.delegate = self;
@@ -91,21 +88,23 @@
     ALAsset *asset = self.dataArray[indexPath.row];
     
     [mycell.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    UIScrollView *scrView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, Device_width, Device_height-64)];
+    UIScrollView *scrView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, Device_width, self.colView.frame.size.height)];
     scrView.delegate = self;
     scrView.tag = indexPath.item+2000;
     scrView.maximumZoomScale = 3.0;
     scrView.minimumZoomScale = 0.9;
     
     UIImageView *imgView = [[UIImageView alloc] initWithFrame:scrView.frame];
+    
     imgView.image = [UIImage imageWithCGImage:asset.defaultRepresentation.fullScreenImage];
+
     imgView.frame = [self makeImageViewFrame:imgView.image];
     imgView.center = scrView.center;
     imgView.tag = indexPath.item+1000;
     [scrView addSubview:imgView];
     [mycell.contentView addSubview:scrView];
     
-    UIButton *but = [[UIButton alloc] initWithFrame:CGRectMake(Device_width-60, 20, 40, 40)];
+    UIButton *but = [[UIButton alloc] initWithFrame:CGRectMake(Device_width-60, 40, 40, 40)];
     [but setImage:[UIImage imageNamed:@"unselected_album"] forState:UIControlStateNormal];
     [but setImage:[UIImage imageNamed:@"selected_album"] forState:UIControlStateSelected];
     but.tag = indexPath.item;
@@ -216,10 +215,10 @@
     CGFloat picW;
     CGFloat picH;
     
-    if (picHeight>Device_height-64) {
-        CGFloat scaleH = picHeight/(Device_height-64);
+    if (picHeight>self.colView.frame.size.height) {
+        CGFloat scaleH = picHeight/self.colView.frame.size.height;
         picW = Device_width/scaleH;
-        picH = Device_height-64;
+        picH = self.colView.frame.size.height;
     }else{
         picW = Device_width;
         picH = picHeight;

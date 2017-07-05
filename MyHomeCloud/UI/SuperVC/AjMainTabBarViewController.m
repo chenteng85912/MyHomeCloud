@@ -9,8 +9,8 @@
 #import "AjMainTabBarViewController.h"
 #import "AJHomeViewController.h"
 #import "AJUserCenterViewController.h"
-#import "AJNewsViewController.h"
-
+#import "AJMessageController.h"
+#import "AJRemoteNotification.h"
 
 @interface AjMainTabBarViewController ()<UITabBarControllerDelegate>
 
@@ -23,17 +23,26 @@
     [super viewDidLoad];
     
     [self initRootViewController];
+    [self performSelector:@selector(showRemoteNotificationAlert) withObject:nil afterDelay:30.0];
 
    
 }
-
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+ 
+    
+}
+- (void)showRemoteNotificationAlert{
+    [AJRemoteNotification checkUserNotificationSetting];
+    
+}
 //初始化根视图控制器
 - (void)initRootViewController{
     
     AJHomeViewController *home = [AJHomeViewController new];
     home.title = @"首页";
     
-    AJNewsViewController *news = [AJNewsViewController new];
+    AJMessageController *news = [AJMessageController new];
     news.title = @"消息";
     
     AJUserCenterViewController *user = [AJUserCenterViewController new];

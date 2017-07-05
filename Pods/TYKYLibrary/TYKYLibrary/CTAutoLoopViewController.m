@@ -25,7 +25,7 @@
 
 static NSString * const reuseIdentifier = @"CTLoopViewCell";
 
--(instancetype)initWithFrame:(CGRect)frame
+- (instancetype)initWithFrame:(CGRect)frame
                                   onceLoopTime:(float)onceLoopTime
                               cellDisplayModal:(CTLoopCellDisplayModal)cellDisplayModal
                                  scollDiretion:(CTLoopScollDirection)loopScollDirection{
@@ -67,24 +67,25 @@ static NSString * const reuseIdentifier = @"CTLoopViewCell";
 }
 //添加内容
 - (void)addLocalModels:(NSArray *)array{
-    if (!array) {
+    if (!array||![array isKindOfClass:[NSArray class]]) {
         return;
     }
     [self.dataArray removeAllObjects];
     
     [self.dataArray addObjectsFromArray:array];
+    if (_loopScollDirection==CTLoopScollDirectionHorizontal){
+        _pageLabel.text = [NSString stringWithFormat:@"1/%lu",(unsigned long)self.dataArray.count];
+
+    }else{
+        self.pageCT.numberOfPages = self.dataArray.count;
+
+    }
     if (self.dataArray.count>1) {
         [self addNSTimer];
     }else{
         [self stopTimer];
     }
-    if (_loopScollDirection==CTLoopScollDirectionHorizontal) {
-        self.pageLabel.text = [NSString stringWithFormat:@"1/%lu",(unsigned long)self.dataArray.count];
-        
-    }else{
-        self.pageCT.numberOfPages = self.dataArray.count;
-        
-    }
+
     [self.collectionView reloadData];
     
 }
@@ -240,17 +241,13 @@ static NSString * const reuseIdentifier = @"CTLoopViewCell";
         pageNum = (scrollView.contentOffset.y - _itemSize.height / 2) / _itemSize.height + 1;
 
     }
-    if (pageNum==_dataArray.count) {
+    if (pageNum==self.dataArray.count) {
         pageNum = 0;
     }
-    if (_loopScollDirection==CTLoopScollDirectionHorizontal) {
-        self.pageLabel.text = [NSString stringWithFormat:@"%ld/%lu",pageNum+1,(unsigned long)self.dataArray.count];
+    _pageLabel.text = [NSString stringWithFormat:@"%ld/%lu",pageNum+1,(unsigned long)self.dataArray.count];
 
-    }else{
-        self.pageCT.currentPage = pageNum;
-
-    }
-
+    self.pageCT.currentPage = pageNum;
+   
 }
 
 - (NSMutableArray *)dataArray{
@@ -303,6 +300,7 @@ static NSString * const reuseIdentifier = @"CTLoopViewCell";
         _pageLabel.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
         _pageLabel.textColor = [UIColor whiteColor];
         _pageLabel.font = [UIFont systemFontOfSize:12];
+//        _pageLabel.clipsToBounds = YES;
         _pageLabel.layer.masksToBounds = YES;
         _pageLabel.layer.cornerRadius = 10.0;
         

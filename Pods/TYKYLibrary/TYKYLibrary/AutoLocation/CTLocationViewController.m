@@ -60,8 +60,7 @@ static NSString *identify = @"location";
     
     [self initHotCity];
     [self fetchAllCityData];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
-
+    
 }
 
 - (CLLocationManager *)manager{
