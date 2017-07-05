@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "AjMainTabBarViewController.h"
 #import "AJRemoteNotification.h"
+#import "AJMessageBeanDao.h"
 #import "UMMobClick/MobClick.h" //友盟统计
 #import <UMSocialCore/UMSocialCore.h>//友盟集成 微信分享
 
@@ -32,7 +33,7 @@ NSString *const UMWEIXINAPPSECRET = @"1b701ce273624810d0f55296f19cd384";
     self.window.backgroundColor = [UIColor whiteColor];
     
     self.window.rootViewController = [AjMainTabBarViewController new];
-
+    [AJMessageBeanDao createTable];
     [self setUMWXSDK];
     
     [AJRemoteNotification registerRemoteNotification];
