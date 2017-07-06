@@ -39,7 +39,9 @@
     [super viewWillAppear:animated];
     
 }
-
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+}
 #pragma mark - AJTbViewProtocol
 - (BOOL)makeMJRefresh{
     

@@ -11,7 +11,7 @@
 
 
 #define circleWidth dWidth==320?40:50
-#define successColor [UIColor colorWithRed:28.0/255.0 green:175.0/255.0 blue:53.0/255.0 alpha:1]
+#define successColor [UIColor colorWithRed:0.0/255.0 green:128.0/255.0 blue:64.0/255.0 alpha:1]
 #define failColor   [UIColor colorWithRed:0 green:0 blue:0 alpha:0.6]
 #define waitColor   [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3]
 
@@ -44,7 +44,7 @@
 - (void)refreshUploadProgress:(NSInteger)progress{
     _percentLabel.text = [NSString stringWithFormat:@"%ld%%",(long)progress];
     self.circleView.progressValue = progress/100.0;
-    _percentLabel.backgroundColor = waitColor;
+    _progressLabel.backgroundColor = waitColor;
     _progressLabel.text = @"上传中";
 
 }
@@ -53,14 +53,14 @@
 
     if (success) {
         _progressLabel.text = @"已上传";
-        _percentLabel.backgroundColor = successColor;
+        _progressLabel.backgroundColor = successColor;
         _percentLabel.hidden = YES;
         self.circleView.hidden = YES;
         self.circleView.progressValue  =0;
         
     }else{
         _progressLabel.text = @"上传失败";
-        _percentLabel.backgroundColor = failColor;
+        _progressLabel.backgroundColor = failColor;
 
     }
 }

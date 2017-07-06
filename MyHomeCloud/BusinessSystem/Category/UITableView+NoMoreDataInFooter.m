@@ -27,7 +27,7 @@
     UILabel *tip = [[UILabel alloc] initWithFrame:bottomLine.frame];
     tip.textAlignment = NSTextAlignmentCenter;
     tip.textColor = [UIColor darkGrayColor];
-    tip.font = [UIFont systemFontOfSize:15];
+    tip.font = [UIFont systemFontOfSize:12];
     tip.text = @"没有更多数据啦";
     CGFloat tipW = [tip.text boundingRectWithSize:CGSizeMake(DEVICE_WIDTH, FOOTER_HEIGHT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:tip.font} context:nil].size.width;
     tip.frame = CGRectMake(DEVICE_WIDTH/2-tipW/2, 0, tipW, FOOTER_HEIGHT);

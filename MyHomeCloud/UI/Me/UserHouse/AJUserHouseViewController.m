@@ -103,7 +103,7 @@
         }
 
     }
-    self.pageVC.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    self.pageVC.view.frame = self.view.bounds;
     [self.view addSubview:self.pageVC.view];
     [self addChildViewController:self.pageVC];
 

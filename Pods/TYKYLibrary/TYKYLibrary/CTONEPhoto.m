@@ -35,7 +35,6 @@ static CTONEPhoto *onePhoto = nil;
 }
 
 - (void)openCamera:(UIViewController *)rootVC editModal:(BOOL)enableEdit{
-    
     if (![[CTSavePhotos new] checkAuthorityOfCamera]) {
         return;
     }
@@ -46,6 +45,8 @@ static CTONEPhoto *onePhoto = nil;
     [rootVC presentViewController:onePhoto.imagePicker animated:YES completion:nil];
 }
 - (void)openAlbum:(UIViewController *)rootVC editModal:(BOOL)enableEdit{
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+
     if (![[CTSavePhotos new] checkAuthorityOfAblum]) {
         return;
     }

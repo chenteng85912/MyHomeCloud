@@ -34,7 +34,7 @@
 
     //租金
     self.letPrice = [NSString stringWithFormat:@"%@元/月",object[LET_HOUSE_PRICE]];
-    CGSize priceSize = [self.letPrice sizeWithMaxSize:CGSizeMake(dWidth-cellX*3-IMG_WIDTH, MAXFLOAT) fontSize:DES_FONT];
+    CGSize priceSize = [self.letPrice sizeWithMaxSize:CGSizeMake(dWidth-cellX*3-IMG_WIDTH, MAXFLOAT) fontSize:TOTAL_FONT];
     self.priceFrame = CGRectMake(dWidth-cellX-priceSize.width-20, CGRectGetMaxY(self.infoFrame)+subY, priceSize.width+20, priceSize.height);
     
     //标签

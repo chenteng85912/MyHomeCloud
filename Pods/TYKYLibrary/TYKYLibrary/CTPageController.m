@@ -80,7 +80,7 @@ CGFloat const  TITLE_SCALE = 0.1;
         }
         [btn addTarget:self action:@selector(switchViewControllers:) forControlEvents:UIControlEventTouchUpInside];
         UIViewController *vc = _viewControllers[i];
-        btn.backgroundColor = self.headScrView.backgroundColor;
+        btn.backgroundColor = [UIColor clearColor];
         [btn setTitle:vc.title forState:UIControlStateNormal];
         
         btn.titleLabel.font = [UIFont systemFontOfSize:TITILE_FONT];
@@ -214,7 +214,7 @@ CGFloat const  TITLE_SCALE = 0.1;
     if (btn==_curruntBtn) {
         return;
     }
-    _selectedIndex = btn.tag;
+    _selectedIndex = btn.tag-100;
     if (self.scrollBlock) {
         self.scrollBlock(_selectedIndex);
     }
@@ -226,13 +226,13 @@ CGFloat const  TITLE_SCALE = 0.1;
     // 定位到指定位置
     CGPoint offset = self.contentScrView.contentOffset;
     
-    offset.x = btn.tag * DEVICE_WIDTH;
+    offset.x = _selectedIndex* DEVICE_WIDTH;
     [self.contentScrView setContentOffset:offset animated:NO];
 
     // 取出需要显示的控制器
-    UIViewController *willShowVc = self.childViewControllers[btn.tag];
+    UIViewController *willShowVc = self.childViewControllers[_selectedIndex];
     if([willShowVc isViewLoaded]) return;
-    willShowVc.view.frame = CGRectMake(btn.tag * DEVICE_WIDTH, 0, DEVICE_WIDTH, self.contentScrView.frame.size.height);
+    willShowVc.view.frame = CGRectMake(_selectedIndex * DEVICE_WIDTH, 0, DEVICE_WIDTH, self.contentScrView.frame.size.height);
     [self.contentScrView addSubview:willShowVc.view];
 }
 
@@ -267,8 +267,12 @@ CGFloat const  TITLE_SCALE = 0.1;
         _headScrView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, _headBtnHeigth)];
         if (_headBtnStyle==NavigationButtonView) {
             _headScrView.frame = CGRectMake(0, 0, DEVICE_WIDTH-180, _headBtnHeigth);
+            _headScrView.backgroundColor = [UIColor clearColor];
+
+        }else{
+            _headScrView.backgroundColor = [UIColor whiteColor];
+
         }
-        _headScrView.backgroundColor = [UIColor clearColor];
         _headScrView.scrollEnabled = NO;
     }
     return _headScrView;

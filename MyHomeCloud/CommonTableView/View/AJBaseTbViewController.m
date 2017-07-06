@@ -47,11 +47,11 @@
     if (_isDetails) {
         return;
     }
-    
+    self.navigationController.navigationBar.translucent = NO;
+
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationController.navigationBar.barTintColor = NavigationBarColor;
     
-    self.navigationController.navigationBar.translucent = NO;
     
     [self.navigationController.navigationBar setTitleTextAttributes:
      @{NSFontAttributeName:[UIFont boldSystemFontOfSize:16],
@@ -86,14 +86,15 @@
             self.tableView.frame = CGRectMake(0, 0, dWidth, dHeight-50);
 
         }
-        else if(!_showFilter){
-            self.tableView.frame = self.view.bounds;
+        else if(_showFilter){
+            self.tableView.frame = CGRectMake(0, 40, dWidth, dHeight-40-64);
 
         }else{
-            
+            self.tableView.frame = CGRectMake(0, 0, dWidth, dHeight-45-64);
+
         }
 
-        [self.tableView showHUD:nil];
+        [self.view showHUD:nil];
         [self initStartData];
     }
 }
@@ -168,7 +169,7 @@
 }
 //刷新数据
 - (void)reloadTableView:(NSArray *)dataArray modal:(TableViewInitDataModal)type{
-    [self.tableView removeHUD];
+    [self.view removeHUD];
     if (type==StartInitDataModal) {
         [self.dataArray removeAllObjects];
     }
@@ -408,6 +409,7 @@
             
         }
         _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:tbViewStyle];
+       
         _tableView.separatorInset = UIEdgeInsetsMake(0, 15, 0, 15);
         _tableView.delegate = self;
         _tableView.dataSource = self;
