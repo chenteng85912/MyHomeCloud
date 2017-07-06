@@ -25,15 +25,8 @@
 #import "LCNetworkStatistics.h"
 #import "AVObjectUtils.h"
 
-#if AV_IOS_ONLY && !TARGET_OS_WATCH
-#import "AVWebSocketWrapper.h"
-#endif
-
 #import "LCRouter.h"
 #import "SDMacros.h"
-
-#define PUSH_GROUP_CN @"g0"
-#define PUSH_GROUP_US @"a0"
 
 static AVVerbosePolicy _verbosePolicy       = kAVVerboseShow;
 NSString * const LCRootDomain      = @"leancloud.cn";
@@ -157,21 +150,6 @@ AVServiceRegion LCEffectiveServiceRegion = AVServiceRegionDefault;
     [[AVPaasClient sharedInstance] clearLastModifyCache];
 }
 
-+ (void)useAVCloud
-{
-    [self setServiceRegion:AVServiceRegionUrulu];
-}
-
-+ (void)useAVCloudUS
-{
-    [self setServiceRegion:AVServiceRegionUS];
-}
-
-+ (void)useAVCloudCN
-{
-    [self setServiceRegion:AVServiceRegionCN];
-}
-
 + (void)setStorageType:(AVStorageType)storageType
 {
     [AVUploaderManager sharedInstance].storageType = storageType;
@@ -187,11 +165,6 @@ AVServiceRegion LCEffectiveServiceRegion = AVServiceRegionDefault;
     case AVServiceRegionUS:
         storageType = AVStorageTypeS3;
         break;
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-    case AVServiceRegionUrulu:
-        break;
-#pragma clang diagnostic pop
     }
 
     return storageType;
@@ -207,11 +180,6 @@ AVServiceRegion LCEffectiveServiceRegion = AVServiceRegionDefault;
     case AVServiceRegionUS:
         pushGroup = @"a0";
         break;
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-    case AVServiceRegionUrulu:
-        break;
-#pragma clang diagnostic pop
     }
 
     if (!pushGroup) {
@@ -231,13 +199,31 @@ AVServiceRegion LCEffectiveServiceRegion = AVServiceRegionDefault;
     /* Setup file uploading service. */
     [self setStorageType:[self storageTypeForServiceRegion:serviceRegion]];
 
-    NSString *pushGroup = [self pushGroupForServiceRegion:serviceRegion];
-
-#if AV_IOS_ONLY && !TARGET_OS_WATCH
-    /* Setup push group for IM 1.0. */
-    [AVWebSocketWrapper setDefaultPushGroup:pushGroup];
-#endif
     [AVUploaderManager sharedInstance].serviceRegion = serviceRegion;
+}
+
++ (NSString *)stringFromServiceModule:(AVServiceModule)serviceModule {
+    switch (serviceModule) {
+    case AVServiceModuleAPI:
+        return LCServiceModuleAPI;
+    case AVServiceModuleEngine:
+        return LCServiceModuleEngine;
+    case AVServiceModulePush:
+        return LCServiceModulePush;
+    case AVServiceModuleRTM:
+        return LCServiceModuleRTM;
+    case AVServiceModuleStatistics:
+        return LCServiceModuleStatistics;
+    }
+
+    return nil;
+}
+
++ (void)setServerURLString:(NSString *)URLString
+          forServiceModule:(AVServiceModule)serviceModule
+{
+    NSString *key = [self stringFromServiceModule:serviceModule];
+    [[LCRouter sharedInstance] presetURLString:URLString forServiceModule:key];
 }
 
 #pragma mark - Network
@@ -345,10 +331,6 @@ static AVLogLevel avlogLevel = AVLogLevelDefault;
     [[AVPaasClient sharedInstance] postObject:@"requestSmsCode" withParameters:params block:^(id object, NSError *error) {
         [AVUtils callBooleanResultBlock:callback error:error];
     }];
-}
-
-+(void)verifySmsCode:(NSString *)code callback:(AVBooleanResultBlock)callback {
-    @throw [NSException exceptionWithName:@"Interface not supported" reason:@"This interface is altered by +[verifySmsCode:mobilePhoneNumber:callback:]" userInfo:nil];
 }
 
 +(void)verifySmsCode:(NSString *)code mobilePhoneNumber:(NSString *)phoneNumber callback:(AVBooleanResultBlock)callback {

@@ -27,5 +27,11 @@
 #import "CTVersionAutoUpdate.h"
 //保存图片
 #import "CTSavePhotos.h"
-//跑马灯
-#import "AutoRunLabel.h"
+//跑马灯标题
+#import "CTAutoRunLabel.h"
+//表视图底部没有更多数据提示
+#import "UITableView+NoMoreDataInFooter.h"
+//alert 封装
+#import "UIAlertController+CTAlertBlock.h"
+//计算字符串高度等
+#import "NSString+Extension.h"

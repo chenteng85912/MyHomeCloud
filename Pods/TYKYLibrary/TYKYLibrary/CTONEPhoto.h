@@ -22,6 +22,8 @@
 
 //打开系统摄像头
 - (void)openCamera:(UIViewController *)rootVC editModal:(BOOL)enableEdit;
+
 //打开系统相册
 - (void)openAlbum:(UIViewController *)rootVC editModal:(BOOL)enableEdit;
+
 @end

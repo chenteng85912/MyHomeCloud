@@ -23,7 +23,7 @@
 
 @implementation CTAutoLoopViewController
 
-static NSString * const reuseIdentifier = @"CTLoopViewCell";
+static NSString * const AutoLoopReuseIdentifier = @"AutoLoopReuseIdentifier";
 
 - (instancetype)initWithFrame:(CGRect)frame
                                   onceLoopTime:(float)onceLoopTime
@@ -59,7 +59,7 @@ static NSString * const reuseIdentifier = @"CTLoopViewCell";
 
     }
 
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
+    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:AutoLoopReuseIdentifier];
     
 }
 - (void)viewDidLoad {
@@ -74,11 +74,14 @@ static NSString * const reuseIdentifier = @"CTLoopViewCell";
     
     [self.dataArray addObjectsFromArray:array];
     if (_loopScollDirection==CTLoopScollDirectionHorizontal){
-        _pageLabel.text = [NSString stringWithFormat:@"1/%lu",(unsigned long)self.dataArray.count];
+        self.pageLabel.text = [NSString stringWithFormat:@"1/%lu",(unsigned long)self.dataArray.count];
 
     }else{
         self.pageCT.numberOfPages = self.dataArray.count;
 
+    }
+    if (self.dataArray.count==0) {
+        self.pageLabel.hidden = YES;
     }
     if (self.dataArray.count>1) {
         [self addNSTimer];
@@ -99,14 +102,14 @@ static NSString * const reuseIdentifier = @"CTLoopViewCell";
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:AutoLoopReuseIdentifier forIndexPath:indexPath];
     [cell.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
 
     if (self.cellDisplayModal==CTLoopCellDisplayCustomView) {
         if ([self.delegate respondsToSelector:@selector(CTAutoLoopViewController:cellForItemAtIndexPath:)]) {
             
             NSIndexPath *newIndex = indexPath;
-            if (newIndex.row == _dataArray.count) {
+            if (newIndex.row == self.dataArray.count) {
                 newIndex = [NSIndexPath indexPathForRow:0 inSection:0];
             }
             UIView *customView = [self.delegate CTAutoLoopViewController:cell cellForItemAtIndexPath:newIndex];
@@ -116,10 +119,10 @@ static NSString * const reuseIdentifier = @"CTLoopViewCell";
         
     }else{
         id model = nil;
-        if (indexPath.row == _dataArray.count) {
-            model = _dataArray[0];
+        if (indexPath.row == self.dataArray.count) {
+            model = self.dataArray[0];
         }else{
-            model = _dataArray[indexPath.row];
+            model = self.dataArray[indexPath.row];
         }
         UIImageView *img = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,_itemSize.width, _itemSize.height)];
         img.contentMode = UIViewContentModeScaleAspectFill;
@@ -140,7 +143,7 @@ static NSString * const reuseIdentifier = @"CTLoopViewCell";
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     if ([self.delegate respondsToSelector:@selector(CTAutoLoopViewController:didSelectItemAtIndexPath:)]) {
         NSIndexPath *newIndex = indexPath;
-        if (newIndex.row == _dataArray.count) {
+        if (newIndex.row == self.dataArray.count) {
             newIndex = [NSIndexPath indexPathForRow:0 inSection:0];
         }
         [self.delegate CTAutoLoopViewController:collectionView didSelectItemAtIndexPath:newIndex];
@@ -244,7 +247,7 @@ static NSString * const reuseIdentifier = @"CTLoopViewCell";
     if (pageNum==self.dataArray.count) {
         pageNum = 0;
     }
-    _pageLabel.text = [NSString stringWithFormat:@"%ld/%lu",pageNum+1,(unsigned long)self.dataArray.count];
+    self.pageLabel.text = [NSString stringWithFormat:@"%ld/%lu",pageNum+1,(unsigned long)self.dataArray.count];
 
     self.pageCT.currentPage = pageNum;
    
@@ -300,7 +303,6 @@ static NSString * const reuseIdentifier = @"CTLoopViewCell";
         _pageLabel.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
         _pageLabel.textColor = [UIColor whiteColor];
         _pageLabel.font = [UIFont systemFontOfSize:12];
-//        _pageLabel.clipsToBounds = YES;
         _pageLabel.layer.masksToBounds = YES;
         _pageLabel.layer.cornerRadius = 10.0;
         

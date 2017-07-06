@@ -35,6 +35,7 @@ static CTONEPhoto *onePhoto = nil;
 }
 
 - (void)openCamera:(UIViewController *)rootVC editModal:(BOOL)enableEdit{
+
     if (![[CTSavePhotos new] checkAuthorityOfCamera]) {
         return;
     }

@@ -2,7 +2,7 @@
 
 #import "AJLoginViewController.h"
 #import "AppDelegate.h"
-#import "KeychainItemWrapper.h"
+#import "KeychainTool.h"
 #import <Security/Security.h>
 
 @interface AJLoginViewController ()
@@ -13,7 +13,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *headLogBtn;
 @property (weak, nonatomic) IBOutlet UIButton *headRegBtn;
 @property (weak, nonatomic) IBOutlet UITextField *confirmPswTextField;
-@property (strong, nonatomic) KeychainItemWrapper *keyChainWrapper;
+@property (strong, nonatomic) KeychainTool *keyChainWrapper;
 @property (strong, nonatomic) NSString *luuid;
 
 @end
@@ -253,7 +253,7 @@ NSString *const USER_ONLINE = @"该用户已在别处登录";
 }
 
 - (void)saveUUId{
-    self.keyChainWrapper = [[KeychainItemWrapper alloc] initWithIdentifier:[CTTool appName] accessGroup:nil];
+    self.keyChainWrapper = [[KeychainTool alloc] initWithIdentifier:[CTTool appName] accessGroup:nil];
     
     NSString *uuidStr = [self.keyChainWrapper objectForKey:(id)kSecAttrAccount];
     if (!uuidStr||[uuidStr isEqualToString:@""]) {

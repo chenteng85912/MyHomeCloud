@@ -51,9 +51,11 @@
     [self.view bringSubviewToFront:self.waringView];
 
 }
+- (UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleDefault;
+}
 #pragma mark 初始化导航栏按钮
 - (void)initNavigationItem{
-    
     self.navigationController.navigationBar.tintColor = [UIColor blackColor];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(backToPreVC)];
     
@@ -70,9 +72,7 @@
 
 - (void)backToPreVC{
     
-   
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-    
     
 }
 

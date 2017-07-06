@@ -92,9 +92,8 @@ CGFloat const  TITLE_SCALE = 0.1;
 
         }
         [self.headScrView addSubview:btn];
-        if (!_titleWidth) {
-            _titleWidth = [self strLenth:btn.currentTitle]*(1+TITLE_SCALE);
-        }
+        _titleWidth = [self strLenth:btn.currentTitle]*(1+TITLE_SCALE);
+        
     }
    
     
@@ -226,7 +225,7 @@ CGFloat const  TITLE_SCALE = 0.1;
     // 定位到指定位置
     CGPoint offset = self.contentScrView.contentOffset;
     
-    offset.x = _selectedIndex* DEVICE_WIDTH;
+    offset.x = _selectedIndex * DEVICE_WIDTH;
     [self.contentScrView setContentOffset:offset animated:NO];
 
     // 取出需要显示的控制器

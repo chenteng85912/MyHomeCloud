@@ -77,8 +77,8 @@ static CTVersionAutoUpdate *version;
     }
     BOOL isNeedUpdate = NO;
     //分割字符串
-    NSArray *curentVersionArr = [localVersion componentsSeparatedByString:@"."]; //当前版本
-    NSArray *appStoreVersionArr = [storeVersion componentsSeparatedByString:@"."];      //比较版本
+    NSArray *curentVersionArr = [localVersion componentsSeparatedByString:@"."];  //当前版本
+    NSArray *appStoreVersionArr = [storeVersion componentsSeparatedByString:@"."];//比较版本
     NSInteger count = curentVersionArr.count>appStoreVersionArr.count?appStoreVersionArr.count:curentVersionArr.count;
     
     BOOL isEqual=false;
