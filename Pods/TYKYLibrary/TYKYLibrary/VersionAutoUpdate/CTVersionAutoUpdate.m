@@ -11,8 +11,8 @@
 #import <StoreKit/StoreKit.h>
 #import "CTRequest.h"
 
-#define ROOT_APP_STORE       @"http://itunes.apple.com/lookup?id=%@" //获取应用相关信息的地址
-#define APP_STORE_URL   @"itms-apps://itunes.apple.com/cn/app/jie-zou-da-shi/id%@?mt=8"//苹果商店跳转地址
+NSString *const ROOT_APP_STORE  =  @"http://itunes.apple.com/lookup?id=%@"; //获取应用相关信息的地址
+NSString *const APP_STORE_URL  = @"itms-apps://itunes.apple.com/cn/app/id%@?mt=8";//苹果商店跳转地址
 
 static CTVersionAutoUpdate *version;
 
@@ -49,6 +49,9 @@ static CTVersionAutoUpdate *version;
 
 //版本更新
 - (void)checkAppStoreVersion:(NSString *)appId openStoreStyle:(OpenStoreStyle)showStyle{
+    if (!appId&&[appId isEqualToString:@""]) {
+        return;
+    }
     version.isOpenInApp = showStyle;
     version.appId = appId;
     NSString *appUrl = [NSString stringWithFormat:ROOT_APP_STORE,appId];

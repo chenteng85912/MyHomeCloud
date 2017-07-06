@@ -44,6 +44,8 @@ NSString *const UMWEIXINAPPSECRET = @"1b701ce273624810d0f55296f19cd384";
                        @"塘厦镇",@"樟木头镇",@"清溪镇",@"黄江镇",@"凤岗镇",
                        @"万江区",@"高埗镇",@"石碣镇",@"石龙镇",@"麻涌镇",@"中堂镇",@"望牛墩镇",@"洪梅镇",@"道滘镇",
                        @"虎门镇",@"厚街镇",@"长安镇",@"沙田镇"];
+    
+    [[CTVersionAutoUpdate sharedVersion] checkAppStoreVersion:@"1251844754" openStoreStyle:OpenAppStoreInApp];
     [self.window makeKeyAndVisible];
 
     return YES;
