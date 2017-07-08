@@ -50,6 +50,7 @@
 #define USER_NAME               @"UserName"
 #define HEAD_URL                @"headUrl"
 #define USER_NICKNAME           @"nickname"
+#define USER_PUSH_ID            @"registrationID"//推送通道Id
 
 #define USER_LOGIN_STATE        @"LoginState"//登录状态
 #define USER_UUID               @"UserUuid"//用户uuid

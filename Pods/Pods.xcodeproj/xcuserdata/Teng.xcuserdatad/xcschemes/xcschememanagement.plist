@@ -32,6 +32,16 @@
 			<key>orderHint</key>
 			<integer>5</integer>
 		</dict>
+		<key>Pods-AJCloud.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>10</integer>
+		</dict>
+		<key>Pods-AJCloudAdmin.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>11</integer>
+		</dict>
 		<key>Pods-MyHomeCloud.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -68,6 +78,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>269FCCAC87980BA5B1D6B935EE22D92E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>328F44C19D752A2E40980DB9C0A0D44E</key>
 		<dict>
 			<key>primary</key>
@@ -78,7 +93,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>5989E2EA0F498D15F075502721300115</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5EA567771512763C7B133E4F4CBD846D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>6836204FBF12593A11B025F006D4BFE6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7E639E1A799B66C2338D70880FC93BF0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -94,6 +124,11 @@
 			<true/>
 		</dict>
 		<key>AD1D0BD1E9ECDBCFE5F6A8C34F2FE08A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DB7DB57CC32718F56A1E78C468862EDB</key>
 		<dict>
 			<key>primary</key>
 			<true/>

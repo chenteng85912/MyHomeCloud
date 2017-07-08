@@ -204,6 +204,7 @@ NSString *const NOTICE_DETAILS = @"NOTICE_DETAILS"; //消息详情列表-表格
     messageBean.msgContent = [resultSet stringForColumn:MSG_CONTENT];
     messageBean.msgTitle = [resultSet stringForColumn:MSG_TITLE];
     messageBean.msgTime = [resultSet stringForColumn:MSG_TIME];
+    messageBean.msgUrl = [resultSet stringForColumn:MSG_URL];
     messageBean.isRead = [resultSet boolForColumn:IS_READ];
 
     return messageBean;

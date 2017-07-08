@@ -58,6 +58,7 @@
     
     UIButton *backBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
     [backBtn addTarget:self action:@selector(backToPreVC) forControlEvents:UIControlEventTouchUpInside];
+    backBtn.imageEdgeInsets = UIEdgeInsetsMake(0, -10, 0, 0);
     [backBtn setImage:LOADIMAGE(@"back") forState:UIControlStateNormal];
     UIBarButtonItem *fix = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     
@@ -74,9 +75,11 @@
 }
 - (void)loadRequest
 {
-    debugLog(@"path:%@",self.urlPath);
+    debugLog(@"网页链接地址:%@",_urlPath);
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[self URLEncodedString:self.urlPath]]];
+    NSURL *url = [[NSURL alloc] initWithString:@"http://news.fang.com/2017-07-08/25682296.htm"];
+   
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
     [self.wkWebView loadRequest:request];
 }
@@ -211,6 +214,8 @@
     if (_closeBtn ==nil) {
         _closeBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
         [_closeBtn setImage:LOADIMAGE(@"close") forState:UIControlStateNormal];
+        _closeBtn.imageEdgeInsets = UIEdgeInsetsMake(0, -10, 0, 0);
+
         [_closeBtn addTarget:self action:@selector(closeAction) forControlEvents:UIControlEventTouchUpInside];
         _closeBtn.hidden = YES;
 

@@ -21,14 +21,7 @@
 }
 
 - (void)initDataWithUserInfo:(NSDictionary *)userInfo
-{
-
-    //极光推送
-    if (userInfo[@"msg"]) {
-        NSData *JSONData = [(NSString *)userInfo[@"msg"] dataUsingEncoding:NSUTF8StringEncoding];
-        NSDictionary *newdic = [NSJSONSerialization JSONObjectWithData:JSONData options:NSJSONReadingMutableLeaves error:nil];
-        userInfo = newdic[@"data"];
-    }
+{    
     debugLog(@"通知内容 ===== %@",userInfo);
 
     _msgTitle = userInfo[@"title"];
@@ -68,8 +61,6 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationUpdateMessage object:nil userInfo:userInfo];
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);//振动
 
-    }else{
-        
     }
 }
 

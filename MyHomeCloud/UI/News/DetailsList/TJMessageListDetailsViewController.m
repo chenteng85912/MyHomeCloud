@@ -12,6 +12,7 @@
 #import "AJMessageBeanDao.h"
 #import "AJMessageController.h"
 #import "AJUserHouseViewController.h"
+#import "AJWKWebViewController.h"
 
 #define ITEM_HEIGHT 180
 
@@ -28,7 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _page = 0;
-    _pageSize = 100;
+    _pageSize = 20;
 
     [self.tbView  registerNib:[UINib nibWithNibName:NSStringFromClass([TJMessageListTableViewCell class]) bundle:nil]
      forCellReuseIdentifier:NSStringFromClass([TJMessageListTableViewCell class])];
@@ -36,7 +37,16 @@
     //设置下拉刷新
     self.tbView .mj_header = [CTTool makeMJRefeshWithTarget:self andMethod:@selector(fetchData)];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveRemoteNotification:) name:kNotificationUpdateMessage object:nil];
-   
+   //1预约 2新闻资讯 3系统通知
+    if (self.msgBean.msgType.integerValue==1) {
+        self.title  =@"预约消息";
+    }else if (self.msgBean.msgType.integerValue==2) {
+        self.title  =@"新闻资讯";
+
+    }else{
+        self.title  =@"系统通知";
+
+    }
     
 }
 #pragma mark 接收到新消息通知
@@ -171,6 +181,10 @@
         APP_PUSH(house);
     }else if (type==2){
         //打开连接
+        AJWKWebViewController *webView = [AJWKWebViewController new];
+        webView.urlPath = msgBean.msgUrl;
+        webView.title = msgBean.msgTitle;
+        APP_PUSH(webView);
     }else{
         
     }

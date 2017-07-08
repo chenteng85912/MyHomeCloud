@@ -203,6 +203,11 @@
 		A464225E1F07591F00459294 /* AJSendFeecbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A464225B1F07591F00459294 /* AJSendFeecbackViewController.m */; };
 		A464225F1F07591F00459294 /* AJSendFeecbackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A464225C1F07591F00459294 /* AJSendFeecbackViewController.xib */; };
 		A46422601F07591F00459294 /* AJSendFeecbackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A464225C1F07591F00459294 /* AJSendFeecbackViewController.xib */; };
+		A49243C51F1086CF00845E4C /* libTYKYLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A49243C41F1086CF00845E4C /* libTYKYLibrary.a */; };
+		A49243C61F1086D800845E4C /* libTYKYLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A49243C41F1086CF00845E4C /* libTYKYLibrary.a */; };
+		A49243C71F1086E000845E4C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B5FDBB71EFFE30300F9A1E2 /* Security.framework */; };
+		A49243C91F10870900845E4C /* libPods-AJCloud.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A49243C81F10870900845E4C /* libPods-AJCloud.a */; };
+		A49243CB1F10871100845E4C /* libPods-AJCloudAdmin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A49243CA1F10871100845E4C /* libPods-AJCloudAdmin.a */; };
 		A4AC724B1EF6718200772D42 /* AJEstateInfoModal.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AC724A1EF6718200772D42 /* AJEstateInfoModal.m */; };
 		A4AC724F1EF6728C00772D42 /* AJEstateTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AC724D1EF6728C00772D42 /* AJEstateTableViewCell.m */; };
 		A4AC72501EF6728C00772D42 /* AJEstateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4AC724E1EF6728C00772D42 /* AJEstateTableViewCell.xib */; };
@@ -403,6 +408,9 @@
 		A464225A1F07591F00459294 /* AJSendFeecbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJSendFeecbackViewController.h; sourceTree = "<group>"; };
 		A464225B1F07591F00459294 /* AJSendFeecbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJSendFeecbackViewController.m; sourceTree = "<group>"; };
 		A464225C1F07591F00459294 /* AJSendFeecbackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJSendFeecbackViewController.xib; sourceTree = "<group>"; };
+		A49243C41F1086CF00845E4C /* libTYKYLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libTYKYLibrary.a; path = "../../../Library/Developer/Xcode/DerivedData/MyHomeCloud-bthsnfciuxhriyayiqhyucigkdtf/Build/Products/Debug-iphonesimulator/TYKYLibrary/libTYKYLibrary.a"; sourceTree = "<group>"; };
+		A49243C81F10870900845E4C /* libPods-AJCloud.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-AJCloud.a"; path = "Pods/../build/Debug-iphoneos/libPods-AJCloud.a"; sourceTree = "<group>"; };
+		A49243CA1F10871100845E4C /* libPods-AJCloudAdmin.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-AJCloudAdmin.a"; path = "Pods/../build/Debug-iphoneos/libPods-AJCloudAdmin.a"; sourceTree = "<group>"; };
 		A4AC72491EF6718200772D42 /* AJEstateInfoModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJEstateInfoModal.h; sourceTree = "<group>"; };
 		A4AC724A1EF6718200772D42 /* AJEstateInfoModal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJEstateInfoModal.m; sourceTree = "<group>"; };
 		A4AC724C1EF6728C00772D42 /* AJEstateTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJEstateTableViewCell.h; sourceTree = "<group>"; };
@@ -467,6 +475,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A49243C91F10870900845E4C /* libPods-AJCloud.a in Frameworks */,
+				A49243C51F1086CF00845E4C /* libTYKYLibrary.a in Frameworks */,
 				0B5FDBB81EFFE30300F9A1E2 /* Security.framework in Frameworks */,
 				A4AE33031EF51C61004B0A54 /* WebKit.framework in Frameworks */,
 			);
@@ -483,6 +493,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A49243CB1F10871100845E4C /* libPods-AJCloudAdmin.a in Frameworks */,
+				A49243C71F1086E000845E4C /* Security.framework in Frameworks */,
+				A49243C61F1086D800845E4C /* libTYKYLibrary.a in Frameworks */,
 				0BF2C6CD1EFA5A4400EA46AF /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -886,6 +899,9 @@
 		7C85C11C537F6C90A6EF472C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A49243CA1F10871100845E4C /* libPods-AJCloudAdmin.a */,
+				A49243C81F10870900845E4C /* libPods-AJCloud.a */,
+				A49243C41F1086CF00845E4C /* libTYKYLibrary.a */,
 				0B5FDBB71EFFE30300F9A1E2 /* Security.framework */,
 				A4AE33021EF51C61004B0A54 /* WebKit.framework */,
 				28918ABEED7A893430DD718E /* libPods-MyHomeCloud.a */,
@@ -1669,7 +1685,10 @@
 				INFOPLIST_FILE = MyHomeCloud/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.chenteng.AJCloud;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1695,7 +1714,10 @@
 				INFOPLIST_FILE = MyHomeCloud/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.chenteng.AJCloud;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1744,7 +1766,10 @@
 				INFOPLIST_FILE = "$(SRCROOT)/admin.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.chenteng.AJCloudAdmin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1769,7 +1794,10 @@
 				INFOPLIST_FILE = "$(SRCROOT)/admin.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.chenteng.AJCloudAdmin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

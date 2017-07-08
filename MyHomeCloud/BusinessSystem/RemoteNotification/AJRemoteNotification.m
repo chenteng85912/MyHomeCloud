@@ -41,7 +41,8 @@ NSString *const TIME_KEY = @"time_key";
     [JPUSHService registerDeviceToken:deviceToken];
     [JPUSHService registrationIDCompletionHandler:^(int resCode, NSString *registrationID) {
         debugLog(@"极光推送registrationID========== %@",registrationID);
-
+        [[AVUser currentUser] setObject:registrationID forKey:USER_PUSH_ID];
+        [[AVUser currentUser] saveInBackground];
     }];
     
 }

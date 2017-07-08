@@ -68,6 +68,32 @@ NSString *const UMWEIXINAPPSECRET = @"1b701ce273624810d0f55296f19cd384";
     [AJRemoteNotification registerJGNotification:deviceToken];
     
 }
+- (void)application:(UIApplication *)application
+didReceiveRemoteNotification:(NSDictionary *)userInfo
+fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))handler{
+    
+    debugLog(@"应用状态 ===== %ld",(long)application.applicationState);
+    //    [JPUSHService handleRemoteNotification:userInfo];
+    
+    handler(UIBackgroundFetchResultNewData);
+    //通知栏无提示
+    // 应用在前台UIApplicationStateActive，直接跳转到这里。
+    // 应用在后台UIApplicationStateBackground，并且当后台设置aps字段里的 content-available 值为 1 时跳转到这里
+    if (application.applicationState == UIApplicationStateActive||application.applicationState == UIApplicationStateBackground){
+    }
+    //杀死状态下，或者程序在后台，通知栏提示后，点击通知栏跳转到这里。
+    if (application.applicationState == UIApplicationStateInactive)
+    {
+    }
+    
+    //预约消息
+    if ([userInfo[@"msgType"] integerValue]==1&&![AVUser currentUser]) {
+        return;
+    }
+    
+    //保存推送消息
+    [AJMessageBean saveNotice:userInfo];
+}
 - (NSMutableDictionary *)desInfo{
     if (_desInfo ==nil) {
         _desInfo = [NSMutableDictionary new];
