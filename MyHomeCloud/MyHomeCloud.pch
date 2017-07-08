@@ -115,6 +115,9 @@
 #define LET_HOUSE_PRICE         @"LetHousePrice"//房屋租金
 #define LET_ESTATE_PRICE        @"LetEstatePrice"//房屋物业费
 
+//新房信息
+#define ESTATE_ADDRESS         @"EstateAddress"//楼盘地址
+
 //房屋基本信息
 #define HOUSE_SALES_POINT    @"HouseSalingPoint"//核心卖点
 #define ESTATE_INTR          @"EstateIntroduction"//小区简介

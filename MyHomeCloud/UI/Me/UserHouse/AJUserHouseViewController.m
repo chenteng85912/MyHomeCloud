@@ -105,7 +105,6 @@
     }
     self.pageVC.view.frame = self.view.bounds;
     [self.view addSubview:self.pageVC.view];
-    [self addChildViewController:self.pageVC];
 
 }
 - (CTPageController *)pageVC{
@@ -113,6 +112,8 @@
         _pageVC = [CTPageController new];
         _pageVC.selectedColor = NavigationBarColor;
         _pageVC.lineShowMode = UnderShowMode;
+        [self addChildViewController:_pageVC];
+
     }
     return _pageVC;
 }

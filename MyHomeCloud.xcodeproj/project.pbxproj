@@ -208,6 +208,10 @@
 		A49243C71F1086E000845E4C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B5FDBB71EFFE30300F9A1E2 /* Security.framework */; };
 		A49243C91F10870900845E4C /* libPods-AJCloud.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A49243C81F10870900845E4C /* libPods-AJCloud.a */; };
 		A49243CB1F10871100845E4C /* libPods-AJCloudAdmin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A49243CA1F10871100845E4C /* libPods-AJCloudAdmin.a */; };
+		A49296411F110F9A00845E4C /* AJNewHouseDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A492963F1F110F9A00845E4C /* AJNewHouseDetailsViewController.m */; };
+		A49296421F110F9A00845E4C /* AJNewHouseDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A492963F1F110F9A00845E4C /* AJNewHouseDetailsViewController.m */; };
+		A49296431F110F9A00845E4C /* AJNewHouseDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A49296401F110F9A00845E4C /* AJNewHouseDetailsViewController.xib */; };
+		A49296441F110F9A00845E4C /* AJNewHouseDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A49296401F110F9A00845E4C /* AJNewHouseDetailsViewController.xib */; };
 		A4AC724B1EF6718200772D42 /* AJEstateInfoModal.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AC724A1EF6718200772D42 /* AJEstateInfoModal.m */; };
 		A4AC724F1EF6728C00772D42 /* AJEstateTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AC724D1EF6728C00772D42 /* AJEstateTableViewCell.m */; };
 		A4AC72501EF6728C00772D42 /* AJEstateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4AC724E1EF6728C00772D42 /* AJEstateTableViewCell.xib */; };
@@ -371,7 +375,6 @@
 		0BF2C67F1EFA544100EA46AF /* AJUMShareUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJUMShareUtil.h; sourceTree = "<group>"; };
 		0BF2C6801EFA544100EA46AF /* AJUMShareUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJUMShareUtil.m; sourceTree = "<group>"; };
 		0BF2C6F21EFA5A4400EA46AF /* AJCloudAdmin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AJCloudAdmin.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		0BF2C6F31EFA5A4400EA46AF /* admin.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = admin.plist; path = /Users/tjsoft/Documents/teng/MyHomeCloud/admin.plist; sourceTree = "<absolute>"; };
 		0BF2C6F41EFA5D4800EA46AF /* AJWechatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJWechatViewController.h; sourceTree = "<group>"; };
 		0BF2C6F51EFA5D4800EA46AF /* AJWechatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJWechatViewController.m; sourceTree = "<group>"; };
 		0BF2C6F61EFA5D4800EA46AF /* AJWechatViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJWechatViewController.xib; sourceTree = "<group>"; };
@@ -411,6 +414,9 @@
 		A49243C41F1086CF00845E4C /* libTYKYLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libTYKYLibrary.a; path = "../../../Library/Developer/Xcode/DerivedData/MyHomeCloud-bthsnfciuxhriyayiqhyucigkdtf/Build/Products/Debug-iphonesimulator/TYKYLibrary/libTYKYLibrary.a"; sourceTree = "<group>"; };
 		A49243C81F10870900845E4C /* libPods-AJCloud.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-AJCloud.a"; path = "Pods/../build/Debug-iphoneos/libPods-AJCloud.a"; sourceTree = "<group>"; };
 		A49243CA1F10871100845E4C /* libPods-AJCloudAdmin.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-AJCloudAdmin.a"; path = "Pods/../build/Debug-iphoneos/libPods-AJCloudAdmin.a"; sourceTree = "<group>"; };
+		A492963E1F110F9A00845E4C /* AJNewHouseDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJNewHouseDetailsViewController.h; sourceTree = "<group>"; };
+		A492963F1F110F9A00845E4C /* AJNewHouseDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJNewHouseDetailsViewController.m; sourceTree = "<group>"; };
+		A49296401F110F9A00845E4C /* AJNewHouseDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJNewHouseDetailsViewController.xib; sourceTree = "<group>"; };
 		A4AC72491EF6718200772D42 /* AJEstateInfoModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJEstateInfoModal.h; sourceTree = "<group>"; };
 		A4AC724A1EF6718200772D42 /* AJEstateInfoModal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJEstateInfoModal.m; sourceTree = "<group>"; };
 		A4AC724C1EF6728C00772D42 /* AJEstateTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJEstateTableViewCell.h; sourceTree = "<group>"; };
@@ -652,7 +658,6 @@
 				0B2343CA1EC01CA1007A3AC1 /* Assets.xcassets */,
 				0B2343CC1EC01CA1007A3AC1 /* LaunchScreen.storyboard */,
 				0B2343CF1EC01CA1007A3AC1 /* Info.plist */,
-				0BF2C6F31EFA5A4400EA46AF /* admin.plist */,
 				0B2343BB1EC01CA1007A3AC1 /* Supporting Files */,
 			);
 			path = MyHomeCloud;
@@ -1051,6 +1056,9 @@
 				A4FC23541EE6F37400924EEE /* AJNewHouseTableViewCell.xib */,
 				A4FC23571EE6F39000924EEE /* AJNewHouseCellModel.h */,
 				A4FC23581EE6F39000924EEE /* AJNewHouseCellModel.m */,
+				A492963E1F110F9A00845E4C /* AJNewHouseDetailsViewController.h */,
+				A492963F1F110F9A00845E4C /* AJNewHouseDetailsViewController.m */,
+				A49296401F110F9A00845E4C /* AJNewHouseDetailsViewController.xib */,
 			);
 			path = NewHouse;
 			sourceTree = "<group>";
@@ -1211,6 +1219,7 @@
 				0B1904CD1EE66192004C46EE /* PreviewUpLoadCollectionViewCell.xib in Resources */,
 				0BC2B46F1F0CFD1F0041C9C2 /* AJMessageController.xib in Resources */,
 				A40B20B71EC733280027399E /* AJHouseDetailsViewController.xib in Resources */,
+				A49296431F110F9A00845E4C /* AJNewHouseDetailsViewController.xib in Resources */,
 				A4AE331B1EF52DF9004B0A54 /* AJEstateDetailsViewController.xib in Resources */,
 				0B1904AA1EE65EC1004C46EE /* AJSecondHouseTableViewCell.xib in Resources */,
 				A4FC23561EE6F37400924EEE /* AJNewHouseTableViewCell.xib in Resources */,
@@ -1262,6 +1271,7 @@
 				0BF2C6DF1EFA5A4400EA46AF /* PreviewUpLoadCollectionViewCell.xib in Resources */,
 				0BC2B4701F0CFD1F0041C9C2 /* AJMessageController.xib in Resources */,
 				0BF2C6E01EFA5A4400EA46AF /* AJHouseDetailsViewController.xib in Resources */,
+				A49296441F110F9A00845E4C /* AJNewHouseDetailsViewController.xib in Resources */,
 				0BF2C6E11EFA5A4400EA46AF /* AJEstateDetailsViewController.xib in Resources */,
 				0BF2C6E21EFA5A4400EA46AF /* AJSecondHouseTableViewCell.xib in Resources */,
 				0BF2C6E31EFA5A4400EA46AF /* AJNewHouseTableViewCell.xib in Resources */,
@@ -1416,6 +1426,7 @@
 				A46422521F0748F800459294 /* AJFeedbackTableViewCell.m in Sources */,
 				A464225D1F07591F00459294 /* AJSendFeecbackViewController.m in Sources */,
 				0B5F6C2C1F0A3C84001C93D0 /* AJRemoteNotification.m in Sources */,
+				A49296411F110F9A00845E4C /* AJNewHouseDetailsViewController.m in Sources */,
 				A4B864551EE6EFFD00E3CE5E /* AJLetHouseViewController.m in Sources */,
 				A464224B1F0747B800459294 /* AJFeedbackViewController.m in Sources */,
 				A4E6BB451EEBD98500CC37B1 /* AJHomeHeadView.m in Sources */,
@@ -1506,6 +1517,7 @@
 				A46422531F0748F800459294 /* AJFeedbackTableViewCell.m in Sources */,
 				A464225E1F07591F00459294 /* AJSendFeecbackViewController.m in Sources */,
 				0B5F6C2D1F0A3C84001C93D0 /* AJRemoteNotification.m in Sources */,
+				A49296421F110F9A00845E4C /* AJNewHouseDetailsViewController.m in Sources */,
 				0BF2C6A61EFA5A4400EA46AF /* AJLetHouseViewController.m in Sources */,
 				A464224C1F0747B800459294 /* AJFeedbackViewController.m in Sources */,
 				0BF2C6A81EFA5A4400EA46AF /* AJHomeHeadView.m in Sources */,

@@ -11,6 +11,7 @@
 #import "AJNewHouseTableViewCell.h"
 #import "AJHomeDataCenter.h"
 #import "AJSearchViewController.h"
+#import "AJNewHouseDetailsViewController.h"
 
 @interface AJNewHouseViewController ()<UISearchBarDelegate>
 
@@ -107,6 +108,20 @@
     
     AJNewHouseCellModel *model = (AJNewHouseCellModel *)self.dataArray[indexPath.row];
     
+    AJNewHouseDetailsViewController *details = [AJNewHouseDetailsViewController new];
+    details.showModal = SearchHouseModal;
+    details.searchKey = self.dataArray[indexPath.row].objectData[HOUSE_ESTATE_NAME];
+    
+    if (self.showModal==UserFavoriteModal||self.showModal==UserRecordModal) {
+        
+        details.houseId = self.dataArray[indexPath.row].objectData[HOUSE_ID];
+        
+    }else{
+        details.houseId = self.dataArray[indexPath.row].objectData.objectId;
+        
+    }
+    
+    APP_PUSH(details);
     if (self.showModal==AllHouseModal||self.showModal==SomeoneHouseModal) {
         [[AJHomeDataCenter new] addRecordData:model.objectData recordClassName:[self recordClassName]];
     }

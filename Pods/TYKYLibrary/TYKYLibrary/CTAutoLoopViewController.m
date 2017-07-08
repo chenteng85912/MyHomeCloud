@@ -82,6 +82,9 @@ static NSString * const AutoLoopReuseIdentifier = @"AutoLoopReuseIdentifier";
     }
     if (self.dataArray.count==0) {
         self.pageLabel.hidden = YES;
+    }else{
+        self.pageLabel.hidden = NO;
+
     }
     if (self.dataArray.count>1) {
         [self addNSTimer];

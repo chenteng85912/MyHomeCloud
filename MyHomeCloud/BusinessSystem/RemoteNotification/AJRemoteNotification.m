@@ -40,6 +40,10 @@ NSString *const TIME_KEY = @"time_key";
 
     [JPUSHService registerDeviceToken:deviceToken];
     [JPUSHService registrationIDCompletionHandler:^(int resCode, NSString *registrationID) {
+        //设置标签 应用名称
+        [JPUSHService setTags:[[NSSet alloc] initWithObjects:[CTTool appName], nil] completion:^(NSInteger iResCode, NSSet *iTags, NSInteger seq) {
+            
+        } seq:[[NSDate new] timeIntervalSince1970]];
         debugLog(@"极光推送registrationID========== %@",registrationID);
         [[AVUser currentUser] setObject:registrationID forKey:USER_PUSH_ID];
         [[AVUser currentUser] saveInBackground];

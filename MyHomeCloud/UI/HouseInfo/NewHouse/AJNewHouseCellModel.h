@@ -9,5 +9,13 @@
 #import "AJTbViewCellModel.h"
 
 @interface AJNewHouseCellModel : AJTbViewCellModel
+@property (strong, nonatomic) NSString *estateName;//名称
+@property (strong, nonatomic) NSString *address;//地址
+@property (strong, nonatomic) NSString *unitPrice;//均价
+
+@property (assign, nonatomic) CGRect imgFrame;
+@property (assign, nonatomic) CGRect nameFrame;
+@property (assign, nonatomic) CGRect addressFrame;
+@property (assign, nonatomic) CGRect priceFrame;
 
 @end

@@ -14,6 +14,7 @@
                 <outlet property="agenterName" destination="zqK-aF-nL5" id="vT6-BG-rW9"/>
                 <outlet property="agenterPhone" destination="BGO-CF-XfP" id="Mw0-Bj-iQA"/>
                 <outlet property="cancelBtn" destination="AtK-PE-Ng7" id="Rkz-rl-aZz"/>
+                <outlet property="homeView" destination="8Z5-K4-9Pq" id="49c-XH-ZD0"/>
                 <outlet property="houseAreaage" destination="KpP-BH-4zk" id="BN2-EL-LqO"/>
                 <outlet property="houseName" destination="Hw5-Id-EKS" id="3V9-k1-uEx"/>
                 <outlet property="housePrice" destination="zmQ-Pj-u5g" id="dRm-46-YY0"/>
