@@ -9,7 +9,7 @@
 #import "AJHomeViewController.h"
 #import "AJHomeDataCenter.h"
 #import "AJHomeHeadView.h"
-#import "AJHouseDetailsViewController.h"
+#import "AJHouseInfoViewController.h"
 #import "AJOtherViewController.h"
 #import "AJSearchViewController.h"
 
@@ -231,32 +231,31 @@ CGFloat const HEAD_BTN_HEIGHT = 100;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    UIViewController *vc;
+ 
+    AJHouseInfoViewController *details = [AJHouseInfoViewController new];
+    details.showModal = SearchHouseModal;
+
     if (indexPath.section==0) {
-        AJHouseDetailsViewController *details = [AJHouseDetailsViewController new];
         details.houseId = self.secondArray[indexPath.row].objectData.objectId;
         details.searchKey = self.secondArray[indexPath.row].objectData[HOUSE_ESTATE_NAME];
         details.detailsModal = SecondModal;
-        details.showModal = SearchHouseModal;
-        vc = details;
-        //保存浏览记录
-        AJTbViewCellModel *model = self.secondArray[indexPath.row];
-        [[AJHomeDataCenter new] addRecordData:model.objectData recordClassName:SECOND_RECORD];
+    
+        [[AJHomeDataCenter new] addRecordData:self.secondArray[indexPath.row].objectData recordClassName:SECOND_RECORD];
     }else if (indexPath.section==1){
-        AJHouseDetailsViewController *details = [AJHouseDetailsViewController new];
         details.houseId = self.letArray[indexPath.row].objectData.objectId;
         details.searchKey = self.letArray[indexPath.row].objectData[HOUSE_ESTATE_NAME];
         details.detailsModal = LetModal;
-        details.showModal = SearchHouseModal;
-        vc = details;
-        AJTbViewCellModel *model = self.letArray[indexPath.row];
-        [[AJHomeDataCenter new] addRecordData:model.objectData recordClassName:LET_RECORD];
+        
+        [[AJHomeDataCenter new] addRecordData:self.letArray[indexPath.row].objectData recordClassName:LET_RECORD];
     }else{
-        AJTbViewCellModel *model = self.newhouseArray[indexPath.row];
-        [[AJHomeDataCenter new] addRecordData:model.objectData recordClassName:N_RECORD];
+        details.houseId = self.newhouseArray[indexPath.row].objectData.objectId;
+        details.searchKey = self.newhouseArray[indexPath.row].objectData[HOUSE_AREA];
+        details.detailsModal = NModal;
+        [[AJHomeDataCenter new] addRecordData:self.newhouseArray[indexPath.row].objectData recordClassName:N_RECORD];
     }
-    vc.hidesBottomBarWhenPushed = YES;
-    APP_PUSH(vc);
+    
+    details.hidesBottomBarWhenPushed = YES;
+    APP_PUSH(details);
     
 }
 

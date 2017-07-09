@@ -11,7 +11,7 @@
 #import "AJNewHouseTableViewCell.h"
 #import "AJHomeDataCenter.h"
 #import "AJSearchViewController.h"
-#import "AJNewHouseDetailsViewController.h"
+#import "AJHouseInfoViewController.h"
 
 @interface AJNewHouseViewController ()<UISearchBarDelegate>
 
@@ -108,7 +108,7 @@
     
     AJNewHouseCellModel *model = (AJNewHouseCellModel *)self.dataArray[indexPath.row];
     
-    AJNewHouseDetailsViewController *details = [AJNewHouseDetailsViewController new];
+    AJHouseInfoViewController *details = [AJHouseInfoViewController new];
     details.showModal = SearchHouseModal;
     details.searchKey = self.dataArray[indexPath.row].objectData[HOUSE_ESTATE_NAME];
     

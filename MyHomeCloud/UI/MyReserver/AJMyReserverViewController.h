@@ -9,8 +9,10 @@
 #import "AJBaseTbViewController.h"
 
 typedef NS_ENUM(NSInteger,UserReserverModal) {
-    SecondReserverModal, //二手房预约
-    LetReserverModal     //租房预约
+    SecondReserverModal,  //二手房预约
+    LetReserverModal,     //租房预约
+    NReserverModal        //新房预约
+
 };
 @interface AJMyReserverViewController : AJBaseTbViewController
 

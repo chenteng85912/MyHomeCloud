@@ -9,7 +9,7 @@
 #import "AJLetHouseViewController.h"
 #import "AJLetHouseCellModel.h"
 #import "AJLetHouseTableViewCell.h"
-#import "AJHouseDetailsViewController.h"
+#import "AJHouseInfoViewController.h"
 #import "AJHomeDataCenter.h"
 #import "AJSearchViewController.h"
 
@@ -134,7 +134,8 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     AJLetHouseCellModel *model = (AJLetHouseCellModel *)self.dataArray[indexPath.row];
-    AJHouseDetailsViewController *details = [AJHouseDetailsViewController new];
+    
+    AJHouseInfoViewController *details = [AJHouseInfoViewController new];
     details.detailsModal = LetModal;
     details.showModal = SearchHouseModal;
     details.searchKey = self.dataArray[indexPath.row].objectData[HOUSE_ESTATE_NAME];

@@ -9,7 +9,7 @@
 #import "AJSecondHouseViewController.h"
 #import "AJSecondHouseTableViewCell.h"
 #import "AJSecondHouseCellModel.h"
-#import "AJHouseDetailsViewController.h"
+#import "AJHouseInfoViewController.h"
 #import "AJHomeDataCenter.h"
 #import "AJSearchViewController.h"
 
@@ -136,7 +136,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     AJSecondHouseCellModel *model = (AJSecondHouseCellModel *)self.dataArray[indexPath.row];
-    AJHouseDetailsViewController *details = [AJHouseDetailsViewController new];
+    AJHouseInfoViewController *details = [AJHouseInfoViewController new];
     details.showModal = SearchHouseModal;
     details.detailsModal = SecondModal;
     details.searchKey = self.dataArray[indexPath.row].objectData[HOUSE_ESTATE_NAME];
