@@ -10,11 +10,8 @@
 #import "AJLocationViewController.h"
 #import "AJEstateDetailsViewController.h"
 
-
 CGFloat const MAP_HEIGHT = 240;
-
 CGFloat const INFO_NORMAL_HEITHT = 370;
-
 CGFloat const BASE_VIEW_HEIGHT = 210;
 CGFloat const MORE_VIEW_HEIGHT = 370;
 
@@ -41,7 +38,23 @@ CGFloat const MORE_VIEW_HEIGHT = 370;
 @property (weak, nonatomic) IBOutlet UILabel *unitPriceLabel;
 
 //新房
-
+@property (weak, nonatomic) IBOutlet UILabel *houseName;
+@property (weak, nonatomic) IBOutlet UILabel *estatePrice;
+@property (weak, nonatomic) IBOutlet UILabel *estateTags;
+@property (weak, nonatomic) IBOutlet UILabel *estateAddress;
+@property (weak, nonatomic) IBOutlet UILabel *openTime;
+@property (weak, nonatomic) IBOutlet UILabel *acceptTime;
+@property (weak, nonatomic) IBOutlet UILabel *estateType;
+@property (weak, nonatomic) IBOutlet UILabel *describeInfo;
+@property (weak, nonatomic) IBOutlet UILabel *developerName;
+@property (weak, nonatomic) IBOutlet UILabel *saleLicence;
+@property (weak, nonatomic) IBOutlet UILabel *estateYears;
+@property (weak, nonatomic) IBOutlet UILabel *estateName;
+@property (weak, nonatomic) IBOutlet UILabel *buildingType;
+@property (weak, nonatomic) IBOutlet UILabel *carNumber;
+@property (weak, nonatomic) IBOutlet UILabel *totalHouseNumber;
+@property (weak, nonatomic) IBOutlet UILabel *plotRatio;
+@property (weak, nonatomic) IBOutlet UILabel *greenBelt;
 
 @property (weak, nonatomic) IBOutlet UILabel *sameLabel;//相似房源 相似楼盘
 
@@ -101,6 +114,7 @@ CGFloat const MORE_VIEW_HEIGHT = 370;
 //新房基本信息
 - (void)initNHouseInfo{
     _sameLabel.text = @"相似楼盘";
+    
 }
 
 //二手房 租房基本信息
@@ -160,10 +174,11 @@ CGFloat const MORE_VIEW_HEIGHT = 370;
         APP_PUSH(estate);
 
     }else if (sender.tag==1){
-
+        //楼盘相册
 
     }else {
-       
+        _mapView = nil;
+        APP_PUSH(self.mapView);
 
     }
     
@@ -173,6 +188,7 @@ CGFloat const MORE_VIEW_HEIGHT = 370;
     _mapView = nil;
     APP_PUSH(self.mapView);
 }
+
 
 //获取作者信息
 //- (void)fetchAuthorData{
