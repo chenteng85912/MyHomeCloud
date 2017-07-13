@@ -64,6 +64,18 @@
 		0BB93A6E1EFFD1FB00B32320 /* AJWechatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BF2C6F61EFA5D4800EA46AF /* AJWechatViewController.xib */; };
 		0BB93A6F1EFFD22300B32320 /* AJTagsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4F881C1EFF89390092BF18 /* AJTagsViewController.m */; };
 		0BB93A701EFFD22300B32320 /* AJTagsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B4F881D1EFF89390092BF18 /* AJTagsViewController.xib */; };
+		0BC1DECB1F17899A007C78DB /* AJAddNHouseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BC1DEC91F17899A007C78DB /* AJAddNHouseViewController.m */; };
+		0BC1DECC1F17899A007C78DB /* AJAddNHouseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BC1DEC91F17899A007C78DB /* AJAddNHouseViewController.m */; };
+		0BC1DECD1F17899A007C78DB /* AJAddNHouseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BC1DECA1F17899A007C78DB /* AJAddNHouseViewController.xib */; };
+		0BC1DECE1F17899A007C78DB /* AJAddNHouseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BC1DECA1F17899A007C78DB /* AJAddNHouseViewController.xib */; };
+		0BC1DEDD1F178D64007C78DB /* AJAddPicturesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BC1DED81F178D64007C78DB /* AJAddPicturesViewController.m */; };
+		0BC1DEDE1F178D64007C78DB /* AJAddPicturesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BC1DED91F178D64007C78DB /* AJAddPicturesViewController.xib */; };
+		0BC1DEDF1F178D64007C78DB /* AJPicCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BC1DEDB1F178D64007C78DB /* AJPicCollectionReusableView.m */; };
+		0BC1DEE01F178D64007C78DB /* AJPicCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BC1DEDC1F178D64007C78DB /* AJPicCollectionReusableView.xib */; };
+		0BC1DEE11F178D70007C78DB /* AJAddPicturesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BC1DED81F178D64007C78DB /* AJAddPicturesViewController.m */; };
+		0BC1DEE21F178D70007C78DB /* AJAddPicturesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BC1DED91F178D64007C78DB /* AJAddPicturesViewController.xib */; };
+		0BC1DEE31F178D70007C78DB /* AJPicCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BC1DEDB1F178D64007C78DB /* AJPicCollectionReusableView.m */; };
+		0BC1DEE41F178D70007C78DB /* AJPicCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BC1DEDC1F178D64007C78DB /* AJPicCollectionReusableView.xib */; };
 		0BC2B45B1F0CFD1F0041C9C2 /* AJDataBaseDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BC2B4461F0CFD1F0041C9C2 /* AJDataBaseDao.m */; };
 		0BC2B45C1F0CFD1F0041C9C2 /* AJDataBaseDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BC2B4461F0CFD1F0041C9C2 /* AJDataBaseDao.m */; };
 		0BC2B45D1F0CFD1F0041C9C2 /* AJMessageBean.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BC2B4481F0CFD1F0041C9C2 /* AJMessageBean.m */; };
@@ -354,6 +366,15 @@
 		0B8E18571F17470400FB92D2 /* AJHouseInfoEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJHouseInfoEditViewController.m; sourceTree = "<group>"; };
 		0B8E18581F17470400FB92D2 /* AJHouseInfoEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJHouseInfoEditViewController.xib; sourceTree = "<group>"; };
 		0BB3AC2B1ECE9FE6008FB5E6 /* MyHomeCloud.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyHomeCloud.entitlements; sourceTree = "<group>"; };
+		0BC1DEC81F17899A007C78DB /* AJAddNHouseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJAddNHouseViewController.h; sourceTree = "<group>"; };
+		0BC1DEC91F17899A007C78DB /* AJAddNHouseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJAddNHouseViewController.m; sourceTree = "<group>"; };
+		0BC1DECA1F17899A007C78DB /* AJAddNHouseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJAddNHouseViewController.xib; sourceTree = "<group>"; };
+		0BC1DED71F178D64007C78DB /* AJAddPicturesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJAddPicturesViewController.h; sourceTree = "<group>"; };
+		0BC1DED81F178D64007C78DB /* AJAddPicturesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJAddPicturesViewController.m; sourceTree = "<group>"; };
+		0BC1DED91F178D64007C78DB /* AJAddPicturesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJAddPicturesViewController.xib; sourceTree = "<group>"; };
+		0BC1DEDA1F178D64007C78DB /* AJPicCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJPicCollectionReusableView.h; sourceTree = "<group>"; };
+		0BC1DEDB1F178D64007C78DB /* AJPicCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJPicCollectionReusableView.m; sourceTree = "<group>"; };
+		0BC1DEDC1F178D64007C78DB /* AJPicCollectionReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJPicCollectionReusableView.xib; sourceTree = "<group>"; };
 		0BC2B4451F0CFD1F0041C9C2 /* AJDataBaseDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJDataBaseDao.h; sourceTree = "<group>"; };
 		0BC2B4461F0CFD1F0041C9C2 /* AJDataBaseDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJDataBaseDao.m; sourceTree = "<group>"; };
 		0BC2B4471F0CFD1F0041C9C2 /* AJMessageBean.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJMessageBean.h; sourceTree = "<group>"; };
@@ -869,6 +890,19 @@
 			path = LoginAndRegister;
 			sourceTree = "<group>";
 		};
+		0BC1DED61F178D64007C78DB /* AddImages */ = {
+			isa = PBXGroup;
+			children = (
+				0BC1DED71F178D64007C78DB /* AJAddPicturesViewController.h */,
+				0BC1DED81F178D64007C78DB /* AJAddPicturesViewController.m */,
+				0BC1DED91F178D64007C78DB /* AJAddPicturesViewController.xib */,
+				0BC1DEDA1F178D64007C78DB /* AJPicCollectionReusableView.h */,
+				0BC1DEDB1F178D64007C78DB /* AJPicCollectionReusableView.m */,
+				0BC1DEDC1F178D64007C78DB /* AJPicCollectionReusableView.xib */,
+			);
+			path = AddImages;
+			sourceTree = "<group>";
+		};
 		0BC2B4441F0CFD1F0041C9C2 /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -1062,6 +1096,7 @@
 		A4B864511EE6EFF000E3CE5E /* NewHouse */ = {
 			isa = PBXGroup;
 			children = (
+				0BC1DED61F178D64007C78DB /* AddImages */,
 				A4B864571EE6F00E00E3CE5E /* AJNewHouseViewController.h */,
 				A4B864581EE6F00E00E3CE5E /* AJNewHouseViewController.m */,
 				A4FC23521EE6F37400924EEE /* AJNewHouseTableViewCell.h */,
@@ -1069,6 +1104,9 @@
 				A4FC23541EE6F37400924EEE /* AJNewHouseTableViewCell.xib */,
 				A4FC23571EE6F39000924EEE /* AJNewHouseCellModel.h */,
 				A4FC23581EE6F39000924EEE /* AJNewHouseCellModel.m */,
+				0BC1DEC81F17899A007C78DB /* AJAddNHouseViewController.h */,
+				0BC1DEC91F17899A007C78DB /* AJAddNHouseViewController.m */,
+				0BC1DECA1F17899A007C78DB /* AJAddNHouseViewController.xib */,
 			);
 			path = NewHouse;
 			sourceTree = "<group>";
@@ -1214,12 +1252,14 @@
 				0B1904C81EE66192004C46EE /* AJHouseInfoTableViewCell.xib in Resources */,
 				A4E6A4951EC61243006B882A /* AJSearchViewController.xib in Resources */,
 				A464225F1F07591F00459294 /* AJSendFeecbackViewController.xib in Resources */,
+				0BC1DEE01F178D64007C78DB /* AJPicCollectionReusableView.xib in Resources */,
 				0B4F881F1EFF89390092BF18 /* AJTagsViewController.xib in Resources */,
 				A464224D1F0747B800459294 /* AJFeedbackViewController.xib in Resources */,
 				0BC2B4731F0CFD1F0041C9C2 /* TJMessageControllerCell.xib in Resources */,
 				A4AE33131EF51F6F004B0A54 /* AJReserverTableViewCell.xib in Resources */,
 				0B2343C91EC01CA1007A3AC1 /* Main.storyboard in Resources */,
 				0B302F6F1ED04F47006896CA /* AJUserHeadViewController.xib in Resources */,
+				0BC1DECD1F17899A007C78DB /* AJAddNHouseViewController.xib in Resources */,
 				0B1904C31EE66192004C46EE /* AJAddHouserViewController.xib in Resources */,
 				A46422541F0748F800459294 /* AJFeedbackTableViewCell.xib in Resources */,
 				0BC2B4631F0CFD1F0041C9C2 /* TJMessageListDetailsViewController.xib in Resources */,
@@ -1237,6 +1277,7 @@
 				0B1904CA1EE66192004C46EE /* AJHouseDesViewController.xib in Resources */,
 				A4C3AF531EED418800DBBB4C /* AJSearchTableViewCell.xib in Resources */,
 				A4AE33201EF52E7A004B0A54 /* AJReserverDetailsViewController.xib in Resources */,
+				0BC1DEDE1F178D64007C78DB /* AJAddPicturesViewController.xib in Resources */,
 				A4FC23511EE6F31200924EEE /* AJLetHouseTableViewCell.xib in Resources */,
 				0BE4D9F01ECC6B8200E4ADCD /* AJHomeViewController.xib in Resources */,
 				A44A8C1A1F03EE7A00BE6D89 /* AJFilterViewController.xib in Resources */,
@@ -1267,12 +1308,14 @@
 				0BF2C6D31EFA5A4400EA46AF /* AJHouseInfoTableViewCell.xib in Resources */,
 				0BF2C6D41EFA5A4400EA46AF /* AJSearchViewController.xib in Resources */,
 				A46422601F07591F00459294 /* AJSendFeecbackViewController.xib in Resources */,
+				0BC1DEE41F178D70007C78DB /* AJPicCollectionReusableView.xib in Resources */,
 				0BB93A701EFFD22300B32320 /* AJTagsViewController.xib in Resources */,
 				A464224E1F0747B800459294 /* AJFeedbackViewController.xib in Resources */,
 				0BC2B4741F0CFD1F0041C9C2 /* TJMessageControllerCell.xib in Resources */,
 				0BF2C6D61EFA5A4400EA46AF /* AJReserverTableViewCell.xib in Resources */,
 				0BF2C6D71EFA5A4400EA46AF /* Main.storyboard in Resources */,
 				0BF2C6D81EFA5A4400EA46AF /* AJUserHeadViewController.xib in Resources */,
+				0BC1DECE1F17899A007C78DB /* AJAddNHouseViewController.xib in Resources */,
 				0BF2C6D91EFA5A4400EA46AF /* AJAddHouserViewController.xib in Resources */,
 				A46422551F0748F800459294 /* AJFeedbackTableViewCell.xib in Resources */,
 				0BC2B4641F0CFD1F0041C9C2 /* TJMessageListDetailsViewController.xib in Resources */,
@@ -1290,6 +1333,7 @@
 				0BF2C6E41EFA5A4400EA46AF /* AJHouseDesViewController.xib in Resources */,
 				0BF2C6E51EFA5A4400EA46AF /* AJSearchTableViewCell.xib in Resources */,
 				0BF2C6E61EFA5A4400EA46AF /* AJReserverDetailsViewController.xib in Resources */,
+				0BC1DEE21F178D70007C78DB /* AJAddPicturesViewController.xib in Resources */,
 				0BF2C6E71EFA5A4400EA46AF /* AJLetHouseTableViewCell.xib in Resources */,
 				0BF2C6E81EFA5A4400EA46AF /* AJHomeViewController.xib in Resources */,
 				A44A8C1B1F03EE7A00BE6D89 /* AJFilterViewController.xib in Resources */,
@@ -1419,6 +1463,7 @@
 				0BC2B45B1F0CFD1F0041C9C2 /* AJDataBaseDao.m in Sources */,
 				0BE4D9EF1ECC6B8200E4ADCD /* AJHomeViewController.m in Sources */,
 				0BF95A0D1EEE55F00031D958 /* AJSB.m in Sources */,
+				0BC1DEDD1F178D64007C78DB /* AJAddPicturesViewController.m in Sources */,
 				0B15DE7E1ED2C8BE003A54E3 /* AFNetworkReachabilityManager.m in Sources */,
 				A4AE33121EF51F6F004B0A54 /* AJReserverTableViewCell.m in Sources */,
 				0B57F5A11EC1991800B89CE2 /* AjMainTabBarViewController.m in Sources */,
@@ -1435,6 +1480,7 @@
 				0BC2B46D1F0CFD1F0041C9C2 /* AJMessageController.m in Sources */,
 				0B302F5E1ED01835006896CA /* AJOtherViewController.m in Sources */,
 				A4B864491EE6E63800E3CE5E /* AJUserHouseViewController.m in Sources */,
+				0BC1DECB1F17899A007C78DB /* AJAddNHouseViewController.m in Sources */,
 				A42BECDB1F121AB400C9E2CB /* AJHouseInfoViewController.m in Sources */,
 				A46422521F0748F800459294 /* AJFeedbackTableViewCell.m in Sources */,
 				A464225D1F07591F00459294 /* AJSendFeecbackViewController.m in Sources */,
@@ -1471,6 +1517,7 @@
 				A4AE330D1EF51F4A004B0A54 /* AJMyReserverViewController.m in Sources */,
 				A4AE33161EF52572004B0A54 /* AJReserverCellModel.m in Sources */,
 				0B1904CB1EE66192004C46EE /* AJUploadPicModel.m in Sources */,
+				0BC1DEDF1F178D64007C78DB /* AJPicCollectionReusableView.m in Sources */,
 				A4AE331F1EF52E7A004B0A54 /* AJReserverDetailsViewController.m in Sources */,
 				0B57F5941EC198D000B89CE2 /* AJUserCenterViewController.m in Sources */,
 				A4B8645A1EE6F00E00E3CE5E /* AJNewHouseViewController.m in Sources */,
@@ -1511,6 +1558,7 @@
 				0BC2B45C1F0CFD1F0041C9C2 /* AJDataBaseDao.m in Sources */,
 				0BF2C6951EFA5A4400EA46AF /* AJHomeViewController.m in Sources */,
 				0BF2C6961EFA5A4400EA46AF /* AJSB.m in Sources */,
+				0BC1DEE11F178D70007C78DB /* AJAddPicturesViewController.m in Sources */,
 				0BF2C6971EFA5A4400EA46AF /* AFNetworkReachabilityManager.m in Sources */,
 				0BF2C6981EFA5A4400EA46AF /* AJReserverTableViewCell.m in Sources */,
 				0BF2C6991EFA5A4400EA46AF /* AjMainTabBarViewController.m in Sources */,
@@ -1527,6 +1575,7 @@
 				0BC2B46E1F0CFD1F0041C9C2 /* AJMessageController.m in Sources */,
 				0BF2C6A41EFA5A4400EA46AF /* AJOtherViewController.m in Sources */,
 				0BF2C6A51EFA5A4400EA46AF /* AJUserHouseViewController.m in Sources */,
+				0BC1DECC1F17899A007C78DB /* AJAddNHouseViewController.m in Sources */,
 				A42BECDC1F121AB400C9E2CB /* AJHouseInfoViewController.m in Sources */,
 				A46422531F0748F800459294 /* AJFeedbackTableViewCell.m in Sources */,
 				A464225E1F07591F00459294 /* AJSendFeecbackViewController.m in Sources */,
@@ -1563,6 +1612,7 @@
 				0BF2C6C01EFA5A4400EA46AF /* AJReserverCellModel.m in Sources */,
 				0BF2C6C11EFA5A4400EA46AF /* AJUploadPicModel.m in Sources */,
 				0BF2C6C41EFA5A4400EA46AF /* AJReserverDetailsViewController.m in Sources */,
+				0BC1DEE31F178D70007C78DB /* AJPicCollectionReusableView.m in Sources */,
 				0BF2C6C51EFA5A4400EA46AF /* AJUserCenterViewController.m in Sources */,
 				0BF2C6C61EFA5A4400EA46AF /* AJNewHouseViewController.m in Sources */,
 				0BF2C6C71EFA5A4400EA46AF /* AJEstateTableViewCell.m in Sources */,

@@ -117,6 +117,11 @@
 
 //新房信息
 #define ESTATE_ADDRESS         @"EstateAddress"//楼盘地址
+#define ESTATE_SCENE_PIC       @"EstateScenePic"//现场图片
+#define ESTATE_SUPPORT_PIC     @"EstateSupportPic"//配套图片
+#define ESTATE_EFFECT_PIC      @"EstateEffectPic"//效果图
+#define ESTATE_FACT_PIC        @"EstateFactPic"//实景图
+
 
 //房屋基本信息
 #define HOUSE_SALES_POINT    @"HouseSalingPoint"//核心卖点

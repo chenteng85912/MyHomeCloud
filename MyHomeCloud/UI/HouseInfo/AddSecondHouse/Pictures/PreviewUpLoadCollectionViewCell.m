@@ -33,12 +33,19 @@
 
     _modal = modal;
     
-    //读取本地图片
-    _imgView.image = [UIImage imageWithData:modal.picFile.getData];
-
-    modal.delegate = self;
-    _percentLabel.text = [NSString stringWithFormat:@"%ld%%",(long)modal.percent];
-    self.circleView.progressValue = modal.percent/100.0;
+    if (modal.picFile) {
+        //读取本地图片
+        _imgView.image = [UIImage imageWithData:modal.picFile.getData];
+        modal.delegate = self;
+        _percentLabel.text = [NSString stringWithFormat:@"%ld%%",(long)modal.percent];
+        self.circleView.progressValue = modal.percent/100.0;
+        
+    }else{
+        [_imgView sd_setImageWithURL:[NSURL URLWithString:modal.picUrl] placeholderImage:LOADIMAGE(@"defaultImg")];
+        _percentLabel.text = nil;
+        self.circleView.progressValue = 0;
+    }
+ 
 }
 
 - (void)refreshUploadProgress:(NSInteger)progress{

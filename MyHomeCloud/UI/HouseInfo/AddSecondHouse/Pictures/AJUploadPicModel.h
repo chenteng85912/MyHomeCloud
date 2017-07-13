@@ -20,6 +20,8 @@
 @property (nonatomic,assign) NSInteger percent;
 @property (nonatomic,strong) NSNumber *state;//0未上传 1正在上传 2上传成功 3上传失败
 
+@property (nonatomic,strong) NSString *picUrl;
+
 @property (nonatomic,weak) id <AJUploadPicModelDelegate> delegate;
 
 - (void)startUpload;
