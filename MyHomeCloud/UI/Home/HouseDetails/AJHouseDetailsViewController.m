@@ -156,7 +156,7 @@ CGFloat const MORE_VIEW_HEIGHT = 370;
     
     NSDateFormatter *formatter = [NSDateFormatter new];
     [formatter setDateFormat:@"yyyy-MM-dd"];
-    _houseShowTime.text = [formatter stringFromDate:_houseInfo.createdAt];
+    _houseShowTime.text = [formatter stringFromDate:_houseInfo.updatedAt];
     
     _houseFloor.text = [NSString stringWithFormat:@"%@/%@",_houseInfo[HOUSE_FLOOR_NUM],_houseInfo[HOUSE_TOTAL_FLOOR]];
     

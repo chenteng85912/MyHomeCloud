@@ -98,7 +98,7 @@ NSString *const NOTICE_DETAILS = @"NOTICE_DETAILS"; //消息详情列表-表格
     
     NSString *str = [NSString stringWithFormat:@"INSERT INTO %@ (%@, %@, %@, %@,%@, %@, %@ )",formName,USER_ID,MSG_TITLE,MSG_CONTENT,MSG_TYPE,MSG_TIME,MSG_URL,IS_READ];
     
-   NSString *sql = [str stringByAppendingFormat:@"VALUES ( '%@', '%@', '%@','%@', '%@',' %@' ,'%d');", message.userId,message.msgTitle,message.msgContent,message.msgType,message.msgTime,message.msgUrl,message.isRead];
+   NSString *sql = [str stringByAppendingFormat:@"VALUES ( '%@', '%@', '%@','%@', '%@','%@' ,'%d');", message.userId,message.msgTitle,message.msgContent,message.msgType,message.msgTime,message.msgUrl,message.isRead];
     
     return sql;
 }

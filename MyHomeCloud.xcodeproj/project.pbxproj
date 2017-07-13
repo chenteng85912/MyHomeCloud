@@ -56,6 +56,10 @@
 		0B5FDBB81EFFE30300F9A1E2 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B5FDBB71EFFE30300F9A1E2 /* Security.framework */; };
 		0B6E12C51EC4235300103571 /* AJLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B6E12C31EC4235300103571 /* AJLoginViewController.m */; };
 		0B6E12C61EC4235300103571 /* AJLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B6E12C41EC4235300103571 /* AJLoginViewController.xib */; };
+		0B8E18591F17470400FB92D2 /* AJHouseInfoEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B8E18571F17470400FB92D2 /* AJHouseInfoEditViewController.m */; };
+		0B8E185A1F17470400FB92D2 /* AJHouseInfoEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B8E18571F17470400FB92D2 /* AJHouseInfoEditViewController.m */; };
+		0B8E185B1F17470400FB92D2 /* AJHouseInfoEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B8E18581F17470400FB92D2 /* AJHouseInfoEditViewController.xib */; };
+		0B8E185C1F17470400FB92D2 /* AJHouseInfoEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B8E18581F17470400FB92D2 /* AJHouseInfoEditViewController.xib */; };
 		0BB93A6D1EFFD1F800B32320 /* AJWechatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF2C6F51EFA5D4800EA46AF /* AJWechatViewController.m */; };
 		0BB93A6E1EFFD1FB00B32320 /* AJWechatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BF2C6F61EFA5D4800EA46AF /* AJWechatViewController.xib */; };
 		0BB93A6F1EFFD22300B32320 /* AJTagsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4F881C1EFF89390092BF18 /* AJTagsViewController.m */; };
@@ -346,6 +350,9 @@
 		0B6E12C21EC4235300103571 /* AJLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJLoginViewController.h; sourceTree = "<group>"; };
 		0B6E12C31EC4235300103571 /* AJLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJLoginViewController.m; sourceTree = "<group>"; };
 		0B6E12C41EC4235300103571 /* AJLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJLoginViewController.xib; sourceTree = "<group>"; };
+		0B8E18561F17470400FB92D2 /* AJHouseInfoEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJHouseInfoEditViewController.h; sourceTree = "<group>"; };
+		0B8E18571F17470400FB92D2 /* AJHouseInfoEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJHouseInfoEditViewController.m; sourceTree = "<group>"; };
+		0B8E18581F17470400FB92D2 /* AJHouseInfoEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJHouseInfoEditViewController.xib; sourceTree = "<group>"; };
 		0BB3AC2B1ECE9FE6008FB5E6 /* MyHomeCloud.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyHomeCloud.entitlements; sourceTree = "<group>"; };
 		0BC2B4451F0CFD1F0041C9C2 /* AJDataBaseDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJDataBaseDao.h; sourceTree = "<group>"; };
 		0BC2B4461F0CFD1F0041C9C2 /* AJDataBaseDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJDataBaseDao.m; sourceTree = "<group>"; };
@@ -923,6 +930,9 @@
 				A42BECD81F121AB400C9E2CB /* AJHouseInfoViewController.h */,
 				A42BECD91F121AB400C9E2CB /* AJHouseInfoViewController.m */,
 				A42BECDA1F121AB400C9E2CB /* AJHouseInfoViewController.xib */,
+				0B8E18561F17470400FB92D2 /* AJHouseInfoEditViewController.h */,
+				0B8E18571F17470400FB92D2 /* AJHouseInfoEditViewController.m */,
+				0B8E18581F17470400FB92D2 /* AJHouseInfoEditViewController.xib */,
 				A40B20B31EC733280027399E /* AJHouseDetailsViewController.h */,
 				A40B20B41EC733280027399E /* AJHouseDetailsViewController.m */,
 				A40B20B51EC733280027399E /* AJHouseDetailsViewController.xib */,
@@ -1215,6 +1225,7 @@
 				0BC2B4631F0CFD1F0041C9C2 /* TJMessageListDetailsViewController.xib in Resources */,
 				A4AE33091EF51EEC004B0A54 /* AJNewReserverViewController.xib in Resources */,
 				A44AEBD11EEEC72A00109FB8 /* AJLocationViewController.xib in Resources */,
+				0B8E185B1F17470400FB92D2 /* AJHouseInfoEditViewController.xib in Resources */,
 				A4AE330E1EF51F4A004B0A54 /* AJMyReserverViewController.xib in Resources */,
 				A411B3C11EC4B0BD00244B6E /* AJSettingViewController.xib in Resources */,
 				0B1904CD1EE66192004C46EE /* PreviewUpLoadCollectionViewCell.xib in Resources */,
@@ -1267,6 +1278,7 @@
 				0BC2B4641F0CFD1F0041C9C2 /* TJMessageListDetailsViewController.xib in Resources */,
 				0BF2C6DB1EFA5A4400EA46AF /* AJNewReserverViewController.xib in Resources */,
 				0BF2C6DC1EFA5A4400EA46AF /* AJLocationViewController.xib in Resources */,
+				0B8E185C1F17470400FB92D2 /* AJHouseInfoEditViewController.xib in Resources */,
 				0BF2C6DD1EFA5A4400EA46AF /* AJMyReserverViewController.xib in Resources */,
 				0BF2C6DE1EFA5A4400EA46AF /* AJSettingViewController.xib in Resources */,
 				0BF2C6DF1EFA5A4400EA46AF /* PreviewUpLoadCollectionViewCell.xib in Resources */,
@@ -1446,6 +1458,7 @@
 				0B2343BD1EC01CA1007A3AC1 /* main.m in Sources */,
 				0BF2C6F71EFA5D4800EA46AF /* AJWechatViewController.m in Sources */,
 				0B1904E21EE668EC004C46EE /* AJBaseTbViewController.m in Sources */,
+				0B8E18591F17470400FB92D2 /* AJHouseInfoEditViewController.m in Sources */,
 				0BC2B4711F0CFD1F0041C9C2 /* TJMessageControllerCell.m in Sources */,
 				0B1904C71EE66192004C46EE /* AJHouseInfoTableViewCell.m in Sources */,
 				A4FC23591EE6F39000924EEE /* AJNewHouseCellModel.m in Sources */,
@@ -1537,6 +1550,7 @@
 				0BF2C6B51EFA5A4400EA46AF /* main.m in Sources */,
 				0BF2C6B61EFA5A4400EA46AF /* AJBaseTbViewController.m in Sources */,
 				0BF2C6B71EFA5A4400EA46AF /* AJHouseInfoTableViewCell.m in Sources */,
+				0B8E185A1F17470400FB92D2 /* AJHouseInfoEditViewController.m in Sources */,
 				0BC2B4721F0CFD1F0041C9C2 /* TJMessageControllerCell.m in Sources */,
 				0BF2C6B81EFA5A4400EA46AF /* AJNewHouseCellModel.m in Sources */,
 				0BF2C6B91EFA5A4400EA46AF /* AJUserHeadViewController.m in Sources */,

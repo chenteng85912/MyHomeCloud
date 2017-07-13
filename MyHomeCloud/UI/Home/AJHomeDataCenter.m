@@ -89,7 +89,7 @@ NSInteger const SHOW_NUM = 5;
     AVObject *houseData = [self creatHouseInfo:object withClassName:recordClassName];
     
     self.query.className = recordClassName;
-    [self.query whereKey:HOUSE_ID equalTo:object.objectId];
+    [self.query whereKey:HOUSE_ID   equalTo:object.objectId];
     [self.query whereKey:USER_PHONE equalTo:[AVUser currentUser].mobilePhoneNumber];
     //先查询是否已经保存
     [self.query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
@@ -112,15 +112,14 @@ NSInteger const SHOW_NUM = 5;
     [houseData setObject:[AVUser currentUser].mobilePhoneNumber      forKey:USER_PHONE];
     [houseData setObject:object[HOUSE_AMOUNT]               forKey:HOUSE_AMOUNT];
     [houseData setObject:object[HOUSE_AREAAGE]              forKey:HOUSE_AREAAGE];
-    [houseData setObject:object[HOUSE_ESTATE_NAME]                forKey:HOUSE_ESTATE_NAME];
-    [houseData setObject:object[HOUSE_TAGS]                forKey:HOUSE_TAGS];
-
+    [houseData setObject:object[HOUSE_ESTATE_NAME]          forKey:HOUSE_ESTATE_NAME];
+    [houseData setObject:object[HOUSE_TAGS]                 forKey:HOUSE_TAGS];
     [houseData setObject:object[HOUSE_THUMB]                forKey:HOUSE_THUMB];
     
     if ([className isEqualToString:LET_RECORD]||[className isEqualToString:LET_FAVORITE]) {
         //租金
         [houseData setObject:object[LET_HOUSE_PRICE]         forKey:LET_HOUSE_PRICE];
-        [houseData setObject:object[HOUSE_DIRECTION]           forKey:HOUSE_DIRECTION];
+        [houseData setObject:object[HOUSE_DIRECTION]         forKey:HOUSE_DIRECTION];
         
     }else if ([className isEqualToString:SECOND_RECORD]||[className isEqualToString:SECOND_FAVORITE]){
         //总价

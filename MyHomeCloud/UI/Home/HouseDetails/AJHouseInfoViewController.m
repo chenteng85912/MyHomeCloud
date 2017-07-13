@@ -17,6 +17,7 @@
 #import "AJNewHouseTableViewCell.h"
 #import "AJNewHouseModel.h"
 
+#import "AJHouseInfoEditViewController.h"
 #import "AJNewReserverViewController.h"
 #import "AJHomeDataCenter.h"
 
@@ -25,17 +26,19 @@ NSInteger const MAX_HOUSE_NUMBER = 10;
 CGFloat const NEW_NORMAL_HEITHT = 450;
 CGFloat const NEW_MORE_HEITHT = 820;
 
-@interface AJHouseInfoViewController ()<UIScrollViewDelegate>
+@interface AJHouseInfoViewController ()<UIScrollViewDelegate,AJHouseInfoEditViewControllerDelegate>
 
-@property (weak, nonatomic) IBOutlet UIView *footerView;
-@property (weak, nonatomic) IBOutlet UILabel *likeLabel;
-@property (weak, nonatomic) IBOutlet UIButton *likeBtn;
-@property (strong, nonatomic) AVObject *likeHouse;
-@property (weak, nonatomic) IBOutlet UIView *headView;
-@property (weak, nonatomic) IBOutlet UILabel *houseTitle;
+@property (weak, nonatomic) IBOutlet UIButton *editBtn;//编辑按钮
+@property (weak, nonatomic) IBOutlet UIView *footerView;//底部视图
+@property (weak, nonatomic) IBOutlet UILabel *likeLabel;//关注
+@property (weak, nonatomic) IBOutlet UIButton *likeBtn;//关注按钮
+@property (weak, nonatomic) IBOutlet UIView *headView;//头部视图
+@property (weak, nonatomic) IBOutlet UILabel *houseTitle;//标题
+
+@property (strong, nonatomic) AVObject *likeHouse;//收藏对象
 @property (strong, nonatomic) AVObject *houseInfo;//当前房源信息
 @property (strong, nonatomic) AJNewReserverViewController *userReserer;//新预约
-@property (strong, nonatomic) AJHouseDetailsViewController *houseDetails;
+@property (strong, nonatomic) AJHouseDetailsViewController *houseDetails;//详情对象
 
 @end
 
@@ -45,6 +48,9 @@ CGFloat const NEW_MORE_HEITHT = 820;
     [super viewDidLoad];
     self.isDetails = YES;
 
+#if AJCLOUDADMIN
+    self.editBtn.hidden = NO;
+#endif
     // Do any additional setup after loading the view from its nib.
 }
 - (void)viewWillAppear:(BOOL)animated{
@@ -204,11 +210,22 @@ CGFloat const NEW_MORE_HEITHT = 820;
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     return 0.01;
 }
+
+#pragma mark AJHouseInfoEditViewControllerDelegate
+- (void)refreshHouseInfo{
+    self.tableView.tableHeaderView = self.houseDetails.view;
+}
 - (IBAction)headBtnAction:(UIButton *)sender {
     if (sender.tag==0) {
         POPVC;
     }else{
-        
+     //编辑界面
+        AJHouseInfoEditViewController *edit = [AJHouseInfoEditViewController new];
+        edit.detailsModal = self.detailsModal;
+        edit.title = _houseTitle.text;
+        edit.houseInfo = _houseInfo;
+        edit.delegate = self;
+        APP_PUSH(edit);
     }
 }
 //添加 取消收藏 预约 咨询经纪人

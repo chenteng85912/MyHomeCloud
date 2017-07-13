@@ -25,6 +25,8 @@
     [self.view addSubview:self.wkWebView];
     [self.view addSubview:self.progressView];
     
+    self.navigationItem.titleView = [[CTAutoRunLabel alloc] initWithFrame:CGRectMake(0, 0, dWidth-180, 44) labelText:self.title font:16 textColor:[UIColor whiteColor] speed:2];
+
     [self makeLeftCloseBtn];
     
     [self loadRequest];
@@ -77,7 +79,7 @@
 {
     debugLog(@"网页链接地址:%@",_urlPath);
 
-    NSURL *url = [[NSURL alloc] initWithString:@"http://news.fang.com/2017-07-08/25682296.htm"];
+    NSURL *url = [[NSURL alloc] initWithString:_urlPath];
    
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
