@@ -301,11 +301,11 @@ static NSString * const AutoLoopReuseIdentifier = @"AutoLoopReuseIdentifier";
 }
 - (UILabel *)pageLabel{
     if (_pageLabel==nil) {
-        _pageLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width-40, self.view.frame.size.height-30, 30, 20)];
+        _pageLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width-45, self.view.frame.size.height-30, 35, 20)];
         _pageLabel.textAlignment = NSTextAlignmentCenter;
         _pageLabel.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
         _pageLabel.textColor = [UIColor whiteColor];
-        _pageLabel.font = [UIFont systemFontOfSize:12];
+        _pageLabel.font = [UIFont systemFontOfSize:10];
         _pageLabel.layer.masksToBounds = YES;
         _pageLabel.layer.cornerRadius = 10.0;
         

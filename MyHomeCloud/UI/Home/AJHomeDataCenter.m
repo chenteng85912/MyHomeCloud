@@ -10,7 +10,7 @@
 #import "AJTbViewCellModel.h"
 #import "AJSecondHouseCellModel.h"
 #import "AJLetHouseCellModel.h"
-#import "AJNewHouseModel.h"
+#import "AJNewHouseCellModel.h"
 
 NSInteger const MAX_NUM = 100;
 NSInteger const SHOW_NUM = 5;
@@ -51,7 +51,7 @@ NSInteger const SHOW_NUM = 5;
     self.query.className = N_HOUSE;
 
     [self.query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
-        NSArray *dataArray = [self processData:[self randomArray:objects] className:NSStringFromClass([AJNewHouseModel class])];
+        NSArray *dataArray = [self processData:[self randomArray:objects] className:NSStringFromClass([AJNewHouseCellModel class])];
             
         afterRequest(YES,dataArray);
     }];

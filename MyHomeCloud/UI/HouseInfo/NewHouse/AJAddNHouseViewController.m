@@ -46,6 +46,7 @@
 }
 - (void)nextAction{
     [self.view endEditing:YES];
+    
     if (!_estateName.hasText) {
         [self.view showTips:_estateName.placeholder withState:TYKYHUDModeWarning complete:nil];
         return;
@@ -56,67 +57,67 @@
         [self.view showTips:_estatePrice.placeholder withState:TYKYHUDModeWarning complete:nil];
         return;
     }
-    [self.houseData setObject:_estateName.text forKey:HOUSE_UNIT_PRICE];
+    [self.houseData setObject:_estatePrice.text forKey:HOUSE_UNIT_PRICE];
 
     if (!_estateAddress.hasText) {
         [self.view showTips:_estateAddress.placeholder withState:TYKYHUDModeWarning complete:nil];
         return;
     }
-    [self.houseData setObject:_estateName.text forKey:ESTATE_ADDRESS];
+    [self.houseData setObject:_estateAddress.text forKey:ESTATE_ADDRESS];
 
     if (!_openTime.hasText) {
         [self.view showTips:_openTime.placeholder withState:TYKYHUDModeWarning complete:nil];
         return;
     }
-    [self.houseData setObject:_estateName.text forKey:ESTATE_OPENTIME];
+    [self.houseData setObject:_openTime.text forKey:ESTATE_OPENTIME];
 
     if (!_handTime.hasText) {
         [self.view showTips:_handTime.placeholder withState:TYKYHUDModeWarning complete:nil];
         return;
     }
-    [self.houseData setObject:_estateName.text forKey:ESTATE_HANDTIME];
+    [self.houseData setObject:_handTime.text forKey:ESTATE_HANDTIME];
 
     if (!_estateType.hasText) {
         [self.view showTips:_estateType.placeholder withState:TYKYHUDModeWarning complete:nil];
         return;
     }
-    [self.houseData setObject:_estateName.text forKey:ESTATE_TYPE];
+    [self.houseData setObject:_estateType.text forKey:ESTATE_TYPE];
 
     if (!_estateDiscribe.hasText) {
         [self.view showTips:_estateDiscribe.placeholder withState:TYKYHUDModeWarning complete:nil];
         return;
     }
-    [self.houseData setObject:_estateName.text forKey:HOUSE_DISCRIBE];
+    [self.houseData setObject:_estateDiscribe.text forKey:HOUSE_DISCRIBE];
 
     if (!_developName.hasText) {
         [self.view showTips:_developName.placeholder withState:TYKYHUDModeWarning complete:nil];
         return;
     }
-    [self.houseData setObject:_estateName.text forKey:HOUSE_DEVELOPER];
+    [self.houseData setObject:_developName.text forKey:HOUSE_DEVELOPER];
 
     if (!_saleLicense.hasText) {
         [self.view showTips:_saleLicense.placeholder withState:TYKYHUDModeWarning complete:nil];
         return;
     }
-    [self.houseData setObject:_estateName.text forKey:ESTATE_SALE_LICENCE];
+    [self.houseData setObject:_saleLicense.text forKey:ESTATE_SALE_LICENCE];
 
     if (!_estateYears.hasText) {
         [self.view showTips:_estateYears.placeholder withState:TYKYHUDModeWarning complete:nil];
         return;
     }
-    [self.houseData setObject:_estateName.text forKey:ESTATE_YEARS];
+    [self.houseData setObject:_estateYears.text forKey:ESTATE_YEARS];
 
     if (!_estateServiceName.hasText) {
         [self.view showTips:_estateServiceName.placeholder withState:TYKYHUDModeWarning complete:nil];
         return;
     }
-    [self.houseData setObject:_estateName.text forKey:ESTATE_SERVICE_NAME];
+    [self.houseData setObject:_estateServiceName.text forKey:ESTATE_SERVICE_NAME];
 
     if (!_buildingType.hasText) {
         [self.view showTips:_buildingType.placeholder withState:TYKYHUDModeWarning complete:nil];
         return;
     }
-    [self.houseData setObject:_estateName.text forKey:BUIDING_TYPE];
+    [self.houseData setObject:_buildingType.text forKey:BUIDING_TYPE];
 
     if (!_parking_HouseNum.hasText||!_parking_CarNum.hasText) {
         [self.view showTips:@"请输入车位配比" withState:TYKYHUDModeWarning complete:nil];
@@ -129,19 +130,19 @@
         [self.view showTips:_totalHouseNum.placeholder withState:TYKYHUDModeWarning complete:nil];
         return;
     }
-    [self.houseData setObject:_estateName.text forKey:ESTATE_TOTALHOUSE];
+    [self.houseData setObject:_totalHouseNum.text forKey:ESTATE_TOTALHOUSE];
     
     if (!_plotRatio.hasText) {
         [self.view showTips:_plotRatio.placeholder withState:TYKYHUDModeWarning complete:nil];
         return;
     }
-    [self.houseData setObject:_estateName.text forKey:ESTATE_PLOTRATIO];
+    [self.houseData setObject:_plotRatio.text forKey:ESTATE_PLOTRATIO];
 
     if (!_greenRatio.hasText) {
         [self.view showTips:_greenRatio.placeholder withState:TYKYHUDModeWarning complete:nil];
         return;
     }
-    [self.houseData setObject:_estateName.text forKey:ESTATE_GREENBELT];
+    [self.houseData setObject:_greenRatio.text forKey:ESTATE_GREENBELT];
 
     AJAddPicturesViewController *add = [AJAddPicturesViewController new];
     add.houseInfo  = self.houseData;

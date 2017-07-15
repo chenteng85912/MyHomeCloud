@@ -26,7 +26,7 @@
     //注册
     [self.colloctionView registerNib:[UINib nibWithNibName:NSStringFromClass([PreviewUpLoadCollectionViewCell class]) bundle:nil] forCellWithReuseIdentifier:NSStringFromClass([PreviewUpLoadCollectionViewCell class])];
     
-    [self.colloctionView registerClass:[AJPicCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass([AJPicCollectionReusableView class])];
+    [self.colloctionView registerNib:[UINib nibWithNibName:NSStringFromClass([AJPicCollectionReusableView class]) bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass([AJPicCollectionReusableView class])];
     
     self.colloctionView.alwaysBounceVertical = YES;
 
@@ -69,7 +69,7 @@
     NSMutableArray <AJUploadPicModel *> *temp = [NSMutableArray new];
     for (NSString *picUrl in array) {
         AJUploadPicModel *upload = [AJUploadPicModel new];
-        
+        upload.state = @2;
         upload.picUrl = picUrl;
         [temp addObject:upload];
     }
@@ -108,10 +108,15 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
     NSMutableArray *show = [NSMutableArray new];
-    for (AJUploadPicModel *modal in self.dataArray) {
+    NSMutableArray *selArray = self.dataArray[indexPath.section];
+    for (AJUploadPicModel *modal in selArray) {
         UIImage *img = [UIImage imageWithData:modal.picFile.getData];
-        
-        [show addObject:img];
+        if (img) {
+            [show addObject:img];
+        }else if(modal.picUrl){
+            [show addObject:modal.picUrl];
+
+        }
     }
     
     [[CTImagePreviewViewController defaultShowPicture] showPictureWithUrlOrImages:show withCurrentPageNum:indexPath.row andRootViewController:self];
@@ -119,13 +124,13 @@
 
 //动态设置每个Item的尺寸大小
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return CGSizeMake(dWidth/3, dWidth/3);
+    return CGSizeMake(dWidth/4, dWidth/4);
 }
 
 //动态设置某组头视图大小
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
     
-    return CGSizeMake(dWidth, 40);
+    return CGSizeMake(dWidth, 50);
 }
 
 //头、尾部显示
@@ -189,10 +194,10 @@
 - (void)removeCollectionItem:(NSInteger)index{
     NSInteger section = index/100;
     NSInteger item = index%100;
+    
     WeakSelf;
     [self.colloctionView performBatchUpdates:^{
-        
-        [weakSelf.dataArray[section] removeObjectAtIndex:index];
+        [weakSelf.dataArray[section] removeObjectAtIndex:item];
         
         NSIndexPath *indexpath = [NSIndexPath indexPathForRow:item inSection:section];
         
@@ -245,7 +250,7 @@
 {
     //长按手势
     UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handlelongGesture:)];
-    
+    longPress.minimumPressDuration = 0.3;
     [self.colloctionView addGestureRecognizer:longPress];
 }
 - (void)handlelongGesture:(UILongPressGestureRecognizer *)longGesture {
@@ -278,7 +283,8 @@
 - (BOOL)collectionView:(UICollectionView *)collectionView canMoveItemAtIndexPath:(NSIndexPath *)indexPath{
     
     BOOL isMove = YES;
-    for (AJUploadPicModel *modal in self.dataArray) {
+    NSMutableArray *selArray = self.dataArray[indexPath.section];
+    for (AJUploadPicModel *modal in selArray) {
         if (modal.state.integerValue==1) {
             isMove = NO;
             break;
@@ -306,11 +312,10 @@
     
 }
 - (void)saveAction{
-    [self.houseInfo setObject:self.dataArray[0] forKey:ESTATE_SCENE_PIC];
-    [self.houseInfo setObject:self.dataArray[1] forKey:ESTATE_EFFECT_PIC];
-    [self.houseInfo setObject:self.dataArray[2] forKey:ESTATE_SUPPORT_PIC];
-    [self.houseInfo setObject:self.dataArray[3] forKey:ESTATE_FACT_PIC];
 
+    if (![self checkAllPicture]) {
+        return;
+    }
     [KEYWINDOW showHUD:@"正在保存..."];
     [self.houseInfo saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         [KEYWINDOW removeHUD];
@@ -318,12 +323,62 @@
             [KEYWINDOW showTips:@"保存失败" withState:TYKYHUDModeFail complete:nil];
             return ;
         }
-        [KEYWINDOW showTips:@"保存成功" withState:TYKYHUDModeFail complete:^{
-            [self dismissViewControllerAnimated:YES completion:nil];
+        [KEYWINDOW showTips:@"保存成功" withState:TYKYHUDModeSuccess complete:^{
+            [self.navigationController dismissViewControllerAnimated:YES completion:^{
+                [[NSNotificationCenter defaultCenter] postNotificationName:kNewHouseNotification object:nil];
+
+            }];
         }];
 
     }];
 
+}
+//检测是否有图片还在上传
+- (BOOL)checkAllPicture{
+   
+    BOOL success = YES;
+    NSMutableArray <NSString *> *imgArray = [NSMutableArray new];
+    
+    for (int i=0;i<self.dataArray.count;i++) {
+        NSArray <AJUploadPicModel *> *temp = self.dataArray[i];
+        NSMutableArray *picArray = [NSMutableArray new];
+
+        for (AJUploadPicModel *modal in temp) {
+            
+            if (modal.state.integerValue!=2) {
+                success = NO;
+                break;
+            }
+            [picArray addObject:modal.picFile.url];
+            [imgArray addObject:modal.picFile.url];
+        }
+        if (i==0) {
+            [self.houseInfo setObject:picArray forKey:ESTATE_SCENE_PIC];
+            
+        }else if (i==1) {
+            [self.houseInfo setObject:picArray forKey:ESTATE_EFFECT_PIC];
+            
+        }else if (i==2) {
+            [self.houseInfo setObject:picArray forKey:ESTATE_SUPPORT_PIC];
+            
+        }else{
+            [self.houseInfo setObject:picArray forKey:ESTATE_FACT_PIC];
+
+        }
+    }
+    if (imgArray.count==0) {
+        success = NO;
+        [self.view showTips:@"请至少上传一张照片" withState:TYKYHUDModeWarning complete:nil];
+    }
+    if (success) {
+        [self.houseInfo setObject:imgArray[0]     forKey:HOUSE_THUMB];
+        [self.houseInfo setObject:imgArray        forKey:HOUSE_FILE_ID];
+    }else{
+        [self.view showTips:@"照片未全部上传完成" withState:TYKYHUDModeWarning complete:nil];
+
+    }
+    
+    return success;
 }
 - (NSMutableArray <NSMutableArray <AJUploadPicModel *>*> *)dataArray{
     if (_dataArray==nil) {

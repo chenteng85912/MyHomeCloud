@@ -77,9 +77,7 @@
         return nil;
     }
 }
-//- (NSString *)pointClassName{
-//    return LET_HOUSE;
-//}
+
 - (NSString *)recordClassName{
     return LET_RECORD;
 }
@@ -131,20 +129,19 @@
 }
 #pragma mark - UITableViewDelegate
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     AJLetHouseCellModel *model = (AJLetHouseCellModel *)self.dataArray[indexPath.row];
     
     AJHouseInfoViewController *details = [AJHouseInfoViewController new];
     details.detailsModal = LetModal;
     details.showModal = SearchHouseModal;
-    details.searchKey = self.dataArray[indexPath.row].objectData[HOUSE_ESTATE_NAME];
+    details.searchKey = model.objectData[HOUSE_ESTATE_NAME];
 
     if (self.showModal==UserFavoriteModal||self.showModal==UserRecordModal) {
-        details.houseId = self.dataArray[indexPath.row].objectData[HOUSE_ID];
+        details.houseId = model.objectData[HOUSE_ID];
         
     }else{
-        details.houseId = self.dataArray[indexPath.row].objectData.objectId;
+        details.houseId = model.objectData.objectId;
         
     }
 

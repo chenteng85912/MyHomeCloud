@@ -23,8 +23,8 @@
 
 NSInteger const MAX_HOUSE_NUMBER = 10;
 
-CGFloat const NEW_NORMAL_HEITHT = 450;
-CGFloat const NEW_MORE_HEITHT = 820;
+CGFloat const NEW_NORMAL_HEITHT = 210;
+CGFloat const NEW_MORE_HEITHT = 580;
 
 @interface AJHouseInfoViewController ()<UIScrollViewDelegate,AJHouseInfoEditViewControllerDelegate>
 
@@ -158,7 +158,7 @@ CGFloat const NEW_MORE_HEITHT = 820;
         _houseTitle.text = [NSString stringWithFormat:@"%@ %@ %@万",_houseInfo[HOUSE_ESTATE_NAME],_houseInfo[HOUSE_AMOUNT],_houseInfo[HOUSE_TOTAL_PRICE]];
        
     }else{
-        
+        _houseTitle.text = self.houseInfo[HOUSE_ESTATE_NAME];
     }
     
 }

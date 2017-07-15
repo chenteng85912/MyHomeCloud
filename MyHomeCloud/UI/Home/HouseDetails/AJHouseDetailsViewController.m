@@ -117,7 +117,7 @@ CGFloat const MORE_VIEW_HEIGHT = 370;
 //新房基本信息
 - (void)initNHouseInfo{
     _sameLabel.text = @"相似楼盘";
-    
+
     //基本信息
     _houseName.text = self.houseInfo[HOUSE_ESTATE_NAME];
     _estatePrice.text = [NSString stringWithFormat:@"%@元/平",self.houseInfo[HOUSE_UNIT_PRICE]];

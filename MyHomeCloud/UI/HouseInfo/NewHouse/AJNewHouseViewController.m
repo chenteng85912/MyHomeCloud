@@ -27,14 +27,11 @@
     if (self.showModal==SearchHouseModal||self.showModal==AllHouseModal) {
         self.navigationItem.titleView = self.searchBar;
     }else{
-        if (self.showModal==MyHouseModal||self.showModal==UserFavoriteModal) {
-            
-            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshHomeData) name:kNewHouseNotification object:nil];
-            
-        }
+       
         self.title = @"新房";
-        
     }
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshHomeData) name:kNewHouseNotification object:nil];
 
 }
 - (void)viewWillAppear:(BOOL)animated{
@@ -77,9 +74,7 @@
         return nil;
     }
 }
-//- (NSString *)pointClassName{
-//    return N_HOUSE;
-//}
+
 - (NSString *)recordClassName{
     return N_RECORD;
 }
@@ -87,7 +82,13 @@
     return N_FAVORITE;
 }
 - (BOOL)canDeleteCell{
-    if (self.showModal==SomeoneHouseModal||self.showModal ==SearchHouseModal||self.showModal==AllHouseModal) {
+    if (self.showModal==SomeoneHouseModal||self.showModal ==SearchHouseModal) {
+        return NO;
+    }
+    if (self.showModal==AllHouseModal) {
+        if (_isAmindModal) {
+            return YES;
+        }
         return NO;
     }
     return YES;
@@ -109,22 +110,23 @@
     AJNewHouseCellModel *model = (AJNewHouseCellModel *)self.dataArray[indexPath.row];
     
     AJHouseInfoViewController *details = [AJHouseInfoViewController new];
+    details.detailsModal = NModal;
     details.showModal = SearchHouseModal;
-    details.searchKey = self.dataArray[indexPath.row].objectData[HOUSE_ESTATE_NAME];
+    details.searchKey = model.objectData[HOUSE_ESTATE_NAME];
     
     if (self.showModal==UserFavoriteModal||self.showModal==UserRecordModal) {
-        
-        details.houseId = self.dataArray[indexPath.row].objectData[HOUSE_ID];
+        details.houseId = model.objectData[HOUSE_ID];
         
     }else{
-        details.houseId = self.dataArray[indexPath.row].objectData.objectId;
+        details.houseId = model.objectData.objectId;
         
     }
     
     APP_PUSH(details);
-    if (self.showModal==AllHouseModal||self.showModal==SomeoneHouseModal) {
-        [[AJHomeDataCenter new] addRecordData:model.objectData recordClassName:[self recordClassName]];
-    }
+    
+//    if (self.showModal==AllHouseModal||self.showModal==SomeoneHouseModal) {
+//        [[AJHomeDataCenter new] addRecordData:model.objectData recordClassName:[self recordClassName]];
+//    }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 0.01;

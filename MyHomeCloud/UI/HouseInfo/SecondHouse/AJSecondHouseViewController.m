@@ -139,14 +139,14 @@
     AJHouseInfoViewController *details = [AJHouseInfoViewController new];
     details.showModal = SearchHouseModal;
     details.detailsModal = SecondModal;
-    details.searchKey = self.dataArray[indexPath.row].objectData[HOUSE_ESTATE_NAME];
+    details.searchKey = model.objectData[HOUSE_ESTATE_NAME];
 
     if (self.showModal==UserFavoriteModal||self.showModal==UserRecordModal) {
        
-        details.houseId = self.dataArray[indexPath.row].objectData[HOUSE_ID];
+        details.houseId = model.objectData[HOUSE_ID];
 
     }else{
-        details.houseId = self.dataArray[indexPath.row].objectData.objectId;
+        details.houseId = model.objectData.objectId;
 
     }
     

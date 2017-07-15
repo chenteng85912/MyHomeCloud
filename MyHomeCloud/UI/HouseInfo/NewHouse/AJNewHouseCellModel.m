@@ -24,13 +24,18 @@
     
     //地址
     self.address = object[ESTATE_ADDRESS];
-    CGSize addressSize = [self.estateName sizeWithMaxSize:CGSizeMake(dWidth-cellX*3-IMG_WIDTH, MAXFLOAT) fontSize:DES_FONT];
+    CGSize addressSize = [self.address sizeWithMaxSize:CGSizeMake(dWidth-cellX*3-IMG_WIDTH, MAXFLOAT) fontSize:DES_FONT];
     self.addressFrame = CGRectMake(lx, CGRectGetMaxY(self.nameFrame)+subY, addressSize.width, addressSize.height);
     
+    //标签
+    self.estateTags = @"住宅 低密度 花园洋房";
+    CGSize tagSize = [self.estateTags sizeWithMaxSize:CGSizeMake(dWidth-cellX*3-IMG_WIDTH, MAXFLOAT) fontSize:DES_FONT];
+    self.tagsFrame = CGRectMake(lx, CGRectGetMaxY(self.addressFrame)+subY, tagSize.width, tagSize.height);
+    
     //单价
-    self.unitPrice = object[HOUSE_UNIT_PRICE];
-    CGSize priceSize = [self.estateName sizeWithMaxSize:CGSizeMake(dWidth-cellX*3-IMG_WIDTH, MAXFLOAT) fontSize:TOTAL_FONT];
-    self.priceFrame = CGRectMake(lx, CGRectGetMaxY(self.addressFrame)+subY, priceSize.width, priceSize.height);
+    self.unitPrice = [NSString stringWithFormat:@"%@元/平",object[HOUSE_UNIT_PRICE]];
+    CGSize priceSize = [self.unitPrice sizeWithMaxSize:CGSizeMake(dWidth-cellX*3-IMG_WIDTH, MAXFLOAT) fontSize:TOTAL_FONT];
+    self.priceFrame = CGRectMake(lx, CGRectGetMaxY(self.tagsFrame)+subY, priceSize.width+5, priceSize.height);
     
     self.cellHeight = CGRectGetMaxY(self.priceFrame)+cellY;
 

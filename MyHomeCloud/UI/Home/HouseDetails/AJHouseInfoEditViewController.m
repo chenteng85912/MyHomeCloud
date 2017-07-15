@@ -35,6 +35,7 @@
         _typeName.text = @"均价";
         _unitText.text = @"元/平";
         _priceText.placeholder = @"请输入楼盘均价";
+        _priceText.text = self.houseInfo[HOUSE_UNIT_PRICE];
 
     }
 }
@@ -44,33 +45,32 @@
         [self.view showTips:_priceText.placeholder withState:TYKYHUDModeWarning complete:nil];
         return;
     }
-    AVObject *tempHouse = [self.houseInfo mutableCopy];
 
     if (self.detailsModal==SecondModal) {
-        [tempHouse setObject:_priceText.text forKey:HOUSE_TOTAL_PRICE];
+        [self.houseInfo setObject:_priceText.text forKey:HOUSE_TOTAL_PRICE];
+        //房屋单价
+        NSInteger areaage = [self.houseInfo[HOUSE_AREAAGE] integerValue];
+        NSInteger unitPrice = _priceText.text.integerValue*10000/areaage;
+        [self.houseInfo setObject:[NSString stringWithFormat:@"%ld",(long)unitPrice]        forKey:HOUSE_UNIT_PRICE];
+
     }else if (self.detailsModal==LetModal){
-        [tempHouse setObject:_priceText.text forKey:LET_HOUSE_PRICE];
+        [self.houseInfo setObject:_priceText.text forKey:LET_HOUSE_PRICE];
 
     }else{
+        [self.houseInfo setObject:_priceText.text forKey:HOUSE_UNIT_PRICE];
 
     }
     
-    WeakSelf;
-    [tempHouse saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+    [KEYWINDOW showHUD:nil];
+    [self.houseInfo saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        [KEYWINDOW removeHUD];
         if (!succeeded) {
-            [self.view showTips:@"操作失败，请重试" withState:TYKYHUDModeFail complete:nil];
+            [KEYWINDOW showTips:@"操作失败，请重试" withState:TYKYHUDModeFail complete:nil];
 
             return;
         }
-        if (self.detailsModal==SecondModal) {
-            [weakSelf.houseInfo setObject:_priceText.text forKey:HOUSE_TOTAL_PRICE];
-        }else if (self.detailsModal==LetModal){
-            [weakSelf.houseInfo setObject:_priceText.text forKey:LET_HOUSE_PRICE];
-            
-        }else{
-            
-        }
-        [self.view showTips:@"修改成功" withState:TYKYHUDModeSuccess complete:^{
+        [self updateRecordAndFavoriteData];
+        [KEYWINDOW showTips:@"修改成功" withState:TYKYHUDModeSuccess complete:^{
             if ([self.delegate respondsToSelector:@selector(refreshHouseInfo)]) {
                 [self.delegate refreshHouseInfo];
             }

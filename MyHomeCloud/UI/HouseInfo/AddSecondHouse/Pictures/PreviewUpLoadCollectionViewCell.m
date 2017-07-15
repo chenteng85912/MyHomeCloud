@@ -39,15 +39,41 @@
         modal.delegate = self;
         _percentLabel.text = [NSString stringWithFormat:@"%ld%%",(long)modal.percent];
         self.circleView.progressValue = modal.percent/100.0;
-        
     }else{
         [_imgView sd_setImageWithURL:[NSURL URLWithString:modal.picUrl] placeholderImage:LOADIMAGE(@"defaultImg")];
         _percentLabel.text = nil;
         self.circleView.progressValue = 0;
     }
- 
+    [self initCellData];
+
 }
 
+- (void)initCellData{
+    NSInteger state = self.modal.state.integerValue;
+    switch (state) {
+        case 0:
+            _progressLabel.backgroundColor = waitColor;
+            _progressLabel.text = @"未上传";
+            _percentLabel.hidden = NO;
+            self.circleView.hidden = NO;
+            break;
+        case 1:
+            _progressLabel.backgroundColor = waitColor;
+            _progressLabel.text = @"上传中";
+            _percentLabel.hidden = NO;
+            self.circleView.hidden = NO;
+            break;
+        case 2:
+            [self uploadSuccess:YES];
+            break;
+        case 3:
+            [self uploadSuccess:NO];
+            break;
+        default:
+            break;
+    }
+   
+}
 - (void)refreshUploadProgress:(NSInteger)progress{
     _percentLabel.text = [NSString stringWithFormat:@"%ld%%",(long)progress];
     self.circleView.progressValue = progress/100.0;

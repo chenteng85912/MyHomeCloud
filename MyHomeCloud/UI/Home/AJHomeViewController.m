@@ -23,7 +23,7 @@
 
 #import "AJNewHouseViewController.h"
 #import "AJNewHouseTableViewCell.h"
-#import "AJNewHouseModel.h"
+#import "AJNewHouseCellModel.h"
 
 #define AutoLoopHeight 300.0*dWidth/720.0
 CGFloat const HEAD_BTN_HEIGHT = 100;
@@ -35,7 +35,7 @@ CGFloat const HEAD_BTN_HEIGHT = 100;
 
 @property (strong, nonatomic) NSMutableArray <AJSecondHouseCellModel *> *secondArray;
 @property (strong, nonatomic) NSMutableArray <AJLetHouseCellModel *> *letArray;
-@property (strong, nonatomic) NSMutableArray <AJNewHouseModel *> *newhouseArray;
+@property (strong, nonatomic) NSMutableArray <AJNewHouseCellModel *> *newhouseArray;
 
 @property (strong, nonatomic) UIButton *areaBtn;
 @property (strong, nonatomic) AJHomeDataCenter *homeData;
@@ -234,26 +234,24 @@ CGFloat const HEAD_BTN_HEIGHT = 100;
  
     AJHouseInfoViewController *details = [AJHouseInfoViewController new];
     details.showModal = SearchHouseModal;
-
+    AJTbViewCellModel *model;
     if (indexPath.section==0) {
-        details.houseId = self.secondArray[indexPath.row].objectData.objectId;
-        details.searchKey = self.secondArray[indexPath.row].objectData[HOUSE_ESTATE_NAME];
+        model = self.secondArray[indexPath.row];
         details.detailsModal = SecondModal;
     
-        [[AJHomeDataCenter new] addRecordData:self.secondArray[indexPath.row].objectData recordClassName:SECOND_RECORD];
+        [[AJHomeDataCenter new] addRecordData:model.objectData recordClassName:SECOND_RECORD];
     }else if (indexPath.section==1){
-        details.houseId = self.letArray[indexPath.row].objectData.objectId;
-        details.searchKey = self.letArray[indexPath.row].objectData[HOUSE_ESTATE_NAME];
+        model = self.letArray[indexPath.row];
         details.detailsModal = LetModal;
-        
-        [[AJHomeDataCenter new] addRecordData:self.letArray[indexPath.row].objectData recordClassName:LET_RECORD];
+        [[AJHomeDataCenter new] addRecordData:model.objectData recordClassName:LET_RECORD];
     }else{
-        details.houseId = self.newhouseArray[indexPath.row].objectData.objectId;
-        details.searchKey = self.newhouseArray[indexPath.row].objectData[HOUSE_AREA];
         details.detailsModal = NModal;
-        [[AJHomeDataCenter new] addRecordData:self.newhouseArray[indexPath.row].objectData recordClassName:N_RECORD];
+        model = self.newhouseArray[indexPath.row];
+
+//        [[AJHomeDataCenter new] addRecordData:self.newhouseArray[indexPath.row].objectData recordClassName:N_RECORD];
     }
-    
+    details.searchKey = model.objectData[HOUSE_ESTATE_NAME];
+    details.houseId = model.objectData.objectId;
     details.hidesBottomBarWhenPushed = YES;
     APP_PUSH(details);
     
@@ -369,7 +367,7 @@ CGFloat const HEAD_BTN_HEIGHT = 100;
     return _letArray;
 }
 
-- (NSMutableArray <AJNewHouseModel *> *)newhouseArray{
+- (NSMutableArray <AJNewHouseCellModel *> *)newhouseArray{
     if (_newhouseArray==nil) {
         _newhouseArray = [NSMutableArray new];
     }
