@@ -46,12 +46,9 @@
     if (_addModal==SecondHouseModal) {
         self.title = @"添加二手房源";
         _letView.hidden = YES;
-    }else if (_addModal==LetHouseModal){
+    }else{
         self.title = @"添加出租房源";
         _secondView.hidden = YES;
-    }else{
-        self.title = @"添加新楼盘";
-
     }
     _agenterName.text = [AVUser currentUser][USER_NICKNAME];
     _agenterPhone.text = [AVUser currentUser].mobilePhoneNumber;
@@ -212,10 +209,8 @@
     if (_houseData ==nil) {
         if (_addModal==SecondHouseModal) {
             _houseData = [AVObject objectWithClassName:SECOND_HAND_HOUSE];
-        }else if (_addModal==LetHouseModal) {
-            _houseData = [AVObject objectWithClassName:SECOND_HAND_HOUSE];
         }else{
-            _houseData = [AVObject objectWithClassName:N_HOUSE];
+            _houseData = [AVObject objectWithClassName:SECOND_HAND_HOUSE];
         }
         [_houseData setObject:[AVUser currentUser].mobilePhoneNumber      forKey:USER_PHONE];
 

@@ -117,6 +117,20 @@
 
 //新房信息
 #define ESTATE_ADDRESS         @"EstateAddress"//楼盘地址
+#define ESTATE_OPENTIME        @"EstateOpenTime"//开盘时间
+
+#define ESTATE_HANDTIME         @"EstateHandTime"//交楼时间
+#define ESTATE_TYPE             @"EstateType"//物业类型
+#define ESTATE_SALE_LICENCE     @"EstateSaleLicence"//预售许可
+#define ESTATE_YEARS            @"EstateYears"//产权年限
+#define ESTATE_SERVICE_NAME     @"EstateServiceName"//物业公司
+#define BUIDING_TYPE            @"BuidingType"//建筑类型
+#define PARKINGNUMBER           @"ParkingNum"//车位比
+#define ESTATE_TOTALHOUSE       @"EstateTotalHouseNum"//总户数
+#define ESTATE_PLOTRATIO        @"EstatePlotRatio"//容积率
+#define ESTATE_GREENBELT        @"EstateGreenBelt"//绿化率
+
+//新房照片
 #define ESTATE_SCENE_PIC       @"EstateScenePic"//现场图片
 #define ESTATE_SUPPORT_PIC     @"EstateSupportPic"//配套图片
 #define ESTATE_EFFECT_PIC      @"EstateEffectPic"//效果图

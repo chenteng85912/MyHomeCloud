@@ -12,6 +12,7 @@
 #import "AJNewHouseViewController.h"
 #import "AJAddHouserViewController.h"
 #import "AJMyReserverViewController.h"
+#import "AJAddNHouseViewController.h"
 
 @interface AJUserHouseViewController ()
 
@@ -25,25 +26,33 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
-    if (self.showModal==MyHouseModal) {
+    if (self.showModal==MyHouseModal||self.showModal==AllHouseModal) {
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"add"] style:UIBarButtonItemStylePlain target:self action:@selector(addNewHouse)];
 
     }
     [self initRootVC];
 }
 - (void)addNewHouse{
-    AJAddHouserViewController *add = [AJAddHouserViewController new];
-    if (_currentPageNum==0) {
-        
-        add.addModal = SecondHouseModal;
+    
+    if (_currentPageNum<2) {
+        AJAddHouserViewController *add = [AJAddHouserViewController new];
+        if (_currentPageNum==0) {
+            
+            add.addModal = SecondHouseModal;
+        }else {
+            add.addModal = LetHouseModal;
+            
+        }
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:add];
+        APP_PRESENT(nav);
+
     }else{
-        add.addModal = LetHouseModal;
+        AJAddNHouseViewController *nHouse = [AJAddNHouseViewController new];
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:nHouse];
+        APP_PRESENT(nav);
 
     }
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:add];
-
-    APP_PRESENT(nav);
-
+   
 }
 - (void)initRootVC{
     
@@ -78,7 +87,15 @@
 
     }else{
         //二手房 出租房
+        AJNewHouseViewController *house = [AJNewHouseViewController new];
+        house.showModal = _showModal;
+        house.title  =@"新房";
+        
+#if AJCLOUDADMIN
+        self.pageVC.viewControllers = @[second,let,house];
+#else
         self.pageVC.viewControllers = @[second,let];
+#endif
         if (_showModal==MyHouseModal) {
             self.pageVC.scrollBlock = ^(NSInteger pageNum){
                 _currentPageNum = pageNum;
@@ -90,10 +107,10 @@
         }
         if (_showModal==AllHouseModal) {
             //二手房 新房 租房
-            AJNewHouseViewController *house = [AJNewHouseViewController new];
-            house.showModal = _showModal;
-            house.title  =@"新房";
-            
+          
+            self.pageVC.scrollBlock = ^(NSInteger pageNum){
+                _currentPageNum = pageNum;
+            };
             self.pageVC.viewControllers = @[second,let,house];
 #if AJCLOUDADMIN
             second.isAmindModal = YES;

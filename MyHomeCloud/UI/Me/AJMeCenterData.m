@@ -96,12 +96,6 @@ NSString *const ServicePhone = @"4006005555";
     
     //section1
     temp = [NSMutableArray array];
-//    model = [AJMeModel new];
-//    model.title = @"购房计算器";
-//    model.iconName = @"house_cal";
-//    model.className = NSStringFromClass([AJSearchViewController class]);
-//    [temp addObject:model];
-    
     model = [AJMeModel new];
     model.title = [NSString stringWithFormat:@"客服热线(%@)",ServicePhone];
     model.iconName = @"service_phone";

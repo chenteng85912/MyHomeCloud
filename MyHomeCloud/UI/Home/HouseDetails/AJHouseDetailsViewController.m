@@ -9,6 +9,7 @@
 #import "AJHouseDetailsViewController.h"
 #import "AJLocationViewController.h"
 #import "AJEstateDetailsViewController.h"
+#import "AJAddPicturesViewController.h"
 
 CGFloat const MAP_HEIGHT = 240;
 CGFloat const INFO_NORMAL_HEITHT = 370;
@@ -71,6 +72,7 @@ CGFloat const MORE_VIEW_HEIGHT = 370;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -80,6 +82,7 @@ CGFloat const MORE_VIEW_HEIGHT = 370;
     [super viewDidAppear:animated];
 
 }
+
 - (void)initHouseDetailsInfo{
     
     //头部滚动图片
@@ -115,6 +118,27 @@ CGFloat const MORE_VIEW_HEIGHT = 370;
 - (void)initNHouseInfo{
     _sameLabel.text = @"相似楼盘";
     
+    //基本信息
+    _houseName.text = self.houseInfo[HOUSE_ESTATE_NAME];
+    _estatePrice.text = [NSString stringWithFormat:@"%@元/平",self.houseInfo[HOUSE_UNIT_PRICE]];
+    _estateAddress.text = self.houseInfo[ESTATE_ADDRESS];
+    _openTime.text = self.houseInfo[ESTATE_OPENTIME];
+    
+    
+    //更多信息
+    _acceptTime.text = self.houseInfo[ESTATE_HANDTIME];
+    _estateType.text = self.houseInfo[ESTATE_TYPE];
+    _describeInfo.text = self.houseInfo[HOUSE_DISCRIBE];
+    _developerName.text = self.houseInfo[HOUSE_DEVELOPER];
+    _saleLicence.text = self.houseInfo[ESTATE_SALE_LICENCE];
+    _estateYears.text = self.houseInfo[ESTATE_YEARS];
+    _estateName.text = self.houseInfo[ESTATE_SERVICE_NAME];
+    _buildingType.text = self.houseInfo[BUIDING_TYPE];
+    _carNumber.text = self.houseInfo[PARKINGNUMBER];
+    _totalHouseNumber.text = [NSString stringWithFormat:@"%@户",self.houseInfo[ESTATE_TOTALHOUSE]];
+    _plotRatio.text = self.houseInfo[ESTATE_PLOTRATIO];
+    _greenBelt.text = self.houseInfo[ESTATE_GREENBELT];
+
 }
 
 //二手房 租房基本信息
@@ -175,7 +199,14 @@ CGFloat const MORE_VIEW_HEIGHT = 370;
 
     }else if (sender.tag==1){
         //楼盘相册
+        AJAddPicturesViewController *add = [AJAddPicturesViewController new];
+        add.houseInfo = self.houseInfo;
+#if AJCLOUDADMIN
+        add.isEditModal = YES;
 
+#endif
+
+        APP_PRESENT([[UINavigationController alloc] initWithRootViewController:add]);
     }else {
         _mapView = nil;
         APP_PUSH(self.mapView);

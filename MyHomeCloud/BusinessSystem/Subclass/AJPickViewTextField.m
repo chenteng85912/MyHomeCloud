@@ -30,7 +30,7 @@ CGFloat const PICKVIEW_HEIGHT = 200.0;
 - (void)drawRect:(CGRect)rect
 {
    
-    if (self.tag==7) {
+    if (self.tag==7||self.tag==8||self.tag==9) {
         self.inputView = self.datePick;
 
     }else{
@@ -139,13 +139,24 @@ CGFloat const PICKVIEW_HEIGHT = 200.0;
 - (void)dateChanged:(UIDatePicker *)sender{
 
     NSDateFormatter *formatter = [NSDateFormatter new];
-    [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    if (self.tag==8||self.tag==9) {
+        [formatter setDateFormat:@"yyyy-MM-dd"];
+
+    }else{
+        [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+
+    }
     self.text = [formatter stringFromDate:sender.date];
 }
 - (UIDatePicker *)datePick{
     if (_datePick ==nil) {
         _datePick = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
-        _datePick.datePickerMode = UIDatePickerModeDateAndTime;
+        if (self.tag==8||self.tag==9) {
+            _datePick.datePickerMode = UIDatePickerModeDate;
+        }else{
+            _datePick.datePickerMode = UIDatePickerModeDateAndTime;
+
+        }
         _datePick.minuteInterval = 30;
         _datePick.minimumDate = [NSDate new];
         _datePick.maximumDate = [NSDate dateWithTimeIntervalSinceNow:30*24*60*60];
@@ -218,6 +229,20 @@ CGFloat const PICKVIEW_HEIGHT = 200.0;
         //装修情况
         if (self.tag==6) {
             [_firstArray addObjectsFromArray:@[@"毛坯",@"普通装修",@"精装修",@"豪华装修",@"未知"]];
+        }
+        
+        //物业类型
+        if (self.tag==10) {
+            [_firstArray addObjectsFromArray:@[@"洋房",@"公寓",@"普通住宅",@"商业",@"未知"]];
+        }
+        
+        //产权年限
+        if (self.tag==11) {
+            [_firstArray addObjectsFromArray:@[@"40年",@"50年",@"70年",@"未知"]];
+        }
+        //建筑类型
+        if (self.tag==12) {
+            [_firstArray addObjectsFromArray:@[@"低层",@"多层",@"中高层",@"高层",@"超高层",@"未知"]];
         }
     }
     return _firstArray;

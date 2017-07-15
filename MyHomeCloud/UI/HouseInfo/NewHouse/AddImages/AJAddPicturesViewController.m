@@ -22,15 +22,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.title = @"楼盘相册";
     //注册
     [self.colloctionView registerNib:[UINib nibWithNibName:NSStringFromClass([PreviewUpLoadCollectionViewCell class]) bundle:nil] forCellWithReuseIdentifier:NSStringFromClass([PreviewUpLoadCollectionViewCell class])];
     
     [self.colloctionView registerClass:[AJPicCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass([AJPicCollectionReusableView class])];
     
     self.colloctionView.alwaysBounceVertical = YES;
-    
+
     if (self.isEditModal) {
         [self setupLongPressGesture];
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:[CTTool makeCustomRightBtn:@"保 存" target:self sel:@selector(saveAction)]];
+
     }
 
     [self initDataArray];
@@ -46,18 +49,17 @@
 }
 - (void)initDataArray{
 
-    
     if (self.houseInfo) {
-        NSMutableArray *array1 = [self.houseInfo[ESTATE_SCENE_PIC] mutableCopy];
+        NSArray *array1 = self.houseInfo[ESTATE_SCENE_PIC];
         [self.dataArray addObject:[self creatUploadData:array1]];
         
-        NSMutableArray *array2 = [self.houseInfo[ESTATE_EFFECT_PIC] mutableCopy];
+        NSArray *array2 = self.houseInfo[ESTATE_EFFECT_PIC];
         [self.dataArray addObject:[self creatUploadData:array2]];
         
-        NSMutableArray *array3 = [self.houseInfo[ESTATE_SUPPORT_PIC] mutableCopy];
+        NSArray *array3 = self.houseInfo[ESTATE_SUPPORT_PIC];
         [self.dataArray addObject:[self creatUploadData:array3]];
         
-        NSMutableArray *array4 = [self.houseInfo[ESTATE_FACT_PIC] mutableCopy];
+        NSArray *array4 = self.houseInfo[ESTATE_FACT_PIC];
         [self.dataArray addObject:[self creatUploadData:array4]];
         
         [self.colloctionView reloadData];
@@ -302,6 +304,26 @@
     [self.dataArray[sourceIndexPath.section] insertObject:objc atIndex:destinationIndexPath.item];
     [self.colloctionView performSelector:@selector(reloadData) withObject:nil afterDelay:0.5];
     
+}
+- (void)saveAction{
+    [self.houseInfo setObject:self.dataArray[0] forKey:ESTATE_SCENE_PIC];
+    [self.houseInfo setObject:self.dataArray[1] forKey:ESTATE_EFFECT_PIC];
+    [self.houseInfo setObject:self.dataArray[2] forKey:ESTATE_SUPPORT_PIC];
+    [self.houseInfo setObject:self.dataArray[3] forKey:ESTATE_FACT_PIC];
+
+    [KEYWINDOW showHUD:@"正在保存..."];
+    [self.houseInfo saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        [KEYWINDOW removeHUD];
+        if (!succeeded) {
+            [KEYWINDOW showTips:@"保存失败" withState:TYKYHUDModeFail complete:nil];
+            return ;
+        }
+        [KEYWINDOW showTips:@"保存成功" withState:TYKYHUDModeFail complete:^{
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }];
+
+    }];
+
 }
 - (NSMutableArray <NSMutableArray <AJUploadPicModel *>*> *)dataArray{
     if (_dataArray==nil) {
