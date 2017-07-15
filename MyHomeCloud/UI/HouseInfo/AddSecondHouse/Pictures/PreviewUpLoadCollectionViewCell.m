@@ -20,7 +20,6 @@
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
 @property (unsafe_unretained, nonatomic) IBOutlet UIImageView *imgView;//图片
 @property (weak, nonatomic) IBOutlet UIView *backView;//蒙版
-@property (weak, nonatomic) IBOutlet UILabel *progressLabel;//上传状态
 @property (weak, nonatomic) IBOutlet UILabel *percentLabel;//上传进度
 @property (strong, nonatomic) IBOutlet UIButton *refreshBtn;//刷新按钮
 @property (strong, nonatomic) TJCircleView *circleView;//贝塞尔曲线

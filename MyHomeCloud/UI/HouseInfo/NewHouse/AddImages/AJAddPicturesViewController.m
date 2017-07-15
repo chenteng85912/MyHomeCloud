@@ -12,6 +12,7 @@
 #import "AJUploadPicModel.h"
 
 @interface AJAddPicturesViewController ()<CTCustomAlbumViewControllerDelegate>
+@property (weak, nonatomic) IBOutlet UILabel *tipLabel;
 @property (weak, nonatomic) IBOutlet UICollectionView *colloctionView;
 @property (strong, nonatomic) NSMutableArray <NSMutableArray <AJUploadPicModel *> *> *dataArray;
 @property (assign, nonatomic) NSInteger currentSecion;
@@ -35,7 +36,7 @@
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:[CTTool makeCustomRightBtn:@"保 存" target:self sel:@selector(saveAction)]];
 
     }
-
+    _tipLabel.hidden = !self.isEditModal;
     [self initDataArray];
 }
 - (void)viewWillAppear:(BOOL)animated{
@@ -45,7 +46,9 @@
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    
+    if (_isEditModal) {
+        self.colloctionView.frame = CGRectMake(0, 0, dWidth, dHeight-64-40);
+    }
 }
 - (void)initDataArray{
 
@@ -98,6 +101,8 @@
         cell.selectBtn.tag = indexPath.row+indexPath.section*100;
         BUTTON_ACTION(cell.selectBtn, self, @selector(deleteCellAction:));
 
+    }else{
+        cell.progressLabel.hidden = YES;
     }
     
     return cell;
