@@ -28,6 +28,7 @@
                 <outlet property="plotRatio" destination="EB7-2N-WvV" id="zv7-gS-NPv"/>
                 <outlet property="saleLicense" destination="AqJ-AZ-0r7" id="fvS-2k-RJU"/>
                 <outlet property="scrView" destination="ww8-B4-PPO" id="1sG-y0-9qf"/>
+                <outlet property="totalHouseNum" destination="RGZ-SB-nDo" id="EyQ-HC-6Cy"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

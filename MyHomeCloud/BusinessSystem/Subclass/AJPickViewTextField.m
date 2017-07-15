@@ -155,12 +155,12 @@ CGFloat const PICKVIEW_HEIGHT = 200.0;
             _datePick.datePickerMode = UIDatePickerModeDate;
         }else{
             _datePick.datePickerMode = UIDatePickerModeDateAndTime;
+            _datePick.minimumDate = [NSDate new];
+            _datePick.maximumDate = [NSDate dateWithTimeIntervalSinceNow:30*24*60*60];
+            _datePick.minuteInterval = 30;
+            _datePick.date = [NSDate new];
 
         }
-        _datePick.minuteInterval = 30;
-        _datePick.minimumDate = [NSDate new];
-        _datePick.maximumDate = [NSDate dateWithTimeIntervalSinceNow:30*24*60*60];
-        _datePick.date = [NSDate new];
         [_datePick addTarget:self action:@selector(dateChanged:) forControlEvents:UIControlEventValueChanged ];
         _datePick.backgroundColor = [UIColor whiteColor];
 

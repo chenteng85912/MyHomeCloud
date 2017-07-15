@@ -30,6 +30,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *parking_HouseNum;
 
 @property (weak, nonatomic) IBOutlet UITextField *parking_CarNum;
+@property (weak, nonatomic) IBOutlet UITextField *totalHouseNum;
 
 @property (strong, nonatomic) AVObject *houseData;//新楼盘信息
 
@@ -117,13 +118,19 @@
     }
     [self.houseData setObject:_estateName.text forKey:BUIDING_TYPE];
 
-    if (!_parking_HouseNum.hasText||!!_parking_CarNum.hasText) {
+    if (!_parking_HouseNum.hasText||!_parking_CarNum.hasText) {
         [self.view showTips:@"请输入车位配比" withState:TYKYHUDModeWarning complete:nil];
         return;
     }
     NSString *parkRatio = [NSString stringWithFormat:@"%@:%@",_parking_HouseNum.text,_parking_CarNum.text];
     [self.houseData setObject:parkRatio forKey:PARKINGNUMBER];
 
+    if (!_totalHouseNum.hasText) {
+        [self.view showTips:_totalHouseNum.placeholder withState:TYKYHUDModeWarning complete:nil];
+        return;
+    }
+    [self.houseData setObject:_estateName.text forKey:ESTATE_TOTALHOUSE];
+    
     if (!_plotRatio.hasText) {
         [self.view showTips:_plotRatio.placeholder withState:TYKYHUDModeWarning complete:nil];
         return;
