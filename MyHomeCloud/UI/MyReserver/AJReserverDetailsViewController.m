@@ -10,6 +10,7 @@
 #import "AJEstateDetailsViewController.h"
 #import "AJReserverCellModel.h"
 #import "AJMyReserverViewController.h"
+#import "AJHouseInfoViewController.h"
 
 @interface AJReserverDetailsViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *priceType;
@@ -31,11 +32,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"预约详情";
 #if AJCLOUDADMIN
     _reserverBtn.hidden = NO;
     _cancelBtn.hidden = NO;
     
 #endif
+    [self refreshView];
 }
 - (void)refreshView{
     _housePrice.text = _reserverModal.housePrice;
@@ -50,38 +53,53 @@
     _state.text = _reserverModal.stateStr;
     _state.backgroundColor = _reserverModal.stateColor;
     
-    if (_reserverModal.state.integerValue>0) {
-        _reserverBtn.enabled = NO;
-        _reserverBtn.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
-    }
-    if (_reserverModal.state.integerValue>1) {
-        _cancelBtn.enabled = NO;
-        _cancelBtn.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
-        
-    }
-    else{
+    if (_reserverModal.state.integerValue==0) {
         _reserverBtn.enabled = YES;
         _reserverBtn.backgroundColor = [UIColor colorWithRed:0 green:128.0/255.0 blue:0 alpha:1];
         _cancelBtn.enabled = YES;
         _cancelBtn.backgroundColor = [UIColor darkGrayColor];
+       
+    }else if (_reserverModal.state.integerValue==1) {
+        _cancelBtn.enabled = YES;
+        _cancelBtn.backgroundColor = [UIColor darkGrayColor];
+
+        _reserverBtn.enabled = NO;
+        _reserverBtn.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
+    }else{
+        _cancelBtn.enabled = NO;
+        _cancelBtn.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
+        _reserverBtn.enabled = NO;
+        _reserverBtn.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
     }
     
 }
 - (IBAction)buttonAction:(UIButton *)sender {
     if (sender.tag==0) {
-        AJEstateDetailsViewController *estate = [AJEstateDetailsViewController new];
-        estate.title = _houseName.text;
-        if (_rModal==SecondReserverModal) {
-            estate.detailsModal = SecondModal;
-            
+       
+        if (_rModal!=NReserverModal) {
+            AJEstateDetailsViewController *estate = [AJEstateDetailsViewController new];
+            estate.title = _houseName.text;
+            if (_rModal==SecondReserverModal) {
+                estate.detailsModal = SecondModal;
+                
+            }else{
+                estate.detailsModal = LetModal;
+                
+            }
+            estate.isFromReserver = YES;
+            estate.houseInfo = _reserverModal.objectData;
+            APP_PUSH(estate);
         }else{
-            estate.detailsModal = LetModal;
-
+            //楼盘 跳转到楼盘详情
+            AJHouseInfoViewController *details = [AJHouseInfoViewController new];
+            details.detailsModal = NModal;
+            details.showModal = SearchHouseModal;
+            details.searchKey = _reserverModal.objectData[HOUSE_AREA];
+            details.houseId = _reserverModal.objectData[HOUSE_ID];
+            
+            APP_PUSH(details);
         }
-        estate.isFromReserver = YES;
-        estate.houseInfo = _reserverModal.objectData;
-        APP_PUSH(estate);
-        [self hiddenView];
+       
 
     }else if (sender.tag==1){
         //确认预约
@@ -90,10 +108,7 @@
         
     }else if (sender.tag==2){
         [self changeReserverStateAction:@"2"];
-    }else if (sender.tag==3){
-        [self hiddenView];
-    }
-    else{
+    }else{
         [CTTool takePhoneNumber:_agenterPhone.text];
     }
 }
@@ -119,11 +134,8 @@
                 }
                 [weakSelf.view showTips:@"操作成功" withState:TYKYHUDModeSuccess complete:^{
                     
-                    [self hiddenView];
-                    
                     [weakSelf.reserverModal calculateSizeConstrainedToSize];
-                    AJMyReserverViewController *myReserver = (AJMyReserverViewController *)self.parentViewController;
-                    [myReserver loadDataSuccess];
+                    [weakSelf.navigationController dismissViewControllerAnimated:YES completion:nil];
                 }];
                 
             }];
@@ -131,15 +143,7 @@
     }];
 
 }
-- (void)hiddenView{
-    [UIView animateWithDuration:0.2 animations:^{
-        self.view.alpha = 0;
-    } completion:^(BOOL finished) {
-        [self removeFromParentViewController];
-        
-    }];
 
-}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

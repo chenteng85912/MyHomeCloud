@@ -12,6 +12,7 @@
 #import "CTAutoPositionScrollview.h"
 
 @interface AJAddNHouseViewController ()
+@property (weak, nonatomic) IBOutlet AJPickViewTextField *estateArea;
 @property (weak, nonatomic) IBOutlet CTAutoPositionScrollview *scrView;
 @property (weak, nonatomic) IBOutlet UITextField *estateName;
 @property (weak, nonatomic) IBOutlet UITextField *estatePrice;
@@ -31,6 +32,8 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *parking_CarNum;
 @property (weak, nonatomic) IBOutlet UITextField *totalHouseNum;
+@property (weak, nonatomic) IBOutlet UITextField *agenterName;
+@property (weak, nonatomic) IBOutlet UITextField *agenterPhone;
 
 @property (strong, nonatomic) AVObject *houseData;//新楼盘信息
 
@@ -59,11 +62,17 @@
     }
     [self.houseData setObject:_estatePrice.text forKey:HOUSE_UNIT_PRICE];
 
+    if (!_estateArea.hasText) {
+        [self.view showTips:@"请选择地区" withState:TYKYHUDModeWarning complete:nil];
+        return;
+    }
+    [self.houseData setObject:_estateArea.text forKey:HOUSE_AREA];
     if (!_estateAddress.hasText) {
         [self.view showTips:_estateAddress.placeholder withState:TYKYHUDModeWarning complete:nil];
         return;
     }
-    [self.houseData setObject:_estateAddress.text forKey:ESTATE_ADDRESS];
+    NSString *address = [NSString stringWithFormat:@"%@-%@",_estateArea.text,_estateAddress.text];
+    [self.houseData setObject:address forKey:ESTATE_ADDRESS];
 
     if (!_openTime.hasText) {
         [self.view showTips:_openTime.placeholder withState:TYKYHUDModeWarning complete:nil];
@@ -143,7 +152,24 @@
         return;
     }
     [self.houseData setObject:_greenRatio.text forKey:ESTATE_GREENBELT];
+    
+    if (!_agenterName.hasText) {
+        [self.view showTips:_agenterName.placeholder withState:TYKYHUDModeWarning complete:nil];
+        return;
+    }
+    [self.houseData setObject:_agenterName.text forKey:AGENTER_NAME];
+    
+    if (!_agenterPhone.hasText) {
+        [self.view showTips:_agenterPhone.placeholder withState:TYKYHUDModeWarning complete:nil];
+        return;
+    }
+    [self.houseData setObject:_agenterPhone.text forKey:AGENTER_PHONE];
 
+    
+    //发布者信息
+    [self.houseData setObject:[AVUser currentUser].objectId      forKey:HOUSE_AUTHOR];
+    [self.houseData setObject:[AVUser currentUser][HEAD_URL]     forKey:HEAD_URL];
+    
     AJAddPicturesViewController *add = [AJAddPicturesViewController new];
     add.houseInfo  = self.houseData;
     add.isEditModal = YES;

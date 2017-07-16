@@ -235,26 +235,33 @@ CGFloat const HEAD_BTN_HEIGHT = 100;
     AJHouseInfoViewController *details = [AJHouseInfoViewController new];
     details.showModal = SearchHouseModal;
     AJTbViewCellModel *model;
+    NSString *className;
+
     if (indexPath.section==0) {
         model = self.secondArray[indexPath.row];
         details.detailsModal = SecondModal;
-    
-        [[AJHomeDataCenter new] addRecordData:model.objectData recordClassName:SECOND_RECORD];
+        className = SECOND_RECORD;
+        details.searchKey = model.objectData[HOUSE_ESTATE_NAME];
+
     }else if (indexPath.section==1){
         model = self.letArray[indexPath.row];
         details.detailsModal = LetModal;
-        [[AJHomeDataCenter new] addRecordData:model.objectData recordClassName:LET_RECORD];
+        className = LET_RECORD;
+        details.searchKey = model.objectData[HOUSE_ESTATE_NAME];
+
     }else{
         details.detailsModal = NModal;
         model = self.newhouseArray[indexPath.row];
+        className = N_RECORD;
+        details.searchKey = model.objectData[HOUSE_AREA];
 
-//        [[AJHomeDataCenter new] addRecordData:self.newhouseArray[indexPath.row].objectData recordClassName:N_RECORD];
     }
-    details.searchKey = model.objectData[HOUSE_ESTATE_NAME];
     details.houseId = model.objectData.objectId;
     details.hidesBottomBarWhenPushed = YES;
     APP_PUSH(details);
     
+    [[AJHomeDataCenter new] addRecordData:model.objectData recordClassName:className];
+
 }
 
 #pragma mark CTAutoLoopViewDelegate

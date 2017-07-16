@@ -16,4 +16,6 @@
 
 @property (assign, nonatomic) DetailsHouseModal detailsModal;
 
+@property (assign, nonatomic) BOOL isChange;//删除或增加了文件 
+
 @end

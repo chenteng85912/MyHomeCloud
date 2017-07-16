@@ -14,10 +14,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *agenterName;
 @property (weak, nonatomic) IBOutlet UILabel *agenterPhone;
 @property (weak, nonatomic) IBOutlet UIButton *confirmBut;
-@property (weak, nonatomic) IBOutlet UIButton *closeBtn;
 @property (weak, nonatomic) IBOutlet UILabel *houseName;
 @property (weak, nonatomic) IBOutlet UITextField *userName;
 @property (weak, nonatomic) IBOutlet UITextField *userPhone;
+@property (weak, nonatomic) IBOutlet UILabel *houseType;
 @property (weak, nonatomic) IBOutlet AJPickViewTextField *reserverTime;
 
 @end
@@ -26,18 +26,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    self.title = @"预约看房";
+    self.title = @"预约看房";
     
     _houseName.text = _houseInfo[HOUSE_ESTATE_NAME];
     _agenterName.text = _houseInfo[AGENTER_NAME];
     _agenterPhone.text = _houseInfo[AGENTER_PHONE];
+  
     _userPhone.text = [AVUser currentUser].mobilePhoneNumber;
 
-    // Do any additional setup after loading the view from its nib.
+    if (self.reserverModal == NReserverModal) {
+        _houseType.text = @"楼盘名称";
+    }
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
 
 }
 #pragma mark -life UITextFieldDelegate
@@ -89,6 +91,7 @@
         [obj setObject:_houseInfo[HOUSE_AMOUNT]      forKey:HOUSE_AMOUNT];
         [obj setObject:_houseInfo[HOUSE_AREAAGE]     forKey:HOUSE_AREAAGE];
         [obj setObject:_houseInfo[ESTATE_ID]         forKey:ESTATE_ID];
+        [obj setObject:_houseInfo[HOUSE_ID]          forKey:HOUSE_ID];
 
         [obj setObject:_houseName.text      forKey:HOUSE_ESTATE_NAME];
         [obj setObject:_agenterName.text    forKey:AGENTER_NAME];
@@ -110,30 +113,22 @@
 
         }
         
-        [self.view showHUD:@"正在提交..."];
+        [KEYWINDOW showHUD:@"正在提交..."];
         [obj saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-            [self.view removeHUD];
+            [KEYWINDOW removeHUD];
             if (!succeeded) {
-                [self.view showTips:@"提交预约失败" withState:TYKYHUDModeFail complete:nil];
+                [KEYWINDOW showTips:@"提交预约失败" withState:TYKYHUDModeFail complete:nil];
 
                 return ;
             }
-            [self.view showTips:@"提交预约成功" withState:TYKYHUDModeSuccess complete:^{
+            [KEYWINDOW showTips:@"提交预约成功" withState:TYKYHUDModeSuccess complete:^{
                
                 AJMyReserverViewController *myReserver = [AJMyReserverViewController new];
                 myReserver.reserverModal =  _reserverModal;
                 myReserver.showModal = ReserverHouseModal;
                 myReserver.isNewReserver = YES;
                 APP_PUSH(myReserver);
-                [UIView animateWithDuration:0.2 animations:^{
-                    self.view.alpha = 0;
-                } completion:^(BOOL finished) {
-                    [self removeFromParentViewController];
-                    _userName.text = nil;
-                    _userPhone.text = nil;
-                    _reserverTime.text = nil;
-                    
-                }];
+                
             }];
           
         }];

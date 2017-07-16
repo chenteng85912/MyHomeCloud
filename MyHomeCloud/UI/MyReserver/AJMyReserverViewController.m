@@ -12,7 +12,7 @@
 #import "AJReserverDetailsViewController.h"
 
 @interface AJMyReserverViewController ()
-@property (strong, nonatomic) AJReserverDetailsViewController *details;
+
 @end
 
 @implementation AJMyReserverViewController
@@ -45,6 +45,7 @@
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
 
+    [self.tableView reloadData];
 }
 #pragma mark - AJTbViewProtocol
 - (BOOL)makeMJRefresh{
@@ -95,18 +96,15 @@
 }
 #pragma mark - UITableViewDelegate
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     AJReserverCellModel *model = (AJReserverCellModel *)self.dataArray[indexPath.row];
+    AJReserverDetailsViewController *details = [AJReserverDetailsViewController new];
+    details.rModal = self.reserverModal;
+    details.reserverModal = model;
     
-    [self addChildViewController:self.details];
-    self.details.reserverModal = model;
-
-    [self.details refreshView];
-    [UIView animateWithDuration:0.3 animations:^{
-        self.details.view.alpha = 1.0;
-    }];
-
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:details];
+    
+    [self presentViewController:nav animated:YES completion:nil];
   
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -117,26 +115,14 @@
 }
 
 - (void)backToPreVC{
-    POPVC;
-}
-- (AJReserverDetailsViewController *)details{
-    if (_details ==nil) {
-        _details = [AJReserverDetailsViewController new];
-        _details.view.alpha = 0;
-        _details.rModal = _reserverModal;
-#if AJCLOUDADMIN
-        _details.view.frame = self.view.bounds;
-        [self.view addSubview:_details.view];
-
-#else
-        _details.view.frame = [UIApplication sharedApplication].keyWindow.bounds;
-        [[UIApplication sharedApplication].keyWindow addSubview:_details.view];
-
-#endif
+    if (_isNewReserver) {
+        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    }else{
+        POPVC;
 
     }
-    return _details;
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

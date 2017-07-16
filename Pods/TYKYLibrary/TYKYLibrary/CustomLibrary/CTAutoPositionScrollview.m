@@ -26,7 +26,7 @@
 
     if (CGSizeEqualToSize(self.contentSize, CGSizeZero) ) {
         if (self.tag==1001) {
-            self.contentSize = CGSizeMake(self.bounds.size.width, 910);
+            self.contentSize = CGSizeMake(self.bounds.size.width, 1050);
 
         }else{
             self.contentSize = self.bounds.size;

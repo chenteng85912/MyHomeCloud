@@ -107,7 +107,7 @@
 #define HOUSE_DISCRIBE          @"HouseDescribe"//房屋装修
 #define HOUSE_LATITUDE          @"Latitude"//维度
 #define HOUSE_LONGITUDE         @"Longitude"//经度
-#define ESTATE_ID               @"EstateId"//小区ID
+#define ESTATE_ID               @"EstateId"//小区ID 所有小区列表
 #define AGENTER_NAME            @"agenterName"//经纪人姓名
 #define AGENTER_PHONE           @"agenterPhone"//经纪人电话
 

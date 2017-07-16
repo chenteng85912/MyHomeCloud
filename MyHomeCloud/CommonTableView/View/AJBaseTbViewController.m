@@ -366,7 +366,6 @@
                 
                 //删除我的房源
                 if (self.showModal==MyHouseModal) {
-//                    [weakSelf deleteRecordData:model.subObj];
                     //删除图片文件
                     NSDictionary *fileDic = model.objectData[HOUSE_FILE_ID];
                     for (NSString *fileId in fileDic.allKeys) {

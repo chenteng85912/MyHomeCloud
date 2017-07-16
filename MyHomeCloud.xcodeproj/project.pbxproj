@@ -175,7 +175,6 @@
 		0BF2C6D91EFA5A4400EA46AF /* AJAddHouserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B1904AE1EE66192004C46EE /* AJAddHouserViewController.xib */; };
 		0BF2C6DB1EFA5A4400EA46AF /* AJNewReserverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4AE33071EF51EEC004B0A54 /* AJNewReserverViewController.xib */; };
 		0BF2C6DC1EFA5A4400EA46AF /* AJLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A44AEBCE1EEEC72A00109FB8 /* AJLocationViewController.xib */; };
-		0BF2C6DD1EFA5A4400EA46AF /* AJMyReserverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4AE330C1EF51F4A004B0A54 /* AJMyReserverViewController.xib */; };
 		0BF2C6DE1EFA5A4400EA46AF /* AJSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A411B3BF1EC4B0BD00244B6E /* AJSettingViewController.xib */; };
 		0BF2C6DF1EFA5A4400EA46AF /* PreviewUpLoadCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B1904BF1EE66192004C46EE /* PreviewUpLoadCollectionViewCell.xib */; };
 		0BF2C6E01EFA5A4400EA46AF /* AJHouseDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A40B20B51EC733280027399E /* AJHouseDetailsViewController.xib */; };
@@ -236,7 +235,6 @@
 		A4AE33081EF51EEC004B0A54 /* AJNewReserverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AE33061EF51EEC004B0A54 /* AJNewReserverViewController.m */; };
 		A4AE33091EF51EEC004B0A54 /* AJNewReserverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4AE33071EF51EEC004B0A54 /* AJNewReserverViewController.xib */; };
 		A4AE330D1EF51F4A004B0A54 /* AJMyReserverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AE330B1EF51F4A004B0A54 /* AJMyReserverViewController.m */; };
-		A4AE330E1EF51F4A004B0A54 /* AJMyReserverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4AE330C1EF51F4A004B0A54 /* AJMyReserverViewController.xib */; };
 		A4AE33121EF51F6F004B0A54 /* AJReserverTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AE33101EF51F6F004B0A54 /* AJReserverTableViewCell.m */; };
 		A4AE33131EF51F6F004B0A54 /* AJReserverTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4AE33111EF51F6F004B0A54 /* AJReserverTableViewCell.xib */; };
 		A4AE33161EF52572004B0A54 /* AJReserverCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AE33151EF52572004B0A54 /* AJReserverCellModel.m */; };
@@ -458,7 +456,6 @@
 		A4AE33071EF51EEC004B0A54 /* AJNewReserverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJNewReserverViewController.xib; sourceTree = "<group>"; };
 		A4AE330A1EF51F4A004B0A54 /* AJMyReserverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJMyReserverViewController.h; sourceTree = "<group>"; };
 		A4AE330B1EF51F4A004B0A54 /* AJMyReserverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJMyReserverViewController.m; sourceTree = "<group>"; };
-		A4AE330C1EF51F4A004B0A54 /* AJMyReserverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJMyReserverViewController.xib; sourceTree = "<group>"; };
 		A4AE330F1EF51F6F004B0A54 /* AJReserverTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJReserverTableViewCell.h; sourceTree = "<group>"; };
 		A4AE33101EF51F6F004B0A54 /* AJReserverTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJReserverTableViewCell.m; sourceTree = "<group>"; };
 		A4AE33111EF51F6F004B0A54 /* AJReserverTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJReserverTableViewCell.xib; sourceTree = "<group>"; };
@@ -1057,7 +1054,6 @@
 				A4AE33071EF51EEC004B0A54 /* AJNewReserverViewController.xib */,
 				A4AE330A1EF51F4A004B0A54 /* AJMyReserverViewController.h */,
 				A4AE330B1EF51F4A004B0A54 /* AJMyReserverViewController.m */,
-				A4AE330C1EF51F4A004B0A54 /* AJMyReserverViewController.xib */,
 				A4AE331C1EF52E7A004B0A54 /* AJReserverDetailsViewController.h */,
 				A4AE331D1EF52E7A004B0A54 /* AJReserverDetailsViewController.m */,
 				A4AE331E1EF52E7A004B0A54 /* AJReserverDetailsViewController.xib */,
@@ -1266,7 +1262,6 @@
 				A4AE33091EF51EEC004B0A54 /* AJNewReserverViewController.xib in Resources */,
 				A44AEBD11EEEC72A00109FB8 /* AJLocationViewController.xib in Resources */,
 				0B8E185B1F17470400FB92D2 /* AJHouseInfoEditViewController.xib in Resources */,
-				A4AE330E1EF51F4A004B0A54 /* AJMyReserverViewController.xib in Resources */,
 				A411B3C11EC4B0BD00244B6E /* AJSettingViewController.xib in Resources */,
 				0B1904CD1EE66192004C46EE /* PreviewUpLoadCollectionViewCell.xib in Resources */,
 				0BC2B46F1F0CFD1F0041C9C2 /* AJMessageController.xib in Resources */,
@@ -1322,7 +1317,6 @@
 				0BF2C6DB1EFA5A4400EA46AF /* AJNewReserverViewController.xib in Resources */,
 				0BF2C6DC1EFA5A4400EA46AF /* AJLocationViewController.xib in Resources */,
 				0B8E185C1F17470400FB92D2 /* AJHouseInfoEditViewController.xib in Resources */,
-				0BF2C6DD1EFA5A4400EA46AF /* AJMyReserverViewController.xib in Resources */,
 				0BF2C6DE1EFA5A4400EA46AF /* AJSettingViewController.xib in Resources */,
 				0BF2C6DF1EFA5A4400EA46AF /* PreviewUpLoadCollectionViewCell.xib in Resources */,
 				0BC2B4701F0CFD1F0041C9C2 /* AJMessageController.xib in Resources */,

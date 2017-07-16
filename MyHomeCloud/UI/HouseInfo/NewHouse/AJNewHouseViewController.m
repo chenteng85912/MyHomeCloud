@@ -112,7 +112,7 @@
     AJHouseInfoViewController *details = [AJHouseInfoViewController new];
     details.detailsModal = NModal;
     details.showModal = SearchHouseModal;
-    details.searchKey = model.objectData[HOUSE_ESTATE_NAME];
+    details.searchKey = model.objectData[HOUSE_AREA];
     
     if (self.showModal==UserFavoriteModal||self.showModal==UserRecordModal) {
         details.houseId = model.objectData[HOUSE_ID];
@@ -124,9 +124,9 @@
     
     APP_PUSH(details);
     
-//    if (self.showModal==AllHouseModal||self.showModal==SomeoneHouseModal) {
-//        [[AJHomeDataCenter new] addRecordData:model.objectData recordClassName:[self recordClassName]];
-//    }
+    if (self.showModal==AllHouseModal||self.showModal==SomeoneHouseModal) {
+        [[AJHomeDataCenter new] addRecordData:model.objectData recordClassName:[self recordClassName]];
+    }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 0.01;

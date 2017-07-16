@@ -15,8 +15,5 @@
 
 @property (strong, nonatomic) AJReserverCellModel *reserverModal;
 @property (assign, nonatomic) UserReserverModal rModal;
-@property (weak, nonatomic) IBOutlet UIView *homeView;
 
-
-- (void)refreshView;
 @end

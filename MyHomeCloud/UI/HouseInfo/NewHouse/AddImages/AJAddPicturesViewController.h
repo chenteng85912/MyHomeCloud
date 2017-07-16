@@ -8,9 +8,11 @@
 
 #import "CTBaseViewController.h"
 
+@class AJHouseInfoViewController;
 @interface AJAddPicturesViewController : CTBaseViewController
 
 @property (assign, nonatomic) BOOL isEditModal;
 @property (strong, nonatomic) AVObject *houseInfo;//当前房源信息
+@property (strong, nonatomic) AJHouseInfoViewController *houseInfoVC;
 
 @end

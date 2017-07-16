@@ -10,6 +10,7 @@
 #import "AJLocationViewController.h"
 #import "AJEstateDetailsViewController.h"
 #import "AJAddPicturesViewController.h"
+#import "AJHouseInfoViewController.h"
 
 CGFloat const MAP_HEIGHT = 240;
 CGFloat const INFO_NORMAL_HEITHT = 370;
@@ -85,6 +86,8 @@ CGFloat const MORE_VIEW_HEIGHT = 370;
 
 - (void)initHouseDetailsInfo{
     
+    _autoLoopDataArray = nil;
+    _autoLoopView = nil;
     //头部滚动图片
     [self.view addSubview:self.autoLoopView.view];
 
@@ -116,7 +119,7 @@ CGFloat const MORE_VIEW_HEIGHT = 370;
 }
 //新房基本信息
 - (void)initNHouseInfo{
-    _sameLabel.text = @"相似楼盘";
+    _sameLabel.text = @"附近楼盘";
 
     //基本信息
     _houseName.text = self.houseInfo[HOUSE_ESTATE_NAME];
@@ -201,12 +204,16 @@ CGFloat const MORE_VIEW_HEIGHT = 370;
         //楼盘相册
         AJAddPicturesViewController *add = [AJAddPicturesViewController new];
         add.houseInfo = self.houseInfo;
+       
 #if AJCLOUDADMIN
+        AJHouseInfoViewController *houseInfo = (AJHouseInfoViewController *)self.parentViewController;
+        add.houseInfoVC = houseInfo;
         add.isEditModal = YES;
 
 #endif
 
-        APP_PRESENT([[UINavigationController alloc] initWithRootViewController:add]);
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:add];
+        APP_PRESENT(nav);
     }else {
         _mapView = nil;
         APP_PUSH(self.mapView);

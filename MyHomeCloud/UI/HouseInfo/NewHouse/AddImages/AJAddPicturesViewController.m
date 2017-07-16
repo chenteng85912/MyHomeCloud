@@ -10,6 +10,7 @@
 #import "PreviewUpLoadCollectionViewCell.h"
 #import "AJPicCollectionReusableView.h"
 #import "AJUploadPicModel.h"
+#import "AJHouseInfoViewController.h"
 
 @interface AJAddPicturesViewController ()<CTCustomAlbumViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *tipLabel;
@@ -196,7 +197,13 @@
     [AJSB deleteFile:modal.objId complete:^{
         [weakSelf.view removeHUD];
         [weakSelf removeCollectionItem:index];
-        
+        if (weakSelf.houseInfoVC) {
+            weakSelf.houseInfoVC.isChange = YES;
+            if ([weakSelf checkAllPicture]) {
+                [weakSelf.houseInfo saveInBackground];
+
+            }
+        }
     }];
     
 }
@@ -322,7 +329,23 @@
     
 }
 - (void)backToPreVC{
-    if (self.dataArray.count>0) {
+    
+    if (!_isEditModal) {
+        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+        return;
+    }
+    BOOL uploadSuc = NO;
+    for (NSArray *temp in self.dataArray) {
+        for (AJUploadPicModel *model in temp) {
+            if (model.picFile.objectId) {
+                uploadSuc = YES;
+                break;
+                
+            }
+            
+        }
+    }
+    if (uploadSuc) {
         
         [UIAlertController alertWithTitle:@"温馨提示" message:@"退出将丢失已经上传的图片，是否退出?" cancelButtonTitle:@"取消" otherButtonTitles:@[@"退出"] preferredStyle:UIAlertControllerStyleAlert block:^(NSInteger buttonIndex) {
             if (buttonIndex==1) {
@@ -335,21 +358,40 @@
                         
                     }
                 }
-               
-                POPVC;
+                if (!POPVC) {
+                    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+                }else{
+                    POPVC;
+
+                }
                 
             }
         }];
         return;
     }
-    POPVC;
+    
+    if (!POPVC) {
+        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    }else{
+        POPVC;
+        
+    }
 }
 - (void)saveAction{
 
     if (![self checkAllPicture]) {
+        NSDictionary *imgDic = self.houseInfo[HOUSE_FILE_ID];
+        if (imgDic.count==0) {
+            [self.view showTips:@"请至少上传一张照片" withState:TYKYHUDModeWarning complete:nil];
+        }else{
+            [self.view showTips:@"照片未全部上传完成" withState:TYKYHUDModeWarning complete:nil];
+
+        }
+
         return;
     }
     [KEYWINDOW showHUD:@"正在保存..."];
+    WeakSelf;
     [self.houseInfo saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         [KEYWINDOW removeHUD];
         if (!succeeded) {
@@ -357,6 +399,8 @@
             return ;
         }
         [KEYWINDOW showTips:@"保存成功" withState:TYKYHUDModeSuccess complete:^{
+            weakSelf.houseInfoVC.isChange = YES;
+
             [self.navigationController dismissViewControllerAnimated:YES completion:^{
                 [[NSNotificationCenter defaultCenter] postNotificationName:kNewHouseNotification object:nil];
 
@@ -399,17 +443,11 @@
 
         }
     }
-    if (imgDic.count==0) {
-        success = NO;
-        [self.view showTips:@"请至少上传一张照片" withState:TYKYHUDModeWarning complete:nil];
-    }
+   
     if (success) {
         
         [self.houseInfo setObject:imgDic.allValues[0]     forKey:HOUSE_THUMB];
         [self.houseInfo setObject:imgDic        forKey:HOUSE_FILE_ID];
-    }else{
-        [self.view showTips:@"照片未全部上传完成" withState:TYKYHUDModeWarning complete:nil];
-
     }
     
     return success;

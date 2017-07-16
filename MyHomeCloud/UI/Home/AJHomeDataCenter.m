@@ -98,8 +98,8 @@ NSInteger const SHOW_NUM = 5;
             
         }
         [houseData saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-            if (succeeded) {
-                
+            if (error) {
+                debugLog(@"浏览记录保存失败");
             }
         }];
     }];
@@ -108,13 +108,13 @@ NSInteger const SHOW_NUM = 5;
     AVObject *houseData = [[AVObject alloc] initWithClassName:className];
     
     [houseData setObject:object.objectId        forKey:HOUSE_ID];
-    
     [houseData setObject:[AVUser currentUser].mobilePhoneNumber      forKey:USER_PHONE];
+    [houseData setObject:object[HOUSE_ESTATE_NAME]          forKey:HOUSE_ESTATE_NAME];
+    [houseData setObject:object[HOUSE_THUMB]                forKey:HOUSE_THUMB];
+
     [houseData setObject:object[HOUSE_AMOUNT]               forKey:HOUSE_AMOUNT];
     [houseData setObject:object[HOUSE_AREAAGE]              forKey:HOUSE_AREAAGE];
-    [houseData setObject:object[HOUSE_ESTATE_NAME]          forKey:HOUSE_ESTATE_NAME];
     [houseData setObject:object[HOUSE_TAGS]                 forKey:HOUSE_TAGS];
-    [houseData setObject:object[HOUSE_THUMB]                forKey:HOUSE_THUMB];
     
     if ([className isEqualToString:LET_RECORD]||[className isEqualToString:LET_FAVORITE]) {
         //租金
@@ -128,10 +128,14 @@ NSInteger const SHOW_NUM = 5;
         [houseData setObject:object[HOUSE_UNIT_PRICE]        forKey:HOUSE_UNIT_PRICE];
         
     }else{
-        //总价
-        [houseData setObject:object[HOUSE_TOTAL_PRICE]       forKey:HOUSE_TOTAL_PRICE];
         //房屋单价
-        [houseData setObject:object[HOUSE_UNIT_PRICE]        forKey:HOUSE_UNIT_PRICE];
+        [houseData setObject:object[HOUSE_UNIT_PRICE]       forKey:HOUSE_UNIT_PRICE];
+        
+        //区域
+        [houseData setObject:object[HOUSE_AREA]              forKey:HOUSE_AREA];
+        
+        //地址
+        [houseData setObject:object[ESTATE_ADDRESS]        forKey:ESTATE_ADDRESS];
     }
     return houseData;
 }

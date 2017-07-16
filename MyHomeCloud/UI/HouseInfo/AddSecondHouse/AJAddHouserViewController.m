@@ -15,25 +15,25 @@
 @interface AJAddHouserViewController ()<AJAllHouseListViewControllerDelegate,AJTagsViewControllerDelegate>
 
 @property (strong, nonatomic) AVObject *houseData;//新房源信息
-@property (strong, nonatomic)AJTagsViewController *tagVC;
+@property (strong, nonatomic) AJTagsViewController *tagVC;//标签
 
-@property (weak, nonatomic) IBOutlet UIView *letView;
-@property (weak, nonatomic) IBOutlet UIView *secondView;
-@property (weak, nonatomic) IBOutlet UILabel *houseBaseInfo;
+@property (weak, nonatomic) IBOutlet UIView *letView;//出租
+@property (weak, nonatomic) IBOutlet UIView *secondView;//二手房
+@property (weak, nonatomic) IBOutlet UILabel *houseBaseInfo;//基本信息
 
-@property (weak, nonatomic) IBOutlet UITextField *houseDesInfo;
-@property (weak, nonatomic) IBOutlet UITextField *agenterPhone;
-@property (weak, nonatomic) IBOutlet UITextField *houseName;
-@property (weak, nonatomic) IBOutlet UITextField *houseAreaage;
-@property (weak, nonatomic) IBOutlet UITextField *houseTotal;
-@property (weak, nonatomic) IBOutlet UITextField *agenterName;
-@property (weak, nonatomic) IBOutlet UITextField *letHousePrice;
+@property (weak, nonatomic) IBOutlet UITextField *houseDesInfo;//标签
+@property (weak, nonatomic) IBOutlet UITextField *agenterPhone;//经纪人电话
+@property (weak, nonatomic) IBOutlet UITextField *houseName;//小区名称
+@property (weak, nonatomic) IBOutlet UITextField *houseAreaage;//房源面积
+@property (weak, nonatomic) IBOutlet UITextField *houseTotal;//房源总价
+@property (weak, nonatomic) IBOutlet UITextField *agenterName;//经纪人姓名
+@property (weak, nonatomic) IBOutlet UITextField *letHousePrice;//房源租金
 
-@property (weak, nonatomic) IBOutlet AJPickViewTextField *houseRooms;
-@property (weak, nonatomic) IBOutlet AJPickViewTextField *houseDirection;
-@property (weak, nonatomic) IBOutlet AJPickViewTextField *houseFloor;
-@property (weak, nonatomic) IBOutlet AJPickViewTextField *houseTotalFloor;
-@property (weak, nonatomic) IBOutlet AJPickViewTextField *houseDescribe;
+@property (weak, nonatomic) IBOutlet AJPickViewTextField *houseRooms;//房间数量
+@property (weak, nonatomic) IBOutlet AJPickViewTextField *houseDirection;//房屋朝向
+@property (weak, nonatomic) IBOutlet AJPickViewTextField *houseFloor;//房屋楼层
+@property (weak, nonatomic) IBOutlet AJPickViewTextField *houseTotalFloor;//房屋总楼层
+@property (weak, nonatomic) IBOutlet AJPickViewTextField *houseDescribe;//房屋装修
 
 
 @end
@@ -79,11 +79,11 @@
     [self.houseData setObject:_houseName.text                forKey:HOUSE_ESTATE_NAME];
     [self.houseData setObject:_agenterName.text              forKey:AGENTER_NAME];
     [self.houseData setObject:_agenterPhone.text             forKey:AGENTER_PHONE];
-
     [self.houseData setObject:_houseFloor.text               forKey:HOUSE_FLOOR_NUM];
     [self.houseData setObject:_houseRooms.text               forKey:HOUSE_AMOUNT];
     [self.houseData setObject:_houseAreaage.text             forKey:HOUSE_AREAAGE];
     [self.houseData setObject:_houseDirection.text           forKey:HOUSE_DIRECTION];
+    [self.houseData setObject:_houseDescribe.text            forKey:HOUSE_DISCRIBE];
 
     //发布者信息
     [self.houseData setObject:[AVUser currentUser].objectId      forKey:HOUSE_AUTHOR];
@@ -210,7 +210,7 @@
         if (_addModal==SecondHouseModal) {
             _houseData = [AVObject objectWithClassName:SECOND_HAND_HOUSE];
         }else{
-            _houseData = [AVObject objectWithClassName:SECOND_HAND_HOUSE];
+            _houseData = [AVObject objectWithClassName:LET_HOUSE];
         }
         [_houseData setObject:[AVUser currentUser].mobilePhoneNumber      forKey:USER_PHONE];
 

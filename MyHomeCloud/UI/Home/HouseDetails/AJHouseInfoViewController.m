@@ -60,6 +60,9 @@ CGFloat const NEW_MORE_HEITHT = 580;
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     
+    if (_houseDetails&&_isChange) {
+        [_houseDetails initHouseDetailsInfo];
+    }
 }
 #pragma mark - AJTbViewProtocol
 - (NSInteger)pageSize{
@@ -275,11 +278,9 @@ CGFloat const NEW_MORE_HEITHT = 580;
             }];
             return;
         }
-        debugLog(@"预约看房");
-        [self addChildViewController:self.userReserer];
-        [UIView animateWithDuration:0.3 animations:^{
-            self.userReserer.view.alpha = 1.0;
-        }];
+        _userReserer = nil;
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:self.userReserer];
+        APP_PRESENT(nav);
         
 #else
         [self.view showTips:@"企业版禁止预约" withState:TYKYHUDModeWarning complete:nil];
@@ -359,10 +360,6 @@ CGFloat const NEW_MORE_HEITHT = 580;
             _userReserer.reserverModal = NReserverModal;
             
         }
-        _userReserer.view.alpha = 0;
-        [self.view addSubview:_userReserer.view];
-        _userReserer.view.frame = self.view.bounds;
-        
     }
     
     return _userReserer;

@@ -10,7 +10,7 @@
 #import "AJUploadPicModel.h"
 
 
-#define circleWidth dWidth==320?40:50
+CGFloat const circleWidth = 40;
 #define successColor [UIColor colorWithRed:0.0/255.0 green:128.0/255.0 blue:64.0/255.0 alpha:1]
 #define failColor   [UIColor colorWithRed:0 green:0 blue:0 alpha:0.6]
 #define waitColor   [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3]
