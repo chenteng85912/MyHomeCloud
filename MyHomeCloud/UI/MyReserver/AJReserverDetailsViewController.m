@@ -57,7 +57,7 @@
     if (self.rModal==NReserverModal) {
         _houseType.text = @"楼盘名称";
         _houseAreaage.text = @"*";
-        _housePrice.text = @"*";
+        
     }
     if (_reserverModal.state.integerValue==0) {
         _reserverBtn.enabled = YES;

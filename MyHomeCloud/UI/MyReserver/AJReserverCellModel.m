@@ -51,9 +51,9 @@
             
         }
     }else{
-        _houseType = @"房屋总价";
+        _houseType = @"楼盘均价";
         _houseAreaage = @"*";
-        _housePrice = @"*";
+        _housePrice = [NSString stringWithFormat:@"约%@元/平",self.objectData[HOUSE_UNIT_PRICE]];
     }
    
     NSDateFormatter *formatter = [NSDateFormatter new];

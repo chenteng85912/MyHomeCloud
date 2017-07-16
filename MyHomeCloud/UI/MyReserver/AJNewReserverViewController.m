@@ -91,7 +91,6 @@
         [obj setObject:_houseInfo[HOUSE_AMOUNT]      forKey:HOUSE_AMOUNT];
         [obj setObject:_houseInfo[HOUSE_AREAAGE]     forKey:HOUSE_AREAAGE];
         [obj setObject:_houseInfo[ESTATE_ID]         forKey:ESTATE_ID];
-        [obj setObject:_houseInfo[HOUSE_ID]          forKey:HOUSE_ID];
 
         [obj setObject:_houseName.text      forKey:HOUSE_ESTATE_NAME];
         [obj setObject:_agenterName.text    forKey:AGENTER_NAME];
@@ -102,17 +101,22 @@
         [obj setObject:[AVUser currentUser].mobilePhoneNumber   forKey:USER_PHONE];
         [obj setObject:@"0"                 forKey:RESERVER_STATE];
 
-        if (_reserverModal ==SecondReserverModal) {
+        if (_reserverModal == SecondReserverModal) {
             [obj setObject:SECOND_HAND_HOUSE    forKey:RESERVER_TYPE];
             [obj setObject:_houseInfo[HOUSE_TOTAL_PRICE]         forKey:HOUSE_TOTAL_PRICE];
 
-
-        }else{
+        }else if (_reserverModal == LetReserverModal){
             [obj setObject:LET_HOUSE            forKey:RESERVER_TYPE];
             [obj setObject:_houseInfo[LET_HOUSE_PRICE]         forKey:LET_HOUSE_PRICE];
 
+        }else{
+            [obj setObject:N_HOUSE            forKey:RESERVER_TYPE];
+            [obj setObject:_houseInfo[HOUSE_AREA]          forKey:HOUSE_AREA];
+            [obj setObject:_houseInfo[HOUSE_UNIT_PRICE]         forKey:HOUSE_UNIT_PRICE];
+
         }
-        
+        [obj setObject:_houseInfo.objectId          forKey:HOUSE_ID];
+
         [KEYWINDOW showHUD:@"正在提交..."];
         [obj saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             [KEYWINDOW removeHUD];

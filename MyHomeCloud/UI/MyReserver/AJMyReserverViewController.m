@@ -78,8 +78,10 @@
 - (NSString *)reserverTypeName{
     if (self.reserverModal==SecondReserverModal) {
         return SECOND_HAND_HOUSE;
-    }else{
+    }else if (self.reserverModal==LetReserverModal){
         return LET_HOUSE;
+    }else{
+        return N_HOUSE;
     }
 }
 - (BOOL)canDeleteCell{
