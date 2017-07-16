@@ -14,7 +14,9 @@
 @interface AJAddPicturesViewController ()<CTCustomAlbumViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *tipLabel;
 @property (weak, nonatomic) IBOutlet UICollectionView *colloctionView;
+
 @property (strong, nonatomic) NSMutableArray <NSMutableArray <AJUploadPicModel *> *> *dataArray;
+
 @property (assign, nonatomic) NSInteger currentSecion;
 @end
 
@@ -53,29 +55,31 @@
 - (void)initDataArray{
 
     if (self.houseInfo) {
-        NSArray *array1 = self.houseInfo[ESTATE_SCENE_PIC];
-        [self.dataArray addObject:[self creatUploadData:array1]];
+        NSDictionary *dic1 = self.houseInfo[ESTATE_SCENE_PIC];
+        [self.dataArray addObject:[self creatUploadData:dic1]];
         
-        NSArray *array2 = self.houseInfo[ESTATE_EFFECT_PIC];
+        NSDictionary *array2 = self.houseInfo[ESTATE_EFFECT_PIC];
         [self.dataArray addObject:[self creatUploadData:array2]];
         
-        NSArray *array3 = self.houseInfo[ESTATE_SUPPORT_PIC];
+        NSDictionary *array3 = self.houseInfo[ESTATE_SUPPORT_PIC];
         [self.dataArray addObject:[self creatUploadData:array3]];
         
-        NSArray *array4 = self.houseInfo[ESTATE_FACT_PIC];
+        NSDictionary *array4 = self.houseInfo[ESTATE_FACT_PIC];
         [self.dataArray addObject:[self creatUploadData:array4]];
         
         [self.colloctionView reloadData];
     }
 }
-- (NSMutableArray <AJUploadPicModel *>*)creatUploadData:(NSArray *)array{
+- (NSMutableArray <AJUploadPicModel *>*)creatUploadData:(NSDictionary *)dic{
     NSMutableArray <AJUploadPicModel *> *temp = [NSMutableArray new];
-    for (NSString *picUrl in array) {
+    for (NSString *key in dic.allKeys) {
         AJUploadPicModel *upload = [AJUploadPicModel new];
         upload.state = @2;
-        upload.picUrl = picUrl;
+        upload.picUrl = dic[key];
+        upload.objId = key;
         [temp addObject:upload];
     }
+   
     return temp;
 }
 #pragma mark <UICollectionViewDataSource>
@@ -95,14 +99,15 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     PreviewUpLoadCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([PreviewUpLoadCollectionViewCell class]) forIndexPath:indexPath];
-    cell.modal = self.dataArray[indexPath.section][indexPath.row];
+    AJUploadPicModel *model = self.dataArray[indexPath.section][indexPath.row];
+    cell.modal = model;
+    cell.selectBtn.hidden = !_isEditModal;
     if (self.isEditModal) {
-        cell.selectBtn.hidden = NO;
         cell.selectBtn.tag = indexPath.row+indexPath.section*100;
         BUTTON_ACTION(cell.selectBtn, self, @selector(deleteCellAction:));
-
     }else{
         cell.progressLabel.hidden = YES;
+
     }
     
     return cell;
@@ -188,7 +193,7 @@
     
     WeakSelf;
     [self.view showHUD:nil];
-    [AJSB deleteFile:modal.picFile.objectId complete:^{
+    [AJSB deleteFile:modal.objId complete:^{
         [weakSelf.view removeHUD];
         [weakSelf removeCollectionItem:index];
         
@@ -316,6 +321,29 @@
     [self.colloctionView performSelector:@selector(reloadData) withObject:nil afterDelay:0.5];
     
 }
+- (void)backToPreVC{
+    if (self.dataArray.count>0) {
+        
+        [UIAlertController alertWithTitle:@"温馨提示" message:@"退出将丢失已经上传的图片，是否退出?" cancelButtonTitle:@"取消" otherButtonTitles:@[@"退出"] preferredStyle:UIAlertControllerStyleAlert block:^(NSInteger buttonIndex) {
+            if (buttonIndex==1) {
+                for (NSArray *temp in self.dataArray) {
+                    for (AJUploadPicModel *model in temp) {
+                        if (model.picFile.objectId) {
+                            [AJSB deleteFile:model.picFile.objectId complete:nil];
+                            
+                        }
+                        
+                    }
+                }
+               
+                POPVC;
+                
+            }
+        }];
+        return;
+    }
+    POPVC;
+}
 - (void)saveAction{
 
     if (![self checkAllPicture]) {
@@ -342,11 +370,11 @@
 - (BOOL)checkAllPicture{
    
     BOOL success = YES;
-    NSMutableArray <NSString *> *imgArray = [NSMutableArray new];
+    NSMutableDictionary  *imgDic = [NSMutableDictionary new];
     
     for (int i=0;i<self.dataArray.count;i++) {
         NSArray <AJUploadPicModel *> *temp = self.dataArray[i];
-        NSMutableArray *picArray = [NSMutableArray new];
+        NSMutableDictionary *picDic = [NSMutableDictionary new];
 
         for (AJUploadPicModel *modal in temp) {
             
@@ -354,30 +382,31 @@
                 success = NO;
                 break;
             }
-            [picArray addObject:modal.picFile.url];
-            [imgArray addObject:modal.picFile.url];
+            [picDic setObject:modal.picUrl forKey:modal.objId];
+            [imgDic setObject:modal.picUrl forKey:modal.objId];
         }
         if (i==0) {
-            [self.houseInfo setObject:picArray forKey:ESTATE_SCENE_PIC];
+            [self.houseInfo setObject:picDic forKey:ESTATE_SCENE_PIC];
             
         }else if (i==1) {
-            [self.houseInfo setObject:picArray forKey:ESTATE_EFFECT_PIC];
+            [self.houseInfo setObject:picDic forKey:ESTATE_EFFECT_PIC];
             
         }else if (i==2) {
-            [self.houseInfo setObject:picArray forKey:ESTATE_SUPPORT_PIC];
+            [self.houseInfo setObject:picDic forKey:ESTATE_SUPPORT_PIC];
             
         }else{
-            [self.houseInfo setObject:picArray forKey:ESTATE_FACT_PIC];
+            [self.houseInfo setObject:picDic forKey:ESTATE_FACT_PIC];
 
         }
     }
-    if (imgArray.count==0) {
+    if (imgDic.count==0) {
         success = NO;
         [self.view showTips:@"请至少上传一张照片" withState:TYKYHUDModeWarning complete:nil];
     }
     if (success) {
-        [self.houseInfo setObject:imgArray[0]     forKey:HOUSE_THUMB];
-        [self.houseInfo setObject:imgArray        forKey:HOUSE_FILE_ID];
+        
+        [self.houseInfo setObject:imgDic.allValues[0]     forKey:HOUSE_THUMB];
+        [self.houseInfo setObject:imgDic        forKey:HOUSE_FILE_ID];
     }else{
         [self.view showTips:@"照片未全部上传完成" withState:TYKYHUDModeWarning complete:nil];
 

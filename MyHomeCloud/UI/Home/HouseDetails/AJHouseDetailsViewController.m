@@ -261,9 +261,9 @@ CGFloat const MORE_VIEW_HEIGHT = 370;
 - (NSMutableArray *)autoLoopDataArray{
     if (!_autoLoopDataArray) {
         _autoLoopDataArray = [NSMutableArray new];
-        NSArray *imgArray = self.houseInfo[HOUSE_FILE_ID];
+        NSDictionary *imgDic = self.houseInfo[HOUSE_FILE_ID];
         
-        [_autoLoopDataArray addObjectsFromArray:imgArray];
+        [_autoLoopDataArray addObjectsFromArray:imgDic.allValues];
     }
    
     return _autoLoopDataArray;

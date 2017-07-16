@@ -18,27 +18,29 @@
     WeakSelf;
     [self.picFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if (succeeded) {
-            if ([self.delegate respondsToSelector:@selector(uploadSuccess:)]) {
-                [self.delegate uploadSuccess:YES];
-            }
+          
             NSString *filePath = [AJLocalDataCenter imagePathWithImageName:weakSelf.picFile.name];
             if (![[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
                 [weakSelf.picFile.getData writeToFile:filePath atomically:YES];
                 
             }
+            
+            weakSelf.objId = weakSelf.picFile.objectId;
+            weakSelf.picUrl = weakSelf.picFile.url;
             weakSelf.state  =@2;
         }else{
-            if ([self.delegate respondsToSelector:@selector(uploadSuccess:)]) {
-                [self.delegate uploadSuccess:NO];
-            }
+            
             weakSelf.state  =@3;
 
+        }
+        if ([weakSelf.delegate respondsToSelector:@selector(uploadSuccess:)]) {
+            [weakSelf.delegate uploadSuccess:succeeded];
         }
     } progressBlock:^(NSInteger percentDone) {
         weakSelf.percent = percentDone;
         weakSelf.state = @1;
-        if ([self.delegate respondsToSelector:@selector(refreshUploadProgress:)]) {
-            [self.delegate refreshUploadProgress:percentDone];
+        if ([weakSelf.delegate respondsToSelector:@selector(refreshUploadProgress:)]) {
+            [weakSelf.delegate refreshUploadProgress:percentDone];
         }
     }];
 }

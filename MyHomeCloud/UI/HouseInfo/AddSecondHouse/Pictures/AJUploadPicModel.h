@@ -18,6 +18,8 @@
 @interface AJUploadPicModel : NSObject
 @property (nonatomic,strong) AVFile *picFile;
 @property (nonatomic,assign) NSInteger percent;
+@property (nonatomic,strong) NSString *objId;
+
 @property (nonatomic,strong) NSNumber *state;//0未上传 1正在上传 2上传成功 3上传失败
 
 @property (nonatomic,strong) NSString *picUrl;

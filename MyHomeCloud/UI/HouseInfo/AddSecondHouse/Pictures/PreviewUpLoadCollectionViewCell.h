@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "TJCircleView.h"
 
-
 @class AJUploadPicModel;
 
 @interface PreviewUpLoadCollectionViewCell : UICollectionViewCell
+
 @property (weak, nonatomic) IBOutlet UIButton *selectBtn;//选中按钮
 @property (weak, nonatomic) IBOutlet UILabel *progressLabel;//上传状态
 @property (strong, nonatomic) AJUploadPicModel *modal;//数据模型

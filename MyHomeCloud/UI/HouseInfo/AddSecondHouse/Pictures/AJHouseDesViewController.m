@@ -44,7 +44,10 @@
         [UIAlertController alertWithTitle:@"温馨提示" message:@"退出将丢失已经上传的图片，是否退出?" cancelButtonTitle:@"取消" otherButtonTitles:@[@"退出"] preferredStyle:UIAlertControllerStyleAlert block:^(NSInteger buttonIndex) {
             if (buttonIndex==1) {
                 for (AJUploadPicModel *model in self.dataArray) {
-                    [AJSB deleteFile:model.picFile.objectId complete:nil];
+                    if (model.objId) {
+                        [AJSB deleteFile:model.objId complete:nil];
+
+                    }
 
                 }
                 POPVC;
@@ -73,7 +76,7 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    return CGSizeMake(dWidth/3, dWidth/3);
+    return CGSizeMake(dWidth/4, dWidth/4);
     
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -132,18 +135,18 @@
 //检测是否有图片还在上传
 - (BOOL)checkAllPicture{
     BOOL success = YES;
-    NSMutableArray *imgArray = [NSMutableArray new];
+    NSMutableDictionary *imgDic = [NSMutableDictionary new];
     for (AJUploadPicModel *modal in self.dataArray) {
         if (modal.state.integerValue!=2) {
             success = NO;
             break;
         }
-        [imgArray addObject:modal.picFile.url];
+        [imgDic setObject:modal.picUrl forKey:modal.objId];
     }
    
     if (success) {
-        [self.houseObj setObject:self.dataArray[0].picFile.url                 forKey:HOUSE_THUMB];
-        [self.houseObj setObject:imgArray         forKey:HOUSE_FILE_ID];
+        [self.houseObj setObject:self.dataArray[0].picUrl                 forKey:HOUSE_THUMB];
+        [self.houseObj setObject:imgDic         forKey:HOUSE_FILE_ID];
     }
    
     return success;
@@ -208,7 +211,7 @@
 
     WeakSelf;
     [self.view showHUD:nil];
-    [AJSB deleteFile:modal.picFile.objectId complete:^{
+    [AJSB deleteFile:modal.objId complete:^{
         [weakSelf.view removeHUD];
         [weakSelf removeCollectionItem:index];
 

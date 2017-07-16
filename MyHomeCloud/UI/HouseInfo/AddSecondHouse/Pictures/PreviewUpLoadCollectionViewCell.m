@@ -38,16 +38,23 @@
         modal.delegate = self;
         _percentLabel.text = [NSString stringWithFormat:@"%ld%%",(long)modal.percent];
         self.circleView.progressValue = modal.percent/100.0;
+        [self initCellData];
+
     }else{
         [_imgView sd_setImageWithURL:[NSURL URLWithString:modal.picUrl] placeholderImage:LOADIMAGE(@"defaultImg")];
         _percentLabel.text = nil;
         self.circleView.progressValue = 0;
+        _percentLabel.hidden = YES;
+        self.circleView.hidden = YES;
+        _progressLabel.hidden = YES;
     }
-    [self initCellData];
 
 }
 
 - (void)initCellData{
+    _percentLabel.hidden = NO;
+    self.circleView.hidden = NO;
+    _progressLabel.hidden = NO;
     NSInteger state = self.modal.state.integerValue;
     switch (state) {
         case 0:

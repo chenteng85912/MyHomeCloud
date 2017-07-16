@@ -368,8 +368,8 @@
                 if (self.showModal==MyHouseModal) {
 //                    [weakSelf deleteRecordData:model.subObj];
                     //删除图片文件
-                    NSArray *fileArray = model.objectData[HOUSE_FILE_ID];
-                    for (NSString *fileId in fileArray) {
+                    NSDictionary *fileDic = model.objectData[HOUSE_FILE_ID];
+                    for (NSString *fileId in fileDic.allKeys) {
                         [AJSB deleteFile:fileId complete:nil];
                     }
 
