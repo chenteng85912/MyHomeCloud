@@ -16,6 +16,8 @@
 
 @property (assign, nonatomic) DetailsHouseModal detailsModal;
 
-@property (assign, nonatomic) BOOL isChange;//删除或增加了文件 
+@property (assign, nonatomic) BOOL isChange;//删除或增加了文件
 
+//展开更多
+- (void)showMoreHouseInfo;
 @end

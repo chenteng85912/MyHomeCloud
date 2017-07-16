@@ -61,7 +61,8 @@ CGFloat const NEW_MORE_HEITHT = 580;
     [super viewDidAppear:animated];
     
     if (_houseDetails&&_isChange) {
-        [_houseDetails initHouseDetailsInfo];
+        _houseDetails = nil;
+        [self.houseDetails initHouseDetailsInfo];
     }
 }
 #pragma mark - AJTbViewProtocol
@@ -143,6 +144,8 @@ CGFloat const NEW_MORE_HEITHT = 580;
     }
     self.tableView.tableFooterView = nil;
     self.tableView.tableHeaderView = self.houseDetails.view;
+    [self.houseDetails initHouseDetailsInfo];
+
     [self.view bringSubviewToFront:_headView];
     [UIView animateWithDuration:0.3 animations:^{
         _footerView.alpha = 1.0;
@@ -296,9 +299,9 @@ CGFloat const NEW_MORE_HEITHT = 580;
     
 }
 //展开更多
-- (void)showMoreHouseInfo:(UIButton *)btn{
-    btn.selected = !btn.selected;
+- (void)showMoreHouseInfo{
     self.tableView.tableHeaderView = self.houseDetails.view;
+    [self.houseDetails initHouseDetailsInfo];
 }
 //检测关注状态
 - (void)checkLikeState{
@@ -369,10 +372,7 @@ CGFloat const NEW_MORE_HEITHT = 580;
         _houseDetails = [AJHouseDetailsViewController new];
         _houseDetails.detailsModal  = self.detailsModal;
         _houseDetails.houseInfo = self.houseInfo;
-        if (_detailsModal==NModal) {
-            BUTTON_ACTION(_houseDetails.moreInfoBtn, self, @selector(showMoreHouseInfo:));
-
-        }
+        
         [self addChildViewController:_houseDetails];
     }
     if (_detailsModal==SecondModal||_detailsModal==LetModal) {
@@ -388,7 +388,6 @@ CGFloat const NEW_MORE_HEITHT = 580;
         }
         
     }
-    [_houseDetails initHouseDetailsInfo];
     return _houseDetails;
 }
 - (void)didReceiveMemoryWarning {

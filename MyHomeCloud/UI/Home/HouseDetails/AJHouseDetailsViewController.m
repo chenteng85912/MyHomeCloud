@@ -72,7 +72,9 @@ CGFloat const MORE_VIEW_HEIGHT = 370;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    if (self.detailsModal==NModal) {
+        BUTTON_ACTION(self.moreInfoBtn, self, @selector(showMoreHouseInfo:));
+    }
     
 }
 - (void)viewWillAppear:(BOOL)animated{
@@ -86,20 +88,20 @@ CGFloat const MORE_VIEW_HEIGHT = 370;
 
 - (void)initHouseDetailsInfo{
     
-    _autoLoopDataArray = nil;
-    _autoLoopView = nil;
+    [self.autoLoopView.view removeFromSuperview];
     //头部滚动图片
     [self.view addSubview:self.autoLoopView.view];
 
     //添加地图
     self.mapView.view.frame = _mapBView.bounds;
     self.mapView.view.userInteractionEnabled = NO;
+    [self.mapView.view removeFromSuperview];
     [_mapBView addSubview:self.mapView.view];
     self.mapView.locationBtn.hidden = YES;
     self.mapView.navBtn.hidden = YES;
     
     if (self.detailsModal==NModal) {
-        
+        [self.view bringSubviewToFront:_baseInfoView];
         //基本
         _baseInfoView.frame = CGRectMake(0, AUTOLOOP_HEIGHT, dWidth, BASE_VIEW_HEIGHT);
         _baseInfoView.hidden = NO;
@@ -140,7 +142,7 @@ CGFloat const MORE_VIEW_HEIGHT = 370;
     _carNumber.text = self.houseInfo[PARKINGNUMBER];
     _totalHouseNumber.text = [NSString stringWithFormat:@"%@户",self.houseInfo[ESTATE_TOTALHOUSE]];
     _plotRatio.text = self.houseInfo[ESTATE_PLOTRATIO];
-    _greenBelt.text = self.houseInfo[ESTATE_GREENBELT];
+    _greenBelt.text = [NSString stringWithFormat:@"%@%%",self.houseInfo[ESTATE_GREENBELT]];
 
 }
 
@@ -226,7 +228,12 @@ CGFloat const MORE_VIEW_HEIGHT = 370;
     _mapView = nil;
     APP_PUSH(self.mapView);
 }
-
+//展开更多
+- (void)showMoreHouseInfo:(UIButton *)btn{
+    btn.selected = !btn.selected;
+    AJHouseInfoViewController *houseInfoVC = (AJHouseInfoViewController *)self.parentViewController;
+    [houseInfoVC showMoreHouseInfo];
+}
 
 //获取作者信息
 //- (void)fetchAuthorData{

@@ -57,38 +57,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MyHomeCloud/UI/Home/HouseDetails/AJHouseInfoViewController.m"
-            timestampString = "521884485.243315"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "300"
-            endingLineNumber = "300"
-            landmarkName = "-showMoreHouseInfo:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MyHomeCloud/UI/Home/HouseDetails/AJHouseInfoViewController.m"
-            timestampString = "521884485.243315"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "372"
-            endingLineNumber = "372"
-            landmarkName = "-houseDetails"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "MyHomeCloud/UI/HouseInfo/NewHouse/AJNewHouseViewController.m"
             timestampString = "521883316.868818"
             startingColumnNumber = "9223372036854775807"
@@ -105,46 +73,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MyHomeCloud/UI/Home/HouseDetails/AJHouseInfoViewController.m"
-            timestampString = "521883364.330004"
+            filePath = "MyHomeCloud/UI/Home/HouseDetails/AJHouseDetailsViewController.m"
+            timestampString = "521888132.188919"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "126"
-            endingLineNumber = "126"
-            landmarkName = "-loadDataSuccess"
+            startingLineNumber = "234"
+            endingLineNumber = "234"
+            landmarkName = "-showMoreHouseInfo:"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[AJHouseInfoViewController loadDataSuccess]"
-                  moduleName = "AJCloudAdmin"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Teng/Documents/Teng/MyHomeCloud/MyHomeCloud/UI/Home/HouseDetails/AJHouseInfoViewController.m"
-                  timestampString = "521883364.339237"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "126"
-                  endingLineNumber = "126"
-                  offsetFromSymbolStart = "84">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[AJHouseInfoViewController loadDataSuccess]"
-                  moduleName = "AJCloudAdmin"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Teng/Documents/Teng/MyHomeCloud/MyHomeCloud/UI/Home/HouseDetails/AJHouseInfoViewController.m"
-                  timestampString = "521883364.341162"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "126"
-                  endingLineNumber = "126"
-                  offsetFromSymbolStart = "104">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -153,13 +89,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MyHomeCloud/UI/Home/HouseDetails/AJHouseInfoViewController.m"
-            timestampString = "521883412.646988"
+            filePath = "MyHomeCloud/UI/Home/HouseDetails/AJHouseDetailsViewController.m"
+            timestampString = "521888427.296515"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
-            landmarkName = "-requestKeyName"
+            startingLineNumber = "195"
+            endingLineNumber = "195"
+            landmarkName = "-showMoreHouse:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
