@@ -24,8 +24,11 @@
         if (_reserverModal==SecondReserverModal) {
             self.title = @"我的预约(二手房)";
 
-        }else{
+        }else  if (_reserverModal==LetReserverModal){
             self.title = @"我的预约(租房)";
+
+        }else{
+            self.title = @"我的预约(新房)";
 
         }
 

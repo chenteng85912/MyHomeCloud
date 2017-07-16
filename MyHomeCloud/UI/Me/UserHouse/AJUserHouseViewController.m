@@ -83,7 +83,12 @@
         letr.title  =@"租房";
         letr.showModal = _showModal;
 
-        self.pageVC.viewControllers = @[secondr,letr];
+        AJMyReserverViewController *nhouse = [AJMyReserverViewController new];
+        nhouse.reserverModal = NReserverModal;
+        nhouse.title  = @"新房";
+        nhouse.showModal = _showModal;
+        
+        self.pageVC.viewControllers = @[secondr,letr,nhouse];
 
     }else{
         //二手房 出租房

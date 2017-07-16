@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MyHomeCloud/UI/Home/HouseDetails/AJHouseDetailsViewController.m"
-            timestampString = "521888132.188919"
+            timestampString = "521891144.005204"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "234"
-            endingLineNumber = "234"
+            startingLineNumber = "235"
+            endingLineNumber = "235"
             landmarkName = "-showMoreHouseInfo:"
             landmarkType = "7">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MyHomeCloud/UI/Home/HouseDetails/AJHouseDetailsViewController.m"
-            timestampString = "521888427.296515"
+            timestampString = "521891144.005204"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "195"
-            endingLineNumber = "195"
+            startingLineNumber = "196"
+            endingLineNumber = "196"
             landmarkName = "-showMoreHouse:"
             landmarkType = "7">
          </BreakpointContent>

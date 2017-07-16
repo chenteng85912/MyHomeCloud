@@ -25,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *state;
 @property (weak, nonatomic) IBOutlet UIButton *reserverBtn;
 @property (weak, nonatomic) IBOutlet UIButton *cancelBtn;
+@property (weak, nonatomic) IBOutlet UILabel *houseType;
 
 @end
 
@@ -33,6 +34,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"预约详情";
+    
 #if AJCLOUDADMIN
     _reserverBtn.hidden = NO;
     _cancelBtn.hidden = NO;
@@ -52,7 +54,11 @@
     _reserverTime.text = _reserverModal.rTime;
     _state.text = _reserverModal.stateStr;
     _state.backgroundColor = _reserverModal.stateColor;
-    
+    if (self.rModal==NReserverModal) {
+        _houseType.text = @"楼盘名称";
+        _houseAreaage.text = @"*";
+        _housePrice.text = @"*";
+    }
     if (_reserverModal.state.integerValue==0) {
         _reserverBtn.enabled = YES;
         _reserverBtn.backgroundColor = [UIColor colorWithRed:0 green:128.0/255.0 blue:0 alpha:1];

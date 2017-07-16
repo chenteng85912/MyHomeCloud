@@ -125,7 +125,8 @@ CGFloat const MORE_VIEW_HEIGHT = 370;
 
     //基本信息
     _houseName.text = self.houseInfo[HOUSE_ESTATE_NAME];
-    _estatePrice.text = [NSString stringWithFormat:@"%@元/平",self.houseInfo[HOUSE_UNIT_PRICE]];
+
+    _estatePrice.text = [NSString stringWithFormat:@"约%@元/平",self.houseInfo[HOUSE_UNIT_PRICE]];
     _estateAddress.text = self.houseInfo[ESTATE_ADDRESS];
     _openTime.text = self.houseInfo[ESTATE_OPENTIME];
     

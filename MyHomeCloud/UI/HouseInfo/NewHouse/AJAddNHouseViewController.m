@@ -163,6 +163,10 @@
         [self.view showTips:_agenterPhone.placeholder withState:TYKYHUDModeWarning complete:nil];
         return;
     }
+    if (_agenterPhone.text.length!=11) {
+        [self.view showTips:@"请输入正确的手机号" withState:TYKYHUDModeWarning complete:nil];
+        return;
+    }
     [self.houseData setObject:_agenterPhone.text forKey:AGENTER_PHONE];
 
     
@@ -175,7 +179,23 @@
     add.isEditModal = YES;
     APP_PUSH(add);
 }
-
+#pragma mark -life UITextFieldDelegate
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    
+    NSString *resultStr = [textField.text stringByAppendingString:string];
+    if (textField==_agenterPhone&&resultStr.length>11) {
+        [textField resignFirstResponder];
+        [self.view showTips:@"手机号码为11位数字" withState:TYKYHUDModeWarning complete:nil];
+        return NO;
+        
+    }
+    
+    if ([string isEqualToString:@"\n"]) {
+        [textField resignFirstResponder];
+        return NO;
+    }
+    return YES;
+}
 - (AVObject *)houseData{
     if (_houseData ==nil) {
         _houseData = [AVObject objectWithClassName:N_HOUSE];

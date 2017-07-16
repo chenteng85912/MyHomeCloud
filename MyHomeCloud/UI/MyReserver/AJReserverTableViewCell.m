@@ -21,6 +21,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *reserverState;
 @property (weak, nonatomic) IBOutlet UILabel *houseAreaage;
+@property (weak, nonatomic) IBOutlet UILabel *houseType;
 @end
 @implementation AJReserverTableViewCell
 
@@ -40,6 +41,10 @@
     _housePrice.text = modal.housePrice;
     _houseAreaage.text = modal.houseAreaage;
     _userName.text = modal.rUserName;
+    
+    if (!modal.houseAreaage) {
+        _houseType.text = @"楼盘名称";
+    }
     
 }
 - (void)awakeFromNib {

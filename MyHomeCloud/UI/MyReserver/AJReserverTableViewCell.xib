@@ -169,6 +169,7 @@
                 <outlet property="houseAreaage" destination="YK7-23-nim" id="XZl-iT-P8h"/>
                 <outlet property="houseName" destination="agX-FG-6dM" id="CAP-V4-xd8"/>
                 <outlet property="housePrice" destination="ENO-dO-qK1" id="na1-n2-3aY"/>
+                <outlet property="houseType" destination="2u4-c1-RNU" id="Bqf-cj-otF"/>
                 <outlet property="priceType" destination="0BF-P7-NRu" id="hgZ-bG-f26"/>
                 <outlet property="reserverState" destination="ECj-mA-aeo" id="hAU-4z-eoy"/>
                 <outlet property="reserverTime" destination="zcK-j6-XpV" id="vtO-B8-6u9"/>

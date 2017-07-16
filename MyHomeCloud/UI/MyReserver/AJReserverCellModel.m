@@ -37,18 +37,25 @@
     
     _rTime = self.objectData[RESERVER_TIME];
     
-    _houseAreaage = [NSString stringWithFormat:@"%@m²",self.objectData[HOUSE_AREAAGE]];
-    NSString *type = self.objectData[RESERVER_TYPE];
-    if ([type isEqualToString:SECOND_HAND_HOUSE]) {
-        _houseType = @"房屋总价";
-        _housePrice = [NSString stringWithFormat:@"%@万",self.objectData[HOUSE_TOTAL_PRICE]];
-
+    //房源面积 新楼盘为空
+    if (self.objectData[HOUSE_AREAAGE]){
+        _houseAreaage = [NSString stringWithFormat:@"%@m²",self.objectData[HOUSE_AREAAGE]];
+        NSString *type = self.objectData[RESERVER_TYPE];
+        if ([type isEqualToString:SECOND_HAND_HOUSE]) {
+            _houseType = @"房屋总价";
+            _housePrice = [NSString stringWithFormat:@"%@万",self.objectData[HOUSE_TOTAL_PRICE]];
+            
+        }else{
+            _houseType = @"房屋租金";
+            _housePrice = [NSString stringWithFormat:@"%@元/月",self.objectData[LET_HOUSE_PRICE]];
+            
+        }
     }else{
-        _houseType = @"房屋租金";
-        _housePrice = [NSString stringWithFormat:@"%@元/月",self.objectData[LET_HOUSE_PRICE]];
-
+        _houseType = @"房屋总价";
+        _houseAreaage = @"*";
+        _housePrice = @"*";
     }
-    
+   
     NSDateFormatter *formatter = [NSDateFormatter new];
     [formatter setDateFormat:@"yyyy-MM-dd"];
     _creatTime = [formatter stringFromDate:self.objectData.createdAt];

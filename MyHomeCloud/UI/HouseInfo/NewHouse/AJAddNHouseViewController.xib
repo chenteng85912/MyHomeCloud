@@ -111,6 +111,9 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="9pt-Ko-sI3"/>
+                                    </connections>
                                 </textField>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow" id="BFL-qg-Q57">
                                     <rect key="frame" x="291.5" y="15" width="20.5" height="20"/>
@@ -190,6 +193,9 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="sYD-SV-bnE"/>
+                                    </connections>
                                 </textField>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AUD-0x-OrA">
                                     <rect key="frame" x="77" y="63" width="10" height="30"/>
@@ -427,12 +433,18 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="MJ3-qZ-NQa"/>
+                                    </connections>
                                 </textField>
                                 <textField opaque="NO" clipsSubviews="YES" tag="8" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入开放商名称" textAlignment="right" minimumFontSize="17" id="ao0-vj-TyD">
                                     <rect key="frame" x="92.5" y="150" width="202.5" height="50"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="fuK-vY-fdT"/>
+                                    </connections>
                                 </textField>
                                 <textField opaque="NO" clipsSubviews="YES" tag="10" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请选择物业类型" textAlignment="right" minimumFontSize="17" id="SeV-x0-0gs" customClass="AJPickViewTextField">
                                     <rect key="frame" x="92.5" y="50" width="202.5" height="50"/>
@@ -485,6 +497,9 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="syi-Q1-fyl"/>
+                                    </connections>
                                 </textField>
                                 <textField opaque="NO" clipsSubviews="YES" tag="12" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请选择建筑类型" textAlignment="right" minimumFontSize="17" clearButtonMode="whileEditing" id="euI-zS-XDd" customClass="AJPickViewTextField">
                                     <rect key="frame" x="92.5" y="350" width="202.5" height="50"/>
@@ -608,6 +623,9 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="Vcw-v3-hp1"/>
+                                    </connections>
                                 </textField>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gNK-g1-iSy">
                                     <rect key="frame" x="95" y="15" width="10" height="30"/>
