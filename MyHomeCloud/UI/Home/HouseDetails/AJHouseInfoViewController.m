@@ -172,18 +172,24 @@ CGFloat const NEW_MORE_HEITHT = 580;
     if (_detailsModal==SecondModal) {
         return  NSStringFromClass([AJSecondHouseTableViewCell class]);
         
-    }else{
+    }else if (_detailsModal==LetModal){
         return  NSStringFromClass([AJLetHouseTableViewCell class]);
         
+    }else{
+        return  NSStringFromClass([AJNewHouseTableViewCell class]);
+
     }
 }
 - (NSString *)customeTbViewCellModelClassName{
     if (_detailsModal==SecondModal) {
         return NSStringFromClass([AJSecondHouseCellModel class]);
         
-    }else{
+    }else if (_detailsModal==LetModal){
         return NSStringFromClass([AJLetHouseCellModel class]);
         
+    }else{
+        return NSStringFromClass([AJNewHouseModel class]);
+
     }
 }
 
