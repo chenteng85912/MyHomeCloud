@@ -149,7 +149,25 @@
 }
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self showAlertView:indexPath.row];
+        AJMessageBean *msgBean = self.msgBean.beansArray[indexPath.row];
+        
+        [self.msgBean.beansArray removeObject:msgBean];
+        
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+        
+        [AJMessageBeanDao deleteOneNotice:msgBean formType:DetailsMessageType];
+        if (self.msgBean.beansArray.count==0) {
+            [self.tbView addNoMessageTipView];
+            [AJMessageBeanDao deleteOneNotice:msgBean formType:ListMessageType];
+            [self.listArray removeObject:self.msgBean];
+        }else{
+            if (!msgBean.isRead) {
+                NSInteger unreadNum = self.msgBean.unReadNum.integerValue;
+                unreadNum--;
+                self.msgBean.unReadNum = [NSString stringWithFormat:@"%ld",(long)unreadNum];
+            }
+        }
+        self.megHome.isRefresh = YES;
         
     }
 }
@@ -189,40 +207,6 @@
         
     }
     
-}
-
-- (void)showAlertView:(NSInteger )index{
-    [UIAlertController alertWithTitle:@"温馨提示" message:@"删除该条消息？" cancelButtonTitle:@"取消" otherButtonTitles:@[@"删除"] preferredStyle:UIAlertControllerStyleAlert block:^(NSInteger buttonIndex) {
-        if (buttonIndex==1) {
-            [self deleteMessage:index];
-        }else{
-            [self.tbView setEditing:NO];
-        }
-    }];
-   
-}
-//删除消息
-- (void)deleteMessage:(NSInteger )index{
-
-    AJMessageBean *msgBean = self.msgBean.beansArray[index];
-    
-    [self.msgBean.beansArray removeObject:msgBean];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
-    [_tbView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
-    
-    [AJMessageBeanDao deleteOneNotice:msgBean formType:DetailsMessageType];
-    if (self.msgBean.beansArray.count==0) {
-        [self.tbView addNoMessageTipView];
-        [AJMessageBeanDao deleteOneNotice:msgBean formType:ListMessageType];
-        [self.listArray removeObject:self.msgBean];
-    }else{
-        if (!msgBean.isRead) {
-            NSInteger unreadNum = self.msgBean.unReadNum.integerValue;
-            unreadNum--;
-            self.msgBean.unReadNum = [NSString stringWithFormat:@"%ld",(long)unreadNum];
-        }
-    }
-    self.megHome.isRefresh = YES;
 }
 
 - (void)backToPreVC{

@@ -12,6 +12,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *logBtn;
 @property (weak, nonatomic) IBOutlet UIButton *headLogBtn;
 @property (weak, nonatomic) IBOutlet UIButton *headRegBtn;
+@property (weak, nonatomic) IBOutlet UILabel *appName;
 @property (weak, nonatomic) IBOutlet UITextField *confirmPswTextField;
 @property (strong, nonatomic) KeychainTool *keyChainWrapper;
 @property (strong, nonatomic) NSString *luuid;
@@ -96,7 +97,7 @@ NSString *const USER_ONLINE = @"该用户已在别处登录";
     
 #if AJCLOUDADMIN
     NSString *name = [_userNameTF.text stringByReplacingOccurrencesOfString:@" " withString:@""];
-    if (![name isEqualToString:@"13712121212"]) {
+    if (![name isEqualToString:@"13712121212"]||![name isEqualToString:@"13713131313"]) {
         [self.view showTips:@"请使用管理员帐号登录" withState:TYKYHUDModeWarning complete:nil];
         return;
     }
@@ -268,6 +269,7 @@ NSString *const USER_ONLINE = @"该用户已在别处登录";
 #pragma mark - private methods
 - (void)initUI{
     
+    _appName.text = [CTTool appName];
     NSString *userName = [MyUserDefaults objectForKey:USER_NAME];
     if (userName) {
         self.userNameTF.text = userName;

@@ -154,21 +154,8 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
     
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        AJMessageBean *messageBean = self.dataArray[indexPath.row];
-      
-        [self.dataArray removeObjectAtIndex:indexPath.row];
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [self showAlertView:indexPath];
         
-        if (self.dataArray.count==0) {
-            [_tableView addNoMessageTipView];
-        }else
-        {
-            [_tableView hiddenTipsView];
-        }
-        
-        //从数据库删除
-        [AJMessageBeanDao deleteOneNotice:messageBean formType:ListMessageType];
-        [AJMessageBeanDao deleteMessagesWithMsgType:messageBean];
     }
 }
 #pragma mark 读取未读消息数量
@@ -190,7 +177,35 @@
     message.unReadNum = [NSString stringWithFormat:@"%lu",unreadNum];
    
 }
+- (void)showAlertView:(NSIndexPath *)indexPath{
+    [UIAlertController alertWithTitle:@"温馨提示" message:@"删除该类型所有消息？" cancelButtonTitle:@"取消" otherButtonTitles:@[@"删除"] preferredStyle:UIAlertControllerStyleAlert block:^(NSInteger buttonIndex) {
+        if (buttonIndex==1) {
+            [self deleteMessage:indexPath];
+        }else{
+            [self.tableView setEditing:NO];
+        }
+    }];
+    
+}
+//删除消息
+- (void)deleteMessage:(NSIndexPath *)indexPath{
+    AJMessageBean *messageBean = self.dataArray[indexPath.row];
+    
+    [self.dataArray removeObjectAtIndex:indexPath.row];
+    [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    
+    if (self.dataArray.count==0) {
+        [_tableView addNoMessageTipView];
+    }else
+    {
+        [_tableView hiddenTipsView];
+    }
+    
+    //从数据库删除
+    [AJMessageBeanDao deleteOneNotice:messageBean formType:ListMessageType];
+    [AJMessageBeanDao deleteMessagesWithMsgType:messageBean];
 
+}
 - (NSMutableArray <AJMessageBean *> *)dataArray{
     if (_dataArray ==nil) {
         _dataArray = [NSMutableArray new];

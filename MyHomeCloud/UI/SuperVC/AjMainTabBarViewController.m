@@ -48,18 +48,18 @@
     AJUserCenterViewController *user = [AJUserCenterViewController new];
     user.title = @"我";
     
-    NSArray *normalImgs = @[@"home_nor",@"msg",@"user"];
-    NSArray *selectedImgs = @[@"home_sel",@"msg_sel",@"user_sel"];
+    NSArray *normalImgs = @[@"home",@"message",@"me"];
+
+    self.tabBar.tintColor = NavigationBarColor;
+    self.tabBar.translucent = NO;
     NSArray *viewControllers = @[home,news,user];
     
     NSMutableArray *newArray = [NSMutableArray arrayWithCapacity:viewControllers.count];
     for (int i = 0; i < viewControllers.count;i++) {
         UIViewController *vc = viewControllers[i];
-        vc.tabBarItem.image = [[UIImage imageNamed:normalImgs[i]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+//        vc.tabBarItem.image = [[UIImage imageNamed:normalImgs[i]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        vc.tabBarItem.image = [UIImage imageNamed:normalImgs[i]];
 
-        vc.tabBarItem.selectedImage = [[UIImage imageNamed:selectedImgs[i]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-        [vc.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:NavigationBarColor} forState:UIControlStateSelected];
-        vc.tabBarItem.titlePositionAdjustment = UIOffsetMake(0, -3);
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
         [newArray addObject:nav];
     }
