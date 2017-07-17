@@ -20,7 +20,7 @@
 @property (strong, nonatomic) NSString *estateId;//房屋信息ID
 @property (strong, nonatomic) NSString *creatTime;//发布时间
 @property (strong, nonatomic) NSString *housePrice;//价格
-@property (strong, nonatomic) NSString *houseType;//类型
+@property (strong, nonatomic) NSString *pricType;//类型
 @property (strong, nonatomic) NSString *houseAreaage;//面积
 
 @property (strong, nonatomic) NSString *state;//0待确认 1已确认 2已撤销

@@ -44,7 +44,7 @@
 }
 - (void)refreshView{
     _housePrice.text = _reserverModal.housePrice;
-    _priceType.text = _reserverModal.houseType;
+    _priceType.text = _reserverModal.pricType;
     _houseAreaage.text = _reserverModal.houseAreaage;
     _houseName.text = _reserverModal.houseName;
     _agenterName.text = _reserverModal.agenterName;
@@ -56,7 +56,7 @@
     _state.backgroundColor = _reserverModal.stateColor;
     if (self.rModal==NReserverModal) {
         _houseType.text = @"楼盘名称";
-        _houseAreaage.text = @"*";
+        _houseAreaage.text = @"-";
         
     }
     if (_reserverModal.state.integerValue==0) {

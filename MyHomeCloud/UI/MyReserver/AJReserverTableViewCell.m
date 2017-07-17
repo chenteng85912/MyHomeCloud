@@ -37,13 +37,14 @@
     _reserverState.text = modal.stateStr;
     _reserverState.backgroundColor = modal.stateColor;
     
-    _priceType.text = [NSString stringWithFormat:@"%@：",modal.houseType];
+    _priceType.text = modal.pricType;
     _housePrice.text = modal.housePrice;
     _houseAreaage.text = modal.houseAreaage;
     _userName.text = modal.rUserName;
     
     if (!modal.houseAreaage) {
         _houseType.text = @"楼盘名称";
+        _houseAreaage.text = @"-";
     }
     
 }
