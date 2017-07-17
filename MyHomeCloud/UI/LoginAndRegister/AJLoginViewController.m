@@ -97,7 +97,7 @@ NSString *const USER_ONLINE = @"该用户已在别处登录";
     
 #if AJCLOUDADMIN
     NSString *name = [_userNameTF.text stringByReplacingOccurrencesOfString:@" " withString:@""];
-    if (![name isEqualToString:@"13712121212"]||![name isEqualToString:@"13713131313"]) {
+    if (![name isEqualToString:@"13712121212"]&&![name isEqualToString:@"13713131313"]) {
         [self.view showTips:@"请使用管理员帐号登录" withState:TYKYHUDModeWarning complete:nil];
         return;
     }
