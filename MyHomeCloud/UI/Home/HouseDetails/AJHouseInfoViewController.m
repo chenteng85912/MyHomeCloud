@@ -15,7 +15,7 @@
 #import "AJLetHouseTableViewCell.h"
 #import "AJLetHouseCellModel.h"
 #import "AJNewHouseTableViewCell.h"
-#import "AJNewHouseModel.h"
+#import "AJNewHouseCellModel.h"
 
 #import "AJHouseInfoEditViewController.h"
 #import "AJNewReserverViewController.h"
@@ -188,7 +188,7 @@ CGFloat const NEW_MORE_HEITHT = 580;
         return NSStringFromClass([AJLetHouseCellModel class]);
         
     }else{
-        return NSStringFromClass([AJNewHouseModel class]);
+        return NSStringFromClass([AJNewHouseCellModel class]);
 
     }
 }
