@@ -132,7 +132,9 @@
         if (buttonIndex==1) {
             //取消预约
             [weakSelf.reserverModal.objectData setObject:state forKey:RESERVER_STATE];
+            [weakSelf.view showHUD:nil];
             [weakSelf.reserverModal.objectData saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                [weakSelf.view removeHUD];
                 if (!succeeded) {
                     [weakSelf.view showTips:@"操作失败,请重试" withState:TYKYHUDModeFail complete:nil];
                     
