@@ -10,6 +10,6 @@
 
 @property (nonatomic, assign)  BOOL isRefresh;
 
-- (void)didReceiveRemoteNotification:(NSNotification *)notification;
+- (void)startFecthData;
 
 @end

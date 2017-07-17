@@ -14,7 +14,8 @@
 
 @interface AjMainTabBarViewController ()<UITabBarControllerDelegate>
 
-@property (strong, nonatomic) UINavigationController *currunNav;
+@property (strong, nonatomic) id curruntVC;
+@property (strong, nonatomic) AJMessageController *message;
 @end
 
 @implementation AjMainTabBarViewController
@@ -41,9 +42,11 @@
     
     AJHomeViewController *home = [AJHomeViewController new];
     home.title = @"首页";
+    _curruntVC = home;
     
     AJMessageController *news = [AJMessageController new];
     news.title = @"消息";
+    self.message = news;
     
     AJUserCenterViewController *user = [AJUserCenterViewController new];
     user.title = @"我";
@@ -57,7 +60,6 @@
     NSMutableArray *newArray = [NSMutableArray arrayWithCapacity:viewControllers.count];
     for (int i = 0; i < viewControllers.count;i++) {
         UIViewController *vc = viewControllers[i];
-//        vc.tabBarItem.image = [[UIImage imageNamed:normalImgs[i]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         vc.tabBarItem.image = [UIImage imageNamed:normalImgs[i]];
 
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
@@ -66,18 +68,30 @@
 
     self.viewControllers = newArray;
     self.delegate = self;
-    _currunNav = self.viewControllers[0];
 }
 
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController{
     
     UINavigationController *nav = (UINavigationController *)viewController;
 
-//    CTBaseViewController *base = _currunNav.viewControllers[0];
-    _currunNav = nav;
+    id message = nav.viewControllers[0];
+    if (_curruntVC == message) {
+        [(AJMessageController *)message startFecthData];
+        return;
+    }
+    _curruntVC = message;
 
 }
+- (void)updateMessageNumbers:(NSInteger)badgeNum{
+    if (badgeNum==0) {
+        self.message.tabBarItem.badgeValue = nil;
+    }else if (badgeNum>99){
+        self.message.tabBarItem.badgeValue = @"99+";
 
+    }else{
+        self.message.tabBarItem.badgeValue = [NSString stringWithFormat:@"%ld",(long)badgeNum];
+    }
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

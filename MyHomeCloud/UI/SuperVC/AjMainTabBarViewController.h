@@ -10,4 +10,6 @@
 
 @interface AjMainTabBarViewController : UITabBarController
 
+- (void)updateMessageNumbers:(NSInteger)badgeNum;
+
 @end

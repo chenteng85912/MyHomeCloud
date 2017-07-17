@@ -55,6 +55,7 @@
     if (self.isRefresh) {
         self.isRefresh = NO;
        
+        [self updateMessageNumbers];
         [self.tableView reloadData];
         if (self.dataArray.count==0) {
             [_tableView addNoMessageTipView];
@@ -62,7 +63,10 @@
     }
 
 }
+- (void)startFecthData{
+    [self.tableView.mj_header beginRefreshing];
 
+}
 #pragma mark 获取首页消息列表数据
 - (void)fetchMsgListData{
     
@@ -90,10 +94,11 @@
     [self.tableView hiddenTipsView];
     
     [self.dataArray addObjectsFromArray:temp];
-    for (AJMessageBean *msg in temp) {
+    for (AJMessageBean *msg in self.dataArray) {
         [self initUnReadNotificationNumbers:msg];
     }
 
+    [self updateMessageNumbers];
     [self.tableView reloadData];
 
 }
@@ -174,7 +179,7 @@
             continue;
         }
     }
-    message.unReadNum = [NSString stringWithFormat:@"%lu",unreadNum];
+    message.unReadNum = [NSString stringWithFormat:@"%lu",(long)unreadNum];
    
 }
 - (void)showAlertView:(NSIndexPath *)indexPath{
@@ -205,6 +210,15 @@
     [AJMessageBeanDao deleteOneNotice:messageBean formType:ListMessageType];
     [AJMessageBeanDao deleteMessagesWithMsgType:messageBean];
 
+}
+//更新未读消息数量
+- (void)updateMessageNumbers{
+    NSInteger totalUnReadNum = 0;
+    for (AJMessageBean *msg in self.dataArray) {
+        totalUnReadNum = totalUnReadNum + msg.unReadNum.integerValue;
+    }
+    
+    [APPDELEGATE updateMessageNumbers:totalUnReadNum];
 }
 - (NSMutableArray <AJMessageBean *> *)dataArray{
     if (_dataArray ==nil) {

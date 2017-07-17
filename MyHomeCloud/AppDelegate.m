@@ -10,6 +10,7 @@
 #import "AjMainTabBarViewController.h"
 #import "AJRemoteNotification.h"
 #import "AJMessageBeanDao.h"
+#import "AJMessageController.h"
 #import "UMMobClick/MobClick.h" //友盟统计
 #import <UMSocialCore/UMSocialCore.h>//友盟集成 微信分享
 
@@ -59,6 +60,13 @@ NSString *const UMWEIXINAPPSECRET = @"1b701ce273624810d0f55296f19cd384";
     [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:UMWEIXINKEY
                                        appSecret:UMWEIXINAPPSECRET redirectURL:@"http://mobile.umeng.com/social"];
     
+}
+//更新消息角标
+- (void)updateMessageNumbers:(NSInteger)badgeNum{
+    
+    [(AjMainTabBarViewController *)self.window.rootViewController updateMessageNumbers:badgeNum];
+  
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:badgeNum];
 }
 #pragma mark 注册推送
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken

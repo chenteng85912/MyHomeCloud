@@ -18,5 +18,7 @@
 //区域
 @property (strong, nonatomic) NSArray *areaArray;
 
+//更新消息角标
+- (void)updateMessageNumbers:(NSInteger)badgeNum;
 @end
 
