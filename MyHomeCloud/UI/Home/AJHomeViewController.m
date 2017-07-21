@@ -25,13 +25,14 @@
 #import "AJNewHouseTableViewCell.h"
 #import "AJNewHouseCellModel.h"
 
-#define AutoLoopHeight 300.0*dWidth/720.0
+#define AutoLoopHeight dHeight/3
 CGFloat const HEAD_BTN_HEIGHT = 100;
 
 @interface AJHomeViewController ()<CTLocationViewControllerDelegate,CTAutoLoopViewDelegate>
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UITableView *tbView;
 @property (weak, nonatomic) IBOutlet UIView *headBtnView;
+@property (weak, nonatomic) IBOutlet UIView *headSearchView;
 
 @property (strong, nonatomic) NSMutableArray <AJSecondHouseCellModel *> *secondArray;
 @property (strong, nonatomic) NSMutableArray <AJLetHouseCellModel *> *letArray;
@@ -54,30 +55,38 @@ CGFloat const HEAD_BTN_HEIGHT = 100;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
     [self initTbViewData];
     
     [self.view showHUD:nil];
     [self fetchData];
+    [self removeSearchBorder];
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
 }
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    [self setStatusBarColor:NavigationBarColor];
 
 }
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    [self setStatusBarColor:[UIColor clearColor]];
 }
-- (void)setStatusBarColor:(UIColor *)color{
-    UIView *statusBar = [[[UIApplication sharedApplication] valueForKey:@"statusBarWindow"] valueForKey:@"statusBar"];
-    if ([statusBar respondsToSelector:@selector(setBackgroundColor:)]) {
-        statusBar.backgroundColor = color;
+- (void)removeSearchBorder{
+    for (UIView *subview in [[_searchBar.subviews firstObject] subviews]) {
+        if ([subview isKindOfClass:NSClassFromString(@"UISearchBarBackground")]) {
+            [subview removeFromSuperview];
+        }
     }
-
 }
+//- (void)setStatusBarColor:(UIColor *)color{
+//    UIView *statusBar = [[[UIApplication sharedApplication] valueForKey:@"statusBarWindow"] valueForKey:@"statusBar"];
+//    if ([statusBar respondsToSelector:@selector(setBackgroundColor:)]) {
+//        statusBar.backgroundColor = color;
+//    }
+//
+//}
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
     
     AJSearchViewController *search = [AJSearchViewController new];
@@ -299,7 +308,7 @@ CGFloat const HEAD_BTN_HEIGHT = 100;
     APP_PUSH(vc);
 }
 - (void)initTbViewData{
-    self.navigationItem.titleView = self.searchBar;
+//    self.navigationItem.titleView = self.searchBar;
 //    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.areaBtn];
 //    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"安家屋" style:UIBarButtonItemStylePlain target:self action:nil];
 
@@ -316,11 +325,19 @@ CGFloat const HEAD_BTN_HEIGHT = 100;
 - (IBAction)btnAction:(UIButton *)sender {
     [self openMoreHouseData:sender];
 }
--(void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    [self.navigationController setNavigationBarHidden:velocity.y>0?YES:NO animated:YES];
-    
+    CGFloat offsetY = scrollView.contentOffset.y;
+    if(offsetY <100&&offsetY>0) {
+        _headSearchView.backgroundColor = [NavigationBarColor colorWithAlphaComponent:offsetY/100.0];
+    }else if (offsetY<=0){
+        _headSearchView.backgroundColor = [NavigationBarColor colorWithAlphaComponent:0.0];
+
+    }else{
+        _headSearchView.backgroundColor = [NavigationBarColor colorWithAlphaComponent:1.0];
+
+    }
 }
 - (CTAutoLoopViewController*)autoLoopView
 {

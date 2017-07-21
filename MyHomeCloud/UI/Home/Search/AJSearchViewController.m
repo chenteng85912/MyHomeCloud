@@ -14,10 +14,10 @@
 
 @interface AJSearchViewController ()
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
-@property (weak, nonatomic) IBOutlet UIView *typeView;
-@property (weak, nonatomic) IBOutlet UITableView *tbView;
+@property (weak, nonatomic) IBOutlet UIView *typeView;//二手房 租房 新房
+@property (weak, nonatomic) IBOutlet UITableView *tbView;//搜索列表
 @property (weak, nonatomic) IBOutlet UIView *backView;
-@property (weak, nonatomic) IBOutlet UIButton *clearAllBtn;
+@property (weak, nonatomic) IBOutlet UIButton *clearAllBtn;//清空按钮
 
 @property (strong, nonatomic) UIButton *typeBtn;
 @property (strong, nonatomic) NSMutableArray *searchArray;
@@ -29,7 +29,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-   
     self.navigationItem.titleView = self.searchBar;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.typeBtn];
     [_tbView registerNib:[UINib nibWithNibName:NSStringFromClass([AJSearchTableViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([AJSearchTableViewCell class])];
@@ -113,7 +112,8 @@
         vc = let;
     }else{
         AJNewHouseViewController *newHouse = [AJNewHouseViewController new];
-        newHouse.showModal = AllHouseModal;
+        newHouse.showModal = SearchHouseModal;
+        newHouse.searchKey = searchKey;
         newHouse.className = N_HOUSE;
         vc = newHouse;
     }
@@ -123,17 +123,9 @@
         [self.searchArray removeObject:searchKey];
     }
     [self.searchArray insertObject:searchKey atIndex:0];
-    
-    if (_type.integerValue==0) {
-        [AJLocalDataCenter saveLocalSearchKey:self.searchArray searchModal:SHouseModal];
 
-    }else if (_type.integerValue==1){
-        [AJLocalDataCenter saveLocalSearchKey:self.searchArray searchModal:LHouseModal];
+    [AJLocalDataCenter saveLocalSearchKey:self.searchArray searchModal:[self currentModal]];
 
-    }else{
-        [AJLocalDataCenter saveLocalSearchKey:self.searchArray searchModal:NHouseModal];
-
-    }
 }
 //前往搜索结果界面
 - (void)showSearchResult{
@@ -181,22 +173,31 @@
 
 - (void)readLocalData{
     if (_type.integerValue==0) {
-        self.searchArray = [AJLocalDataCenter readLocalSearchData:SHouseModal];
         self.searchBar.placeholder = @"小区/开发商/区域";
 
     }else if (_type.integerValue==1){
-        self.searchArray = [AJLocalDataCenter readLocalSearchData:LHouseModal];
         self.searchBar.placeholder = @"小区/开发商/区域";
 
     }else{
-        self.searchArray = [AJLocalDataCenter readLocalSearchData:NHouseModal];
         self.searchBar.placeholder = @"楼盘/开发商/区域";
 
     }
+    self.searchArray = [AJLocalDataCenter readLocalSearchData:[self currentModal]];
 
     [_tbView reloadData];
 }
+- (SearchModal)currentModal{
+    if (_type.integerValue==0) {
+        return SHouseModal;
 
+    }else if (_type.integerValue==1){
+        return LHouseModal;
+    }else{
+        return NHouseModal;
+
+    }
+
+}
 //删除某条搜索记录
 - (void)deleteSearchKey:(UIButton *)sender{
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:sender.tag inSection:0];
@@ -204,18 +205,8 @@
     [self.tbView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     
     [self.tbView performSelector:@selector(reloadData) withObject:nil afterDelay:0.5];
-    
-    SearchModal modal;
-    if (_type.integerValue==0) {
-        modal = SHouseModal;
-    }else if (_type.integerValue==1){
-        modal = LHouseModal;
 
-    }else{
-        modal = NHouseModal;
-
-    }
-    [AJLocalDataCenter deleteSearchKey:self.searchArray searchModal:modal];
+    [AJLocalDataCenter deleteSearchKey:self.searchArray searchModal:[self currentModal]];
 
 }
 - (IBAction)hiddenTypeView:(UITapGestureRecognizer *)sender {
@@ -224,15 +215,8 @@
 
 //删除搜索记录
 - (IBAction)deleteAllAction:(UIButton *)sender {
-    if (_type.integerValue==0) {
-        [AJLocalDataCenter clearLocalSearchKeys:SHouseModal];
-    }else if (_type.integerValue==1){
-        [AJLocalDataCenter clearLocalSearchKeys:LHouseModal];
-        
-    }else{
-        [AJLocalDataCenter clearLocalSearchKeys:NHouseModal];
-        
-    }
+
+    [AJLocalDataCenter clearLocalSearchKeys:[self currentModal]];
     [self.searchArray removeAllObjects];
     [_tbView reloadData];
 }

@@ -185,7 +185,7 @@ CGFloat const IMAGEHEIGHT  = 240.0f;
 //    head.hidesBottomBarWhenPushed = YES;
 //    APP_PUSH(head);
 }
-
+#pragma mark - AJUserHeadViewControllerDelegate
 - (void)uploadSuccess:(UIImage *)image{
     self.userHead.image = image;
 }

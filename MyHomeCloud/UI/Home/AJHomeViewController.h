@@ -7,6 +7,6 @@
 //
 
 
-@interface AJHomeViewController : CTBaseViewController
+@interface AJHomeViewController : UIViewController
 
 @end
