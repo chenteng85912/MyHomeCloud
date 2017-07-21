@@ -55,7 +55,6 @@ CGFloat const HEAD_BTN_HEIGHT = 100;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
     [self initTbViewData];
     
@@ -65,6 +64,8 @@ CGFloat const HEAD_BTN_HEIGHT = 100;
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+
 }
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
@@ -73,13 +74,7 @@ CGFloat const HEAD_BTN_HEIGHT = 100;
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
 }
-- (void)removeSearchBorder{
-    for (UIView *subview in [[_searchBar.subviews firstObject] subviews]) {
-        if ([subview isKindOfClass:NSClassFromString(@"UISearchBarBackground")]) {
-            [subview removeFromSuperview];
-        }
-    }
-}
+
 //- (void)setStatusBarColor:(UIColor *)color{
 //    UIView *statusBar = [[[UIApplication sharedApplication] valueForKey:@"statusBarWindow"] valueForKey:@"statusBar"];
 //    if ([statusBar respondsToSelector:@selector(setBackgroundColor:)]) {
@@ -337,6 +332,14 @@ CGFloat const HEAD_BTN_HEIGHT = 100;
     }else{
         _headSearchView.backgroundColor = [NavigationBarColor colorWithAlphaComponent:1.0];
 
+    }
+}
+//移除搜索框边框
+- (void)removeSearchBorder{
+    for (UIView *subview in [[_searchBar.subviews firstObject] subviews]) {
+        if ([subview isKindOfClass:NSClassFromString(@"UISearchBarBackground")]) {
+            [subview removeFromSuperview];
+        }
     }
 }
 - (CTAutoLoopViewController*)autoLoopView
