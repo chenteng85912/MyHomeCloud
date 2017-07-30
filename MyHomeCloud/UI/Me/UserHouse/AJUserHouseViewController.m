@@ -13,6 +13,7 @@
 #import "AJAddHouserViewController.h"
 #import "AJMyReserverViewController.h"
 #import "AJAddNHouseViewController.h"
+#import "AJUserInclinationViewController.h"
 
 @interface AJUserHouseViewController ()
 
@@ -90,6 +91,19 @@
         
         self.pageVC.viewControllers = @[secondr,letr,nhouse];
 
+    }else if (_showModal==UserInclinationModal){
+        AJUserInclinationViewController *inclilnation = [AJUserInclinationViewController new];
+        inclilnation.title  =@"二手房";
+        inclilnation.inclinationModal = SecondInclinationModal;
+        inclilnation.showModal = _showModal;
+
+        AJUserInclinationViewController *letr = [AJUserInclinationViewController new];
+        letr.title  =@"租房";
+        letr.inclinationModal = LetInclinationModal;
+        letr.showModal = _showModal;
+
+        self.pageVC.viewControllers = @[inclilnation,letr];
+        
     }else{
         //二手房 出租房
         AJNewHouseViewController *house = [AJNewHouseViewController new];

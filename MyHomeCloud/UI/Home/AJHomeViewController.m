@@ -340,6 +340,7 @@ CGFloat const HEAD_BTN_HEIGHT = 100;
         _headSearchView.backgroundColor = [NavigationBarColor colorWithAlphaComponent:1.0];
 
     }
+    
 }
 //移除搜索框边框
 - (void)removeSearchBorder{

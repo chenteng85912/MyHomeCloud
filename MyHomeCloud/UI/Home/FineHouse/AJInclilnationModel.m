@@ -13,7 +13,15 @@
 - (void)calculateSizeConstrainedToSize{
     self.cellHeight = 205;
     
-    _incinationType = self.objectData[ESTATE_TYPE];
+    if ([self.objectData[ESTATE_TYPE] isEqualToString:SECOND_HAND_HOUSE]) {
+        _incinationType = @"二手房";
+    }else if ([self.objectData[ESTATE_TYPE] isEqualToString:LET_HOUSE]){
+        _incinationType = @"租房";
+
+    }else{
+        _incinationType = @"新房";
+
+    }
     _incinationAreaage = self.objectData[HOUSE_AREAAGE];
     _incinationPrice = self.objectData[HOUSE_TOTAL_PRICE];
     _incinationRooms = self.objectData[HOUSE_AMOUNT];

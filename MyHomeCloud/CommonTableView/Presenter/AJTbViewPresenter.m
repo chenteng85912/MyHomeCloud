@@ -131,6 +131,10 @@ NSInteger const defaultPageSize = 50;
             [self.query whereKey:RESERVER_TYPE equalTo:[_tbViewVC reserverTypeName]];
             
         }
+        if (self.showModal==UserInclinationModal) {
+            [self.query whereKey:ESTATE_TYPE equalTo:[_tbViewVC inclinationTypeName]];
+            
+        }
     }
     [self addFilter];
    

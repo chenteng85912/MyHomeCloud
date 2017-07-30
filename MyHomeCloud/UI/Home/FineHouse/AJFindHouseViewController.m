@@ -24,6 +24,8 @@
 @property (weak, nonatomic) IBOutlet AJPickViewTextField *houseRooms;
 @property (strong, nonatomic) AJTagsViewController *tagVC;//标签
 
+@property (assign, nonatomic) NSInteger type;//0二手房 1租房 3新房
+
 @end
 
 @implementation AJFindHouseViewController
@@ -53,12 +55,16 @@
         _letPrice.hidden = NO;
         _housePrice.hidden = YES;
         self.tagVC.addModal = LetHouseModal;
+        _type=1;
 
-    }else{
+    }else if ([_searchType.text isEqualToString:@"二手房"]){
         _typeName.text = @"售价";
         _letPrice.hidden = YES;
         _housePrice.hidden = NO;
         self.tagVC.addModal = SecondHouseModal;
+        _type=0;
+    }else{
+        _type=2;
 
     }
     _houseTags.text = nil;
@@ -81,7 +87,6 @@
         [self.view showTips:_searchType.placeholder withState:TYKYHUDModeWarning complete:nil];
         return;
     }
-    [houseData setObject:_searchType.text forKey:ESTATE_TYPE];
     
     if (!_houseArea.hasText) {
         [self.view showTips:_houseArea.placeholder withState:TYKYHUDModeWarning complete:nil];
@@ -96,12 +101,25 @@
   
     [houseData setObject:_houseAreaage.text forKey:HOUSE_AREAAGE];
     
-    if (!_housePrice.hasText) {
-        [self.view showTips:_housePrice.placeholder withState:TYKYHUDModeWarning complete:nil];
-        return;
+    if (_type==0) {
+        [houseData setObject:SECOND_HAND_HOUSE forKey:ESTATE_TYPE];
+        if (!_housePrice.hasText) {
+            [self.view showTips:_housePrice.placeholder withState:TYKYHUDModeWarning complete:nil];
+            return;
+        }
+        [houseData setObject:_housePrice.text forKey:HOUSE_TOTAL_PRICE];
+    }else if (_type==1){
+        [houseData setObject:LET_HOUSE forKey:ESTATE_TYPE];
+        if (!_letPrice.hasText) {
+            [self.view showTips:_letPrice.placeholder withState:TYKYHUDModeWarning complete:nil];
+            return;
+        }
+        [houseData setObject:_letPrice.text forKey:HOUSE_TOTAL_PRICE];
+    }else{
+        [houseData setObject:N_HOUSE forKey:ESTATE_TYPE];
+        
     }
-    [houseData setObject:_housePrice.text forKey:HOUSE_TOTAL_PRICE];
-    
+  
     if (!_houseTags.hasText) {
         [self.view showTips:_houseTags.placeholder withState:TYKYHUDModeWarning complete:nil];
         return;
@@ -125,12 +143,14 @@
         [KEYWINDOW showTips:@"提交意向成功" withState:TYKYHUDModeSuccess complete:^{
             
             AJUserInclinationViewController *inclination = [AJUserInclinationViewController new];
-            if ([_searchType.text isEqualToString:@"租房"]) {
+            if (_type==1) {
                 inclination.inclinationModal =  LetInclinationModal;
 
-            }else{
+            }else if (_type==0){
                 inclination.inclinationModal =  SecondInclinationModal;
 
+            }else{
+                
             }
             APP_PUSH(inclination);
             

@@ -23,7 +23,7 @@
     if (self.inclinationModal==SecondInclinationModal) {
         self.title = @"我的意向(二手房)";
     }else if (self.inclinationModal==LetInclinationModal){
-        self.title = @"我的意向(租房房)";
+        self.title = @"我的意向(租房)";
     }else{
         self.title = @"我的意向(新房)";
 
@@ -63,7 +63,7 @@
 #endif
 }
 
-- (NSString *)reserverTypeName{
+- (NSString *)inclinationTypeName{
     if (self.inclinationModal==SecondInclinationModal) {
         return SECOND_HAND_HOUSE;
     }else if (self.inclinationModal==LetInclinationModal){

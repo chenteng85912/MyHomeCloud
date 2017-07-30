@@ -349,6 +349,8 @@
         message = @"是否删除此预约信息?";
     }else if (self.showModal==UserFeedbackModal) {
         message = @"是否删除该反馈信息?";
+    }else if (self.showModal==UserInclinationModal) {
+        message = @"是否删除该意向信息?";
     }
     else{
         message = @"是否删除该房源信息?";
