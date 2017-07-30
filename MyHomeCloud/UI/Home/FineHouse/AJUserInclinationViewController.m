@@ -18,6 +18,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+
     if (self.inclinationModal==SecondInclinationModal) {
         self.title = @"我的意向(二手房)";
     }else if (self.inclinationModal==LetInclinationModal){

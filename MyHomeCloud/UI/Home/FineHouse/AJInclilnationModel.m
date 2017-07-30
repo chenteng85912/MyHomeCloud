@@ -11,7 +11,7 @@
 @implementation AJInclilnationModel
 
 - (void)calculateSizeConstrainedToSize{
-    self.cellHeight = 200;
+    self.cellHeight = 205;
     
     _incinationType = self.objectData[ESTATE_TYPE];
     _incinationAreaage = self.objectData[HOUSE_AREAAGE];
@@ -19,5 +19,9 @@
     _incinationRooms = self.objectData[HOUSE_AMOUNT];
     _incinationTags = self.objectData[HOUSE_TAGS];
     _incinationPhone = self.objectData[USER_PHONE];
+    
+    NSDateFormatter *formatter = [NSDateFormatter new];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    _creatTime = [formatter stringFromDate:self.objectData.createdAt];
 }
 @end

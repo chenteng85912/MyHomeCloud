@@ -296,6 +296,12 @@ CGFloat const HEAD_BTN_HEIGHT = 100;
 
         vc = newHouse;
     }else{
+        if (![AVUser currentUser]) {
+            [AJSB goLoginViewComplete:^{
+            }];
+            return;
+        }
+
         AJFindHouseViewController *other = [AJFindHouseViewController new];
         vc = other;
         vc.title = @"帮你找房";

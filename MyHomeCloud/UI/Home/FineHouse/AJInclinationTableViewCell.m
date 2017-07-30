@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *inRooms;
 @property (weak, nonatomic) IBOutlet UILabel *inPhone;
 @property (weak, nonatomic) IBOutlet UILabel *tags;
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 
 @end
 @implementation AJInclinationTableViewCell
@@ -23,12 +24,15 @@
 - (void)processCellData:(id<AJTbViewCellModelProtocol>)data{
     AJInclilnationModel *model = (AJInclilnationModel *)data;
     
+    _timeLabel.text = model.creatTime;
+    
     _typeLabel.text = model.incinationType;
     _inAreaage.text = model.incinationAreaage;
     _inPrice.text = model.incinationPrice;
     _inRooms.text = model.incinationRooms;
     _inPhone.text = model.incinationPhone;
     _tags.text = model.incinationTags;
+    
 }
 - (void)awakeFromNib {
     [super awakeFromNib];

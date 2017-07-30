@@ -16,5 +16,6 @@
 @property (strong, nonatomic) NSString *incinationRooms;//房型
 @property (strong, nonatomic) NSString *incinationTags;//标签
 @property (strong, nonatomic) NSString *incinationPhone;//电话
+@property (strong, nonatomic) NSString *creatTime;//时间
 
 @end

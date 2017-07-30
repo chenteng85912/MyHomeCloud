@@ -94,7 +94,7 @@
         return;
     }
   
-    [houseData setObject:_houseAreaage forKey:HOUSE_AREAAGE];
+    [houseData setObject:_houseAreaage.text forKey:HOUSE_AREAAGE];
     
     if (!_housePrice.hasText) {
         [self.view showTips:_housePrice.placeholder withState:TYKYHUDModeWarning complete:nil];
@@ -113,8 +113,6 @@
         return;
     }
     [houseData setObject:_houseRooms.text forKey:HOUSE_AMOUNT];
-    
-    [self.view showHUD:nil];
     
     [KEYWINDOW showHUD:@"正在提交..."];
     [houseData saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
@@ -140,7 +138,6 @@
         
     }];
 
-    
 }
 - (AJTagsViewController *)tagVC{
     if (_tagVC==nil) {
