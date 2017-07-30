@@ -11,7 +11,7 @@
 @implementation AJInclilnationModel
 
 - (void)calculateSizeConstrainedToSize{
-    self.cellHeight = 205;
+    self.cellHeight = 230;
     
     if ([self.objectData[ESTATE_TYPE] isEqualToString:SECOND_HAND_HOUSE]) {
         _incinationType = @"二手房";
@@ -22,6 +22,7 @@
         _incinationType = @"新房";
 
     }
+    _incinationArea = self.objectData[HOUSE_AREA];
     _incinationAreaage = self.objectData[HOUSE_AREAAGE];
     _incinationPrice = self.objectData[HOUSE_TOTAL_PRICE];
     _incinationRooms = self.objectData[HOUSE_AMOUNT];

@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *inPhone;
 @property (weak, nonatomic) IBOutlet UILabel *tags;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *areaLabel;
 
 @end
 @implementation AJInclinationTableViewCell
@@ -26,6 +27,7 @@
     
     _timeLabel.text = model.creatTime;
     
+    _areaLabel.text = model.incinationArea;
     _typeLabel.text = model.incinationType;
     _inAreaage.text = model.incinationAreaage;
     _inPrice.text = model.incinationPrice;

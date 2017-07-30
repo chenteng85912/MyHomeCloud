@@ -11,6 +11,8 @@
 @interface AJInclilnationModel : AJTbViewCellModel
 
 @property (strong, nonatomic) NSString *incinationType;//类型
+@property (strong, nonatomic) NSString *incinationArea;//
+
 @property (strong, nonatomic) NSString *incinationAreaage;//面积
 @property (strong, nonatomic) NSString *incinationPrice;//价格
 @property (strong, nonatomic) NSString *incinationRooms;//房型
