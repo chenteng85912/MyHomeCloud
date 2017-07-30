@@ -32,6 +32,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self addChildViewController:self.tagVC];
+
     // Do any additional setup after loading the view from its nib.
 }
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
@@ -143,6 +145,9 @@
         [KEYWINDOW showTips:@"提交意向成功" withState:TYKYHUDModeSuccess complete:^{
             
             AJUserInclinationViewController *inclination = [AJUserInclinationViewController new];
+            inclination.showModal = UserInclinationModal;
+            inclination.isPreview = YES;
+
             if (_type==1) {
                 inclination.inclinationModal =  LetInclinationModal;
 
@@ -165,7 +170,6 @@
         _tagVC.delegate = self;
         _tagVC.view.alpha = 0;
         _tagVC.view.frame = self.view.bounds;
-        [self addChildViewController:_tagVC];
         [self.view addSubview:_tagVC.view];
     }
     return _tagVC;

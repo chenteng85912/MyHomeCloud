@@ -82,7 +82,7 @@
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     if (!_isLoad) {
-        if (self.isDetails) {
+        if (self.isDetails||self.isPreview) {
             self.tableView.frame = CGRectMake(0, 0, dWidth, dHeight-50);
 
         }

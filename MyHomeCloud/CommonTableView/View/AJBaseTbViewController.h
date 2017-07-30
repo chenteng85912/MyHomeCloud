@@ -33,6 +33,8 @@
 
 @property (assign, nonatomic) BOOL isDetails;//详情界面
 
+@property (assign, nonatomic) BOOL isPreview;//新预约 意向 预览
+
 @property (assign, nonatomic) BOOL showFilter;//显示筛选视图
 
 @property (strong, nonatomic) AVQuery *baseQuery;

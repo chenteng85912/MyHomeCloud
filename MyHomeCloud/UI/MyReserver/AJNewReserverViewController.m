@@ -128,6 +128,7 @@
             [KEYWINDOW showTips:@"提交预约成功" withState:TYKYHUDModeSuccess complete:^{
                
                 AJMyReserverViewController *myReserver = [AJMyReserverViewController new];
+                myReserver.isPreview = YES;
                 myReserver.reserverModal =  _reserverModal;
                 myReserver.showModal = ReserverHouseModal;
                 myReserver.isNewReserver = YES;
