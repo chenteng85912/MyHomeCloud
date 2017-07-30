@@ -100,7 +100,7 @@ NSString *const ServicePhone = @"4006005555";
     model.title = @"我的意向";
     
 #endif
-    model.iconName = @"reserver";
+    model.iconName = @"myWant";
     model.isNeedLogin = YES;
     model.showModal = UserInclinationModal;
     model.className = NSStringFromClass([AJUserHouseViewController class]);
