@@ -24,10 +24,16 @@
 @property (weak, nonatomic) IBOutlet UIButton *clearBtn;
 @property (weak, nonatomic) IBOutlet UIButton *comfirnBtn;
 @property (weak, nonatomic) IBOutlet UIScrollView *moreFilterView;
+@property (weak, nonatomic) IBOutlet UIView *priceView;
+@property (weak, nonatomic) IBOutlet UIView *areaView;
+@property (weak, nonatomic) IBOutlet UIView *typeView;
+@property (weak, nonatomic) IBOutlet UIButton *moreBtn;
 
 @property (strong, nonatomic) NSArray *roomsArray;//房型
 @property (strong, nonatomic) NSArray *priceArray;//价格
 @property (strong, nonatomic) NSArray *areasArray;//区域
+@property (strong, nonatomic) NSArray *allBtnArray;//按钮
+
 @property (strong, nonatomic) NSMutableDictionary  *priceDic;//价格条件
 @property (strong, nonatomic) NSMutableDictionary  *moreDic;//更多条件
 @property (strong, nonatomic) NSMutableDictionary  *areaAgeDic;//面积条件
@@ -43,15 +49,21 @@
     _headView.backgroundColor = NavigationBarColor;
     [self initFilterParamaters];
     
-
+    _allBtnArray = @[_areaBtn,_priceBtn,_roomsBtn,_moreBtn];
     [self.tbView registerClass:[UITableViewCell class] forCellReuseIdentifier:NSStringFromClass([self class])];
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-  
+    if ([self.className isEqualToString:N_HOUSE]) {
+        _areaView.frame = CGRectMake(0, 0, dWidth/3, 40);
+        _priceView.frame = CGRectMake(dWidth/3, 0, dWidth/3, 40);
+        _typeView.frame = CGRectMake(dWidth*2/3, 0, dWidth/3, 40);
+        
+    }
 }
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+   
     if (CGRectGetMaxY(_clearBtn.frame)>dHeight-64-80) {
         _moreFilterView.contentSize = CGSizeMake(dWidth, CGRectGetMaxY(_clearBtn.frame)+45);
         _moreFilterView.alwaysBounceVertical = YES;
@@ -67,15 +79,33 @@
     if ([self.className isEqualToString:SECOND_HAND_HOUSE]) {
         self.priceArray = @[@"不限",@"50万以下",@"50-100万",@"100-150万",@"150-200万",@"200-300万",@"300万以上"];
         [_priceBtn setTitle:@"总价" forState:UIControlStateNormal];
-    }else {
+    }else if ([self.className isEqualToString:LET_HOUSE]){
         [_priceBtn setTitle:@"租金" forState:UIControlStateNormal];
         self.priceArray = @[@"不限",@"1000元以下",@"1000-1500元",@"1500-2000元",@"2000-3000元",@"3000-4000元",@"4000元以上"];
+
+    }else{
+        [_priceBtn setTitle:@"均价" forState:UIControlStateNormal];
+        self.priceArray = @[@"不限",@"10000元以下",@"10000-15000元/平",@"15000-20000元/平",@"20000-25000元/平",@"25000-30000元/平",@"30000元以上"];
+        self.roomsArray = @[@"不限",@"公寓",@"洋房",@"别墅",@"商铺",@"写字楼"];
 
     }
     
 }
 - (IBAction)btnAction:(UIButton *)sender {
-    
+    for (UIButton *btn in _allBtnArray) {
+        if (sender==btn) {
+            continue;
+        }
+        btn.selected = NO;
+    }
+    if (sender!=_comfirnBtn) {
+        sender.selected = !sender.selected;
+        _comfirnBtn.hidden = NO;
+
+    }else{
+        _comfirnBtn.hidden = YES;
+
+    }
     //0区域 1租金 总价 2房型 3更多
     if (sender.tag<4) {
         if (sender.tag==3) {
@@ -91,6 +121,7 @@
                 
                 [UIView animateWithDuration:0.3 animations:^{
                     _moreView.alpha = 0;
+
                 } completion:^(BOOL finished) {
                     [self showOrHiddenTbView:NO];
                 }];
@@ -131,11 +162,13 @@
         [self resetBtnState:_floorView];
 
         [self.moreDic removeAllObjects];
+        [self.areaAgeDic removeAllObjects];
+        [self.moreDic setObject:self.areaAgeDic forKey:HOUSE_AREAAGE];
+        
     }else {
         //确定更多条件
-        [UIView animateWithDuration:0.3 animations:^{
-            _moreView.alpha = 0;
-        }];
+        _moreView.alpha = 0;
+
         [self showOrHiddenTbView:NO];
 
         //重新请求数据
@@ -146,6 +179,9 @@
    
 }
 - (IBAction)tapAction:(UITapGestureRecognizer *)sender {
+    for (UIButton *btn in _allBtnArray) {
+        btn.selected = NO;
+    }
     [self showOrHiddenTbView:NO];
 }
 //楼层情况
@@ -191,14 +227,13 @@
 - (IBAction)moreBtnAction:(UIButton *)sender {
     if (sender.selected) {
         sender.selected = NO;
-        [self.moreDic removeObjectForKey:HOUSE_AREAAGE];
+        [self.areaAgeDic removeAllObjects];
         return;
         
     }
     [self resetBtnState:_areaageView];
 
     sender.selected = YES;
-    [self.moreDic setObject:sender.currentTitle forKey:HOUSE_AREAAGE];
 
     if ([sender.currentTitle containsString:@"-"]) {
         NSArray *priArray = [sender.currentTitle componentsSeparatedByString:@"-"];
@@ -213,7 +248,7 @@
         
     }
     
-    debugLog(@"价格过滤条件%@",self.priceDic);
+    debugLog(@"面积过滤条件%@",self.areaAgeDic);
 }
 - (void)resetBtnState:(UIView *)view{
     for (id sView in view.subviews) {
@@ -286,14 +321,22 @@
 {
     if (indexPath.row==0) {
         
-        [self.filterDic removeObjectForKey:[NSNumber numberWithInteger:_currentIndex]];
         if (_currentIndex==0) {
             [_areaBtn setTitle:@"区域" forState:UIControlStateNormal];
+            [self.filterDic removeObjectForKey:HOUSE_AREA];
         }else if (_currentIndex==1) {
             [self initFilterParamaters];
             [self.priceDic removeAllObjects];
         }else {
-            [_roomsBtn setTitle:@"房型" forState:UIControlStateNormal];
+            if ([self.className isEqualToString:N_HOUSE]) {
+                [_roomsBtn setTitle:@"类型" forState:UIControlStateNormal];
+                [self.filterDic removeObjectForKey:ESTATE_TYPE];
+
+            }else{
+                [_roomsBtn setTitle:@"房型" forState:UIControlStateNormal];
+                [self.filterDic removeObjectForKey:HOUSE_AMOUNT];
+
+            }
         }
     }else{
         NSArray *dataArray;
@@ -301,31 +344,41 @@
         if (_currentIndex==0) {
             dataArray = self.areasArray;
             btn = _areaBtn;
+            [self.filterDic setObject:self.areasArray[indexPath.row] forKey:HOUSE_AREA];
+
         }else if (_currentIndex==1) {
             dataArray = self.priceArray;
             btn = _priceBtn;
+            [self initPriceParamaters:self.priceArray[indexPath.row]];
 
         }else {
             dataArray = self.roomsArray;
             btn = _roomsBtn;
+            //建筑类型
+            if ([self.className isEqualToString:N_HOUSE]) {
+                [self.filterDic setObject:self.roomsArray[indexPath.row] forKey:ESTATE_TYPE];
 
+            }else{
+                //房间数量
+                [self.filterDic setObject:self.roomsArray[indexPath.row] forKey:HOUSE_AMOUNT];
+
+            }
         }
        
         [btn setTitle:dataArray[indexPath.row] forState:UIControlStateNormal];
-        [self.filterDic setObject:dataArray[indexPath.row] forKey:[NSNumber numberWithInteger:_currentIndex]];
         
     }
    
     [self showOrHiddenTbView:NO];
-    [self initPriceParamaters];
     //重新请求数据
     if ([self.delegate respondsToSelector:@selector(refreshTbView)]) {
         [self.delegate refreshTbView];
     }
+    for (UIButton *btn in _allBtnArray) {
+        btn.selected = NO;
+    }
 }
-- (void)initPriceParamaters{
-    NSNumber *index = [NSNumber numberWithInteger:1];
-    NSString *price = self.filterDic[index];
+- (void)initPriceParamaters:(NSString *)price{
     if (!price) {
         return;
     }
@@ -347,7 +400,7 @@
 - (NSString *)filterStr:(NSString *)maxPrice{
     NSCharacterSet* nonDigits =[[NSCharacterSet decimalDigitCharacterSet] invertedSet];
     NSInteger num = [[maxPrice stringByTrimmingCharactersInSet:nonDigits] integerValue];
-    debugLog(@"过滤的价格数据:%ld",(long)num);
+    debugLog(@"过滤的数据:%ld",(long)num);
     return [NSString stringWithFormat:@"%ld",(long)num];
 }
 - (void)showOrHiddenTbView:(BOOL)isShow{
@@ -359,6 +412,7 @@
     [UIView animateWithDuration:0.3 animations:^{
         self.backView.alpha = isShow;
         self.tbView.alpha = isShow;
+
     } completion:^(BOOL finished) {
         if (!isShow) {
             self.view.frame = _headView.bounds;
@@ -375,6 +429,7 @@
     }
     return _filterDic;
 }
+//价格 最大值 最小值
 - (NSMutableDictionary *)priceDic{
     if (_priceDic==nil) {
         _priceDic = [NSMutableDictionary new];
@@ -385,10 +440,11 @@
 - (NSMutableDictionary *)moreDic{
     if (_moreDic==nil) {
         _moreDic = [NSMutableDictionary new];
-        [_moreDic setObject:self.areaAgeDic forKey:FILTER_AREAAGE];
+        [_moreDic setObject:self.areaAgeDic forKey:HOUSE_AREAAGE];
     }
     return _moreDic;
 }
+//面积 最大值 最小值
 - (NSMutableDictionary *)areaAgeDic{
     if (_areaAgeDic==nil) {
         _areaAgeDic = [NSMutableDictionary new];

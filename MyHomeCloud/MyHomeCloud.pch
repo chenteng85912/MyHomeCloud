@@ -182,8 +182,7 @@
 #define FILTER_MIN           @"min_number"//最小值
 #define FILTER_PRICE         @"filter_price"//价格区间
 
-#define FILTER_MORE          @"filter_more"//跟多
-#define FILTER_AREAAGE       @"filter_areaage"//面积
+#define FILTER_MORE          @"filter_more"//更多
 #define FILTER_FLOOR         @"filter_floor"//楼层
 
 #ifdef DEBUG

@@ -142,75 +142,90 @@ NSInteger const defaultPageSize = 50;
    
     if ([_tbViewVC respondsToSelector:@selector(filterDic)]) {
         NSDictionary *filterDic = [_tbViewVC filterDic];
-        if (filterDic.count>1) {
-            //区域
-            NSString *area = filterDic[[NSNumber numberWithInteger:0]];
-            if (area) {
-                AVQuery *areaHouse = [AVQuery queryWithClassName:[_tbViewVC requestClassName]];
-                [areaHouse whereKey:HOUSE_AREA containsString:area];
-                [queryArray addObject:areaHouse];
-            }
-            //价格
-            NSString *price = filterDic[[NSNumber numberWithInteger:1]];
-            if (price) {
-                NSDictionary *priceDic = filterDic[FILTER_PRICE];
-                if (priceDic.count>0) {
-                    AVQuery *areaHouse = [AVQuery queryWithClassName:[_tbViewVC requestClassName]];
-                    if ([[_tbViewVC requestClassName] isEqualToString:SECOND_HAND_HOUSE]) {
-                        if (priceDic[FILTER_MIN]) {
-                            [areaHouse whereKey:HOUSE_TOTAL_PRICE greaterThanOrEqualTo:priceDic[FILTER_MIN]];
-                            
-                        }
-                        if (priceDic[FILTER_MAX]) {
-                            [areaHouse whereKey:HOUSE_TOTAL_PRICE lessThan:priceDic[FILTER_MAX]];
-                            
-                        }
-                        
-                    }else{
-                        if (priceDic[FILTER_MIN]) {
-                            [areaHouse whereKey:LET_HOUSE_PRICE greaterThanOrEqualTo:priceDic[FILTER_MIN]];
-                            
-                        }
-                        if (priceDic[FILTER_MAX]) {
-                            [areaHouse whereKey:LET_HOUSE_PRICE lessThan:priceDic[FILTER_MAX]];
-                            
-                        }
-                        
-                    }
-                    [queryArray addObject:areaHouse];
+        //区域
+        NSString *area = filterDic[HOUSE_AREA];
+        if (area) {
+            AVQuery *areaHouse = [AVQuery queryWithClassName:[_tbViewVC requestClassName]];
+            [areaHouse whereKey:HOUSE_AREA containsString:area];
+            [queryArray addObject:areaHouse];
+        }
+        //价格
+        NSDictionary *priceDic = filterDic[FILTER_PRICE];
+        if (priceDic.count>0) {
+            AVQuery *areaHouse = [AVQuery queryWithClassName:[_tbViewVC requestClassName]];
+            if ([[_tbViewVC requestClassName] isEqualToString:SECOND_HAND_HOUSE]) {
+                //总价
+                if (priceDic[FILTER_MIN]) {
+                    [areaHouse whereKey:HOUSE_TOTAL_PRICE greaterThanOrEqualTo:priceDic[FILTER_MIN]];
+                    
                 }
-                
-            }
-            //房型
-            NSString *rooms = filterDic[[NSNumber numberWithInteger:2]];
-            if (rooms) {
-                AVQuery *areaHouse = [AVQuery queryWithClassName:[_tbViewVC requestClassName]];
-                [areaHouse whereKey:HOUSE_AMOUNT containsString:rooms];
-                [queryArray addObject:areaHouse];
-            }
-            
-            //更多
-            NSDictionary *moreDic = filterDic[FILTER_MORE];
-            if (moreDic.count>0) {
-                //朝向
-                NSString *dir = moreDic[HOUSE_DIRECTION];
-                if (dir) {
-                    AVQuery *areaHouse = [AVQuery queryWithClassName:[_tbViewVC requestClassName]];
-                    [areaHouse whereKey:HOUSE_DIRECTION containsString:dir];
-                    [queryArray addObject:areaHouse];
-
-                }
-                
-                //装修
-                NSString *des = moreDic[HOUSE_DESCRIBE];
-                if (des) {
-                    AVQuery *areaHouse = [AVQuery queryWithClassName:[_tbViewVC requestClassName]];
-                    [areaHouse whereKey:HOUSE_DESCRIBE containsString:des];
-                    [queryArray addObject:areaHouse];
+                if (priceDic[FILTER_MAX]) {
+                    [areaHouse whereKey:HOUSE_TOTAL_PRICE lessThan:priceDic[FILTER_MAX]];
                     
                 }
                 
-                //楼层情况
+            }else if ([[_tbViewVC requestClassName] isEqualToString:LET_HOUSE]) {
+                //租金
+                if (priceDic[FILTER_MIN]) {
+                    [areaHouse whereKey:LET_HOUSE_PRICE greaterThanOrEqualTo:priceDic[FILTER_MIN]];
+                    
+                }
+                if (priceDic[FILTER_MAX]) {
+                    [areaHouse whereKey:LET_HOUSE_PRICE lessThan:priceDic[FILTER_MAX]];
+                    
+                }
+                
+            }else{
+                //均价
+                if (priceDic[FILTER_MIN]) {
+                    [areaHouse whereKey:HOUSE_UNIT_PRICE greaterThanOrEqualTo:priceDic[FILTER_MIN]];
+                    
+                }
+                if (priceDic[FILTER_MAX]) {
+                    [areaHouse whereKey:HOUSE_UNIT_PRICE lessThan:priceDic[FILTER_MAX]];
+                    
+                }
+            }
+            [queryArray addObject:areaHouse];
+        }
+        
+        //房型
+        NSString *rooms = filterDic[HOUSE_AMOUNT];
+        if (rooms) {
+            AVQuery *areaHouse = [AVQuery queryWithClassName:[_tbViewVC requestClassName]];
+            [areaHouse whereKey:HOUSE_AMOUNT containsString:rooms];
+            [queryArray addObject:areaHouse];
+        }
+        
+        //类型
+        NSString *houseType = filterDic[ESTATE_TYPE];
+        if (houseType) {
+            AVQuery *areaHouse = [AVQuery queryWithClassName:[_tbViewVC requestClassName]];
+            [areaHouse whereKey:ESTATE_TYPE containsString:houseType];
+            [queryArray addObject:areaHouse];
+        }
+        //更多
+        NSDictionary *moreDic = filterDic[FILTER_MORE];
+        if (moreDic.count>0) {
+            //朝向
+            NSString *dir = moreDic[HOUSE_DIRECTION];
+            if (dir) {
+                AVQuery *areaHouse = [AVQuery queryWithClassName:[_tbViewVC requestClassName]];
+                [areaHouse whereKey:HOUSE_DIRECTION containsString:dir];
+                [queryArray addObject:areaHouse];
+
+            }
+            
+            //装修
+            NSString *des = moreDic[HOUSE_DESCRIBE];
+            if (des) {
+                AVQuery *areaHouse = [AVQuery queryWithClassName:[_tbViewVC requestClassName]];
+                [areaHouse whereKey:HOUSE_DESCRIBE containsString:des];
+                [queryArray addObject:areaHouse];
+                
+            }
+            
+            //楼层情况
 //                NSString *floor = moreDic[HOUSE_DESCRIBE];
 //                if (floor) {
 //                    AVQuery *areaHouse = [AVQuery queryWithClassName:[_tbViewVC requestClassName]];
@@ -218,31 +233,26 @@ NSInteger const defaultPageSize = 50;
 //                    [queryArray addObject:areaHouse];
 //                    
 //                }
-                //面积
-                NSString *areaAge = moreDic[HOUSE_AREAAGE];
-                if (areaAge) {
-                    NSDictionary *areaAgeDic = filterDic[FILTER_PRICE];
-                    if (areaAgeDic.count>0) {
-                        AVQuery *areaHouse = [AVQuery queryWithClassName:[_tbViewVC requestClassName]];
-                        
-                        if (areaAgeDic[FILTER_MIN]) {
-                            [areaHouse whereKey:HOUSE_AREAAGE greaterThanOrEqualTo:areaAgeDic[FILTER_MIN]];
-                            
-                        }
-                        if (areaAgeDic[FILTER_MAX]) {
-                            [areaHouse whereKey:HOUSE_AREAAGE lessThan:areaAgeDic[FILTER_MAX]];
-                            
-                        }
-                        
-                        [queryArray addObject:areaHouse];
-                    }
-      
+            //面积
+         
+            NSDictionary *areaAgeDic = moreDic[HOUSE_AREAAGE];
+            if (areaAgeDic.count>0) {
+                AVQuery *areaHouse = [AVQuery queryWithClassName:[_tbViewVC requestClassName]];
+                
+                if (areaAgeDic[FILTER_MIN]) {
+                    [areaHouse whereKey:HOUSE_AREAAGE greaterThanOrEqualTo:areaAgeDic[FILTER_MIN]];
+                    
+                }
+                if (areaAgeDic[FILTER_MAX]) {
+                    [areaHouse whereKey:HOUSE_AREAAGE lessThan:areaAgeDic[FILTER_MAX]];
+                    
                 }
                 
+                [queryArray addObject:areaHouse];
             }
-           
+
         }
-        
+           
     }
     if (queryArray.count==0) {
         return;

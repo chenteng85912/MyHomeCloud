@@ -233,7 +233,7 @@ CGFloat const PICKVIEW_HEIGHT = 200.0;
         
         //物业类型
         if (self.tag==10) {
-            [_firstArray addObjectsFromArray:@[@"洋房",@"公寓",@"普通住宅",@"商业",@"未知"]];
+            [_firstArray addObjectsFromArray:@[@"公寓",@"洋房",@"别墅",@"商铺",@"写字楼",@"未知"]];
         }
         
         //产权年限

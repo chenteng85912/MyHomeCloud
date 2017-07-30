@@ -108,13 +108,13 @@
         let.searchKey = searchKey;
         let.showFilter = YES;
         let.className = LET_HOUSE;
-
         vc = let;
     }else{
         AJNewHouseViewController *newHouse = [AJNewHouseViewController new];
         newHouse.showModal = SearchHouseModal;
         newHouse.searchKey = searchKey;
         newHouse.className = N_HOUSE;
+        newHouse.showFilter = YES;
         vc = newHouse;
     }
    
