@@ -252,6 +252,25 @@ CGFloat const PICKVIEW_HEIGHT = 200.0;
                                                @"万江区",@"高埗镇",@"石碣镇",@"石龙镇",@"麻涌镇",@"中堂镇",@"望牛墩镇",@"洪梅镇",@"道滘镇",
                                                @"虎门镇",@"厚街镇",@"长安镇",@"沙田镇"]];
         }
+        
+        //帮你找房
+        if (self.tag==14) {
+            [_firstArray addObjectsFromArray:@[@"不限",@"二手房",@"租房"]];
+        }
+        if (self.tag==15) {
+            [_firstArray addObjectsFromArray:@[@"不限",@"50万以下",@"50-100万",@"100-150万",@"150-200万",@"200-300万",@"300万以上"]];
+
+        }
+        if (self.tag==16) {
+            [_firstArray addObjectsFromArray:@[@"不限",@"1000元以下",@"1000-1500元",@"1500-2000元",@"2000-3000元",@"3000-4000元",@"4000元以上"]];
+        }
+        if (self.tag==17) {
+            [_firstArray addObjectsFromArray:@[@"不限",@"50平以下",@"50-70平",@"70-90平",@"90-110平",@"110-140平",@"140-170平",@"170平以上"]];
+        }
+        if (self.tag==18) {
+            [_firstArray addObjectsFromArray:@[@"不限",@"1房",@"2房",@"3房",@"4房",@"5房",@"5房以上"]];
+        }
+        
     }
     return _firstArray;
 }

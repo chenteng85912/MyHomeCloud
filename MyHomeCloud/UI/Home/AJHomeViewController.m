@@ -10,7 +10,7 @@
 #import "AJHomeDataCenter.h"
 #import "AJHomeHeadView.h"
 #import "AJHouseInfoViewController.h"
-#import "AJOtherViewController.h"
+#import "AJFindHouseViewController.h"
 #import "AJSearchViewController.h"
 
 #import "AJSecondHouseViewController.h"
@@ -296,9 +296,9 @@ CGFloat const HEAD_BTN_HEIGHT = 100;
 
         vc = newHouse;
     }else{
-        AJOtherViewController *other = [AJOtherViewController new];
+        AJFindHouseViewController *other = [AJFindHouseViewController new];
         vc = other;
-        vc.title = @"安家金融";
+        vc.title = @"帮你找房";
     }
     vc.hidesBottomBarWhenPushed = YES;
     APP_PUSH(vc);

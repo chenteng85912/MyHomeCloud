@@ -281,6 +281,9 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="UOO-8g-d5t"/>
+                                    </connections>
                                 </textField>
                                 <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请选择房屋朝向" textAlignment="right" minimumFontSize="17" id="VkI-Ea-Lfg" customClass="AJPickViewTextField">
                                     <rect key="frame" x="90" y="200" width="170" height="50"/>

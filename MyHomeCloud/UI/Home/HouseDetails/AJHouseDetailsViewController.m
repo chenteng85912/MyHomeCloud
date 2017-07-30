@@ -216,7 +216,7 @@ CGFloat const MORE_VIEW_HEIGHT = 370;
 #endif
 
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:add];
-        APP_PRESENT(nav);
+        [self presentViewController:nav animated:YES completion:nil];
     }else {
         _mapView = nil;
         APP_PUSH(self.mapView);

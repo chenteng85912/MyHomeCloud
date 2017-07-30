@@ -92,6 +92,20 @@ NSString *const ServicePhone = @"4006005555";
     [temp addObject:model];
 #endif
     
+    model = [AJMeModel new];
+#if AJCLOUDADMIN
+    model.title = @"意向确认";
+    
+#else
+    model.title = @"我的意向";
+    
+#endif
+    model.iconName = @"reserver";
+    model.isNeedLogin = YES;
+    model.showModal = ReserverHouseModal;
+    model.className = NSStringFromClass([AJUserHouseViewController class]);
+    [temp addObject:model];
+    
     [dataArray addObject:temp];
     
     //section1

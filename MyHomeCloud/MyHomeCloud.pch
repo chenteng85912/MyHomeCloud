@@ -74,6 +74,8 @@
 #define LET_FAVORITE        @"LetHouseFav"//用户收藏表
 #define N_FAVORITE          @"NHouseFav"//用户收藏表
 
+#define UESR_INCLINATION    @"UserInclination"//用户意向
+
 #define HOUSE_DESCRIBE      @"HouseDescribe"//房屋装修
 #define HOUSE_TAGS          @"HouseTags"//房屋标签
 

@@ -24,7 +24,8 @@ typedef NS_ENUM(NSInteger,HouseShowModal) {
     SomeoneHouseModal,      //某个用户的房源
     SearchHouseModal,       //搜索
     UserFeedbackModal,      //用户反馈
-    ReserverHouseModal      //预约
+    ReserverHouseModal,     //预约
+    UserInclinationModal    //意向
 
 };
 @interface AJTbViewPresenter : NSObject<AJTbViewPresenterProtocol>

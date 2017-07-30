@@ -208,6 +208,18 @@
 		A44AEBCF1EEEC72A00109FB8 /* AJLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = A44AEBCB1EEEC72A00109FB8 /* AJLocation.m */; };
 		A44AEBD01EEEC72A00109FB8 /* AJLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A44AEBCD1EEEC72A00109FB8 /* AJLocationViewController.m */; };
 		A44AEBD11EEEC72A00109FB8 /* AJLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A44AEBCE1EEEC72A00109FB8 /* AJLocationViewController.xib */; };
+		A44C9D721F2DED8700C31CB5 /* AJFindHouseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A44C9D701F2DED8700C31CB5 /* AJFindHouseViewController.m */; };
+		A44C9D731F2DED8700C31CB5 /* AJFindHouseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A44C9D701F2DED8700C31CB5 /* AJFindHouseViewController.m */; };
+		A44C9D741F2DED8700C31CB5 /* AJFindHouseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A44C9D711F2DED8700C31CB5 /* AJFindHouseViewController.xib */; };
+		A44C9D751F2DED8700C31CB5 /* AJFindHouseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A44C9D711F2DED8700C31CB5 /* AJFindHouseViewController.xib */; };
+		A44C9D791F2E101400C31CB5 /* AJUserInclinationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A44C9D771F2E101400C31CB5 /* AJUserInclinationViewController.m */; };
+		A44C9D7A1F2E101400C31CB5 /* AJUserInclinationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A44C9D771F2E101400C31CB5 /* AJUserInclinationViewController.m */; };
+		A44C9D801F2E115A00C31CB5 /* AJInclinationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A44C9D7E1F2E115A00C31CB5 /* AJInclinationTableViewCell.m */; };
+		A44C9D811F2E115A00C31CB5 /* AJInclinationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A44C9D7E1F2E115A00C31CB5 /* AJInclinationTableViewCell.m */; };
+		A44C9D821F2E115A00C31CB5 /* AJInclinationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A44C9D7F1F2E115A00C31CB5 /* AJInclinationTableViewCell.xib */; };
+		A44C9D831F2E115A00C31CB5 /* AJInclinationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A44C9D7F1F2E115A00C31CB5 /* AJInclinationTableViewCell.xib */; };
+		A44C9D861F2E117400C31CB5 /* AJInclilnationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A44C9D851F2E117400C31CB5 /* AJInclilnationModel.m */; };
+		A44C9D871F2E117400C31CB5 /* AJInclilnationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A44C9D851F2E117400C31CB5 /* AJInclilnationModel.m */; };
 		A464224B1F0747B800459294 /* AJFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A46422491F0747B800459294 /* AJFeedbackViewController.m */; };
 		A464224C1F0747B800459294 /* AJFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A46422491F0747B800459294 /* AJFeedbackViewController.m */; };
 		A464224D1F0747B800459294 /* AJFeedbackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A464224A1F0747B800459294 /* AJFeedbackViewController.xib */; };
@@ -429,6 +441,16 @@
 		A44AEBCC1EEEC72A00109FB8 /* AJLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJLocationViewController.h; sourceTree = "<group>"; };
 		A44AEBCD1EEEC72A00109FB8 /* AJLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJLocationViewController.m; sourceTree = "<group>"; };
 		A44AEBCE1EEEC72A00109FB8 /* AJLocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJLocationViewController.xib; sourceTree = "<group>"; };
+		A44C9D6F1F2DED8700C31CB5 /* AJFindHouseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJFindHouseViewController.h; sourceTree = "<group>"; };
+		A44C9D701F2DED8700C31CB5 /* AJFindHouseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJFindHouseViewController.m; sourceTree = "<group>"; };
+		A44C9D711F2DED8700C31CB5 /* AJFindHouseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJFindHouseViewController.xib; sourceTree = "<group>"; };
+		A44C9D761F2E101400C31CB5 /* AJUserInclinationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJUserInclinationViewController.h; sourceTree = "<group>"; };
+		A44C9D771F2E101400C31CB5 /* AJUserInclinationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJUserInclinationViewController.m; sourceTree = "<group>"; };
+		A44C9D7D1F2E115A00C31CB5 /* AJInclinationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJInclinationTableViewCell.h; sourceTree = "<group>"; };
+		A44C9D7E1F2E115A00C31CB5 /* AJInclinationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJInclinationTableViewCell.m; sourceTree = "<group>"; };
+		A44C9D7F1F2E115A00C31CB5 /* AJInclinationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJInclinationTableViewCell.xib; sourceTree = "<group>"; };
+		A44C9D841F2E117400C31CB5 /* AJInclilnationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJInclilnationModel.h; sourceTree = "<group>"; };
+		A44C9D851F2E117400C31CB5 /* AJInclilnationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJInclilnationModel.m; sourceTree = "<group>"; };
 		A46422481F0747B800459294 /* AJFeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJFeedbackViewController.h; sourceTree = "<group>"; };
 		A46422491F0747B800459294 /* AJFeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJFeedbackViewController.m; sourceTree = "<group>"; };
 		A464224A1F0747B800459294 /* AJFeedbackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJFeedbackViewController.xib; sourceTree = "<group>"; };
@@ -806,6 +828,7 @@
 		0B57F5891EC1989400B89CE2 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				A44C9D6E1F2DED7000C31CB5 /* FineHouse */,
 				A44AEBC91EEEC72A00109FB8 /* HouseMap */,
 				0BE4D9EC1ECC6B8200E4ADCD /* AJHomeViewController.h */,
 				0BE4D9ED1ECC6B8200E4ADCD /* AJHomeViewController.m */,
@@ -1017,6 +1040,23 @@
 				A44AEBCE1EEEC72A00109FB8 /* AJLocationViewController.xib */,
 			);
 			path = HouseMap;
+			sourceTree = "<group>";
+		};
+		A44C9D6E1F2DED7000C31CB5 /* FineHouse */ = {
+			isa = PBXGroup;
+			children = (
+				A44C9D6F1F2DED8700C31CB5 /* AJFindHouseViewController.h */,
+				A44C9D701F2DED8700C31CB5 /* AJFindHouseViewController.m */,
+				A44C9D711F2DED8700C31CB5 /* AJFindHouseViewController.xib */,
+				A44C9D761F2E101400C31CB5 /* AJUserInclinationViewController.h */,
+				A44C9D771F2E101400C31CB5 /* AJUserInclinationViewController.m */,
+				A44C9D7D1F2E115A00C31CB5 /* AJInclinationTableViewCell.h */,
+				A44C9D7E1F2E115A00C31CB5 /* AJInclinationTableViewCell.m */,
+				A44C9D7F1F2E115A00C31CB5 /* AJInclinationTableViewCell.xib */,
+				A44C9D841F2E117400C31CB5 /* AJInclilnationModel.h */,
+				A44C9D851F2E117400C31CB5 /* AJInclilnationModel.m */,
+			);
+			path = FineHouse;
 			sourceTree = "<group>";
 		};
 		A46422471F07477000459294 /* FeedBack */ = {
@@ -1252,7 +1292,9 @@
 				0B4F881F1EFF89390092BF18 /* AJTagsViewController.xib in Resources */,
 				A464224D1F0747B800459294 /* AJFeedbackViewController.xib in Resources */,
 				0BC2B4731F0CFD1F0041C9C2 /* TJMessageControllerCell.xib in Resources */,
+				A44C9D821F2E115A00C31CB5 /* AJInclinationTableViewCell.xib in Resources */,
 				A4AE33131EF51F6F004B0A54 /* AJReserverTableViewCell.xib in Resources */,
+				A44C9D741F2DED8700C31CB5 /* AJFindHouseViewController.xib in Resources */,
 				0B2343C91EC01CA1007A3AC1 /* Main.storyboard in Resources */,
 				0B302F6F1ED04F47006896CA /* AJUserHeadViewController.xib in Resources */,
 				0BC1DECD1F17899A007C78DB /* AJAddNHouseViewController.xib in Resources */,
@@ -1307,7 +1349,9 @@
 				0BB93A701EFFD22300B32320 /* AJTagsViewController.xib in Resources */,
 				A464224E1F0747B800459294 /* AJFeedbackViewController.xib in Resources */,
 				0BC2B4741F0CFD1F0041C9C2 /* TJMessageControllerCell.xib in Resources */,
+				A44C9D831F2E115A00C31CB5 /* AJInclinationTableViewCell.xib in Resources */,
 				0BF2C6D61EFA5A4400EA46AF /* AJReserverTableViewCell.xib in Resources */,
+				A44C9D751F2DED8700C31CB5 /* AJFindHouseViewController.xib in Resources */,
 				0BF2C6D71EFA5A4400EA46AF /* Main.storyboard in Resources */,
 				0BF2C6D81EFA5A4400EA46AF /* AJUserHeadViewController.xib in Resources */,
 				0BC1DECE1F17899A007C78DB /* AJAddNHouseViewController.xib in Resources */,
@@ -1454,6 +1498,8 @@
 				A4FC23491EE6F2BA00924EEE /* AJLetHouseCellModel.m in Sources */,
 				0B6E12C51EC4235300103571 /* AJLoginViewController.m in Sources */,
 				0B23446E1EC03095007A3AC1 /* AJLocalDataCenter.m in Sources */,
+				A44C9D861F2E117400C31CB5 /* AJInclilnationModel.m in Sources */,
+				A44C9D721F2DED8700C31CB5 /* AJFindHouseViewController.m in Sources */,
 				0BC2B45B1F0CFD1F0041C9C2 /* AJDataBaseDao.m in Sources */,
 				0BE4D9EF1ECC6B8200E4ADCD /* AJHomeViewController.m in Sources */,
 				0BF95A0D1EEE55F00031D958 /* AJSB.m in Sources */,
@@ -1470,6 +1516,7 @@
 				0B4F881E1EFF89390092BF18 /* AJTagsViewController.m in Sources */,
 				A4FC23501EE6F31200924EEE /* AJLetHouseTableViewCell.m in Sources */,
 				A4E6BB411EEBCDC000CC37B1 /* AJHomeDataCenter.m in Sources */,
+				A44C9D791F2E101400C31CB5 /* AJUserInclinationViewController.m in Sources */,
 				0B59A52C1ED17D8600E8E787 /* AJPickViewTextField.m in Sources */,
 				0BC2B46D1F0CFD1F0041C9C2 /* AJMessageController.m in Sources */,
 				0B302F5E1ED01835006896CA /* AJOtherViewController.m in Sources */,
@@ -1487,6 +1534,7 @@
 				0B1904CC1EE66192004C46EE /* PreviewUpLoadCollectionViewCell.m in Sources */,
 				0B1904E31EE668EC004C46EE /* AJTableViewCell.m in Sources */,
 				A4FC23551EE6F37400924EEE /* AJNewHouseTableViewCell.m in Sources */,
+				A44C9D801F2E115A00C31CB5 /* AJInclinationTableViewCell.m in Sources */,
 				0B2344681EC03095007A3AC1 /* TJDownloadTool.m in Sources */,
 				0BC2B45F1F0CFD1F0041C9C2 /* AJMessageBeanDao.m in Sources */,
 				A44AEBCF1EEEC72A00109FB8 /* AJLocation.m in Sources */,
@@ -1549,6 +1597,8 @@
 				0BF2C6911EFA5A4400EA46AF /* AJLetHouseCellModel.m in Sources */,
 				0BF2C6921EFA5A4400EA46AF /* AJLoginViewController.m in Sources */,
 				0BF2C6931EFA5A4400EA46AF /* AJLocalDataCenter.m in Sources */,
+				A44C9D871F2E117400C31CB5 /* AJInclilnationModel.m in Sources */,
+				A44C9D731F2DED8700C31CB5 /* AJFindHouseViewController.m in Sources */,
 				0BC2B45C1F0CFD1F0041C9C2 /* AJDataBaseDao.m in Sources */,
 				0BF2C6951EFA5A4400EA46AF /* AJHomeViewController.m in Sources */,
 				0BF2C6961EFA5A4400EA46AF /* AJSB.m in Sources */,
@@ -1565,6 +1615,7 @@
 				0BB93A6F1EFFD22300B32320 /* AJTagsViewController.m in Sources */,
 				0BF2C69F1EFA5A4400EA46AF /* AJLetHouseTableViewCell.m in Sources */,
 				0BF2C6A01EFA5A4400EA46AF /* AJHomeDataCenter.m in Sources */,
+				A44C9D7A1F2E101400C31CB5 /* AJUserInclinationViewController.m in Sources */,
 				0BF2C6A11EFA5A4400EA46AF /* AJPickViewTextField.m in Sources */,
 				0BC2B46E1F0CFD1F0041C9C2 /* AJMessageController.m in Sources */,
 				0BF2C6A41EFA5A4400EA46AF /* AJOtherViewController.m in Sources */,
@@ -1582,6 +1633,7 @@
 				0BF2C6AB1EFA5A4400EA46AF /* PreviewUpLoadCollectionViewCell.m in Sources */,
 				0BF2C6AC1EFA5A4400EA46AF /* AJTableViewCell.m in Sources */,
 				0BF2C6AD1EFA5A4400EA46AF /* AJNewHouseTableViewCell.m in Sources */,
+				A44C9D811F2E115A00C31CB5 /* AJInclinationTableViewCell.m in Sources */,
 				0BF2C6AE1EFA5A4400EA46AF /* TJDownloadTool.m in Sources */,
 				0BC2B4601F0CFD1F0041C9C2 /* AJMessageBeanDao.m in Sources */,
 				0BF2C6AF1EFA5A4400EA46AF /* AJLocation.m in Sources */,
