@@ -94,7 +94,7 @@ NSString *const ServicePhone = @"4006005555";
     
     model = [AJMeModel new];
 #if AJCLOUDADMIN
-    model.title = @"意向确认";
+    model.title = @"用户意向";
     
 #else
     model.title = @"我的意向";

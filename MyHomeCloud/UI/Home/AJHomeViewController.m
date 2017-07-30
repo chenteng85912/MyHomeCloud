@@ -296,15 +296,21 @@ CGFloat const HEAD_BTN_HEIGHT = 100;
 
         vc = newHouse;
     }else{
+#if AJCLOUD
         if (![AVUser currentUser]) {
             [AJSB goLoginViewComplete:^{
             }];
             return;
         }
-
+        
         AJFindHouseViewController *other = [AJFindHouseViewController new];
         vc = other;
         vc.title = @"帮你找房";
+#else
+        [self.view showTips:@"企业版禁止使用该功能" withState:TYKYHUDModeWarning complete:nil];
+        
+#endif
+       
     }
     vc.hidesBottomBarWhenPushed = YES;
     APP_PUSH(vc);
