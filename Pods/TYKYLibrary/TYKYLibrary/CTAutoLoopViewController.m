@@ -308,6 +308,7 @@ static NSString * const AutoLoopReuseIdentifier = @"AutoLoopReuseIdentifier";
         _pageLabel.font = [UIFont systemFontOfSize:10];
         _pageLabel.layer.masksToBounds = YES;
         _pageLabel.layer.cornerRadius = 10.0;
+        _pageLabel.hidden = YES;
         
     }
     return _pageLabel;

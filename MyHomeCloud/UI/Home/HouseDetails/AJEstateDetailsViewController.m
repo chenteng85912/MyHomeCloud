@@ -80,11 +80,12 @@ NSString *const CONTENT_KEY = @"content";
         }
     }
    
-    [self.view showHUD:nil];
+    [SVProgressHUD show];
+    
     self.baseQuery.className = ALL_HOUSE_INFO;
     WeakSelf;
     [self.baseQuery getObjectInBackgroundWithId:_houseInfo[ESTATE_ID] block:^(AVObject * _Nullable object, NSError * _Nullable error) {
-        [weakSelf.view removeHUD];
+        [SVProgressHUD dismiss];
         if (!object) {
             [self.view showTips:@"数据加载失败" withState:TYKYHUDModeFail complete:nil];
             return ;

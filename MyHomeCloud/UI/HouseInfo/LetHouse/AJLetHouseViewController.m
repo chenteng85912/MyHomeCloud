@@ -124,8 +124,9 @@
         }];
 
     }
-    [self.view removeHUD];
     
+    [SVProgressHUD dismiss];
+
 }
 #pragma mark - UITableViewDelegate
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -159,7 +160,8 @@
 }
 
 - (void)refreshHomeData{
-    [self.view showHUD:nil];
+
+    [SVProgressHUD show];
     [self initStartData];
 }
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{

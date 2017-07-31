@@ -5,8 +5,8 @@
 #import "CTAutoPositionScrollview.h"
 
 #define _UIKeyboardFrameEndUserInfoKey (&UIKeyboardFrameEndUserInfoKey != NULL ? UIKeyboardFrameEndUserInfoKey : @"UIKeyboardBoundsUserInfoKey")
-
 #define DEVICE_HEIGHT   [[UIScreen mainScreen] bounds].size.height
+
 
 @interface CTAutoPositionScrollview ()
 
@@ -25,13 +25,7 @@
 - (void)setup {
 
     if (CGSizeEqualToSize(self.contentSize, CGSizeZero) ) {
-        if (self.tag==1001) {
-            self.contentSize = CGSizeMake(self.bounds.size.width, 1050);
-
-        }else{
-            self.contentSize = self.bounds.size;
-
-        }
+        self.contentSize = self.bounds.size;
         
     }
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(chageBunldeViewFrame:) name:UIKeyboardWillShowNotification object:nil];

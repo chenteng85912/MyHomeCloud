@@ -128,7 +128,7 @@
         }];
     }
 
-    [self.view removeHUD];
+    [SVProgressHUD dismiss];
     
 }
 #pragma mark - UITableViewDelegate
@@ -165,7 +165,7 @@
 }
 
 - (void)refreshHomeData{
-    [self.view showHUD:nil];
+    [SVProgressHUD show];
     [self initStartData];
 }
 

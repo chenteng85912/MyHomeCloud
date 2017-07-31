@@ -17,6 +17,8 @@
 
 @property (strong,nonatomic) NSArray *dataArray;//图片数组
 @property (strong,nonatomic) NSMutableDictionary <NSString*,UIImage*> *selectDic;//选中的图片
+@property (nonatomic,strong) NSMutableArray <UIImage *> *imgArray;//图片数组
+
 @property (assign,nonatomic) NSInteger index;//选中图片位置
 @property (assign,nonatomic) NSInteger totalNum;//可选择照片总数量
 @property (nonatomic,weak) id <BigCollectionViewControllerDelegate> delegate;

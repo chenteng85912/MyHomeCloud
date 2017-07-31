@@ -37,7 +37,7 @@
 //切换摄像头
 - (void)switchCamera;
 //确认照片
-- (void)confirmPhoto;
+- (void)confirmPhoto:(UIImage *)image;
 //旋转图片
 - (UIImage *)image:(UIImage *)image rotation:(UIImageOrientation)orientation;
 

@@ -100,9 +100,31 @@
     return NSStringFromClass([AJNewHouseCellModel class]);
 }
 - (void)loadDataSuccess{
-    [self.view removeHUD];
+    if (self.showModal==SearchHouseModal) {
+        NSMutableArray *temp = [NSMutableArray new];
+        [self.dataArray enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(AJTbViewCellModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if ([obj.objectData[HOUSE_AREA] containsString:self.searchKey]||
+                [obj.objectData[HOUSE_DEVELOPER] containsString:self.searchKey]||
+                [obj.objectData[HOUSE_ESTATE_NAME] containsString:self.searchKey]) {
+                [temp addObject:obj];
+            }
+            if (idx==0) {
+                self.dataArray = temp;
+                if (self.dataArray.count==0) {
+                    self.tableView.tableFooterView = nil;
+                    [self.tableView addNoDataTipView];
+                }else{
+                    [self.tableView hiddenTipsView];
+                }
+                [self.tableView reloadData];
+            }
+        }];
+        
+    }
+    [SVProgressHUD dismiss];
     
 }
+
 #pragma mark - UITableViewDelegate
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -136,7 +158,7 @@
 }
 
 - (void)refreshHomeData{
-    [self.view showHUD:nil];
+    [SVProgressHUD show];
     [self initStartData];
 }
 - (void)didReceiveMemoryWarning {

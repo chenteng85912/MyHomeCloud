@@ -17,7 +17,7 @@ NSString *const APP_STORE_URL  = @"itms-apps://itunes.apple.com/cn/app/id%@?mt=8
 static CTVersionAutoUpdate *version;
 
 @interface CTVersionAutoUpdate ()<SKStoreProductViewControllerDelegate>
-@property (assign, nonatomic) BOOL isOpenInApp;
+@property (assign, nonatomic) OpenStoreStyle storeStyle;
 @property (strong, nonatomic) NSString *appId;
 
 @end
@@ -52,7 +52,7 @@ static CTVersionAutoUpdate *version;
     if (!appId&&[appId isEqualToString:@""]) {
         return;
     }
-    version.isOpenInApp = showStyle;
+    version.storeStyle = showStyle;
     version.appId = appId;
     NSString *appUrl = [NSString stringWithFormat:ROOT_APP_STORE,appId];
     [[CTRequest new] sendGetRequestWithUrl:appUrl complete:^(NSError *error, NSDictionary *objectDic) {
@@ -120,7 +120,7 @@ static CTVersionAutoUpdate *version;
         
     }]];
     [alert addAction:[UIAlertAction actionWithTitle:@"去更新" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        if (_isOpenInApp) {
+        if (version.storeStyle==OpenAppStoreInApp) {
             [self openAppStoreInApp];
             return;
         }
@@ -130,7 +130,10 @@ static CTVersionAutoUpdate *version;
         }
         
     }]];
-    [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alert animated:YES completion:nil];
+    UIViewController *rootVC = [self getVisibleViewControllerFrom:[UIApplication sharedApplication].keyWindow.rootViewController];
+    if (rootVC) {
+        [rootVC presentViewController:alert animated:YES completion:nil];
+    }
 }
 
 //应用内部打开苹果商店 真机调试
@@ -149,7 +152,10 @@ static CTVersionAutoUpdate *version;
                      return ;
                  }
                  //AS应用界面
-                 [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:storeProductViewContorller animated:YES completion:nil];
+                 UIViewController *rootVC = [self getVisibleViewControllerFrom:[UIApplication sharedApplication].keyWindow.rootViewController];
+                 if (rootVC) {
+                     [rootVC presentViewController:storeProductViewContorller animated:YES completion:nil];
+                 }
              });
              
          }];
@@ -160,5 +166,19 @@ static CTVersionAutoUpdate *version;
 #pragma mark SKStoreProductViewControllerDelegate
 - (void)productViewControllerDidFinish:(SKStoreProductViewController *)viewController{
     [viewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (UIViewController *)getVisibleViewControllerFrom:(UIViewController*)vc {
+    if ([vc isKindOfClass:[UINavigationController class]]) {
+        return [self getVisibleViewControllerFrom:[((UINavigationController*) vc) visibleViewController]];
+    }else if ([vc isKindOfClass:[UITabBarController class]]){
+        return [self getVisibleViewControllerFrom:[((UITabBarController*) vc) selectedViewController]];
+    } else {
+        if (vc.presentedViewController) {
+            return [self getVisibleViewControllerFrom:vc.presentedViewController];
+        } else {
+            return vc;
+        }
+    }
 }
 @end

@@ -61,84 +61,78 @@
 - (IBAction)confirmAction:(UIButton *)sender {
     [self.view endEditing:YES];
 
-    if (sender.tag==1) {
-        [UIView animateWithDuration:0.2 animations:^{
-            self.view.alpha = 0;
-        } completion:^(BOOL finished) {
-            [self removeFromParentViewController];
 
-        }];
-    }else{
-        if (!_userName.hasText) {
-            [self.view showTips:_userName.placeholder withState:TYKYHUDModeWarning complete:nil];
-            return;
-        }
-        if (!_userPhone.hasText) {
-            [self.view showTips:_userPhone.placeholder withState:TYKYHUDModeWarning complete:nil];
-            return;
-        }
-        if (_userPhone.text.length!=11) {
-            [self.view showTips:@"请输入正确的手机号" withState:TYKYHUDModeWarning complete:nil];
-            return;
-        }
-        if (!_reserverTime.hasText) {
-            [self.view showTips:_reserverTime.placeholder withState:TYKYHUDModeWarning complete:nil];
-            return;
-        }
-        
-        AVObject *obj = [[AVObject alloc] initWithClassName:USER_RESERVER];
-        
-        [obj setObject:_houseInfo[HOUSE_AMOUNT]      forKey:HOUSE_AMOUNT];
-        [obj setObject:_houseInfo[HOUSE_AREAAGE]     forKey:HOUSE_AREAAGE];
-        [obj setObject:_houseInfo[ESTATE_ID]         forKey:ESTATE_ID];
-
-        [obj setObject:_houseName.text      forKey:HOUSE_ESTATE_NAME];
-        [obj setObject:_agenterName.text    forKey:AGENTER_NAME];
-        [obj setObject:_agenterPhone.text   forKey:AGENTER_PHONE];
-        [obj setObject:_userName.text       forKey:RESERVER_NAME];
-        [obj setObject:_userPhone.text      forKey:RESERVER_PHONE];
-        [obj setObject:_reserverTime.text   forKey:RESERVER_TIME];
-        [obj setObject:[AVUser currentUser].mobilePhoneNumber   forKey:USER_PHONE];
-        [obj setObject:@"0"                 forKey:RESERVER_STATE];
-
-        if (_reserverModal == SecondReserverModal) {
-            [obj setObject:SECOND_HAND_HOUSE    forKey:RESERVER_TYPE];
-            [obj setObject:_houseInfo[HOUSE_TOTAL_PRICE]         forKey:HOUSE_TOTAL_PRICE];
-
-        }else if (_reserverModal == LetReserverModal){
-            [obj setObject:LET_HOUSE            forKey:RESERVER_TYPE];
-            [obj setObject:_houseInfo[LET_HOUSE_PRICE]         forKey:LET_HOUSE_PRICE];
-
-        }else{
-            [obj setObject:N_HOUSE            forKey:RESERVER_TYPE];
-            [obj setObject:_houseInfo[HOUSE_AREA]          forKey:HOUSE_AREA];
-            [obj setObject:_houseInfo[HOUSE_UNIT_PRICE]         forKey:HOUSE_UNIT_PRICE];
-
-        }
-        [obj setObject:_houseInfo.objectId          forKey:HOUSE_ID];
-
-        [KEYWINDOW showHUD:@"正在提交..."];
-        [obj saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-            [KEYWINDOW removeHUD];
-            if (!succeeded) {
-                [KEYWINDOW showTips:@"提交预约失败" withState:TYKYHUDModeFail complete:nil];
-
-                return ;
-            }
-            [KEYWINDOW showTips:@"提交预约成功" withState:TYKYHUDModeSuccess complete:^{
-               
-                AJMyReserverViewController *myReserver = [AJMyReserverViewController new];
-                myReserver.isPreview = YES;
-                myReserver.reserverModal =  _reserverModal;
-                myReserver.showModal = ReserverHouseModal;
-                myReserver.isNewReserver = YES;
-                APP_PUSH(myReserver);
-                
-            }];
-          
-        }];
-        
+    if (!_userName.hasText) {
+        [self.view showTips:_userName.placeholder withState:TYKYHUDModeWarning complete:nil];
+        return;
     }
+    if (!_userPhone.hasText) {
+        [self.view showTips:_userPhone.placeholder withState:TYKYHUDModeWarning complete:nil];
+        return;
+    }
+    if (_userPhone.text.length!=11) {
+        [self.view showTips:@"请输入正确的手机号" withState:TYKYHUDModeWarning complete:nil];
+        return;
+    }
+    if (!_reserverTime.hasText) {
+        [self.view showTips:_reserverTime.placeholder withState:TYKYHUDModeWarning complete:nil];
+        return;
+    }
+    
+    AVObject *obj = [[AVObject alloc] initWithClassName:USER_RESERVER];
+    
+    [obj setObject:_houseInfo[HOUSE_AMOUNT]      forKey:HOUSE_AMOUNT];
+    [obj setObject:_houseInfo[HOUSE_AREAAGE]     forKey:HOUSE_AREAAGE];
+    [obj setObject:_houseInfo[ESTATE_ID]         forKey:ESTATE_ID];
+
+    [obj setObject:_houseName.text      forKey:HOUSE_ESTATE_NAME];
+    [obj setObject:_agenterName.text    forKey:AGENTER_NAME];
+    [obj setObject:_agenterPhone.text   forKey:AGENTER_PHONE];
+    [obj setObject:_userName.text       forKey:RESERVER_NAME];
+    [obj setObject:_userPhone.text      forKey:RESERVER_PHONE];
+    [obj setObject:_reserverTime.text   forKey:RESERVER_TIME];
+    [obj setObject:[AVUser currentUser].mobilePhoneNumber   forKey:USER_PHONE];
+    [obj setObject:@"0"                 forKey:RESERVER_STATE];
+
+    if (_reserverModal == SecondReserverModal) {
+        [obj setObject:SECOND_HAND_HOUSE    forKey:RESERVER_TYPE];
+        [obj setObject:_houseInfo[HOUSE_TOTAL_PRICE]         forKey:HOUSE_TOTAL_PRICE];
+
+    }else if (_reserverModal == LetReserverModal){
+        [obj setObject:LET_HOUSE            forKey:RESERVER_TYPE];
+        [obj setObject:_houseInfo[LET_HOUSE_PRICE]         forKey:LET_HOUSE_PRICE];
+
+    }else{
+        [obj setObject:N_HOUSE            forKey:RESERVER_TYPE];
+        [obj setObject:_houseInfo[HOUSE_AREA]          forKey:HOUSE_AREA];
+        [obj setObject:_houseInfo[HOUSE_UNIT_PRICE]         forKey:HOUSE_UNIT_PRICE];
+
+    }
+    [obj setObject:_houseInfo.objectId          forKey:HOUSE_ID];
+
+    [KEYWINDOW showHUD:@"正在提交..."];
+//    [SVProgressHUD showWithStatus:@"正在提交..."];
+    [obj saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        [KEYWINDOW removeHUD];
+//        [SVProgressHUD dismiss];
+        if (!succeeded) {
+            [KEYWINDOW showTips:@"提交预约失败" withState:TYKYHUDModeFail complete:nil];
+
+            return ;
+        }
+        [KEYWINDOW showTips:@"提交预约成功" withState:TYKYHUDModeSuccess complete:^{
+           
+            AJMyReserverViewController *myReserver = [AJMyReserverViewController new];
+            myReserver.isPreview = YES;
+            myReserver.reserverModal =  _reserverModal;
+            myReserver.showModal = ReserverHouseModal;
+            myReserver.isNewReserver = YES;
+            APP_PUSH(myReserver);
+            
+        }];
+      
+    }];
+        
 }
 
 - (void)didReceiveMemoryWarning {

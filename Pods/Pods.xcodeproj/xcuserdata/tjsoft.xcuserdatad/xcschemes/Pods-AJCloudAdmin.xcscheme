@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '5989E2EA0F498D15F075502721300115'
+               BlueprintIdentifier = 'E945FC0DD69BFF93E0DADCC893A8147B'
                BlueprintName = 'Pods-AJCloudAdmin'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libPods-AJCloudAdmin.a'>

@@ -135,9 +135,14 @@
 #pragma mark 选择照片
 - (void)choosePicture:(UIButton *)btn{
     
-   
     ALAsset *asset = self.dataArray[btn.tag];
-    if ([self.selectDic.allKeys containsObject:asset.defaultRepresentation.filename]) {
+    
+    //图片名称
+    NSString *imgName = asset.defaultRepresentation.filename;
+    if ([self.selectDic.allKeys containsObject:imgName]) {
+        UIImage *img = self.selectDic[imgName];
+        [self.imgArray removeObject:img];
+        
         [self.selectDic removeObjectForKey:asset.defaultRepresentation.filename];
         btn.selected = NO;
         
@@ -146,7 +151,9 @@
             [self showWaringView];
             return;
         }
-        [self.selectDic setObject:[UIImage imageWithCGImage:asset.defaultRepresentation.fullScreenImage] forKey:asset.defaultRepresentation.filename];
+        [self.selectDic setObject:[UIImage imageWithCGImage:asset.defaultRepresentation.fullScreenImage] forKey:imgName];
+        [self.imgArray addObject:self.selectDic[imgName]];
+
         [self showAnimation:btn];
         
     }

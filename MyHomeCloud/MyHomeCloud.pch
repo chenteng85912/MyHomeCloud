@@ -16,6 +16,7 @@
 #import <AVOSCloud/AVOSCloud.h>
 #import <MJRefresh/MJRefresh.h>
 #import <TYKYLibrary/TYKYLibrary.h>
+#import <SVProgressHUD/SVProgressHUD.h>
 
 #import "CTBaseViewController.h"
 #import "AJLocalDataCenter.h"

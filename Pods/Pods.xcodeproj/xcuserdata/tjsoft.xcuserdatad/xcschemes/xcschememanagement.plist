@@ -39,6 +39,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SVProgressHUD.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>TYKYLibrary.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -52,27 +57,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>269FCCAC87980BA5B1D6B935EE22D92E</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>586F2DFA9BDCC6675C2546793A69E5CC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5989E2EA0F498D15F075502721300115</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>5EA567771512763C7B133E4F4CBD846D</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>7E639E1A799B66C2338D70880FC93BF0</key>
+		<key>71C06EB5CA7E737CC3CC835B4B9370C5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -82,7 +72,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DB7DB57CC32718F56A1E78C468862EDB</key>
+		<key>B71C4FFAEBF6E46ED81AE27F9147CD9F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CA9E682E92383C2FD8677A154CF2009F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E945FC0DD69BFF93E0DADCC893A8147B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F2E060D02E8A05D5D4826E9284DE8ED6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FFA25C6BBF305FA3588E89705B1DB7BC</key>
 		<dict>
 			<key>primary</key>
 			<true/>

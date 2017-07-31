@@ -19,6 +19,9 @@
 //按大小裁剪图片
 - (UIImage*)scaleToSize:(CGSize)size;
 
+//按frame裁剪图片
+- (UIImage*)getSubImage:(CGRect)rect;
+
 //旋转图片
 - (UIImage *)makeOrientationImage:(UIImageOrientation)orientation;
 

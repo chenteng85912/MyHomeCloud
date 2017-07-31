@@ -47,7 +47,7 @@
         [_session startRunning];
         
     }
-//    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:YES];
     
 }
 - (void)viewDidAppear:(BOOL)animated{
@@ -60,6 +60,7 @@
         [_session stopRunning];
         
     }
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:NO];
 
 }
 //初始化摄像机
@@ -192,21 +193,20 @@
 
 }
 //确认照片
-- (void)confirmPhoto{
+- (void)confirmPhoto:(UIImage *)image{
    
     if ([self.delegate respondsToSelector:@selector(sendPicture:andImageName:)]) {
-        if (!self.resultImg) {
+        if (!image) {
             NSLog(@"拍摄图片失败");
             return;
         }
-        [self.delegate sendPicture:self.resultImg andImageName:[NSString stringWithFormat:@"%.f",[[NSDate new] timeIntervalSince1970]]];
+        [self.delegate sendPicture:image andImageName:[NSString stringWithFormat:@"%.f",[[NSDate new] timeIntervalSince1970]]];
     }
     [self dismissViewControllerAnimated:YES completion:^{
-//        [[UIApplication sharedApplication] setStatusBarHidden:NO];
        
         if ([[CTSavePhotos new] checkAuthorityOfAblum]) {
             //存入相册
-            [[CTSavePhotos new] saveImageIntoAlbum:self.resultImg];
+            [[CTSavePhotos new] saveImageIntoAlbum:image];
         }
 
     }];

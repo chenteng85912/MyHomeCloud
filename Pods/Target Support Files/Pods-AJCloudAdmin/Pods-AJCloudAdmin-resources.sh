@@ -79,6 +79,7 @@ EOM
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "AVOSCloud/AVOS/AVOSCloud/AVOSCloud_Art.inc"
   install_resource "MJRefresh/MJRefresh/MJRefresh.bundle"
+  install_resource "SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle"
   install_resource "TYKYLibrary/TYKYLibrary/AutoLocation/city.plist"
   install_resource "TYKYLibrary/TYKYLibrary/AutoLocation/close_location@2x.png"
   install_resource "TYKYLibrary/TYKYLibrary/AutoLocation/CTLocationViewController.xib"
@@ -94,6 +95,7 @@ fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "AVOSCloud/AVOS/AVOSCloud/AVOSCloud_Art.inc"
   install_resource "MJRefresh/MJRefresh/MJRefresh.bundle"
+  install_resource "SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle"
   install_resource "TYKYLibrary/TYKYLibrary/AutoLocation/city.plist"
   install_resource "TYKYLibrary/TYKYLibrary/AutoLocation/close_location@2x.png"
   install_resource "TYKYLibrary/TYKYLibrary/AutoLocation/CTLocationViewController.xib"

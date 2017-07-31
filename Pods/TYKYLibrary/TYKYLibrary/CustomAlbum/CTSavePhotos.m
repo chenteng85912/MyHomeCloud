@@ -9,6 +9,7 @@
 #import "CTSavePhotos.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <AVFoundation/AVFoundation.h>
+#import "UIAlertController+CTAlertBlock.h"
 
 @interface CTSavePhotos ()
 @property (strong, nonatomic) ALAssetsLibrary *library;
@@ -81,7 +82,6 @@
 /** 添加一张图片到某个文件夹中 */
 - (void)addImageToGroup:(ALAssetsGroup *)group withImage:(UIImage *)image
 {
-//    __weak ALAssetsLibrary *weakLibrary = self.library;
     
     //添加图片到相机胶卷 (因为要先存到全部的相片里面. 在根据对应的assetURL)
     [ self.library writeImageToSavedPhotosAlbum:image.CGImage metadata:nil completionBlock:^(NSURL *assetURL, NSError *error) {
@@ -130,23 +130,13 @@
 }
 //弹出前往设置提示
 - (void)showAlertWithMessage:(NSString *)msg{
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"温馨提示" message:msg preferredStyle:UIAlertControllerStyleAlert];
-    [alert addAction:[UIAlertAction actionWithTitle:@"前往设置" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-        NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
-        if ([[UIApplication sharedApplication] canOpenURL:url]) {
-            [[UIApplication sharedApplication]openURL:url];
+    [UIAlertController alertWithTitle:@"温馨提示" message:msg cancelButtonTitle:@"取消" otherButtonTitles:@[@"前往设置"] preferredStyle:UIAlertControllerStyleAlert block:^(NSInteger buttonIndex) {
+        if (buttonIndex==1) {
+            NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+            if ([[UIApplication sharedApplication] canOpenURL:url]) {
+                [[UIApplication sharedApplication]openURL:url];
+            }
         }
-    }]];
-    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-       
-    }]];
-    
-    if ([UIApplication sharedApplication].keyWindow.rootViewController.presentedViewController) {
-        [[UIApplication sharedApplication].keyWindow.rootViewController.presentedViewController presentViewController:alert animated:YES completion:nil];
-        
-    }else{
-        [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alert animated:YES completion:nil];
-        
-    }
+    }];
 }
 @end

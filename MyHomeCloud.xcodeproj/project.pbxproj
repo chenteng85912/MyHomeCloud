@@ -197,6 +197,7 @@
 		0BF3E83C1F2ECDA9009CEFF6 /* AJAboutUsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BF3E8391F2ECDA9009CEFF6 /* AJAboutUsViewController.xib */; };
 		0BF3E83D1F2ECDA9009CEFF6 /* AJAboutUsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BF3E8391F2ECDA9009CEFF6 /* AJAboutUsViewController.xib */; };
 		0BF95A0D1EEE55F00031D958 /* AJSB.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF95A0C1EEE55F00031D958 /* AJSB.m */; };
+		7191E77D76708EC24E7633A2 /* libPods-AJCloud.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 70A79D96898B7D786B3DD49D /* libPods-AJCloud.a */; };
 		A40B20B61EC733280027399E /* AJHouseDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A40B20B41EC733280027399E /* AJHouseDetailsViewController.m */; };
 		A40B20B71EC733280027399E /* AJHouseDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A40B20B51EC733280027399E /* AJHouseDetailsViewController.xib */; };
 		A411B3C01EC4B0BD00244B6E /* AJSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A411B3BE1EC4B0BD00244B6E /* AJSettingViewController.m */; };
@@ -274,6 +275,7 @@
 		A4FC23551EE6F37400924EEE /* AJNewHouseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A4FC23531EE6F37400924EEE /* AJNewHouseTableViewCell.m */; };
 		A4FC23561EE6F37400924EEE /* AJNewHouseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4FC23541EE6F37400924EEE /* AJNewHouseTableViewCell.xib */; };
 		A4FC23591EE6F39000924EEE /* AJNewHouseCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A4FC23581EE6F39000924EEE /* AJNewHouseCellModel.m */; };
+		C79D04DE1B9FC1A3C23926C6 /* libPods-AJCloudAdmin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE55938018DA5ECA8927CD6D /* libPods-AJCloudAdmin.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -539,6 +541,7 @@
 				A49243C51F1086CF00845E4C /* libTYKYLibrary.a in Frameworks */,
 				0B5FDBB81EFFE30300F9A1E2 /* Security.framework in Frameworks */,
 				A4AE33031EF51C61004B0A54 /* WebKit.framework in Frameworks */,
+				7191E77D76708EC24E7633A2 /* libPods-AJCloud.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -557,6 +560,7 @@
 				A49243C71F1086E000845E4C /* Security.framework in Frameworks */,
 				A49243C61F1086D800845E4C /* libTYKYLibrary.a in Frameworks */,
 				0BF2C6CD1EFA5A4400EA46AF /* WebKit.framework in Frameworks */,
+				C79D04DE1B9FC1A3C23926C6 /* libPods-AJCloudAdmin.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

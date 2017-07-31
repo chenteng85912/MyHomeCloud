@@ -100,7 +100,8 @@
 
         }
 
-        [self.view showHUD:nil];
+        [SVProgressHUD show];
+
         [self initStartData];
     }
 }
@@ -175,7 +176,8 @@
 }
 //刷新数据
 - (void)reloadTableView:(NSArray *)dataArray modal:(TableViewInitDataModal)type{
-    [self.view removeHUD];
+    [SVProgressHUD dismiss];
+
     if (type==StartInitDataModal) {
         [self.dataArray removeAllObjects];
     }

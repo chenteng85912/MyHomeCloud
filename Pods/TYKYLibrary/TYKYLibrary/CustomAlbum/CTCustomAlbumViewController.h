@@ -12,11 +12,14 @@
 //传出图片字典，key为图片名称，value为对应的图片
 - (void)sendImageDictionary:(NSDictionary <NSString*,UIImage*> *)imageDic;
 
+@optional
+//传出图片数组
+- (void)sendImageArray:(NSMutableArray <UIImage *> *)imgArray;
+
 @end
 /**
  *  调用自定义相册
- *1、正常PUSH
- *2、模态弹出，请初始化导航栏控制器
+ *1、模态弹出，请初始化导航栏控制器
  */
 @interface CTCustomAlbumViewController : UIViewController
 

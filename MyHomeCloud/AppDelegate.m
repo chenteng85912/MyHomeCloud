@@ -30,6 +30,10 @@ NSString *const UMWEIXINAPPSECRET = @"1b701ce273624810d0f55296f19cd384";
     [AVOSCloud setApplicationId:AVOSCloudID clientKey:AVOSCloudKey];
     [AVAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
+    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+    [SVProgressHUD setFadeOutAnimationDuration:0.3];
+    [SVProgressHUD setAnimationDuration:1.0];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     

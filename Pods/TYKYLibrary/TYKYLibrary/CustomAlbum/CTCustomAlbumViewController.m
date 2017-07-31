@@ -29,7 +29,7 @@
 @property (nonatomic,strong) ALAssetsLibrary *assetsLibrary;
 
 @property (nonatomic,strong) NSMutableArray <ALAsset *> *albumArray;//相册数组
-
+@property (nonatomic,strong) NSMutableArray <UIImage *> *imgArray;//图片数组
 @property (nonatomic,assign) BOOL isLoad;
 @property (nonatomic,assign) NSInteger selectedNum;//选中照片数量
 
@@ -196,6 +196,11 @@
             [self.delegate sendImageDictionary:self.picDataDic];
             
         }
+        if ([self.delegate respondsToSelector:@selector(sendImageArray:)]) {
+            
+            [self.delegate sendImageArray:self.imgArray];
+            
+        }
     }];
   
 }
@@ -270,8 +275,14 @@
     ALAsset *asset = self.albumArray[btn.tag-1];
     NSIndexPath *indexPath = [NSIndexPath indexPathForItem:btn.tag inSection:0];
 
-    if ([self.picDataDic.allKeys containsObject:asset.defaultRepresentation.filename]) {
-        [self.picDataDic removeObjectForKey:asset.defaultRepresentation.filename];
+    //图片名称
+    NSString *imgName = asset.defaultRepresentation.filename;
+    
+    if ([self.picDataDic.allKeys containsObject:imgName]) {
+        UIImage *img = self.picDataDic[imgName];
+        [self.imgArray removeObject:img];
+        
+        [self.picDataDic removeObjectForKey:imgName];
         AlbumCollectionViewCell *mycell = (AlbumCollectionViewCell *)[self.ColView cellForItemAtIndexPath:indexPath];
         mycell.selectBut.selected = NO;
         mycell.backView.hidden = YES;
@@ -282,7 +293,10 @@
             [self showWaringView];
             return;
         }
-        [self.picDataDic setObject:[UIImage imageWithCGImage:asset.defaultRepresentation.fullScreenImage] forKey:asset.defaultRepresentation.filename];
+        [self.picDataDic setObject:[UIImage imageWithCGImage:asset.defaultRepresentation.fullScreenImage] forKey:imgName];
+        
+        [self.imgArray addObject:self.picDataDic[imgName]];
+        
         AlbumCollectionViewCell *mycell = (AlbumCollectionViewCell *)[self.ColView cellForItemAtIndexPath:indexPath];
         [self showAnimation:mycell.selectBut];
         mycell.backView.hidden = NO;
@@ -509,6 +523,12 @@
         [self.view addSubview:_waringView];
     }
     return _waringView;
+}
+- (NSMutableArray <UIImage *> *)imgArray{
+    if (_imgArray ==nil) {
+        _imgArray = [NSMutableArray new];
+    }
+    return _imgArray;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

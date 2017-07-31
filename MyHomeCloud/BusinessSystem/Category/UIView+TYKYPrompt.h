@@ -20,6 +20,9 @@ typedef NS_ENUM(NSInteger, TYKYHUDMode) {
 
 //展示文字
 - (void)showText:(NSString *)msg complete:(void(^)(void))handleComplete;
+
+- (void)showSVTips:(NSString *)msg withState:(TYKYHUDMode)HUDModel complete:(void(^)(void))handleComplete;
+
 //展示成功或失败提示
 - (void)showTips:(NSString *)msg withState:(TYKYHUDMode)HUDModel complete:(void(^)(void))handleComplete;
 

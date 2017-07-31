@@ -56,9 +56,10 @@ CGFloat const HEAD_BTN_HEIGHT = 100;
     [super viewDidLoad];
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+    
     [self initTbViewData];
     
-    [self.view showHUD:nil];
+    [SVProgressHUD show];
     [self fetchData];
     [self removeSearchBorder];
 }
@@ -157,7 +158,7 @@ CGFloat const HEAD_BTN_HEIGHT = 100;
        
         dispatch_async(dispatch_get_main_queue(), ^{
             [weakSelf.tbView.mj_header endRefreshing];
-            [weakSelf.view removeHUD];
+            [SVProgressHUD dismiss];
             [weakSelf.tbView reloadData];
         });
         

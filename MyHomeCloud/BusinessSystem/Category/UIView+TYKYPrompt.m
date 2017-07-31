@@ -34,6 +34,27 @@ NSInteger const tipViewTag = 12345678;
         }
     });
 }
+- (void)showSVTips:(NSString *)msg withState:(TYKYHUDMode)HUDModel complete:(void(^)(void))handleComplete{
+  
+    UIImage *img = nil;
+    if (HUDModel== TYKYHUDModeSuccess) {
+        img = [UIImage imageNamed:@"success"];
+    }else if (HUDModel== TYKYHUDModeFail){
+        img = [UIImage imageNamed:@"fail"];
+        
+    }else{
+        img = [UIImage imageNamed:@"warning"];
+        
+    }
+    [SVProgressHUD showImage:img status:msg];
+
+    dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC));
+    dispatch_after(delayTime, dispatch_get_main_queue(), ^(void){
+        if (handleComplete) {
+            handleComplete ();
+        }
+    });
+}
 //展示成功或失败提示
 - (void)showTips:(NSString *)msg withState:(TYKYHUDMode)HUDModel complete:(void(^)(void))handleComplete{
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self animated:YES];
