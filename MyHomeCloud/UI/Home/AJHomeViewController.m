@@ -336,17 +336,15 @@ CGFloat const HEAD_BTN_HEIGHT = 100;
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    CGFloat offsetY = scrollView.contentOffset.y;
-    if(offsetY <100&&offsetY>0) {
-        _headSearchView.backgroundColor = [NavigationBarColor colorWithAlphaComponent:offsetY/100.0];
-    }else if (offsetY<=0){
-        _headSearchView.backgroundColor = [NavigationBarColor colorWithAlphaComponent:0.0];
 
-    }else{
-        _headSearchView.backgroundColor = [NavigationBarColor colorWithAlphaComponent:1.0];
-
+    CGFloat alpha = (scrollView.contentOffset.y +20) / 100;
+//    debugLog(@"alpha:%f",alpha);
+    _headSearchView.backgroundColor = [NavigationBarColor colorWithAlphaComponent:alpha];
+    if (alpha<=0) {
+        self.searchBar.alpha = 1-3*fabs(alpha);
+        
     }
-    
+
 }
 //移除搜索框边框
 - (void)removeSearchBorder{

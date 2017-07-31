@@ -8,8 +8,9 @@
 
 #import "CTBaseViewController.h"
 typedef NS_ENUM(NSInteger,AddHouseModal) {
-    SecondHouseModal,   //二手房源
-    LetHouseModal      //出租房源
+    SecondHouseModal,    //二手房源
+    LetHouseModal        //出租房源
+
 };
 @interface AJAddHouserViewController : CTBaseViewController
 

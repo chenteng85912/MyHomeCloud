@@ -51,25 +51,32 @@
 }
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
-    _tagVC = nil;
+    
+    NSInteger selectIndex;
     if ([_searchType.text isEqualToString:@"租房"]) {
         _typeName.text = @"租金";
         _letPrice.hidden = NO;
         _housePrice.hidden = YES;
         self.tagVC.addModal = LetHouseModal;
-        _type=1;
-
+        selectIndex = 1;
     }else if ([_searchType.text isEqualToString:@"二手房"]){
         _typeName.text = @"售价";
         _letPrice.hidden = YES;
         _housePrice.hidden = NO;
         self.tagVC.addModal = SecondHouseModal;
-        _type=0;
+        selectIndex = 0;
+
     }else{
-        _type=2;
+        selectIndex = 2;
 
     }
-    _houseTags.text = nil;
+    if (_type!=selectIndex) {
+        _type = selectIndex;
+        _houseTags.text = nil;
+        [self.tagVC removeFromParentViewController];
+        _tagVC = nil;
+        [self addChildViewController:self.tagVC];
+    }
     return YES;
 }
 - (void)confirmTags:(NSArray *)tagArray{
@@ -168,6 +175,14 @@
     if (_tagVC==nil) {
         _tagVC = [AJTagsViewController new];
         _tagVC.delegate = self;
+        if (_type==0) {
+            _tagVC.addModal = SecondHouseModal;
+        }else if (_type==1){
+            _tagVC.addModal = LetHouseModal;
+
+        }else{
+            
+        }
         _tagVC.view.alpha = 0;
         _tagVC.view.frame = self.view.bounds;
         [self.view addSubview:_tagVC.view];

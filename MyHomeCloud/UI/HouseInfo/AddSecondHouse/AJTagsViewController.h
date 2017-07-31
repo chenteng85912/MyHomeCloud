@@ -18,6 +18,7 @@
 @interface AJTagsViewController : CTBaseViewController
 
 @property (weak, nonatomic) id<AJTagsViewControllerDelegate>delegate;
+
 @property (assign, nonatomic) AddHouseModal addModal;
 
 @end

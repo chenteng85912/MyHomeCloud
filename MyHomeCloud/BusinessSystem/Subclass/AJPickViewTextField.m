@@ -35,8 +35,8 @@ CGFloat const PICKVIEW_HEIGHT = 200.0;
 
     }else{
         if (self.tag!=2) {
-            [self.pickView selectRow:self.firstArray.count/2 inComponent:0 animated:NO];
-            [self pickerView:self.pickView didSelectRow:self.firstArray.count/2 inComponent:0];
+            [self.pickView selectRow:0 inComponent:0 animated:NO];
+            [self pickerView:self.pickView didSelectRow:0 inComponent:0];
         }else{
             self.first = self.firstArray[2];
             self.second = self.secondArray[2];
@@ -255,7 +255,7 @@ CGFloat const PICKVIEW_HEIGHT = 200.0;
         
         //帮你找房
         if (self.tag==14) {
-            [_firstArray addObjectsFromArray:@[@"不限",@"二手房",@"租房"]];
+            [_firstArray addObjectsFromArray:@[@"二手房",@"租房"]];
         }
         if (self.tag==15) {
             [_firstArray addObjectsFromArray:@[@"不限",@"50万以下",@"50-100万",@"100-150万",@"150-200万",@"200-300万",@"300万以上"]];

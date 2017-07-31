@@ -108,7 +108,6 @@
     details.reserverModal = model;
     
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:details];
-    
     [self presentViewController:nav animated:YES completion:nil];
   
 }
