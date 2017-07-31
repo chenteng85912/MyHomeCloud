@@ -14,6 +14,7 @@
 #import "AJUMShareUtil.h"
 #import "AJFeedbackViewController.h"
 #import "AJSendFeecbackViewController.h"
+#import "AJAboutUsViewController.h"
 
 NSString *const ServicePhone = @"4006005555";
 
@@ -135,13 +136,14 @@ NSString *const ServicePhone = @"4006005555";
     
     AJMeModel *model = [AJMeModel new];
     model.title = @"关于我们";
-    model.className = NSStringFromClass([AJOtherViewController class]);
+    model.className = NSStringFromClass([AJAboutUsViewController class]);
     [temp addObject:model];
     
     model = [AJMeModel new];
     model.title = @"隐私说明";
     model.className = NSStringFromClass([AJOtherViewController class]);
     [temp addObject:model];
+    
 #if AJCLOUD
     
     model = [AJMeModel new];

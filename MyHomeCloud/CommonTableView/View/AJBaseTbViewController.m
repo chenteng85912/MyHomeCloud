@@ -11,6 +11,8 @@
 #import "UITableView+NoMoreDataInFooter.h"
 #import <MJRefresh/MJRefresh.h>
 #import "AJFilterViewController.h"
+#import "AJUserInclinationViewController.h"
+#import "AJMyReserverViewController.h"
 
 @interface AJBaseTbViewController ()<UIGestureRecognizerDelegate,AJFilterViewControllerDelegate>
 
@@ -294,7 +296,10 @@
     if (self.navigationController.viewControllers.count==0) {
         return NO;
     }else{
-       
+        if ([self isKindOfClass:[AJMyReserverViewController class]]
+            ||[self isKindOfClass:[AJUserInclinationViewController class]]) {
+            return NO;
+        }
         return YES;
     }
 }

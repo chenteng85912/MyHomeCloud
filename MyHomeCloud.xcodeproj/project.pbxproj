@@ -192,6 +192,10 @@
 		0BF2C6EC1EFA5A4400EA46AF /* AJOtherViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B302F5D1ED01835006896CA /* AJOtherViewController.xib */; };
 		0BF2C6F71EFA5D4800EA46AF /* AJWechatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF2C6F51EFA5D4800EA46AF /* AJWechatViewController.m */; };
 		0BF2C6F81EFA5D4800EA46AF /* AJWechatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BF2C6F61EFA5D4800EA46AF /* AJWechatViewController.xib */; };
+		0BF3E83A1F2ECDA9009CEFF6 /* AJAboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF3E8381F2ECDA9009CEFF6 /* AJAboutUsViewController.m */; };
+		0BF3E83B1F2ECDA9009CEFF6 /* AJAboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF3E8381F2ECDA9009CEFF6 /* AJAboutUsViewController.m */; };
+		0BF3E83C1F2ECDA9009CEFF6 /* AJAboutUsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BF3E8391F2ECDA9009CEFF6 /* AJAboutUsViewController.xib */; };
+		0BF3E83D1F2ECDA9009CEFF6 /* AJAboutUsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BF3E8391F2ECDA9009CEFF6 /* AJAboutUsViewController.xib */; };
 		0BF95A0D1EEE55F00031D958 /* AJSB.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF95A0C1EEE55F00031D958 /* AJSB.m */; };
 		A40B20B61EC733280027399E /* AJHouseDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A40B20B41EC733280027399E /* AJHouseDetailsViewController.m */; };
 		A40B20B71EC733280027399E /* AJHouseDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A40B20B51EC733280027399E /* AJHouseDetailsViewController.xib */; };
@@ -416,6 +420,9 @@
 		0BF2C6F41EFA5D4800EA46AF /* AJWechatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJWechatViewController.h; sourceTree = "<group>"; };
 		0BF2C6F51EFA5D4800EA46AF /* AJWechatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJWechatViewController.m; sourceTree = "<group>"; };
 		0BF2C6F61EFA5D4800EA46AF /* AJWechatViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJWechatViewController.xib; sourceTree = "<group>"; };
+		0BF3E8371F2ECDA9009CEFF6 /* AJAboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJAboutUsViewController.h; sourceTree = "<group>"; };
+		0BF3E8381F2ECDA9009CEFF6 /* AJAboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJAboutUsViewController.m; sourceTree = "<group>"; };
+		0BF3E8391F2ECDA9009CEFF6 /* AJAboutUsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJAboutUsViewController.xib; sourceTree = "<group>"; };
 		0BF95A0B1EEE55F00031D958 /* AJSB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJSB.h; sourceTree = "<group>"; };
 		0BF95A0C1EEE55F00031D958 /* AJSB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJSB.m; sourceTree = "<group>"; };
 		28918ABEED7A893430DD718E /* libPods-MyHomeCloud.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyHomeCloud.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1011,6 +1018,9 @@
 				0B302F5B1ED01835006896CA /* AJOtherViewController.h */,
 				0B302F5C1ED01835006896CA /* AJOtherViewController.m */,
 				0B302F5D1ED01835006896CA /* AJOtherViewController.xib */,
+				0BF3E8371F2ECDA9009CEFF6 /* AJAboutUsViewController.h */,
+				0BF3E8381F2ECDA9009CEFF6 /* AJAboutUsViewController.m */,
+				0BF3E8391F2ECDA9009CEFF6 /* AJAboutUsViewController.xib */,
 				0BF2C67F1EFA544100EA46AF /* AJUMShareUtil.h */,
 				0BF2C6801EFA544100EA46AF /* AJUMShareUtil.m */,
 				0BF2C6F41EFA5D4800EA46AF /* AJWechatViewController.h */,
@@ -1316,6 +1326,7 @@
 				A4AE33201EF52E7A004B0A54 /* AJReserverDetailsViewController.xib in Resources */,
 				0BC1DEDE1F178D64007C78DB /* AJAddPicturesViewController.xib in Resources */,
 				A4FC23511EE6F31200924EEE /* AJLetHouseTableViewCell.xib in Resources */,
+				0BF3E83C1F2ECDA9009CEFF6 /* AJAboutUsViewController.xib in Resources */,
 				0BE4D9F01ECC6B8200E4ADCD /* AJHomeViewController.xib in Resources */,
 				A44A8C1A1F03EE7A00BE6D89 /* AJFilterViewController.xib in Resources */,
 				0B6E12C61EC4235300103571 /* AJLoginViewController.xib in Resources */,
@@ -1373,6 +1384,7 @@
 				0BF2C6E61EFA5A4400EA46AF /* AJReserverDetailsViewController.xib in Resources */,
 				0BC1DEE21F178D70007C78DB /* AJAddPicturesViewController.xib in Resources */,
 				0BF2C6E71EFA5A4400EA46AF /* AJLetHouseTableViewCell.xib in Resources */,
+				0BF3E83D1F2ECDA9009CEFF6 /* AJAboutUsViewController.xib in Resources */,
 				0BF2C6E81EFA5A4400EA46AF /* AJHomeViewController.xib in Resources */,
 				A44A8C1B1F03EE7A00BE6D89 /* AJFilterViewController.xib in Resources */,
 				0BF2C6E91EFA5A4400EA46AF /* AJLoginViewController.xib in Resources */,
@@ -1482,6 +1494,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BF3E83A1F2ECDA9009CEFF6 /* AJAboutUsViewController.m in Sources */,
 				A4AC724B1EF6718200772D42 /* AJEstateInfoModal.m in Sources */,
 				0B1904E11EE668EC004C46EE /* AJTbViewPresenter.m in Sources */,
 				A46422581F07497900459294 /* AJFeedbackCellModel.m in Sources */,
@@ -1581,6 +1594,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BF3E83B1F2ECDA9009CEFF6 /* AJAboutUsViewController.m in Sources */,
 				0BF2C6851EFA5A4400EA46AF /* AJEstateInfoModal.m in Sources */,
 				0BF2C6861EFA5A4400EA46AF /* AJTbViewPresenter.m in Sources */,
 				A46422591F07497900459294 /* AJFeedbackCellModel.m in Sources */,

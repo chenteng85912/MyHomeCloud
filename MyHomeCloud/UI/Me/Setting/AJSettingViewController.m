@@ -96,6 +96,7 @@ static NSString *CellIdentifier = @"TJSettingsCellId";
             }];
             return;
         }
+      
         APP_PUSH(vc);
         
     }else{
