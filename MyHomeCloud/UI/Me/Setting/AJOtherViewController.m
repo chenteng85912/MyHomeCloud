@@ -36,7 +36,7 @@
     paragraphStyle.lineSpacing = 5.0;//行距
     paragraphStyle.firstLineHeadIndent = 32.f;//段首缩进
     
-    NSDictionary *attribs = @{NSFontAttributeName:[UIFont systemFontOfSize:16],NSParagraphStyleAttributeName:paragraphStyle};
+    NSDictionary *attribs = @{NSFontAttributeName:[UIFont systemFontOfSize:14],NSParagraphStyleAttributeName:paragraphStyle};
     NSMutableAttributedString * attributedString = [[NSMutableAttributedString alloc] initWithString:text attributes:attribs];
     
     return attributedString;
