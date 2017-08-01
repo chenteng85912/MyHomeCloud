@@ -253,11 +253,11 @@ CGFloat const NEW_MORE_HEITHT = 580;
             return;
         }
         
-        [SVProgressHUD show];
+        [self.view showHUD:nil];
         if (likeBtn.selected) {
             
             [_likeHouse deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-                [SVProgressHUD dismiss];
+                [weakSelf.view removeHUD];
                 if (succeeded) {
                     likeBtn.selected = NO;
                     _likeLabel.text = @"关注";

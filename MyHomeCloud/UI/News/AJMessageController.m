@@ -35,7 +35,8 @@
     
     //设置下拉刷新
     self.tableView.mj_header = [CTTool makeMJRefeshWithTarget:self andMethod:@selector(fetchMsgListData)];
-    [self.tableView.mj_header beginRefreshing];
+    [self.view showHUD:nil];
+    [self performSelector:@selector(fetchMsgListData) withObject:nil afterDelay:0.3];
 
 }
 
@@ -81,6 +82,10 @@
         NSArray *tempArr = [AJMessageBeanDao findListMessagesWithUserId:[AVUser currentUser].mobilePhoneNumber];
         [temp addObjectsFromArray:tempArr];
 
+    }
+    [self.view removeHUD];
+    if (!_tableView.alpha) {
+        [self.tableView showViewWithAnimation];
     }
     [self.tableView.mj_header endRefreshing];
     [self.dataArray removeAllObjects];

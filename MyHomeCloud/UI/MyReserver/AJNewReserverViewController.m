@@ -111,10 +111,8 @@
     [obj setObject:_houseInfo.objectId          forKey:HOUSE_ID];
 
     [KEYWINDOW showHUD:@"正在提交..."];
-//    [SVProgressHUD showWithStatus:@"正在提交..."];
     [obj saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         [KEYWINDOW removeHUD];
-//        [SVProgressHUD dismiss];
         if (!succeeded) {
             [KEYWINDOW showTips:@"提交预约失败" withState:TYKYHUDModeFail complete:nil];
 

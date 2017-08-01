@@ -121,7 +121,7 @@
         }];
         
     }
-    [SVProgressHUD dismiss];
+    [self.view removeHUD];
     
 }
 
@@ -158,7 +158,7 @@
 }
 
 - (void)refreshHomeData{
-    [SVProgressHUD show];
+    [self.view showHUD:nil];
     [self initStartData];
 }
 - (void)didReceiveMemoryWarning {

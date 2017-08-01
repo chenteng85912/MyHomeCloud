@@ -125,7 +125,7 @@
 
     }
     
-    [SVProgressHUD dismiss];
+    [self.view removeHUD];
 
 }
 #pragma mark - UITableViewDelegate
@@ -161,7 +161,7 @@
 
 - (void)refreshHomeData{
 
-    [SVProgressHUD show];
+    [self.view showHUD:nil];
     [self initStartData];
 }
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{

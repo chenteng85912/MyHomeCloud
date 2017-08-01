@@ -59,7 +59,8 @@ CGFloat const HEAD_BTN_HEIGHT = 100;
     
     [self initTbViewData];
     
-    [SVProgressHUD show];
+    [self.view showHUD:nil];
+
     [self fetchData];
     [self removeSearchBorder];
 }
@@ -158,7 +159,8 @@ CGFloat const HEAD_BTN_HEIGHT = 100;
        
         dispatch_async(dispatch_get_main_queue(), ^{
             [weakSelf.tbView.mj_header endRefreshing];
-            [SVProgressHUD dismiss];
+            [self.view removeHUD];
+
             [weakSelf.tbView reloadData];
         });
         
