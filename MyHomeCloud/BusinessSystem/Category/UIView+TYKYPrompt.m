@@ -104,6 +104,7 @@ NSInteger const tipViewTag = 12345678;
     
     if ([APPDELEGATE isSVPHUD]) {
         [SVProgressHUD showProgress:progress status:msg];
+        
     }else{
         MBProgressHUD *hud = [MBProgressHUD HUDForView:self];
         if (!hud) {
@@ -127,6 +128,8 @@ NSInteger const tipViewTag = 12345678;
 
     if ([APPDELEGATE isSVPHUD]) {
         [SVProgressHUD showWithStatus:msg];
+        [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
+
     }else{
         //风火轮颜色修改
         //    [UIActivityIndicatorView appearanceWhenContainedIn:[MBProgressHUD class], nil].color = [UIColor whiteColor];

@@ -68,22 +68,13 @@ NSInteger const SHOW_NUM = 5;
     }
     return dataArray;
 }
-//添加收藏
-- (void)addFavoriteData:(AVObject *)object favClassName:(NSString *)favClassName complete:(RequestBlock)afterRequest{
-    AVObject *houseData = [self creatHouseInfo:object withClassName:favClassName];
-    [houseData saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        if (afterRequest) {
-            afterRequest(succeeded,nil);
-        }
-        
-    }];
-}
+
 //保存浏览记录
 - (void)addRecordData:(AVObject *)object recordClassName:(NSString *)recordClassName{
     if (![AVUser currentUser]) {
         return;
     }
-    AVObject *houseData = [self creatHouseInfo:object withClassName:recordClassName];
+    AVObject *houseData = [AJHomeDataCenter creatHouseInfo:object withClassName:recordClassName];
     
     self.query.className = recordClassName;
     [self.query whereKey:HOUSE_ID   equalTo:object.objectId];
@@ -101,7 +92,7 @@ NSInteger const SHOW_NUM = 5;
         }];
     }];
 }
-- (AVObject *)creatHouseInfo:(AVObject *)object withClassName:(NSString *)className{
++ (AVObject *)creatHouseInfo:(AVObject *)object withClassName:(NSString *)className{
     AVObject *houseData = [[AVObject alloc] initWithClassName:className];
     
     [houseData setObject:object.objectId        forKey:HOUSE_ID];
@@ -155,11 +146,6 @@ NSInteger const SHOW_NUM = 5;
         [startArray removeLastObject];
     }
     return resultArray;
-}
-//获取一个随机整数，范围在[from,to]，包括from，包括to
-- (NSInteger)getRandomNumber:(NSInteger)from to:(NSInteger)to
-{
-    return (NSInteger)(from + (arc4random() % (to - from + 1)));
 }
 
 #pragma mark -geter and setter

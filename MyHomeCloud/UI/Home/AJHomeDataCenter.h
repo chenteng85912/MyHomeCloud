@@ -12,4 +12,5 @@
 
 @interface AJHomeDataCenter : NSObject<AJTbViewCellModelProtocol,AJHomeDataProtocol>
 
+
 @end

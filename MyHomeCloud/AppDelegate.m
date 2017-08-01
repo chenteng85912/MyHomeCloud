@@ -33,7 +33,6 @@ NSString *const UMWEIXINAPPSECRET = @"1b701ce273624810d0f55296f19cd384";
     self.isSVPHUD = YES;
     if (self.isSVPHUD) {
         [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
-        [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
         [SVProgressHUD setFadeOutAnimationDuration:0.3];
         [SVProgressHUD popActivity];
     }

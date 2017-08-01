@@ -267,16 +267,17 @@ CGFloat const NEW_MORE_HEITHT = 580;
             }];
             
         }else{
-            [[AJHomeDataCenter new] addFavoriteData:_houseInfo favClassName:[self favoriteClassName] complete:^(BOOL success, NSArray *returnValue) {
+            _likeHouse = [AJHomeDataCenter creatHouseInfo:_houseInfo withClassName:[self favoriteClassName]];
+            [_likeHouse saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
                 [weakSelf.view removeHUD];
-                if (success) {
+                if (succeeded) {
                     _likeBtn.selected = YES;
                     _likeLabel.text = @"已关注";
-                    
+                    [[NSNotificationCenter defaultCenter] postNotificationName:kNewHouseNotification object:nil];
+
                 }else{
                     [self.view showTips:@"关注失败" withState:TYKYHUDModeFail complete:nil];
                 }
-                
             }];
             
         }
@@ -315,8 +316,8 @@ CGFloat const NEW_MORE_HEITHT = 580;
     if (_detailsModal== SecondModal) {
         self.baseQuery.className = SECOND_FAVORITE;
         
-    }else if (_detailsModal== SecondModal) {
-        self.baseQuery.className = SECOND_FAVORITE;
+    }else if (_detailsModal== LetModal) {
+        self.baseQuery.className = LET_FAVORITE;
         
     }
     else{
