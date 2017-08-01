@@ -24,6 +24,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.tabBar.tintColor = NavigationBarColor;
+    self.tabBar.translucent = NO;
+    
     [self initRootViewController];
     [self performSelector:@selector(showRemoteNotificationAlert) withObject:nil afterDelay:30.0];
 
@@ -55,12 +58,16 @@
     
     AJUserCenterViewController *user = [AJUserCenterViewController new];
     user.title = @"我";
-    
+#if AJCLOUD
     NSArray *normalImgs = @[@"home",@"find",@"message",@"me"];
-
-    self.tabBar.tintColor = NavigationBarColor;
-    self.tabBar.translucent = NO;
     NSArray *viewControllers = @[home,find,news,user];
+
+#else
+    NSArray *normalImgs = @[@"home",@"message",@"me"];
+    NSArray *viewControllers = @[home,news,user];
+
+#endif
+
     
     NSMutableArray *newArray = [NSMutableArray arrayWithCapacity:viewControllers.count];
     for (int i = 0; i < viewControllers.count;i++) {
