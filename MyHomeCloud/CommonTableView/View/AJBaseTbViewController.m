@@ -122,8 +122,11 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.dataArray.count;
 }
--(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if ([self respondsToSelector:@selector(AJTableView:cellForRowAtIndexPath:)]) {
+        return [self AJTableView:tableView cellForRowAtIndexPath:indexPath];
+    }
     AJTbViewCellModel <AJTbViewCellModelProtocol> *model = self.dataArray[indexPath.row];
     
     id <AJTbViewCellProtocol> cell = [tableView dequeueReusableCellWithIdentifier:[self customeTbViewCellClassName]];

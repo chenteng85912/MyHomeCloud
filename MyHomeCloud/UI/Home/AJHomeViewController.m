@@ -12,6 +12,8 @@
 #import "AJHouseInfoViewController.h"
 #import "AJFindHouseViewController.h"
 #import "AJSearchViewController.h"
+#import "AJFinanceViewController.h"
+#import "AJFinanceCellModel.h"
 
 #import "AJSecondHouseViewController.h"
 #import "AJSecondHouseCellModel.h"
@@ -296,8 +298,20 @@ CGFloat const HEAD_BTN_HEIGHT = 100;
     return imgView;
 }
 - (void)CTAutoLoopViewController:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-//    AVObject *headObj = self.autoLoopDataArray[indexPath.row];
-
+    AVObject *headObj = self.autoLoopDataArray[indexPath.row];
+    
+    AJFinanceViewController *finance = [AJFinanceViewController new];
+    finance.isOneModal = YES;
+    finance.isLoad = YES;
+    finance.title = headObj[HOME_IMAGE_TITILE];
+    
+    AJFinanceCellModel *model = [AJFinanceCellModel new];
+    model.objectData = headObj;
+    [model calculateSizeConstrainedToSize];
+    [finance.dataArray addObject:model];
+    
+    finance.hidesBottomBarWhenPushed = YES;
+    APP_PUSH(finance);
     
 }
 - (void)openMoreHouseData:(UIButton *)btn{
@@ -323,21 +337,10 @@ CGFloat const HEAD_BTN_HEIGHT = 100;
         newHouse.showFilter = YES;
 
         vc = newHouse;
-    }else{
-#if AJCLOUD
-        if (![AVUser currentUser]) {
-            [AJSB goLoginViewComplete:^{
-            }];
-            return;
-        }
-        
-        AJFindHouseViewController *other = [AJFindHouseViewController new];
-        vc = other;
-        vc.title = @"帮你找房";
-#else
-        [self.view showTips:@"企业版禁止使用该功能" withState:TYKYHUDModeWarning complete:nil];
-        
-#endif
+    }else {
+        AJFinanceViewController *finance = [AJFinanceViewController new];
+        finance.title = @"安家金服";
+        vc = finance;
        
     }
     vc.hidesBottomBarWhenPushed = YES;

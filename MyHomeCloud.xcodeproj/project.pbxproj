@@ -107,6 +107,14 @@
 		0BEE41C01F303EC200D702F4 /* AJUploadHomeImagesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BEE41BD1F303EC200D702F4 /* AJUploadHomeImagesViewController.xib */; };
 		0BEE41C11F303EC200D702F4 /* AJUploadHomeImagesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BEE41BD1F303EC200D702F4 /* AJUploadHomeImagesViewController.xib */; };
 		0BEE41C21F3042DC00D702F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BEE41B91F303B6700D702F4 /* Assets.xcassets */; };
+		0BEE41E81F309D8700D702F4 /* AJFinanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BEE41E61F309D8700D702F4 /* AJFinanceViewController.m */; };
+		0BEE41E91F309D8700D702F4 /* AJFinanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BEE41E61F309D8700D702F4 /* AJFinanceViewController.m */; };
+		0BEE41EF1F309F7C00D702F4 /* AJFinanceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BEE41ED1F309F7C00D702F4 /* AJFinanceTableViewCell.m */; };
+		0BEE41F01F309F7C00D702F4 /* AJFinanceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BEE41ED1F309F7C00D702F4 /* AJFinanceTableViewCell.m */; };
+		0BEE41F11F309F7C00D702F4 /* AJFinanceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BEE41EE1F309F7C00D702F4 /* AJFinanceTableViewCell.xib */; };
+		0BEE41F21F309F7C00D702F4 /* AJFinanceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BEE41EE1F309F7C00D702F4 /* AJFinanceTableViewCell.xib */; };
+		0BEE41F51F30A06600D702F4 /* AJFinanceCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BEE41F41F30A06600D702F4 /* AJFinanceCellModel.m */; };
+		0BEE41F61F30A06600D702F4 /* AJFinanceCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BEE41F41F30A06600D702F4 /* AJFinanceCellModel.m */; };
 		0BF2C6811EFA544100EA46AF /* AJUMShareUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF2C6801EFA544100EA46AF /* AJUMShareUtil.m */; };
 		0BF2C6851EFA5A4400EA46AF /* AJEstateInfoModal.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AC724A1EF6718200772D42 /* AJEstateInfoModal.m */; };
 		0BF2C6861EFA5A4400EA46AF /* AJTbViewPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1904D51EE668EC004C46EE /* AJTbViewPresenter.m */; };
@@ -421,6 +429,13 @@
 		0BEE41BB1F303EC200D702F4 /* AJUploadHomeImagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJUploadHomeImagesViewController.h; sourceTree = "<group>"; };
 		0BEE41BC1F303EC200D702F4 /* AJUploadHomeImagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJUploadHomeImagesViewController.m; sourceTree = "<group>"; };
 		0BEE41BD1F303EC200D702F4 /* AJUploadHomeImagesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJUploadHomeImagesViewController.xib; sourceTree = "<group>"; };
+		0BEE41E51F309D8700D702F4 /* AJFinanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJFinanceViewController.h; sourceTree = "<group>"; };
+		0BEE41E61F309D8700D702F4 /* AJFinanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJFinanceViewController.m; sourceTree = "<group>"; };
+		0BEE41EC1F309F7C00D702F4 /* AJFinanceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJFinanceTableViewCell.h; sourceTree = "<group>"; };
+		0BEE41ED1F309F7C00D702F4 /* AJFinanceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJFinanceTableViewCell.m; sourceTree = "<group>"; };
+		0BEE41EE1F309F7C00D702F4 /* AJFinanceTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJFinanceTableViewCell.xib; sourceTree = "<group>"; };
+		0BEE41F31F30A06600D702F4 /* AJFinanceCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJFinanceCellModel.h; sourceTree = "<group>"; };
+		0BEE41F41F30A06600D702F4 /* AJFinanceCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJFinanceCellModel.m; sourceTree = "<group>"; };
 		0BF2C67F1EFA544100EA46AF /* AJUMShareUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJUMShareUtil.h; sourceTree = "<group>"; };
 		0BF2C6801EFA544100EA46AF /* AJUMShareUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJUMShareUtil.m; sourceTree = "<group>"; };
 		0BF2C6F21EFA5A4400EA46AF /* AJCloudAdmin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AJCloudAdmin.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -843,6 +858,7 @@
 		0B57F5891EC1989400B89CE2 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				0BEE41E41F309D2900D702F4 /* AjCloudInfo */,
 				A44C9D6E1F2DED7000C31CB5 /* FineHouse */,
 				A44AEBC91EEEC72A00109FB8 /* HouseMap */,
 				0BE4D9EC1ECC6B8200E4ADCD /* AJHomeViewController.h */,
@@ -962,6 +978,20 @@
 				0BC2B4511F0CFD1F0041C9C2 /* TJMessageListTableViewCell.xib */,
 			);
 			path = DetailsList;
+			sourceTree = "<group>";
+		};
+		0BEE41E41F309D2900D702F4 /* AjCloudInfo */ = {
+			isa = PBXGroup;
+			children = (
+				0BEE41E51F309D8700D702F4 /* AJFinanceViewController.h */,
+				0BEE41E61F309D8700D702F4 /* AJFinanceViewController.m */,
+				0BEE41F31F30A06600D702F4 /* AJFinanceCellModel.h */,
+				0BEE41F41F30A06600D702F4 /* AJFinanceCellModel.m */,
+				0BEE41EC1F309F7C00D702F4 /* AJFinanceTableViewCell.h */,
+				0BEE41ED1F309F7C00D702F4 /* AJFinanceTableViewCell.m */,
+				0BEE41EE1F309F7C00D702F4 /* AJFinanceTableViewCell.xib */,
+			);
+			path = AjCloudInfo;
 			sourceTree = "<group>";
 		};
 		5F0155942F2DC918E5FBA1EF /* Pods */ = {
@@ -1315,6 +1345,7 @@
 				A4AE33131EF51F6F004B0A54 /* AJReserverTableViewCell.xib in Resources */,
 				A44C9D741F2DED8700C31CB5 /* AJFindHouseViewController.xib in Resources */,
 				0B2343C91EC01CA1007A3AC1 /* Main.storyboard in Resources */,
+				0BEE41F11F309F7C00D702F4 /* AJFinanceTableViewCell.xib in Resources */,
 				0B302F6F1ED04F47006896CA /* AJUserHeadViewController.xib in Resources */,
 				0BEE41BA1F303B6700D702F4 /* Assets.xcassets in Resources */,
 				0BC1DECD1F17899A007C78DB /* AJAddNHouseViewController.xib in Resources */,
@@ -1373,6 +1404,7 @@
 				0BF2C6D61EFA5A4400EA46AF /* AJReserverTableViewCell.xib in Resources */,
 				A44C9D751F2DED8700C31CB5 /* AJFindHouseViewController.xib in Resources */,
 				0BF2C6D71EFA5A4400EA46AF /* Main.storyboard in Resources */,
+				0BEE41F21F309F7C00D702F4 /* AJFinanceTableViewCell.xib in Resources */,
 				0BF2C6D81EFA5A4400EA46AF /* AJUserHeadViewController.xib in Resources */,
 				0BC1DECE1F17899A007C78DB /* AJAddNHouseViewController.xib in Resources */,
 				0BF2C6D91EFA5A4400EA46AF /* AJAddHouserViewController.xib in Resources */,
@@ -1511,6 +1543,7 @@
 				0BF2C6811EFA544100EA46AF /* AJUMShareUtil.m in Sources */,
 				0B1904A91EE65EC1004C46EE /* AJSecondHouseTableViewCell.m in Sources */,
 				A4AE33081EF51EEC004B0A54 /* AJNewReserverViewController.m in Sources */,
+				0BEE41F51F30A06600D702F4 /* AJFinanceCellModel.m in Sources */,
 				0B57F59E1EC198F100B89CE2 /* CTBaseViewController.m in Sources */,
 				0B1904CE1EE66192004C46EE /* TJCircleView.m in Sources */,
 				A4AE331A1EF52DF9004B0A54 /* AJEstateDetailsViewController.m in Sources */,
@@ -1533,12 +1566,14 @@
 				A44A8C181F03EE7A00BE6D89 /* AJFilterViewController.m in Sources */,
 				A44AEBD01EEEC72A00109FB8 /* AJLocationViewController.m in Sources */,
 				0B1904C61EE66192004C46EE /* AJNewHouseModel.m in Sources */,
+				0BEE41EF1F309F7C00D702F4 /* AJFinanceTableViewCell.m in Sources */,
 				0B1904E01EE668EC004C46EE /* AJTbViewCellModel.m in Sources */,
 				0B2344611EC03095007A3AC1 /* UIView+TYKYPrompt.m in Sources */,
 				0B1904C21EE66192004C46EE /* AJAddHouserViewController.m in Sources */,
 				0B4F881E1EFF89390092BF18 /* AJTagsViewController.m in Sources */,
 				A4FC23501EE6F31200924EEE /* AJLetHouseTableViewCell.m in Sources */,
 				A4E6BB411EEBCDC000CC37B1 /* AJHomeDataCenter.m in Sources */,
+				0BEE41E81F309D8700D702F4 /* AJFinanceViewController.m in Sources */,
 				A44C9D791F2E101400C31CB5 /* AJUserInclinationViewController.m in Sources */,
 				0B59A52C1ED17D8600E8E787 /* AJPickViewTextField.m in Sources */,
 				0BC2B46D1F0CFD1F0041C9C2 /* AJMessageController.m in Sources */,
@@ -1612,6 +1647,7 @@
 				0BF2C6871EFA5A4400EA46AF /* AJUMShareUtil.m in Sources */,
 				0BF2C6881EFA5A4400EA46AF /* AJSecondHouseTableViewCell.m in Sources */,
 				0BF2C6891EFA5A4400EA46AF /* AJNewReserverViewController.m in Sources */,
+				0BEE41F61F30A06600D702F4 /* AJFinanceCellModel.m in Sources */,
 				0BF2C68A1EFA5A4400EA46AF /* CTBaseViewController.m in Sources */,
 				0BF2C68C1EFA5A4400EA46AF /* TJCircleView.m in Sources */,
 				0BF2C68D1EFA5A4400EA46AF /* AJEstateDetailsViewController.m in Sources */,
@@ -1634,12 +1670,14 @@
 				A44A8C191F03EE7A00BE6D89 /* AJFilterViewController.m in Sources */,
 				0BF2C69A1EFA5A4400EA46AF /* AJLocationViewController.m in Sources */,
 				0BF2C69B1EFA5A4400EA46AF /* AJNewHouseModel.m in Sources */,
+				0BEE41F01F309F7C00D702F4 /* AJFinanceTableViewCell.m in Sources */,
 				0BF2C69C1EFA5A4400EA46AF /* AJTbViewCellModel.m in Sources */,
 				0BF2C69D1EFA5A4400EA46AF /* UIView+TYKYPrompt.m in Sources */,
 				0BF2C69E1EFA5A4400EA46AF /* AJAddHouserViewController.m in Sources */,
 				0BB93A6F1EFFD22300B32320 /* AJTagsViewController.m in Sources */,
 				0BF2C69F1EFA5A4400EA46AF /* AJLetHouseTableViewCell.m in Sources */,
 				0BF2C6A01EFA5A4400EA46AF /* AJHomeDataCenter.m in Sources */,
+				0BEE41E91F309D8700D702F4 /* AJFinanceViewController.m in Sources */,
 				A44C9D7A1F2E101400C31CB5 /* AJUserInclinationViewController.m in Sources */,
 				0BF2C6A11EFA5A4400EA46AF /* AJPickViewTextField.m in Sources */,
 				0BC2B46E1F0CFD1F0041C9C2 /* AJMessageController.m in Sources */,

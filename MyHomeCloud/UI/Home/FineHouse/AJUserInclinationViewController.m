@@ -94,10 +94,6 @@
     return 0.01;
 }
 
-- (void)backToPreVC{
-    [self.navigationController popToRootViewControllerAnimated:YES];
-}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

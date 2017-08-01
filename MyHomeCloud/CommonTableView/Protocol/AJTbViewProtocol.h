@@ -94,6 +94,8 @@ typedef NS_ENUM(NSInteger,TableViewInitDataModal) {
 //单元格高度
 - (CGFloat)AJTableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 
+- (UITableViewCell*)AJTableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
+
 //section数量
 - (NSInteger)AJNumberOfSectionsInTableView:(UITableView *)tableView;
 

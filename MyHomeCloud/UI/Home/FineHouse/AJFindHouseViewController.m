@@ -34,7 +34,7 @@
     [super viewDidLoad];
     [self addChildViewController:self.tagVC];
 
-    // Do any additional setup after loading the view from its nib.
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:[CTTool makeCustomRightBtn:@"提 交" target:self sel:@selector(saveAction)]];
 }
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
     
@@ -86,9 +86,9 @@
     }
     _houseTags.text = [desStr substringFromIndex:1];
 }
-- (IBAction)btnAction:(UIButton *)sender {
+- (void)saveAction{
     [self.view endEditing:YES];
-    
+
     AVObject *houseData = [AVObject objectWithClassName:UESR_INCLINATION];
     [houseData setObject:[AVUser currentUser].mobilePhoneNumber forKey:USER_PHONE];
     
@@ -150,11 +150,10 @@
             return ;
         }
         [KEYWINDOW showTips:@"提交意向成功" withState:TYKYHUDModeSuccess complete:^{
-            
+            _houseTags.text = nil;
             AJUserInclinationViewController *inclination = [AJUserInclinationViewController new];
             inclination.showModal = UserInclinationModal;
             inclination.isPreview = YES;
-
             if (_type==1) {
                 inclination.inclinationModal =  LetInclinationModal;
 
@@ -164,6 +163,8 @@
             }else{
                 
             }
+            inclination.hidesBottomBarWhenPushed = YES;
+            
             APP_PUSH(inclination);
             
         }];

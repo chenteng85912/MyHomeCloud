@@ -10,6 +10,7 @@
 #import "AJHomeViewController.h"
 #import "AJUserCenterViewController.h"
 #import "AJMessageController.h"
+#import "AJFindHouseViewController.h"
 #import "AJRemoteNotification.h"
 
 @interface AjMainTabBarViewController ()<UITabBarControllerDelegate>
@@ -44,6 +45,10 @@
     home.title = @"首页";
     _curruntVC = home;
     
+    
+    AJFindHouseViewController *find = [AJFindHouseViewController new];
+    find.title = @"找房";
+    
     AJMessageController *news = [AJMessageController new];
     news.title = @"消息";
     self.message = news;
@@ -51,11 +56,11 @@
     AJUserCenterViewController *user = [AJUserCenterViewController new];
     user.title = @"我";
     
-    NSArray *normalImgs = @[@"home",@"message",@"me"];
+    NSArray *normalImgs = @[@"home",@"find",@"message",@"me"];
 
     self.tabBar.tintColor = NavigationBarColor;
     self.tabBar.translucent = NO;
-    NSArray *viewControllers = @[home,news,user];
+    NSArray *viewControllers = @[home,find,news,user];
     
     NSMutableArray *newArray = [NSMutableArray arrayWithCapacity:viewControllers.count];
     for (int i = 0; i < viewControllers.count;i++) {

@@ -34,7 +34,9 @@ NSInteger const tipViewTag = 12345678;
     
     dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC));
     dispatch_after(delayTime, dispatch_get_main_queue(), ^(void){
-        [SVProgressHUD dismiss];
+//        [SVProgressHUD dismiss];
+        [SVProgressHUD popActivity];
+
         if (handleComplete) {
             handleComplete ();
         }
@@ -92,7 +94,8 @@ NSInteger const tipViewTag = 12345678;
     }
     dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC));
     dispatch_after(delayTime, dispatch_get_main_queue(), ^(void){
-        [SVProgressHUD dismiss];
+//        [SVProgressHUD dismiss];
+        [SVProgressHUD popActivity];
 
         if (handleComplete) {
             handleComplete ();
@@ -128,7 +131,6 @@ NSInteger const tipViewTag = 12345678;
 
     if ([APPDELEGATE isSVPHUD]) {
         [SVProgressHUD showWithStatus:msg];
-        [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
 
     }else{
         //风火轮颜色修改
@@ -144,7 +146,9 @@ NSInteger const tipViewTag = 12345678;
 //移除提示
 - (void)removeHUD{
     if ([APPDELEGATE isSVPHUD]) {
-        [SVProgressHUD dismiss];
+//        [SVProgressHUD dismiss];
+        [SVProgressHUD popActivity];
+
     }else{
         [[MBProgressHUD HUDForView:self] hideAnimated:YES];
 

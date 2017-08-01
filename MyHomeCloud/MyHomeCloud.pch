@@ -160,7 +160,7 @@
 #define HOME_IMAGE_URL       @"ImageUrl"//图片地址
 #define HOME_IMAGE_ID        @"ImageId"//图片ID
 #define HOME_IMAGE_CONTENT   @"ImageContent"//图片内容
-
+#define HOME_IMAGE_TITILE    @"ImageName"//图片标题
 
 //访问标签 颜色值
 #define YEARS_DES            @"证满五年"//证满5年

@@ -211,7 +211,7 @@ CGFloat const MORE_VIEW_HEIGHT = 370;
 #if AJCLOUDADMIN
         AJHouseInfoViewController *houseInfo = (AJHouseInfoViewController *)self.parentViewController;
         add.houseInfoVC = houseInfo;
-        add.isEditModal = YES;
+        add.isEditModal = [AVUser currentUser];
 
 #endif
 

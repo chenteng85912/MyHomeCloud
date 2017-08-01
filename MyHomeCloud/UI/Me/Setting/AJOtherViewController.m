@@ -33,8 +33,8 @@
 - (NSMutableAttributedString *)addLineSpace:(NSString *)text{
     
     NSMutableParagraphStyle * paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    paragraphStyle.lineSpacing = 5.0;//行距
-    paragraphStyle.firstLineHeadIndent = 32.f;//段首缩进
+    paragraphStyle.lineSpacing = 8.0;//行距
+    paragraphStyle.firstLineHeadIndent = 30.f;//段首缩进
     
     NSDictionary *attribs = @{NSFontAttributeName:[UIFont systemFontOfSize:14],NSParagraphStyleAttributeName:paragraphStyle};
     NSMutableAttributedString * attributedString = [[NSMutableAttributedString alloc] initWithString:text attributes:attribs];

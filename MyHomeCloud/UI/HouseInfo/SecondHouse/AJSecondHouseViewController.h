@@ -12,5 +12,7 @@
 
 @property (strong, nonatomic) NSString *someonePhone;
 @property (strong, nonatomic) NSString *searchKey;
+
 @property (assign, nonatomic) BOOL isAmindModal;
+
 @end

@@ -11,8 +11,9 @@ target "AJCloud" do
     pod 'FMDB'
     pod 'TYKYLibrary'
     pod 'UMengUShare/Social/ReducedWeChat'
-    pod 'UMengAnalytics-NO-IDFA'
+#    pod 'UMengAnalytics-NO-IDFA'
     pod 'JPush'
+    pod 'Bugly'
 
 end
 
@@ -25,7 +26,8 @@ target "AJCloudAdmin" do
     pod 'FMDB'
     pod 'TYKYLibrary'
     pod 'UMengUShare/Social/ReducedWeChat'
-    pod 'UMengAnalytics-NO-IDFA'
+#    pod 'UMengAnalytics-NO-IDFA'
     pod 'JPush'
+    pod 'Bugly'
 
 end

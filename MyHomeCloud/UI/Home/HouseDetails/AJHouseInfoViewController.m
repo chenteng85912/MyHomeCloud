@@ -231,6 +231,11 @@ CGFloat const NEW_MORE_HEITHT = 580;
     if (sender.tag==0) {
         POPVC;
     }else{
+        if (![AVUser currentUser]) {
+            [AJSB goLoginViewComplete:^{
+            }];
+            return;
+        }
      //编辑界面
         AJHouseInfoEditViewController *edit = [AJHouseInfoEditViewController new];
         edit.detailsModal = self.detailsModal;

@@ -72,7 +72,7 @@
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="帮你找房" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="24R-PU-Mrk">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="安家金服" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="24R-PU-Mrk">
                             <rect key="frame" x="240" y="70" width="80" height="20"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -114,7 +114,7 @@
                             <rect key="frame" x="240" y="0.0" width="80" height="100"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <inset key="imageEdgeInsets" minX="0.0" minY="-20" maxX="0.0" maxY="0.0"/>
-                            <state key="normal" image="findHouse"/>
+                            <state key="normal" image="ajIcon"/>
                             <connections>
                                 <action selector="btnAction:" destination="-1" eventType="touchUpInside" id="Ugu-yV-Dq3"/>
                             </connections>
@@ -128,7 +128,7 @@
         </view>
     </objects>
     <resources>
-        <image name="findHouse" width="50" height="50"/>
+        <image name="ajIcon" width="50" height="50"/>
         <image name="newHouse" width="50" height="50"/>
         <image name="oldHouse" width="50" height="50"/>
         <image name="recentHouse" width="50" height="50"/>

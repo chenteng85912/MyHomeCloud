@@ -127,12 +127,12 @@
     NSData *imgData = UIImageJPEGRepresentation(image, 0.8);
     AVFile *file = [AVFile fileWithName:[AVUser currentUser].mobilePhoneNumber data:imgData];
     
-    [CTTool showKeyWindowHUD:@"正在上传..."];
+    [self.view showHUD:@"正在上传..."];
     WeakSelf;
     [file saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        [CTTool removeKeyWindowHUD];
+        [weakSelf.view removeHUD];
         if (!succeeded) {
-            [[UIApplication sharedApplication].keyWindow showTips:@"上传失败，请重试" withState:TYKYHUDModeSuccess complete:nil];
+            [weakSelf.view showTips:@"上传失败，请重试" withState:TYKYHUDModeSuccess complete:nil];
             return;
         }
         
@@ -148,7 +148,7 @@
         [[AVUser currentUser] setObject:file.url forKey:HEAD_URL];
         [[AVUser currentUser] setObject:file.objectId forKey:USER_HEAD_IMG_ID];
         [[AVUser currentUser] saveInBackground];
-        [[UIApplication sharedApplication].keyWindow showTips:@"上传成功" withState:TYKYHUDModeSuccess complete:^{
+        [weakSelf.view showTips:@"上传成功" withState:TYKYHUDModeSuccess complete:^{
             [weakSelf backToPreVC];
         }];
         

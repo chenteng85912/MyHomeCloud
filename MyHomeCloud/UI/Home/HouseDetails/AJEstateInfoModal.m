@@ -24,7 +24,7 @@ CGFloat const Y = 40;
 }
 
 - (void)calculateSizeConstrainedToSize{
-    self.contentFone = 16;
+    self.contentFone = 14;
     
     CGSize contentSize = [self.content sizeWithMaxSize:CGSizeMake(dWidth-X*2, MAXFLOAT) fontSize:self.contentFone];
     
