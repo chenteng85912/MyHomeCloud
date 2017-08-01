@@ -227,8 +227,6 @@
 		A44C9D871F2E117400C31CB5 /* AJInclilnationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A44C9D851F2E117400C31CB5 /* AJInclilnationModel.m */; };
 		A464224B1F0747B800459294 /* AJFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A46422491F0747B800459294 /* AJFeedbackViewController.m */; };
 		A464224C1F0747B800459294 /* AJFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A46422491F0747B800459294 /* AJFeedbackViewController.m */; };
-		A464224D1F0747B800459294 /* AJFeedbackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A464224A1F0747B800459294 /* AJFeedbackViewController.xib */; };
-		A464224E1F0747B800459294 /* AJFeedbackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A464224A1F0747B800459294 /* AJFeedbackViewController.xib */; };
 		A46422521F0748F800459294 /* AJFeedbackTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A46422501F0748F800459294 /* AJFeedbackTableViewCell.m */; };
 		A46422531F0748F800459294 /* AJFeedbackTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A46422501F0748F800459294 /* AJFeedbackTableViewCell.m */; };
 		A46422541F0748F800459294 /* AJFeedbackTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A46422511F0748F800459294 /* AJFeedbackTableViewCell.xib */; };
@@ -462,7 +460,6 @@
 		A44C9D851F2E117400C31CB5 /* AJInclilnationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJInclilnationModel.m; sourceTree = "<group>"; };
 		A46422481F0747B800459294 /* AJFeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJFeedbackViewController.h; sourceTree = "<group>"; };
 		A46422491F0747B800459294 /* AJFeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJFeedbackViewController.m; sourceTree = "<group>"; };
-		A464224A1F0747B800459294 /* AJFeedbackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJFeedbackViewController.xib; sourceTree = "<group>"; };
 		A464224F1F0748F800459294 /* AJFeedbackTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJFeedbackTableViewCell.h; sourceTree = "<group>"; };
 		A46422501F0748F800459294 /* AJFeedbackTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJFeedbackTableViewCell.m; sourceTree = "<group>"; };
 		A46422511F0748F800459294 /* AJFeedbackTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJFeedbackTableViewCell.xib; sourceTree = "<group>"; };
@@ -1078,7 +1075,6 @@
 			children = (
 				A46422481F0747B800459294 /* AJFeedbackViewController.h */,
 				A46422491F0747B800459294 /* AJFeedbackViewController.m */,
-				A464224A1F0747B800459294 /* AJFeedbackViewController.xib */,
 				A464224F1F0748F800459294 /* AJFeedbackTableViewCell.h */,
 				A46422501F0748F800459294 /* AJFeedbackTableViewCell.m */,
 				A46422511F0748F800459294 /* AJFeedbackTableViewCell.xib */,
@@ -1304,7 +1300,6 @@
 				A464225F1F07591F00459294 /* AJSendFeecbackViewController.xib in Resources */,
 				0BC1DEE01F178D64007C78DB /* AJPicCollectionReusableView.xib in Resources */,
 				0B4F881F1EFF89390092BF18 /* AJTagsViewController.xib in Resources */,
-				A464224D1F0747B800459294 /* AJFeedbackViewController.xib in Resources */,
 				0BC2B4731F0CFD1F0041C9C2 /* TJMessageControllerCell.xib in Resources */,
 				A44C9D821F2E115A00C31CB5 /* AJInclinationTableViewCell.xib in Resources */,
 				A4AE33131EF51F6F004B0A54 /* AJReserverTableViewCell.xib in Resources */,
@@ -1362,7 +1357,6 @@
 				A46422601F07591F00459294 /* AJSendFeecbackViewController.xib in Resources */,
 				0BC1DEE41F178D70007C78DB /* AJPicCollectionReusableView.xib in Resources */,
 				0BB93A701EFFD22300B32320 /* AJTagsViewController.xib in Resources */,
-				A464224E1F0747B800459294 /* AJFeedbackViewController.xib in Resources */,
 				0BC2B4741F0CFD1F0041C9C2 /* TJMessageControllerCell.xib in Resources */,
 				A44C9D831F2E115A00C31CB5 /* AJInclinationTableViewCell.xib in Resources */,
 				0BF2C6D61EFA5A4400EA46AF /* AJReserverTableViewCell.xib in Resources */,
