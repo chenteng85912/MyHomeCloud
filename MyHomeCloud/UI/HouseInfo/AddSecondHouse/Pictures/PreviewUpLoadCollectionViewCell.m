@@ -59,7 +59,7 @@ CGFloat const circleWidth = 40;
     switch (state) {
         case 0:
             _progressLabel.backgroundColor = waitColor;
-            _progressLabel.text = @"未上传";
+            _progressLabel.text = @"待上传";
             _percentLabel.hidden = NO;
             self.circleView.hidden = NO;
             break;
@@ -116,6 +116,7 @@ CGFloat const circleWidth = 40;
         _circleView = [[TJCircleView alloc] initWithFrame:CGRectMake(0, 0, circleWidth, circleWidth) progessColor:NavigationBarColor progressTrackColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.2] progressStrokeWidth:3.0];
         _circleView.center  = CGPointMake(self.frame.size.width/2, self.frame.size.width/2);
         [self addSubview:_circleView];
+        [self bringSubviewToFront:_refreshBtn];
     }
     return _circleView;
 }
