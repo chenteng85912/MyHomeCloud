@@ -75,7 +75,7 @@
     UINavigationController *nav = (UINavigationController *)viewController;
 
     id message = nav.viewControllers[0];
-    if (_curruntVC == message) {
+    if (_curruntVC == message&&[message isKindOfClass:[AJMessageController class]]) {
         [(AJMessageController *)message startFecthData];
         return;
     }

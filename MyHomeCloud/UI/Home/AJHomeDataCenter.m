@@ -26,12 +26,9 @@ NSInteger const SHOW_NUM = 5;
 - (void)fetchSecondHouseDataCompleteHander:(RequestBlock)afterRequest{
     self.query.className = SECOND_HAND_HOUSE;
     [self.query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
-        if (objects&&afterRequest) {
-            NSArray *dataArray = [self processData:[self randomArray:objects] className:NSStringFromClass([AJSecondHouseCellModel class])];
+        NSArray *dataArray = [self processData:[self randomArray:objects] className:NSStringFromClass([AJSecondHouseCellModel class])];
 
-            afterRequest(YES,dataArray);
-
-        }
+        afterRequest(YES,dataArray);
         
     }];
 }

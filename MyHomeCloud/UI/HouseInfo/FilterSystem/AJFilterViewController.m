@@ -92,14 +92,8 @@
     
 }
 - (IBAction)btnAction:(UIButton *)sender {
-    for (UIButton *btn in _allBtnArray) {
-        if (sender==btn) {
-            continue;
-        }
-        btn.selected = NO;
-    }
+
     if (sender!=_comfirnBtn) {
-        sender.selected = !sender.selected;
         _comfirnBtn.hidden = NO;
 
     }else{
@@ -164,7 +158,7 @@
         [self.moreDic removeAllObjects];
         [self.areaAgeDic removeAllObjects];
         [self.moreDic setObject:self.areaAgeDic forKey:HOUSE_AREAAGE];
-        
+        return;
     }else {
         //确定更多条件
         _moreView.alpha = 0;
@@ -176,7 +170,13 @@
             [self.delegate refreshTbView];
         }
     }
-   
+    for (UIButton *btn in _allBtnArray) {
+        if (sender==btn) {
+            continue;
+        }
+        btn.selected = NO;
+    }
+    sender.selected = !sender.selected;
 }
 - (IBAction)tapAction:(UITapGestureRecognizer *)sender {
     for (UIButton *btn in _allBtnArray) {
