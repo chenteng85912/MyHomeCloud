@@ -144,11 +144,12 @@
 //上传图片
 - (void)creatUnUploadData:(NSDictionary *)imageDic{
     for (NSString *imgName in imageDic.allKeys) {
-        UIImage *img = [CTTool imageCompressForWidth:imageDic[imgName] targetWidth:500];
+
         NSString *timeName = [NSString stringWithFormat:@"%f_%@",[NSDate new].timeIntervalSince1970,imgName];
+        
         AJUploadPicModel *upload = [AJUploadPicModel new];
         upload.isHome = YES;
-        NSData *imgData = UIImageJPEGRepresentation(img, 0.6);
+        NSData *imgData = UIImageJPEGRepresentation(imageDic[imgName], 1);
 
         AVFile *file = [AVFile fileWithName:timeName data:imgData];
         upload.picFile = file;
