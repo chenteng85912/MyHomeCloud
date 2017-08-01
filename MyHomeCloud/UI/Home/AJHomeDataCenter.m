@@ -17,40 +17,71 @@ NSInteger const SHOW_NUM = 5;
 
 @interface AJHomeDataCenter ()
 
-@property (strong, nonatomic) AVQuery *query;
-
 @end
 
 @implementation AJHomeDataCenter
 
-- (void)fetchSecondHouseDataCompleteHander:(RequestBlock)afterRequest{
-    self.query.className = SECOND_HAND_HOUSE;
-    [self.query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
-        NSArray *dataArray = [self processData:[self randomArray:objects] className:NSStringFromClass([AJSecondHouseCellModel class])];
-
-        afterRequest(YES,dataArray);
+- (void)fetchHomeHeadDataCompleteHander:(RequestBlock)afterRequest{
+    AVQuery *query = [self creatQuety];
+    query.className  = AJCLOUD_INFO;
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         
+        if (objects.count>0) {
+            
+            afterRequest(YES,objects);
+        }else{
+            afterRequest(NO,nil);
+            
+        }
+    }];
+}
+- (void)fetchSecondHouseDataCompleteHander:(RequestBlock)afterRequest{
+
+    AVQuery *query = [self creatQuety];
+    query.className  = SECOND_HAND_HOUSE;
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        if (objects.count>0) {
+            NSArray *dataArray = [self processData:[self randomArray:objects] className:NSStringFromClass([AJSecondHouseCellModel class])];
+            
+            afterRequest(YES,dataArray);
+        }else{
+            afterRequest(NO,nil);
+
+        }
+      
     }];
 }
 
 - (void)fetchLetHouseDataCompleteHander:(RequestBlock)afterRequest{
-    self.query.className = LET_HOUSE;
-
-    [self.query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
-        NSArray *dataArray = [self processData:[self randomArray:objects] className:NSStringFromClass([AJLetHouseCellModel class])];
+    AVQuery *query = [self creatQuety];
+    query.className  = LET_HOUSE;
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         
-        afterRequest(YES,dataArray);
-
+        if (objects.count>0) {
+            NSArray *dataArray = [self processData:[self randomArray:objects] className:NSStringFromClass([AJLetHouseCellModel class])];
+            
+            afterRequest(YES,dataArray);
+        }else{
+            afterRequest(NO,nil);
+            
+        }
     }];
 }
 
 - (void)fetchNewHouseDataCompleteHander:(RequestBlock)afterRequest{
-    self.query.className = N_HOUSE;
 
-    [self.query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
-        NSArray *dataArray = [self processData:[self randomArray:objects] className:NSStringFromClass([AJNewHouseCellModel class])];
+    AVQuery *query = [self creatQuety];
+    query.className  = N_HOUSE;
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        
+        if (objects.count>0) {
+            NSArray *dataArray = [self processData:[self randomArray:objects] className:NSStringFromClass([AJNewHouseCellModel class])];
             
-        afterRequest(YES,dataArray);
+            afterRequest(YES,dataArray);
+        }else{
+            afterRequest(NO,nil);
+            
+        }
     }];
 }
 //数据处理
@@ -76,11 +107,11 @@ NSInteger const SHOW_NUM = 5;
     }
     AVObject *houseData = [AJHomeDataCenter creatHouseInfo:object withClassName:recordClassName];
     
-    self.query.className = recordClassName;
-    [self.query whereKey:HOUSE_ID   equalTo:object.objectId];
-    [self.query whereKey:USER_PHONE equalTo:[AVUser currentUser].mobilePhoneNumber];
+    AVQuery *query = [AVQuery queryWithClassName:recordClassName];
+    [query whereKey:HOUSE_ID   equalTo:object.objectId];
+    [query whereKey:USER_PHONE equalTo:[AVUser currentUser].mobilePhoneNumber];
     //先查询是否已经保存
-    [self.query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         if (objects.count>0) {
             return;
             
@@ -149,14 +180,13 @@ NSInteger const SHOW_NUM = 5;
 }
 
 #pragma mark -geter and setter
-- (AVQuery *)query{
-    if (_query ==nil) {
-        _query = [[AVQuery alloc] init];
-        _query.limit = MAX_NUM;
-        _query.skip = 0;
-        _query.cachePolicy = kAVCachePolicyIgnoreCache;
-        [_query orderByDescending:@"createdAt"];
-    }
-    return _query;
+- (AVQuery *)creatQuety{
+    AVQuery *query = [[AVQuery alloc] init];
+    query.limit = MAX_NUM;
+    query.skip = 0;
+    query.cachePolicy = kAVCachePolicyIgnoreCache;
+    [query orderByDescending:@"createdAt"];
+    
+    return query;
 }
 @end

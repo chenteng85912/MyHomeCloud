@@ -16,6 +16,9 @@
 @end
 
 @interface AJUploadPicModel : NSObject
+//原始数据
+@property (nonatomic,strong) AVObject *orginObj;
+
 @property (nonatomic,strong) AVFile *picFile;
 @property (nonatomic,assign) NSInteger percent;
 @property (nonatomic,strong) NSString *objId;
@@ -25,6 +28,9 @@
 @property (nonatomic,strong) NSString *picUrl;
 
 @property (nonatomic,weak) id <AJUploadPicModelDelegate> delegate;
+
+//首页照片 上传后保存
+@property (assign, nonatomic) BOOL isHome;
 
 - (void)startUpload;
 @end

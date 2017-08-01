@@ -10,7 +10,6 @@
 #import "PreviewUpLoadCollectionViewCell.h"
 #import "AJUploadPicModel.h"
 
-
 @interface AJHouseDesViewController ()<CTCustomAlbumViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *colView;
@@ -211,10 +210,14 @@
 
     WeakSelf;
     [self.view showHUD:nil];
-    [AJSB deleteFile:modal.objId complete:^{
+    [AJSB deleteFile:modal.objId complete:^(BOOL success, NSError *error) {
         [weakSelf.view removeHUD];
-        [weakSelf removeCollectionItem:index];
 
+        if (success) {
+            [weakSelf removeCollectionItem:index];
+        }else{
+            [weakSelf.view showTips:@"删除失败" withState:TYKYHUDModeFail complete:nil];
+        }
     }];
    
 }

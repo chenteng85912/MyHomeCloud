@@ -17,4 +17,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *progressLabel;//上传状态
 @property (strong, nonatomic) AJUploadPicModel *modal;//数据模型
 
+
 @end

@@ -60,6 +60,8 @@
 #define USER_ROLE               @"userRole"//用户角色
 
 //数据表
+#define AJCLOUD_INFO            @"AjcloudInfo"//产品介绍
+
 #define USER_RESERVER           @"UserReserver"//用户预约
 #define USER_FEEDBACK           @"UserFeedBack"//用户建议
 
@@ -153,6 +155,11 @@
 #define RESERVER_TYPE        @"reserverType"//预约类型
 #define RESERVER_NAME        @"reserverName"//预约人姓名
 #define RESERVER_PHONE       @"reserverPhne"//预约人电话
+
+//首页滚动数据
+#define HOME_IMAGE_URL       @"ImageUrl"//图片地址
+#define HOME_IMAGE_ID        @"ImageId"//图片ID
+#define HOME_IMAGE_CONTENT   @"ImageContent"//图片内容
 
 
 //访问标签 颜色值

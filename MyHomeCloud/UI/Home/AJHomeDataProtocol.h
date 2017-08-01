@@ -13,6 +13,8 @@ typedef void (^RequestBlock) (BOOL success, NSArray *returnValue);
 @protocol AJHomeDataProtocol <NSObject>
 
 @optional
+//头部滚动广告
+- (void)fetchHomeHeadDataCompleteHander:(RequestBlock)afterRequest;
 
 //二手房数据
 - (void)fetchSecondHouseDataCompleteHander:(RequestBlock)afterRequest;

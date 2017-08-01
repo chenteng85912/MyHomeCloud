@@ -63,6 +63,9 @@ CGFloat const HEAD_BTN_HEIGHT = 100;
 
     [self fetchData];
     [self removeSearchBorder];
+    
+    //头部广告滚动视图数据源
+    [self.autoLoopView addLocalModels:self.autoLoopDataArray];
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -112,16 +115,28 @@ CGFloat const HEAD_BTN_HEIGHT = 100;
 }
 
 - (void)fetchData{
+    
+    WeakSelf;
+    //获取头部滚动数据
+    [self.homeData fetchHomeHeadDataCompleteHander:^(BOOL success, NSArray *returnValue) {
+        [self.autoLoopDataArray removeAllObjects];
+        if (success) {
+            [self.autoLoopDataArray addObjectsFromArray:returnValue];
 
+        }
+        [weakSelf.autoLoopView addLocalModels:self.autoLoopDataArray];
+
+    }];
+    
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_group_t group = dispatch_group_create();
     
     dispatch_group_enter(group);
     dispatch_group_async(group, queue, ^{
         [self.homeData fetchSecondHouseDataCompleteHander:^(BOOL success, NSArray *returnValue) {
-            [self.secondArray removeAllObjects];
+            [weakSelf.secondArray removeAllObjects];
             if (success) {
-                [self.secondArray addObjectsFromArray:returnValue];;
+                [weakSelf.secondArray addObjectsFromArray:returnValue];;
 
             }
             dispatch_group_leave(group);
@@ -132,9 +147,9 @@ CGFloat const HEAD_BTN_HEIGHT = 100;
     dispatch_group_enter(group);
     dispatch_group_async(group, queue, ^{
         [self.homeData fetchLetHouseDataCompleteHander:^(BOOL success, NSArray *returnValue) {
-            [self.letArray removeAllObjects];
+            [weakSelf.letArray removeAllObjects];
             if (success) {
-                [self.letArray addObjectsFromArray:returnValue];
+                [weakSelf.letArray addObjectsFromArray:returnValue];
                 
             }
             dispatch_group_leave(group);
@@ -144,9 +159,9 @@ CGFloat const HEAD_BTN_HEIGHT = 100;
     dispatch_group_enter(group);
     dispatch_group_async(group, queue, ^{
         [self.homeData fetchNewHouseDataCompleteHander:^(BOOL success, NSArray *returnValue) {
-            [self.newhouseArray removeAllObjects];
+            [weakSelf.newhouseArray removeAllObjects];
             if (success) {
-                [self.newhouseArray addObjectsFromArray:returnValue];
+                [weakSelf.newhouseArray addObjectsFromArray:returnValue];
                 
             }
             dispatch_group_leave(group);
@@ -154,7 +169,6 @@ CGFloat const HEAD_BTN_HEIGHT = 100;
         }];
     });
    
-    WeakSelf;
     dispatch_group_notify(group, queue, ^{
        
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -272,8 +286,19 @@ CGFloat const HEAD_BTN_HEIGHT = 100;
 }
 
 #pragma mark CTAutoLoopViewDelegate
+- (UIView *)CTAutoLoopViewController:(UICollectionViewCell *)collectionCell cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    UIImageView *imgView = [[UIImageView alloc] initWithFrame:self.autoLoopView.view.frame];
+    imgView.contentMode = UIViewContentModeScaleAspectFill;
+
+    AVObject *headObj = self.autoLoopDataArray[indexPath.row];
+    [imgView sd_setImageWithURL:[NSURL URLWithString:headObj[HOME_IMAGE_URL]] placeholderImage:LOADIMAGE(@"defaultImg")];
+    
+    return imgView;
+}
 - (void)CTAutoLoopViewController:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-   
+//    AVObject *headObj = self.autoLoopDataArray[indexPath.row];
+
+    
 }
 - (void)openMoreHouseData:(UIButton *)btn{
     UIViewController *vc;
@@ -357,13 +382,11 @@ CGFloat const HEAD_BTN_HEIGHT = 100;
         }
     }
 }
-- (CTAutoLoopViewController*)autoLoopView
+- (CTAutoLoopViewController *)autoLoopView
 {
     if (!_autoLoopView) {
-        _autoLoopView = [[CTAutoLoopViewController alloc] initWithFrame:CGRectMake(0, 0, dWidth, AutoLoopHeight) onceLoopTime:3.0 cellDisplayModal:CTLoopCellDisplayImage scollDiretion:CTLoopScollDirectionHorizontal];
+        _autoLoopView = [[CTAutoLoopViewController alloc] initWithFrame:CGRectMake(0, 0, dWidth, AutoLoopHeight) onceLoopTime:3.0 cellDisplayModal:CTLoopCellDisplayCustomView scollDiretion:CTLoopScollDirectionHorizontal];
         _autoLoopView.delegate = self;
-        //头部广告滚动视图数据源
-        [_autoLoopView addLocalModels:self.autoLoopDataArray];
         [self addChildViewController:_autoLoopView];
     }
     return _autoLoopView;
@@ -372,10 +395,6 @@ CGFloat const HEAD_BTN_HEIGHT = 100;
     if (!_autoLoopDataArray) {
         _autoLoopDataArray = [NSMutableArray new];
     }
-    
-    [_autoLoopDataArray addObject:@"ad1"];
-    [_autoLoopDataArray addObject:@"ad2"];
-    [_autoLoopDataArray addObject:@"ad3"];
 
     return _autoLoopDataArray;
 }

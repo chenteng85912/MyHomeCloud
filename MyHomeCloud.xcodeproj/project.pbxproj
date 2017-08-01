@@ -31,7 +31,6 @@
 		0B2343BD1EC01CA1007A3AC1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2343BC1EC01CA1007A3AC1 /* main.m */; };
 		0B2343C01EC01CA1007A3AC1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2343BF1EC01CA1007A3AC1 /* AppDelegate.m */; };
 		0B2343C91EC01CA1007A3AC1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B2343C71EC01CA1007A3AC1 /* Main.storyboard */; };
-		0B2343CB1EC01CA1007A3AC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B2343CA1EC01CA1007A3AC1 /* Assets.xcassets */; };
 		0B2343CE1EC01CA1007A3AC1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B2343CC1EC01CA1007A3AC1 /* LaunchScreen.storyboard */; };
 		0B2343D91EC01CA2007A3AC1 /* MyHomeCloudTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2343D81EC01CA2007A3AC1 /* MyHomeCloudTests.m */; };
 		0B2344601EC03095007A3AC1 /* UIView+SDXIBExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2343F61EC03095007A3AC1 /* UIView+SDXIBExtension.m */; };
@@ -102,6 +101,12 @@
 		0BE2A35F1EC2DE1700519840 /* AJMeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BE2A35E1EC2DE1700519840 /* AJMeModel.m */; };
 		0BE4D9EF1ECC6B8200E4ADCD /* AJHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BE4D9ED1ECC6B8200E4ADCD /* AJHomeViewController.m */; };
 		0BE4D9F01ECC6B8200E4ADCD /* AJHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BE4D9EE1ECC6B8200E4ADCD /* AJHomeViewController.xib */; };
+		0BEE41BA1F303B6700D702F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BEE41B91F303B6700D702F4 /* Assets.xcassets */; };
+		0BEE41BE1F303EC200D702F4 /* AJUploadHomeImagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BEE41BC1F303EC200D702F4 /* AJUploadHomeImagesViewController.m */; };
+		0BEE41BF1F303EC200D702F4 /* AJUploadHomeImagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BEE41BC1F303EC200D702F4 /* AJUploadHomeImagesViewController.m */; };
+		0BEE41C01F303EC200D702F4 /* AJUploadHomeImagesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BEE41BD1F303EC200D702F4 /* AJUploadHomeImagesViewController.xib */; };
+		0BEE41C11F303EC200D702F4 /* AJUploadHomeImagesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BEE41BD1F303EC200D702F4 /* AJUploadHomeImagesViewController.xib */; };
+		0BEE41C21F3042DC00D702F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BEE41B91F303B6700D702F4 /* Assets.xcassets */; };
 		0BF2C6811EFA544100EA46AF /* AJUMShareUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF2C6801EFA544100EA46AF /* AJUMShareUtil.m */; };
 		0BF2C6851EFA5A4400EA46AF /* AJEstateInfoModal.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AC724A1EF6718200772D42 /* AJEstateInfoModal.m */; };
 		0BF2C6861EFA5A4400EA46AF /* AJTbViewPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1904D51EE668EC004C46EE /* AJTbViewPresenter.m */; };
@@ -165,7 +170,6 @@
 		0BF2C6CB1EFA5A4400EA46AF /* AJSecondHouseCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1904A41EE65EC1004C46EE /* AJSecondHouseCellModel.m */; };
 		0BF2C6CD1EFA5A4400EA46AF /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4AE33021EF51C61004B0A54 /* WebKit.framework */; };
 		0BF2C6D01EFA5A4400EA46AF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B2343CC1EC01CA1007A3AC1 /* LaunchScreen.storyboard */; };
-		0BF2C6D11EFA5A4400EA46AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B2343CA1EC01CA1007A3AC1 /* Assets.xcassets */; };
 		0BF2C6D21EFA5A4400EA46AF /* AJHomeHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4E6BB461EEBD99B00CC37B1 /* AJHomeHeadView.xib */; };
 		0BF2C6D31EFA5A4400EA46AF /* AJHouseInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B1904B61EE66192004C46EE /* AJHouseInfoTableViewCell.xib */; };
 		0BF2C6D41EFA5A4400EA46AF /* AJSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4E6A4931EC61243006B882A /* AJSearchViewController.xib */; };
@@ -333,7 +337,6 @@
 		0B2343BE1EC01CA1007A3AC1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0B2343BF1EC01CA1007A3AC1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		0B2343C81EC01CA1007A3AC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		0B2343CA1EC01CA1007A3AC1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0B2343CD1EC01CA1007A3AC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0B2343CF1EC01CA1007A3AC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0B2343D41EC01CA2007A3AC1 /* MyHomeCloudTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyHomeCloudTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -414,6 +417,10 @@
 		0BE4D9EC1ECC6B8200E4ADCD /* AJHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJHomeViewController.h; sourceTree = "<group>"; };
 		0BE4D9ED1ECC6B8200E4ADCD /* AJHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJHomeViewController.m; sourceTree = "<group>"; };
 		0BE4D9EE1ECC6B8200E4ADCD /* AJHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJHomeViewController.xib; sourceTree = "<group>"; };
+		0BEE41B91F303B6700D702F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0BEE41BB1F303EC200D702F4 /* AJUploadHomeImagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJUploadHomeImagesViewController.h; sourceTree = "<group>"; };
+		0BEE41BC1F303EC200D702F4 /* AJUploadHomeImagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJUploadHomeImagesViewController.m; sourceTree = "<group>"; };
+		0BEE41BD1F303EC200D702F4 /* AJUploadHomeImagesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJUploadHomeImagesViewController.xib; sourceTree = "<group>"; };
 		0BF2C67F1EFA544100EA46AF /* AJUMShareUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJUMShareUtil.h; sourceTree = "<group>"; };
 		0BF2C6801EFA544100EA46AF /* AJUMShareUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJUMShareUtil.m; sourceTree = "<group>"; };
 		0BF2C6F21EFA5A4400EA46AF /* AJCloudAdmin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AJCloudAdmin.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -710,7 +717,7 @@
 				0B2343BE1EC01CA1007A3AC1 /* AppDelegate.h */,
 				0B2343BF1EC01CA1007A3AC1 /* AppDelegate.m */,
 				0B2343C71EC01CA1007A3AC1 /* Main.storyboard */,
-				0B2343CA1EC01CA1007A3AC1 /* Assets.xcassets */,
+				0BEE41B91F303B6700D702F4 /* Assets.xcassets */,
 				0B2343CC1EC01CA1007A3AC1 /* LaunchScreen.storyboard */,
 				0B2343CF1EC01CA1007A3AC1 /* Info.plist */,
 				0B2343BB1EC01CA1007A3AC1 /* Supporting Files */,
@@ -1016,6 +1023,9 @@
 				A411B3BD1EC4B0BD00244B6E /* AJSettingViewController.h */,
 				A411B3BE1EC4B0BD00244B6E /* AJSettingViewController.m */,
 				A411B3BF1EC4B0BD00244B6E /* AJSettingViewController.xib */,
+				0BEE41BB1F303EC200D702F4 /* AJUploadHomeImagesViewController.h */,
+				0BEE41BC1F303EC200D702F4 /* AJUploadHomeImagesViewController.m */,
+				0BEE41BD1F303EC200D702F4 /* AJUploadHomeImagesViewController.xib */,
 				0B302F5B1ED01835006896CA /* AJOtherViewController.h */,
 				0B302F5C1ED01835006896CA /* AJOtherViewController.m */,
 				0B302F5D1ED01835006896CA /* AJOtherViewController.xib */,
@@ -1291,8 +1301,8 @@
 			files = (
 				0B2343CE1EC01CA1007A3AC1 /* LaunchScreen.storyboard in Resources */,
 				0BC2B4671F0CFD1F0041C9C2 /* TJMessageListTableViewCell.xib in Resources */,
-				0B2343CB1EC01CA1007A3AC1 /* Assets.xcassets in Resources */,
 				A4E6BB471EEBD99B00CC37B1 /* AJHomeHeadView.xib in Resources */,
+				0BEE41C01F303EC200D702F4 /* AJUploadHomeImagesViewController.xib in Resources */,
 				A42BECDD1F121AB400C9E2CB /* AJHouseInfoViewController.xib in Resources */,
 				0BF2C6F81EFA5D4800EA46AF /* AJWechatViewController.xib in Resources */,
 				0B1904C81EE66192004C46EE /* AJHouseInfoTableViewCell.xib in Resources */,
@@ -1306,6 +1316,7 @@
 				A44C9D741F2DED8700C31CB5 /* AJFindHouseViewController.xib in Resources */,
 				0B2343C91EC01CA1007A3AC1 /* Main.storyboard in Resources */,
 				0B302F6F1ED04F47006896CA /* AJUserHeadViewController.xib in Resources */,
+				0BEE41BA1F303B6700D702F4 /* Assets.xcassets in Resources */,
 				0BC1DECD1F17899A007C78DB /* AJAddNHouseViewController.xib in Resources */,
 				0B1904C31EE66192004C46EE /* AJAddHouserViewController.xib in Resources */,
 				A46422541F0748F800459294 /* AJFeedbackTableViewCell.xib in Resources */,
@@ -1348,7 +1359,7 @@
 			files = (
 				0BF2C6D01EFA5A4400EA46AF /* LaunchScreen.storyboard in Resources */,
 				0BC2B4681F0CFD1F0041C9C2 /* TJMessageListTableViewCell.xib in Resources */,
-				0BF2C6D11EFA5A4400EA46AF /* Assets.xcassets in Resources */,
+				0BEE41C21F3042DC00D702F4 /* Assets.xcassets in Resources */,
 				0BF2C6D21EFA5A4400EA46AF /* AJHomeHeadView.xib in Resources */,
 				A42BECDE1F121AB400C9E2CB /* AJHouseInfoViewController.xib in Resources */,
 				0BB93A6E1EFFD1FB00B32320 /* AJWechatViewController.xib in Resources */,
@@ -1386,6 +1397,7 @@
 				0BF2C6E81EFA5A4400EA46AF /* AJHomeViewController.xib in Resources */,
 				A44A8C1B1F03EE7A00BE6D89 /* AJFilterViewController.xib in Resources */,
 				0BF2C6E91EFA5A4400EA46AF /* AJLoginViewController.xib in Resources */,
+				0BEE41C11F303EC200D702F4 /* AJUploadHomeImagesViewController.xib in Resources */,
 				0BF2C6EA1EFA5A4400EA46AF /* AJEstateTableViewCell.xib in Resources */,
 				0BF2C6EB1EFA5A4400EA46AF /* AJUserCenterViewController.xib in Resources */,
 				0BF2C6EC1EFA5A4400EA46AF /* AJOtherViewController.xib in Resources */,
@@ -1555,6 +1567,7 @@
 				0B1904C41EE66192004C46EE /* AJAllHouseListViewController.m in Sources */,
 				0B1904A11EE6546E004C46EE /* AJSecondHouseViewController.m in Sources */,
 				0B2343BD1EC01CA1007A3AC1 /* main.m in Sources */,
+				0BEE41BE1F303EC200D702F4 /* AJUploadHomeImagesViewController.m in Sources */,
 				0BF2C6F71EFA5D4800EA46AF /* AJWechatViewController.m in Sources */,
 				0B1904E21EE668EC004C46EE /* AJBaseTbViewController.m in Sources */,
 				0B8E18591F17470400FB92D2 /* AJHouseInfoEditViewController.m in Sources */,
@@ -1655,6 +1668,7 @@
 				0BF2C6B31EFA5A4400EA46AF /* AJAllHouseListViewController.m in Sources */,
 				0BF2C6B41EFA5A4400EA46AF /* AJSecondHouseViewController.m in Sources */,
 				0BF2C6B51EFA5A4400EA46AF /* main.m in Sources */,
+				0BEE41BF1F303EC200D702F4 /* AJUploadHomeImagesViewController.m in Sources */,
 				0BF2C6B61EFA5A4400EA46AF /* AJBaseTbViewController.m in Sources */,
 				0BF2C6B71EFA5A4400EA46AF /* AJHouseInfoTableViewCell.m in Sources */,
 				0B8E185A1F17470400FB92D2 /* AJHouseInfoEditViewController.m in Sources */,

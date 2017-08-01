@@ -15,6 +15,7 @@
 #import "AJFeedbackViewController.h"
 #import "AJSendFeecbackViewController.h"
 #import "AJAboutUsViewController.h"
+#import "AJUploadHomeImagesViewController.h"
 
 NSString *const ServicePhone = @"4006005555";
 
@@ -157,6 +158,12 @@ NSString *const ServicePhone = @"4006005555";
         model.title = @"分享App";
         [temp addObject:model];
     }
+#else
+    model = [AJMeModel new];
+    model.title = @"上传首页图片";
+    model.className = NSStringFromClass([AJUploadHomeImagesViewController class]);
+
+    [temp addObject:model];
 #endif
    
     model = [AJMeModel new];

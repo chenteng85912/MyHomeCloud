@@ -28,6 +28,7 @@
             weakSelf.objId = weakSelf.picFile.objectId;
             weakSelf.picUrl = weakSelf.picFile.url;
             weakSelf.state  =@2;
+            [weakSelf saveFileData];
         }else{
             
             weakSelf.state  =@3;
@@ -43,5 +44,22 @@
             [weakSelf.delegate refreshUploadProgress:percentDone];
         }
     }];
+}
+
+
+- (void)saveFileData{
+    if (self.isHome) {
+        AVObject *homeHeadObj = [AVObject objectWithClassName:AJCLOUD_INFO];
+        
+        [homeHeadObj setObject:self.objId   forKey:HOME_IMAGE_ID];
+        [homeHeadObj setObject:self.picUrl  forKey:HOME_IMAGE_URL];
+        [homeHeadObj setObject:@"test"      forKey:HOME_IMAGE_CONTENT];
+        [homeHeadObj saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            if (succeeded) {
+                debugLog(@"首页图片保存成功:%@",self.objId);
+            }
+        }];
+
+    }
 }
 @end

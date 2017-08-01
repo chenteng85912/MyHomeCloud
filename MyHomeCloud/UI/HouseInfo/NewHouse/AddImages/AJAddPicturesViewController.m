@@ -120,6 +120,7 @@
     
     NSMutableArray *show = [NSMutableArray new];
     NSMutableArray *selArray = self.dataArray[indexPath.section];
+    
     for (AJUploadPicModel *modal in selArray) {
         UIImage *img = [UIImage imageWithData:modal.picFile.getData];
         if (img) {
@@ -194,15 +195,20 @@
     
     WeakSelf;
     [self.view showHUD:nil];
-    [AJSB deleteFile:modal.objId complete:^{
+    [AJSB deleteFile:modal.objId complete:^(BOOL success, NSError *error) {
         [weakSelf.view removeHUD];
-        [weakSelf removeCollectionItem:index];
-        if (weakSelf.houseInfoVC) {
-            weakSelf.houseInfoVC.isChange = YES;
-            if ([weakSelf checkAllPicture]) {
-                [weakSelf.houseInfo saveInBackground];
-
+        
+        if (success) {
+            [weakSelf removeCollectionItem:index];
+            if (weakSelf.houseInfoVC) {
+                weakSelf.houseInfoVC.isChange = YES;
+                if ([weakSelf checkAllPicture]) {
+                    [weakSelf.houseInfo saveInBackground];
+                    
+                }
             }
+        }else{
+            [weakSelf.view showTips:@"删除失败" withState:TYKYHUDModeFail complete:nil];
         }
     }];
     

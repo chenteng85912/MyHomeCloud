@@ -31,14 +31,18 @@
 
 
 //根据文件ID删除文件
-+ (void)deleteFile:(NSString *)fileId complete:(void(^)(void))completeHandle{
++ (void)deleteFile:(NSString *)fileId complete:(void(^)(BOOL success, NSError *error))completeHandle{
     NSString *delCql = [NSString stringWithFormat:@"delete from _File where objectId = '%@'",fileId];
     [AVQuery doCloudQueryInBackgroundWithCQL:delCql callback:^(AVCloudQueryResult *result, NSError *error) {
-        if (!error) {
-            if (completeHandle) {
-                completeHandle();
+        if (completeHandle) {
+            if (!error) {
+                completeHandle(NO,error);
+
+            }else{
+                completeHandle(YES,nil);
+                debugLog(@"文件删除成功");
+
             }
-            debugLog(@"文件删除成功");
         }
         
     }];
