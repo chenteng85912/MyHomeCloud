@@ -101,28 +101,35 @@ NSInteger const tipViewTag = 12345678;
 }
 //带进度的提示
 - (void)showProgressHUD:(float)progress tipMsg:(NSString *)msg{
-    MBProgressHUD *hud = [MBProgressHUD HUDForView:self];
-    if (!hud) {
-
-        hud = [MBProgressHUD showHUDAddedTo:self animated:YES];
-        hud.mode = MBProgressHUDModeDeterminateHorizontalBar;
-        hud.contentColor = [UIColor whiteColor];
-        hud.bezelView.color = [UIColor blackColor];
-        hud.label.text = msg;
-        hud.removeFromSuperViewOnHide = YES;
+    
+    if ([APPDELEGATE isSVPHUD]) {
+        [SVProgressHUD showProgress:progress status:msg];
+    }else{
+        MBProgressHUD *hud = [MBProgressHUD HUDForView:self];
+        if (!hud) {
+            
+            hud = [MBProgressHUD showHUDAddedTo:self animated:YES];
+            hud.mode = MBProgressHUDModeDeterminateHorizontalBar;
+            hud.contentColor = [UIColor whiteColor];
+            hud.bezelView.color = [UIColor blackColor];
+            hud.label.text = msg;
+            hud.removeFromSuperViewOnHide = YES;
+            
+        }
+        hud.progress = progress;
 
     }
-
-    hud.progress = progress;
+  
 }
 
 //等待提示
 - (void)showHUD:(NSString *)msg{
-    //风火轮颜色修改
-//    [UIActivityIndicatorView appearanceWhenContainedIn:[MBProgressHUD class], nil].color = [UIColor whiteColor];
+
     if ([APPDELEGATE isSVPHUD]) {
         [SVProgressHUD showWithStatus:msg];
     }else{
+        //风火轮颜色修改
+        //    [UIActivityIndicatorView appearanceWhenContainedIn:[MBProgressHUD class], nil].color = [UIColor whiteColor];
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self animated:YES];
         hud.contentColor = [UIColor whiteColor];
         hud.bezelView.color = [UIColor blackColor];
@@ -130,7 +137,6 @@ NSInteger const tipViewTag = 12345678;
         hud.removeFromSuperViewOnHide = YES;
     }
    
-    
 }
 //移除提示
 - (void)removeHUD{
