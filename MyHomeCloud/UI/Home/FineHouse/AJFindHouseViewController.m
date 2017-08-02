@@ -88,7 +88,11 @@
 }
 - (void)saveAction{
     [self.view endEditing:YES];
-
+    if (![AVUser currentUser]) {
+        [AJSB goLoginViewComplete:^{
+        }];
+        return;
+    }
     AVObject *houseData = [AVObject objectWithClassName:UESR_INCLINATION];
     [houseData setObject:[AVUser currentUser].mobilePhoneNumber forKey:USER_PHONE];
     

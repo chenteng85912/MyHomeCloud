@@ -279,20 +279,22 @@
     }
     [cell.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     cell.textLabel.font = [UIFont systemFontOfSize:14];
+    
     NSArray *array;
+    UIButton *currentBtn;
     if (_currentIndex==0) {
         array = self.areasArray;
-        
+        currentBtn = _areaBtn;
     }else if (_currentIndex==1){
         array = self.priceArray;
+        currentBtn = _priceBtn;
     }else{
         array = self.roomsArray;
-        
+        currentBtn = _roomsBtn;
     }
     cell.textLabel.text = array[indexPath.row];
     
-    NSString *str = [self.filterDic objectForKey:[NSNumber numberWithInteger:_currentIndex]];
-    if ([str isEqualToString:array[indexPath.row]]) {
+    if ([currentBtn.currentTitle isEqualToString:array[indexPath.row]]) {
         cell.textLabel.textColor = NavigationBarColor;
     }else{
         cell.textLabel.textColor = [UIColor blackColor];

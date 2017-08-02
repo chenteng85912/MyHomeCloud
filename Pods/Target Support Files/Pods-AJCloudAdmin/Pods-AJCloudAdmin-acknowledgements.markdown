@@ -206,6 +206,11 @@ This application makes use of the following third party libraries:
    limitations under the License.
 
 
+## Bugly
+
+Copyright 2017 tencent.com. All rights reserved.
+
+
 ## FMDB
 
 If you are using FMDB in your project, I'd love to hear about it.  Let Gus know
@@ -292,7 +297,7 @@ THE SOFTWARE.
 
 ## SDWebImage
 
-Copyright (c) 2016 Olivier Poitrey rs@dailymotion.com
+Copyright (c) 2009-2017 Olivier Poitrey rs@dailymotion.com
  
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -367,11 +372,6 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
-
-## UMengAnalytics-NO-IDFA
-
-Copyright 2011 - 2015 UMeng.com. All rights reserved.
 
 
 ## UMengUShare

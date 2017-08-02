@@ -11,7 +11,7 @@
 #import "AJRemoteNotification.h"
 #import "AJMessageBeanDao.h"
 #import "AJMessageController.h"
-#import "UMMobClick/MobClick.h" //友盟统计
+#import <Bugly/Bugly.h>//崩溃分析
 #import <UMSocialCore/UMSocialCore.h>//友盟集成 微信分享
 
 NSString *const AVOSCloudID = @"Q4xx9Pczn6UbtkFQttUzGfOV-gzGzoHsz";
@@ -43,7 +43,7 @@ NSString *const UMWEIXINAPPSECRET = @"1b701ce273624810d0f55296f19cd384";
     
     self.window.rootViewController = [AjMainTabBarViewController new];
     [AJMessageBeanDao createTable];
-    [self setUMWXSDK];
+    [self setBugLy];
     
     [AJRemoteNotification registerRemoteNotification];
     [AJRemoteNotification registerJPush];
@@ -59,15 +59,12 @@ NSString *const UMWEIXINAPPSECRET = @"1b701ce273624810d0f55296f19cd384";
 
     return YES;
 }
-- (void)setUMWXSDK{
+- (void)setBugLy{
+    BuglyConfig * config = [[BuglyConfig alloc] init];
+    // 设置自定义日志上报的级别，默认不上报自定义日志
+    config.reportLogLevel = BuglyLogLevelWarn;
     
-    //打开调试日志
-    [[UMSocialManager defaultManager] openLog:YES];
-    //设置友盟appkey
-    [[UMSocialManager defaultManager] setUmSocialAppkey:UMWEIXINKEY];
-    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:UMWEIXINKEY
-                                       appSecret:UMWEIXINAPPSECRET redirectURL:@"http://mobile.umeng.com/social"];
-    
+    [Bugly startWithAppId:@"a07ab3beb3" config:config];
 }
 //更新消息角标
 - (void)updateMessageNumbers:(NSInteger)badgeNum{

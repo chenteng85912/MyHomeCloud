@@ -28,7 +28,7 @@
     self.addressFrame = CGRectMake(lx, CGRectGetMaxY(self.nameFrame)+subY, addressSize.width+5, addressSize.height);
     
     //标签
-    self.estateTags = @"住宅 低密度 花园洋房";
+    self.estateTags = object[HOUSE_TAGS];
     CGSize tagSize = [self.estateTags sizeWithMaxSize:CGSizeMake(dWidth-cellX*3-IMG_WIDTH, MAXFLOAT) fontSize:DES_FONT];
     self.tagsFrame = CGRectMake(lx, CGRectGetMaxY(self.addressFrame)+subY, tagSize.width, tagSize.height);
     

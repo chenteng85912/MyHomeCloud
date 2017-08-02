@@ -33,25 +33,35 @@
 //等待提示
 + (void)showKeyWindowHUD:(NSString *)msg{
     //风火轮颜色修改
-   
-    MBProgressHUD *hud = [MBProgressHUD HUDForView:[UIApplication sharedApplication].keyWindow];
-    if (!hud) {
-        hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
-        hud.bezelView.color = [UIColor blackColor];
-        hud.label.textColor = [UIColor whiteColor];
-        hud.contentColor = [UIColor whiteColor];
-        hud.label.text = msg;
-        hud.removeFromSuperViewOnHide = YES;
+    if ([APPDELEGATE isSVPHUD]) {
+        [SVProgressHUD showWithStatus:msg];
+    }else{
+        MBProgressHUD *hud = [MBProgressHUD HUDForView:[UIApplication sharedApplication].keyWindow];
+        if (!hud) {
+            hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
+            hud.bezelView.color = [UIColor blackColor];
+            hud.label.textColor = [UIColor whiteColor];
+            hud.contentColor = [UIColor whiteColor];
+            hud.label.text = msg;
+            hud.removeFromSuperViewOnHide = YES;
+        }
     }
+   
     
 }
 //移除提示
 + (void)removeKeyWindowHUD{
-  
-    MBProgressHUD *hud = [MBProgressHUD HUDForView:[UIApplication sharedApplication].keyWindow];
-    if (hud) {
-        [hud hideAnimated:YES];
+    if ([APPDELEGATE isSVPHUD]) {
+        //        [SVProgressHUD dismiss];
+        [SVProgressHUD popActivity];
+        
+    }else{
+        MBProgressHUD *hud = [MBProgressHUD HUDForView:[UIApplication sharedApplication].keyWindow];
+        if (hud) {
+            [hud hideAnimated:YES];
+        }
     }
+   
 }
 
 + (MJRefreshNormalHeader *)makeMJRefeshWithTarget:(id)root andMethod:(SEL)methodName{
