@@ -228,7 +228,7 @@ CGFloat const PICKVIEW_HEIGHT = 200.0;
         
         //装修情况
         if (self.tag==6) {
-            [_firstArray addObjectsFromArray:@[@"毛坯",@"普通装修",@"精装修",@"豪华装修",@"未知"]];
+            [_firstArray addObjectsFromArray:@[@"精装修",@"毛坯",@"普通装修",@"豪华装修",@"未知"]];
         }
         
         //物业类型
