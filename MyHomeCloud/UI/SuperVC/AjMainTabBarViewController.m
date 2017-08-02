@@ -50,7 +50,7 @@
     
     
     AJFindHouseViewController *find = [AJFindHouseViewController new];
-    find.title = @"找房";
+    find.title = @"帮你找房";
     
     AJMessageController *news = [AJMessageController new];
     news.title = @"消息";

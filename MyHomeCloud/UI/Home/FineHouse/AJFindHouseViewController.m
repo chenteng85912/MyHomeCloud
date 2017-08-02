@@ -34,7 +34,10 @@
     [super viewDidLoad];
     [self addChildViewController:self.tagVC];
 
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:[CTTool makeCustomRightBtn:@"提 交" target:self sel:@selector(saveAction)]];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:[CTTool makeCustomRightBtn:@"提交意向" target:self sel:@selector(saveAction)]];
+}
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
 }
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
     
