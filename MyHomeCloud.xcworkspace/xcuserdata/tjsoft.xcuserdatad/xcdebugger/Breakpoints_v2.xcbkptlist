@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MyHomeCloud/UI/Me/Setting/AJUMShareUtil.m"
-            timestampString = "519897104.126681"
+            timestampString = "523333642.487204"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
             landmarkName = "+shareWebPageToPlatformType:"
             landmarkType = "7">
          </BreakpointContent>

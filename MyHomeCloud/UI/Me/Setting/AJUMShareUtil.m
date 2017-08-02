@@ -9,6 +9,7 @@
 #import "AJUMShareUtil.h"
 
 NSString *const APP_STORE = @"https://itunes.apple.com/cn/app/安家屋/id1251844754?mt=8";
+NSString *const APP_DES = @"安家易，给你一个温暖的家";
 
 @implementation AJUMShareUtil
 
@@ -26,7 +27,7 @@ NSString *const APP_STORE = @"https://itunes.apple.com/cn/app/安家屋/id125184
     
     //创建分享消息对象
     UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
-    UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:[CTTool appName] descr:@"" thumImage:[CTTool iconImage]];
+    UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:[CTTool appName] descr:APP_DES thumImage:[CTTool iconImage]];
     //苹果商店地址
     shareObject.webpageUrl = APP_STORE;
     
