@@ -221,7 +221,7 @@ CGFloat const PICKVIEW_HEIGHT = 200.0;
         }
         //楼层
         if (self.tag==4||self.tag==5) {
-            for (int i =1; i<33; i++) {
+            for (int i =1; i<35; i++) {
                 [_firstArray addObject:[NSString stringWithFormat:@"%d",i]];
             }
         }
@@ -233,16 +233,16 @@ CGFloat const PICKVIEW_HEIGHT = 200.0;
         
         //物业类型
         if (self.tag==10) {
-            [_firstArray addObjectsFromArray:@[@"公寓",@"洋房",@"别墅",@"商铺",@"写字楼",@"未知"]];
+            [_firstArray addObjectsFromArray:@[@"洋房",@"公寓",@"别墅",@"商铺",@"写字楼",@"未知"]];
         }
         
         //产权年限
         if (self.tag==11) {
-            [_firstArray addObjectsFromArray:@[@"40年",@"50年",@"70年",@"未知"]];
+            [_firstArray addObjectsFromArray:@[@"70年",@"50年",@"40年",@"未知"]];
         }
         //建筑类型
         if (self.tag==12) {
-            [_firstArray addObjectsFromArray:@[@"低层",@"多层",@"中高层",@"高层",@"超高层",@"未知"]];
+            [_firstArray addObjectsFromArray:@[@"高层",@"低层",@"多层",@"中高层",@"超高层",@"未知"]];
         }
         //楼盘地区
         if (self.tag==13) {
