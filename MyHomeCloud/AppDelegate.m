@@ -35,7 +35,7 @@ NSString *const UMWEIXINAPPSECRET = @"1b701ce273624810d0f55296f19cd384";
         [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
         [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
         [SVProgressHUD setFadeOutAnimationDuration:0.3];
-        [SVProgressHUD setOffsetFromCenter:UIOffsetMake(0, 40)];
+        [SVProgressHUD setOffsetFromCenter:UIOffsetMake(0, 30)];
     }
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];

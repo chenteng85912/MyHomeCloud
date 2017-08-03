@@ -84,24 +84,23 @@
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     if (!_isLoad) {
-        if (self.isDetails) {
-            self.tableView.frame = CGRectMake(0, 0, dWidth, dHeight-50);
-
-        }
-        else if(self.isPreview){
-            self.tableView.frame = CGRectMake(0, 0, dWidth, dHeight-64);
-            
-        }
-        else if(_showFilter){
-            self.tableView.frame = CGRectMake(0, 40, dWidth, dHeight-40-64);
-
-        }else{
-            self.tableView.frame = CGRectMake(0, 0, dWidth, dHeight-45-64);
-
-        }
-
         [self.view showHUD:nil];
         [self initStartData];
+    }
+    if (self.isDetails) {
+        self.tableView.frame = CGRectMake(0, 0, dWidth, dHeight-50);
+        
+    }
+    else if(self.isPreview){
+        self.tableView.frame = CGRectMake(0, 0, dWidth, dHeight-64);
+        
+    }
+    else if(_showFilter){
+        self.tableView.frame = CGRectMake(0, 40, dWidth, dHeight-40-64);
+        
+    }else{
+        self.tableView.frame = CGRectMake(0, 0, dWidth, dHeight-45-64);
+        
     }
 }
 - (void)viewWillDisappear:(BOOL)animated

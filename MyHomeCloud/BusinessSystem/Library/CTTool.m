@@ -15,12 +15,13 @@
 
 //生成带边框的按钮
 + (UIButton *)makeCustomRightBtn:(NSString *)title target:(id)target sel:(SEL)actionName{
-    CGFloat width = [title sizeWithMaxSize:CGSizeMake(200, 25) fontSize:15].width;
+    CGFloat width = [title sizeWithMaxSize:CGSizeMake(200, 25) fontSize:dWidth==320?13:15].width;
     UIButton *right = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, width+8, 25)];
     [right setTitle:title forState:UIControlStateNormal];
     [right setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     
-    right.titleLabel.font = [UIFont boldSystemFontOfSize:14];
+    right.titleLabel.font = [UIFont boldSystemFontOfSize:dWidth==320?13:15];
+  
     right.layer.masksToBounds = YES;
     right.layer.cornerRadius = 5.0;
     right.layer.borderWidth = 1;

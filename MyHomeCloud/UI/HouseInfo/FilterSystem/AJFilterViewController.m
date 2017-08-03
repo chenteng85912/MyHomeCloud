@@ -50,6 +50,11 @@
     [self initFilterParamaters];
     
     _allBtnArray = @[_areaBtn,_priceBtn,_roomsBtn,_moreBtn];
+    for (UIButton *btn in _allBtnArray) {
+        if (dWidth==320) {
+            btn.titleLabel.font = [UIFont systemFontOfSize:12];
+        }
+    }
     [self.tbView registerClass:[UITableViewCell class] forCellReuseIdentifier:NSStringFromClass([self class])];
 }
 - (void)viewWillAppear:(BOOL)animated{
@@ -92,7 +97,28 @@
     
 }
 - (IBAction)btnAction:(UIButton *)sender {
+    //4清空条件
+    if (sender.tag==4) {
+        
+        [self resetBtnState:_directionView];
+        [self resetBtnState:_areaageView];
+        [self resetBtnState:_describeView];
+        [self resetBtnState:_floorView];
+        
+        [self.moreDic removeAllObjects];
+        [self.areaAgeDic removeAllObjects];
+        [self.moreDic setObject:self.areaAgeDic forKey:HOUSE_AREAAGE];
+        return;
 
+    }
+    sender.selected = !sender.selected;
+
+    for (UIButton *btn in _allBtnArray) {
+        if (sender==btn) {
+            continue;
+        }
+        btn.selected = NO;
+    }
     if (sender!=_comfirnBtn) {
         _comfirnBtn.hidden = NO;
 
@@ -100,7 +126,7 @@
         _comfirnBtn.hidden = YES;
 
     }
-    //0区域 1租金 总价 2房型 3更多
+    //0区域 1租金/总价 2房型 3更多
     if (sender.tag<4) {
         if (sender.tag==3) {
             //更多
@@ -148,17 +174,6 @@
         _currentIndex=sender.tag;
         [self.tbView reloadData];
 
-    }else if (sender.tag==4){
-        //清空条件
-        [self resetBtnState:_directionView];
-        [self resetBtnState:_areaageView];
-        [self resetBtnState:_describeView];
-        [self resetBtnState:_floorView];
-
-        [self.moreDic removeAllObjects];
-        [self.areaAgeDic removeAllObjects];
-        [self.moreDic setObject:self.areaAgeDic forKey:HOUSE_AREAAGE];
-        return;
     }else {
         //确定更多条件
         _moreView.alpha = 0;
@@ -170,13 +185,7 @@
             [self.delegate refreshTbView];
         }
     }
-    for (UIButton *btn in _allBtnArray) {
-        if (sender==btn) {
-            continue;
-        }
-        btn.selected = NO;
-    }
-    sender.selected = !sender.selected;
+   
 }
 - (IBAction)tapAction:(UITapGestureRecognizer *)sender {
     for (UIButton *btn in _allBtnArray) {

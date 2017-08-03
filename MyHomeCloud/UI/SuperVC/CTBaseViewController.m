@@ -9,6 +9,7 @@
 #import "CTBaseViewController.h"
 #import "AJHouseDesViewController.h"
 #import "AJAddPicturesViewController.h"
+#import "AJUploadHomeImagesViewController.h"
 
 @interface CTBaseViewController ()<UIGestureRecognizerDelegate>
 @end
@@ -85,7 +86,8 @@
         return NO;
     }else{
         if ([self isKindOfClass:[AJHouseDesViewController class]]
-            ||[self isKindOfClass:[AJAddPicturesViewController class]]) {
+            ||[self isKindOfClass:[AJAddPicturesViewController class]]
+            ||[self isKindOfClass:[AJUploadHomeImagesViewController class]]) {
             return NO;
         }
         return YES;
