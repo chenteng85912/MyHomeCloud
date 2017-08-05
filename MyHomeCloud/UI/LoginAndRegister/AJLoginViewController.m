@@ -188,7 +188,7 @@ NSString *const USER_ONLINE = @"该用户已在别处登录";
 
 }
 - (void)showVerityAlert{
-    [UIAlertController alertWithTitle:@"温馨提示" message:@"假如您已经收到了验证短信，请及时验证刚刚注册的手机号！" cancelButtonTitle:@"暂不" otherButtonTitles:@[@"去验证"] preferredStyle:UIAlertControllerStyleAlert block:^(NSInteger buttonIndex) {
+    [UIAlertController alertWithTitle:@"温馨提示" message:@"稍后你将收到验证短信，请及时验证刚刚注册的手机号码！" cancelButtonTitle:@"暂不" otherButtonTitles:@[@"去验证"] preferredStyle:UIAlertControllerStyleAlert block:^(NSInteger buttonIndex) {
         if (buttonIndex==1) {
             [self showVerityUserPhoneAction];
         }
