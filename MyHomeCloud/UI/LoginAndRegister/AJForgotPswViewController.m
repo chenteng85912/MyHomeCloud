@@ -8,8 +8,6 @@
 
 #import "AJForgotPswViewController.h"
 
-static NSInteger kCountDown = 60;
-
 @interface AJForgotPswViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *userPhone;
 @property (weak, nonatomic) IBOutlet UITextField *emsCode;
@@ -67,10 +65,9 @@ static NSInteger kCountDown = 60;
         [self showVerityUserPhoneAction];
         return;
     }
-    if (sender.tag==4) {
-        AJForgotPswViewController *verity = [AJForgotPswViewController new];
-        verity.showModal = VerityUserPhoneModal;
-        APP_PUSH(verity);
+    if (sender.tag==3) {
+        [self verityUserPhone];
+      
         return;
     }
    
@@ -124,7 +121,7 @@ static NSInteger kCountDown = 60;
             }
             
             if (error.code==215) {
-                [UIAlertController alertWithTitle:@"温馨提示" message:@"手机号未验证,请先验证" cancelButtonTitle:@"取消" otherButtonTitles:@[@"去验证"] preferredStyle:UIAlertControllerStyleAlert block:^(NSInteger buttonIndex) {
+                [UIAlertController alertWithTitle:@"温馨提示" message:@"手机号未验证,请先验证" cancelButtonTitle:@"暂不" otherButtonTitles:@[@"去验证"] preferredStyle:UIAlertControllerStyleAlert block:^(NSInteger buttonIndex) {
                     if (buttonIndex==1) {
                         [weakSelf showVerityUserPhoneAction];
                     }

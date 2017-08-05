@@ -107,7 +107,7 @@
                             <rect key="frame" x="5" y="8" width="275" height="30"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                            <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="go" secureTextEntry="YES"/>
+                            <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="go"/>
                             <connections>
                                 <outlet property="delegate" destination="-1" id="zuq-Dm-wwE"/>
                             </connections>
@@ -134,7 +134,7 @@
                             <rect key="frame" x="5" y="8" width="275" height="30"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                            <textInputTraits key="textInputTraits" returnKeyType="go" secureTextEntry="YES"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="go"/>
                             <connections>
                                 <outlet property="delegate" destination="-1" id="icQ-ss-v7T"/>
                             </connections>

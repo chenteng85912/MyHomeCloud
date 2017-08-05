@@ -139,6 +139,7 @@ NSString *const USER_ONLINE = @"该用户已在别处登录";
                 weakSelf.pswTF.text = nil;
                 weakSelf.confirmPswTextField.text = nil;
                 [weakSelf findPswAction:weakSelf.headLogBtn];
+                [weakSelf showVerityAlert];
             }];
         } else {
             // 失败的原因可能有多种，常见的是用户名已经存在。
@@ -186,6 +187,13 @@ NSString *const USER_ONLINE = @"该用户已在别处登录";
     }];
 
 }
+- (void)showVerityAlert{
+    [UIAlertController alertWithTitle:@"温馨提示" message:@"假如您已经收到了验证短信，请及时验证刚刚注册的手机号！" cancelButtonTitle:@"暂不" otherButtonTitles:@[@"去验证"] preferredStyle:UIAlertControllerStyleAlert block:^(NSInteger buttonIndex) {
+        if (buttonIndex==1) {
+            [self showVerityUserPhoneAction];
+        }
+    }];
+}
 - (void)loginSuccess{
     
     [self dismissViewControllerAnimated:YES completion:^{
@@ -196,13 +204,16 @@ NSString *const USER_ONLINE = @"该用户已在别处登录";
 }
 //找回密码
 - (IBAction)findPswAction:(UIButton *)sender {
+    [self.view endEditing:YES];
+
     if (sender.tag==2) {
        //找回密码
         AJForgotPswViewController *forgot = [AJForgotPswViewController new];
         APP_PUSH(forgot);
     }else if (sender.tag==3) {
-        [self.view endEditing:YES];
         [self dismissViewControllerAnimated:YES completion:nil];
+    }else if (sender.tag==4) {
+        [self showVerityUserPhoneAction];
     }else{
         if (sender.selected) {
             return;
@@ -233,6 +244,14 @@ NSString *const USER_ONLINE = @"该用户已在别处登录";
         }
       
     }
+    
+}
+//跳转验证手机号界面
+- (void)showVerityUserPhoneAction{
+    
+    AJForgotPswViewController *verity = [AJForgotPswViewController new];
+    verity.showModal = VerityUserPhoneModal;
+    APP_PUSH(verity);
     
 }
 //添加或者删除空格
