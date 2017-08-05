@@ -11,6 +11,7 @@
 #import "AJRemoteNotification.h"
 #import "AJMessageBeanDao.h"
 #import "AJMessageController.h"
+#import "AJUserCenterViewController.h"
 #import <Bugly/Bugly.h>//崩溃分析
 #import <UMSocialCore/UMSocialCore.h>//友盟集成 微信分享
 
@@ -155,7 +156,19 @@ fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))handler{
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-  }
+    if ([AVUser currentUser]) {
+        [[AVUser currentUser] isAuthenticatedWithSessionToken:[AVUser currentUser].sessionToken callback:^(BOOL succeeded, NSError * _Nullable error) {
+            if (!succeeded) {
+                [AVUser logOut];
+                UIViewController *rootVC = [CTTool getVisibleViewControllerFrom:[UIApplication sharedApplication].keyWindow.rootViewController];
+                if ([rootVC isKindOfClass:[AJUserCenterViewController class]]) {
+                    [(AJUserCenterViewController *)rootVC initUserData];
+                }
+            }
+        }];
+    }
+    
+}
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.

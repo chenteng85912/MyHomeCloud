@@ -67,6 +67,11 @@
 			<key>orderHint</key>
 			<integer>8</integer>
 		</dict>
+		<key>SVProgressHUD.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>12</integer>
+		</dict>
 		<key>TYKYLibrary.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -112,6 +117,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>71C06EB5CA7E737CC3CC835B4B9370C5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>7E639E1A799B66C2338D70880FC93BF0</key>
 		<dict>
 			<key>primary</key>
@@ -132,12 +142,37 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>B71C4FFAEBF6E46ED81AE27F9147CD9F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CA9E682E92383C2FD8677A154CF2009F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>DB7DB57CC32718F56A1E78C468862EDB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>DBECE197219DA6AC6725A0E07C94D1DE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E945FC0DD69BFF93E0DADCC893A8147B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F2E060D02E8A05D5D4826E9284DE8ED6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FFA25C6BBF305FA3588E89705B1DB7BC</key>
 		<dict>
 			<key>primary</key>
 			<true/>

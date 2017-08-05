@@ -16,19 +16,15 @@
         
         AJLoginViewController *login  = [AJLoginViewController new];
         login.backBlock = callBack;
-//        login.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:login];
+        
+        UIViewController *rootVC = [CTTool getVisibleViewControllerFrom:[UIApplication sharedApplication].keyWindow.rootViewController];
 
-        if ([UIApplication sharedApplication].keyWindow.rootViewController.presentedViewController) {
-            [[UIApplication sharedApplication].keyWindow.rootViewController.presentedViewController presentViewController:login animated:YES completion:nil];
-            
-        }else{
-            [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:login animated:YES completion:nil];
-            
-        }
+        [rootVC presentViewController:nav animated:YES completion:nil];
+
     });
     
 }
-
 
 //根据文件ID删除文件
 + (void)deleteFile:(NSString *)fileId complete:(void(^)(BOOL success, NSError *error))completeHandle{

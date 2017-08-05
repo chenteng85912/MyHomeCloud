@@ -11,7 +11,7 @@
 #import "AJLocalDataCenter.h"
 
 //默认分页大小
-NSInteger const defaultPageSize = 50;
+NSInteger const defaultPageSize = 20;
 
 @interface AJTbViewPresenter ()
 

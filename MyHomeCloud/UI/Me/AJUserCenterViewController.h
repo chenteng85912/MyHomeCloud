@@ -9,4 +9,5 @@
 
 @interface AJUserCenterViewController : UIViewController
 
+- (void)initUserData;
 @end

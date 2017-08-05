@@ -4,6 +4,7 @@
 #import "AppDelegate.h"
 #import "KeychainTool.h"
 #import <Security/Security.h>
+#import "AJForgotPswViewController.h"
 
 @interface AJLoginViewController ()
 
@@ -15,7 +16,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *appName;
 @property (weak, nonatomic) IBOutlet UITextField *confirmPswTextField;
 @property (strong, nonatomic) KeychainTool *keyChainWrapper;
-@property (strong, nonatomic) NSString *luuid;
 
 @end
 
@@ -28,9 +28,13 @@ NSString *const USER_ONLINE = @"该用户已在别处登录";
 #pragma mark -life cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-   
-    [self saveUUId];
-    [self initUI];
+    
+    self.keyChainWrapper = [[KeychainTool alloc] initWithIdentifier:[CTTool appName] accessGroup:nil];
+    NSString *userName = [self.keyChainWrapper objectForKey:(id)kSecAttrAccount];
+
+    _userNameTF.text = userName;
+    
+    _appName.text = [CTTool appName];
 #if AJCLOUDADMIN
     _headRegBtn.enabled = NO;
 
@@ -39,6 +43,7 @@ NSString *const USER_ONLINE = @"该用户已在别处登录";
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
 //    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
 
 }
@@ -153,21 +158,12 @@ NSString *const USER_ONLINE = @"该用户已在别处登录";
         [CTTool removeKeyWindowHUD];
         [MyUserDefaults setObject:self.userNameTF.text forKey:USER_NAME];
         if (user) {
-            
-            NSInteger state = [[AVUser currentUser][USER_LOGIN_STATE] integerValue];
-            NSString *uuid = [AVUser currentUser][USER_UUID];
-            
-            //用户已经登录
-            if (state>0&&![uuid isEqualToString:_luuid]) {
-                [AVUser logOut];
-                [[UIApplication sharedApplication].keyWindow showTips:USER_ONLINE withState:TYKYHUDModeFail complete:nil];
-                return;
-            }
-            //登录成功
-            [[AVUser currentUser] setObject:@1 forKey:USER_LOGIN_STATE];
-            [[AVUser currentUser] setObject:_luuid forKey:USER_UUID];
-            
-            [[AVUser currentUser] saveInBackground];
+            [self.keyChainWrapper setObject:_userNameTF.text forKey:(id)kSecAttrAccount];
+
+            [[AVUser currentUser] refreshSessionTokenWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                
+            }];
+ 
             [[UIApplication sharedApplication].keyWindow showTips:LOGIN_SUCCESS withState:TYKYHUDModeSuccess complete:^{
                 [self loginSuccess];
             }];
@@ -202,6 +198,8 @@ NSString *const USER_ONLINE = @"该用户已在别处登录";
 - (IBAction)findPswAction:(UIButton *)sender {
     if (sender.tag==2) {
        //找回密码
+        AJForgotPswViewController *forgot = [AJForgotPswViewController new];
+        APP_PUSH(forgot);
     }else if (sender.tag==3) {
         [self.view endEditing:YES];
         [self dismissViewControllerAnimated:YES completion:nil];
@@ -253,28 +251,14 @@ NSString *const USER_ONLINE = @"该用户已在别处登录";
     }
 }
 
-- (void)saveUUId{
-    self.keyChainWrapper = [[KeychainTool alloc] initWithIdentifier:[CTTool appName] accessGroup:nil];
-    
-    NSString *uuidStr = [self.keyChainWrapper objectForKey:(id)kSecAttrAccount];
-    if (!uuidStr||[uuidStr isEqualToString:@""]) {
-        _luuid = [[NSUUID UUID] UUIDString];
-        [self.keyChainWrapper setObject:_luuid forKey:(id)kSecAttrAccount];
-
-    }else{
-        _luuid = uuidStr;
-    }
-    
-}
 #pragma mark - private methods
-- (void)initUI{
-    
-    _appName.text = [CTTool appName];
-    NSString *userName = [MyUserDefaults objectForKey:USER_NAME];
-    if (userName) {
-        self.userNameTF.text = userName;
-    }
-}
+//- (void)initUI{
+//    
+//    NSString *userName = [MyUserDefaults objectForKey:USER_NAME];
+//    if (userName) {
+//        self.userNameTF.text = userName;
+//    }
+//}
 
 #pragma mark - getters and setters
 

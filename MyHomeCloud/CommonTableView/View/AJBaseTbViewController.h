@@ -41,5 +41,6 @@
 
 //首次从网络请求数据
 - (void)initStartData;
+- (void)backToPreVC;
 
 @end

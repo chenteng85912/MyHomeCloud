@@ -114,18 +114,9 @@ static NSString *CellIdentifier = @"TJSettingsCellId";
 
     [UIAlertController alertWithTitle:nil message:nil cancelButtonTitle:@"取消" otherButtonTitles:@[@"退出"] preferredStyle:UIAlertControllerStyleActionSheet block:^(NSInteger buttonIndex) {
         if (buttonIndex==1) {
-            [CTTool showKeyWindowHUD:@"正在注销..."];
-            [[AVUser currentUser] setObject:@0 forKey:USER_LOGIN_STATE];
-            [[AVUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-                [CTTool removeKeyWindowHUD];
-                [AVUser logOut];
-                [[UIApplication sharedApplication].keyWindow showTips:@"注销成功" withState:TYKYHUDModeSuccess complete:^{
-                    [self backToPreVC];
-
-                }];
-
-            }];
-           
+            [CTTool removeKeyWindowHUD];
+            [AVUser logOut];
+            [self backToPreVC];
         }
     }];
 }

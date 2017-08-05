@@ -38,10 +38,16 @@
 //手机号合法验证
 + (BOOL)isValidateMobile:(NSString *)mobile;
 
+//邮箱验证
++ (BOOL)validateEmail:(NSString *)email;
+
 //拨打电话
 + (void)takePhoneNumber:(NSString *)phoneNum;
 
 //字典过滤
 + (NSMutableDictionary *)filterDic:(NSDictionary *)inputDic;
+
+//获取最顶部控制器
++ (UIViewController *)getVisibleViewControllerFrom:(UIViewController*)vc;
 
 @end
