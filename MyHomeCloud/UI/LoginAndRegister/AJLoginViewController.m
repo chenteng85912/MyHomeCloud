@@ -65,7 +65,7 @@ NSString *const USER_ONLINE = @"该用户已在别处登录";
     [self initUserPhoneShowModal:string];
     if (textField==self.userNameTF&&resultStr.length>13) {
         [textField resignFirstResponder];
-        [self.view showTips:@"手机号码为11位数字" withState:TYKYHUDModeWarning complete:nil];
+        [self.view showTips:@"手机号应当为11位数字" withState:TYKYHUDModeWarning complete:nil];
         return NO;
         
     }

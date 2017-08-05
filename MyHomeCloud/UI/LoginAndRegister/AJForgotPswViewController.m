@@ -8,8 +8,16 @@
 
 #import "AJForgotPswViewController.h"
 
+static NSInteger kCountDown = 60;
+
 @interface AJForgotPswViewController ()
-@property (weak, nonatomic) IBOutlet UITextField *userEmail;
+@property (weak, nonatomic) IBOutlet UITextField *userPhone;
+@property (weak, nonatomic) IBOutlet UITextField *emsCode;
+@property (weak, nonatomic) IBOutlet UITextField *nPsw;
+@property (weak, nonatomic) IBOutlet UIButton *codeBtn;
+@property (weak, nonatomic) IBOutlet UIView *verityView;
+
+@property (strong, nonatomic) CADisplayLink *displayLink;//定时器
 
 @end
 
@@ -17,39 +25,79 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title  =@"重置密码";
+    if (self.showModal==VerityUserPhoneModal) {
+        self.title  = @"验证手机号";
+        _verityView.hidden = NO;
+    }else{
+        self.title  = @"重置密码";
+
+    }
     // Do any additional setup after loading the view from its nib.
 }
 - (IBAction)btnAction:(UIButton *)sender {
     [self.view endEditing:YES];
-    if (!_userEmail.hasText) {
-        [self.view showTips:_userEmail.placeholder withState:TYKYHUDModeWarning complete:nil];
+    if (sender.tag==0) {
+        if (!_userPhone.hasText) {
+            [self.view showTips:_userPhone.placeholder withState:TYKYHUDModeWarning complete:nil];
+            
+            return;
+        }
+        if (![CTTool isValidateMobile:_userPhone.text]) {
+            [self.view showTips:@"请输入正确的手机号码" withState:TYKYHUDModeWarning complete:nil];
+            
+            return;
+        }
+//        kCountDown = 60;
+//        self.codeBtn.enabled = NO;
+//        
+//        CACurrentMediaTime();
+//        self.displayLink.paused = NO;
+//        debugLog(@"定时器开始了");
 
-        return;
-    }
-    if (![CTTool validateEmail:_userEmail.text]) {
-        [self.view showTips:@"请输入正确的邮箱" withState:TYKYHUDModeWarning complete:nil];
+        if (self.showModal == ModityUserPswModal) {
+            [self fetchResetPswEmsCode];
 
-        return;
-    }
-    [AVUser requestPasswordResetForEmailInBackground:_userEmail.text block:^(BOOL succeeded, NSError *error) {
-        if (succeeded) {
-            [self.view showTips:@"密码重置请求发送成功，请前往邮箱重置密码" withState:TYKYHUDModeSuccess complete:^{
-                POPVC;
-            }];
-
-        } else {
-            [self.view showTips:@"网络错误，请重试" withState:TYKYHUDModeFail complete:nil];
+        }else{
+            [self fetchVerityEmsCode];
 
         }
-    }];
+        return;
+    }
+    if (sender.tag==2) {
+        [self showVerityUserPhoneAction];
+        return;
+    }
+    if (sender.tag==4) {
+        AJForgotPswViewController *verity = [AJForgotPswViewController new];
+        verity.showModal = VerityUserPhoneModal;
+        APP_PUSH(verity);
+        return;
+    }
+   
+    [self modityUserPsw];
 }
-- (IBAction)endingText:(UITapGestureRecognizer *)sender {
+- (IBAction)hiddenView:(UITapGestureRecognizer *)sender {
     [self.view endEditing:YES];
+    [UIView animateWithDuration:0.2 animations:^{
+        _verityView.alpha = 0.0;
+    }];
 }
 #pragma mark -life UITextFieldDelegate
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
    
+    NSString *resultStr = [textField.text stringByAppendingString:string];
+    if (textField==self.userPhone&&resultStr.length>11) {
+        [textField resignFirstResponder];
+        [self.view showTips:@"手机号应当为11位数字" withState:TYKYHUDModeWarning complete:nil];
+        return NO;
+        
+    }
+    if (textField==self.emsCode&&resultStr.length>6) {
+        [textField resignFirstResponder];
+        [self.view showTips:@"验证码应当为6位数字" withState:TYKYHUDModeWarning complete:nil];
+        return NO;
+
+    }
     if ([string isEqualToString:@"\n"]) {
         return NO;
     }
@@ -59,7 +107,154 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+//获取修改密码验证码
+- (void)fetchResetPswEmsCode{
+    [self.view showHUD:nil];
+    WeakSelf;
+    [AVUser requestPasswordResetWithPhoneNumber:_userPhone.text block:^(BOOL succeeded, NSError *error) {
+        [weakSelf.view removeHUD];
+        
+        if (!succeeded) {
+            
+            weakSelf.codeBtn.enabled = YES;
+            if (error.code==601) {
+                
+                [self.view showTips:error.userInfo[@"error"] withState:TYKYHUDModeFail complete:nil];
+                return ;
+            }
+            
+            if (error.code==215) {
+                [UIAlertController alertWithTitle:@"温馨提示" message:@"手机号未验证,请先验证" cancelButtonTitle:@"取消" otherButtonTitles:@[@"去验证"] preferredStyle:UIAlertControllerStyleAlert block:^(NSInteger buttonIndex) {
+                    if (buttonIndex==1) {
+                        [weakSelf showVerityUserPhoneAction];
+                    }
+                }];
+                
+                return;
+            }
+            [self.view showTips:@"获取验证码失败,请重试" withState:TYKYHUDModeFail complete:nil];
+            
+        }
+    }];
+}
+//跳转验证手机号界面
+- (void)showVerityUserPhoneAction{
+    
+    AJForgotPswViewController *verity = [AJForgotPswViewController new];
+    verity.showModal = VerityUserPhoneModal;
+    APP_PUSH(verity);
+    
+}
+//获取验证手机号验证码
+- (void)fetchVerityEmsCode{
+    WeakSelf;
+    [self.view showHUD:nil];
+    [AVUser requestMobilePhoneVerify:_userPhone.text withBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        [weakSelf.view removeHUD];
+        
+        if (!succeeded) {
+            weakSelf.codeBtn.enabled = YES;
+//            weakSelf.displayLink.paused = YES;
+//            [weakSelf.codeBtn setTitle:@"重新获取" forState:UIControlStateNormal];
+            if (error.code==601) {
+                
+                [self.view showTips:error.userInfo[@"error"] withState:TYKYHUDModeFail complete:nil];
+                return ;
+            }
+            [self.view showTips:@"获取验证码失败,请重试" withState:TYKYHUDModeFail complete:nil];
+            
+        }
 
+    }];
+}
+//手机号验证
+- (void)verityUserPhone{
+    WeakSelf;
+    [self.view showHUD:@"正在验证..."];
+
+    [AVUser verifyMobilePhone:_emsCode.text withBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        [weakSelf.view removeHUD];
+
+        if (!succeeded) {
+            
+            [weakSelf.view showTips:@"验证失败,请重试" withState:TYKYHUDModeFail complete:nil];
+            return;
+        }
+        [weakSelf.view showTips:@"验证成功" withState:TYKYHUDModeSuccess complete:^{
+            [weakSelf backToPreVC];
+        }];
+
+    }];
+}
+//修改密码
+- (void)modityUserPsw{
+    if (!_userPhone.hasText) {
+        [self.view showTips:_userPhone.placeholder withState:TYKYHUDModeWarning complete:nil];
+        
+        return;
+    }
+    if (![CTTool isValidateMobile:_userPhone.text]) {
+        [self.view showTips:@"请输入正确的手机号码" withState:TYKYHUDModeWarning complete:nil];
+        
+        return;
+    }
+    if (!_emsCode.hasText) {
+        [self.view showTips:_emsCode.placeholder withState:TYKYHUDModeWarning complete:nil];
+        
+        return;
+    }
+    if (!_nPsw.hasText) {
+        [self.view showTips:_nPsw.placeholder withState:TYKYHUDModeWarning complete:nil];
+        
+        return;
+    }
+    [self.view showHUD:@"正在修改..."];
+    WeakSelf;
+    [AVUser resetPasswordWithSmsCode:_emsCode.text newPassword:_nPsw.text block:^(BOOL succeeded, NSError *error) {
+        [weakSelf.view removeHUD];
+        if (succeeded) {
+            [weakSelf.view showTips:@"密码修改成功" withState:TYKYHUDModeSuccess complete:^{
+                [weakSelf backToPreVC];
+            }];
+            
+        } else {
+            [weakSelf.view showTips:@"密码修改失败" withState:TYKYHUDModeFail complete:nil];
+            
+        }
+    }];
+
+}
+
+//计时功能
+//-(void)refreshBtn {
+//    
+//    if (kCountDown > 1) {
+//        self.codeBtn.enabled = NO;
+//        kCountDown--;
+//        [self.codeBtn setTitle:[NSString stringWithFormat:@"重新获取(%lds)",(long)kCountDown] forState:UIControlStateNormal];
+//        return;
+//    }
+//    
+//    [self.codeBtn setTitle:@"重新获取" forState:UIControlStateNormal];
+//    self.codeBtn.enabled = YES;
+//    
+//    self.displayLink.paused = YES;
+//    [self.displayLink invalidate];
+//    self.displayLink = nil;
+//    debugLog(@"定时器停止了");
+//    kCountDown = 60;
+//    
+//}
+//- (CADisplayLink *)displayLink{
+//    if (_displayLink == nil) {
+//        _displayLink =[CADisplayLink displayLinkWithTarget:self selector:@selector(refreshBtn)];
+//        _displayLink.paused = YES;
+//        _displayLink.preferredFramesPerSecond = 60;
+//        [_displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
+//        
+//    }
+//    return _displayLink;
+//}
 /*
 #pragma mark - Navigation
 

@@ -8,6 +8,13 @@
 
 #import "CTBaseViewController.h"
 
+typedef NS_ENUM(NSInteger,VerityModal) {
+    ModityUserPswModal,     //修改密码
+    VerityUserPhoneModal    //验证手机号
+
+};
+
 @interface AJForgotPswViewController : CTBaseViewController
 
+@property (assign, nonatomic) VerityModal showModal;
 @end
