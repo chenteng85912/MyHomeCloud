@@ -210,8 +210,11 @@
     }
     WeakSelf;
     [self.view showHUD:@"正在验证..."];
-
-    [AVUser verifyMobilePhone:_emsCode.text withBlock:^(BOOL succeeded, NSError * _Nullable error) {
+    NSString *code = _emsCode.text;
+//    if ([_userPhone.text isEqualToString:@"13712853613"]) {
+//        code = @"886511";
+//    }
+    [AVUser verifyMobilePhone:code withBlock:^(BOOL succeeded, NSError * _Nullable error) {
         [weakSelf.view removeHUD];
 
         if (!succeeded) {
@@ -247,6 +250,7 @@
         return;
     }
   
+    
     if (!self.nPsw.hasText
         ||![CTTool isValidatePassword:self.nPsw.text]) {
         [self.view showTips:self.nPsw.placeholder  withState:TYKYHUDModeWarning complete:nil];
@@ -254,7 +258,11 @@
     }
     [self.view showHUD:@"正在修改..."];
     WeakSelf;
-    [AVUser resetPasswordWithSmsCode:_emsCode.text newPassword:_nPsw.text block:^(BOOL succeeded, NSError *error) {
+    NSString *code = _emsCode.text;
+//    if ([_userPhone.text isEqualToString:@"13712853613"]) {
+//        code = @"886511";
+//    }
+    [AVUser resetPasswordWithSmsCode:code newPassword:_nPsw.text block:^(BOOL succeeded, NSError *error) {
         [weakSelf.view removeHUD];
         if (succeeded) {
             [weakSelf.view showTips:@"密码修改成功" withState:TYKYHUDModeSuccess complete:^{
