@@ -8,8 +8,8 @@
 
 #import "AJForgotPswViewController.h"
 
-@interface AJForgotPswViewController ()
-@property (weak, nonatomic) IBOutlet UITextField *userPhone;
+@interface AJForgotPswViewController ()<UIGestureRecognizerDelegate>
+
 @property (weak, nonatomic) IBOutlet UITextField *emsCode;
 @property (weak, nonatomic) IBOutlet UITextField *nPsw;
 @property (weak, nonatomic) IBOutlet UIButton *codeBtn;
@@ -23,14 +23,35 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    if (self.showModal==VerityUserPhoneModal) {
-        self.title  = @"验证手机号";
-        _verityView.hidden = NO;
-    }else{
+    if (self.showModal==ModityUserPswModal) {
         self.title  = @"重置密码";
 
+    }else{
+        self.title  = @"验证手机号";
+        _verityView.hidden = NO;
+        if (self.userPhone.hasText) {
+            _userPhone.enabled = NO;
+            _emsCode.enabled = NO;
+        }
     }
+
     // Do any additional setup after loading the view from its nib.
+}
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationController.interactivePopGestureRecognizer.delegate = self;
+
+}
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognize
+{
+    if (self.navigationController.viewControllers.count==0) {
+        return NO;
+    }else{
+        if (self.showModal == RegisterVerityUserPhoneModal){
+            return NO;
+        }
+        return YES;
+    }
 }
 - (IBAction)btnAction:(UIButton *)sender {
     [self.view endEditing:YES];
@@ -81,7 +102,14 @@
 }
 #pragma mark -life UITextFieldDelegate
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
-   
+    if ([string isEqualToString:@"\n"]) {
+        [textField resignFirstResponder];
+        if (textField == _nPsw) {
+            [self modityUserPsw];
+        }
+        return NO;
+    }
+    
     NSString *resultStr = [textField.text stringByAppendingString:string];
     if (textField==self.userPhone&&resultStr.length>11) {
         [textField resignFirstResponder];
@@ -95,9 +123,7 @@
         return NO;
 
     }
-    if ([string isEqualToString:@"\n"]) {
-        return NO;
-    }
+   
     return YES;
 }
 - (void)didReceiveMemoryWarning {
@@ -114,14 +140,8 @@
         if (!succeeded) {
             
             weakSelf.codeBtn.enabled = YES;
-            if (error.code==601) {
-                
-                [self.view showTips:error.userInfo[@"error"] withState:TYKYHUDModeFail complete:nil];
-                return ;
-            }
-            
             if (error.code==215) {
-                [UIAlertController alertWithTitle:@"温馨提示" message:@"手机号未验证,请先验证" cancelButtonTitle:@"暂不" otherButtonTitles:@[@"去验证"] preferredStyle:UIAlertControllerStyleAlert block:^(NSInteger buttonIndex) {
+                [UIAlertController alertWithTitle:@"温馨提示" message:@"您的手机号未验证,请先验证" cancelButtonTitle:@"暂不" otherButtonTitles:@[@"去验证"] preferredStyle:UIAlertControllerStyleAlert block:^(NSInteger buttonIndex) {
                     if (buttonIndex==1) {
                         [weakSelf showVerityUserPhoneAction];
                     }
@@ -129,7 +149,7 @@
                 
                 return;
             }
-            [self.view showTips:@"获取验证码失败,请重试" withState:TYKYHUDModeFail complete:nil];
+            [weakSelf showError:error];
             
         }
     }];
@@ -153,16 +173,23 @@
             weakSelf.codeBtn.enabled = YES;
 //            weakSelf.displayLink.paused = YES;
 //            [weakSelf.codeBtn setTitle:@"重新获取" forState:UIControlStateNormal];
-            if (error.code==601) {
-                
-                [self.view showTips:error.userInfo[@"error"] withState:TYKYHUDModeFail complete:nil];
-                return ;
-            }
-            [self.view showTips:@"获取验证码失败,请重试" withState:TYKYHUDModeFail complete:nil];
-            
+            [weakSelf showError:error];
         }
 
     }];
+}
+- (void)showError:(NSError *)error{
+    if (error.code==213) {
+        
+        [self.view showTips:@"该手机号暂未注册" withState:TYKYHUDModeFail complete:nil];
+        return ;
+    }
+    if (error.code==601) {
+        
+        [self.view showTips:error.userInfo[@"error"] withState:TYKYHUDModeFail complete:nil];
+        return ;
+    }
+    [self.view showTips:@"获取验证码失败,请重试" withState:TYKYHUDModeFail complete:nil];
 }
 //手机号验证
 - (void)verityUserPhone{
@@ -215,11 +242,27 @@
             }];
             
         } else {
+            if (error.code==603) {
+                
+                [self.view showTips:@"验证码错误" withState:TYKYHUDModeFail complete:nil];
+                return ;
+            }
             [weakSelf.view showTips:@"密码修改失败" withState:TYKYHUDModeFail complete:nil];
             
         }
     }];
 
+}
+- (void)backToPreVC{
+    if (self.showModal == RegisterVerityUserPhoneModal) {
+        [UIAlertController alertWithTitle:@"温馨提示" message:@"您未完成手机号验证，确定退出?" cancelButtonTitle:@"继续验证" otherButtonTitles:@[@"退出"] preferredStyle:UIAlertControllerStyleAlert block:^(NSInteger buttonIndex) {
+            if (buttonIndex==1) {
+                POPVC;
+            }
+        }];
+        return;
+    }
+    POPVC;
 }
 
 //计时功能
