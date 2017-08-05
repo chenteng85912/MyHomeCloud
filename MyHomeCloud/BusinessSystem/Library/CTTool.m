@@ -207,4 +207,10 @@
     NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
     return [emailTest evaluateWithObject:email];
 }
+//密码正则验证
++ (BOOL)isValidatePassword:(NSString *)password {
+    NSString *pswRegex = @"^(?![0-9]+$)(?![a-zA-Z]+$)[a-zA-Z0-9\\W_]{6,20}$";
+    NSPredicate *pre = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", pswRegex];
+    return [pre evaluateWithObject:password];
+}
 @end

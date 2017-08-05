@@ -50,4 +50,7 @@
 //获取最顶部控制器
 + (UIViewController *)getVisibleViewControllerFrom:(UIViewController*)vc;
 
+//密码正则验证
++ (BOOL)isValidatePassword:(NSString *)password;
+
 @end

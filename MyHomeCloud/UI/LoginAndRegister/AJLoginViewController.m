@@ -95,10 +95,12 @@ NSString *const USER_ONLINE = @"该用户已在别处登录";
         return;
     }
 
-    if (!self.pswTF.hasText) {
+    if (!self.pswTF.hasText
+        ||![CTTool isValidatePassword:self.pswTF.text]) {
        [self.view showTips:self.pswTF.placeholder  withState:TYKYHUDModeWarning complete:nil];
         return;
     }
+   
     
 #if AJCLOUDADMIN
     NSString *name = [_userNameTF.text stringByReplacingOccurrencesOfString:@" " withString:@""];
@@ -108,10 +110,12 @@ NSString *const USER_ONLINE = @"该用户已在别处登录";
     }
 #endif
     if (_headRegBtn.selected) {
-        if (!self.confirmPswTextField.hasText) {
-            [self.view showTips:self.confirmPswTextField.placeholder  withState:TYKYHUDModeWarning complete:nil];
+        if (!self.confirmPswTextField.hasText
+            ||![CTTool isValidatePassword:self.confirmPswTextField.text]) {
+            [self.view showTips:_confirmPswTextField.placeholder  withState:TYKYHUDModeWarning complete:nil];
             return;
         }
+       
         if (![_confirmPswTextField.text isEqualToString:_pswTF.text]) {
             [self.view showTips:@"两次密码不一致，请确认您输入的密码"  withState:TYKYHUDModeWarning complete:nil];
             return;

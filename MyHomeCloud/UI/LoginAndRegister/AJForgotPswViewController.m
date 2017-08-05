@@ -181,7 +181,7 @@
 - (void)showError:(NSError *)error{
     if (error.code==213) {
         
-        [self.view showTips:@"该手机号暂未注册" withState:TYKYHUDModeFail complete:nil];
+        [self.view showTips:@"该手机号未注册" withState:TYKYHUDModeFail complete:nil];
         return ;
     }
     if (error.code==601) {
@@ -193,6 +193,21 @@
 }
 //手机号验证
 - (void)verityUserPhone{
+    if (!_userPhone.hasText) {
+        [self.view showTips:_userPhone.placeholder withState:TYKYHUDModeWarning complete:nil];
+        
+        return;
+    }
+    if (![CTTool isValidateMobile:_userPhone.text]) {
+        [self.view showTips:@"请输入正确的手机号码" withState:TYKYHUDModeWarning complete:nil];
+        
+        return;
+    }
+    if (!_emsCode.hasText) {
+        [self.view showTips:_emsCode.placeholder withState:TYKYHUDModeWarning complete:nil];
+        
+        return;
+    }
     WeakSelf;
     [self.view showHUD:@"正在验证..."];
 
@@ -200,7 +215,11 @@
         [weakSelf.view removeHUD];
 
         if (!succeeded) {
-            
+            if (error.code==603) {
+                
+                [self.view showTips:@"验证码错误" withState:TYKYHUDModeFail complete:nil];
+                return ;
+            }
             [weakSelf.view showTips:@"验证失败,请重试" withState:TYKYHUDModeFail complete:nil];
             return;
         }
@@ -227,9 +246,10 @@
         
         return;
     }
-    if (!_nPsw.hasText) {
-        [self.view showTips:_nPsw.placeholder withState:TYKYHUDModeWarning complete:nil];
-        
+  
+    if (!self.nPsw.hasText
+        ||![CTTool isValidatePassword:self.nPsw.text]) {
+        [self.view showTips:self.nPsw.placeholder  withState:TYKYHUDModeWarning complete:nil];
         return;
     }
     [self.view showHUD:@"正在修改..."];
