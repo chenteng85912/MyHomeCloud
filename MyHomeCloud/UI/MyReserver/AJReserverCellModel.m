@@ -59,9 +59,10 @@
     [formatter setDateFormat:@"yyyy-MM-dd"];
     _creatTime = [formatter stringFromDate:self.objectData.createdAt];
     
-    NSInteger creatIn = [self.objectData.createdAt timeIntervalSince1970];
-    NSInteger nowIn = [[NSDate new] timeIntervalSince1970];
-    if (nowIn>creatIn) {
+    [formatter setDateFormat:@"yyyy-MM-dd hh:mm"];
+    NSDate *lookTime = [formatter dateFromString:_rTime];
+    NSInteger creatIn = [lookTime timeIntervalSinceNow];
+    if (creatIn<0) {
         _stateStr = @"已过期";
         _stateColor = [UIColor lightGrayColor];
 
