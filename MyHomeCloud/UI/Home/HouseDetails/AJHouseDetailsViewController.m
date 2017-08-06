@@ -214,9 +214,11 @@ CGFloat const MORE_VIEW_HEIGHT = 370;
         add.isEditModal = [AVUser currentUser];
 
 #endif
-
-        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:add];
-        [self presentViewController:nav animated:YES completion:nil];
+        add.isFlip = YES;
+        
+        [UIView transitionWithView:self.navigationController.view duration:0.8 options:UIViewAnimationOptionTransitionFlipFromRight animations:nil completion:nil];
+        [self.navigationController pushViewController:add animated:NO];
+    
     }else {
         _mapView = nil;
         APP_PUSH(self.mapView);

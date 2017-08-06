@@ -337,7 +337,8 @@
 - (void)backToPreVC{
     
     if (!_isEditModal) {
-        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+        [UIView transitionWithView:self.navigationController.view duration:0.8 options:UIViewAnimationOptionTransitionFlipFromLeft animations:nil completion:nil];
+        [self.navigationController popViewControllerAnimated:NO];
         return;
     }
     BOOL uploadSuc = NO;
@@ -361,27 +362,17 @@
                             [AJSB deleteFile:model.picFile.objectId complete:nil];
                             
                         }
-                        
                     }
                 }
-                if (!POPVC) {
-                    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-                }else{
-                    POPVC;
-
-                }
-                
+                [UIView transitionWithView:self.navigationController.view duration:0.8 options:UIViewAnimationOptionTransitionFlipFromLeft animations:nil completion:nil];
+                [self.navigationController popViewControllerAnimated:NO];
             }
         }];
         return;
     }
     
-    if (!POPVC) {
-        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-    }else{
-        POPVC;
-        
-    }
+    [UIView transitionWithView:self.navigationController.view duration:0.8 options:UIViewAnimationOptionTransitionFlipFromLeft animations:nil completion:nil];
+    [self.navigationController popViewControllerAnimated:NO];
 }
 - (void)saveAction{
 
