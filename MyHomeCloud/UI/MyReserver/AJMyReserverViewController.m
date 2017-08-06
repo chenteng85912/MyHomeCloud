@@ -105,13 +105,15 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     AJReserverCellModel *model = (AJReserverCellModel *)self.dataArray[indexPath.row];
+    
     AJReserverDetailsViewController *details = [AJReserverDetailsViewController new];
     details.rModal = self.reserverModal;
     details.reserverModal = model;
+    details.isFlip = YES;
     
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:details];
-    [self presentViewController:nav animated:YES completion:nil];
-  
+    [UIView transitionWithView:self.navigationController.view duration:0.8 options:UIViewAnimationOptionTransitionFlipFromRight animations:nil completion:nil];
+    [self.navigationController pushViewController:details animated:NO];
+
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 0.01;

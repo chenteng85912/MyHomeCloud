@@ -10,6 +10,7 @@
 #import "AJHouseDesViewController.h"
 #import "AJAddPicturesViewController.h"
 #import "AJUploadHomeImagesViewController.h"
+#import "AJReserverDetailsViewController.h"
 
 @interface CTBaseViewController ()<UIGestureRecognizerDelegate>
 @end
@@ -50,6 +51,9 @@
         UIImage *backImg = LOADIMAGE(@"close");
         if (self.navigationController.viewControllers.count>1) {
             backImg = LOADIMAGE(@"back");
+            if (self.isFlip) {
+                backImg = LOADIMAGE(@"close");
+            }
         }
         [left setImage:backImg forState:UIControlStateNormal];
         left.imageEdgeInsets = UIEdgeInsetsMake(0, -5, 0, 5);
@@ -70,7 +74,11 @@
     
     if (self.navigationController.viewControllers.count>1) {
         [self.view endEditing:YES];
-
+        if (_isFlip) {
+            [UIView transitionWithView:self.navigationController.view duration:0.8 options:UIViewAnimationOptionTransitionFlipFromLeft animations:nil completion:nil];
+            [self.navigationController popViewControllerAnimated:NO];
+            return;
+        }
         [self.navigationController popViewControllerAnimated:YES];
         
     }else if (self.navigationController.presentingViewController) {
@@ -87,7 +95,8 @@
     }else{
         if ([self isKindOfClass:[AJHouseDesViewController class]]
             ||[self isKindOfClass:[AJAddPicturesViewController class]]
-            ||[self isKindOfClass:[AJUploadHomeImagesViewController class]]) {
+            ||[self isKindOfClass:[AJUploadHomeImagesViewController class]]
+            ||[self isKindOfClass:[AJReserverDetailsViewController class]]) {
             return NO;
         }
         return YES;

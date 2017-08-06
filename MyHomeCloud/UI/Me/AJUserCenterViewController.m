@@ -15,8 +15,6 @@
 
 static NSString *CellIdentifier = @"AJUserCellId";
 
-CGFloat const IMAGEHEIGHT  = 240.0f;
-
 @interface AJUserCenterViewController ()<AJUserHeadViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tbView;
 @property (weak, nonatomic) IBOutlet UIView *headView;
@@ -25,8 +23,10 @@ CGFloat const IMAGEHEIGHT  = 240.0f;
 @property (weak, nonatomic) IBOutlet UIView *headInfoView;
 @property (weak, nonatomic) IBOutlet UIButton *userName;
 @property (weak, nonatomic) IBOutlet UIImageView *roleIcon;
+@property (weak, nonatomic) IBOutlet UIView *userHeadView;
 
 @property (strong, nonatomic) NSArray *dataArray;//数据源
+@property (assign, nonatomic) CGPoint originCenter;
 
 @end
 
@@ -36,9 +36,15 @@ CGFloat const IMAGEHEIGHT  = 240.0f;
     [super viewDidLoad];
     
     [self.tbView registerClass:[UITableViewCell class] forCellReuseIdentifier:CellIdentifier];
-    self.tbView.tableHeaderView = self.headView;
+    if (dWidth>320) {
+        _headView.frame = CGRectMake(0, 0, dWidth, dHeight/3);
+        _userHeadView.frame = CGRectMake(dWidth/2-50, 40, 100, 100);
+        _userName.center = CGPointMake(dWidth/2, CGRectGetMaxY(_userHeadView.frame)+20);
+        _roleIcon.center = CGPointMake(dWidth/2, CGRectGetMaxY(_userName.frame)+10);
+    }
+    self.tbView.tableHeaderView = _headView;
     
-   
+
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -157,11 +163,11 @@ CGFloat const IMAGEHEIGHT  = 240.0f;
     if(offsetY < -20) {
         CGRect currentFrame = _headImg.frame;
         currentFrame.origin.y = offsetY;
-        currentFrame.size.height = IMAGEHEIGHT-offsetY;
+        currentFrame.size.height = dHeight/3-offsetY;
         _headImg.frame = currentFrame;
         
         CGFloat sub = offsetY+20;
-        _headInfoView.center = CGPointMake(dWidth/2, (IMAGEHEIGHT+sub)/2);
+        _headInfoView.center = CGPointMake(dWidth/2, (dHeight/3+sub)/2);
     }
 }
 - (IBAction)buttonAction:(UIButton *)sender {
@@ -182,8 +188,6 @@ CGFloat const IMAGEHEIGHT  = 240.0f;
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:head];
     APP_PRESENT(nav);
 
-//    head.hidesBottomBarWhenPushed = YES;
-//    APP_PUSH(head);
 }
 #pragma mark - AJUserHeadViewControllerDelegate
 - (void)uploadSuccess:(UIImage *)image{
@@ -192,6 +196,7 @@ CGFloat const IMAGEHEIGHT  = 240.0f;
 //角色信息
 - (void)initUserData{
 
+    _userHeadView.layer.cornerRadius = _userHeadView.frame.size.width/2;
     _roleIcon.hidden = ![AVUser currentUser];
    
     if ([AVUser currentUser]) {

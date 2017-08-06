@@ -32,9 +32,7 @@
     
     self.houseDes.frame = model.desFrame;
     self.houseDes.text = model.houseDes;
-    if (dWidth==320) {
-        self.houseDes.font = [UIFont systemFontOfSize:14];
-    }
+   
     self.houseInfo.frame = model.infoFrame;
     self.houseInfo.text = model.houseInfo;
     
@@ -152,7 +150,7 @@
         _houseImg.clipsToBounds = YES;
         _houseImg.contentMode = UIViewContentModeScaleAspectFill;
         _houseImg.layer.masksToBounds = YES;
-        _houseImg.layer.cornerRadius = 2.0;
+        _houseImg.layer.cornerRadius = 3.0;
         [self addSubview:_houseImg];
     }
     return _houseImg;

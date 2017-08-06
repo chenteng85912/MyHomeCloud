@@ -10,6 +10,7 @@
 @interface CTBaseViewController : UIViewController
 
 @property (strong, nonatomic) AVQuery *baseQuery;
+@property (assign, nonatomic) BOOL isFlip;
 
 - (void)backToPreVC;
 

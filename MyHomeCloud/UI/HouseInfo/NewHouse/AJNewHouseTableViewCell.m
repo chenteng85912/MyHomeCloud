@@ -49,7 +49,7 @@
         _houseImg.clipsToBounds = YES;
         _houseImg.contentMode = UIViewContentModeScaleAspectFill;
         _houseImg.layer.masksToBounds = YES;
-        _houseImg.layer.cornerRadius = 2.0;
+        _houseImg.layer.cornerRadius = 3.0;
         [self addSubview:_houseImg];
     }
     return _houseImg;
@@ -59,6 +59,7 @@
         _houseName = [UILabel new];
         _houseName.font = [UIFont systemFontOfSize:NAME_FONT];
         _houseName.textColor = [UIColor blackColor];
+        _houseName.numberOfLines = 0;
         [self addSubview:_houseName];;
         
     }
@@ -69,6 +70,7 @@
         _address = [UILabel new];
         _address.font = [UIFont boldSystemFontOfSize:DES_FONT];
         _address.textColor = [UIColor lightGrayColor];
+        _address.numberOfLines = 0;
         [self addSubview:_address];;
         
     }
@@ -79,6 +81,7 @@
         _estateTags = [UILabel new];
         _estateTags.font = [UIFont boldSystemFontOfSize:DES_FONT];
         _estateTags.textColor = [UIColor lightGrayColor];
+        _estateTags.numberOfLines = 0;
         [self addSubview:_estateTags];;
         
     }

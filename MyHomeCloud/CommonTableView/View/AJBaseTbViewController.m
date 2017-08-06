@@ -276,7 +276,7 @@
     if ([self respondsToSelector:@selector(canDeleteCell)]&&[self canDeleteCell]) {
         //长按手势
         UILongPressGestureRecognizer *longPressGr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressAction:)];
-        longPressGr.minimumPressDuration = 0.2;
+        longPressGr.minimumPressDuration = 0.3;
         [self.tableView addGestureRecognizer:longPressGr];
     }
 

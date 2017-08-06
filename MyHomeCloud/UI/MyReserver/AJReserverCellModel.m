@@ -22,7 +22,7 @@
     _state = self.objectData[RESERVER_STATE];
     if (_state.integerValue==0) {
         _stateStr = @"待确认";
-        _stateColor = [UIColor lightGrayColor];
+        _stateColor = [UIColor darkGrayColor];
 
     }else if(_state.integerValue==1){
         _stateStr = @"已确认";
@@ -59,6 +59,13 @@
     [formatter setDateFormat:@"yyyy-MM-dd"];
     _creatTime = [formatter stringFromDate:self.objectData.createdAt];
     
+    NSInteger creatIn = [self.objectData.createdAt timeIntervalSince1970];
+    NSInteger nowIn = [[NSDate new] timeIntervalSince1970];
+    if (nowIn>creatIn) {
+        _stateStr = @"已过期";
+        _stateColor = [UIColor lightGrayColor];
+
+    }
     self.cellHeight  = 255;
 
 }
