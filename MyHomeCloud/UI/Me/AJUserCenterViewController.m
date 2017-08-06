@@ -38,7 +38,7 @@ static NSString *CellIdentifier = @"AJUserCellId";
     [self.tbView registerClass:[UITableViewCell class] forCellReuseIdentifier:CellIdentifier];
     if (dWidth>320) {
         _headView.frame = CGRectMake(0, 0, dWidth, dHeight/3);
-        _userHeadView.frame = CGRectMake(dWidth/2-50, 40, 100, 100);
+        _userHeadView.frame = CGRectMake(dWidth/2-50, 60, 100, 100);
         _userName.center = CGPointMake(dWidth/2, CGRectGetMaxY(_userHeadView.frame)+20);
         _roleIcon.center = CGPointMake(dWidth/2, CGRectGetMaxY(_userName.frame)+10);
     }
