@@ -44,6 +44,7 @@ NSString *const USER_ONLINE = @"该用户已在别处登录";
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
+    self.edgesForExtendedLayout = UIRectEdgeNone;
 //    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
 
 }
@@ -225,7 +226,7 @@ NSString *const USER_ONLINE = @"该用户已在别处登录";
 
             [UIView animateWithDuration:0.3 animations:^{
                 _logBtn.center = CGPointMake(dWidth/2, 302.5);
-                [_logBtn setTitle:@"登录" forState:UIControlStateNormal];
+                [_logBtn setTitle:@"登 录" forState:UIControlStateNormal];
 
             }];
         }else{
@@ -234,7 +235,7 @@ NSString *const USER_ONLINE = @"该用户已在别处登录";
 
             [UIView animateWithDuration:0.3 animations:^{
                 _logBtn.center = CGPointMake(dWidth/2, 362.5);
-                [_logBtn setTitle:@"注册" forState:UIControlStateNormal];
+                [_logBtn setTitle:@"注 册" forState:UIControlStateNormal];
                 
             }];
           
