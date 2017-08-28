@@ -93,7 +93,7 @@
 //应用名称
 + (NSString *)appName{
     NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
-    CFShow((__bridge CFTypeRef)(infoDictionary));
+//    CFShow((__bridge CFTypeRef)(infoDictionary));
     NSString *app_Name = [infoDictionary objectForKey:@"CFBundleDisplayName"];
     return app_Name;
 }

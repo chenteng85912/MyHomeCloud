@@ -104,6 +104,9 @@ static NSString *CellIdentifier = @"TJSettingsCellId";
             [self clearLocalData];
 
         }else{
+//            [self.view showHUD:nil];
+//            [self performSelector:@selector(shareAction) withObject:nil afterDelay:0.2];
+
             //微信分享
             [self.wechatVC showOrHiddenView];
         }
@@ -153,6 +156,45 @@ static NSString *CellIdentifier = @"TJSettingsCellId";
     label.tag = 10001;
     [view addSubview:label];
     label.text = [AJLocalDataCenter calcuteLocalDataSize];
+}
+//系统自带分享功能
+- (void)shareAction{
+
+    // 设置分享内容
+    NSString *text = @"安家易，给你一个温暖的家";
+    NSURL *url = [NSURL URLWithString:@"https://itunes.apple.com/cn/app/id1251844754"];
+    NSArray *activityItems = @[text, [CTTool iconImage], url];
+    
+    // 服务类型控制器
+    UIActivityViewController *activityViewController =
+    [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
+    NSMutableArray *excludedActivityTypes =  [NSMutableArray arrayWithArray:@[
+                                                                              UIActivityTypeAirDrop,
+                                                                              UIActivityTypeCopyToPasteboard,
+                                                                              UIActivityTypeAssignToContact,
+                                                                              UIActivityTypePrint,
+                                                                              UIActivityTypeMail,
+                                                                              UIActivityTypeSaveToCameraRoll,
+                                                                              UIActivityTypeMessage,
+                                                                              UIActivityTypePostToTwitter,
+                                                                              UIActivityTypeAddToReadingList,
+                                                                              ]];
+    activityViewController.excludedActivityTypes = excludedActivityTypes;
+    
+    [self presentViewController:activityViewController animated:YES completion:^{
+        [self.view removeHUD];
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+    }];
+    
+    UIActivityViewControllerCompletionWithItemsHandler myBlock = ^(NSString *activityType,BOOL completed,NSArray *returnedItems,NSError *activityError)
+    {
+        // 显示选中的分享类型
+        debugLog(@"act type %@",activityType);
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+        
+    };
+    activityViewController.completionWithItemsHandler = myBlock;
+
 }
 - (UIView *)topView{
     
