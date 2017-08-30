@@ -9,13 +9,11 @@
 #import "CTDownloadWithSession.h"
 #import "CTDownloadGCDOperation.h"
 
-#define debugLog(...) NSLog(__VA_ARGS__)
-
 @interface CTDownloadWithSession ()<NSURLSessionDelegate,NSURLSessionDownloadDelegate>
 
 @property (nonatomic, strong) NSData *partialData;//暂停数据
 @property (nonatomic, strong) NSURLSession *session;//下载任务
-@property (nonatomic, strong) NSURLSessionDownloadTask *task;
+@property (nonatomic, strong) NSURLSessionDownloadTask *task;//下载请求
 
 @end
 @implementation CTDownloadWithSession
@@ -46,13 +44,13 @@
     //创建网络任务
     self.task = [self.session downloadTaskWithURL:[NSURL URLWithString:self.urlStr]];
     [self.task resume];
-    debugLog(@"start download task");
-    self.state = @1;
+    NSLog(@"start download task");
+    self.downloadState = DownloadingState;
 }
 //暂停下载
 -(void)pauseDownload
 {
-    debugLog(@"Pause download task");
+    NSLog(@"Pause download task");
     if (self.task) {
         //取消下载任务，把已下载数据存起来
         __weak typeof(self) vc = self;
@@ -93,11 +91,11 @@
 didFinishDownloadingToURL:(NSURL *)location
 {
     
-    self.state = @2;
+    self.downloadState = DownloadSuccessState;
    [[NSFileManager defaultManager] moveItemAtPath:location.path toPath:self.filePath error:nil];
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        [[CTDownloadGCDOperation Instance] removeDownloadTool:self.urlStr];
+        [GCDOpereaton removeDownloadTool:self.urlStr];
         if ([self.delegate respondsToSelector:@selector(downLoadedSuccessOrFail:withUrl:)]) {
             [self.delegate downLoadedSuccessOrFail:YES withUrl:self.urlStr];
         }
@@ -118,7 +116,7 @@ didFinishDownloadingToURL:(NSURL *)location
  totalBytesWritten:(int64_t)totalBytesWritten
 totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
 {
-    self.state = @1;
+    self.downloadState = DownloadingState;
     contentLenght = totalBytesExpectedToWrite;
     
     float currentProgress = totalBytesWritten/(double)totalBytesExpectedToWrite;
@@ -130,7 +128,7 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
         }
         
     });
-    debugLog(@"正在下载文件...:%@",self.percentStr);
+    NSLog(@"正在下载文件...:%@",self.percentStr);
 
 }
 /** 续传的代理方法 */
@@ -138,16 +136,16 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
  didResumeAtOffset:(int64_t)fileOffset
 expectedTotalBytes:(int64_t)expectedTotalBytes
 {
-    debugLog(@"续传");
+    NSLog(@"续传");
 }
 // 由于下载失败导致的下载中断会进入此协议方法,也可以得到用来恢复的数据
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error
 {
     if (error) {
-        self.state = @3;
+        self.downloadState = DownloadFailState;
         // 保存恢复数据
         self.partialData = error.userInfo[NSURLSessionDownloadTaskResumeData];
-        debugLog(@"error:%@",error.userInfo);
+        NSLog(@"error:%@",error.userInfo);
         dispatch_async(dispatch_get_main_queue(), ^{
             
             if ([self.delegate respondsToSelector:@selector(downLoadedSuccessOrFail:withUrl:)]) {

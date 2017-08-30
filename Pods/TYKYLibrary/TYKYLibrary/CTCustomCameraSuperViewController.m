@@ -38,9 +38,6 @@
 {
     [super viewWillAppear:animated];
    
-    if (![[CTSavePhotos new] checkAuthorityOfCamera]) {
-        return;
-    }
     [self setupCamera];
     
     if (_session) {
@@ -69,7 +66,7 @@
     _effectiveScale = 1.0;
     
     self.session = [[AVCaptureSession alloc] init];
-    self.session.sessionPreset = AVCaptureSessionPreset1920x1080;
+    self.session.sessionPreset = self.sessionPreset?self.sessionPreset:AVCaptureSessionPreset1920x1080;
     
     NSError *error;
     AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
@@ -195,15 +192,14 @@
 //确认照片
 - (void)confirmPhoto:(UIImage *)image{
    
-    if ([self.delegate respondsToSelector:@selector(sendPicture:andImageName:)]) {
-        if (!image) {
-            NSLog(@"拍摄图片失败");
-            return;
-        }
-        [self.delegate sendPicture:image andImageName:[NSString stringWithFormat:@"%.f",[[NSDate new] timeIntervalSince1970]]];
-    }
     [self dismissViewControllerAnimated:YES completion:^{
-       
+        if ([self.delegate respondsToSelector:@selector(sendPicture:andImageName:)]) {
+            if (!image) {
+                NSLog(@"拍摄图片失败");
+                return;
+            }
+            [self.delegate sendPicture:image andImageName:[NSString stringWithFormat:@"%.f",[[NSDate new] timeIntervalSince1970]]];
+        }
         if ([[CTSavePhotos new] checkAuthorityOfAblum]) {
             //存入相册
             [[CTSavePhotos new] saveImageIntoAlbum:image];

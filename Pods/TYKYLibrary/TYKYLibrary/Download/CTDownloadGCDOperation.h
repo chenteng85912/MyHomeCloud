@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#define GCDOpereaton [CTDownloadGCDOperation Instance]
+
 @class CTDownloadWithSession;
 @interface CTDownloadGCDOperation : NSObject
 

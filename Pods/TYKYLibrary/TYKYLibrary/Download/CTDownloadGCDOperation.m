@@ -9,8 +9,8 @@
 #import "CTDownloadGCDOperation.h"
 #import "CTDownloadWithSession.h"
 
-//同时最大上传数量
-NSInteger const maxDownloadingNum = 9;
+//最大队列数量
+NSInteger const maxDownloadingNum = 99;
 
 @interface CTDownloadGCDOperation ()
 
@@ -90,7 +90,7 @@ static CTDownloadGCDOperation *downLoadGCD = nil;
 - (void)addDownloadingQueue{
     
     for (CTDownloadWithSession  *upload in downLoadGCD.downloadingArray.allValues) {
-        if (upload.state.integerValue==0) {
+        if (upload.downloadState==WaitingDownloadState) {
             
             void (^task)() = ^{
                 [upload startDownload];
@@ -105,7 +105,7 @@ static CTDownloadGCDOperation *downLoadGCD = nil;
 - (void)clearAllDownloadQueue{
     
     for (CTDownloadWithSession *upload in downLoadGCD.downloadingArray.allValues) {
-        if (upload.state.integerValue==1) {
+        if (upload.downloadState==DownloadingState) {
             [upload cancelDownload];
 
         }
@@ -117,7 +117,7 @@ static CTDownloadGCDOperation *downLoadGCD = nil;
 //下载失败的 重新下载
 - (void)downLoadAgain:(NSString *)fileUrl{
     [downLoadGCD.downloadingArray enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, CTDownloadWithSession * _Nonnull obj, BOOL * _Nonnull stop) {
-        if (obj.state.integerValue==3&&[obj.urlStr isEqualToString:fileUrl]) {
+        if (obj.downloadState==DownloadFailState&&[obj.urlStr isEqualToString:fileUrl]) {
             void (^task)() = ^{
                 [obj startDownload];
                 

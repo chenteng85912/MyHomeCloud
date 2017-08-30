@@ -1463,9 +1463,25 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-AJCloud/Pods-AJCloud-resources.sh",
+				"${PODS_ROOT}/AVOSCloud/AVOS/AVOSCloud/AVOSCloud_Art.inc",
+				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
+				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
+				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/AutoLocation/city.plist",
+				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/AutoLocation/close_location@2x.png",
+				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/AutoLocation/CTLocationViewController.xib",
+				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/AutoLocation/toTop@2x.png",
+				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/AlbumCollectionViewCell.xib",
+				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/album_down.png",
+				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/camera_album@2x.png",
+				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/max_warinig.png",
+				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/selected_album@2x.png",
+				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/unselected_album@2x.png",
+				"${PODS_ROOT}/UMengUShare/UShareSDK/UMSocialSDK/UMSocialSDKPromptResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1478,13 +1494,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AJCloudAdmin-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		0BF2C6ED1EFA5A4400EA46AF /* [CP] Embed Pods Frameworks */ = {
@@ -1508,9 +1527,25 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-AJCloudAdmin/Pods-AJCloudAdmin-resources.sh",
+				"${PODS_ROOT}/AVOSCloud/AVOS/AVOSCloud/AVOSCloud_Art.inc",
+				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
+				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
+				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/AutoLocation/city.plist",
+				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/AutoLocation/close_location@2x.png",
+				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/AutoLocation/CTLocationViewController.xib",
+				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/AutoLocation/toTop@2x.png",
+				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/AlbumCollectionViewCell.xib",
+				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/album_down.png",
+				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/camera_album@2x.png",
+				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/max_warinig.png",
+				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/selected_album@2x.png",
+				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/unselected_album@2x.png",
+				"${PODS_ROOT}/UMengUShare/UShareSDK/UMSocialSDK/UMSocialSDKPromptResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1523,13 +1558,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AJCloud-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		BA0E84D335A0E5296CF9A670 /* [CP] Embed Pods Frameworks */ = {

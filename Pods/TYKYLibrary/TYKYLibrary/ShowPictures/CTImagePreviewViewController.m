@@ -153,7 +153,7 @@ static CTImagePreviewViewController *imageShowInstance = nil;
         [scrView addSubview:imgView];
     }else{
         CTLazyImageView *imgView = [[CTLazyImageView alloc] initWithFrame:scrView.frame];
-        [imgView loadImageFromURLString:self.dataArray[indexPath.item]];
+        [imgView loadFullScreenImage:self.dataArray[indexPath.item]];
         imgView.tag = indexPath.item+1000;
         [scrView addSubview:imgView];
     }

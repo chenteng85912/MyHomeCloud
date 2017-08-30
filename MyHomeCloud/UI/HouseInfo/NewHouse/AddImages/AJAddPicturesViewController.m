@@ -239,6 +239,9 @@
         [self.view showTips:@"最多上传12张图片" withState:TYKYHUDModeWarning complete:nil];
         return;
     }
+    if (![[CTSavePhotos new] checkAuthorityOfAblum]) {
+        return;
+    }
     CTCustomAlbumViewController *album = [CTCustomAlbumViewController new];
     album.delegate = self;
     album.totalNum = 12 - temp.count;

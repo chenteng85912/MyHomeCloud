@@ -41,9 +41,6 @@
     [super viewDidLoad];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
 
-    if (![[CTSavePhotos new] checkAuthorityOfAblum]) {
-        return;
-    }
     [self initCollectionView];//初始化相册
     [self initAlbumGroupData];//初始化相册列表
     [self initNavigationItem];//初始化导航栏按钮

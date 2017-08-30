@@ -8,7 +8,7 @@
 #define  DEVICE_HEIGHT   [[UIScreen mainScreen] bounds].size.height
 #define  DEVICE_WIDTH    [[UIScreen mainScreen] bounds].size.width
 
-CGFloat const  TITLE_SCALE = 0.1;
+CGFloat const  TITLE_SCALE = 0.2;
 
 #define  TITILE_FONT  DEVICE_WIDTH==320?13:15
 

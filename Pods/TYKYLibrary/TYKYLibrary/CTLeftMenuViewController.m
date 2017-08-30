@@ -157,7 +157,8 @@
         self.backView.alpha = 0.4;
         
     }];
-    
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
+
     self.isShowMenu = YES;
 }
 
@@ -165,7 +166,7 @@
  *  展示主界面
  */
 - (void)showHome {
-    
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
     [UIView animateWithDuration:0.5 animations:^{
         
         [UIView setAnimationBeginsFromCurrentState:YES];

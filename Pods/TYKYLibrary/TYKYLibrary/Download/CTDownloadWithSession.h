@@ -8,6 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSInteger,ImageDownloadState) {
+    WaitingDownloadState,      //准备下载
+    DownloadingState,          //正在下载
+    DownloadSuccessState,      //下载成功
+    DownloadFailState          //下载失败
+
+};
+
 @protocol TJSessionDownloadToolDelegate <NSObject>
 
 //发送下载进度
@@ -23,8 +31,8 @@
 @property (nonatomic, weak) id<TJSessionDownloadToolDelegate>delegate;
 @property (nonatomic, strong) NSString *percentStr; //下载进度百分比
 @property (nonatomic, strong) NSString *filePath;   //下载完成后存入的本地路径
-@property (nonatomic, strong) NSString *urlStr;
-@property (nonatomic, strong) NSNumber *state;//0未下载 1正在下载 2下载成功 3下载失败
+@property (nonatomic, strong) NSString *urlStr;     //下载链接
+@property (nonatomic, assign) ImageDownloadState downloadState;
 
 /**
  *  传入下载地址 实例化下载对象

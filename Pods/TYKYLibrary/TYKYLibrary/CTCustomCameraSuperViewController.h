@@ -26,6 +26,7 @@
 @property (strong, nonatomic) AVCaptureVideoPreviewLayer* previewLayer;
 @property (strong, nonatomic) AVCaptureDevice *device;
 @property (strong, nonatomic) UIView *templateView;//摄像头界面模板
+@property (strong, nonatomic) NSString *sessionPreset;//分辨率
 
 @property (weak, nonatomic)id <TJCameraViewDelegate>delegate;
 @property (assign, nonatomic) BOOL isFrontCamera;//是否前置摄像头
