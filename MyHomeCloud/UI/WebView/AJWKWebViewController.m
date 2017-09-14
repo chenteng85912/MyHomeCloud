@@ -25,7 +25,7 @@
     [self.view addSubview:self.wkWebView];
     [self.view addSubview:self.progressView];
     
-    self.navigationItem.titleView = [[CTAutoRunLabel alloc] initWithFrame:CGRectMake(0, 0, dWidth-180, 44) labelText:self.title font:16 textColor:[UIColor whiteColor] speed:2];
+    self.navigationItem.titleView = [[CTAutoRunLabel alloc] initWithFrame:CGRectMake(0, 0, dWidth-120, 44) labelText:self.title font:16 textColor:[UIColor whiteColor] speed:2];
 
     [self makeLeftCloseBtn];
     

@@ -131,9 +131,9 @@ CGFloat const PICKVIEW_HEIGHT = 200.0;
 }
 
 - (void)comfirnAction{
-    
-    [self resignFirstResponder];
     [super resignFirstResponder];
+
+    [self resignFirstResponder];
     
 }
 - (void)dateChanged:(UIDatePicker *)sender{

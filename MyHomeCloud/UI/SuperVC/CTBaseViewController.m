@@ -47,7 +47,6 @@
         self.navigationItem.leftBarButtonItem = nil;
         
     }else{
-        UIButton *left = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
         UIImage *backImg = LOADIMAGE(@"close");
         if (self.navigationController.viewControllers.count>1) {
             backImg = LOADIMAGE(@"back");
@@ -55,11 +54,8 @@
                 backImg = LOADIMAGE(@"close");
             }
         }
-        [left setImage:backImg forState:UIControlStateNormal];
-        left.imageEdgeInsets = UIEdgeInsetsMake(0, -5, 0, 5);
+         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:backImg style:UIBarButtonItemStyleDone target:self action:@selector(backToPreVC)];
 
-        [left addTarget:self action:@selector(backToPreVC) forControlEvents:UIControlEventTouchUpInside];
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:left];
     }
 }
 
