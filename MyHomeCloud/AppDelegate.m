@@ -14,6 +14,7 @@
 #import "AJUserCenterViewController.h"
 #import <Bugly/Bugly.h>//崩溃分析
 #import <UMSocialCore/UMSocialCore.h>//友盟集成 微信分享
+#import  <iflyMSC/IFlySpeechUtility.h>
 
 NSString *const AVOSCloudID = @"Q4xx9Pczn6UbtkFQttUzGfOV-gzGzoHsz";
 NSString *const AVOSCloudKey = @"YUlG0aQ4gwl7DcuwopUraSnz";
@@ -38,7 +39,8 @@ NSString *const UMWEIXINAPPSECRET = @"1b701ce273624810d0f55296f19cd384";
         [SVProgressHUD setFadeOutAnimationDuration:0.3];
         [SVProgressHUD setOffsetFromCenter:UIOffsetMake(0, 30)];
     }
-    
+    [IFlySpeechUtility createUtility:@"appid=58638772"];
+
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     

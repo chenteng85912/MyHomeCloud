@@ -213,4 +213,13 @@
     NSPredicate *pre = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", pswRegex];
     return [pre evaluateWithObject:password];
 }
+
+//移除搜索框边框
++ (void)removeSearchBorder:(UISearchBar *)searchBar{
+    for (UIView *subview in [[searchBar.subviews firstObject] subviews]) {
+        if ([subview isKindOfClass:NSClassFromString(@"UISearchBarBackground")]) {
+            [subview removeFromSuperview];
+        }
+    }
+}
 @end

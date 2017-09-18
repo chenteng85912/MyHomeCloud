@@ -53,4 +53,7 @@
 //密码正则验证
 + (BOOL)isValidatePassword:(NSString *)password;
 
+//移除搜索框边框
++ (void)removeSearchBorder:(UISearchBar *)searchBar;
+
 @end
