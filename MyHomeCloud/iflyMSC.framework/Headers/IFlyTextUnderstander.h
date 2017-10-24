@@ -29,7 +29,7 @@ typedef void(^IFlyUnderstandTextCompletionHandler)(NSString* result, IFlySpeechE
 @property (readonly, atomic) __block  BOOL isUnderstanding;
 
 /*!
- *  文本转语义接口<br>
+ *  文本转语义接口
  *  输入文本内容，获取语义理解结果
  *
  *  @param text              输入的文本内容
