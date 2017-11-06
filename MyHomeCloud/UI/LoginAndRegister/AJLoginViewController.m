@@ -44,7 +44,7 @@ NSString *const USER_ONLINE = @"该用户已在别处登录";
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
-    self.edgesForExtendedLayout = UIRectEdgeNone;
+//    self.edgesForExtendedLayout = UIRectEdgeNone;
 //    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
 
 }
@@ -128,7 +128,7 @@ NSString *const USER_ONLINE = @"该用户已在别处登录";
     
 }
 -(void)goRegisterAction{
-    [CTTool showKeyWindowHUD:@"正在注册..."];
+    [self.view showHUD:@"正在注册..."];
     AVUser *user = [AVUser user];
     user.username = [_userNameTF.text stringByReplacingOccurrencesOfString:@" " withString:@""];
     user.password =  _pswTF.text;
@@ -137,7 +137,7 @@ NSString *const USER_ONLINE = @"该用户已在别处登录";
     user[USER_NICKNAME] = @"游客";
     WeakSelf;
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        [CTTool removeKeyWindowHUD];
+        [self.view removeHUD];
 
         if (succeeded) {
             [[UIApplication sharedApplication].keyWindow showTips:@"注册成功" withState:TYKYHUDModeSuccess complete:^{
@@ -160,10 +160,11 @@ NSString *const USER_ONLINE = @"该用户已在别处登录";
     }];
 }
 - (void)goLoginAction{
-    [CTTool showKeyWindowHUD:@"正在登录..."];
 
+    [self.view showHUD:@"正在登录..."];
     [AVUser logInWithUsernameInBackground:[_userNameTF.text stringByReplacingOccurrencesOfString:@" " withString:@""] password:self.pswTF.text block:^(AVUser *user, NSError *error) {
-        [CTTool removeKeyWindowHUD];
+        
+        [self.view removeHUD];
         [MyUserDefaults setObject:self.userNameTF.text forKey:USER_NAME];
         if (user) {
             [self.keyChainWrapper setObject:_userNameTF.text forKey:(id)kSecAttrAccount];

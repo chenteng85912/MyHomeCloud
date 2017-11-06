@@ -200,9 +200,9 @@
             }
             [self.delegate sendPicture:image andImageName:[NSString stringWithFormat:@"%.f",[[NSDate new] timeIntervalSince1970]]];
         }
-        if ([[CTSavePhotos new] checkAuthorityOfAblum]) {
+        if ([CTSavePhotos checkAuthorityOfAblum]) {
             //存入相册
-            [[CTSavePhotos new] saveImageIntoAlbum:image];
+            [CTSavePhotos saveImageIntoAlbum:image];
         }
 
     }];

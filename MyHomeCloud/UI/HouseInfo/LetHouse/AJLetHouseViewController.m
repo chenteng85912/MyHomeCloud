@@ -25,6 +25,8 @@
 
     if (self.showModal==SearchHouseModal||self.showModal==AllHouseModal) {
         self.navigationItem.titleView = self.searchBar;
+        [CTTool removeSearchBorder:self.searchBar];
+
     }else{
         if (self.showModal==MyHouseModal||self.showModal==UserFavoriteModal) {
             

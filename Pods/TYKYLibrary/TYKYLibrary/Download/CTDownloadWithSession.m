@@ -95,7 +95,7 @@ didFinishDownloadingToURL:(NSURL *)location
    [[NSFileManager defaultManager] moveItemAtPath:location.path toPath:self.filePath error:nil];
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        [GCDOpereaton removeDownloadTool:self.urlStr];
+        [CTDownloadGCDOperation removeDownloadTool:self.urlStr];
         if ([self.delegate respondsToSelector:@selector(downLoadedSuccessOrFail:withUrl:)]) {
             [self.delegate downLoadedSuccessOrFail:YES withUrl:self.urlStr];
         }

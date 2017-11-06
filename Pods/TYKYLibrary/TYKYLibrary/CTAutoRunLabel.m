@@ -19,6 +19,7 @@
                     labelText:(NSString *)text
                          font:(CGFloat)fontSize
                     textColor:(UIColor *)textColor
+                textAlignment:(NSTextAlignment)textAlignment
                         speed:(NSInteger)speedNum
 {
     self = [super initWithFrame:frame];
@@ -28,6 +29,7 @@
         self.contentLabel.text = text;
         self.contentLabel.font = [UIFont systemFontOfSize:fontSize?fontSize:15];
         self.contentLabel.textColor = textColor?textColor:[UIColor blackColor];
+        self.contentLabel.textAlignment = textAlignment?textAlignment:NSTextAlignmentCenter;
         self.displayLink.frameInterval = speedNum?speedNum:2;
         if (text) {
             [self calucateLabelLenght];

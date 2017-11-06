@@ -14,48 +14,35 @@
 NSString *const ROOT_APP_STORE  =  @"http://itunes.apple.com/lookup?id=%@"; //获取应用相关信息的地址
 NSString *const APP_STORE_URL  = @"itms-apps://itunes.apple.com/cn/app/id%@?mt=8";//苹果商店跳转地址
 
-static CTVersionAutoUpdate *version;
-
 @interface CTVersionAutoUpdate ()<SKStoreProductViewControllerDelegate>
 @property (assign, nonatomic) OpenStoreStyle storeStyle;
 @property (strong, nonatomic) NSString *appId;
 
 @end
 @implementation CTVersionAutoUpdate
-+ (CTVersionAutoUpdate *)sharedVersion
+
+static CTVersionAutoUpdate *VERSION = nil;
+
++ (void)sharedVersion
 {
-    @synchronized(self){
-        static dispatch_once_t pred;
-        dispatch_once(&pred, ^{
-            version = [[self alloc] init];
-            
-        });
-    }
-    
-    return version;
-}
-+ (instancetype)allocWithZone:(struct _NSZone *)zone
-{
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        version = [super allocWithZone:zone];
+    static dispatch_once_t pred;
+    dispatch_once(&pred, ^{
+        VERSION = [[self alloc] init];
+        
     });
-    return version;
-}
-- (id)copyWithZone:(NSZone *)zone
-{
-    return version;
+    
 }
 
 //版本更新
-- (void)checkAppStoreVersion:(NSString *)appId openStoreStyle:(OpenStoreStyle)showStyle{
++ (void)checkAppStoreVersion:(NSString *)appId openStoreStyle:(OpenStoreStyle)showStyle{
     if (!appId&&[appId isEqualToString:@""]) {
         return;
     }
-    version.storeStyle = showStyle;
-    version.appId = appId;
+    [self sharedVersion];
+    VERSION.storeStyle = showStyle;
+    VERSION.appId = appId;
     NSString *appUrl = [NSString stringWithFormat:ROOT_APP_STORE,appId];
-    [[CTRequest new] sendGetRequestWithUrl:appUrl complete:^(NSError *error, NSDictionary *objectDic) {
+    [CTRequest sendGetRequestWithUrl:appUrl complete:^(NSError *error, NSDictionary *objectDic) {
         if (error) {
             return;
             
@@ -68,7 +55,7 @@ static CTVersionAutoUpdate *version;
    
 }
 //版本号比对
-- (void)checkVersionInfo:(NSDictionary *)versionDic{
++ (void)checkVersionInfo:(NSDictionary *)versionDic{
     NSArray *verArray = versionDic[@"results"];
     if (verArray.count==0) {
         return;
@@ -108,54 +95,50 @@ static CTVersionAutoUpdate *version;
         [self openAPPStore];
        
     }
-    
 }
 
-
 //打开苹果商店
-- (void)openAPPStore{
++ (void)openAPPStore{
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"有新版本可以更新哦!" preferredStyle:UIAlertControllerStyleAlert];
     
     [alert addAction:[UIAlertAction actionWithTitle:@"下次吧" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
     }]];
     [alert addAction:[UIAlertAction actionWithTitle:@"去更新" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        if (version.storeStyle==OpenAppStoreInApp) {
+        if (VERSION.storeStyle==OpenAppStoreInApp) {
             [self openAppStoreInApp];
             return;
         }
-        NSURL *appUrl = [NSURL URLWithString:[NSString stringWithFormat:APP_STORE_URL,version.appId]];
+        NSURL *appUrl = [NSURL URLWithString:[NSString stringWithFormat:APP_STORE_URL,VERSION.appId]];
         if ([[UIApplication sharedApplication] canOpenURL:appUrl]) {
             [[UIApplication sharedApplication] openURL:appUrl];
+            VERSION = nil;
         }
         
     }]];
-    UIViewController *rootVC = [self getVisibleViewControllerFrom:[UIApplication sharedApplication].keyWindow.rootViewController];
-    if (rootVC) {
-        [rootVC presentViewController:alert animated:YES completion:nil];
-    }
+
+    [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alert animated:YES completion:nil];
+    
 }
 
 //应用内部打开苹果商店 真机调试
-- (void)openAppStoreInApp{
++ (void)openAppStoreInApp{
     
     SKStoreProductViewController *storeProductViewContorller = [[SKStoreProductViewController alloc] init];
-    storeProductViewContorller.delegate = self;
+    storeProductViewContorller.delegate = VERSION;
     
     //加载一个新的视图展示
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         [storeProductViewContorller loadProductWithParameters:
          //appId
-         @{SKStoreProductParameterITunesItemIdentifier: version.appId } completionBlock:^(BOOL result, NSError *error) {
+         @{SKStoreProductParameterITunesItemIdentifier: VERSION.appId } completionBlock:^(BOOL result, NSError *error) {
              dispatch_async(dispatch_get_main_queue(), ^{
                 if(error){
                      return ;
                  }
                  //AS应用界面
-                 UIViewController *rootVC = [self getVisibleViewControllerFrom:[UIApplication sharedApplication].keyWindow.rootViewController];
-                 if (rootVC) {
-                     [rootVC presentViewController:storeProductViewContorller animated:YES completion:nil];
-                 }
+                 [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:storeProductViewContorller animated:YES completion:nil];
+                 
              });
              
          }];
@@ -165,20 +148,9 @@ static CTVersionAutoUpdate *version;
 //取消苹果商店
 #pragma mark SKStoreProductViewControllerDelegate
 - (void)productViewControllerDidFinish:(SKStoreProductViewController *)viewController{
-    [viewController dismissViewControllerAnimated:YES completion:nil];
+    [viewController dismissViewControllerAnimated:YES completion:^{
+        VERSION = nil;
+    }];
 }
 
-- (UIViewController *)getVisibleViewControllerFrom:(UIViewController*)vc {
-    if ([vc isKindOfClass:[UINavigationController class]]) {
-        return [self getVisibleViewControllerFrom:[((UINavigationController*) vc) visibleViewController]];
-    }else if ([vc isKindOfClass:[UITabBarController class]]){
-        return [self getVisibleViewControllerFrom:[((UITabBarController*) vc) selectedViewController]];
-    } else {
-        if (vc.presentedViewController) {
-            return [self getVisibleViewControllerFrom:vc.presentedViewController];
-        } else {
-            return vc;
-        }
-    }
-}
 @end

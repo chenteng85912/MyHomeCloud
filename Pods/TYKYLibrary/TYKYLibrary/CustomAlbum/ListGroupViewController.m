@@ -21,6 +21,8 @@ static NSString *identify = @"albumTable";
     UITableView *tbView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStyleGrouped];
     tbView.delegate = self;
     tbView.dataSource = self;
+    tbView.estimatedSectionHeaderHeight=0;
+    tbView.estimatedSectionFooterHeight=0;
     self.TbView = tbView;
     
     [self.view addSubview:tbView];

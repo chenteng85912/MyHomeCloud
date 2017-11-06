@@ -14,12 +14,6 @@
 //导航栏加边框文字按钮
 + (UIButton *)makeCustomRightBtn:(NSString *)title target:(id)target sel:(SEL)actionName;
 
-//等待提示
-+ (void)showKeyWindowHUD:(NSString *)msg;
-
-//移除提示
-+ (void)removeKeyWindowHUD;
-
 //封装明杰刷新
 + (MJRefreshNormalHeader *)makeMJRefeshWithTarget:(id)root andMethod:(SEL)methodName;
 
@@ -52,5 +46,8 @@
 
 //密码正则验证
 + (BOOL)isValidatePassword:(NSString *)password;
+
+//移除搜索框边框
++ (void)removeSearchBorder:(UISearchBar *)searchBar;
 
 @end

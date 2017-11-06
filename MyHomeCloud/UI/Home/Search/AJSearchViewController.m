@@ -11,9 +11,11 @@
 #import "AJLetHouseViewController.h"
 #import "AJNewHouseViewController.h"
 #import "AJSearchTableViewCell.h"
+#import "AJSearchBar.h"
+#import "AJflyVoice.h"
 
-@interface AJSearchViewController ()
-@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@interface AJSearchViewController ()<AJSearchBarDelegate,AJflyVoiceDelegate>
+@property (weak, nonatomic) IBOutlet AJSearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UIView *typeView;//二手房 租房 新房
 @property (weak, nonatomic) IBOutlet UITableView *tbView;//搜索列表
 @property (weak, nonatomic) IBOutlet UIView *backView;
@@ -21,6 +23,7 @@
 
 @property (strong, nonatomic) UIButton *typeBtn;
 @property (strong, nonatomic) NSMutableArray *searchArray;
+@property (strong, nonatomic) AJflyVoice *flyVoice;
 
 @end
 
@@ -30,6 +33,11 @@
     [super viewDidLoad];
 
     self.navigationItem.titleView = self.searchBar;
+    self.searchBar.flyDelegate = self;
+    [CTTool removeSearchBorder:self.searchBar];
+    
+    _flyVoice = [[AJflyVoice alloc] initIflyVoiceWithDelegate:self];
+
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.typeBtn];
     [_tbView registerNib:[UINib nibWithNibName:NSStringFromClass([AJSearchTableViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([AJSearchTableViewCell class])];
     
@@ -233,13 +241,20 @@
     [UIView animateWithDuration:duration.doubleValue animations:^{
         [UIView setAnimationBeginsFromCurrentState:YES];
         [UIView setAnimationCurve:[curve intValue]];
-        if (keyBoardEndY<dHeight) {
-            _tbView.frame = CGRectMake(0, 0, dWidth, keyBoardEndY-64);
-        }
+        _tbView.frame = CGRectMake(0, 0, dWidth, keyBoardEndY-64);
         
     }];
 }
+#pragma mark AJflyVoiceDelegate
+- (void)sendVoiceText:(NSString *)content{
+    self.searchBar.text = content;
+    [self showHouseList:_searchBar.text];
 
+}
+#pragma mark AJSearchBarDelegate
+- (void)showIflyView{
+    [_flyVoice startIfly];
+}
 - (UIButton *)typeBtn{
     if (_typeBtn ==nil) {
         _typeBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 30)];

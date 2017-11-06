@@ -7,46 +7,39 @@
 //
 
 #import "CTSavePhotos.h"
-#import <AssetsLibrary/AssetsLibrary.h>
 #import <AVFoundation/AVFoundation.h>
 #import "UIAlertController+CTAlertBlock.h"
 
 @interface CTSavePhotos ()
 @property (strong, nonatomic) ALAssetsLibrary *library;
 @property (strong, nonatomic) NSString *APPNAME;
+
 @end
+
 @implementation CTSavePhotos
 
-/** 懒加载 只创建一次library对象 */
-- (ALAssetsLibrary *)library
-{
-    if (!_library) {
-        _library = [[ALAssetsLibrary alloc] init];
-    }
-    
-    return _library;
-}
+static CTSavePhotos *instance = nil;
 
-//获取项目名称 作为相册分类
-- (NSString *)APPNAME{
-    if (!_APPNAME) {
-        NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
-
-        _APPNAME = [infoDictionary objectForKey:@"CFBundleDisplayName"];
-    }
-    return _APPNAME;
++ (CTSavePhotos *)sigtonInstance {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        instance = [[CTSavePhotos alloc] init];
+    });
+    return instance;
 }
 
 //保存图片到相册 自定义分类名称
-- (void)saveImageIntoAlbum:(UIImage *)image{
++ (void)saveImageIntoAlbum:(UIImage *)image{
     
-    __weak CTSavePhotos *weakSelf = self;
+    instance = [self sigtonInstance];
+    
+    __weak CTSavePhotos *weakSelf = instance;
     
     //图片库
-    __weak ALAssetsLibrary *weakLibrary = self.library;
+    __weak ALAssetsLibrary *weakLibrary = instance.library;
     
     //创建自定义的相册
-    [weakLibrary addAssetsGroupAlbumWithName:weakSelf.APPNAME resultBlock:^(ALAssetsGroup *group) {
+    [weakLibrary addAssetsGroupAlbumWithName:instance.APPNAME resultBlock:^(ALAssetsGroup *group) {
 
         if (group) {
             //新创建的文件夹
@@ -80,16 +73,21 @@
 }
 
 /** 添加一张图片到某个文件夹中 */
-- (void)addImageToGroup:(ALAssetsGroup *)group withImage:(UIImage *)image
++ (void)addImageToGroup:(ALAssetsGroup *)group withImage:(UIImage *)image
 {
-    
+    instance = [self sigtonInstance];
+
     //添加图片到相机胶卷 (因为要先存到全部的相片里面. 在根据对应的assetURL)
-    [ self.library writeImageToSavedPhotosAlbum:image.CGImage metadata:nil completionBlock:^(NSURL *assetURL, NSError *error) {
+    [instance.library writeImageToSavedPhotosAlbum:image.CGImage metadata:nil completionBlock:^(NSURL *assetURL, NSError *error) {
         // asset就是一张照片
-        [self.library assetForURL:assetURL resultBlock:^(ALAsset *asset) {
+        [instance.library assetForURL:assetURL resultBlock:^(ALAsset *asset) {
             //将照片保存到自定的文件夹中
-        
-            [group addAsset:asset];
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                
+                [group addAsset:asset];
+               
+            }];
+          
             
         } failureBlock:nil];
         
@@ -98,7 +96,8 @@
 }
 
 //检测相册权限
-- (BOOL)checkAuthorityOfAblum{
++ (BOOL)checkAuthorityOfAblum{
+
     ALAuthorizationStatus author = [ALAssetsLibrary authorizationStatus];
     if (author == ALAuthorizationStatusRestricted || author == ALAuthorizationStatusDenied){
         //无权限
@@ -110,11 +109,12 @@
     return YES;
 }
 //检测相机权限
-- (BOOL)checkAuthorityOfCamera{
++ (BOOL)checkAuthorityOfCamera{
     if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         NSLog(@"没有可调用的相机");
         return NO;
     }
+
     NSString *mediaType = AVMediaTypeVideo;
     AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:mediaType];
     if(authStatus == ALAuthorizationStatusRestricted || authStatus == ALAuthorizationStatusDenied){
@@ -129,7 +129,7 @@
    
 }
 //弹出前往设置提示
-- (void)showAlertWithMessage:(NSString *)msg{
++ (void)showAlertWithMessage:(NSString *)msg{
     [UIAlertController alertWithTitle:@"温馨提示" message:msg cancelButtonTitle:@"取消" otherButtonTitles:@[@"前往设置"] preferredStyle:UIAlertControllerStyleAlert block:^(NSInteger buttonIndex) {
         if (buttonIndex==1) {
             NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
@@ -139,4 +139,25 @@
         }
     }];
 }
+
+/** 懒加载 只创建一次library对象 */
+- (ALAssetsLibrary *)library
+{
+    if (!_library) {
+        _library = [[ALAssetsLibrary alloc] init];
+    }
+    
+    return _library;
+}
+
+//获取项目名称 作为相册分类
+- (NSString *)APPNAME{
+    if (!_APPNAME) {
+        NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+        
+        _APPNAME = [infoDictionary objectForKey:@"CFBundleDisplayName"];
+    }
+    return _APPNAME;
+}
+
 @end

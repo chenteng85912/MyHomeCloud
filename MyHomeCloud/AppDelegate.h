@@ -21,6 +21,5 @@
 //更新消息角标
 - (void)updateMessageNumbers:(NSInteger)badgeNum;
 
-@property (assign, nonatomic) BOOL isSVPHUD;
 @end
 

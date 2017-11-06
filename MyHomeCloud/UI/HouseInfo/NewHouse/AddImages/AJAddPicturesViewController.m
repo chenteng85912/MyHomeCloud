@@ -118,20 +118,20 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    NSMutableArray *show = [NSMutableArray new];
+    NSMutableArray *showArray = [NSMutableArray new];
     NSMutableArray *selArray = self.dataArray[indexPath.section];
     
     for (AJUploadPicModel *modal in selArray) {
         UIImage *img = [UIImage imageWithData:modal.picFile.getData];
         if (img) {
-            [show addObject:img];
+            [showArray addObject:img];
         }else if(modal.picUrl){
-            [show addObject:modal.picUrl];
+            [showArray addObject:modal.picUrl];
 
         }
     }
     
-    [[CTImagePreviewViewController defaultShowPicture] showPictureWithUrlOrImages:show withCurrentPageNum:indexPath.row andRootViewController:self];
+    [CTImagePreviewViewController showPictureWithUrlOrImages:showArray withCurrentPageNum:indexPath.row];
 }
 
 //动态设置每个Item的尺寸大小
@@ -239,14 +239,13 @@
         [self.view showTips:@"最多上传12张图片" withState:TYKYHUDModeWarning complete:nil];
         return;
     }
-    if (![[CTSavePhotos new] checkAuthorityOfAblum]) {
+    if (![CTSavePhotos checkAuthorityOfAblum]) {
         return;
     }
-    CTCustomAlbumViewController *album = [CTCustomAlbumViewController new];
-    album.delegate = self;
-    album.totalNum = 12 - temp.count;
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:album];
-    [self presentViewController:nav animated:YES completion:nil];
+    [CTCustomAlbumViewController showCustomeAlbumWithDelegate:self
+                                                 oldImagesDic:nil
+                                                totalImageNum:12-temp.count];
+    
 }
 #pragma  mark - CTCustomAlbumViewControllerDelegate
 //传出图片字典，key为图片名称，value为对应的图片

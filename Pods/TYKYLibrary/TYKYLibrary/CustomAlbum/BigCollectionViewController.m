@@ -7,6 +7,7 @@
 
 #import "BigCollectionViewController.h"
 #import <AssetsLibrary/AssetsLibrary.h>
+#import "ALAsset+HEIC_TO_JPEG.h"
 
 #define Device_height   [[UIScreen mainScreen] bounds].size.height
 #define Device_width    [[UIScreen mainScreen] bounds].size.width
@@ -138,7 +139,8 @@
     ALAsset *asset = self.dataArray[btn.tag];
     
     //图片名称
-    NSString *imgName = asset.defaultRepresentation.filename;
+    NSString *imgName = [asset imageName];
+    
     if ([self.selectDic.allKeys containsObject:imgName]) {
         UIImage *img = self.selectDic[imgName];
         [self.imgArray removeObject:img];
@@ -151,7 +153,8 @@
             [self showWaringView];
             return;
         }
-        [self.selectDic setObject:[UIImage imageWithCGImage:asset.defaultRepresentation.fullScreenImage] forKey:imgName];
+        [self.selectDic setObject:[asset changePhotoHEICImageToJPEG] forKey:imgName];
+
         [self.imgArray addObject:self.selectDic[imgName]];
 
         [self showAnimation:btn];

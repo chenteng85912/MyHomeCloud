@@ -86,11 +86,10 @@
 
 @interface CTTouchIDAuthorize : NSObject
 
-@property (nonatomic, weak) id<CT_TouchID_Delegate> delegate;
 /**
  *
  *  发起指纹验证：
  */
-- (void)startCT_TouchID_WithMessage:(NSString *)message FallBackTitle:(NSString *)fallBackTitle Delegate:(id<CT_TouchID_Delegate>)delegate;
++ (void)startCT_TouchID_WithMessage:(NSString *)message FallBackTitle:(NSString *)fallBackTitle Delegate:(id<CT_TouchID_Delegate>)delegate;
 
 @end

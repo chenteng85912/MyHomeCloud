@@ -18,15 +18,19 @@ NSInteger const maxDownloadingNum = 99;
 
 @property (strong, nonatomic) NSLock *uploadLock;//同步锁
 
-@end
+//待上传队列
+@property (strong, nonatomic) NSMutableDictionary <NSString *,CTDownloadWithSession*> *prepareDownloadArray;
+//正在上传的队列
+@property (strong, nonatomic) NSMutableDictionary <NSString *,CTDownloadWithSession *> *downloadingArray;
 
-static CTDownloadGCDOperation *downLoadGCD = nil;
+@end
 
 @implementation CTDownloadGCDOperation
 
 //使用dispatch_once改进单例模式
 + (CTDownloadGCDOperation *) Instance{
-    
+    static CTDownloadGCDOperation *downLoadGCD = nil;
+
     static dispatch_once_t predicate;
     dispatch_once(&predicate, ^{
         downLoadGCD = [self new];
@@ -38,48 +42,40 @@ static CTDownloadGCDOperation *downLoadGCD = nil;
     });
     return downLoadGCD;
 }
-
-+ (instancetype)allocWithZone:(struct _NSZone *)zone
-{
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        downLoadGCD = [super allocWithZone:zone];
-    });
-    return downLoadGCD;
++ (NSMutableDictionary <NSString *,CTDownloadWithSession*> *)prepareDownloadArray{
+    return [self Instance].prepareDownloadArray;
 }
-
-- (id)copyWithZone:(NSZone *)zone
-{
-    return downLoadGCD;
++ (NSMutableDictionary <NSString *,CTDownloadWithSession*> *)downloadingArray{
+    return [self Instance].downloadingArray;
 }
 //开始分配上传任务
-- (void)startDownload{
++ (void)startDownload{
     
-    if (downLoadGCD.prepareDownloadArray.count==0) {
+    if ([self Instance].prepareDownloadArray.count==0) {
         return;
     }
     
-    NSInteger totalNum = downLoadGCD.prepareDownloadArray.count + downLoadGCD.downloadingArray.count;
+    NSInteger totalNum = [self Instance].prepareDownloadArray.count + [self Instance].downloadingArray.count;
 
     if (totalNum<maxDownloadingNum) {
-        [downLoadGCD addNewDownloadingQueue:totalNum];
+        [self addNewDownloadingQueue:totalNum];
 
     }else{
-        [downLoadGCD addNewDownloadingQueue:maxDownloadingNum];
+        [self addNewDownloadingQueue:maxDownloadingNum];
 
     }
 
 }
 //添加新的上传任务
-- (void)addNewDownloadingQueue:(NSInteger)startNum{
++ (void)addNewDownloadingQueue:(NSInteger)startNum{
 
-    [downLoadGCD.prepareDownloadArray enumerateKeysAndObjectsWithOptions:NSEnumerationReverse usingBlock:^(NSString * _Nonnull key, CTDownloadWithSession * _Nonnull obj, BOOL * _Nonnull stop) {
+    [[self Instance].prepareDownloadArray enumerateKeysAndObjectsWithOptions:NSEnumerationReverse usingBlock:^(NSString * _Nonnull key, CTDownloadWithSession * _Nonnull obj, BOOL * _Nonnull stop) {
         
-        [downLoadGCD.downloadingArray setObject:obj forKey:obj.urlStr];
-        [downLoadGCD.prepareDownloadArray removeObjectForKey:key];
+        [[self Instance].downloadingArray setObject:obj forKey:obj.urlStr];
+        [[self Instance].prepareDownloadArray removeObjectForKey:key];
         
-        if (downLoadGCD.downloadingArray.count==startNum) {
-            [downLoadGCD addDownloadingQueue];
+        if ([self Instance].downloadingArray.count==startNum) {
+            [self addDownloadingQueue];
             *stop = YES;
         }
        
@@ -87,58 +83,58 @@ static CTDownloadGCDOperation *downLoadGCD = nil;
     
 }
 //添加下载任务
-- (void)addDownloadingQueue{
++ (void)addDownloadingQueue{
     
-    for (CTDownloadWithSession  *upload in downLoadGCD.downloadingArray.allValues) {
+    for (CTDownloadWithSession  *upload in [self Instance].downloadingArray.allValues) {
         if (upload.downloadState==WaitingDownloadState) {
             
-            void (^task)() = ^{
+            void (^task)(void) = ^{
                 [upload startDownload];
                 
             };
-            dispatch_async(downLoadGCD.uploadQueue, task);
+            dispatch_async([self Instance].uploadQueue, task);
             
         }
     }
 }
 //清空所有下载队列
-- (void)clearAllDownloadQueue{
++ (void)clearAllDownloadQueue{
     
-    for (CTDownloadWithSession *upload in downLoadGCD.downloadingArray.allValues) {
+    for (CTDownloadWithSession *upload in [self Instance].downloadingArray.allValues) {
         if (upload.downloadState==DownloadingState) {
             [upload cancelDownload];
 
         }
     }
-    [downLoadGCD.downloadingArray removeAllObjects];
-    [downLoadGCD.prepareDownloadArray removeAllObjects];
+    [[self Instance].downloadingArray removeAllObjects];
+    [[self Instance].prepareDownloadArray removeAllObjects];
 }
 
 //下载失败的 重新下载
-- (void)downLoadAgain:(NSString *)fileUrl{
-    [downLoadGCD.downloadingArray enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, CTDownloadWithSession * _Nonnull obj, BOOL * _Nonnull stop) {
++ (void)downLoadAgain:(NSString *)fileUrl{
+    [[self Instance].downloadingArray enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, CTDownloadWithSession * _Nonnull obj, BOOL * _Nonnull stop) {
         if (obj.downloadState==DownloadFailState&&[obj.urlStr isEqualToString:fileUrl]) {
-            void (^task)() = ^{
+            void (^task)(void) = ^{
                 [obj startDownload];
                 
             };
-            dispatch_async(downLoadGCD.uploadQueue, task);
+            dispatch_async([self Instance].uploadQueue, task);
         }
     }];
 }
 //下载成功后 移除某个下载队列
-- (void)removeDownloadTool:(NSString *)fileUrl{
++ (void)removeDownloadTool:(NSString *)fileUrl{
     if (!fileUrl) {
         return;
     }
     
-    [downLoadGCD.uploadLock lock];
+    [[self Instance].uploadLock lock];
     
-    [downLoadGCD.downloadingArray removeObjectForKey:fileUrl];
+    [[self Instance].downloadingArray removeObjectForKey:fileUrl];
    
-    [downLoadGCD startDownload];
+    [self  startDownload];
     
-    [downLoadGCD.uploadLock unlock];
+    [[self Instance].uploadLock unlock];
 }
 
 @end

@@ -17,7 +17,7 @@
 
 @interface AJUserHouseViewController ()
 
-@property (strong, nonatomic) CTPageController *pageVC;
+@property (strong, nonatomic) CTCustomePageController *pageVC;
 @property (assign, nonatomic) NSInteger currentPageNum;
 
 @end
@@ -143,9 +143,9 @@
     [self.view addSubview:self.pageVC.view];
 
 }
-- (CTPageController *)pageVC{
+- (CTCustomePageController *)pageVC{
     if (_pageVC==nil) {
-        _pageVC = [CTPageController new];
+        _pageVC = [CTCustomePageController new];
         _pageVC.selectedColor = NavigationBarColor;
         _pageVC.lineShowMode = UnderShowMode;
         [self addChildViewController:_pageVC];

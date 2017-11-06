@@ -13,39 +13,41 @@ NSInteger const tipViewTag = 12345678;
 
 @implementation UIView (TYKYPrompt)
 //展示文字
-- (void)showText:(NSString *)msg complete:(void(^)(void))handleComplete{
+- (void)showText:(NSString *)msg complete:(dispatch_block_t)handleComplete{
     
-    if ([APPDELEGATE isSVPHUD]) {
-        [SVProgressHUD showWithStatus:msg];
-    }else{
-        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self animated:YES];
-        hud.mode = MBProgressHUDModeText;
-        hud.bezelView.color = [UIColor blackColor];
-        
-        hud.label.text = msg;
-        hud.label.textColor = [UIColor whiteColor];
-        
-        hud.removeFromSuperViewOnHide = YES;
-        
-        [hud setOffset:CGPointMake(0, 200)];
-        [hud hideAnimated:YES afterDelay:1.0];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self animated:YES];
+    hud.mode = MBProgressHUDModeText;
+    hud.bezelView.color = [UIColor blackColor];
+    
+    hud.label.text = msg;
+    hud.label.textColor = [UIColor whiteColor];
+    
+    hud.removeFromSuperViewOnHide = YES;
+    
+    [hud setOffset:CGPointMake(0, 200)];
+    [hud hideAnimated:YES afterDelay:1.0];
 
-    }
-    
     dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC));
     dispatch_after(delayTime, dispatch_get_main_queue(), ^(void){
-//        [SVProgressHUD dismiss];
-        [SVProgressHUD popActivity];
 
         if (handleComplete) {
             handleComplete ();
         }
     });
 }
-- (void)showSVTips:(NSString *)msg withState:(TYKYHUDMode)HUDModel complete:(void(^)(void))handleComplete{
-  
-   
+
+//展示成功或失败提示
+- (void)showTips:(NSString *)msg
+       withState:(TYKYHUDMode)HUDModel
+        complete:(dispatch_block_t)handleComplete{
+    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self animated:YES];
+    hud.mode = MBProgressHUDModeCustomView;
+    hud.bezelView.color = [UIColor blackColor];
+    hud.contentColor = [UIColor whiteColor];
+    
     UIImage *img = nil;
+    
     if (HUDModel== TYKYHUDModeSuccess) {
         img = [UIImage imageNamed:@"success"];
     }else if (HUDModel== TYKYHUDModeFail){
@@ -55,47 +57,20 @@ NSInteger const tipViewTag = 12345678;
         img = [UIImage imageNamed:@"warning"];
         
     }
-    [SVProgressHUD showImage:img status:msg];
-   
-}
-//展示成功或失败提示
-- (void)showTips:(NSString *)msg withState:(TYKYHUDMode)HUDModel complete:(void(^)(void))handleComplete{
+    hud.customView = [[UIImageView alloc] initWithImage:img];
     
-    if ([APPDELEGATE isSVPHUD]) {
-        [self showSVTips:msg withState:HUDModel complete:handleComplete];
+    if (msg.length>10) {
+        hud.detailsLabel.text = msg;
+        hud.detailsLabel.font = [UIFont systemFontOfSize:15];
     }else{
-        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self animated:YES];
-        hud.mode = MBProgressHUDModeCustomView;
-        hud.bezelView.color = [UIColor blackColor];
-        hud.contentColor = [UIColor whiteColor];
-        
-        UIImage *img = nil;
-        
-        if (HUDModel== TYKYHUDModeSuccess) {
-            img = [UIImage imageNamed:@"success"];
-        }else if (HUDModel== TYKYHUDModeFail){
-            img = [UIImage imageNamed:@"fail"];
-            
-        }else{
-            img = [UIImage imageNamed:@"warning"];
-            
-        }
-        hud.customView = [[UIImageView alloc] initWithImage:img];
-        
-        if (msg.length>10) {
-            hud.detailsLabel.text = msg;
-            hud.detailsLabel.font = [UIFont systemFontOfSize:15];
-        }else{
-            hud.label.text = msg;
-        }
-        hud.removeFromSuperViewOnHide = YES;
+        hud.label.text = msg;
+    }
+    hud.removeFromSuperViewOnHide = YES;
         [hud hideAnimated:YES afterDelay:1.0];
        
-    }
+    
     dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC));
     dispatch_after(delayTime, dispatch_get_main_queue(), ^(void){
-//        [SVProgressHUD dismiss];
-        [SVProgressHUD popActivity];
 
         if (handleComplete) {
             handleComplete ();
@@ -103,57 +78,43 @@ NSInteger const tipViewTag = 12345678;
     });
 }
 //带进度的提示
-- (void)showProgressHUD:(float)progress tipMsg:(NSString *)msg{
+- (void)showProgressHUD:(float)progress
+                 tipMsg:(NSString *)msg{
     
-    if ([APPDELEGATE isSVPHUD]) {
-        [SVProgressHUD showProgress:progress status:msg];
+    MBProgressHUD *hud = [MBProgressHUD HUDForView:self];
+    if (!hud) {
         
-    }else{
-        MBProgressHUD *hud = [MBProgressHUD HUDForView:self];
-        if (!hud) {
-            
-            hud = [MBProgressHUD showHUDAddedTo:self animated:YES];
-            hud.mode = MBProgressHUDModeDeterminateHorizontalBar;
-            hud.contentColor = [UIColor whiteColor];
-            hud.bezelView.color = [UIColor blackColor];
-            hud.label.text = msg;
-            hud.removeFromSuperViewOnHide = YES;
-            
-        }
-        hud.progress = progress;
-
+        hud = [MBProgressHUD showHUDAddedTo:self animated:YES];
+        hud.mode = MBProgressHUDModeDeterminateHorizontalBar;
+        hud.contentColor = [UIColor whiteColor];
+        hud.bezelView.color = [UIColor blackColor];
+        hud.label.text = msg;
+        hud.removeFromSuperViewOnHide = YES;
+        
     }
+    hud.progress = progress;
+
   
 }
 
 //等待提示
 - (void)showHUD:(NSString *)msg{
 
-    if ([APPDELEGATE isSVPHUD]) {
-        [SVProgressHUD showWithStatus:msg];
-
-    }else{
-        //风火轮颜色修改
-        //    [UIActivityIndicatorView appearanceWhenContainedIn:[MBProgressHUD class], nil].color = [UIColor whiteColor];
-        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self animated:YES];
-        hud.contentColor = [UIColor whiteColor];
-        hud.bezelView.color = [UIColor blackColor];
-        hud.label.text = msg;
-        hud.removeFromSuperViewOnHide = YES;
-    }
+    //风火轮颜色修改
+    //    [UIActivityIndicatorView appearanceWhenContainedIn:[MBProgressHUD class], nil].color = [UIColor whiteColor];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self animated:YES];
+    hud.contentColor = [UIColor whiteColor];
+    hud.bezelView.color = [UIColor blackColor];
+    hud.label.text = msg;
+    hud.removeFromSuperViewOnHide = YES;
+    
    
 }
 //移除提示
 - (void)removeHUD{
-    if ([APPDELEGATE isSVPHUD]) {
-//        [SVProgressHUD dismiss];
-        [SVProgressHUD popActivity];
+  
+    [[MBProgressHUD HUDForView:self] hideAnimated:YES];
 
-    }else{
-        [[MBProgressHUD HUDForView:self] hideAnimated:YES];
-
-    }
-   
 }
 
 #pragma mark 无数据提示
@@ -225,7 +186,7 @@ NSInteger const tipViewTag = 12345678;
 
 //淡出效果
 - (void)showViewWithAnimation{
-     self.alpha = 0.0;
+    self.alpha = 0.0;
     [UIView animateWithDuration:0.5 animations:^{
         self.alpha = 1.0;
         

@@ -15,5 +15,6 @@
 
 @interface CTLocationViewController : UIViewController
 
-@property (weak, nonatomic) id<CTLocationViewControllerDelegate>delegate;
++ (void)showLocationVC_WithDelegate:(id <CTLocationViewControllerDelegate>)rootVC;
+
 @end

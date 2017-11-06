@@ -8,15 +8,17 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <AssetsLibrary/AssetsLibrary.h>
 
 @interface CTSavePhotos : NSObject
 
 //保存图片到相册 自定义分类名称 根据项目名称命名
-- (void)saveImageIntoAlbum:(UIImage *)image;
++ (void)saveImageIntoAlbum:(UIImage *)image;
 
 //判断相机权限
-- (BOOL)checkAuthorityOfAblum;
++ (BOOL)checkAuthorityOfAblum;
 
 //检测相机权限
-- (BOOL)checkAuthorityOfCamera;
++ (BOOL)checkAuthorityOfCamera;
+
 @end

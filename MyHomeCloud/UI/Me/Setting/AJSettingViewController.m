@@ -117,7 +117,6 @@ static NSString *CellIdentifier = @"TJSettingsCellId";
 
     [UIAlertController alertWithTitle:nil message:nil cancelButtonTitle:@"取消" otherButtonTitles:@[@"退出"] preferredStyle:UIAlertControllerStyleActionSheet block:^(NSInteger buttonIndex) {
         if (buttonIndex==1) {
-            [CTTool removeKeyWindowHUD];
             [AVUser logOut];
             [self backToPreVC];
         }

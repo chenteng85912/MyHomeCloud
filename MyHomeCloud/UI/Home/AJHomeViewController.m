@@ -64,7 +64,7 @@ CGFloat const HEAD_BTN_HEIGHT = 100;
     [self.view showHUD:nil];
 
     [self fetchData];
-    [self removeSearchBorder];
+    [CTTool removeSearchBorder:self.searchBar];
     
     //头部广告滚动视图数据源
     [self.autoLoopView addLocalModels:self.autoLoopDataArray];
@@ -377,14 +377,7 @@ CGFloat const HEAD_BTN_HEIGHT = 100;
     }
 
 }
-//移除搜索框边框
-- (void)removeSearchBorder{
-    for (UIView *subview in [[_searchBar.subviews firstObject] subviews]) {
-        if ([subview isKindOfClass:NSClassFromString(@"UISearchBarBackground")]) {
-            [subview removeFromSuperview];
-        }
-    }
-}
+
 - (CTAutoLoopViewController *)autoLoopView
 {
     if (!_autoLoopView) {

@@ -14,7 +14,6 @@
 
 #define CTImageShowIdentifier @"CTImageShowIdentifier"
 
-static CTImagePreviewViewController *imageShowInstance = nil;
 
 @interface CTImagePreviewViewController ()<UIScrollViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate>
 
@@ -26,35 +25,23 @@ static CTImagePreviewViewController *imageShowInstance = nil;
 
 @implementation CTImagePreviewViewController
 
+static CTImagePreviewViewController *imageShowInstance = nil;
+
 #pragma mark 单例
-+ (instancetype)defaultShowPicture
++ (void)defaultShowPicture
 {
+
     @synchronized(self){
-        static dispatch_once_t pred;
-        dispatch_once(&pred, ^{
+        static dispatch_once_t once;
+        dispatch_once(&once, ^{
             imageShowInstance = [[self alloc] init];
-            [imageShowInstance initUI];
             
         });
     }
-    return imageShowInstance;
-}
-+ (instancetype)allocWithZone:(struct _NSZone *)zone
-{
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        imageShowInstance = [super allocWithZone:zone];
-    });
-    return imageShowInstance;
-}
-
-- (id)copyWithZone:(NSZone *)zone
-{
-    return imageShowInstance;
 }
 
 #pragma mark 界面布局
-- (void)initUI{
++ (void)initUI{
     
     UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
@@ -62,22 +49,22 @@ static CTImagePreviewViewController *imageShowInstance = nil;
     layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 10);
     UICollectionView *colView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, Device_width+20, Device_height) collectionViewLayout:layout];
     colView.pagingEnabled = YES;
-    colView.delegate = self;
-    colView.dataSource = self;
-    [self.view addSubview:colView];
+    colView.delegate = imageShowInstance;
+    colView.dataSource = imageShowInstance;
+    [imageShowInstance.view addSubview:colView];
     colView.backgroundColor= [UIColor blackColor];
     colView.directionalLockEnabled  = YES;
     imageShowInstance.colView = colView;
     
-    [self.colView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:CTImageShowIdentifier];
+    [imageShowInstance.colView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:CTImageShowIdentifier];
     
     //单击返回
-    UITapGestureRecognizer *singleTapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(singleTap:)];
+    UITapGestureRecognizer *singleTapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:imageShowInstance action:@selector(singleTap:)];
     [singleTapGestureRecognizer setNumberOfTapsRequired:1];
     [imageShowInstance.view addGestureRecognizer:singleTapGestureRecognizer];
     
     //双击放大
-    UITapGestureRecognizer *doubleTapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(doubleTap:)];
+    UITapGestureRecognizer *doubleTapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:imageShowInstance action:@selector(doubleTap:)];
     [doubleTapGestureRecognizer setNumberOfTapsRequired:2];
     [imageShowInstance.view addGestureRecognizer:doubleTapGestureRecognizer];
     [singleTapGestureRecognizer requireGestureRecognizerToFail:doubleTapGestureRecognizer];
@@ -94,12 +81,15 @@ static CTImagePreviewViewController *imageShowInstance = nil;
 }
 
 #pragma mark 展示图片
-- (void)showPictureWithUrlOrImages:(NSArray *)imageArray withCurrentPageNum:(NSInteger)currentNum andRootViewController:(UIViewController *)rootVC{
-    [self showPicture:imageArray withCurrentPageNum:currentNum andRootViewController:rootVC];
++ (void)showPictureWithUrlOrImages:(NSArray *)imageArray withCurrentPageNum:(NSInteger)currentNum{
+    [self defaultShowPicture];
+    [self initUI];
+
+    [self showPicture:imageArray withCurrentPageNum:currentNum];
 }
 
-- (void)showPicture:(NSArray *)imageArray withCurrentPageNum:(NSInteger)currentNum andRootViewController:(UIViewController *)rootVC{
-    if (imageArray.count == 0||!rootVC) {
++ (void)showPicture:(NSArray *)imageArray withCurrentPageNum:(NSInteger)currentNum{
+    if (imageArray.count == 0) {
         return;
     }
     if (imageArray.count<currentNum+1) {
@@ -107,31 +97,29 @@ static CTImagePreviewViewController *imageShowInstance = nil;
     }
     
     if (imageArray.count==1) {
-        self.pageNumLabel.hidden = YES;
+        imageShowInstance.pageNumLabel.hidden = YES;
     }else{
-        self.pageNumLabel.hidden = NO;
+        imageShowInstance.pageNumLabel.hidden = NO;
         
     }
-    self.dataArray = imageArray;
-    [self.colView reloadData];
+    imageShowInstance.dataArray = imageArray;
+    [imageShowInstance.colView reloadData];
     
-    [self.colView setContentOffset:CGPointMake((Device_width+20)*currentNum, 0)];
-    self.pageNumLabel.text = [NSString stringWithFormat:@"%ld/%lu",currentNum+1,(unsigned long)imageArray.count];
+    [imageShowInstance.colView setContentOffset:CGPointMake((Device_width+20)*currentNum, 0)];
+    imageShowInstance.pageNumLabel.text = [NSString stringWithFormat:@"%d/%lu",currentNum+1,(unsigned long)imageArray.count];
     
-    self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    [rootVC presentViewController:imageShowInstance animated:YES completion:^{
-        [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
-    }];
+    imageShowInstance.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:imageShowInstance animated:YES completion:nil];
 
 }
 #pragma mark UICollectionViewDelegate
--(NSInteger) numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+- (NSInteger) numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
     return 1;
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.dataArray.count;
+    return imageShowInstance.dataArray.count;
     
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -141,19 +129,19 @@ static CTImagePreviewViewController *imageShowInstance = nil;
     [mycell.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
     UIScrollView *scrView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, Device_width, Device_height)];
-    scrView.delegate = self;
+    scrView.delegate = imageShowInstance;
     scrView.tag = indexPath.item+2000;
     scrView.maximumZoomScale = 3.0;
     scrView.minimumZoomScale = 0.9;
     
-    id obj = self.dataArray[indexPath.row];
+    id obj = imageShowInstance.dataArray[indexPath.row];
     if ([obj isKindOfClass:[UIImage class]]) {
-        UIImageView *imgView = [self makeImageView:self.dataArray[indexPath.row]];
+        UIImageView *imgView = [imageShowInstance makeImageView:imageShowInstance.dataArray[indexPath.row]];
         imgView.tag = indexPath.item+1000;
         [scrView addSubview:imgView];
     }else{
         CTLazyImageView *imgView = [[CTLazyImageView alloc] initWithFrame:scrView.frame];
-        [imgView loadFullScreenImage:self.dataArray[indexPath.item]];
+        [imgView loadFullScreenImage:imageShowInstance.dataArray[indexPath.item]];
         imgView.tag = indexPath.item+1000;
         [scrView addSubview:imgView];
     }
@@ -227,17 +215,14 @@ static CTImagePreviewViewController *imageShowInstance = nil;
 }
 
 #pragma mark 单击图片返回
--(void)singleTap:(UITapGestureRecognizer *)gestureRecognize {
-    
-    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
-    
+- (void)singleTap:(UITapGestureRecognizer *)gestureRecognize {
+   
     [self dismissViewControllerAnimated:YES completion:^{
-        
     }];
     
 }
 #pragma mark 双击放大缩小
--(void)doubleTap:(UITapGestureRecognizer *)gestureRecognize {
+- (void)doubleTap:(UITapGestureRecognizer *)gestureRecognize {
     
     UICollectionViewCell *mycell = self.colView.visibleCells[0];
     NSIndexPath *index = self.colView.indexPathsForVisibleItems[0];

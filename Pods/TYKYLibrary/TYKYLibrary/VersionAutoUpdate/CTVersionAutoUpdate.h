@@ -14,11 +14,9 @@ typedef NS_ENUM(NSInteger,OpenStoreStyle) {
 };
 
 @interface CTVersionAutoUpdate : NSObject
-//单例
-+ (CTVersionAutoUpdate *)sharedVersion;
 /**
  *  版本更新 传入应用ID 选择应用商店跳转方式
  */
-- (void)checkAppStoreVersion:(NSString *)appId openStoreStyle:(OpenStoreStyle)showStyle;
++ (void)checkAppStoreVersion:(NSString *)appId openStoreStyle:(OpenStoreStyle)showStyle;
 
 @end

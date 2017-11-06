@@ -19,18 +19,23 @@ typedef NS_ENUM(NSInteger, TYKYHUDMode) {
 #pragma mark Toast
 
 //展示文字
-- (void)showText:(NSString *)msg complete:(void(^)(void))handleComplete;
+- (void)showText:(NSString *)msg
+        complete:(dispatch_block_t)handleComplete;
 
-- (void)showSVTips:(NSString *)msg withState:(TYKYHUDMode)HUDModel complete:(void(^)(void))handleComplete;
+- (void)showSVTips:(NSString *)msg
+         withState:(TYKYHUDMode)HUDModel
+          complete:(dispatch_block_t)handleComplete;
 
 //展示成功或失败提示
-- (void)showTips:(NSString *)msg withState:(TYKYHUDMode)HUDModel complete:(void(^)(void))handleComplete;
+- (void)showTips:(NSString *)msg withState:(TYKYHUDMode)HUDModel
+        complete:(dispatch_block_t)handleComplete;
 
 //等待提示
 - (void)showHUD:(NSString *)msg;
 
 //带进度的提示
-- (void)showProgressHUD:(float)progress tipMsg:(NSString *)msg;
+- (void)showProgressHUD:(float)progress
+                 tipMsg:(NSString *)msg;
 
 //移除提示
 - (void)removeHUD;

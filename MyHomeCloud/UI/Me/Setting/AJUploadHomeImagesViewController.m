@@ -119,7 +119,7 @@
         }
     }
     
-    [[CTImagePreviewViewController defaultShowPicture] showPictureWithUrlOrImages:show withCurrentPageNum:indexPath.row andRootViewController:self];
+    [CTImagePreviewViewController showPictureWithUrlOrImages:show withCurrentPageNum:indexPath.row];
 }
 
 - (IBAction)choosePicAction:(UIButton *)sender {
@@ -127,14 +127,10 @@
         [self.view showTips:@"最多上传6张图片" withState:TYKYHUDModeWarning complete:nil];
         return;
     }
-    if (![[CTSavePhotos new] checkAuthorityOfAblum]) {
+    if (![CTSavePhotos checkAuthorityOfAblum]) {
         return;
     }
-    CTCustomAlbumViewController *album = [CTCustomAlbumViewController new];
-    album.delegate = self;
-    album.totalNum = 6 - self.dataArray.count;
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:album];
-    [self presentViewController:nav animated:YES completion:nil];
+    [CTCustomAlbumViewController showCustomeAlbumWithDelegate:self oldImagesDic:nil totalImageNum:6-self.dataArray.count];
     
 }
 #pragma mark - CTCustomAlbumViewControllerDelegate

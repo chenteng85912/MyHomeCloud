@@ -101,15 +101,14 @@
     WeakSelf;
     [UIAlertController alertWithTitle:@"更换头像" message:nil cancelButtonTitle:@"取消" otherButtonTitles:@[@"拍照",@"从相册选取",@"保存头像"] preferredStyle:UIAlertControllerStyleActionSheet block:^(NSInteger buttonIndex) {
         if (buttonIndex==1) {
-            [CTONEPhoto shareSigtonPhoto].delegate = weakSelf;
-            [[CTONEPhoto shareSigtonPhoto] openCamera:weakSelf editModal:YES];
+            [CTONEPhoto openCameraWithDelegate:weakSelf editModal:YES];
         }else if (buttonIndex==2){
-            [CTONEPhoto shareSigtonPhoto].delegate = weakSelf;
-            [[CTONEPhoto shareSigtonPhoto] openAlbum:weakSelf editModal:YES];
+            
+            [CTONEPhoto openAlbumWithDelegate:weakSelf editModal:YES];
         }else if (buttonIndex==3){
-            if ([[CTSavePhotos new] checkAuthorityOfAblum]) {
+            if ([CTSavePhotos checkAuthorityOfAblum]) {
                 //存入相册
-                [[CTSavePhotos new] saveImageIntoAlbum:weakSelf.headImg];
+                [CTSavePhotos saveImageIntoAlbum:weakSelf.headImg];
                 [self.view showTips:@"保存成功" withState:TYKYHUDModeSuccess complete:nil];
             }
         }

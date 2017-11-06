@@ -8,28 +8,23 @@
 
 #import <Foundation/Foundation.h>
 
-#define GCDOpereaton [CTDownloadGCDOperation Instance]
-
 @class CTDownloadWithSession;
 @interface CTDownloadGCDOperation : NSObject
 
-//待上传队列
-@property (strong, nonatomic) NSMutableDictionary <NSString *,CTDownloadWithSession*> *prepareDownloadArray;
-//正在上传的队列
-@property (strong, nonatomic) NSMutableDictionary <NSString *,CTDownloadWithSession *> *downloadingArray;
++ (NSMutableDictionary <NSString *,CTDownloadWithSession*> *)prepareDownloadArray;
 
-+ (CTDownloadGCDOperation *) Instance;
++ (NSMutableDictionary <NSString *,CTDownloadWithSession*> *)downloadingArray;
 
 //开始分配上传任务
-- (void)startDownload;
++ (void)startDownload;
 
 //上传成功后 移除上传队列
-- (void)removeDownloadTool:(NSString *)fileUrl;
++ (void)removeDownloadTool:(NSString *)fileUrl;
 
 //清空上传队列
-- (void)clearAllDownloadQueue;
++ (void)clearAllDownloadQueue;
 
 //下载失败的 重新下载
-- (void)downLoadAgain:(NSString *)fileUrl;
++ (void)downLoadAgain:(NSString *)fileUrl;
 
 @end

@@ -38,7 +38,9 @@
         if (object) {
             [self CT_setObject:object forKey:key];
         }else{
-            NSLog(@"您设置的字典VALUE为空");
+            NSLog(@"key:%@",key);
+            NSAssert(NO, @"您设置的字典VALUE为空");
+
         }
     }
    

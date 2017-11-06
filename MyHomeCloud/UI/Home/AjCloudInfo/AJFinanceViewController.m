@@ -86,7 +86,8 @@
     for (AJFinanceCellModel *model in self.dataArray) {
         [imgArray addObject:model.picUrl];
     }
-    [[CTImagePreviewViewController defaultShowPicture] showPictureWithUrlOrImages:imgArray withCurrentPageNum:btn.tag andRootViewController:self];
+    [CTImagePreviewViewController showPictureWithUrlOrImages:imgArray
+                                          withCurrentPageNum:btn.tag];
 
 }
 - (void)didReceiveMemoryWarning {

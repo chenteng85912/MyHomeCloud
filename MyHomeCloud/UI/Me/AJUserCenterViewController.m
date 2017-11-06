@@ -26,7 +26,6 @@ static NSString *CellIdentifier = @"AJUserCellId";
 @property (weak, nonatomic) IBOutlet UIView *userHeadView;
 
 @property (strong, nonatomic) NSArray *dataArray;//数据源
-@property (assign, nonatomic) CGPoint originCenter;
 
 @end
 
@@ -36,17 +35,7 @@ static NSString *CellIdentifier = @"AJUserCellId";
     [super viewDidLoad];
     
     [self.tbView registerClass:[UITableViewCell class] forCellReuseIdentifier:CellIdentifier];
-    if (dWidth>320) {
-        _headView.frame = CGRectMake(0, 0, dWidth, dHeight/3);
-        
-        _userHeadView.frame = CGRectMake(dWidth/2-50, 60, 100, 100);
-        if (dWidth==375) {
-            _userHeadView.frame = CGRectMake(dWidth/2-45, 50, 90, 90);
-
-        }
-        _userName.center = CGPointMake(dWidth/2, CGRectGetMaxY(_userHeadView.frame)+20);
-        _roleIcon.center = CGPointMake(dWidth/2, CGRectGetMaxY(_userName.frame)+10);
-    }
+   
     self.tbView.tableHeaderView = _headView;
     
 
@@ -56,9 +45,22 @@ static NSString *CellIdentifier = @"AJUserCellId";
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
     [self initUserData];
-
+    [self initHeadFrame];
 }
-
+- (void)initHeadFrame{
+    if (dWidth>320) {
+        _headView.frame = CGRectMake(0, 0, dWidth, dHeight/3);
+        
+        _userHeadView.frame = CGRectMake(dWidth/2-50, 60, 100, 100);
+        if (dWidth==375) {
+            _userHeadView.frame = CGRectMake(dWidth/2-45, 50, 90, 90);
+            
+        }
+        _userName.center = CGPointMake(dWidth/2, CGRectGetMaxY(_userHeadView.frame)+20);
+        _roleIcon.center = CGPointMake(dWidth/2, CGRectGetMaxY(_userName.frame)+10);
+        _userHeadView.layer.cornerRadius = _userHeadView.frame.size.width/2;
+    }
+}
 #pragma mark UITableViewDatasource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {

@@ -31,40 +31,6 @@
     return right;
 }
 
-//等待提示
-+ (void)showKeyWindowHUD:(NSString *)msg{
-    //风火轮颜色修改
-    if ([APPDELEGATE isSVPHUD]) {
-        [SVProgressHUD showWithStatus:msg];
-    }else{
-        MBProgressHUD *hud = [MBProgressHUD HUDForView:[UIApplication sharedApplication].keyWindow];
-        if (!hud) {
-            hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
-            hud.bezelView.color = [UIColor blackColor];
-            hud.label.textColor = [UIColor whiteColor];
-            hud.contentColor = [UIColor whiteColor];
-            hud.label.text = msg;
-            hud.removeFromSuperViewOnHide = YES;
-        }
-    }
-   
-    
-}
-//移除提示
-+ (void)removeKeyWindowHUD{
-    if ([APPDELEGATE isSVPHUD]) {
-        //        [SVProgressHUD dismiss];
-        [SVProgressHUD popActivity];
-        
-    }else{
-        MBProgressHUD *hud = [MBProgressHUD HUDForView:[UIApplication sharedApplication].keyWindow];
-        if (hud) {
-            [hud hideAnimated:YES];
-        }
-    }
-   
-}
-
 + (MJRefreshNormalHeader *)makeMJRefeshWithTarget:(id)root andMethod:(SEL)methodName{
     MJRefreshNormalHeader *header = [[MJRefreshNormalHeader alloc]init];
     [header setTitle:@"继续下拉以刷新" forState:MJRefreshStateIdle];
@@ -212,5 +178,14 @@
     NSString *pswRegex = @"^(?![0-9]+$)(?![a-zA-Z]+$)[a-zA-Z0-9\\W_]{6,20}$";
     NSPredicate *pre = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", pswRegex];
     return [pre evaluateWithObject:password];
+}
+
+//移除搜索框边框
++ (void)removeSearchBorder:(UISearchBar *)searchBar{
+    for (UIView *subview in [[searchBar.subviews firstObject] subviews]) {
+        if ([subview isKindOfClass:NSClassFromString(@"UISearchBarBackground")]) {
+            [subview removeFromSuperview];
+        }
+    }
 }
 @end

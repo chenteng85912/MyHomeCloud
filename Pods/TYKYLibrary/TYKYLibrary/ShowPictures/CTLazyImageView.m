@@ -82,9 +82,9 @@
 //生成下载工具
 - (CTDownloadWithSession *)getDownloadToolFromTempArray:(NSString *)urlStr{
     
-    CTDownloadWithSession *request = [GCDOpereaton.downloadingArray valueForKey:urlStr];
+    CTDownloadWithSession *request = [[CTDownloadGCDOperation downloadingArray] valueForKey:urlStr];
     if (!request) {
-        request = [GCDOpereaton.prepareDownloadArray valueForKey:urlStr];
+        request = [[CTDownloadGCDOperation prepareDownloadArray] valueForKey:urlStr];
     }
     
     //新的下载工具
@@ -93,12 +93,12 @@
 
         request = [[CTDownloadWithSession alloc] initWithDownloadUrlStr:urlStr];
         request.filePath = filePath;
-        [GCDOpereaton.prepareDownloadArray setObject:request forKey:urlStr];
-        [GCDOpereaton startDownload];
+        [[CTDownloadGCDOperation prepareDownloadArray] setObject:request forKey:urlStr];
+        [CTDownloadGCDOperation startDownload];
         
     }
     if (request.downloadState==DownloadFailState) {
-        [GCDOpereaton downLoadAgain:self.urlStr];
+        [CTDownloadGCDOperation downLoadAgain:self.urlStr];
 
     }
     request.delegate  = self;
@@ -134,7 +134,7 @@
     self.reFreshBtn.hidden = YES;
     self.progressLabel.hidden = NO;
     
-    [GCDOpereaton downLoadAgain:self.urlStr];
+    [CTDownloadGCDOperation downLoadAgain:self.urlStr];
 }
 
 #pragma mark TJSessionDownloadToolDelegate

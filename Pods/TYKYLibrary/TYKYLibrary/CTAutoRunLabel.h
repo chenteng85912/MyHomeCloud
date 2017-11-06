@@ -22,6 +22,7 @@
                     labelText:(NSString *)text
                          font:(CGFloat)fontSize
                     textColor:(UIColor *)textColor
+                textAlignment:(NSTextAlignment)textAlignment
                         speed:(NSInteger)speedNum;
 //停止滚动
 - (void)stopRun;

@@ -12,6 +12,7 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "CTSavePhotos.h"
 #import "UIImage+Tools.h"
+#import "ALAsset+HEIC_TO_JPEG.h"
 
 #define Device_height   [[UIScreen mainScreen] bounds].size.height
 #define Device_width    [[UIScreen mainScreen] bounds].size.width
@@ -32,11 +33,27 @@
 @property (nonatomic,strong) NSMutableArray <UIImage *> *imgArray;//图片数组
 @property (nonatomic,assign) BOOL isLoad;
 @property (nonatomic,assign) NSInteger selectedNum;//选中照片数量
+@property (nonatomic,strong) NSMutableDictionary <NSString*,UIImage*> *picDataDic;//已经选中的图片字典
+
+@property (nonatomic,weak) id <CTCustomAlbumViewControllerDelegate> delegate;
+@property (nonatomic,assign) NSInteger totalNum;
 
 @end
 
 @implementation CTCustomAlbumViewController
 
++ (void)showCustomeAlbumWithDelegate:(id <CTCustomAlbumViewControllerDelegate>)rootVC
+                        oldImagesDic:(NSDictionary <NSString*,UIImage*> *)imagesDic
+                       totalImageNum:(NSInteger)totalNum{
+    CTCustomAlbumViewController *album = [CTCustomAlbumViewController new];
+    if (imagesDic) {
+        [album.picDataDic addEntriesFromDictionary:imagesDic];
+    }
+    album.totalNum = totalNum;
+    album.delegate = rootVC;
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:album];
+    [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:nav animated:YES completion:nil];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
@@ -273,7 +290,7 @@
     NSIndexPath *indexPath = [NSIndexPath indexPathForItem:btn.tag inSection:0];
 
     //图片名称
-    NSString *imgName = asset.defaultRepresentation.filename;
+    NSString *imgName = [asset imageName];
     
     if ([self.picDataDic.allKeys containsObject:imgName]) {
         UIImage *img = self.picDataDic[imgName];
@@ -290,7 +307,8 @@
             [self showWaringView];
             return;
         }
-        [self.picDataDic setObject:[UIImage imageWithCGImage:asset.defaultRepresentation.fullScreenImage] forKey:imgName];
+        
+        [self.picDataDic setObject:[asset changePhotoHEICImageToJPEG] forKey:imgName];
         
         [self.imgArray addObject:self.picDataDic[imgName]];
         
@@ -365,7 +383,7 @@
 
 #pragma mark 打开摄像头
 - (void)openCamera{
-    if (![[CTSavePhotos new] checkAuthorityOfCamera]) {
+    if (![CTSavePhotos checkAuthorityOfCamera]) {
         return;
     }
     UIImagePickerController * picker = [[UIImagePickerController alloc]init];
@@ -387,8 +405,8 @@
     [picker dismissViewControllerAnimated:YES completion:^{
         [self.picDataDic setObject:newImage forKey:[NSString stringWithFormat:@"%.f.JPG",[[NSDate new] timeIntervalSince1970]]];
         [self comfirnChoose];
-        if ([[CTSavePhotos new] checkAuthorityOfAblum]) {
-            [[CTSavePhotos new] saveImageIntoAlbum:newImage];
+        if ([CTSavePhotos checkAuthorityOfAblum]) {
+            [CTSavePhotos saveImageIntoAlbum:newImage];
         }
     }];
     

@@ -17,7 +17,7 @@ NSInteger const getTimeOut = 30.0;
 @implementation CTRequest
 
 //post请求
-- (void)sendPostRequest:(NSString *)urlStr withParamas:(NSMutableDictionary *)paras complete:(void(^)(NSError *error, NSDictionary *objectDic))afterRequest
++ (void)sendPostRequest:(NSString *)urlStr withParamas:(NSMutableDictionary *)paras complete:(void(^)(NSError *error, NSDictionary *objectDic))afterRequest
 {
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlStr]];
@@ -37,7 +37,7 @@ NSInteger const getTimeOut = 30.0;
 }
 
 //get请求
-- (void)sendGetRequestWithUrl:(NSString *)urlStr complete:(void(^)(NSError *error, NSDictionary *objectDic))afterRequest
++ (void)sendGetRequestWithUrl:(NSString *)urlStr complete:(void(^)(NSError *error, NSDictionary *objectDic))afterRequest
 {
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlStr]];
@@ -50,11 +50,11 @@ NSInteger const getTimeOut = 30.0;
    }];
 }
 
-- (void)sendRequest:(NSMutableURLRequest *)request complete:(void(^)(NSError *error, NSDictionary *objectDic))afterRequest{
++ (void)sendRequest:(NSMutableURLRequest *)request complete:(void(^)(NSError *error, NSDictionary *objectDic))afterRequest{
    
    
     NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfiguration delegate:self delegateQueue:[[NSOperationQueue alloc]init]];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfiguration delegate:[self new] delegateQueue:[[NSOperationQueue alloc]init]];
 
     NSURLSessionDataTask *dataTask= [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         dispatch_async(dispatch_get_main_queue(), ^{

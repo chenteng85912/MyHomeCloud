@@ -14,6 +14,7 @@
 #import "AJUserCenterViewController.h"
 #import <Bugly/Bugly.h>//崩溃分析
 #import <UMSocialCore/UMSocialCore.h>//友盟集成 微信分享
+#import <iflyMSC/IFlySpeechUtility.h>
 
 NSString *const AVOSCloudID = @"Q4xx9Pczn6UbtkFQttUzGfOV-gzGzoHsz";
 NSString *const AVOSCloudKey = @"YUlG0aQ4gwl7DcuwopUraSnz";
@@ -31,14 +32,8 @@ NSString *const UMWEIXINAPPSECRET = @"1b701ce273624810d0f55296f19cd384";
     [AVOSCloud setApplicationId:AVOSCloudID clientKey:AVOSCloudKey];
     [AVAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
-    self.isSVPHUD = YES;
-    if (self.isSVPHUD) {
-        [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
-        [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
-        [SVProgressHUD setFadeOutAnimationDuration:0.3];
-        [SVProgressHUD setOffsetFromCenter:UIOffsetMake(0, 30)];
-    }
-    
+    [IFlySpeechUtility createUtility:@"appid=58638772"];
+
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     
@@ -56,7 +51,7 @@ NSString *const UMWEIXINAPPSECRET = @"1b701ce273624810d0f55296f19cd384";
                        @"万江区",@"高埗镇",@"石碣镇",@"石龙镇",@"麻涌镇",@"中堂镇",@"望牛墩镇",@"洪梅镇",@"道滘镇",
                        @"虎门镇",@"厚街镇",@"长安镇",@"沙田镇"];
     
-    [[CTVersionAutoUpdate sharedVersion] checkAppStoreVersion:@"1251844754" openStoreStyle:OpenAppStoreInApp];
+    [CTVersionAutoUpdate  checkAppStoreVersion:@"1251844754" openStoreStyle:OpenAppStoreInApp];
     [self.window makeKeyAndVisible];
 
     return YES;

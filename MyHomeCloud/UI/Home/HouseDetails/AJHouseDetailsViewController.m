@@ -261,7 +261,7 @@ CGFloat const MORE_VIEW_HEIGHT = 370;
     return imgView;
 }
 - (void)CTAutoLoopViewController:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    [[CTImagePreviewViewController defaultShowPicture] showPictureWithUrlOrImages:self.autoLoopDataArray withCurrentPageNum:indexPath.row andRootViewController:self];
+    [CTImagePreviewViewController showPictureWithUrlOrImages:self.autoLoopDataArray withCurrentPageNum:indexPath.row];
 }
 
 - (CTAutoLoopViewController*)autoLoopView

@@ -16,7 +16,6 @@
 #import <AVOSCloud/AVOSCloud.h>
 #import <MJRefresh/MJRefresh.h>
 #import <TYKYLibrary/TYKYLibrary.h>
-#import <SVProgressHUD/SVProgressHUD.h>
 
 #import "CTBaseViewController.h"
 #import "AJLocalDataCenter.h"
@@ -28,6 +27,7 @@
 
 #import "UIImageView+WebCache.h"
 #import "UIView+TYKYPrompt.h"
+
 #endif /* MyHomeCloud_pch */
 
 #define UIColorFromRGB(rgbValue)    [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
@@ -45,7 +45,7 @@
 #define MyUserDefaults      [NSUserDefaults standardUserDefaults]
 #define dHeight             [[UIScreen mainScreen] bounds].size.height
 #define dWidth              [[UIScreen mainScreen] bounds].size.width
-#define WeakSelf            __weak typeof(self) weakSelf = self;
+#define WeakSelf            __weak typeof(self) weakSelf = self
 #define KEYWINDOW           [UIApplication  sharedApplication].keyWindow
 #define APPDELEGATE         (AppDelegate *)[UIApplication sharedApplication].delegate
 

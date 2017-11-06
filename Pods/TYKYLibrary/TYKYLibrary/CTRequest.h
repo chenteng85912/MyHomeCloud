@@ -11,12 +11,12 @@
 /**
  *  post请求
  */
-- (void)sendPostRequest:(NSString *)urlStr
++ (void)sendPostRequest:(NSString *)urlStr
             withParamas:(NSMutableDictionary *)paras
                complete:(void(^)(NSError *error, NSDictionary *objectDic))afterRequest;
 /**
  *  get请求
  */
-- (void)sendGetRequestWithUrl:(NSString *)urlStr
++ (void)sendGetRequestWithUrl:(NSString *)urlStr
                      complete:(void(^)(NSError *error, NSDictionary *objectDic))afterRequest;
 @end

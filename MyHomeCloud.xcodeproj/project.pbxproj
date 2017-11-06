@@ -59,6 +59,22 @@
 		0B8E185A1F17470400FB92D2 /* AJHouseInfoEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B8E18571F17470400FB92D2 /* AJHouseInfoEditViewController.m */; };
 		0B8E185B1F17470400FB92D2 /* AJHouseInfoEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B8E18581F17470400FB92D2 /* AJHouseInfoEditViewController.xib */; };
 		0B8E185C1F17470400FB92D2 /* AJHouseInfoEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B8E18581F17470400FB92D2 /* AJHouseInfoEditViewController.xib */; };
+		0BAD073C1F6F9BDC006613C7 /* AJflyVoice.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BAD07391F6F9BDC006613C7 /* AJflyVoice.m */; };
+		0BAD073D1F6F9BDC006613C7 /* AJflyVoice.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BAD07391F6F9BDC006613C7 /* AJflyVoice.m */; };
+		0BAD073E1F6F9BDC006613C7 /* AJSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BAD073B1F6F9BDC006613C7 /* AJSearchBar.m */; };
+		0BAD073F1F6F9BDC006613C7 /* AJSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BAD073B1F6F9BDC006613C7 /* AJSearchBar.m */; };
+		0BAD07441F6F9E6C006613C7 /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BAD07431F6F9E6C006613C7 /* Contacts.framework */; };
+		0BAD07461F6F9E8E006613C7 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BAD07451F6F9E8E006613C7 /* CoreLocation.framework */; };
+		0BAD074E1F6F9EE7006613C7 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BAD074D1F6F9EE7006613C7 /* AddressBook.framework */; };
+		0BAD07501F6F9EEF006613C7 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BAD074F1F6F9EEF006613C7 /* CoreTelephony.framework */; };
+		0BAD07521F6F9F09006613C7 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BAD07511F6F9F09006613C7 /* libsqlite3.tbd */; };
+		0BAD07561F6F9F26006613C7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BAD07551F6F9F26006613C7 /* CoreGraphics.framework */; };
+		0BAD07591F6F9FA2006613C7 /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BAD07431F6F9E6C006613C7 /* Contacts.framework */; };
+		0BAD075A1F6F9FAB006613C7 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BAD07451F6F9E8E006613C7 /* CoreLocation.framework */; };
+		0BAD075B1F6F9FB1006613C7 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BAD074F1F6F9EEF006613C7 /* CoreTelephony.framework */; };
+		0BAD075C1F6F9FB9006613C7 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BAD074D1F6F9EE7006613C7 /* AddressBook.framework */; };
+		0BAD075E1F6FA25D006613C7 /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BAD075D1F6FA25D006613C7 /* iflyMSC.framework */; };
+		0BAD075F1F6FA25D006613C7 /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BAD075D1F6FA25D006613C7 /* iflyMSC.framework */; };
 		0BB93A6D1EFFD1F800B32320 /* AJWechatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF2C6F51EFA5D4800EA46AF /* AJWechatViewController.m */; };
 		0BB93A6E1EFFD1FB00B32320 /* AJWechatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BF2C6F61EFA5D4800EA46AF /* AJWechatViewController.xib */; };
 		0BB93A6F1EFFD22300B32320 /* AJTagsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4F881C1EFF89390092BF18 /* AJTagsViewController.m */; };
@@ -249,11 +265,7 @@
 		A464225E1F07591F00459294 /* AJSendFeecbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A464225B1F07591F00459294 /* AJSendFeecbackViewController.m */; };
 		A464225F1F07591F00459294 /* AJSendFeecbackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A464225C1F07591F00459294 /* AJSendFeecbackViewController.xib */; };
 		A46422601F07591F00459294 /* AJSendFeecbackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A464225C1F07591F00459294 /* AJSendFeecbackViewController.xib */; };
-		A49243C51F1086CF00845E4C /* libTYKYLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A49243C41F1086CF00845E4C /* libTYKYLibrary.a */; };
-		A49243C61F1086D800845E4C /* libTYKYLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A49243C41F1086CF00845E4C /* libTYKYLibrary.a */; };
 		A49243C71F1086E000845E4C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B5FDBB71EFFE30300F9A1E2 /* Security.framework */; };
-		A49243C91F10870900845E4C /* libPods-AJCloud.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A49243C81F10870900845E4C /* libPods-AJCloud.a */; };
-		A49243CB1F10871100845E4C /* libPods-AJCloudAdmin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A49243CA1F10871100845E4C /* libPods-AJCloudAdmin.a */; };
 		A4AC724B1EF6718200772D42 /* AJEstateInfoModal.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AC724A1EF6718200772D42 /* AJEstateInfoModal.m */; };
 		A4AC724F1EF6728C00772D42 /* AJEstateTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A4AC724D1EF6728C00772D42 /* AJEstateTableViewCell.m */; };
 		A4AC72501EF6728C00772D42 /* AJEstateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4AC724E1EF6728C00772D42 /* AJEstateTableViewCell.xib */; };
@@ -396,6 +408,22 @@
 		0B8E18561F17470400FB92D2 /* AJHouseInfoEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJHouseInfoEditViewController.h; sourceTree = "<group>"; };
 		0B8E18571F17470400FB92D2 /* AJHouseInfoEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJHouseInfoEditViewController.m; sourceTree = "<group>"; };
 		0B8E18581F17470400FB92D2 /* AJHouseInfoEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJHouseInfoEditViewController.xib; sourceTree = "<group>"; };
+		0BAD07381F6F9BDC006613C7 /* AJflyVoice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJflyVoice.h; sourceTree = "<group>"; };
+		0BAD07391F6F9BDC006613C7 /* AJflyVoice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJflyVoice.m; sourceTree = "<group>"; };
+		0BAD073A1F6F9BDC006613C7 /* AJSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJSearchBar.h; sourceTree = "<group>"; };
+		0BAD073B1F6F9BDC006613C7 /* AJSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJSearchBar.m; sourceTree = "<group>"; };
+		0BAD07431F6F9E6C006613C7 /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
+		0BAD07451F6F9E8E006613C7 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		0BAD07471F6F9E9C006613C7 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		0BAD07491F6F9EA7006613C7 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		0BAD074B1F6F9EAF006613C7 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		0BAD074D1F6F9EE7006613C7 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		0BAD074F1F6F9EEF006613C7 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		0BAD07511F6F9F09006613C7 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		0BAD07531F6F9F15006613C7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		0BAD07551F6F9F26006613C7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		0BAD07571F6F9F63006613C7 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		0BAD075D1F6FA25D006613C7 /* iflyMSC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = iflyMSC.framework; sourceTree = "<group>"; };
 		0BB3AC2B1ECE9FE6008FB5E6 /* MyHomeCloud.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyHomeCloud.entitlements; sourceTree = "<group>"; };
 		0BC1DEC81F17899A007C78DB /* AJAddNHouseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJAddNHouseViewController.h; sourceTree = "<group>"; };
 		0BC1DEC91F17899A007C78DB /* AJAddNHouseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJAddNHouseViewController.m; sourceTree = "<group>"; };
@@ -566,8 +594,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A49243C91F10870900845E4C /* libPods-AJCloud.a in Frameworks */,
-				A49243C51F1086CF00845E4C /* libTYKYLibrary.a in Frameworks */,
+				0BAD075C1F6F9FB9006613C7 /* AddressBook.framework in Frameworks */,
+				0BAD075B1F6F9FB1006613C7 /* CoreTelephony.framework in Frameworks */,
+				0BAD075A1F6F9FAB006613C7 /* CoreLocation.framework in Frameworks */,
+				0BAD07591F6F9FA2006613C7 /* Contacts.framework in Frameworks */,
+				0BAD075E1F6FA25D006613C7 /* iflyMSC.framework in Frameworks */,
 				0B5FDBB81EFFE30300F9A1E2 /* Security.framework in Frameworks */,
 				A4AE33031EF51C61004B0A54 /* WebKit.framework in Frameworks */,
 				7191E77D76708EC24E7633A2 /* libPods-AJCloud.a in Frameworks */,
@@ -585,9 +616,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A49243CB1F10871100845E4C /* libPods-AJCloudAdmin.a in Frameworks */,
+				0BAD07561F6F9F26006613C7 /* CoreGraphics.framework in Frameworks */,
+				0BAD07521F6F9F09006613C7 /* libsqlite3.tbd in Frameworks */,
+				0BAD07501F6F9EEF006613C7 /* CoreTelephony.framework in Frameworks */,
+				0BAD074E1F6F9EE7006613C7 /* AddressBook.framework in Frameworks */,
+				0BAD075F1F6FA25D006613C7 /* iflyMSC.framework in Frameworks */,
+				0BAD07461F6F9E8E006613C7 /* CoreLocation.framework in Frameworks */,
+				0BAD07441F6F9E6C006613C7 /* Contacts.framework in Frameworks */,
 				A49243C71F1086E000845E4C /* Security.framework in Frameworks */,
-				A49243C61F1086D800845E4C /* libTYKYLibrary.a in Frameworks */,
 				0BF2C6CD1EFA5A4400EA46AF /* WebKit.framework in Frameworks */,
 				C79D04DE1B9FC1A3C23926C6 /* libPods-AJCloudAdmin.a in Frameworks */,
 			);
@@ -736,6 +772,7 @@
 		0B2343BA1EC01CA1007A3AC1 /* MyHomeCloud */ = {
 			isa = PBXGroup;
 			children = (
+				0BAD075D1F6FA25D006613C7 /* iflyMSC.framework */,
 				0B1904CF1EE668EC004C46EE /* CommonTableView */,
 				0BB3AC2B1ECE9FE6008FB5E6 /* MyHomeCloud.entitlements */,
 				0B57F5881EC1989400B89CE2 /* UI */,
@@ -772,6 +809,7 @@
 		0B2343E31EC03095007A3AC1 /* BusinessSystem */ = {
 			isa = PBXGroup;
 			children = (
+				0BAD07371F6F9BDC006613C7 /* IflyVoice */,
 				0B5F6C291F0A3C84001C93D0 /* RemoteNotification */,
 				0B2343E41EC03095007A3AC1 /* Category */,
 				0B2343FB1EC03095007A3AC1 /* Colours */,
@@ -955,6 +993,17 @@
 			path = LoginAndRegister;
 			sourceTree = "<group>";
 		};
+		0BAD07371F6F9BDC006613C7 /* IflyVoice */ = {
+			isa = PBXGroup;
+			children = (
+				0BAD07381F6F9BDC006613C7 /* AJflyVoice.h */,
+				0BAD07391F6F9BDC006613C7 /* AJflyVoice.m */,
+				0BAD073A1F6F9BDC006613C7 /* AJSearchBar.h */,
+				0BAD073B1F6F9BDC006613C7 /* AJSearchBar.m */,
+			);
+			path = IflyVoice;
+			sourceTree = "<group>";
+		};
 		0BC1DED61F178D64007C78DB /* AddImages */ = {
 			isa = PBXGroup;
 			children = (
@@ -1024,6 +1073,17 @@
 		7C85C11C537F6C90A6EF472C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0BAD07571F6F9F63006613C7 /* libz.tbd */,
+				0BAD07551F6F9F26006613C7 /* CoreGraphics.framework */,
+				0BAD07531F6F9F15006613C7 /* QuartzCore.framework */,
+				0BAD07511F6F9F09006613C7 /* libsqlite3.tbd */,
+				0BAD074F1F6F9EEF006613C7 /* CoreTelephony.framework */,
+				0BAD074D1F6F9EE7006613C7 /* AddressBook.framework */,
+				0BAD074B1F6F9EAF006613C7 /* SystemConfiguration.framework */,
+				0BAD07491F6F9EA7006613C7 /* AVFoundation.framework */,
+				0BAD07471F6F9E9C006613C7 /* AudioToolbox.framework */,
+				0BAD07451F6F9E8E006613C7 /* CoreLocation.framework */,
+				0BAD07431F6F9E6C006613C7 /* Contacts.framework */,
 				A49243CA1F10871100845E4C /* libPods-AJCloudAdmin.a */,
 				A49243C81F10870900845E4C /* libPods-AJCloud.a */,
 				A49243C41F1086CF00845E4C /* libTYKYLibrary.a */,
@@ -1503,7 +1563,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		0BF2C6ED1EFA5A4400EA46AF /* [CP] Embed Pods Frameworks */ = {
@@ -1567,7 +1627,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		BA0E84D335A0E5296CF9A670 /* [CP] Embed Pods Frameworks */ = {
@@ -1626,9 +1686,11 @@
 				0BEE41EF1F309F7C00D702F4 /* AJFinanceTableViewCell.m in Sources */,
 				0B1904E01EE668EC004C46EE /* AJTbViewCellModel.m in Sources */,
 				0B2344611EC03095007A3AC1 /* UIView+TYKYPrompt.m in Sources */,
+				0BAD073C1F6F9BDC006613C7 /* AJflyVoice.m in Sources */,
 				0B1904C21EE66192004C46EE /* AJAddHouserViewController.m in Sources */,
 				0B4F881E1EFF89390092BF18 /* AJTagsViewController.m in Sources */,
 				A4FC23501EE6F31200924EEE /* AJLetHouseTableViewCell.m in Sources */,
+				0BAD073E1F6F9BDC006613C7 /* AJSearchBar.m in Sources */,
 				A4E6BB411EEBCDC000CC37B1 /* AJHomeDataCenter.m in Sources */,
 				0BEE41E81F309D8700D702F4 /* AJFinanceViewController.m in Sources */,
 				A44C9D791F2E101400C31CB5 /* AJUserInclinationViewController.m in Sources */,
@@ -1731,9 +1793,11 @@
 				0BEE41F01F309F7C00D702F4 /* AJFinanceTableViewCell.m in Sources */,
 				0BF2C69C1EFA5A4400EA46AF /* AJTbViewCellModel.m in Sources */,
 				0BF2C69D1EFA5A4400EA46AF /* UIView+TYKYPrompt.m in Sources */,
+				0BAD073D1F6F9BDC006613C7 /* AJflyVoice.m in Sources */,
 				0BF2C69E1EFA5A4400EA46AF /* AJAddHouserViewController.m in Sources */,
 				0BB93A6F1EFFD22300B32320 /* AJTagsViewController.m in Sources */,
 				0BF2C69F1EFA5A4400EA46AF /* AJLetHouseTableViewCell.m in Sources */,
+				0BAD073F1F6F9BDC006613C7 /* AJSearchBar.m in Sources */,
 				0BF2C6A01EFA5A4400EA46AF /* AJHomeDataCenter.m in Sources */,
 				0BEE41E91F309D8700D702F4 /* AJFinanceViewController.m in Sources */,
 				A44C9D7A1F2E101400C31CB5 /* AJUserInclinationViewController.m in Sources */,
@@ -1920,6 +1984,10 @@
 				DEVELOPMENT_TEAM = 4F5G8L9327;
 				ENABLE_BITCODE = NO;
 				ENABLE_ONLY_ACTIVE_RESOURCES = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MyHomeCloud",
+				);
 				GCC_PREFIX_HEADER = MyHomeCloud/MyHomeCloud.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
@@ -1949,6 +2017,10 @@
 				DEVELOPMENT_TEAM = 4F5G8L9327;
 				ENABLE_BITCODE = NO;
 				ENABLE_ONLY_ACTIVE_RESOURCES = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MyHomeCloud",
+				);
 				GCC_PREFIX_HEADER = MyHomeCloud/MyHomeCloud.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
@@ -2001,6 +2073,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 4F5G8L9327;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MyHomeCloud",
+				);
 				GCC_PREFIX_HEADER = MyHomeCloud/MyHomeCloud.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
@@ -2029,6 +2105,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 4F5G8L9327;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MyHomeCloud",
+				);
 				GCC_PREFIX_HEADER = MyHomeCloud/MyHomeCloud.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
