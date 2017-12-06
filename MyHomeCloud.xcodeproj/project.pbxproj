@@ -43,6 +43,8 @@
 		0B302F5F1ED01835006896CA /* AJOtherViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B302F5D1ED01835006896CA /* AJOtherViewController.xib */; };
 		0B302F6E1ED04F47006896CA /* AJUserHeadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B302F6C1ED04F47006896CA /* AJUserHeadViewController.m */; };
 		0B302F6F1ED04F47006896CA /* AJUserHeadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B302F6D1ED04F47006896CA /* AJUserHeadViewController.xib */; };
+		0B3EB4541FD7DBDF00DD38E2 /* CT3D_TouchProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B3EB4531FD7DBDF00DD38E2 /* CT3D_TouchProcess.m */; };
+		0B3EB4551FD7DBDF00DD38E2 /* CT3D_TouchProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B3EB4531FD7DBDF00DD38E2 /* CT3D_TouchProcess.m */; };
 		0B4F881E1EFF89390092BF18 /* AJTagsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4F881C1EFF89390092BF18 /* AJTagsViewController.m */; };
 		0B4F881F1EFF89390092BF18 /* AJTagsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B4F881D1EFF89390092BF18 /* AJTagsViewController.xib */; };
 		0B57F5941EC198D000B89CE2 /* AJUserCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B57F5921EC198D000B89CE2 /* AJUserCenterViewController.m */; };
@@ -387,6 +389,8 @@
 		0B302F6B1ED04F47006896CA /* AJUserHeadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJUserHeadViewController.h; sourceTree = "<group>"; };
 		0B302F6C1ED04F47006896CA /* AJUserHeadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJUserHeadViewController.m; sourceTree = "<group>"; };
 		0B302F6D1ED04F47006896CA /* AJUserHeadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJUserHeadViewController.xib; sourceTree = "<group>"; };
+		0B3EB4521FD7DBDF00DD38E2 /* CT3D_TouchProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CT3D_TouchProcess.h; sourceTree = "<group>"; };
+		0B3EB4531FD7DBDF00DD38E2 /* CT3D_TouchProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CT3D_TouchProcess.m; sourceTree = "<group>"; };
 		0B4F881B1EFF89390092BF18 /* AJTagsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJTagsViewController.h; sourceTree = "<group>"; };
 		0B4F881C1EFF89390092BF18 /* AJTagsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJTagsViewController.m; sourceTree = "<group>"; };
 		0B4F881D1EFF89390092BF18 /* AJTagsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJTagsViewController.xib; sourceTree = "<group>"; };
@@ -779,6 +783,8 @@
 				0B2343E31EC03095007A3AC1 /* BusinessSystem */,
 				0B2343BE1EC01CA1007A3AC1 /* AppDelegate.h */,
 				0B2343BF1EC01CA1007A3AC1 /* AppDelegate.m */,
+				0B3EB4521FD7DBDF00DD38E2 /* CT3D_TouchProcess.h */,
+				0B3EB4531FD7DBDF00DD38E2 /* CT3D_TouchProcess.m */,
 				0B2343C71EC01CA1007A3AC1 /* Main.storyboard */,
 				0BEE41B91F303B6700D702F4 /* Assets.xcassets */,
 				0B2343CC1EC01CA1007A3AC1 /* LaunchScreen.storyboard */,
@@ -1659,6 +1665,7 @@
 				0BF2C6811EFA544100EA46AF /* AJUMShareUtil.m in Sources */,
 				0B1904A91EE65EC1004C46EE /* AJSecondHouseTableViewCell.m in Sources */,
 				A4AE33081EF51EEC004B0A54 /* AJNewReserverViewController.m in Sources */,
+				0B3EB4541FD7DBDF00DD38E2 /* CT3D_TouchProcess.m in Sources */,
 				0BEE41F51F30A06600D702F4 /* AJFinanceCellModel.m in Sources */,
 				0B57F59E1EC198F100B89CE2 /* CTBaseViewController.m in Sources */,
 				0B1904CE1EE66192004C46EE /* TJCircleView.m in Sources */,
@@ -1766,6 +1773,7 @@
 				0BF2C6871EFA5A4400EA46AF /* AJUMShareUtil.m in Sources */,
 				0BF2C6881EFA5A4400EA46AF /* AJSecondHouseTableViewCell.m in Sources */,
 				0BF2C6891EFA5A4400EA46AF /* AJNewReserverViewController.m in Sources */,
+				0B3EB4551FD7DBDF00DD38E2 /* CT3D_TouchProcess.m in Sources */,
 				0BEE41F61F30A06600D702F4 /* AJFinanceCellModel.m in Sources */,
 				0BF2C68A1EFA5A4400EA46AF /* CTBaseViewController.m in Sources */,
 				0BF2C68C1EFA5A4400EA46AF /* TJCircleView.m in Sources */,

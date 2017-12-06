@@ -15,6 +15,7 @@
 #import <Bugly/Bugly.h>//崩溃分析
 #import <UMSocialCore/UMSocialCore.h>//友盟集成 微信分享
 #import <iflyMSC/IFlySpeechUtility.h>
+#import "CT3D_TouchProcess.h"
 
 NSString *const AVOSCloudID = @"Q4xx9Pczn6UbtkFQttUzGfOV-gzGzoHsz";
 NSString *const AVOSCloudKey = @"YUlG0aQ4gwl7DcuwopUraSnz";
@@ -29,6 +30,8 @@ NSString *const UMWEIXINAPPSECRET = @"1b701ce273624810d0f55296f19cd384";
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [CT3D_TouchProcess init3dTouch];
+    
     [AVOSCloud setApplicationId:AVOSCloudID clientKey:AVOSCloudKey];
     [AVAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
@@ -54,7 +57,7 @@ NSString *const UMWEIXINAPPSECRET = @"1b701ce273624810d0f55296f19cd384";
     [CTVersionAutoUpdate  checkAppStoreVersion:@"1251844754" openStoreStyle:OpenAppStoreInApp];
     [self.window makeKeyAndVisible];
 
-    return YES;
+    return [CT3D_TouchProcess respondTouchAction:launchOptions];
 }
 - (void)setBugLy{
     BuglyConfig * config = [[BuglyConfig alloc] init];
@@ -73,6 +76,11 @@ NSString *const UMWEIXINAPPSECRET = @"1b701ce273624810d0f55296f19cd384";
     [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:UMWEIXINKEY
                                        appSecret:UMWEIXINAPPSECRET redirectURL:@"http://mobile.umeng.com/social"];
     
+    
+}
+- (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandler {
+    
+    [CT3D_TouchProcess CTApplication:application performActionForShortcutItem:shortcutItem completionHandler:completionHandler];
     
 }
 //更新消息角标

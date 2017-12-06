@@ -154,9 +154,10 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 - (void)sendImage:(ALAsset *)myasset{
   
     UIImage *selectedImage = [myasset changePhotoHEICImageToJPEG];
+    NSString *imageName = [myasset imageName];
     [onePhoto.imagePicker dismissViewControllerAnimated:YES completion:^{
         if ([onePhoto.delegate respondsToSelector:@selector(sendOnePhoto:withImageName:)]) {
-            [onePhoto.delegate sendOnePhoto:selectedImage withImageName:[myasset imageName]];
+            [onePhoto.delegate sendOnePhoto:selectedImage withImageName:imageName];
         }
     }];
 }

@@ -49,6 +49,9 @@
 #define KEYWINDOW           [UIApplication  sharedApplication].keyWindow
 #define APPDELEGATE         (AppDelegate *)[UIApplication sharedApplication].delegate
 
+#define ROOTVC      [UIApplication sharedApplication].keyWindow.rootViewController
+#define TOPVC       [CTTool getVisibleViewControllerFrom:ROOTVC]
+
 //本地用户名称
 #define USER_NAME               @"UserName"
 #define HEAD_URL                @"headUrl"

@@ -163,6 +163,10 @@
         if (vc.presentedViewController) {
             return [self getVisibleViewControllerFrom:vc.presentedViewController];
         } else {
+            if (vc) {
+                debugLog(@"最顶部控制器名称:%@",NSStringFromClass([vc class]));
+                
+            }
             return vc;
         }
     }
