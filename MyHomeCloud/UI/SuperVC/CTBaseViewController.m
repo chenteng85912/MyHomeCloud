@@ -24,6 +24,11 @@
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    self.navigationController.navigationBar.translucent = NO;
+
+    if (self.subController) {
+        return;
+    }
     self.navigationController.interactivePopGestureRecognizer.delegate = self;
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
 
@@ -32,7 +37,6 @@
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationController.navigationBar.barTintColor = NavigationBarColor;
 
-    self.navigationController.navigationBar.translucent = NO;
 
     [self.navigationController.navigationBar setTitleTextAttributes:
      @{NSFontAttributeName:[UIFont boldSystemFontOfSize:16],
@@ -83,6 +87,10 @@
         [self.navigationController dismissViewControllerAnimated:YES completion:nil];
     }
     
+}
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [super touchesBegan:touches withEvent:event];
+    [[UIApplication sharedApplication] sendAction:@selector(resignFirstResponder) to:nil from:nil forEvent:nil];
 }
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognize
 {

@@ -67,7 +67,6 @@ NSInteger const tipViewTag = 12345678;
     }
     hud.removeFromSuperViewOnHide = YES;
         [hud hideAnimated:YES afterDelay:1.0];
-       
     
     dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC));
     dispatch_after(delayTime, dispatch_get_main_queue(), ^(void){
@@ -174,7 +173,7 @@ NSInteger const tipViewTag = 12345678;
     [nothing addSubview:tipLabel];
     
     UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(20, 0, 60, 60)];
-    imgView.image = [UIImage imageNamed:imgName];
+    imgView.image = [[UIImage imageNamed:imgName] imageChangeThemeColor];
    
     [nothing addSubview:imgView];
     

@@ -10,7 +10,7 @@
 
 @interface AJSB : NSObject
 //打开登录界面
-+ (void)goLoginViewComplete:(void (^)(void))callBack;
++ (void)goLoginViewComplete:(dispatch_block_t)callBack;
 
 //根据文件ID删除文件
 + (void)deleteFile:(NSString *)fileId complete:(void(^)(BOOL success, NSError *error))completeHandle;

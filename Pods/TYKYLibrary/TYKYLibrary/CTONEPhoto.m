@@ -12,6 +12,7 @@
 #import "CTSavePhotos.h"
 #import "UIImage+Tools.h"
 #import "ALAsset+HEIC_TO_JPEG.h"
+#import "UIAlertController+CTAlertBlock.h"
 
 @interface CTONEPhoto ()<UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 
@@ -52,8 +53,9 @@ static CTONEPhoto *onePhoto = nil;
         }
     }
     
-    [[UIApplication sharedApplication].keyWindow.rootViewController
-     presentViewController:onePhoto.imagePicker animated:YES completion:nil];
+    UIViewController *rootVC = [UIAlertController getVisibleViewControllerFrom:[UIApplication sharedApplication].keyWindow.rootViewController];
+
+    [rootVC presentViewController:onePhoto.imagePicker animated:YES completion:nil];
 
 }
 + (void)openCameraWithDelegate:(id <CTONEPhotoDelegate>)rootVC

@@ -34,6 +34,7 @@ CGFloat const NEW_MORE_HEITHT = 580;
 @property (weak, nonatomic) IBOutlet UIButton *likeBtn;//关注按钮
 @property (weak, nonatomic) IBOutlet UIView *headView;//头部视图
 @property (weak, nonatomic) IBOutlet UILabel *houseTitle;//标题
+@property (weak, nonatomic) IBOutlet UIButton *checkBtn;
 
 @property (strong, nonatomic) AVObject *likeHouse;//收藏对象
 @property (strong, nonatomic) AVObject *houseInfo;//当前房源信息
@@ -47,6 +48,10 @@ CGFloat const NEW_MORE_HEITHT = 580;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.isDetails = YES;
+
+    _checkBtn.backgroundColor = NavigationBarColor;
+    [_likeBtn setImage:[LOADIMAGE(@"unFav") imageChangeThemeColor] forState:UIControlStateNormal];
+    [_likeBtn setImage:[LOADIMAGE(@"faved") imageChangeThemeColor] forState:UIControlStateSelected];
 
 #if AJCLOUDADMIN
     self.editBtn.hidden = NO;
@@ -355,10 +360,10 @@ CGFloat const NEW_MORE_HEITHT = 580;
         
         _houseTitle.alpha = offsetY>AUTOLOOP_HEIGHT-64+45?1.0:0.0;
         
-        _headView.backgroundColor = [UIColor colorWithRed:246.0/255.0 green:146.0/255.0 blue:51.0/255.0 alpha:ap>0?ap:0];
+        _headView.backgroundColor = [NavigationBarColor colorWithAlphaComponent:ap>0?ap:0];
     }else{
         
-        _headView.backgroundColor = [UIColor colorWithRed:246.0/255.0 green:146.0/255.0 blue:51.0/255.0 alpha:0];
+        _headView.backgroundColor = [NavigationBarColor colorWithAlphaComponent:0];
         _houseTitle.alpha = 0;
     }
 }

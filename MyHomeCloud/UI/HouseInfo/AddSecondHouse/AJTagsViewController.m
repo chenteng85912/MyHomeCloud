@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet UIButton *yearsBtn;
 @property (weak, nonatomic) IBOutlet UIButton *schoolBtn;
+@property (weak, nonatomic) IBOutlet UIButton *doneBtn;
 
 @property (weak, nonatomic) IBOutlet UIButton *communitBtn;
 @end
@@ -30,6 +31,7 @@
     }else{
         _communitBtn.hidden = YES;
     }
+    _doneBtn.backgroundColor = NavigationBarColor;
 }
 
 - (void)viewWillAppear:(BOOL)animated{

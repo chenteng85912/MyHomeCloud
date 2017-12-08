@@ -11,6 +11,7 @@
 
 @property (strong, nonatomic) AVQuery *baseQuery;
 @property (assign, nonatomic) BOOL isFlip;
+@property (assign, nonatomic) BOOL subController;
 
 - (void)backToPreVC;
 

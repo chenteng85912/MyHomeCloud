@@ -12,6 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *headBtn;
 @property (weak, nonatomic) IBOutlet UILabel *heatTitle;
+@property (weak, nonatomic) IBOutlet UIImageView *arrowImg;
 
 + (instancetype)initWithSection:(NSInteger)section;
 

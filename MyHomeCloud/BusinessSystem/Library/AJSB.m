@@ -11,7 +11,7 @@
 
 @implementation AJSB
 //打开登录界面
-+ (void)goLoginViewComplete:(void (^)(void))callBack{
++ (void)goLoginViewComplete:(dispatch_block_t)callBack{
     dispatch_async(dispatch_get_main_queue(), ^{
         
         AJLoginViewController *login  = [AJLoginViewController new];

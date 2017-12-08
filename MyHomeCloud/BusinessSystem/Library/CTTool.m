@@ -192,4 +192,60 @@
         }
     }
 }
+
+#pragma mark - 十六进制颜色转UIColor
++ (UIColor*)colorWithHexString:(NSString *)stringToConvert
+{
+    NSString *cString = [[stringToConvert stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] uppercaseString];
+    // strip 0X if it appears
+    if ([cString hasPrefix:@"0X"])
+    {
+        cString = [cString substringFromIndex:2];
+    }
+    else if([cString hasPrefix:@"#"])
+    {
+        cString = [cString substringFromIndex:1];
+    }
+    
+    if ([cString length] != 6 && [cString length] !=8)
+    {
+        return [UIColor clearColor];
+    }
+    
+    unsigned int r, g, b,a;
+    
+    NSRange range;
+    range.location = 0;
+    range.length = 2;
+    NSString *rString = [cString substringWithRange:range];
+    
+    range.location = 2;
+    NSString *gString = [cString substringWithRange:range];
+    
+    range.location = 4;
+    NSString *bString = [cString substringWithRange:range];
+    
+    if([cString length] ==8)
+    {
+        range.location = 6;
+        NSString *aString = [cString substringWithRange:range];
+        [[NSScanner scannerWithString:aString] scanHexInt:&a];
+    }
+    else
+    {
+        a = 0xff;
+    }
+    
+    // Scan values
+    
+    [[NSScanner scannerWithString:rString] scanHexInt:&r];
+    [[NSScanner scannerWithString:gString] scanHexInt:&g];
+    [[NSScanner scannerWithString:bString] scanHexInt:&b];
+    
+    //////NSLog(@"%d,%d,%d",r,g,b);
+    return [UIColor colorWithRed:((float) r / 255.0f)
+                           green:((float) g / 255.0f)
+                            blue:((float) b / 255.0f)
+                           alpha:((float) a / 255.0f)];
+}
 @end

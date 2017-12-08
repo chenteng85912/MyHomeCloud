@@ -62,12 +62,17 @@ CGFloat const HEAD_BTN_HEIGHT = 100;
     [self initTbViewData];
     
     [self.view showHUD:nil];
-
     [self fetchData];
-    [CTTool removeSearchBorder:self.searchBar];
     
+    [CTTool removeSearchBorder:self.searchBar];
     //头部广告滚动视图数据源
     [self.autoLoopView addLocalModels:self.autoLoopDataArray];
+    
+    for (UIButton *btn in _headBtnView.subviews) {
+        if ([btn isKindOfClass:[UIButton class]]) {
+            [btn setImage:[btn.currentImage imageChangeThemeColor] forState:UIControlStateNormal];
+        }
+    }
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -246,7 +251,7 @@ CGFloat const HEAD_BTN_HEIGHT = 100;
 {
     
     AJHomeHeadView *headView = [AJHomeHeadView initWithSection:section];
-    
+    headView.arrowImg.image = [headView.arrowImg.image imageChangeThemeColor];
     BUTTON_ACTION(headView.headBtn, self, @selector(openMoreHouseData:));
     
     return headView;

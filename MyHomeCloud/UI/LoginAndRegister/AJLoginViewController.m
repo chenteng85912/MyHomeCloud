@@ -28,7 +28,9 @@ NSString *const USER_ONLINE = @"该用户已在别处登录";
 #pragma mark -life cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.subController = YES;
     
+    self.view.backgroundColor = NavigationBarColor;
     self.keyChainWrapper = [[KeychainTool alloc] initWithIdentifier:[CTTool appName] accessGroup:nil];
     NSString *userName = [self.keyChainWrapper objectForKey:(id)kSecAttrAccount];
 

@@ -24,14 +24,19 @@
 #import "CTTool.h"
 #import "AppDelegate.h"
 #import "AJTableViewCell.h"
+#import "TYKYThemeScheme.h"
 
 #import "UIImageView+WebCache.h"
 #import "UIView+TYKYPrompt.h"
+#import "UIImage+ChangeColor.h"
 
 #endif /* MyHomeCloud_pch */
 
 #define UIColorFromRGB(rgbValue)    [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
-#define NavigationBarColor  UIColorFromRGB(0xF69233)//UIColorFromRGB(0x1CB464)
+#define RGBCOLOR(r,g,b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1]
+
+#define NavigationBarColor  [CTTool colorWithHexString:[TYKYThemeScheme currentColorStr]]
+//#define NavigationBarColor  UIColorFromRGB(0xF69233)//UIColorFromRGB(0x1CB464)
 
 #define UMWEIXINKEY   @"wx82d7c82f28299bef"
 #define JPUSH_AppKey  @"11f9e8873ee0df970777330e"

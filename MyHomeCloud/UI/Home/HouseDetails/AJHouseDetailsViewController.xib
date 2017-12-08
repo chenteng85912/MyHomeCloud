@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AJHouseDetailsViewController">
             <connections>
                 <outlet property="acceptTime" destination="P16-2k-hK1" id="K4x-Do-Zdg"/>
+                <outlet property="arrowBtn" destination="1Ba-e2-fGN" id="ena-kD-xDg"/>
                 <outlet property="baseInfoView" destination="Icd-v7-0Hj" id="abV-cu-Q3F"/>
                 <outlet property="buildingType" destination="rDD-Xo-TLy" id="hup-db-aPa"/>
                 <outlet property="carNumber" destination="V8J-sE-QPP" id="kwT-4W-pNj"/>
                 <outlet property="describeInfo" destination="754-zr-TF4" id="HHv-ZM-v96"/>
                 <outlet property="developerName" destination="v8s-up-3ZR" id="VMn-CH-W12"/>
                 <outlet property="directionLabel" destination="fPV-LE-Y8l" id="6FD-ab-yTa"/>
+                <outlet property="downArrowBtn" destination="QsB-bB-ozE" id="0X5-0W-FFb"/>
                 <outlet property="estateAddress" destination="538-Pp-Als" id="4od-8V-lj9"/>
                 <outlet property="estateName" destination="DRu-IK-evT" id="cBR-L5-trL"/>
                 <outlet property="estatePrice" destination="QhR-eh-Jtk" id="6tq-dZ-jHy"/>
@@ -34,6 +36,7 @@
                 <outlet property="houseRooms" destination="dA5-ve-mus" id="1pi-y2-Z3Q"/>
                 <outlet property="houseShowTime" destination="BGj-jo-4jM" id="Mgf-p3-SQr"/>
                 <outlet property="houseYear" destination="e9o-yd-MJJ" id="p7u-hu-2ID"/>
+                <outlet property="imgBtn" destination="aKW-YM-j2L" id="iqe-M7-cgT"/>
                 <outlet property="mapBView" destination="eED-u4-vUJ" id="l7M-P1-QVH"/>
                 <outlet property="mapBackView" destination="o75-Cy-GA8" id="5G2-u2-VIH"/>
                 <outlet property="moreInfoBtn" destination="DRY-40-dFh" id="QZT-vF-lAN"/>
@@ -100,7 +103,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <view clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0hh-TL-rpH">
-                            <rect key="frame" x="15" y="60" width="290" height="0.5"/>
+                            <rect key="frame" x="15" y="60" width="290" height="1"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         </view>
@@ -147,17 +150,17 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <view clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uZB-xV-XmS">
-                            <rect key="frame" x="15" y="120" width="290" height="0.5"/>
+                            <rect key="frame" x="15" y="120" width="290" height="1"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         </view>
                         <view clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wS8-SG-kDj">
-                            <rect key="frame" x="106" y="70" width="0.5" height="40"/>
+                            <rect key="frame" x="106" y="70" width="1" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         </view>
                         <view clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dgD-HL-t8n">
-                            <rect key="frame" x="213" y="70" width="0.5" height="40"/>
+                            <rect key="frame" x="213" y="70" width="1" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         </view>
@@ -511,7 +514,7 @@
                             </connections>
                         </button>
                         <view clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kWQ-Yp-AcA">
-                            <rect key="frame" x="15" y="60" width="290" height="0.5"/>
+                            <rect key="frame" x="15" y="60" width="290" height="1"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         </view>

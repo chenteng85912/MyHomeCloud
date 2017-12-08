@@ -13,6 +13,7 @@
 @interface AJHouseDesViewController ()<CTCustomAlbumViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *colView;
+@property (weak, nonatomic) IBOutlet UIButton *uploadBtn;
 
 @property (strong, nonatomic) NSMutableArray <AJUploadPicModel *> *dataArray;
 
@@ -23,6 +24,7 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    _uploadBtn.backgroundColor = NavigationBarColor;
     self.title = @"房屋详情完善";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:[CTTool makeCustomRightBtn:@"保存" target:self sel:@selector(saveHouseData)]];
     

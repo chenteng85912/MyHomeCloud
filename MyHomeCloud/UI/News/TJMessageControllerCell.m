@@ -24,12 +24,13 @@
 @implementation TJMessageControllerCell
 
 
--(void)setMessageBean:(AJMessageBean *)messageBean
+- (void)setMessageBean:(AJMessageBean *)messageBean
 {
     if (_messageBean != messageBean) {
         _messageBean = messageBean;
         
     }
+    _unReadNumber.backgroundColor = NavigationBarColor;
     _titleLabel.text = messageBean.msgTitle;
     if (messageBean.unReadNum) {
         _unReadNumber.hidden = NO;

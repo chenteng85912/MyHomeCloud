@@ -35,10 +35,10 @@ NSString *const newHouse = @"新房";
         return;
     }
     //图标
-    UIApplicationShortcutIcon *searchIcon = [UIApplicationShortcutIcon iconWithTemplateImageName:@"search"];
-    UIApplicationShortcutIcon *letIcon = [UIApplicationShortcutIcon iconWithTemplateImageName:@"recentHouse"];
-    UIApplicationShortcutIcon *secondIcon = [UIApplicationShortcutIcon iconWithTemplateImageName:@"oldHouse"];
-    UIApplicationShortcutIcon *newIcon = [UIApplicationShortcutIcon iconWithTemplateImageName:@"newHouse"];
+    UIApplicationShortcutIcon *searchIcon = [UIApplicationShortcutIcon iconWithTemplateImageName:@"short_search"];
+    UIApplicationShortcutIcon *letIcon = [UIApplicationShortcutIcon iconWithTemplateImageName:@"short_letHouse"];
+    UIApplicationShortcutIcon *secondIcon = [UIApplicationShortcutIcon iconWithTemplateImageName:@"short_secondHouse"];
+    UIApplicationShortcutIcon *newIcon = [UIApplicationShortcutIcon iconWithTemplateImageName:@"short_newHouse"];
 
     //创建快捷选项
     UIApplicationShortcutItem *search = [[UIApplicationShortcutItem alloc]initWithType:[CTTool appName] localizedTitle:searchKey localizedSubtitle:nil icon:searchIcon userInfo:nil];

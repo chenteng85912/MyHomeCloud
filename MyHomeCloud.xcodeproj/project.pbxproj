@@ -28,6 +28,10 @@
 		0B1904E11EE668EC004C46EE /* AJTbViewPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1904D51EE668EC004C46EE /* AJTbViewPresenter.m */; };
 		0B1904E21EE668EC004C46EE /* AJBaseTbViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1904DD1EE668EC004C46EE /* AJBaseTbViewController.m */; };
 		0B1904E31EE668EC004C46EE /* AJTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1904DF1EE668EC004C46EE /* AJTableViewCell.m */; };
+		0B21DE8B1FDA731C000EA464 /* UIImage+ChangeColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B21DE871FDA731C000EA464 /* UIImage+ChangeColor.m */; };
+		0B21DE8C1FDA731C000EA464 /* UIImage+ChangeColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B21DE871FDA731C000EA464 /* UIImage+ChangeColor.m */; };
+		0B21DE8D1FDA731C000EA464 /* TYKYThemeScheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B21DE891FDA731C000EA464 /* TYKYThemeScheme.m */; };
+		0B21DE8E1FDA731C000EA464 /* TYKYThemeScheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B21DE891FDA731C000EA464 /* TYKYThemeScheme.m */; };
 		0B2343BD1EC01CA1007A3AC1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2343BC1EC01CA1007A3AC1 /* main.m */; };
 		0B2343C01EC01CA1007A3AC1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2343BF1EC01CA1007A3AC1 /* AppDelegate.m */; };
 		0B2343C91EC01CA1007A3AC1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B2343C71EC01CA1007A3AC1 /* Main.storyboard */; };
@@ -360,6 +364,10 @@
 		0B1904DD1EE668EC004C46EE /* AJBaseTbViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJBaseTbViewController.m; sourceTree = "<group>"; };
 		0B1904DE1EE668EC004C46EE /* AJTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJTableViewCell.h; sourceTree = "<group>"; };
 		0B1904DF1EE668EC004C46EE /* AJTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJTableViewCell.m; sourceTree = "<group>"; };
+		0B21DE871FDA731C000EA464 /* UIImage+ChangeColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ChangeColor.m"; sourceTree = "<group>"; };
+		0B21DE881FDA731C000EA464 /* TYKYThemeScheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYKYThemeScheme.h; sourceTree = "<group>"; };
+		0B21DE891FDA731C000EA464 /* TYKYThemeScheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYKYThemeScheme.m; sourceTree = "<group>"; };
+		0B21DE8A1FDA731C000EA464 /* UIImage+ChangeColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ChangeColor.h"; sourceTree = "<group>"; };
 		0B2343B81EC01CA1007A3AC1 /* AJCloud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AJCloud.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B2343BC1EC01CA1007A3AC1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0B2343BE1EC01CA1007A3AC1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -752,6 +760,17 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		0B21DE861FDA731C000EA464 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				0B21DE881FDA731C000EA464 /* TYKYThemeScheme.h */,
+				0B21DE891FDA731C000EA464 /* TYKYThemeScheme.m */,
+				0B21DE8A1FDA731C000EA464 /* UIImage+ChangeColor.h */,
+				0B21DE871FDA731C000EA464 /* UIImage+ChangeColor.m */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
 		0B2343AF1EC01CA1007A3AC1 = {
 			isa = PBXGroup;
 			children = (
@@ -815,6 +834,7 @@
 		0B2343E31EC03095007A3AC1 /* BusinessSystem */ = {
 			isa = PBXGroup;
 			children = (
+				0B21DE861FDA731C000EA464 /* Theme */,
 				0BAD07371F6F9BDC006613C7 /* IflyVoice */,
 				0B5F6C291F0A3C84001C93D0 /* RemoteNotification */,
 				0B2343E41EC03095007A3AC1 /* Category */,
@@ -1687,6 +1707,7 @@
 				A4AE33121EF51F6F004B0A54 /* AJReserverTableViewCell.m in Sources */,
 				0B57F5A11EC1991800B89CE2 /* AjMainTabBarViewController.m in Sources */,
 				A4C645581F35A59F00F2D93A /* AJForgotPswViewController.m in Sources */,
+				0B21DE8B1FDA731C000EA464 /* UIImage+ChangeColor.m in Sources */,
 				A44A8C181F03EE7A00BE6D89 /* AJFilterViewController.m in Sources */,
 				A44AEBD01EEEC72A00109FB8 /* AJLocationViewController.m in Sources */,
 				0B1904C61EE66192004C46EE /* AJNewHouseModel.m in Sources */,
@@ -1707,6 +1728,7 @@
 				A4B864491EE6E63800E3CE5E /* AJUserHouseViewController.m in Sources */,
 				0BC1DECB1F17899A007C78DB /* AJAddNHouseViewController.m in Sources */,
 				A42BECDB1F121AB400C9E2CB /* AJHouseInfoViewController.m in Sources */,
+				0B21DE8D1FDA731C000EA464 /* TYKYThemeScheme.m in Sources */,
 				A46422521F0748F800459294 /* AJFeedbackTableViewCell.m in Sources */,
 				A464225D1F07591F00459294 /* AJSendFeecbackViewController.m in Sources */,
 				0B5F6C2C1F0A3C84001C93D0 /* AJRemoteNotification.m in Sources */,
@@ -1795,6 +1817,7 @@
 				0BF2C6981EFA5A4400EA46AF /* AJReserverTableViewCell.m in Sources */,
 				0BF2C6991EFA5A4400EA46AF /* AjMainTabBarViewController.m in Sources */,
 				A4C645591F35A59F00F2D93A /* AJForgotPswViewController.m in Sources */,
+				0B21DE8C1FDA731C000EA464 /* UIImage+ChangeColor.m in Sources */,
 				A44A8C191F03EE7A00BE6D89 /* AJFilterViewController.m in Sources */,
 				0BF2C69A1EFA5A4400EA46AF /* AJLocationViewController.m in Sources */,
 				0BF2C69B1EFA5A4400EA46AF /* AJNewHouseModel.m in Sources */,
@@ -1815,6 +1838,7 @@
 				0BF2C6A51EFA5A4400EA46AF /* AJUserHouseViewController.m in Sources */,
 				0BC1DECC1F17899A007C78DB /* AJAddNHouseViewController.m in Sources */,
 				A42BECDC1F121AB400C9E2CB /* AJHouseInfoViewController.m in Sources */,
+				0B21DE8E1FDA731C000EA464 /* TYKYThemeScheme.m in Sources */,
 				A46422531F0748F800459294 /* AJFeedbackTableViewCell.m in Sources */,
 				A464225E1F07591F00459294 /* AJSendFeecbackViewController.m in Sources */,
 				0B5F6C2D1F0A3C84001C93D0 /* AJRemoteNotification.m in Sources */,

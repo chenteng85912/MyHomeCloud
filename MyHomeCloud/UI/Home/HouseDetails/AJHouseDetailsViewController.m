@@ -23,6 +23,9 @@ CGFloat const MORE_VIEW_HEIGHT = 370;
 @property (weak, nonatomic) IBOutlet UIView *mapBackView;//地图
 @property (weak, nonatomic) IBOutlet UIView *moreInfoView;//新房更多信息
 @property (weak, nonatomic) IBOutlet UIView *baseInfoView;//新房基本信息
+@property (weak, nonatomic) IBOutlet UIButton *imgBtn;
+@property (weak, nonatomic) IBOutlet UIButton *arrowBtn;
+@property (weak, nonatomic) IBOutlet UIImageView *downArrowBtn;
 
 //租房 二手房
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
@@ -72,6 +75,11 @@ CGFloat const MORE_VIEW_HEIGHT = 370;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [_imgBtn setImage:[_imgBtn.currentImage imageChangeThemeColor] forState:UIControlStateNormal];
+    [_arrowBtn setImage:[_arrowBtn.currentImage imageChangeThemeColor] forState:UIControlStateNormal];
+
+    _downArrowBtn.image = [_downArrowBtn.image imageChangeThemeColor];
+
     if (self.detailsModal==NModal) {
         BUTTON_ACTION(self.moreInfoBtn, self, @selector(showMoreHouseInfo:));
     }

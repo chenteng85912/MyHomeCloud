@@ -87,7 +87,8 @@ static NSString *CellIdentifier = @"AJUserCellId";
         cell.textLabel.font = [UIFont systemFontOfSize:16];
 
     }
-    cell.imageView.image = [CTTool scaleImage:LOADIMAGE(model.iconName) toSize:CGSizeMake(25, 25)];
+    UIImage *img = [CTTool scaleImage:LOADIMAGE(model.iconName) toSize:CGSizeMake(25, 25)];
+    cell.imageView.image = [img imageChangeThemeColor];
     if ([model.title isEqualToString:@"客服热线"]) {
         UILabel *phone = [[UILabel alloc] initWithFrame:CGRectMake(dWidth-120,0, dWidth-120-40, 50)];
         phone.textAlignment = NSTextAlignmentRight;

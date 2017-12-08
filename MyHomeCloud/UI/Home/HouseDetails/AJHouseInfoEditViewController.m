@@ -12,6 +12,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *priceText;
 @property (weak, nonatomic) IBOutlet UILabel *typeName;
 @property (weak, nonatomic) IBOutlet UILabel *unitText;
+@property (weak, nonatomic) IBOutlet UIButton *saveBtn;
 
 @end
 
@@ -19,6 +20,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    _saveBtn.backgroundColor = NavigationBarColor;
     
     if (self.detailsModal==SecondModal) {
         _typeName.text = @"总价";

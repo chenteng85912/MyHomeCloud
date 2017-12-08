@@ -1,9 +1,8 @@
 
 
-typedef void (^CallBackBlock)(void);
 
-@interface AJLoginViewController : UIViewController
+@interface AJLoginViewController : CTBaseViewController
 
-@property (strong, nonatomic) CallBackBlock backBlock;
+@property (strong, nonatomic) dispatch_block_t backBlock;
 
 @end

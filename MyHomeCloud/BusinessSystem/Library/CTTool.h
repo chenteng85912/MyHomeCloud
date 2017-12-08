@@ -24,7 +24,7 @@
 + (NSString *)appName;
 
 //按宽度裁剪图片
-+ (UIImage *) imageCompressForWidth:(UIImage *)sourceImage targetWidth:(CGFloat)defineWidth;
++ (UIImage *)imageCompressForWidth:(UIImage *)sourceImage targetWidth:(CGFloat)defineWidth;
 
 //裁剪图片
 + (UIImage *)scaleImage:(UIImage *)img toSize:(CGSize)size;
@@ -49,5 +49,8 @@
 
 //移除搜索框边框
 + (void)removeSearchBorder:(UISearchBar *)searchBar;
+
+#pragma mark - 十六进制颜色转UIColor
++ (UIColor*)colorWithHexString:(NSString *)stringToConvert;
 
 @end

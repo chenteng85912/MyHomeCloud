@@ -99,7 +99,7 @@
 
 - (void)chooseUserHead{
     WeakSelf;
-    [UIAlertController alertWithTitle:@"更换头像" message:nil cancelButtonTitle:@"取消" otherButtonTitles:@[@"拍照",@"从相册选取",@"保存头像"] preferredStyle:UIAlertControllerStyleActionSheet block:^(NSInteger buttonIndex) {
+    [UIAlertController alertWithTitle:nil message:nil cancelButtonTitle:@"取消" otherButtonTitles:@[@"拍照",@"从相册选取",@"保存头像"] preferredStyle:UIAlertControllerStyleActionSheet block:^(NSInteger buttonIndex) {
         if (buttonIndex==1) {
             [CTONEPhoto openCameraWithDelegate:weakSelf editModal:YES];
         }else if (buttonIndex==2){

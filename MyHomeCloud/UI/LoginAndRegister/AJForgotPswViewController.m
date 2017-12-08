@@ -16,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UIView *verityView;
 
 @property (strong, nonatomic) CADisplayLink *displayLink;//定时器
+@property (weak, nonatomic) IBOutlet UIButton *checkBtn;
+@property (weak, nonatomic) IBOutlet UIButton *saveBtn;
 
 @end
 
@@ -23,6 +25,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _checkBtn.backgroundColor = NavigationBarColor;
+    _saveBtn.backgroundColor = NavigationBarColor;
     if (self.showModal==ModityUserPswModal) {
         self.title  = @"重置密码";
 

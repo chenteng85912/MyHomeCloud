@@ -14,6 +14,7 @@
 
 @property (weak, nonatomic) IBOutlet UICollectionView *colView;
 @property (strong, nonatomic) NSMutableArray <AJUploadPicModel *> *dataArray;
+@property (weak, nonatomic) IBOutlet UIButton *uploadBtn;
 
 @end
 
@@ -21,7 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    _uploadBtn.backgroundColor = NavigationBarColor;
     [self.colView registerNib:[UINib nibWithNibName:NSStringFromClass([PreviewUpLoadCollectionViewCell class]) bundle:nil] forCellWithReuseIdentifier:NSStringFromClass([PreviewUpLoadCollectionViewCell class])];
     
     self.colView.alwaysBounceVertical = YES;

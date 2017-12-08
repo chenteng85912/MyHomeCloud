@@ -22,10 +22,6 @@ typedef NS_ENUM(NSInteger, TYKYHUDMode) {
 - (void)showText:(NSString *)msg
         complete:(dispatch_block_t)handleComplete;
 
-- (void)showSVTips:(NSString *)msg
-         withState:(TYKYHUDMode)HUDModel
-          complete:(dispatch_block_t)handleComplete;
-
 //展示成功或失败提示
 - (void)showTips:(NSString *)msg withState:(TYKYHUDMode)HUDModel
         complete:(dispatch_block_t)handleComplete;

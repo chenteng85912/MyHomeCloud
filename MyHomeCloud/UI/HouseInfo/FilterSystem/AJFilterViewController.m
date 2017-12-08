@@ -28,6 +28,7 @@
 @property (weak, nonatomic) IBOutlet UIView *areaView;
 @property (weak, nonatomic) IBOutlet UIView *typeView;
 @property (weak, nonatomic) IBOutlet UIButton *moreBtn;
+@property (weak, nonatomic) IBOutlet UIView *moreBtnView;
 
 @property (strong, nonatomic) NSArray *roomsArray;//房型
 @property (strong, nonatomic) NSArray *priceArray;//价格
@@ -89,6 +90,7 @@
         self.priceArray = @[@"不限",@"1000元以下",@"1000-1500元",@"1500-2000元",@"2000-3000元",@"3000-4000元",@"4000元以上"];
 
     }else{
+        _moreBtnView.hidden = YES;
         [_priceBtn setTitle:@"均价" forState:UIControlStateNormal];
         self.priceArray = @[@"不限",@"10000元以下",@"10000-15000元/平",@"15000-20000元/平",@"20000-25000元/平",@"25000-30000元/平",@"30000元以上"];
         self.roomsArray = @[@"不限",@"公寓",@"洋房",@"别墅",@"商铺",@"写字楼"];
