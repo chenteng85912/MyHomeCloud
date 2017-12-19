@@ -36,6 +36,11 @@
     }
 
 }
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    self.tableView.frame = CGRectMake(0, 0, dWidth, dHeight-NAVBAR_HEIGHT);
+
+}
 #pragma mark - AJTbViewProtocol
 //- (BOOL)makeMJRefresh{
 //    return YES;

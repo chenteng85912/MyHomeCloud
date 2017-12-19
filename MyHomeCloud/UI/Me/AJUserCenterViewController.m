@@ -38,7 +38,6 @@ static NSString *CellIdentifier = @"AJUserCellId";
    
     self.tbView.tableHeaderView = _headView;
     
-
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
