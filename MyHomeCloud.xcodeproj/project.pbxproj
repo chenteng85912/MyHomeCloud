@@ -231,6 +231,11 @@
 		0BF3E83C1F2ECDA9009CEFF6 /* AJAboutUsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BF3E8391F2ECDA9009CEFF6 /* AJAboutUsViewController.xib */; };
 		0BF3E83D1F2ECDA9009CEFF6 /* AJAboutUsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BF3E8391F2ECDA9009CEFF6 /* AJAboutUsViewController.xib */; };
 		0BF95A0D1EEE55F00031D958 /* AJSB.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF95A0C1EEE55F00031D958 /* AJSB.m */; };
+		0BF9EF101FE7DB7500619B8A /* UITableView+NoMoreDataInFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF9EF061FE7DB7300619B8A /* UITableView+NoMoreDataInFooter.m */; };
+		0BF9EF111FE7DB7500619B8A /* NSMutableDictionary+IHateNil.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF9EF071FE7DB7300619B8A /* NSMutableDictionary+IHateNil.m */; };
+		0BF9EF121FE7DB7500619B8A /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF9EF081FE7DB7300619B8A /* NSString+Extension.m */; };
+		0BF9EF131FE7DB7500619B8A /* NSMutableArray+CTExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF9EF0E1FE7DB7500619B8A /* NSMutableArray+CTExtension.m */; };
+		0BF9EF141FE7DB7500619B8A /* NSDictionary+Value.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF9EF0F1FE7DB7500619B8A /* NSDictionary+Value.m */; };
 		7191E77D76708EC24E7633A2 /* libPods-AJCloud.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 70A79D96898B7D786B3DD49D /* libPods-AJCloud.a */; };
 		A40B20B61EC733280027399E /* AJHouseDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A40B20B41EC733280027399E /* AJHouseDetailsViewController.m */; };
 		A40B20B71EC733280027399E /* AJHouseDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A40B20B51EC733280027399E /* AJHouseDetailsViewController.xib */; };
@@ -493,6 +498,16 @@
 		0BF3E8391F2ECDA9009CEFF6 /* AJAboutUsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJAboutUsViewController.xib; sourceTree = "<group>"; };
 		0BF95A0B1EEE55F00031D958 /* AJSB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJSB.h; sourceTree = "<group>"; };
 		0BF95A0C1EEE55F00031D958 /* AJSB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJSB.m; sourceTree = "<group>"; };
+		0BF9EF061FE7DB7300619B8A /* UITableView+NoMoreDataInFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+NoMoreDataInFooter.m"; sourceTree = "<group>"; };
+		0BF9EF071FE7DB7300619B8A /* NSMutableDictionary+IHateNil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+IHateNil.m"; sourceTree = "<group>"; };
+		0BF9EF081FE7DB7300619B8A /* NSString+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extension.m"; sourceTree = "<group>"; };
+		0BF9EF091FE7DB7300619B8A /* NSDictionary+Value.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Value.h"; sourceTree = "<group>"; };
+		0BF9EF0A1FE7DB7400619B8A /* UITableView+NoMoreDataInFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+NoMoreDataInFooter.h"; sourceTree = "<group>"; };
+		0BF9EF0B1FE7DB7400619B8A /* NSMutableDictionary+IHateNil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+IHateNil.h"; sourceTree = "<group>"; };
+		0BF9EF0C1FE7DB7400619B8A /* NSString+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extension.h"; sourceTree = "<group>"; };
+		0BF9EF0D1FE7DB7500619B8A /* NSMutableArray+CTExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+CTExtension.h"; sourceTree = "<group>"; };
+		0BF9EF0E1FE7DB7500619B8A /* NSMutableArray+CTExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+CTExtension.m"; sourceTree = "<group>"; };
+		0BF9EF0F1FE7DB7500619B8A /* NSDictionary+Value.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Value.m"; sourceTree = "<group>"; };
 		28918ABEED7A893430DD718E /* libPods-MyHomeCloud.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyHomeCloud.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BD76340FB7FEF978B1E1792 /* Pods-MyHomeCloud.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyHomeCloud.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyHomeCloud/Pods-MyHomeCloud.debug.xcconfig"; sourceTree = "<group>"; };
 		3DAACE5B1781E0CFA7DA2550 /* Pods-AJCloudAdmin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AJCloudAdmin.release.xcconfig"; path = "Pods/Target Support Files/Pods-AJCloudAdmin/Pods-AJCloudAdmin.release.xcconfig"; sourceTree = "<group>"; };
@@ -851,6 +866,16 @@
 		0B2343E41EC03095007A3AC1 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				0BF9EF091FE7DB7300619B8A /* NSDictionary+Value.h */,
+				0BF9EF0F1FE7DB7500619B8A /* NSDictionary+Value.m */,
+				0BF9EF0D1FE7DB7500619B8A /* NSMutableArray+CTExtension.h */,
+				0BF9EF0E1FE7DB7500619B8A /* NSMutableArray+CTExtension.m */,
+				0BF9EF0B1FE7DB7400619B8A /* NSMutableDictionary+IHateNil.h */,
+				0BF9EF071FE7DB7300619B8A /* NSMutableDictionary+IHateNil.m */,
+				0BF9EF0C1FE7DB7400619B8A /* NSString+Extension.h */,
+				0BF9EF081FE7DB7300619B8A /* NSString+Extension.m */,
+				0BF9EF0A1FE7DB7400619B8A /* UITableView+NoMoreDataInFooter.h */,
+				0BF9EF061FE7DB7300619B8A /* UITableView+NoMoreDataInFooter.m */,
 				0B2343F51EC03095007A3AC1 /* UIView+SDXIBExtension.h */,
 				0B2343F61EC03095007A3AC1 /* UIView+SDXIBExtension.m */,
 				0B2343F71EC03095007A3AC1 /* UIView+TYKYPrompt.h */,
@@ -934,18 +959,18 @@
 			isa = PBXGroup;
 			children = (
 				0BEE41E41F309D2900D702F4 /* AjCloudInfo */,
-				A44C9D6E1F2DED7000C31CB5 /* FineHouse */,
-				A44AEBC91EEEC72A00109FB8 /* HouseMap */,
-				0BE4D9EC1ECC6B8200E4ADCD /* AJHomeViewController.h */,
-				0BE4D9ED1ECC6B8200E4ADCD /* AJHomeViewController.m */,
-				0BE4D9EE1ECC6B8200E4ADCD /* AJHomeViewController.xib */,
-				A4E6BB431EEBD98500CC37B1 /* AJHomeHeadView.h */,
-				A4E6BB441EEBD98500CC37B1 /* AJHomeHeadView.m */,
-				A4E6BB461EEBD99B00CC37B1 /* AJHomeHeadView.xib */,
 				A4E6BB3F1EEBCDC000CC37B1 /* AJHomeDataCenter.h */,
 				A4E6BB401EEBCDC000CC37B1 /* AJHomeDataCenter.m */,
 				A4E6BB421EEBCE2700CC37B1 /* AJHomeDataProtocol.h */,
+				A4E6BB431EEBD98500CC37B1 /* AJHomeHeadView.h */,
+				A4E6BB441EEBD98500CC37B1 /* AJHomeHeadView.m */,
+				A4E6BB461EEBD99B00CC37B1 /* AJHomeHeadView.xib */,
+				0BE4D9EC1ECC6B8200E4ADCD /* AJHomeViewController.h */,
+				0BE4D9ED1ECC6B8200E4ADCD /* AJHomeViewController.m */,
+				0BE4D9EE1ECC6B8200E4ADCD /* AJHomeViewController.xib */,
+				A44C9D6E1F2DED7000C31CB5 /* FineHouse */,
 				A40B20B21EC733090027399E /* HouseDetails */,
+				A44AEBC91EEEC72A00109FB8 /* HouseMap */,
 				A4E6A4901EC61236006B882A /* Search */,
 			);
 			path = Home;
@@ -1378,12 +1403,12 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = AJ;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = TENG;
 				TargetAttributes = {
 					0B2343B71EC01CA1007A3AC1 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = 4F5G8L9327;
+						DevelopmentTeam = VL272YVGT9;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -1552,17 +1577,17 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-AJCloud/Pods-AJCloud-resources.sh",
 				"${PODS_ROOT}/AVOSCloud/AVOS/AVOSCloud/AVOSCloud_Art.inc",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
-				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
 				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/AutoLocation/city.plist",
 				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/AutoLocation/close_location@2x.png",
 				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/AutoLocation/CTLocationViewController.xib",
 				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/AutoLocation/toTop@2x.png",
-				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/AlbumCollectionViewCell.xib",
-				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/album_down.png",
-				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/camera_album@2x.png",
-				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/max_warinig.png",
-				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/selected_album@2x.png",
-				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/unselected_album@2x.png",
+				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/back@2x.png",
+				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/origin_selected@2x.png",
+				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/origin_unselect@2x.png",
+				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/pselected@2x.png",
+				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/punselect@2x.png",
+				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/selected@2x.png",
+				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/unselect@2x.png",
 				"${PODS_ROOT}/UMengUShare/UShareSDK/UMSocialSDK/UMSocialSDKPromptResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -1589,7 +1614,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		0BF2C6ED1EFA5A4400EA46AF /* [CP] Embed Pods Frameworks */ = {
@@ -1616,17 +1641,17 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-AJCloudAdmin/Pods-AJCloudAdmin-resources.sh",
 				"${PODS_ROOT}/AVOSCloud/AVOS/AVOSCloud/AVOSCloud_Art.inc",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
-				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
 				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/AutoLocation/city.plist",
 				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/AutoLocation/close_location@2x.png",
 				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/AutoLocation/CTLocationViewController.xib",
 				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/AutoLocation/toTop@2x.png",
-				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/AlbumCollectionViewCell.xib",
-				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/album_down.png",
-				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/camera_album@2x.png",
-				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/max_warinig.png",
-				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/selected_album@2x.png",
-				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/unselected_album@2x.png",
+				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/back@2x.png",
+				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/origin_selected@2x.png",
+				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/origin_unselect@2x.png",
+				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/pselected@2x.png",
+				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/punselect@2x.png",
+				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/selected@2x.png",
+				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/unselect@2x.png",
 				"${PODS_ROOT}/UMengUShare/UShareSDK/UMSocialSDK/UMSocialSDKPromptResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -1653,7 +1678,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		BA0E84D335A0E5296CF9A670 /* [CP] Embed Pods Frameworks */ = {
@@ -1680,6 +1705,7 @@
 			files = (
 				0BF3E83A1F2ECDA9009CEFF6 /* AJAboutUsViewController.m in Sources */,
 				A4AC724B1EF6718200772D42 /* AJEstateInfoModal.m in Sources */,
+				0BF9EF141FE7DB7500619B8A /* NSDictionary+Value.m in Sources */,
 				0B1904E11EE668EC004C46EE /* AJTbViewPresenter.m in Sources */,
 				A46422581F07497900459294 /* AJFeedbackCellModel.m in Sources */,
 				0BF2C6811EFA544100EA46AF /* AJUMShareUtil.m in Sources */,
@@ -1691,12 +1717,14 @@
 				0B1904CE1EE66192004C46EE /* TJCircleView.m in Sources */,
 				A4AE331A1EF52DF9004B0A54 /* AJEstateDetailsViewController.m in Sources */,
 				0B2343C01EC01CA1007A3AC1 /* AppDelegate.m in Sources */,
+				0BF9EF121FE7DB7500619B8A /* NSString+Extension.m in Sources */,
 				0BC2B4611F0CFD1F0041C9C2 /* TJMessageListDetailsViewController.m in Sources */,
 				0B2344601EC03095007A3AC1 /* UIView+SDXIBExtension.m in Sources */,
 				0B1904C91EE66192004C46EE /* AJHouseDesViewController.m in Sources */,
 				A4FC23491EE6F2BA00924EEE /* AJLetHouseCellModel.m in Sources */,
 				0B6E12C51EC4235300103571 /* AJLoginViewController.m in Sources */,
 				0B23446E1EC03095007A3AC1 /* AJLocalDataCenter.m in Sources */,
+				0BF9EF131FE7DB7500619B8A /* NSMutableArray+CTExtension.m in Sources */,
 				A44C9D861F2E117400C31CB5 /* AJInclilnationModel.m in Sources */,
 				A44C9D721F2DED8700C31CB5 /* AJFindHouseViewController.m in Sources */,
 				0BC2B45B1F0CFD1F0041C9C2 /* AJDataBaseDao.m in Sources */,
@@ -1720,10 +1748,12 @@
 				A4FC23501EE6F31200924EEE /* AJLetHouseTableViewCell.m in Sources */,
 				0BAD073E1F6F9BDC006613C7 /* AJSearchBar.m in Sources */,
 				A4E6BB411EEBCDC000CC37B1 /* AJHomeDataCenter.m in Sources */,
+				0BF9EF111FE7DB7500619B8A /* NSMutableDictionary+IHateNil.m in Sources */,
 				0BEE41E81F309D8700D702F4 /* AJFinanceViewController.m in Sources */,
 				A44C9D791F2E101400C31CB5 /* AJUserInclinationViewController.m in Sources */,
 				0B59A52C1ED17D8600E8E787 /* AJPickViewTextField.m in Sources */,
 				0BC2B46D1F0CFD1F0041C9C2 /* AJMessageController.m in Sources */,
+				0BF9EF101FE7DB7500619B8A /* UITableView+NoMoreDataInFooter.m in Sources */,
 				0B302F5E1ED01835006896CA /* AJOtherViewController.m in Sources */,
 				A4B864491EE6E63800E3CE5E /* AJUserHouseViewController.m in Sources */,
 				0BC1DECB1F17899A007C78DB /* AJAddNHouseViewController.m in Sources */,
@@ -1926,7 +1956,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -1934,7 +1966,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1974,7 +2010,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -1982,7 +2020,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -2013,7 +2055,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MyHomeCloud/MyHomeCloud.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 4F5G8L9327;
+				DEVELOPMENT_TEAM = VL272YVGT9;
 				ENABLE_BITCODE = NO;
 				ENABLE_ONLY_ACTIVE_RESOURCES = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2046,7 +2088,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MyHomeCloud/MyHomeCloud.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 4F5G8L9327;
+				DEVELOPMENT_TEAM = VL272YVGT9;
 				ENABLE_BITCODE = NO;
 				ENABLE_ONLY_ACTIVE_RESOURCES = NO;
 				FRAMEWORK_SEARCH_PATHS = (

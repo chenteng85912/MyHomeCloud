@@ -8,6 +8,10 @@ RESOURCES_TO_COPY=${PODS_ROOT}/resources-to-copy-${TARGETNAME}.txt
 
 XCASSET_FILES=()
 
+# This protects against multiple targets copying the same framework dependency at the same time. The solution
+# was originally proposed here: https://lists.samba.org/archive/rsync/2008-February/020158.html
+RSYNC_PROTECT_TMP_FILES=(--filter "P .*.??????")
+
 case "${TARGETED_DEVICE_FAMILY}" in
   1,2)
     TARGET_DEVICE_ARGS="--target-device ipad --target-device iphone"
@@ -44,29 +48,29 @@ EOM
   fi
   case $RESOURCE_PATH in
     *.storyboard)
-      echo "ibtool --reference-external-strings-file --errors --warnings --notices --minimum-deployment-target ${!DEPLOYMENT_TARGET_SETTING_NAME} --output-format human-readable-text --compile ${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/`basename \"$RESOURCE_PATH\" .storyboard`.storyboardc $RESOURCE_PATH --sdk ${SDKROOT} ${TARGET_DEVICE_ARGS}"
+      echo "ibtool --reference-external-strings-file --errors --warnings --notices --minimum-deployment-target ${!DEPLOYMENT_TARGET_SETTING_NAME} --output-format human-readable-text --compile ${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/`basename \"$RESOURCE_PATH\" .storyboard`.storyboardc $RESOURCE_PATH --sdk ${SDKROOT} ${TARGET_DEVICE_ARGS}" || true
       ibtool --reference-external-strings-file --errors --warnings --notices --minimum-deployment-target ${!DEPLOYMENT_TARGET_SETTING_NAME} --output-format human-readable-text --compile "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/`basename \"$RESOURCE_PATH\" .storyboard`.storyboardc" "$RESOURCE_PATH" --sdk "${SDKROOT}" ${TARGET_DEVICE_ARGS}
       ;;
     *.xib)
-      echo "ibtool --reference-external-strings-file --errors --warnings --notices --minimum-deployment-target ${!DEPLOYMENT_TARGET_SETTING_NAME} --output-format human-readable-text --compile ${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/`basename \"$RESOURCE_PATH\" .xib`.nib $RESOURCE_PATH --sdk ${SDKROOT} ${TARGET_DEVICE_ARGS}"
+      echo "ibtool --reference-external-strings-file --errors --warnings --notices --minimum-deployment-target ${!DEPLOYMENT_TARGET_SETTING_NAME} --output-format human-readable-text --compile ${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/`basename \"$RESOURCE_PATH\" .xib`.nib $RESOURCE_PATH --sdk ${SDKROOT} ${TARGET_DEVICE_ARGS}" || true
       ibtool --reference-external-strings-file --errors --warnings --notices --minimum-deployment-target ${!DEPLOYMENT_TARGET_SETTING_NAME} --output-format human-readable-text --compile "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/`basename \"$RESOURCE_PATH\" .xib`.nib" "$RESOURCE_PATH" --sdk "${SDKROOT}" ${TARGET_DEVICE_ARGS}
       ;;
     *.framework)
-      echo "mkdir -p ${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}"
+      echo "mkdir -p ${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}" || true
       mkdir -p "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}"
-      echo "rsync -av $RESOURCE_PATH ${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}"
-      rsync -av "$RESOURCE_PATH" "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}"
+      echo "rsync --delete -av "${RSYNC_PROTECT_TMP_FILES[@]}" $RESOURCE_PATH ${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}" || true
+      rsync --delete -av "${RSYNC_PROTECT_TMP_FILES[@]}" "$RESOURCE_PATH" "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}"
       ;;
     *.xcdatamodel)
-      echo "xcrun momc \"$RESOURCE_PATH\" \"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/`basename "$RESOURCE_PATH"`.mom\""
+      echo "xcrun momc \"$RESOURCE_PATH\" \"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/`basename "$RESOURCE_PATH"`.mom\"" || true
       xcrun momc "$RESOURCE_PATH" "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/`basename "$RESOURCE_PATH" .xcdatamodel`.mom"
       ;;
     *.xcdatamodeld)
-      echo "xcrun momc \"$RESOURCE_PATH\" \"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/`basename "$RESOURCE_PATH" .xcdatamodeld`.momd\""
+      echo "xcrun momc \"$RESOURCE_PATH\" \"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/`basename "$RESOURCE_PATH" .xcdatamodeld`.momd\"" || true
       xcrun momc "$RESOURCE_PATH" "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/`basename "$RESOURCE_PATH" .xcdatamodeld`.momd"
       ;;
     *.xcmappingmodel)
-      echo "xcrun mapc \"$RESOURCE_PATH\" \"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/`basename "$RESOURCE_PATH" .xcmappingmodel`.cdm\""
+      echo "xcrun mapc \"$RESOURCE_PATH\" \"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/`basename "$RESOURCE_PATH" .xcmappingmodel`.cdm\"" || true
       xcrun mapc "$RESOURCE_PATH" "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/`basename "$RESOURCE_PATH" .xcmappingmodel`.cdm"
       ;;
     *.xcassets)
@@ -74,40 +78,42 @@ EOM
       XCASSET_FILES+=("$ABSOLUTE_XCASSET_FILE")
       ;;
     *)
-      echo "$RESOURCE_PATH"
+      echo "$RESOURCE_PATH" || true
       echo "$RESOURCE_PATH" >> "$RESOURCES_TO_COPY"
       ;;
   esac
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_resource "AVOSCloud/AVOS/AVOSCloud/AVOSCloud_Art.inc"
-  install_resource "MJRefresh/MJRefresh/MJRefresh.bundle"
-  install_resource "TYKYLibrary/TYKYLibrary/AutoLocation/city.plist"
-  install_resource "TYKYLibrary/TYKYLibrary/AutoLocation/close_location@2x.png"
-  install_resource "TYKYLibrary/TYKYLibrary/AutoLocation/CTLocationViewController.xib"
-  install_resource "TYKYLibrary/TYKYLibrary/AutoLocation/toTop@2x.png"
-  install_resource "TYKYLibrary/TYKYLibrary/CustomAlbum/AlbumCollectionViewCell.xib"
-  install_resource "TYKYLibrary/TYKYLibrary/CustomAlbum/album_down.png"
-  install_resource "TYKYLibrary/TYKYLibrary/CustomAlbum/camera_album@2x.png"
-  install_resource "TYKYLibrary/TYKYLibrary/CustomAlbum/max_warinig.png"
-  install_resource "TYKYLibrary/TYKYLibrary/CustomAlbum/selected_album@2x.png"
-  install_resource "TYKYLibrary/TYKYLibrary/CustomAlbum/unselected_album@2x.png"
-  install_resource "UMengUShare/UShareSDK/UMSocialSDK/UMSocialSDKPromptResources.bundle"
+  install_resource "${PODS_ROOT}/AVOSCloud/AVOS/AVOSCloud/AVOSCloud_Art.inc"
+  install_resource "${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle"
+  install_resource "${PODS_ROOT}/TYKYLibrary/TYKYLibrary/AutoLocation/city.plist"
+  install_resource "${PODS_ROOT}/TYKYLibrary/TYKYLibrary/AutoLocation/close_location@2x.png"
+  install_resource "${PODS_ROOT}/TYKYLibrary/TYKYLibrary/AutoLocation/CTLocationViewController.xib"
+  install_resource "${PODS_ROOT}/TYKYLibrary/TYKYLibrary/AutoLocation/toTop@2x.png"
+  install_resource "${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/back@2x.png"
+  install_resource "${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/origin_selected@2x.png"
+  install_resource "${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/origin_unselect@2x.png"
+  install_resource "${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/pselected@2x.png"
+  install_resource "${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/punselect@2x.png"
+  install_resource "${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/selected@2x.png"
+  install_resource "${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/unselect@2x.png"
+  install_resource "${PODS_ROOT}/UMengUShare/UShareSDK/UMSocialSDK/UMSocialSDKPromptResources.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_resource "AVOSCloud/AVOS/AVOSCloud/AVOSCloud_Art.inc"
-  install_resource "MJRefresh/MJRefresh/MJRefresh.bundle"
-  install_resource "TYKYLibrary/TYKYLibrary/AutoLocation/city.plist"
-  install_resource "TYKYLibrary/TYKYLibrary/AutoLocation/close_location@2x.png"
-  install_resource "TYKYLibrary/TYKYLibrary/AutoLocation/CTLocationViewController.xib"
-  install_resource "TYKYLibrary/TYKYLibrary/AutoLocation/toTop@2x.png"
-  install_resource "TYKYLibrary/TYKYLibrary/CustomAlbum/AlbumCollectionViewCell.xib"
-  install_resource "TYKYLibrary/TYKYLibrary/CustomAlbum/album_down.png"
-  install_resource "TYKYLibrary/TYKYLibrary/CustomAlbum/camera_album@2x.png"
-  install_resource "TYKYLibrary/TYKYLibrary/CustomAlbum/max_warinig.png"
-  install_resource "TYKYLibrary/TYKYLibrary/CustomAlbum/selected_album@2x.png"
-  install_resource "TYKYLibrary/TYKYLibrary/CustomAlbum/unselected_album@2x.png"
-  install_resource "UMengUShare/UShareSDK/UMSocialSDK/UMSocialSDKPromptResources.bundle"
+  install_resource "${PODS_ROOT}/AVOSCloud/AVOS/AVOSCloud/AVOSCloud_Art.inc"
+  install_resource "${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle"
+  install_resource "${PODS_ROOT}/TYKYLibrary/TYKYLibrary/AutoLocation/city.plist"
+  install_resource "${PODS_ROOT}/TYKYLibrary/TYKYLibrary/AutoLocation/close_location@2x.png"
+  install_resource "${PODS_ROOT}/TYKYLibrary/TYKYLibrary/AutoLocation/CTLocationViewController.xib"
+  install_resource "${PODS_ROOT}/TYKYLibrary/TYKYLibrary/AutoLocation/toTop@2x.png"
+  install_resource "${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/back@2x.png"
+  install_resource "${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/origin_selected@2x.png"
+  install_resource "${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/origin_unselect@2x.png"
+  install_resource "${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/pselected@2x.png"
+  install_resource "${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/punselect@2x.png"
+  install_resource "${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/selected@2x.png"
+  install_resource "${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/unselect@2x.png"
+  install_resource "${PODS_ROOT}/UMengUShare/UShareSDK/UMSocialSDK/UMSocialSDKPromptResources.bundle"
 fi
 
 mkdir -p "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"

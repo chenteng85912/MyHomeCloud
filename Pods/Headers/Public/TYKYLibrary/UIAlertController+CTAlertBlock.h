@@ -1,1 +1,1 @@
-../../../TYKYLibrary/TYKYLibrary/TYKYCategory/UIAlertController+CTAlertBlock.h
+../../../TYKYLibrary/TYKYLibrary/CTOnePhoto/UIAlertController+CTAlertBlock.h

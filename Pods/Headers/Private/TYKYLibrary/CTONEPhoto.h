@@ -1,1 +1,1 @@
-../../../TYKYLibrary/TYKYLibrary/CTONEPhoto.h
+../../../TYKYLibrary/TYKYLibrary/CTOnePhoto/CTONEPhoto.h

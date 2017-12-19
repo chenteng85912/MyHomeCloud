@@ -31,8 +31,8 @@
     _houseName.text = _houseInfo[HOUSE_ESTATE_NAME];
     _agenterName.text = _houseInfo[AGENTER_NAME];
     _agenterPhone.text = _houseInfo[AGENTER_PHONE];
-  
     _userPhone.text = [AVUser currentUser].mobilePhoneNumber;
+    _confirmBut.backgroundColor = NavigationBarColor;
 
     if (self.reserverModal == NReserverModal) {
         _houseType.text = @"楼盘名称";
@@ -40,6 +40,10 @@
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+
+}
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
 
 }
 #pragma mark -life UITextFieldDelegate

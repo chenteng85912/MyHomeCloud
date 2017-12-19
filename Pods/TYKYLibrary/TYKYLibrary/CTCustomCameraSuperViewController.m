@@ -5,7 +5,6 @@
 //
 
 #import "CTCustomCameraSuperViewController.h"
-#import <AssetsLibrary/AssetsLibrary.h>
 #import "CTSavePhotos.h"
 
 @interface CTCustomCameraSuperViewController ()<AVCaptureMetadataOutputObjectsDelegate,UIGestureRecognizerDelegate>

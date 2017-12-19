@@ -241,7 +241,7 @@
     [UIView animateWithDuration:duration.doubleValue animations:^{
         [UIView setAnimationBeginsFromCurrentState:YES];
         [UIView setAnimationCurve:[curve intValue]];
-        _tbView.frame = CGRectMake(0, 0, dWidth, keyBoardEndY-64);
+        _tbView.frame = CGRectMake(0, 0, dWidth, keyBoardEndY-NAVBAR_HEIGHT);
         
     }];
 }

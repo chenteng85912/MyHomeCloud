@@ -13,8 +13,7 @@
 #import "AJHomeDataCenter.h"
 #import "AJSearchViewController.h"
 
-@interface AJLetHouseViewController ()<UISearchBarDelegate>
-@property (strong, nonatomic) UISearchBar *searchBar;
+@interface AJLetHouseViewController ()
 
 @end
 
@@ -24,8 +23,15 @@
     [super viewDidLoad];
 
     if (self.showModal==SearchHouseModal||self.showModal==AllHouseModal) {
-        self.navigationItem.titleView = self.searchBar;
-        [CTTool removeSearchBorder:self.searchBar];
+        if (iOS11) {
+            UIView *searchView = [[UIView alloc] initWithFrame:self.searchBar.frame];
+            [searchView addSubview:self.searchBar];
+            self.navigationItem.titleView = searchView;
+
+        }else{
+            self.navigationItem.titleView = self.searchBar;
+
+        }
 
     }else{
         if (self.showModal==MyHouseModal||self.showModal==UserFavoriteModal) {
@@ -179,15 +185,7 @@
     POPVC;
     return NO;
 }
-- (UISearchBar *)searchBar{
-    if (_searchBar ==nil) {
-        _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, dWidth, 30)];
-        _searchBar.placeholder = @"小区/开发商/区域";
-        _searchBar.barTintColor = NavigationBarColor;
-        _searchBar.delegate = self;
-    }
-    return _searchBar;
-}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

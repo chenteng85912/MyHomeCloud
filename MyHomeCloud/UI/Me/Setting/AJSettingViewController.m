@@ -132,7 +132,7 @@ static NSString *CellIdentifier = @"TJSettingsCellId";
             [AJLocalDataCenter clearLocalData];
             [AVQuery clearAllCachedResults];
 
-            dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC));
+            dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC));
             dispatch_after(delayTime, dispatch_get_main_queue(), ^(void){
                 [weakSelf.view removeHUD];
                 [weakSelf.view showTips:@"清理成功" withState:TYKYHUDModeSuccess complete:nil];

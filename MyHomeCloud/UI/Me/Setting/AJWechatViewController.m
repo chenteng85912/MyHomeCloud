@@ -43,10 +43,10 @@
         if (_isShow) {
             self.view.alpha = 1.0;
             self.view.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
-            _wechatView.center = CGPointMake(dWidth/2, dHeight-64-50);
+            _wechatView.center = CGPointMake(dWidth/2, dHeight-NAVBAR_HEIGHT-50);
         }else{
             self.view.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.0];
-            _wechatView.center = CGPointMake(dWidth/2, dHeight-64+50);
+            _wechatView.center = CGPointMake(dWidth/2, dHeight-NAVBAR_HEIGHT+50);
             self.view.alpha = 0.0;
             
         }

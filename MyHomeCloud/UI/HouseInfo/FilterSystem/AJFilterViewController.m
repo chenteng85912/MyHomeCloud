@@ -41,6 +41,7 @@
 
 @property (assign, nonatomic) NSInteger currentIndex;//0区域 1价格 2房型 3更多
 
+@property (assign, nonatomic) BOOL isLoad;
 @end
 
 @implementation AJFilterViewController
@@ -48,6 +49,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _headView.backgroundColor = NavigationBarColor;
+    _comfirnBtn.backgroundColor = NavigationBarColor;
     [self initFilterParamaters];
     
     _allBtnArray = @[_areaBtn,_priceBtn,_roomsBtn,_moreBtn];
@@ -70,12 +72,17 @@
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
    
-    if (CGRectGetMaxY(_clearBtn.frame)>dHeight-64-80) {
+    if (CGRectGetMaxY(_clearBtn.frame)>dHeight-NAVBAR_HEIGHT-80) {
         _moreFilterView.contentSize = CGSizeMake(dWidth, CGRectGetMaxY(_clearBtn.frame)+45);
         _moreFilterView.alwaysBounceVertical = YES;
         
     }else{
-        _clearBtn.center = CGPointMake(dWidth/2, dHeight-64-80-25);
+        _clearBtn.center = CGPointMake(dWidth/2, dHeight-NAVBAR_HEIGHT-80-25);
+    }
+    if (iPhone_X&&!_isLoad) {
+        _isLoad = YES;
+        _clearBtn.center = CGPointMake(_clearBtn.center.x, _clearBtn.center.y-20);
+        _comfirnBtn.frame = CGRectMake(0, _comfirnBtn.frame.origin.y-15, dWidth, _comfirnBtn.frame.size.height+15);
     }
 }
 //初始化参数
@@ -149,7 +156,7 @@
                 }];
                 
             }else{
-                self.view.frame = CGRectMake(0, 0, dWidth, dHeight-64);
+                self.view.frame = CGRectMake(0, 0, dWidth, dHeight-NAVBAR_HEIGHT);
 
                 [UIView animateWithDuration:0.3 animations:^{
                     _moreView.alpha = 1;
@@ -418,7 +425,7 @@
 }
 - (void)showOrHiddenTbView:(BOOL)isShow{
     if (isShow) {
-        self.view.frame = CGRectMake(0, 0, dWidth, dHeight-64);
+        self.view.frame = CGRectMake(0, 0, dWidth, dHeight-NAVBAR_HEIGHT);
         [_tbView reloadData];
     }
     

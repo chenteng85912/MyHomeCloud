@@ -10,7 +10,7 @@
 #import "PreviewUpLoadCollectionViewCell.h"
 #import "AJUploadPicModel.h"
 
-@interface AJHouseDesViewController ()<CTCustomAlbumViewControllerDelegate>
+@interface AJHouseDesViewController ()<CTSendPhotosProtocol>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *colView;
 @property (weak, nonatomic) IBOutlet UIButton *uploadBtn;
@@ -157,32 +157,32 @@
         [self.view showTips:@"最多上传9张图片" withState:TYKYHUDModeWarning complete:nil];
         return;
     }
-    if (![CTSavePhotos checkAuthorityOfAblum]) {
-        return;
-    }
-    [CTCustomAlbumViewController showCustomeAlbumWithDelegate:self oldImagesDic:nil totalImageNum:9-self.dataArray.count];
-    
+
+    CTPhotosNavigationViewController *nav = [CTPhotosNavigationViewController initWithDelegate:self];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
-#pragma mark - CTCustomAlbumViewControllerDelegate
-- (void)sendImageDictionary:(NSDictionary *)imageDic{
+#pragma mark - CTSendPhotosProtocol
+- (void)sendImageDataArray:(NSMutableArray<NSData *> *)imgDataArray{
 
     [self.view showHUD:nil];
-    [self performSelector:@selector(creatUploadData:) withObject:imageDic afterDelay:0];
+    [self performSelector:@selector(creatUploadData:) withObject:imgDataArray afterDelay:0];
 
 }
 //上传图片
-- (void)creatUploadData:(NSDictionary *)imageDic{
-    for (NSString *imgName in imageDic.allKeys) {
-        UIImage *img = [CTTool imageCompressForWidth:imageDic[imgName] targetWidth:500];
-        NSString *timeName = [NSString stringWithFormat:@"%f_%@",[NSDate new].timeIntervalSince1970,imgName];
+- (void)creatUploadData:(NSMutableArray<NSData *> *)imgDataArray{
+    NSInteger count = imgDataArray.count;
+    for (int i = 0; i<count; i++) {
+        NSData *imgData = imgDataArray[i];
+        NSString *imgName = [NSString stringWithFormat:@"%f_%d",[NSDate new].timeIntervalSince1970,i];
+
         AJUploadPicModel *upload = [AJUploadPicModel new];
-        NSData *imgData = UIImageJPEGRepresentation(img, 0.6);
-       
-        AVFile *file = [AVFile fileWithName:timeName data:imgData];
+        
+        AVFile *file = [AVFile fileWithName:imgName data:imgData];
         upload.picFile = file;
         [self.dataArray addObject:upload];
     }
+
     [self.view removeHUD];
     if (self.dataArray.count>0) {
         [self.colView hiddenTipsView];

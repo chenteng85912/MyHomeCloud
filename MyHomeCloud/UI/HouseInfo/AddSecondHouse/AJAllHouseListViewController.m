@@ -12,7 +12,6 @@
 #import "ChineseTransform.h"
 
 @interface AJAllHouseListViewController ()
-@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UIView *backView;
 
 @property (copy, nonatomic) NSMutableArray <AJTbViewCellModel *> *tempArray;
@@ -23,16 +22,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.titleView  = self.searchBar;
 
     self.title = @"请选择小区";
     
-    for (UIView *subview in [[_searchBar.subviews firstObject] subviews]) {
-        if ([subview isKindOfClass:NSClassFromString(@"UISearchBarBackground")]) {
-            [subview removeFromSuperview];
-            
-        }
+    if (iOS11) {
+        UIView *searchView = [[UIView alloc] initWithFrame:self.searchBar.frame];
+        [searchView addSubview:self.searchBar];
+        self.navigationItem.titleView = searchView;
+        
+    }else{
+        self.navigationItem.titleView = self.searchBar;
+        
     }
+
 }
 #pragma mark - AJTbViewProtocol
 //- (BOOL)makeMJRefresh{
@@ -115,7 +117,7 @@
 
 }
 - (IBAction)endEditSearchBar:(UITapGestureRecognizer *)sender {
-    [_searchBar endEditing:YES];
+    [self.searchBar endEditing:YES];
     [UIView animateWithDuration:0.2 animations:^{
         _backView.alpha = 0;
     }];

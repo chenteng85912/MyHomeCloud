@@ -30,11 +30,12 @@
 #define AutoLoopHeight dHeight/3
 CGFloat const HEAD_BTN_HEIGHT = 100;
 
-@interface AJHomeViewController ()<CTLocationViewControllerDelegate,CTAutoLoopViewDelegate>
-@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@interface AJHomeViewController ()<CTLocationViewControllerDelegate,UISearchBarDelegate,CTAutoLoopViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tbView;
 @property (weak, nonatomic) IBOutlet UIView *headBtnView;
-@property (weak, nonatomic) IBOutlet UIView *headSearchView;
+
+@property (strong, nonatomic)  UIView *headSearchView;
+@property (strong, nonatomic)  UISearchBar *searchBar;
 
 @property (strong, nonatomic) NSMutableArray <AJSecondHouseCellModel *> *secondArray;
 @property (strong, nonatomic) NSMutableArray <AJLetHouseCellModel *> *letArray;
@@ -77,6 +78,7 @@ CGFloat const HEAD_BTN_HEIGHT = 100;
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
+    _tbView.frame = CGRectMake(0, -NAVBAR_HEIGHT+44, dWidth, dHeight-self.tabBarController.tabBar.frame.size.height+NAVBAR_HEIGHT-44);
 
 }
 - (void)viewDidAppear:(BOOL)animated{
@@ -176,14 +178,12 @@ CGFloat const HEAD_BTN_HEIGHT = 100;
         }];
     });
    
-    dispatch_group_notify(group, queue, ^{
-       
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [weakSelf.tbView.mj_header endRefreshing];
-            [self.view removeHUD];
+    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+   
+        [weakSelf.tbView.mj_header endRefreshing];
+        [self.view removeHUD];
 
-            [weakSelf.tbView reloadData];
-        });
+        [weakSelf.tbView reloadData];
         
     });
 }
@@ -364,7 +364,6 @@ CGFloat const HEAD_BTN_HEIGHT = 100;
     
     _tbView.tableHeaderView = self.headView;
     _tbView.mj_header = [CTTool makeMJRefeshWithTarget:self andMethod:@selector(fetchData)];
-
 }
 - (IBAction)btnAction:(UIButton *)sender {
     [self openMoreHouseData:sender];
@@ -373,9 +372,9 @@ CGFloat const HEAD_BTN_HEIGHT = 100;
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
 
-    CGFloat alpha = (scrollView.contentOffset.y +20) / 100;
+    CGFloat alpha = (scrollView.contentOffset.y +[[UIApplication sharedApplication] statusBarFrame].size.height) / 100;
 //    debugLog(@"alpha:%f",alpha);
-    _headSearchView.backgroundColor = [NavigationBarColor colorWithAlphaComponent:alpha];
+    self.headSearchView.backgroundColor = [NavigationBarColor colorWithAlphaComponent:alpha];
     if (alpha<=0) {
         self.searchBar.alpha = 1-3*fabs(alpha);
         
@@ -386,7 +385,7 @@ CGFloat const HEAD_BTN_HEIGHT = 100;
 - (CTAutoLoopViewController *)autoLoopView
 {
     if (!_autoLoopView) {
-        _autoLoopView = [[CTAutoLoopViewController alloc] initWithFrame:CGRectMake(0, 0, dWidth, AutoLoopHeight) onceLoopTime:3.0 cellDisplayModal:CTLoopCellDisplayCustomView scollDiretion:CTLoopScollDirectionHorizontal];
+        _autoLoopView = [CTAutoLoopViewController initWithFrame:CGRectMake(0, 0, dWidth, AutoLoopHeight) onceLoopTime:3.0 cellDisplayModal:CTLoopCellDisplayCustomView scollDiretion:CTLoopScollDirectionHorizontal];
         _autoLoopView.delegate = self;
         [self addChildViewController:_autoLoopView];
     }
@@ -448,19 +447,25 @@ CGFloat const HEAD_BTN_HEIGHT = 100;
     }
     return _areaBtn;
 }
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+- (UIView *)headSearchView{
+    if (!_headSearchView) {
+        _headSearchView = [[UIView alloc] initWithFrame:CGRectMake(0, 0,dWidth, NAVBAR_HEIGHT)];
+        _headSearchView.backgroundColor = [NavigationBarColor colorWithAlphaComponent:0];
+        [self.view addSubview:_headSearchView];
+    }
+    return _headSearchView;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (UISearchBar *)searchBar{
+    if (!_searchBar) {
+        _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(20, NAVBAR_HEIGHT-44, dWidth-40, 44)];
+        _searchBar.delegate = self;
+        _searchBar.placeholder = @"小区/开发商/区域";
+        UIView *searchTextField = [[[_searchBar.subviews firstObject] subviews] lastObject];
+        searchTextField.layer.masksToBounds = YES;
+        [self.headSearchView addSubview:_searchBar];
+    }
+    return _searchBar;
 }
-*/
-
 @end

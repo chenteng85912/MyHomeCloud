@@ -18,7 +18,7 @@
  *speedNum 滚动速率，数字越大，滚动越慢（默认2）
  */
 
-- (instancetype)initWithFrame:(CGRect)frame
++ (instancetype)initWithFrame:(CGRect)frame
                     labelText:(NSString *)text
                          font:(CGFloat)fontSize
                     textColor:(UIColor *)textColor

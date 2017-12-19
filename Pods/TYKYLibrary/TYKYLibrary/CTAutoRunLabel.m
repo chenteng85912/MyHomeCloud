@@ -15,6 +15,19 @@
 
 @implementation CTAutoRunLabel
 
++ (instancetype)initWithFrame:(CGRect)frame
+                    labelText:(NSString *)text
+                         font:(CGFloat)fontSize
+                    textColor:(UIColor *)textColor
+                textAlignment:(NSTextAlignment)textAlignment
+                        speed:(NSInteger)speedNum{
+    return [[self alloc] initWithFrame:frame
+                             labelText:text
+                                  font:fontSize
+                             textColor:textColor
+                         textAlignment:textAlignment
+                                 speed:speedNum];
+}
 - (instancetype)initWithFrame:(CGRect)frame
                     labelText:(NSString *)text
                          font:(CGFloat)fontSize

@@ -18,6 +18,8 @@
  *2、当前图片位置currentNum
  *3、根视图控制器rootVC
  */
-+ (void)showPictureWithUrlOrImages:(NSArray *)imageOrUrlArray withCurrentPageNum:(NSInteger)currentNum;
++ (void)showPictureWithUrlOrImages:(NSArray *)imageOrUrlArray
+                withCurrentPageNum:(NSInteger)currentNum;
+
 
 @end

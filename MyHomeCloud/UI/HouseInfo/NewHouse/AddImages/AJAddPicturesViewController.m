@@ -12,7 +12,7 @@
 #import "AJUploadPicModel.h"
 #import "AJHouseInfoViewController.h"
 
-@interface AJAddPicturesViewController ()<CTCustomAlbumViewControllerDelegate>
+@interface AJAddPicturesViewController ()<CTSendPhotosProtocol>
 @property (weak, nonatomic) IBOutlet UILabel *tipLabel;
 @property (weak, nonatomic) IBOutlet UICollectionView *colloctionView;
 
@@ -50,7 +50,7 @@
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     if (_isEditModal) {
-        self.colloctionView.frame = CGRectMake(0, 0, dWidth, dHeight-64-40);
+        self.colloctionView.frame = CGRectMake(0, 0, dWidth, dHeight-NAVBAR_HEIGHT-40);
     }
 }
 - (void)initDataArray{
@@ -235,33 +235,32 @@
 - (void)addNewPicture:(UIButton *)btn{
     NSMutableArray *temp = self.dataArray[btn.tag];
     _currentSecion = btn.tag;
-    if (temp.count==12) {
-        [self.view showTips:@"最多上传12张图片" withState:TYKYHUDModeWarning complete:nil];
+    if (temp.count==9) {
+        [self.view showTips:@"最多上传9张图片" withState:TYKYHUDModeWarning complete:nil];
         return;
     }
-    if (![CTSavePhotos checkAuthorityOfAblum]) {
-        return;
-    }
-    [CTCustomAlbumViewController showCustomeAlbumWithDelegate:self
-                                                 oldImagesDic:nil
-                                                totalImageNum:12-temp.count];
+
+    CTPhotosNavigationViewController *nav = [CTPhotosNavigationViewController initWithDelegate:self];
+    [self presentViewController:nav animated:YES completion:nil];
     
 }
-#pragma  mark - CTCustomAlbumViewControllerDelegate
+#pragma  mark - CTSendPhotosProtocol
 //传出图片字典，key为图片名称，value为对应的图片
-- (void)sendImageDictionary:(NSDictionary <NSString*,UIImage*> *)imageDic{
+- (void)sendImageDataArray:(NSMutableArray<NSData *> *)imgDataArray{
     [self.view showHUD:nil];
-    [self performSelector:@selector(addPictureData:) withObject:imageDic afterDelay:0];
+    [self performSelector:@selector(addPictureData:) withObject:imgDataArray afterDelay:0];
 }
 //上传图片
-- (void)addPictureData:(NSDictionary *)imageDic{
-    for (NSString *imgName in imageDic.allKeys) {
-        UIImage *img = [CTTool imageCompressForWidth:imageDic[imgName] targetWidth:500];
-        NSString *timeName = [NSString stringWithFormat:@"%f_%@",[NSDate new].timeIntervalSince1970,imgName];
-        AJUploadPicModel *upload = [AJUploadPicModel new];
-        NSData *imgData = UIImageJPEGRepresentation(img, 0.6);
+- (void)addPictureData:(NSMutableArray<NSData *> *)imgDataArray{
+    
+    NSInteger count = imgDataArray.count;
+    for (int i = 0; i<count; i++) {
+        NSData *imgData = imgDataArray[i];
+        NSString *imgName = [NSString stringWithFormat:@"%f_%d",[NSDate new].timeIntervalSince1970,i];
         
-        AVFile *file = [AVFile fileWithName:timeName data:imgData];
+        AJUploadPicModel *upload = [AJUploadPicModel new];
+        
+        AVFile *file = [AVFile fileWithName:imgName data:imgData];
         upload.picFile = file;
         [self.dataArray[_currentSecion] addObject:upload];
     }

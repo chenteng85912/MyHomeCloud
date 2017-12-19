@@ -275,7 +275,7 @@ CGFloat const MORE_VIEW_HEIGHT = 370;
 - (CTAutoLoopViewController*)autoLoopView
 {
     if (!_autoLoopView) {
-        _autoLoopView = [[CTAutoLoopViewController alloc] initWithFrame:CGRectMake(0, 0, dWidth, AUTOLOOP_HEIGHT) onceLoopTime:0 cellDisplayModal:CTLoopCellDisplayCustomView scollDiretion:CTLoopScollDirectionHorizontal];
+        _autoLoopView = [CTAutoLoopViewController initWithFrame:CGRectMake(0, 0, dWidth, AUTOLOOP_HEIGHT) onceLoopTime:0 cellDisplayModal:CTLoopCellDisplayCustomView scollDiretion:CTLoopScollDirectionHorizontal];
         _autoLoopView.delegate = self;
         //头部广告滚动视图数据源
         [_autoLoopView addLocalModels:self.autoLoopDataArray];

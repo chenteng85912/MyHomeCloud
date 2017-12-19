@@ -8,7 +8,7 @@
 #define DEVICE_HEIGHT   [[UIScreen mainScreen] bounds].size.height
 
 
-@interface CTAutoPositionScrollview ()
+@interface CTAutoPositionScrollview ()<UIScrollViewDelegate>
 
 @property (strong, nonatomic) UITapGestureRecognizer *tapGesture;
 

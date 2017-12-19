@@ -25,13 +25,12 @@
     [self.view addSubview:self.wkWebView];
     [self.view addSubview:self.progressView];
     
-    self.navigationItem.titleView = [[CTAutoRunLabel alloc]
-                                     initWithFrame:CGRectMake(0, 0, dWidth-120, 44)
-                                     labelText:self.title
-                                          font:16
-                                     textColor:[UIColor whiteColor]
-                                 textAlignment:NSTextAlignmentCenter
-                                         speed:2];
+    self.navigationItem.titleView = [CTAutoRunLabel initWithFrame:CGRectMake(0, 0, dWidth-120, 44)
+                                                        labelText:self.title
+                                                             font:16
+                                                        textColor:[UIColor whiteColor]
+                                                    textAlignment:NSTextAlignmentCenter
+                                                            speed:2];
 
     [self makeLeftCloseBtn];
     
@@ -211,7 +210,7 @@
 }
 - (WKWebView *)wkWebView{
     if (_wkWebView==nil) {
-        _wkWebView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, dWidth, dHeight-64)];
+        _wkWebView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, dWidth, dHeight-NAVBAR_HEIGHT)];
         _wkWebView.navigationDelegate = self;
         [_wkWebView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];
 

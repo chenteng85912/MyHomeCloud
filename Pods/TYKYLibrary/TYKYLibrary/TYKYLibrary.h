@@ -2,7 +2,7 @@
 //代码地址:https://github.com/chenteng85912/TYKYLibrary.git
 
 //自定义相册模块 包括多选、单选
-#import "CTCustomAlbumViewController.h"
+#import "CTPhotosNavigationViewController.h"
 //图片浏览模块
 #import "CTImagePreviewViewController.h"
 //自动定位模块
@@ -27,9 +27,5 @@
 #import "CTSavePhotos.h"
 //跑马灯标题
 #import "CTAutoRunLabel.h"
-//表视图底部没有更多数据提示
-#import "UITableView+NoMoreDataInFooter.h"
 //alert 封装
 #import "UIAlertController+CTAlertBlock.h"
-//计算字符串高度等
-#import "NSString+Extension.h"

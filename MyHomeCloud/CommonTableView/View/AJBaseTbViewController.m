@@ -14,7 +14,7 @@
 #import "AJUserInclinationViewController.h"
 #import "AJMyReserverViewController.h"
 
-@interface AJBaseTbViewController ()<UIGestureRecognizerDelegate,AJFilterViewControllerDelegate>
+@interface AJBaseTbViewController ()<UIGestureRecognizerDelegate,AJFilterViewControllerDelegate,UISearchBarDelegate>
 
 //上一次单元格数量
 @property (assign, nonatomic) NSInteger oldDataNum;
@@ -23,6 +23,8 @@
 //动画
 @property (assign, nonatomic) BOOL isAnimate;
 @property (strong, nonatomic) AJFilterViewController *filterVC;
+
+@property (assign, nonatomic) CGFloat tbHeight;
 
 @end
 
@@ -83,24 +85,40 @@
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    if (!_isLoad) {
-        [self.view showHUD:nil];
-        [self initStartData];
-    }
+  
     if (self.isDetails) {
         self.tableView.frame = CGRectMake(0, 0, dWidth, dHeight-50);
         
     }
     else if(self.isPreview){
-        self.tableView.frame = CGRectMake(0, 0, dWidth, dHeight-64);
+        self.tableView.frame = CGRectMake(0, 0, dWidth, dHeight-NAVBAR_HEIGHT);
         
     }
     else if(_showFilter){
-        self.tableView.frame = CGRectMake(0, 40, dWidth, dHeight-40-64);
+        self.tableView.frame = CGRectMake(0, 40, dWidth, dHeight-40-NAVBAR_HEIGHT);
         
     }else{
-        self.tableView.frame = CGRectMake(0, 0, dWidth, dHeight-45-64);
+        self.tableView.frame = CGRectMake(0, 0, dWidth, dHeight-45-NAVBAR_HEIGHT);
         
+    }
+    if (!_tbHeight) {
+        _tbHeight = self.tableView.frame.size.height;
+
+    }
+    if (iOS11) {
+        if (self.isDetails) {
+            CGFloat statusHeight = [[UIApplication sharedApplication] statusBarFrame].size.height;
+            self.tableView.frame = CGRectMake(0, -statusHeight,dWidth, _tbHeight + statusHeight);
+            if (iPhone_X) {
+                self.tableView.frame = CGRectMake(0, -statusHeight, dWidth, _tbHeight + statusHeight-15);
+                
+            }
+        }
+      
+    }
+    if (!_isLoad) {
+        [self.view showHUD:nil];
+        [self initStartData];
     }
 }
 - (void)viewWillDisappear:(BOOL)animated
@@ -257,7 +275,7 @@
     
     [self.view addSubview:self.tableView];
     if (_showFilter) {
-        self.tableView.frame = CGRectMake(0, 40, dWidth, dHeight-64-40);
+        self.tableView.frame = CGRectMake(0, 40, dWidth, dHeight-NAVBAR_HEIGHT-40);
         [self.view addSubview:self.filterVC.view];
     }
     if ([self respondsToSelector:@selector(customeTbViewCellClassName)]) {
@@ -425,6 +443,8 @@
         _tableView.separatorInset = UIEdgeInsetsMake(0, 15, 0, 15);
         _tableView.delegate = self;
         _tableView.dataSource = self;
+        _tableView.estimatedSectionFooterHeight = 0.0;
+        _tableView.estimatedSectionHeaderHeight = 0.0;
         _tableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
         
     }
@@ -448,11 +468,22 @@
     }
     return _baseQuery;
 }
+- (UISearchBar *)searchBar{
+    if (_searchBar ==nil) {
+        _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, dWidth-100, 44)];
+        _searchBar.placeholder = @"小区/开发商/区域";
+        _searchBar.barTintColor = NavigationBarColor;
+        _searchBar.delegate = self;
+        [CTTool removeSearchBorder:_searchBar];
+
+    }
+    return _searchBar;
+}
 - (AJFilterViewController *)filterVC{
     if (_filterVC ==nil) {
         _filterVC = [AJFilterViewController new];
         _filterVC.className = _className;
-        _filterVC.view.frame = CGRectMake(0, 0, dWidth, 40+64);
+        _filterVC.view.frame = CGRectMake(0, 0, dWidth, 40+NAVBAR_HEIGHT);
         _filterVC.delegate = self;
         [self addChildViewController:_filterVC];
     }

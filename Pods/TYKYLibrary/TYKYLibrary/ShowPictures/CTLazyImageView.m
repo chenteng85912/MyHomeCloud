@@ -8,7 +8,7 @@
 
 #import "CTLazyImageView.h"
 #import "CTDownloadWithSession.h"
-#import "CTDownloadGCDOperation.h"
+#import "CTSemaphoreGCD.h"
 #import "CTImagePath.h"
 
 #define Device_height   [[UIScreen mainScreen] bounds].size.height
@@ -57,6 +57,7 @@
     }
 
 }
+
 //读取本地存储图片
 - (BOOL)loadImageFromURLString:(NSString *)imgUrl{
     self.urlStr = imgUrl;
@@ -77,32 +78,33 @@
     }
     return NO;
 
-
 }
 //生成下载工具
 - (CTDownloadWithSession *)getDownloadToolFromTempArray:(NSString *)urlStr{
     
-    CTDownloadWithSession *request = [[CTDownloadGCDOperation downloadingArray] valueForKey:urlStr];
-    if (!request) {
-        request = [[CTDownloadGCDOperation prepareDownloadArray] valueForKey:urlStr];
-    }
-    
+    CTDownloadWithSession *request = [CTSemaphoreGCD oldDownloadTool:urlStr];
+   
     //新的下载工具
     if (!request) {
         NSString *filePath  = [CTImagePath getImagePathWithURLstring:urlStr];
 
-        request = [[CTDownloadWithSession alloc] initWithDownloadUrlStr:urlStr];
-        request.filePath = filePath;
-        [[CTDownloadGCDOperation prepareDownloadArray] setObject:request forKey:urlStr];
-        [CTDownloadGCDOperation startDownload];
+        request = [CTDownloadWithSession initWithUrlStr:urlStr filePath:filePath];
+        [CTSemaphoreGCD addNewDownloadQueue:request];
         
-    }
-    if (request.downloadState==DownloadFailState) {
-        [CTDownloadGCDOperation downLoadAgain:self.urlStr];
+    }else{
+        if (request.downloadState==DownloadFailState) {
+            [CTSemaphoreGCD reDownloadFile:self.urlStr];
 
+        }
     }
+    
     request.delegate  = self;
     return request;
+}
+- (void)loadFullImage:(UIImage *)image{
+    self.image = image;
+    self.frame = [self makeImageViewFrame:image];
+    
 }
 
 #pragma mark 根据图片大小设置imageview的frame
@@ -134,7 +136,7 @@
     self.reFreshBtn.hidden = YES;
     self.progressLabel.hidden = NO;
     
-    [CTDownloadGCDOperation downLoadAgain:self.urlStr];
+    [CTSemaphoreGCD reDownloadFile:self.urlStr];
 }
 
 #pragma mark TJSessionDownloadToolDelegate
@@ -164,11 +166,13 @@
             
             self.userInteractionEnabled = YES;
         }
-        
+        [CTSemaphoreGCD downloadedFile:urlStr];
+
     }else{
         //下载失败
         self.reFreshBtn.hidden = !self.fullScreen;
-        
+        [CTSemaphoreGCD downloadedFile:nil];
+
     }
 }
 

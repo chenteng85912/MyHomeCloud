@@ -60,15 +60,21 @@ CGFloat const NEW_MORE_HEITHT = 580;
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    
+    _headView.frame = CGRectMake(0, 0, dWidth, NAVBAR_HEIGHT);
+   
 }
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    
     if (_houseDetails&&_isChange) {
         _houseDetails = nil;
         [self.houseDetails initHouseDetailsInfo];
     }
+  
+    if (iPhone_X) {
+        _footerView.frame = CGRectMake(0, dHeight-65, dWidth, _footerView.frame.size.height+15);
+        
+    }
+
 }
 #pragma mark - AJTbViewProtocol
 - (NSInteger)pageSize{
@@ -358,7 +364,7 @@ CGFloat const NEW_MORE_HEITHT = 580;
     if(offsetY >0) {
         CGFloat ap = MIN(offsetY/120.0, 1.0);
         
-        _houseTitle.alpha = offsetY>AUTOLOOP_HEIGHT-64+45?1.0:0.0;
+        _houseTitle.alpha = offsetY>AUTOLOOP_HEIGHT-NAVBAR_HEIGHT+45?1.0:0.0;
         
         _headView.backgroundColor = [NavigationBarColor colorWithAlphaComponent:ap>0?ap:0];
     }else{

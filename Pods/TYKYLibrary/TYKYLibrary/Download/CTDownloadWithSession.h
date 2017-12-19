@@ -37,11 +37,12 @@ typedef NS_ENUM(NSInteger,ImageDownloadState) {
 /**
  *  传入下载地址 实例化下载对象
  */
-- (instancetype)initWithDownloadUrlStr:(NSString *)urlStr;
++ (instancetype)initWithUrlStr:(NSString *)urlStr
+                      filePath:(NSString *)filePath;
 
--(void)startDownload;//开始下载
--(void)pauseDownload;//暂停下载
--(void)resumeDownload;//继续下载
--(void)cancelDownload;//取消下载
+- (void)startDownload;//开始下载
+- (void)pauseDownload;//暂停下载
+- (void)resumeDownload;//继续下载
+- (void)cancelDownload;//取消下载
 
 @end

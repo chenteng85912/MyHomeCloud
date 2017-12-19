@@ -25,6 +25,15 @@
 
 static NSString * const AutoLoopReuseIdentifier = @"AutoLoopReuseIdentifier";
 
++ (instancetype)initWithFrame:(CGRect)frame
+                 onceLoopTime:(float)onceLoopTime
+             cellDisplayModal:(CTLoopCellDisplayModal)cellDisplayModal
+                scollDiretion:(CTLoopScollDirection)loopScollDirection{
+    return [[self alloc] initWithFrame:frame
+                          onceLoopTime:onceLoopTime
+                      cellDisplayModal:cellDisplayModal
+                         scollDiretion:loopScollDirection];
+}
 - (instancetype)initWithFrame:(CGRect)frame
                                   onceLoopTime:(float)onceLoopTime
                               cellDisplayModal:(CTLoopCellDisplayModal)cellDisplayModal

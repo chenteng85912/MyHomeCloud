@@ -17,7 +17,6 @@ static CTTouchIDAuthorize *touchId = nil;
 
 + (void)sigtonTouchId
 {
-    
     @synchronized(self){
         static dispatch_once_t once;
         dispatch_once(&once, ^{

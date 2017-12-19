@@ -73,9 +73,7 @@
     for (int i = 'A'; i <='Z'; i++) {
         [letterArray addObject:[NSString stringWithFormat:@"%c", i]];
     }
-    [letterArray enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        
-    }];
+
     NSMutableDictionary *dic = [NSMutableDictionary new];
     for (NSString *letter in letterArray) {
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF BEGINSWITH[c] %@",letter];

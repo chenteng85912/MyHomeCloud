@@ -15,6 +15,9 @@
               placeholderImage:(UIImage *)placeholderImage;
 
 // 加载全屏网络图片
-- (void)loadFullScreenImage:(NSString*)imageURLString;
+- (void)loadFullScreenImage:(NSString *)imageURLString;
+
+// 直接加载图片
+- (void)loadFullImage:(UIImage *)image;
 
 @end

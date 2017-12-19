@@ -7,7 +7,6 @@
 //
 
 #import "CTDownloadWithSession.h"
-#import "CTDownloadGCDOperation.h"
 
 @interface CTDownloadWithSession ()<NSURLSessionDelegate,NSURLSessionDownloadDelegate>
 
@@ -20,10 +19,16 @@
 {
     long long contentLenght;
 }
-- (instancetype)initWithDownloadUrlStr:(NSString *)urlStr{
++ (instancetype)initWithUrlStr:(NSString *)urlStr
+                      filePath:(NSString *)filePath{
+    return [[self alloc] initWithDownloadUrlStr:urlStr filePath:filePath];
+}
+- (instancetype)initWithDownloadUrlStr:(NSString *)urlStr
+                              filePath:(NSString *)filePath{
     self = [super init];
     if (self) {
-        self.urlStr = urlStr;
+        _urlStr = urlStr;
+        _filePath = filePath;
     }
     return self;
 }
@@ -95,7 +100,6 @@ didFinishDownloadingToURL:(NSURL *)location
    [[NSFileManager defaultManager] moveItemAtPath:location.path toPath:self.filePath error:nil];
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        [CTDownloadGCDOperation removeDownloadTool:self.urlStr];
         if ([self.delegate respondsToSelector:@selector(downLoadedSuccessOrFail:withUrl:)]) {
             [self.delegate downLoadedSuccessOrFail:YES withUrl:self.urlStr];
         }

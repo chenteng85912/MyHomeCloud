@@ -29,6 +29,7 @@
 #import "UIImageView+WebCache.h"
 #import "UIView+TYKYPrompt.h"
 #import "UIImage+ChangeColor.h"
+#import "NSString+Extension.h"
 
 #endif /* MyHomeCloud_pch */
 
@@ -37,7 +38,11 @@
 
 #define NavigationBarColor  [CTTool colorWithHexString:[TYKYThemeScheme currentColorStr]]
 //#define NavigationBarColor  UIColorFromRGB(0xF69233)//UIColorFromRGB(0x1CB464)
+#define iPhone_X        ([UIScreen mainScreen].bounds.size.height == 812 && [UIScreen mainScreen].bounds.size.width == 375)
+#define iOS11   ([UIDevice currentDevice].systemVersion.doubleValue>=11.0)?true:false
 
+//导航栏高度
+#define NAVBAR_HEIGHT     ([[UIApplication sharedApplication] statusBarFrame].size.height+44)
 #define UMWEIXINKEY   @"wx82d7c82f28299bef"
 #define JPUSH_AppKey  @"11f9e8873ee0df970777330e"
 #define BUGLY_APPID   @"a07ab3beb3"

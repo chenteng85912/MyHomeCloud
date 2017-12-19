@@ -40,17 +40,17 @@
         CGFloat picW;
         CGFloat picH;
         
-        if (picHeight>dHeight-64) {
-            CGFloat scaleH = picHeight/(dHeight-64);
+        if (picHeight>dHeight-NAVBAR_HEIGHT) {
+            CGFloat scaleH = picHeight/(dHeight-NAVBAR_HEIGHT);
             picW = dWidth/scaleH;
-            picH = dHeight-64;
+            picH = dHeight-NAVBAR_HEIGHT;
         }else{
             picW = dWidth;
             picH = picHeight;
         }
         
         _headImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, picW, picH)];
-        _headImageView.center = CGPointMake(dWidth/2, (dHeight-64)/2);
+        _headImageView.center = CGPointMake(dWidth/2, (dHeight-NAVBAR_HEIGHT)/2);
         _headImageView.image = self.headImg;
     }
   

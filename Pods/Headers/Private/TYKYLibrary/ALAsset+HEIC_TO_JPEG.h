@@ -1,1 +1,0 @@
-../../../TYKYLibrary/TYKYLibrary/CustomAlbum/ALAsset+HEIC_TO_JPEG.h

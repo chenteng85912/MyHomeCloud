@@ -1,1 +1,1 @@
-../../../TYKYLibrary/TYKYLibrary/CustomAlbum/CTSavePhotos.h
+../../../TYKYLibrary/TYKYLibrary/CTOnePhoto/CTSavePhotos.h

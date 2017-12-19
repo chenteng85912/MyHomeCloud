@@ -44,10 +44,10 @@ typedef NS_ENUM(NSInteger,CTLoopCellDisplayModal) {
  *  选择滚动方向
  *  @return 返回实例对象
  */
-- (instancetype)initWithFrame:(CGRect)frame
++ (instancetype)initWithFrame:(CGRect)frame
                 onceLoopTime:(float)onceLoopTime
             cellDisplayModal:(CTLoopCellDisplayModal)cellDisplayModal
-                scollDiretion:(CTLoopScollDirection)loopScollDirection;
+               scollDiretion:(CTLoopScollDirection)loopScollDirection;
 /**
  *  添加数据，如果选择图片模式，请传入图片数组
  */

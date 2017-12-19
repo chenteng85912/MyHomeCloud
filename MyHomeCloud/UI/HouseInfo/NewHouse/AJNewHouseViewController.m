@@ -13,9 +13,7 @@
 #import "AJSearchViewController.h"
 #import "AJHouseInfoViewController.h"
 
-@interface AJNewHouseViewController ()<UISearchBarDelegate>
-
-@property (strong, nonatomic) UISearchBar *searchBar;
+@interface AJNewHouseViewController ()
 
 @end
 
@@ -25,8 +23,17 @@
     [super viewDidLoad];
     
     if (self.showModal==SearchHouseModal||self.showModal==AllHouseModal) {
-        self.navigationItem.titleView = self.searchBar;
-        [CTTool removeSearchBorder:self.searchBar];
+        self.searchBar.placeholder = @"楼盘/开发商/区域";
+
+        if (iOS11) {
+            UIView *searchView = [[UIView alloc] initWithFrame:self.searchBar.frame];
+            [searchView addSubview:self.searchBar];
+            self.navigationItem.titleView = searchView;
+            
+        }else{
+            self.navigationItem.titleView = self.searchBar;
+            
+        }
 
     }else{
        
@@ -180,15 +187,7 @@
     POPVC;
     return NO;
 }
-- (UISearchBar *)searchBar{
-    if (_searchBar ==nil) {
-        _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, dWidth, 30)];
-        _searchBar.placeholder = @"楼盘/开发商/区域";
-        _searchBar.barTintColor = NavigationBarColor;
-        _searchBar.delegate = self;
-    }
-    return _searchBar;
-}
+
 /*
 #pragma mark - Navigation
 

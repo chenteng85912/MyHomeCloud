@@ -26,6 +26,8 @@
 //调度
 @property (strong, nonatomic) AJTbViewPresenter *presenter;
 
+@property (strong, nonatomic) UISearchBar *searchBar;
+
 @property (assign, nonatomic) NSString *className;
 
 //页面加载一次
