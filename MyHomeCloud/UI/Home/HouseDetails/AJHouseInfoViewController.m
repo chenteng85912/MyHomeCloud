@@ -60,11 +60,12 @@ CGFloat const NEW_MORE_HEITHT = 580;
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    _headView.frame = CGRectMake(0, 0, dWidth, NAVBAR_HEIGHT);
    
 }
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+    _headView.frame = CGRectMake(0, 0, dWidth, NAVBAR_HEIGHT);
+
     if (_houseDetails&&_isChange) {
         _houseDetails = nil;
         [self.houseDetails initHouseDetailsInfo];

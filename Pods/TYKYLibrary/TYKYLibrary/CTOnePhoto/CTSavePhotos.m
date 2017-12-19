@@ -10,10 +10,9 @@
 #import <AVFoundation/AVCaptureDevice.h>
 #import <AVFoundation/AVMediaFormat.h>
 #import <Photos/Photos.h>
-#import "UIAlertController+CTAlertBlock.h"
 
 @interface CTSavePhotos ()
-//@property (strong, nonatomic) ALAssetsLibrary *library;
+
 @property (strong, nonatomic) NSString *APPNAME;
 
 @end

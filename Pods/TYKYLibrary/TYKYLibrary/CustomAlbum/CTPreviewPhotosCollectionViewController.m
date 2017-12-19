@@ -170,6 +170,9 @@ static NSString *PreviewCollectionCellIdengifier = @"PreviewCollectionCellIdengi
         layout.sectionInset = UIEdgeInsetsMake(-20, 0, 0, 10);
         
         CGRect colFrame = CGRectMake(0, 0, Device_width+20, Device_height);
+        if (IPhoneX) {
+            colFrame = CGRectMake(0, 0, Device_width+20, Device_height+5);
+        }
         _colView = [[UICollectionView alloc] initWithFrame:colFrame collectionViewLayout:layout];
         _colView.pagingEnabled = YES;
         _colView.delegate = self;

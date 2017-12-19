@@ -8,6 +8,7 @@
 
 #import "CTImagePreviewViewController.h"
 #import "CTImageScrollView.h"
+#import "UIAlertController+CTAlertBlock.h"
 
 NSString *const CTImageShowIdentifier = @"CTImageShowIdentifier";
 
@@ -99,8 +100,11 @@ NSString *const CTImageShowIdentifier = @"CTImageShowIdentifier";
     self.pageNumLabel.text = [NSString stringWithFormat:@"%ld/%lu",currentNum+1,(unsigned long)imageArray.count];
     
     self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:self animated:YES completion:nil];
-
+    
+    UIViewController *rootVC = [UIAlertController getVisibleViewControllerFrom:[UIApplication sharedApplication].keyWindow.rootViewController];
+    if (rootVC) {
+        [rootVC presentViewController:self animated:YES completion:nil];
+    }
 }
 #pragma mark UICollectionViewDelegate
 - (NSInteger) numberOfSectionsInCollectionView:(UICollectionView *)collectionView

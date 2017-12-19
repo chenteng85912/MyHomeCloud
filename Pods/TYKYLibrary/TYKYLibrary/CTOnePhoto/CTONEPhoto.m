@@ -88,8 +88,11 @@ static CTONEPhoto *onePhoto = nil;
     onePhoto.imagePicker.navigationBar.tintColor = [UIColor blackColor];
     onePhoto.imagePicker.mediaTypes =  @[(NSString *)kUTTypeMovie];
     
-    [[UIApplication sharedApplication].keyWindow.rootViewController
-     presentViewController:onePhoto.imagePicker animated:YES completion:nil];
+    UIViewController *keywindow = [UIAlertController getVisibleViewControllerFrom:[UIApplication sharedApplication].keyWindow.rootViewController];
+    if (keywindow) {
+        [keywindow presentViewController:onePhoto.imagePicker animated:YES completion:nil];
+    }
+ 
 }
 
 + (void)initImagePicker:(UIImagePickerControllerSourceType)imagePickerType
@@ -110,9 +113,10 @@ static CTONEPhoto *onePhoto = nil;
         }
     }
     
-    [[UIApplication sharedApplication].keyWindow.rootViewController
-     presentViewController:onePhoto.imagePicker animated:YES completion:nil];
-    
+    UIViewController *rootVC = [UIAlertController getVisibleViewControllerFrom:[UIApplication sharedApplication].keyWindow.rootViewController];
+    if (rootVC) {
+        [rootVC presentViewController:onePhoto.imagePicker animated:YES completion:nil];
+    }
 }
 #pragma mark - UIImagePickerControllerDelegate
 - (void)imagePickerController:(UIImagePickerController *)picker
@@ -151,8 +155,15 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
             NSURL *imageURL = [info valueForKey:UIImagePickerControllerReferenceURL];
 
             PHFetchResult *result = [PHAsset fetchAssetsWithALAssetURLs:@[imageURL] options:nil];
-            [self sendImage:result.firstObject];
 
+            [self fetchOriginImage:result.firstObject complete:^(UIImage * _Nonnull originImg) {
+                NSString *imageName = [result.firstObject valueForKey:@"filename"];
+                if ([onePhoto.delegate respondsToSelector:@selector(sendOnePhoto:withImageName:)]) {
+                    [onePhoto.delegate sendOnePhoto:originImg withImageName:imageName];
+                }
+                [onePhoto.imagePicker dismissViewControllerAnimated:YES completion:^{
+                }];
+            }];
         }else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie]){
             //视频
             NSURL *vedioURL = [info valueForKey:UIImagePickerControllerMediaURL];
@@ -168,18 +179,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     }
     
 }
-//图片处理
-- (void)sendImage:(PHAsset *)myasset{
-    [self fetchOriginImage:myasset complete:^(UIImage * _Nonnull originImg) {
-        NSString *imageName = [myasset valueForKey:@"filename"];
-        [onePhoto.imagePicker dismissViewControllerAnimated:YES completion:^{
-            if ([onePhoto.delegate respondsToSelector:@selector(sendOnePhoto:withImageName:)]) {
-                [onePhoto.delegate sendOnePhoto:originImg withImageName:imageName];
-            }
-        }];
-    }];
- 
-}
+
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
 
@@ -284,6 +284,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     UIGraphicsEndImageContext();
     return normalizedImage;
 }
+
 - (void)fetchOriginImage:(PHAsset *)asset
                 complete:(void (^)( UIImage* _Nonnull originImg))completeBlock
 {

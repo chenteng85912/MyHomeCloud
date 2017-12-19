@@ -77,7 +77,7 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    return CGSizeMake(dWidth/4, dWidth/4);
+    return CGSizeMake(dWidth/3, dWidth/3);
     
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -89,7 +89,7 @@
         
         [show addObject:img];
     }
-    
+   
     [CTImagePreviewViewController showPictureWithUrlOrImages:show withCurrentPageNum:indexPath.row];
 }
 //保存房屋信息

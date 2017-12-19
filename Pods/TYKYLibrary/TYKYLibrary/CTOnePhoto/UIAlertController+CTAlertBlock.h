@@ -23,4 +23,6 @@ typedef void (^TouchBlock)(NSInteger buttonIndex);
         preferredStyle:(UIAlertControllerStyle)alertStyle
                  block:(TouchBlock)block;
 
++ (UIViewController *)getVisibleViewControllerFrom:(UIViewController*)vc;
+
 @end

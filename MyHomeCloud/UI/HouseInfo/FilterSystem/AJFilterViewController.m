@@ -252,7 +252,6 @@
     [self resetBtnState:_areaageView];
 
     sender.selected = YES;
-
     if ([sender.currentTitle containsString:@"-"]) {
         NSArray *priArray = [sender.currentTitle componentsSeparatedByString:@"-"];
         [self.areaAgeDic setObject:priArray[0]    forKey:FILTER_MIN];
@@ -272,6 +271,7 @@
     for (id sView in view.subviews) {
         if ([sView isKindOfClass:[UIButton class]]) {
             [(UIButton *)sView setSelected:NO];
+            [(UIButton *)sView setTitleColor:NavigationBarColor forState:UIControlStateSelected];
         }
     }
 }
@@ -472,19 +472,5 @@
     }
     return _areaAgeDic;
 }
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

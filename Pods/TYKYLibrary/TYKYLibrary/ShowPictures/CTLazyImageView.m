@@ -102,8 +102,10 @@
     return request;
 }
 - (void)loadFullImage:(UIImage *)image{
-    self.image = image;
-    self.frame = [self makeImageViewFrame:image];
+    if (image) {
+        self.image = image;
+        self.frame = [self makeImageViewFrame:image];
+    }
     
 }
 

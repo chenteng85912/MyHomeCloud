@@ -86,7 +86,7 @@
     
     CGFloat scale = [UIScreen mainScreen].scale;
     CGSize newSize = CGSizeMake(size.width * scale, size.height * scale);
-    
+ 
     [[PHCachingImageManager defaultManager] requestImageForAsset:copy_self targetSize:newSize contentMode:PHImageContentModeAspectFill options:nil resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
         
         completeBlock(result);
