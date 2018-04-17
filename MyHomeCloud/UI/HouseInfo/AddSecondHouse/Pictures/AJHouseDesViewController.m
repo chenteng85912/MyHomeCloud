@@ -10,7 +10,7 @@
 #import "PreviewUpLoadCollectionViewCell.h"
 #import "AJUploadPicModel.h"
 
-@interface AJHouseDesViewController ()<CTSendPhotosProtocol>
+@interface AJHouseDesViewController ()
 
 @property (weak, nonatomic) IBOutlet UICollectionView *colView;
 @property (weak, nonatomic) IBOutlet UIButton *uploadBtn;
@@ -85,9 +85,8 @@
    
     NSMutableArray *show = [NSMutableArray new];
     for (AJUploadPicModel *modal in self.dataArray) {
-        UIImage *img = [UIImage imageWithData:modal.picFile.getData];
         
-        [show addObject:img];
+        [show addObject:modal.picUrl];
     }
    
     [CTImagePreviewViewController showPictureWithUrlOrImages:show withCurrentPageNum:indexPath.row];
@@ -158,27 +157,23 @@
         return;
     }
 
-    CTPhotosNavigationViewController *nav = [CTPhotosNavigationViewController initWithDelegate:self];
-    [self presentViewController:nav animated:YES completion:nil];
+    
+    [CTCustomAlbum showCustomAlbumWithBlock:^(NSArray<UIImage *> *imagesArray) {
+        [self.view showHUD:nil];
+        [self performSelector:@selector(creatUploadData:) withObject:imagesArray afterDelay:0];
+    }];
 }
 
-#pragma mark - CTSendPhotosProtocol
-- (void)sendImageDataArray:(NSMutableArray<NSData *> *)imgDataArray{
-
-    [self.view showHUD:nil];
-    [self performSelector:@selector(creatUploadData:) withObject:imgDataArray afterDelay:0];
-
-}
 //上传图片
-- (void)creatUploadData:(NSMutableArray<NSData *> *)imgDataArray{
+- (void)creatUploadData:(NSMutableArray<UIImage *> *)imgDataArray{
     NSInteger count = imgDataArray.count;
     for (int i = 0; i<count; i++) {
-        NSData *imgData = imgDataArray[i];
         NSString *imgName = [NSString stringWithFormat:@"%f_%d",[NSDate new].timeIntervalSince1970,i];
-
+        UIImage *img = imgDataArray[i];
+        
         AJUploadPicModel *upload = [AJUploadPicModel new];
         
-        AVFile *file = [AVFile fileWithName:imgName data:imgData];
+        AVFile *file = [AVFile fileWithData:UIImageJPEGRepresentation(img, 1) name:imgName];
         upload.picFile = file;
         [self.dataArray addObject:upload];
     }

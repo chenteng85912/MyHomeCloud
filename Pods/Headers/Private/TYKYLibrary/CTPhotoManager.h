@@ -1,1 +1,0 @@
-../../../TYKYLibrary/TYKYLibrary/CustomAlbum/CTPhotoManager.h

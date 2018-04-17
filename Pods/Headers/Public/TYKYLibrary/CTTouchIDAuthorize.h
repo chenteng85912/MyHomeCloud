@@ -1,1 +1,0 @@
-../../../TYKYLibrary/TYKYLibrary/CTTouchIDAuthorize.h

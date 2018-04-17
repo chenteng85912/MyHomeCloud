@@ -53,6 +53,7 @@
     [MKMapItem openMapsWithItems:@[currentLocation, toLocation]
                    launchOptions:@{MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving,MKLaunchOptionsShowsTrafficKey: [NSNumber numberWithBool:YES]}];
 }
+//展示位置信息
 - (void)showLocation{
     //创建CLLocation 设置经纬度
     CLLocation *loc = [[CLLocation alloc] initWithLatitude:[self.houseObj[HOUSE_LATITUDE] doubleValue] longitude:[self.houseObj[HOUSE_LONGITUDE] floatValue]];

@@ -51,22 +51,23 @@ NSInteger const defaultPageSize = 20;
     _pageNo = 0;
     self.query.skip = _pageSize *_pageNo;
     //查找对象
+    WEAKSELF;
     [self.query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error) {
-            self.requestState = RequestFailModal;
+            weakSelf.requestState = RequestFailModal;
 
         }else{
-            self.requestState = RequestSuccessModal;
+            weakSelf.requestState = RequestSuccessModal;
         
 
         }
-        [_tbViewVC reloadTableView:[self processData:objects]  modal:StartInitDataModal];
+        [weakSelf.tbViewVC reloadTableView:[weakSelf processData:objects]  modal:StartInitDataModal];
 
-        [_tbViewVC showTipView:StartInitDataModal];
-        [_tbViewVC reStupTableviewFooterView:self.pageSize];
-        if (self.requestState == RequestSuccessModal) {
-            if ([self.tbViewVC respondsToSelector:@selector(loadDataSuccess)]) {
-                [self.tbViewVC loadDataSuccess];
+        [weakSelf.tbViewVC showTipView:StartInitDataModal];
+        [weakSelf.tbViewVC reStupTableviewFooterView:weakSelf.pageSize];
+        if (weakSelf.requestState == RequestSuccessModal) {
+            if ([weakSelf.tbViewVC respondsToSelector:@selector(loadDataSuccess)]) {
+                [weakSelf.tbViewVC loadDataSuccess];
             }
         }
        

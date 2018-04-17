@@ -11,6 +11,7 @@
 #import "AJEstateDetailsViewController.h"
 #import "AJAddPicturesViewController.h"
 #import "AJHouseInfoViewController.h"
+#import "CTAutoLoopViewController.h"
 
 CGFloat const MAP_HEIGHT = 240;
 CGFloat const INFO_NORMAL_HEITHT = 370;

@@ -7,8 +7,10 @@
 //
 
 #import "AJUserHeadViewController.h"
+#import "CTONEPhoto.h"
 
-@interface AJUserHeadViewController ()<CTONEPhotoDelegate>
+@interface AJUserHeadViewController ()
+
 @property (weak, nonatomic) IBOutlet UIScrollView *scrView;
 @property (strong, nonatomic) UIImageView *headImageView;
 
@@ -101,10 +103,16 @@
     WeakSelf;
     [UIAlertController alertWithTitle:nil message:nil cancelButtonTitle:@"取消" otherButtonTitles:@[@"拍照",@"从相册选取",@"保存头像"] preferredStyle:UIAlertControllerStyleActionSheet block:^(NSInteger buttonIndex) {
         if (buttonIndex==1) {
-            [CTONEPhoto openCameraWithDelegate:weakSelf editModal:YES];
+            [CTONEPhoto openCamera:NO autoSave:YES photoComplete:^(UIImage *image, NSString *imageName) {
+                [self saveUserHeadImage:[CTTool imageCompressForWidth:image targetWidth:600]];
+
+            }];
         }else if (buttonIndex==2){
             
-            [CTONEPhoto openAlbumWithDelegate:weakSelf editModal:YES];
+            [CTONEPhoto openAlbum:CTShowAlbumImageModel enableEdit:NO photoComplete:^(UIImage *image, NSString *imageName) {
+                [self saveUserHeadImage:[CTTool imageCompressForWidth:image targetWidth:600]];
+
+            } videoComplete:nil];
         }else if (buttonIndex==3){
             if ([CTSavePhotos checkAuthorityOfAblum]) {
                 //存入相册
@@ -115,20 +123,17 @@
     }];
 
 }
-#pragma mark - CTONEPhotoDelegate
-- (void)sendOnePhoto:(UIImage *)image withImageName:(NSString *)imageName;{
-    [self saveUserHeadImage:[CTTool imageCompressForWidth:image targetWidth:600]];
-    
-}
+
 #pragma mark 上传用户头像
 - (void)saveUserHeadImage:(UIImage *)image{
 
     NSData *imgData = UIImageJPEGRepresentation(image, 0.8);
-    AVFile *file = [AVFile fileWithName:[AVUser currentUser].mobilePhoneNumber data:imgData];
+    AVFile *file = [AVFile fileWithData:imgData name:[AVUser currentUser].mobilePhoneNumber];
     
     [self.view showHUD:@"正在上传..."];
     WeakSelf;
-    [file saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+    [file uploadWithCompletionHandler:^(BOOL succeeded, NSError * _Nullable error) {
+        
         [weakSelf.view removeHUD];
         if (!succeeded) {
             [weakSelf.view showTips:@"上传失败，请重试" withState:TYKYHUDModeSuccess complete:nil];
@@ -154,19 +159,5 @@
     }];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

@@ -72,8 +72,11 @@ static NSString *CellIdentifier = @"TJSettingsCellId";
         _tableView.tableFooterView = self.footerView;
     }
     
-    [_tableDatasource initDataSource:self.tableList];
-    [_tableView reloadData];
+    __weak typeof(self) weakSelf = self;
+    [_tableDatasource initDataSource:self.tableList complete:^{
+        [weakSelf.tableView reloadData];
+
+    }];
 }
 
 //点击单元格动作

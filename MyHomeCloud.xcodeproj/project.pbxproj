@@ -36,7 +36,6 @@
 		0B2343C01EC01CA1007A3AC1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2343BF1EC01CA1007A3AC1 /* AppDelegate.m */; };
 		0B2343C91EC01CA1007A3AC1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B2343C71EC01CA1007A3AC1 /* Main.storyboard */; };
 		0B2343CE1EC01CA1007A3AC1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B2343CC1EC01CA1007A3AC1 /* LaunchScreen.storyboard */; };
-		0B2343D91EC01CA2007A3AC1 /* MyHomeCloudTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2343D81EC01CA2007A3AC1 /* MyHomeCloudTests.m */; };
 		0B2344601EC03095007A3AC1 /* UIView+SDXIBExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2343F61EC03095007A3AC1 /* UIView+SDXIBExtension.m */; };
 		0B2344611EC03095007A3AC1 /* UIView+TYKYPrompt.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2343F81EC03095007A3AC1 /* UIView+TYKYPrompt.m */; };
 		0B2344631EC03095007A3AC1 /* Colours.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2343FD1EC03095007A3AC1 /* Colours.m */; };
@@ -248,6 +247,118 @@
 		0BF9EF301FE9131F00619B8A /* AJInclinationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF9EF1D1FE9130F00619B8A /* AJInclinationTableViewCell.m */; };
 		0BF9EF311FE9131F00619B8A /* AJInclinationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BF9EF201FE9130F00619B8A /* AJInclinationTableViewCell.xib */; };
 		0BF9EF321FE9131F00619B8A /* AJUserInclinationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF9EF221FE9130F00619B8A /* AJUserInclinationViewController.m */; };
+		3E59A96C2085EAE00005D3B1 /* CTONEPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9382085EADF0005D3B1 /* CTONEPhoto.m */; };
+		3E59A96D2085EAE00005D3B1 /* CTONEPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9382085EADF0005D3B1 /* CTONEPhoto.m */; };
+		3E59A96E2085EAE00005D3B1 /* CTSavePhotos.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9392085EADF0005D3B1 /* CTSavePhotos.m */; };
+		3E59A96F2085EAE00005D3B1 /* CTSavePhotos.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9392085EADF0005D3B1 /* CTSavePhotos.m */; };
+		3E59A9702085EAE00005D3B1 /* UIImage+ColorImg.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A93D2085EAE00005D3B1 /* UIImage+ColorImg.m */; };
+		3E59A9712085EAE00005D3B1 /* UIImage+ColorImg.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A93D2085EAE00005D3B1 /* UIImage+ColorImg.m */; };
+		3E59A9722085EAE00005D3B1 /* CTPhotosConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A93E2085EAE00005D3B1 /* CTPhotosConfiguration.m */; };
+		3E59A9732085EAE00005D3B1 /* CTPhotosConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A93E2085EAE00005D3B1 /* CTPhotosConfiguration.m */; };
+		3E59A9742085EAE00005D3B1 /* CTGroupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9402085EAE00005D3B1 /* CTGroupTableViewCell.m */; };
+		3E59A9752085EAE00005D3B1 /* CTGroupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9402085EAE00005D3B1 /* CTGroupTableViewCell.m */; };
+		3E59A9762085EAE00005D3B1 /* CTPHAssetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9422085EAE00005D3B1 /* CTPHAssetModel.m */; };
+		3E59A9772085EAE00005D3B1 /* CTPHAssetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9422085EAE00005D3B1 /* CTPHAssetModel.m */; };
+		3E59A9782085EAE00005D3B1 /* UIButton+CTButtonManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9442085EAE00005D3B1 /* UIButton+CTButtonManager.m */; };
+		3E59A9792085EAE00005D3B1 /* UIButton+CTButtonManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9442085EAE00005D3B1 /* UIButton+CTButtonManager.m */; };
+		3E59A97A2085EAE00005D3B1 /* CTPrviewImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9452085EAE00005D3B1 /* CTPrviewImageScrollView.m */; };
+		3E59A97B2085EAE00005D3B1 /* CTPrviewImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9452085EAE00005D3B1 /* CTPrviewImageScrollView.m */; };
+		3E59A97C2085EAE00005D3B1 /* UIViewController+CTAlertShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9472085EAE00005D3B1 /* UIViewController+CTAlertShow.m */; };
+		3E59A97D2085EAE00005D3B1 /* UIViewController+CTAlertShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9472085EAE00005D3B1 /* UIViewController+CTAlertShow.m */; };
+		3E59A97E2085EAE00005D3B1 /* CTAlbumGroupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9482085EAE00005D3B1 /* CTAlbumGroupController.m */; };
+		3E59A97F2085EAE00005D3B1 /* CTAlbumGroupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9482085EAE00005D3B1 /* CTAlbumGroupController.m */; };
+		3E59A9802085EAE00005D3B1 /* CTPhotosCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A94A2085EAE00005D3B1 /* CTPhotosCollectionViewController.m */; };
+		3E59A9812085EAE00005D3B1 /* CTPhotosCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A94A2085EAE00005D3B1 /* CTPhotosCollectionViewController.m */; };
+		3E59A9822085EAE00005D3B1 /* CTCustomAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A94B2085EAE00005D3B1 /* CTCustomAlbum.m */; };
+		3E59A9832085EAE00005D3B1 /* CTCustomAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A94B2085EAE00005D3B1 /* CTCustomAlbum.m */; };
+		3E59A9842085EAE00005D3B1 /* CTPhotosNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A94C2085EAE00005D3B1 /* CTPhotosNavigationViewController.m */; };
+		3E59A9852085EAE00005D3B1 /* CTPhotosNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A94C2085EAE00005D3B1 /* CTPhotosNavigationViewController.m */; };
+		3E59A9862085EAE00005D3B1 /* PHAsset+CTPHAssetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A94F2085EAE00005D3B1 /* PHAsset+CTPHAssetManager.m */; };
+		3E59A9872085EAE00005D3B1 /* PHAsset+CTPHAssetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A94F2085EAE00005D3B1 /* PHAsset+CTPHAssetManager.m */; };
+		3E59A9882085EAE00005D3B1 /* CTCollectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9502085EAE00005D3B1 /* CTCollectionModel.m */; };
+		3E59A9892085EAE00005D3B1 /* CTCollectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9502085EAE00005D3B1 /* CTCollectionModel.m */; };
+		3E59A98A2085EAE00005D3B1 /* CTBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9512085EAE00005D3B1 /* CTBottomView.m */; };
+		3E59A98B2085EAE00005D3B1 /* CTBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9512085EAE00005D3B1 /* CTBottomView.m */; };
+		3E59A98C2085EAE00005D3B1 /* CTPhotoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9532085EAE00005D3B1 /* CTPhotoManager.m */; };
+		3E59A98D2085EAE00005D3B1 /* CTPhotoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9532085EAE00005D3B1 /* CTPhotoManager.m */; };
+		3E59A98E2085EAE00005D3B1 /* PHAssetCollection+CTAssetCollectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9582085EAE00005D3B1 /* PHAssetCollection+CTAssetCollectionManager.m */; };
+		3E59A98F2085EAE00005D3B1 /* PHAssetCollection+CTAssetCollectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9582085EAE00005D3B1 /* PHAssetCollection+CTAssetCollectionManager.m */; };
+		3E59A9902085EAE00005D3B1 /* CTPhotosCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A95A2085EAE00005D3B1 /* CTPhotosCollectionViewCell.m */; };
+		3E59A9912085EAE00005D3B1 /* CTPhotosCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A95A2085EAE00005D3B1 /* CTPhotosCollectionViewCell.m */; };
+		3E59A9922085EAE00005D3B1 /* ct_pselected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E59A95F2085EAE00005D3B1 /* ct_pselected@2x.png */; };
+		3E59A9932085EAE00005D3B1 /* ct_pselected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E59A95F2085EAE00005D3B1 /* ct_pselected@2x.png */; };
+		3E59A9942085EAE00005D3B1 /* ct_punselect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E59A9602085EAE00005D3B1 /* ct_punselect@2x.png */; };
+		3E59A9952085EAE00005D3B1 /* ct_punselect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E59A9602085EAE00005D3B1 /* ct_punselect@2x.png */; };
+		3E59A9962085EAE00005D3B1 /* ct_unselect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E59A9612085EAE00005D3B1 /* ct_unselect@2x.png */; };
+		3E59A9972085EAE00005D3B1 /* ct_unselect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E59A9612085EAE00005D3B1 /* ct_unselect@2x.png */; };
+		3E59A9982085EAE00005D3B1 /* ctCustomback@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E59A9622085EAE00005D3B1 /* ctCustomback@2x.png */; };
+		3E59A9992085EAE00005D3B1 /* ctCustomback@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E59A9622085EAE00005D3B1 /* ctCustomback@2x.png */; };
+		3E59A99A2085EAE00005D3B1 /* ct_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E59A9632085EAE00005D3B1 /* ct_selected@2x.png */; };
+		3E59A99B2085EAE00005D3B1 /* ct_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E59A9632085EAE00005D3B1 /* ct_selected@2x.png */; };
+		3E59A99C2085EAE00005D3B1 /* origin_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E59A9642085EAE00005D3B1 /* origin_selected@2x.png */; };
+		3E59A99D2085EAE00005D3B1 /* origin_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E59A9642085EAE00005D3B1 /* origin_selected@2x.png */; };
+		3E59A99E2085EAE00005D3B1 /* origin_unselect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E59A9652085EAE00005D3B1 /* origin_unselect@2x.png */; };
+		3E59A99F2085EAE00005D3B1 /* origin_unselect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E59A9652085EAE00005D3B1 /* origin_unselect@2x.png */; };
+		3E59A9A02085EAE00005D3B1 /* CTPreviewPhotosCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9682085EAE00005D3B1 /* CTPreviewPhotosCollectionViewController.m */; };
+		3E59A9A12085EAE00005D3B1 /* CTPreviewPhotosCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9682085EAE00005D3B1 /* CTPreviewPhotosCollectionViewController.m */; };
+		3E59A9A22085EAE00005D3B1 /* UIControl+CTControlBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A96A2085EAE00005D3B1 /* UIControl+CTControlBlock.m */; };
+		3E59A9A32085EAE00005D3B1 /* UIControl+CTControlBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A96A2085EAE00005D3B1 /* UIControl+CTControlBlock.m */; };
+		3E59A9C22085EAE70005D3B1 /* CTLazyImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9AA2085EAE70005D3B1 /* CTLazyImageView.m */; };
+		3E59A9C32085EAE70005D3B1 /* CTLazyImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9AA2085EAE70005D3B1 /* CTLazyImageView.m */; };
+		3E59A9C42085EAE70005D3B1 /* CTSemaphoreGCD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9AC2085EAE70005D3B1 /* CTSemaphoreGCD.m */; };
+		3E59A9C52085EAE70005D3B1 /* CTSemaphoreGCD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9AC2085EAE70005D3B1 /* CTSemaphoreGCD.m */; };
+		3E59A9C62085EAE70005D3B1 /* ct_refresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E59A9AD2085EAE70005D3B1 /* ct_refresh@2x.png */; };
+		3E59A9C72085EAE70005D3B1 /* ct_refresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E59A9AD2085EAE70005D3B1 /* ct_refresh@2x.png */; };
+		3E59A9C82085EAE70005D3B1 /* CTImagePreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9AE2085EAE70005D3B1 /* CTImagePreviewViewController.m */; };
+		3E59A9C92085EAE70005D3B1 /* CTImagePreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9AE2085EAE70005D3B1 /* CTImagePreviewViewController.m */; };
+		3E59A9CA2085EAE70005D3B1 /* CTImagePath.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9AF2085EAE70005D3B1 /* CTImagePath.m */; };
+		3E59A9CB2085EAE70005D3B1 /* CTImagePath.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9AF2085EAE70005D3B1 /* CTImagePath.m */; };
+		3E59A9CC2085EAE70005D3B1 /* CTImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9B02085EAE70005D3B1 /* CTImageScrollView.m */; };
+		3E59A9CD2085EAE70005D3B1 /* CTImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9B02085EAE70005D3B1 /* CTImageScrollView.m */; };
+		3E59A9CE2085EAE70005D3B1 /* CTDownloadWithSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9B12085EAE70005D3B1 /* CTDownloadWithSession.m */; };
+		3E59A9CF2085EAE70005D3B1 /* CTDownloadWithSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9B12085EAE70005D3B1 /* CTDownloadWithSession.m */; };
+		3E59AA0B2085EAF60005D3B1 /* UIAlertController+CTAlertBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9E02085EAF60005D3B1 /* UIAlertController+CTAlertBlock.m */; };
+		3E59AA0C2085EAF60005D3B1 /* UIAlertController+CTAlertBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9E02085EAF60005D3B1 /* UIAlertController+CTAlertBlock.m */; };
+		3E59AA0D2085EAF60005D3B1 /* UIImage+Scale.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9E62085EAF60005D3B1 /* UIImage+Scale.m */; };
+		3E59AA0E2085EAF60005D3B1 /* UIImage+Scale.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9E62085EAF60005D3B1 /* UIImage+Scale.m */; };
+		3E59AA0F2085EAF60005D3B1 /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9E72085EAF60005D3B1 /* NSString+Extension.m */; };
+		3E59AA102085EAF60005D3B1 /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9E72085EAF60005D3B1 /* NSString+Extension.m */; };
+		3E59AA112085EAF60005D3B1 /* UIButton+CTButtonBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9E82085EAF60005D3B1 /* UIButton+CTButtonBlock.m */; };
+		3E59AA122085EAF60005D3B1 /* UIButton+CTButtonBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9E82085EAF60005D3B1 /* UIButton+CTButtonBlock.m */; };
+		3E59AA132085EAF60005D3B1 /* UIView+SDXIBExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9E92085EAF60005D3B1 /* UIView+SDXIBExtension.m */; };
+		3E59AA142085EAF60005D3B1 /* UIView+SDXIBExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9E92085EAF60005D3B1 /* UIView+SDXIBExtension.m */; };
+		3E59AA152085EAF60005D3B1 /* CTAutoLoopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9EA2085EAF60005D3B1 /* CTAutoLoopViewController.m */; };
+		3E59AA162085EAF60005D3B1 /* CTAutoLoopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9EA2085EAF60005D3B1 /* CTAutoLoopViewController.m */; };
+		3E59AA172085EAF60005D3B1 /* CTCustomePageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9EB2085EAF60005D3B1 /* CTCustomePageController.m */; };
+		3E59AA182085EAF60005D3B1 /* CTCustomePageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9EB2085EAF60005D3B1 /* CTCustomePageController.m */; };
+		3E59AA192085EAF60005D3B1 /* CTVersionAutoUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9EE2085EAF60005D3B1 /* CTVersionAutoUpdate.m */; };
+		3E59AA1A2085EAF60005D3B1 /* CTVersionAutoUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9EE2085EAF60005D3B1 /* CTVersionAutoUpdate.m */; };
+		3E59AA1B2085EAF60005D3B1 /* CTDelegateObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9F12085EAF60005D3B1 /* CTDelegateObj.m */; };
+		3E59AA1C2085EAF60005D3B1 /* CTDelegateObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9F12085EAF60005D3B1 /* CTDelegateObj.m */; };
+		3E59AA1D2085EAF60005D3B1 /* CTDataSourceObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9F22085EAF60005D3B1 /* CTDataSourceObj.m */; };
+		3E59AA1E2085EAF60005D3B1 /* CTDataSourceObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9F22085EAF60005D3B1 /* CTDataSourceObj.m */; };
+		3E59AA1F2085EAF60005D3B1 /* CTLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9F62085EAF60005D3B1 /* CTLocationViewController.m */; };
+		3E59AA202085EAF60005D3B1 /* CTLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9F62085EAF60005D3B1 /* CTLocationViewController.m */; };
+		3E59AA212085EAF60005D3B1 /* CTLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E59A9F92085EAF60005D3B1 /* CTLocationViewController.xib */; };
+		3E59AA222085EAF60005D3B1 /* CTLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E59A9F92085EAF60005D3B1 /* CTLocationViewController.xib */; };
+		3E59AA232085EAF60005D3B1 /* CTLocationNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9FB2085EAF60005D3B1 /* CTLocationNavController.m */; };
+		3E59AA242085EAF60005D3B1 /* CTLocationNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9FB2085EAF60005D3B1 /* CTLocationNavController.m */; };
+		3E59AA252085EAF60005D3B1 /* ct_city.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3E59A9FC2085EAF60005D3B1 /* ct_city.plist */; };
+		3E59AA262085EAF60005D3B1 /* ct_city.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3E59A9FC2085EAF60005D3B1 /* ct_city.plist */; };
+		3E59AA272085EAF60005D3B1 /* ct_toTop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E59A9FD2085EAF60005D3B1 /* ct_toTop@2x.png */; };
+		3E59AA282085EAF60005D3B1 /* ct_toTop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E59A9FD2085EAF60005D3B1 /* ct_toTop@2x.png */; };
+		3E59AA292085EAF60005D3B1 /* ChineseTransform.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9FE2085EAF60005D3B1 /* ChineseTransform.m */; };
+		3E59AA2A2085EAF60005D3B1 /* ChineseTransform.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59A9FE2085EAF60005D3B1 /* ChineseTransform.m */; };
+		3E59AA2B2085EAF60005D3B1 /* ct_close_location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E59A9FF2085EAF60005D3B1 /* ct_close_location@2x.png */; };
+		3E59AA2C2085EAF60005D3B1 /* ct_close_location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E59A9FF2085EAF60005D3B1 /* ct_close_location@2x.png */; };
+		3E59AA2D2085EAF60005D3B1 /* CTAutoRunLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59AA002085EAF60005D3B1 /* CTAutoRunLabel.m */; };
+		3E59AA2E2085EAF60005D3B1 /* CTAutoRunLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59AA002085EAF60005D3B1 /* CTAutoRunLabel.m */; };
+		3E59AA2F2085EAF60005D3B1 /* KeychainTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59AA052085EAF60005D3B1 /* KeychainTool.m */; };
+		3E59AA302085EAF60005D3B1 /* KeychainTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59AA052085EAF60005D3B1 /* KeychainTool.m */; };
+		3E59AA312085EAF60005D3B1 /* CTAutoPositionScrollview.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59AA062085EAF60005D3B1 /* CTAutoPositionScrollview.m */; };
+		3E59AA322085EAF60005D3B1 /* CTAutoPositionScrollview.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59AA062085EAF60005D3B1 /* CTAutoPositionScrollview.m */; };
+		3E59AA332085EAF60005D3B1 /* CTTouchIDAuthorize.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59AA092085EAF60005D3B1 /* CTTouchIDAuthorize.m */; };
+		3E59AA342085EAF60005D3B1 /* CTTouchIDAuthorize.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59AA092085EAF60005D3B1 /* CTTouchIDAuthorize.m */; };
 		7191E77D76708EC24E7633A2 /* libPods-AJCloud.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 70A79D96898B7D786B3DD49D /* libPods-AJCloud.a */; };
 		A40B20B61EC733280027399E /* AJHouseDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A40B20B41EC733280027399E /* AJHouseDetailsViewController.m */; };
 		A40B20B71EC733280027399E /* AJHouseDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A40B20B51EC733280027399E /* AJHouseDetailsViewController.xib */; };
@@ -381,8 +492,6 @@
 		0B2343CD1EC01CA1007A3AC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0B2343CF1EC01CA1007A3AC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0B2343D41EC01CA2007A3AC1 /* MyHomeCloudTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyHomeCloudTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		0B2343D81EC01CA2007A3AC1 /* MyHomeCloudTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyHomeCloudTests.m; sourceTree = "<group>"; };
-		0B2343DA1EC01CA2007A3AC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0B2343F51EC03095007A3AC1 /* UIView+SDXIBExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SDXIBExtension.h"; sourceTree = "<group>"; };
 		0B2343F61EC03095007A3AC1 /* UIView+SDXIBExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SDXIBExtension.m"; sourceTree = "<group>"; };
 		0B2343F71EC03095007A3AC1 /* UIView+TYKYPrompt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+TYKYPrompt.h"; sourceTree = "<group>"; };
@@ -521,6 +630,108 @@
 		28918ABEED7A893430DD718E /* libPods-MyHomeCloud.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyHomeCloud.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BD76340FB7FEF978B1E1792 /* Pods-MyHomeCloud.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyHomeCloud.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyHomeCloud/Pods-MyHomeCloud.debug.xcconfig"; sourceTree = "<group>"; };
 		3DAACE5B1781E0CFA7DA2550 /* Pods-AJCloudAdmin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AJCloudAdmin.release.xcconfig"; path = "Pods/Target Support Files/Pods-AJCloudAdmin/Pods-AJCloudAdmin.release.xcconfig"; sourceTree = "<group>"; };
+		3E59A9382085EADF0005D3B1 /* CTONEPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTONEPhoto.m; sourceTree = "<group>"; };
+		3E59A9392085EADF0005D3B1 /* CTSavePhotos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTSavePhotos.m; sourceTree = "<group>"; };
+		3E59A93A2085EADF0005D3B1 /* CTONEPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTONEPhoto.h; sourceTree = "<group>"; };
+		3E59A93B2085EADF0005D3B1 /* CTSavePhotos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTSavePhotos.h; sourceTree = "<group>"; };
+		3E59A93D2085EAE00005D3B1 /* UIImage+ColorImg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ColorImg.m"; sourceTree = "<group>"; };
+		3E59A93E2085EAE00005D3B1 /* CTPhotosConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPhotosConfiguration.m; sourceTree = "<group>"; };
+		3E59A93F2085EAE00005D3B1 /* CTPhotoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPhotoManager.h; sourceTree = "<group>"; };
+		3E59A9402085EAE00005D3B1 /* CTGroupTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTGroupTableViewCell.m; sourceTree = "<group>"; };
+		3E59A9412085EAE00005D3B1 /* CTPhotosConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPhotosConfig.h; sourceTree = "<group>"; };
+		3E59A9422085EAE00005D3B1 /* CTPHAssetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPHAssetModel.m; sourceTree = "<group>"; };
+		3E59A9432085EAE00005D3B1 /* CTBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTBottomView.h; sourceTree = "<group>"; };
+		3E59A9442085EAE00005D3B1 /* UIButton+CTButtonManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+CTButtonManager.m"; sourceTree = "<group>"; };
+		3E59A9452085EAE00005D3B1 /* CTPrviewImageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPrviewImageScrollView.m; sourceTree = "<group>"; };
+		3E59A9462085EAE00005D3B1 /* CTPhotosCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPhotosCollectionViewCell.h; sourceTree = "<group>"; };
+		3E59A9472085EAE00005D3B1 /* UIViewController+CTAlertShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+CTAlertShow.m"; sourceTree = "<group>"; };
+		3E59A9482085EAE00005D3B1 /* CTAlbumGroupController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTAlbumGroupController.m; sourceTree = "<group>"; };
+		3E59A9492085EAE00005D3B1 /* PHAssetCollection+CTAssetCollectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PHAssetCollection+CTAssetCollectionManager.h"; sourceTree = "<group>"; };
+		3E59A94A2085EAE00005D3B1 /* CTPhotosCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPhotosCollectionViewController.m; sourceTree = "<group>"; };
+		3E59A94B2085EAE00005D3B1 /* CTCustomAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTCustomAlbum.m; sourceTree = "<group>"; };
+		3E59A94C2085EAE00005D3B1 /* CTPhotosNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPhotosNavigationViewController.m; sourceTree = "<group>"; };
+		3E59A94D2085EAE00005D3B1 /* UIControl+CTControlBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIControl+CTControlBlock.h"; sourceTree = "<group>"; };
+		3E59A94E2085EAE00005D3B1 /* CTPreviewPhotosCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPreviewPhotosCollectionViewController.h; sourceTree = "<group>"; };
+		3E59A94F2085EAE00005D3B1 /* PHAsset+CTPHAssetManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PHAsset+CTPHAssetManager.m"; sourceTree = "<group>"; };
+		3E59A9502085EAE00005D3B1 /* CTCollectionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTCollectionModel.m; sourceTree = "<group>"; };
+		3E59A9512085EAE00005D3B1 /* CTBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTBottomView.m; sourceTree = "<group>"; };
+		3E59A9522085EAE00005D3B1 /* CTPHAssetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPHAssetModel.h; sourceTree = "<group>"; };
+		3E59A9532085EAE00005D3B1 /* CTPhotoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPhotoManager.m; sourceTree = "<group>"; };
+		3E59A9542085EAE00005D3B1 /* CTGroupTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTGroupTableViewCell.h; sourceTree = "<group>"; };
+		3E59A9552085EAE00005D3B1 /* UIImage+ColorImg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ColorImg.h"; sourceTree = "<group>"; };
+		3E59A9562085EAE00005D3B1 /* CTPhotosConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPhotosConfiguration.h; sourceTree = "<group>"; };
+		3E59A9572085EAE00005D3B1 /* CTAlbumGroupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTAlbumGroupController.h; sourceTree = "<group>"; };
+		3E59A9582085EAE00005D3B1 /* PHAssetCollection+CTAssetCollectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PHAssetCollection+CTAssetCollectionManager.m"; sourceTree = "<group>"; };
+		3E59A9592085EAE00005D3B1 /* UIViewController+CTAlertShow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+CTAlertShow.h"; sourceTree = "<group>"; };
+		3E59A95A2085EAE00005D3B1 /* CTPhotosCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPhotosCollectionViewCell.m; sourceTree = "<group>"; };
+		3E59A95B2085EAE00005D3B1 /* CTPrviewImageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPrviewImageScrollView.h; sourceTree = "<group>"; };
+		3E59A95C2085EAE00005D3B1 /* UIButton+CTButtonManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+CTButtonManager.h"; sourceTree = "<group>"; };
+		3E59A95D2085EAE00005D3B1 /* CTPhotosCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPhotosCollectionViewController.h; sourceTree = "<group>"; };
+		3E59A95F2085EAE00005D3B1 /* ct_pselected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ct_pselected@2x.png"; sourceTree = "<group>"; };
+		3E59A9602085EAE00005D3B1 /* ct_punselect@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ct_punselect@2x.png"; sourceTree = "<group>"; };
+		3E59A9612085EAE00005D3B1 /* ct_unselect@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ct_unselect@2x.png"; sourceTree = "<group>"; };
+		3E59A9622085EAE00005D3B1 /* ctCustomback@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ctCustomback@2x.png"; sourceTree = "<group>"; };
+		3E59A9632085EAE00005D3B1 /* ct_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ct_selected@2x.png"; sourceTree = "<group>"; };
+		3E59A9642085EAE00005D3B1 /* origin_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "origin_selected@2x.png"; sourceTree = "<group>"; };
+		3E59A9652085EAE00005D3B1 /* origin_unselect@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "origin_unselect@2x.png"; sourceTree = "<group>"; };
+		3E59A9662085EAE00005D3B1 /* CTCollectionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTCollectionModel.h; sourceTree = "<group>"; };
+		3E59A9672085EAE00005D3B1 /* PHAsset+CTPHAssetManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PHAsset+CTPHAssetManager.h"; sourceTree = "<group>"; };
+		3E59A9682085EAE00005D3B1 /* CTPreviewPhotosCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPreviewPhotosCollectionViewController.m; sourceTree = "<group>"; };
+		3E59A9692085EAE00005D3B1 /* CTPhotosNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPhotosNavigationViewController.h; sourceTree = "<group>"; };
+		3E59A96A2085EAE00005D3B1 /* UIControl+CTControlBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+CTControlBlock.m"; sourceTree = "<group>"; };
+		3E59A96B2085EAE00005D3B1 /* CTCustomAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTCustomAlbum.h; sourceTree = "<group>"; };
+		3E59A9A82085EAE70005D3B1 /* CTImageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTImageScrollView.h; sourceTree = "<group>"; };
+		3E59A9A92085EAE70005D3B1 /* CTImagePath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTImagePath.h; sourceTree = "<group>"; };
+		3E59A9AA2085EAE70005D3B1 /* CTLazyImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTLazyImageView.m; sourceTree = "<group>"; };
+		3E59A9AB2085EAE70005D3B1 /* CTDownloadWithSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTDownloadWithSession.h; sourceTree = "<group>"; };
+		3E59A9AC2085EAE70005D3B1 /* CTSemaphoreGCD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTSemaphoreGCD.m; sourceTree = "<group>"; };
+		3E59A9AD2085EAE70005D3B1 /* ct_refresh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ct_refresh@2x.png"; sourceTree = "<group>"; };
+		3E59A9AE2085EAE70005D3B1 /* CTImagePreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTImagePreviewViewController.m; sourceTree = "<group>"; };
+		3E59A9AF2085EAE70005D3B1 /* CTImagePath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTImagePath.m; sourceTree = "<group>"; };
+		3E59A9B02085EAE70005D3B1 /* CTImageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTImageScrollView.m; sourceTree = "<group>"; };
+		3E59A9B12085EAE70005D3B1 /* CTDownloadWithSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTDownloadWithSession.m; sourceTree = "<group>"; };
+		3E59A9B22085EAE70005D3B1 /* CTLazyImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTLazyImageView.h; sourceTree = "<group>"; };
+		3E59A9B32085EAE70005D3B1 /* CTImagePreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTImagePreviewViewController.h; sourceTree = "<group>"; };
+		3E59A9B42085EAE70005D3B1 /* CTSemaphoreGCD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTSemaphoreGCD.h; sourceTree = "<group>"; };
+		3E59A9E02085EAF60005D3B1 /* UIAlertController+CTAlertBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+CTAlertBlock.m"; sourceTree = "<group>"; };
+		3E59A9E12085EAF60005D3B1 /* NSString+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extension.h"; sourceTree = "<group>"; };
+		3E59A9E22085EAF60005D3B1 /* UIImage+Scale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Scale.h"; sourceTree = "<group>"; };
+		3E59A9E32085EAF60005D3B1 /* UIButton+CTButtonBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+CTButtonBlock.h"; sourceTree = "<group>"; };
+		3E59A9E42085EAF60005D3B1 /* UIView+SDXIBExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SDXIBExtension.h"; sourceTree = "<group>"; };
+		3E59A9E52085EAF60005D3B1 /* UIAlertController+CTAlertBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+CTAlertBlock.h"; sourceTree = "<group>"; };
+		3E59A9E62085EAF60005D3B1 /* UIImage+Scale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Scale.m"; sourceTree = "<group>"; };
+		3E59A9E72085EAF60005D3B1 /* NSString+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extension.m"; sourceTree = "<group>"; };
+		3E59A9E82085EAF60005D3B1 /* UIButton+CTButtonBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+CTButtonBlock.m"; sourceTree = "<group>"; };
+		3E59A9E92085EAF60005D3B1 /* UIView+SDXIBExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SDXIBExtension.m"; sourceTree = "<group>"; };
+		3E59A9EA2085EAF60005D3B1 /* CTAutoLoopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTAutoLoopViewController.m; sourceTree = "<group>"; };
+		3E59A9EB2085EAF60005D3B1 /* CTCustomePageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTCustomePageController.m; sourceTree = "<group>"; };
+		3E59A9ED2085EAF60005D3B1 /* CTVersionAutoUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTVersionAutoUpdate.h; sourceTree = "<group>"; };
+		3E59A9EE2085EAF60005D3B1 /* CTVersionAutoUpdate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTVersionAutoUpdate.m; sourceTree = "<group>"; };
+		3E59A9EF2085EAF60005D3B1 /* CTTouchIDAuthorize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTTouchIDAuthorize.h; sourceTree = "<group>"; };
+		3E59A9F12085EAF60005D3B1 /* CTDelegateObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTDelegateObj.m; sourceTree = "<group>"; };
+		3E59A9F22085EAF60005D3B1 /* CTDataSourceObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTDataSourceObj.m; sourceTree = "<group>"; };
+		3E59A9F32085EAF60005D3B1 /* CTDelegateObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTDelegateObj.h; sourceTree = "<group>"; };
+		3E59A9F42085EAF60005D3B1 /* CTDataSourceObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTDataSourceObj.h; sourceTree = "<group>"; };
+		3E59A9F62085EAF60005D3B1 /* CTLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTLocationViewController.m; sourceTree = "<group>"; };
+		3E59A9F72085EAF60005D3B1 /* CTLocationNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTLocationNavController.h; sourceTree = "<group>"; };
+		3E59A9F82085EAF60005D3B1 /* ChineseTransform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChineseTransform.h; sourceTree = "<group>"; };
+		3E59A9F92085EAF60005D3B1 /* CTLocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CTLocationViewController.xib; sourceTree = "<group>"; };
+		3E59A9FA2085EAF60005D3B1 /* CTLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTLocationViewController.h; sourceTree = "<group>"; };
+		3E59A9FB2085EAF60005D3B1 /* CTLocationNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTLocationNavController.m; sourceTree = "<group>"; };
+		3E59A9FC2085EAF60005D3B1 /* ct_city.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ct_city.plist; sourceTree = "<group>"; };
+		3E59A9FD2085EAF60005D3B1 /* ct_toTop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ct_toTop@2x.png"; sourceTree = "<group>"; };
+		3E59A9FE2085EAF60005D3B1 /* ChineseTransform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChineseTransform.m; sourceTree = "<group>"; };
+		3E59A9FF2085EAF60005D3B1 /* ct_close_location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ct_close_location@2x.png"; sourceTree = "<group>"; };
+		3E59AA002085EAF60005D3B1 /* CTAutoRunLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTAutoRunLabel.m; sourceTree = "<group>"; };
+		3E59AA012085EAF60005D3B1 /* CTCommonLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTCommonLibrary.h; sourceTree = "<group>"; };
+		3E59AA032085EAF60005D3B1 /* CTAutoPositionScrollview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTAutoPositionScrollview.h; sourceTree = "<group>"; };
+		3E59AA042085EAF60005D3B1 /* KeychainTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainTool.h; sourceTree = "<group>"; };
+		3E59AA052085EAF60005D3B1 /* KeychainTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainTool.m; sourceTree = "<group>"; };
+		3E59AA062085EAF60005D3B1 /* CTAutoPositionScrollview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTAutoPositionScrollview.m; sourceTree = "<group>"; };
+		3E59AA072085EAF60005D3B1 /* CTCustomePageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTCustomePageController.h; sourceTree = "<group>"; };
+		3E59AA082085EAF60005D3B1 /* CTAutoLoopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTAutoLoopViewController.h; sourceTree = "<group>"; };
+		3E59AA092085EAF60005D3B1 /* CTTouchIDAuthorize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTTouchIDAuthorize.m; sourceTree = "<group>"; };
+		3E59AA0A2085EAF60005D3B1 /* CTAutoRunLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTAutoRunLabel.h; sourceTree = "<group>"; };
 		70A79D96898B7D786B3DD49D /* libPods-AJCloud.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AJCloud.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8195A483A5A5B25BE92F9997 /* libPods-MyHomeCloudTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyHomeCloudTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		986AA0A3B0CEA6780CA94EA5 /* Pods-AJCloud.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AJCloud.release.xcconfig"; path = "Pods/Target Support Files/Pods-AJCloud/Pods-AJCloud.release.xcconfig"; sourceTree = "<group>"; };
@@ -790,7 +1001,6 @@
 			isa = PBXGroup;
 			children = (
 				0B2343BA1EC01CA1007A3AC1 /* MyHomeCloud */,
-				0B2343D71EC01CA2007A3AC1 /* MyHomeCloudTests */,
 				0B2343B91EC01CA1007A3AC1 /* Products */,
 				5F0155942F2DC918E5FBA1EF /* Pods */,
 				7C85C11C537F6C90A6EF472C /* Frameworks */,
@@ -837,18 +1047,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		0B2343D71EC01CA2007A3AC1 /* MyHomeCloudTests */ = {
-			isa = PBXGroup;
-			children = (
-				0B2343D81EC01CA2007A3AC1 /* MyHomeCloudTests.m */,
-				0B2343DA1EC01CA2007A3AC1 /* Info.plist */,
-			);
-			path = MyHomeCloudTests;
-			sourceTree = "<group>";
-		};
 		0B2343E31EC03095007A3AC1 /* BusinessSystem */ = {
 			isa = PBXGroup;
 			children = (
+				3E59A9A72085EAE70005D3B1 /* CTPicturesBrowser */,
+				3E59A9DE2085EAF60005D3B1 /* CTCommonLibrary */,
+				3E59A93C2085EAE00005D3B1 /* CTCustomAlbum */,
+				3E59A9372085EADF0005D3B1 /* CTOnePhoto */,
 				0B21DE861FDA731C000EA464 /* Theme */,
 				0BAD07371F6F9BDC006613C7 /* IflyVoice */,
 				0B5F6C291F0A3C84001C93D0 /* RemoteNotification */,
@@ -1123,6 +1328,184 @@
 				0BF9EF221FE9130F00619B8A /* AJUserInclinationViewController.m */,
 			);
 			path = FindHouse;
+			sourceTree = "<group>";
+		};
+		3E59A9372085EADF0005D3B1 /* CTOnePhoto */ = {
+			isa = PBXGroup;
+			children = (
+				3E59A9382085EADF0005D3B1 /* CTONEPhoto.m */,
+				3E59A9392085EADF0005D3B1 /* CTSavePhotos.m */,
+				3E59A93A2085EADF0005D3B1 /* CTONEPhoto.h */,
+				3E59A93B2085EADF0005D3B1 /* CTSavePhotos.h */,
+			);
+			path = CTOnePhoto;
+			sourceTree = "<group>";
+		};
+		3E59A93C2085EAE00005D3B1 /* CTCustomAlbum */ = {
+			isa = PBXGroup;
+			children = (
+				3E59A93D2085EAE00005D3B1 /* UIImage+ColorImg.m */,
+				3E59A93E2085EAE00005D3B1 /* CTPhotosConfiguration.m */,
+				3E59A93F2085EAE00005D3B1 /* CTPhotoManager.h */,
+				3E59A9402085EAE00005D3B1 /* CTGroupTableViewCell.m */,
+				3E59A9412085EAE00005D3B1 /* CTPhotosConfig.h */,
+				3E59A9422085EAE00005D3B1 /* CTPHAssetModel.m */,
+				3E59A9432085EAE00005D3B1 /* CTBottomView.h */,
+				3E59A9442085EAE00005D3B1 /* UIButton+CTButtonManager.m */,
+				3E59A9452085EAE00005D3B1 /* CTPrviewImageScrollView.m */,
+				3E59A9462085EAE00005D3B1 /* CTPhotosCollectionViewCell.h */,
+				3E59A9472085EAE00005D3B1 /* UIViewController+CTAlertShow.m */,
+				3E59A9482085EAE00005D3B1 /* CTAlbumGroupController.m */,
+				3E59A9492085EAE00005D3B1 /* PHAssetCollection+CTAssetCollectionManager.h */,
+				3E59A94A2085EAE00005D3B1 /* CTPhotosCollectionViewController.m */,
+				3E59A94B2085EAE00005D3B1 /* CTCustomAlbum.m */,
+				3E59A94C2085EAE00005D3B1 /* CTPhotosNavigationViewController.m */,
+				3E59A94D2085EAE00005D3B1 /* UIControl+CTControlBlock.h */,
+				3E59A94E2085EAE00005D3B1 /* CTPreviewPhotosCollectionViewController.h */,
+				3E59A94F2085EAE00005D3B1 /* PHAsset+CTPHAssetManager.m */,
+				3E59A9502085EAE00005D3B1 /* CTCollectionModel.m */,
+				3E59A9512085EAE00005D3B1 /* CTBottomView.m */,
+				3E59A9522085EAE00005D3B1 /* CTPHAssetModel.h */,
+				3E59A9532085EAE00005D3B1 /* CTPhotoManager.m */,
+				3E59A9542085EAE00005D3B1 /* CTGroupTableViewCell.h */,
+				3E59A9552085EAE00005D3B1 /* UIImage+ColorImg.h */,
+				3E59A9562085EAE00005D3B1 /* CTPhotosConfiguration.h */,
+				3E59A9572085EAE00005D3B1 /* CTAlbumGroupController.h */,
+				3E59A9582085EAE00005D3B1 /* PHAssetCollection+CTAssetCollectionManager.m */,
+				3E59A9592085EAE00005D3B1 /* UIViewController+CTAlertShow.h */,
+				3E59A95A2085EAE00005D3B1 /* CTPhotosCollectionViewCell.m */,
+				3E59A95B2085EAE00005D3B1 /* CTPrviewImageScrollView.h */,
+				3E59A95C2085EAE00005D3B1 /* UIButton+CTButtonManager.h */,
+				3E59A95D2085EAE00005D3B1 /* CTPhotosCollectionViewController.h */,
+				3E59A95E2085EAE00005D3B1 /* Resource */,
+				3E59A9662085EAE00005D3B1 /* CTCollectionModel.h */,
+				3E59A9672085EAE00005D3B1 /* PHAsset+CTPHAssetManager.h */,
+				3E59A9682085EAE00005D3B1 /* CTPreviewPhotosCollectionViewController.m */,
+				3E59A9692085EAE00005D3B1 /* CTPhotosNavigationViewController.h */,
+				3E59A96A2085EAE00005D3B1 /* UIControl+CTControlBlock.m */,
+				3E59A96B2085EAE00005D3B1 /* CTCustomAlbum.h */,
+			);
+			path = CTCustomAlbum;
+			sourceTree = "<group>";
+		};
+		3E59A95E2085EAE00005D3B1 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				3E59A95F2085EAE00005D3B1 /* ct_pselected@2x.png */,
+				3E59A9602085EAE00005D3B1 /* ct_punselect@2x.png */,
+				3E59A9612085EAE00005D3B1 /* ct_unselect@2x.png */,
+				3E59A9622085EAE00005D3B1 /* ctCustomback@2x.png */,
+				3E59A9632085EAE00005D3B1 /* ct_selected@2x.png */,
+				3E59A9642085EAE00005D3B1 /* origin_selected@2x.png */,
+				3E59A9652085EAE00005D3B1 /* origin_unselect@2x.png */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		3E59A9A72085EAE70005D3B1 /* CTPicturesBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				3E59A9A82085EAE70005D3B1 /* CTImageScrollView.h */,
+				3E59A9A92085EAE70005D3B1 /* CTImagePath.h */,
+				3E59A9AA2085EAE70005D3B1 /* CTLazyImageView.m */,
+				3E59A9AB2085EAE70005D3B1 /* CTDownloadWithSession.h */,
+				3E59A9AC2085EAE70005D3B1 /* CTSemaphoreGCD.m */,
+				3E59A9AD2085EAE70005D3B1 /* ct_refresh@2x.png */,
+				3E59A9AE2085EAE70005D3B1 /* CTImagePreviewViewController.m */,
+				3E59A9AF2085EAE70005D3B1 /* CTImagePath.m */,
+				3E59A9B02085EAE70005D3B1 /* CTImageScrollView.m */,
+				3E59A9B12085EAE70005D3B1 /* CTDownloadWithSession.m */,
+				3E59A9B22085EAE70005D3B1 /* CTLazyImageView.h */,
+				3E59A9B32085EAE70005D3B1 /* CTImagePreviewViewController.h */,
+				3E59A9B42085EAE70005D3B1 /* CTSemaphoreGCD.h */,
+			);
+			path = CTPicturesBrowser;
+			sourceTree = "<group>";
+		};
+		3E59A9DE2085EAF60005D3B1 /* CTCommonLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				3E59A9DF2085EAF60005D3B1 /* Category */,
+				3E59A9EA2085EAF60005D3B1 /* CTAutoLoopViewController.m */,
+				3E59A9EB2085EAF60005D3B1 /* CTCustomePageController.m */,
+				3E59A9EC2085EAF60005D3B1 /* CTVersionCheck */,
+				3E59A9EF2085EAF60005D3B1 /* CTTouchIDAuthorize.h */,
+				3E59A9F02085EAF60005D3B1 /* CTTableViewDelegate */,
+				3E59A9F52085EAF60005D3B1 /* CTAutoLocation */,
+				3E59AA002085EAF60005D3B1 /* CTAutoRunLabel.m */,
+				3E59AA012085EAF60005D3B1 /* CTCommonLibrary.h */,
+				3E59AA022085EAF60005D3B1 /* CustomLibrary */,
+				3E59AA072085EAF60005D3B1 /* CTCustomePageController.h */,
+				3E59AA082085EAF60005D3B1 /* CTAutoLoopViewController.h */,
+				3E59AA092085EAF60005D3B1 /* CTTouchIDAuthorize.m */,
+				3E59AA0A2085EAF60005D3B1 /* CTAutoRunLabel.h */,
+			);
+			path = CTCommonLibrary;
+			sourceTree = "<group>";
+		};
+		3E59A9DF2085EAF60005D3B1 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				3E59A9E02085EAF60005D3B1 /* UIAlertController+CTAlertBlock.m */,
+				3E59A9E12085EAF60005D3B1 /* NSString+Extension.h */,
+				3E59A9E22085EAF60005D3B1 /* UIImage+Scale.h */,
+				3E59A9E32085EAF60005D3B1 /* UIButton+CTButtonBlock.h */,
+				3E59A9E42085EAF60005D3B1 /* UIView+SDXIBExtension.h */,
+				3E59A9E52085EAF60005D3B1 /* UIAlertController+CTAlertBlock.h */,
+				3E59A9E62085EAF60005D3B1 /* UIImage+Scale.m */,
+				3E59A9E72085EAF60005D3B1 /* NSString+Extension.m */,
+				3E59A9E82085EAF60005D3B1 /* UIButton+CTButtonBlock.m */,
+				3E59A9E92085EAF60005D3B1 /* UIView+SDXIBExtension.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		3E59A9EC2085EAF60005D3B1 /* CTVersionCheck */ = {
+			isa = PBXGroup;
+			children = (
+				3E59A9ED2085EAF60005D3B1 /* CTVersionAutoUpdate.h */,
+				3E59A9EE2085EAF60005D3B1 /* CTVersionAutoUpdate.m */,
+			);
+			path = CTVersionCheck;
+			sourceTree = "<group>";
+		};
+		3E59A9F02085EAF60005D3B1 /* CTTableViewDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				3E59A9F12085EAF60005D3B1 /* CTDelegateObj.m */,
+				3E59A9F22085EAF60005D3B1 /* CTDataSourceObj.m */,
+				3E59A9F32085EAF60005D3B1 /* CTDelegateObj.h */,
+				3E59A9F42085EAF60005D3B1 /* CTDataSourceObj.h */,
+			);
+			path = CTTableViewDelegate;
+			sourceTree = "<group>";
+		};
+		3E59A9F52085EAF60005D3B1 /* CTAutoLocation */ = {
+			isa = PBXGroup;
+			children = (
+				3E59A9F62085EAF60005D3B1 /* CTLocationViewController.m */,
+				3E59A9F72085EAF60005D3B1 /* CTLocationNavController.h */,
+				3E59A9F82085EAF60005D3B1 /* ChineseTransform.h */,
+				3E59A9F92085EAF60005D3B1 /* CTLocationViewController.xib */,
+				3E59A9FA2085EAF60005D3B1 /* CTLocationViewController.h */,
+				3E59A9FB2085EAF60005D3B1 /* CTLocationNavController.m */,
+				3E59A9FC2085EAF60005D3B1 /* ct_city.plist */,
+				3E59A9FD2085EAF60005D3B1 /* ct_toTop@2x.png */,
+				3E59A9FE2085EAF60005D3B1 /* ChineseTransform.m */,
+				3E59A9FF2085EAF60005D3B1 /* ct_close_location@2x.png */,
+			);
+			path = CTAutoLocation;
+			sourceTree = "<group>";
+		};
+		3E59AA022085EAF60005D3B1 /* CustomLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				3E59AA032085EAF60005D3B1 /* CTAutoPositionScrollview.h */,
+				3E59AA042085EAF60005D3B1 /* KeychainTool.h */,
+				3E59AA052085EAF60005D3B1 /* KeychainTool.m */,
+				3E59AA062085EAF60005D3B1 /* CTAutoPositionScrollview.m */,
+			);
+			path = CustomLibrary;
 			sourceTree = "<group>";
 		};
 		5F0155942F2DC918E5FBA1EF /* Pods */ = {
@@ -1403,13 +1786,12 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = AJ;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = TENG;
 				TargetAttributes = {
 					0B2343B71EC01CA1007A3AC1 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = 3B6Y25Z4JK;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -1425,7 +1807,7 @@
 						TestTargetID = 0B2343B71EC01CA1007A3AC1;
 					};
 					0BF2C6821EFA5A4400EA46AF = {
-						DevelopmentTeam = 4F5G8L9327;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -1454,6 +1836,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E59AA272085EAF60005D3B1 /* ct_toTop@2x.png in Resources */,
+				3E59AA212085EAF60005D3B1 /* CTLocationViewController.xib in Resources */,
 				A4C645531F358E7600F2D93A /* AJAllHouseListViewController.xib in Resources */,
 				0B2343CE1EC01CA1007A3AC1 /* LaunchScreen.storyboard in Resources */,
 				0BC2B4671F0CFD1F0041C9C2 /* TJMessageListTableViewCell.xib in Resources */,
@@ -1484,23 +1868,33 @@
 				0B1904CD1EE66192004C46EE /* PreviewUpLoadCollectionViewCell.xib in Resources */,
 				0BC2B46F1F0CFD1F0041C9C2 /* AJMessageController.xib in Resources */,
 				A4C6455A1F35A59F00F2D93A /* AJForgotPswViewController.xib in Resources */,
+				3E59A99A2085EAE00005D3B1 /* ct_selected@2x.png in Resources */,
 				A40B20B71EC733280027399E /* AJHouseDetailsViewController.xib in Resources */,
 				A4AE331B1EF52DF9004B0A54 /* AJEstateDetailsViewController.xib in Resources */,
+				3E59A99C2085EAE00005D3B1 /* origin_selected@2x.png in Resources */,
 				0B1904AA1EE65EC1004C46EE /* AJSecondHouseTableViewCell.xib in Resources */,
+				3E59A99E2085EAE00005D3B1 /* origin_unselect@2x.png in Resources */,
 				A4FC23561EE6F37400924EEE /* AJNewHouseTableViewCell.xib in Resources */,
 				0B1904CA1EE66192004C46EE /* AJHouseDesViewController.xib in Resources */,
 				A4C3AF531EED418800DBBB4C /* AJSearchTableViewCell.xib in Resources */,
 				0BF9EF291FE9130F00619B8A /* AJFindHouseViewController.xib in Resources */,
 				A4AE33201EF52E7A004B0A54 /* AJReserverDetailsViewController.xib in Resources */,
+				3E59A9C62085EAE70005D3B1 /* ct_refresh@2x.png in Resources */,
 				0BC1DEDE1F178D64007C78DB /* AJAddPicturesViewController.xib in Resources */,
+				3E59A9982085EAE00005D3B1 /* ctCustomback@2x.png in Resources */,
 				A4FC23511EE6F31200924EEE /* AJLetHouseTableViewCell.xib in Resources */,
 				0BF3E83C1F2ECDA9009CEFF6 /* AJAboutUsViewController.xib in Resources */,
 				0BE4D9F01ECC6B8200E4ADCD /* AJHomeViewController.xib in Resources */,
 				A44A8C1A1F03EE7A00BE6D89 /* AJFilterViewController.xib in Resources */,
+				3E59AA252085EAF60005D3B1 /* ct_city.plist in Resources */,
 				0B6E12C61EC4235300103571 /* AJLoginViewController.xib in Resources */,
 				A4AC72501EF6728C00772D42 /* AJEstateTableViewCell.xib in Resources */,
 				0B57F5951EC198D000B89CE2 /* AJUserCenterViewController.xib in Resources */,
 				0B302F5F1ED01835006896CA /* AJOtherViewController.xib in Resources */,
+				3E59A9922085EAE00005D3B1 /* ct_pselected@2x.png in Resources */,
+				3E59A9962085EAE00005D3B1 /* ct_unselect@2x.png in Resources */,
+				3E59A9942085EAE00005D3B1 /* ct_punselect@2x.png in Resources */,
+				3E59AA2B2085EAF60005D3B1 /* ct_close_location@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1515,6 +1909,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E59AA282085EAF60005D3B1 /* ct_toTop@2x.png in Resources */,
+				3E59AA222085EAF60005D3B1 /* CTLocationViewController.xib in Resources */,
 				A4C645541F358E7600F2D93A /* AJAllHouseListViewController.xib in Resources */,
 				0BF2C6D01EFA5A4400EA46AF /* LaunchScreen.storyboard in Resources */,
 				0BC2B4681F0CFD1F0041C9C2 /* TJMessageListTableViewCell.xib in Resources */,
@@ -1545,23 +1941,33 @@
 				0BC2B4701F0CFD1F0041C9C2 /* AJMessageController.xib in Resources */,
 				0BF2C6E01EFA5A4400EA46AF /* AJHouseDetailsViewController.xib in Resources */,
 				A4C6455B1F35A59F00F2D93A /* AJForgotPswViewController.xib in Resources */,
+				3E59A99B2085EAE00005D3B1 /* ct_selected@2x.png in Resources */,
 				0BF2C6E11EFA5A4400EA46AF /* AJEstateDetailsViewController.xib in Resources */,
 				0BF2C6E21EFA5A4400EA46AF /* AJSecondHouseTableViewCell.xib in Resources */,
+				3E59A99D2085EAE00005D3B1 /* origin_selected@2x.png in Resources */,
 				0BF2C6E31EFA5A4400EA46AF /* AJNewHouseTableViewCell.xib in Resources */,
+				3E59A99F2085EAE00005D3B1 /* origin_unselect@2x.png in Resources */,
 				0BF2C6E41EFA5A4400EA46AF /* AJHouseDesViewController.xib in Resources */,
 				0BF2C6E51EFA5A4400EA46AF /* AJSearchTableViewCell.xib in Resources */,
 				0BF2C6E61EFA5A4400EA46AF /* AJReserverDetailsViewController.xib in Resources */,
 				0BF9EF2E1FE9131F00619B8A /* AJFindHouseViewController.xib in Resources */,
 				0BC1DEE21F178D70007C78DB /* AJAddPicturesViewController.xib in Resources */,
+				3E59A9C72085EAE70005D3B1 /* ct_refresh@2x.png in Resources */,
 				0BF2C6E71EFA5A4400EA46AF /* AJLetHouseTableViewCell.xib in Resources */,
+				3E59A9992085EAE00005D3B1 /* ctCustomback@2x.png in Resources */,
 				0BF3E83D1F2ECDA9009CEFF6 /* AJAboutUsViewController.xib in Resources */,
 				0BF2C6E81EFA5A4400EA46AF /* AJHomeViewController.xib in Resources */,
 				A44A8C1B1F03EE7A00BE6D89 /* AJFilterViewController.xib in Resources */,
 				0BF2C6E91EFA5A4400EA46AF /* AJLoginViewController.xib in Resources */,
+				3E59AA262085EAF60005D3B1 /* ct_city.plist in Resources */,
 				0BEE41C11F303EC200D702F4 /* AJUploadHomeImagesViewController.xib in Resources */,
 				0BF2C6EA1EFA5A4400EA46AF /* AJEstateTableViewCell.xib in Resources */,
 				0BF2C6EB1EFA5A4400EA46AF /* AJUserCenterViewController.xib in Resources */,
 				0BF2C6EC1EFA5A4400EA46AF /* AJOtherViewController.xib in Resources */,
+				3E59A9932085EAE00005D3B1 /* ct_pselected@2x.png in Resources */,
+				3E59A9972085EAE00005D3B1 /* ct_unselect@2x.png in Resources */,
+				3E59A9952085EAE00005D3B1 /* ct_punselect@2x.png in Resources */,
+				3E59AA2C2085EAF60005D3B1 /* ct_close_location@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1577,22 +1983,13 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-AJCloud/Pods-AJCloud-resources.sh",
 				"${PODS_ROOT}/AVOSCloud/AVOS/AVOSCloud/AVOSCloud_Art.inc",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
-				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/AutoLocation/city.plist",
-				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/AutoLocation/close_location@2x.png",
-				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/AutoLocation/CTLocationViewController.xib",
-				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/AutoLocation/toTop@2x.png",
-				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/back@2x.png",
-				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/origin_selected@2x.png",
-				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/origin_unselect@2x.png",
-				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/pselected@2x.png",
-				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/punselect@2x.png",
-				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/selected@2x.png",
-				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/unselect@2x.png",
 				"${PODS_ROOT}/UMengUShare/UShareSDK/UMSocialSDK/UMSocialSDKPromptResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AVOSCloud_Art.inc",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/UMSocialSDKPromptResources.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1641,22 +2038,13 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-AJCloudAdmin/Pods-AJCloudAdmin-resources.sh",
 				"${PODS_ROOT}/AVOSCloud/AVOS/AVOSCloud/AVOSCloud_Art.inc",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
-				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/AutoLocation/city.plist",
-				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/AutoLocation/close_location@2x.png",
-				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/AutoLocation/CTLocationViewController.xib",
-				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/AutoLocation/toTop@2x.png",
-				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/back@2x.png",
-				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/origin_selected@2x.png",
-				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/origin_unselect@2x.png",
-				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/pselected@2x.png",
-				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/punselect@2x.png",
-				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/selected@2x.png",
-				"${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/unselect@2x.png",
 				"${PODS_ROOT}/UMengUShare/UShareSDK/UMSocialSDK/UMSocialSDKPromptResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AVOSCloud_Art.inc",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/UMSocialSDKPromptResources.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1704,11 +2092,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				0BF3E83A1F2ECDA9009CEFF6 /* AJAboutUsViewController.m in Sources */,
+				3E59A9CE2085EAE70005D3B1 /* CTDownloadWithSession.m in Sources */,
 				A4AC724B1EF6718200772D42 /* AJEstateInfoModal.m in Sources */,
 				0BF9EF141FE7DB7500619B8A /* NSDictionary+Value.m in Sources */,
+				3E59AA132085EAF60005D3B1 /* UIView+SDXIBExtension.m in Sources */,
+				3E59A9802085EAE00005D3B1 /* CTPhotosCollectionViewController.m in Sources */,
 				0B1904E11EE668EC004C46EE /* AJTbViewPresenter.m in Sources */,
+				3E59A9A02085EAE00005D3B1 /* CTPreviewPhotosCollectionViewController.m in Sources */,
 				A46422581F07497900459294 /* AJFeedbackCellModel.m in Sources */,
 				0BF2C6811EFA544100EA46AF /* AJUMShareUtil.m in Sources */,
+				3E59AA2F2085EAF60005D3B1 /* KeychainTool.m in Sources */,
 				0B1904A91EE65EC1004C46EE /* AJSecondHouseTableViewCell.m in Sources */,
 				A4AE33081EF51EEC004B0A54 /* AJNewReserverViewController.m in Sources */,
 				0B3EB4541FD7DBDF00DD38E2 /* CT3D_TouchProcess.m in Sources */,
@@ -1718,18 +2111,27 @@
 				0B1904CE1EE66192004C46EE /* TJCircleView.m in Sources */,
 				A4AE331A1EF52DF9004B0A54 /* AJEstateDetailsViewController.m in Sources */,
 				0B2343C01EC01CA1007A3AC1 /* AppDelegate.m in Sources */,
+				3E59A98C2085EAE00005D3B1 /* CTPhotoManager.m in Sources */,
 				0BF9EF121FE7DB7500619B8A /* NSString+Extension.m in Sources */,
+				3E59A97E2085EAE00005D3B1 /* CTAlbumGroupController.m in Sources */,
 				0BC2B4611F0CFD1F0041C9C2 /* TJMessageListDetailsViewController.m in Sources */,
 				0BF9EF281FE9130F00619B8A /* AJInclilnationModel.m in Sources */,
 				0B2344601EC03095007A3AC1 /* UIView+SDXIBExtension.m in Sources */,
 				0B1904C91EE66192004C46EE /* AJHouseDesViewController.m in Sources */,
+				3E59A9842085EAE00005D3B1 /* CTPhotosNavigationViewController.m in Sources */,
+				3E59A9882085EAE00005D3B1 /* CTCollectionModel.m in Sources */,
 				A4FC23491EE6F2BA00924EEE /* AJLetHouseCellModel.m in Sources */,
 				0B6E12C51EC4235300103571 /* AJLoginViewController.m in Sources */,
 				0B23446E1EC03095007A3AC1 /* AJLocalDataCenter.m in Sources */,
+				3E59AA172085EAF60005D3B1 /* CTCustomePageController.m in Sources */,
+				3E59AA232085EAF60005D3B1 /* CTLocationNavController.m in Sources */,
+				3E59A9862085EAE00005D3B1 /* PHAsset+CTPHAssetManager.m in Sources */,
 				0BF9EF131FE7DB7500619B8A /* NSMutableArray+CTExtension.m in Sources */,
 				0BC2B45B1F0CFD1F0041C9C2 /* AJDataBaseDao.m in Sources */,
+				3E59A97A2085EAE00005D3B1 /* CTPrviewImageScrollView.m in Sources */,
 				0BE4D9EF1ECC6B8200E4ADCD /* AJHomeViewController.m in Sources */,
 				0BF95A0D1EEE55F00031D958 /* AJSB.m in Sources */,
+				3E59A9742085EAE00005D3B1 /* CTGroupTableViewCell.m in Sources */,
 				0BC1DEDD1F178D64007C78DB /* AJAddPicturesViewController.m in Sources */,
 				0B15DE7E1ED2C8BE003A54E3 /* AFNetworkReachabilityManager.m in Sources */,
 				A4AE33121EF51F6F004B0A54 /* AJReserverTableViewCell.m in Sources */,
@@ -1740,12 +2142,21 @@
 				A44AEBD01EEEC72A00109FB8 /* AJLocationViewController.m in Sources */,
 				0B1904C61EE66192004C46EE /* AJNewHouseModel.m in Sources */,
 				0BEE41EF1F309F7C00D702F4 /* AJFinanceTableViewCell.m in Sources */,
+				3E59AA1B2085EAF60005D3B1 /* CTDelegateObj.m in Sources */,
 				0B1904E01EE668EC004C46EE /* AJTbViewCellModel.m in Sources */,
+				3E59A9CC2085EAE70005D3B1 /* CTImageScrollView.m in Sources */,
+				3E59A9722085EAE00005D3B1 /* CTPhotosConfiguration.m in Sources */,
 				0B2344611EC03095007A3AC1 /* UIView+TYKYPrompt.m in Sources */,
+				3E59A9C82085EAE70005D3B1 /* CTImagePreviewViewController.m in Sources */,
 				0BAD073C1F6F9BDC006613C7 /* AJflyVoice.m in Sources */,
 				0B1904C21EE66192004C46EE /* AJAddHouserViewController.m in Sources */,
+				3E59AA0D2085EAF60005D3B1 /* UIImage+Scale.m in Sources */,
+				3E59A97C2085EAE00005D3B1 /* UIViewController+CTAlertShow.m in Sources */,
 				0B4F881E1EFF89390092BF18 /* AJTagsViewController.m in Sources */,
+				3E59A98E2085EAE00005D3B1 /* PHAssetCollection+CTAssetCollectionManager.m in Sources */,
 				A4FC23501EE6F31200924EEE /* AJLetHouseTableViewCell.m in Sources */,
+				3E59AA1F2085EAF60005D3B1 /* CTLocationViewController.m in Sources */,
+				3E59AA0B2085EAF60005D3B1 /* UIAlertController+CTAlertBlock.m in Sources */,
 				0BAD073E1F6F9BDC006613C7 /* AJSearchBar.m in Sources */,
 				A4E6BB411EEBCDC000CC37B1 /* AJHomeDataCenter.m in Sources */,
 				0BF9EF111FE7DB7500619B8A /* NSMutableDictionary+IHateNil.m in Sources */,
@@ -1755,9 +2166,13 @@
 				0BF9EF101FE7DB7500619B8A /* UITableView+NoMoreDataInFooter.m in Sources */,
 				0B302F5E1ED01835006896CA /* AJOtherViewController.m in Sources */,
 				A4B864491EE6E63800E3CE5E /* AJUserHouseViewController.m in Sources */,
+				3E59AA112085EAF60005D3B1 /* UIButton+CTButtonBlock.m in Sources */,
 				0BC1DECB1F17899A007C78DB /* AJAddNHouseViewController.m in Sources */,
 				A42BECDB1F121AB400C9E2CB /* AJHouseInfoViewController.m in Sources */,
 				0B21DE8D1FDA731C000EA464 /* TYKYThemeScheme.m in Sources */,
+				3E59A9A22085EAE00005D3B1 /* UIControl+CTControlBlock.m in Sources */,
+				3E59AA0F2085EAF60005D3B1 /* NSString+Extension.m in Sources */,
+				3E59A9822085EAE00005D3B1 /* CTCustomAlbum.m in Sources */,
 				A46422521F0748F800459294 /* AJFeedbackTableViewCell.m in Sources */,
 				A464225D1F07591F00459294 /* AJSendFeecbackViewController.m in Sources */,
 				0B5F6C2C1F0A3C84001C93D0 /* AJRemoteNotification.m in Sources */,
@@ -1765,38 +2180,55 @@
 				A464224B1F0747B800459294 /* AJFeedbackViewController.m in Sources */,
 				A4E6BB451EEBD98500CC37B1 /* AJHomeHeadView.m in Sources */,
 				0BE2A35F1EC2DE1700519840 /* AJMeModel.m in Sources */,
+				3E59AA192085EAF60005D3B1 /* CTVersionAutoUpdate.m in Sources */,
 				0B2344631EC03095007A3AC1 /* Colours.m in Sources */,
+				3E59A9782085EAE00005D3B1 /* UIButton+CTButtonManager.m in Sources */,
 				0B1904CC1EE66192004C46EE /* PreviewUpLoadCollectionViewCell.m in Sources */,
 				0B1904E31EE668EC004C46EE /* AJTableViewCell.m in Sources */,
+				3E59AA152085EAF60005D3B1 /* CTAutoLoopViewController.m in Sources */,
+				3E59A98A2085EAE00005D3B1 /* CTBottomView.m in Sources */,
 				A4FC23551EE6F37400924EEE /* AJNewHouseTableViewCell.m in Sources */,
 				0B2344681EC03095007A3AC1 /* TJDownloadTool.m in Sources */,
 				0BC2B45F1F0CFD1F0041C9C2 /* AJMessageBeanDao.m in Sources */,
 				A44AEBCF1EEEC72A00109FB8 /* AJLocation.m in Sources */,
+				3E59A9702085EAE00005D3B1 /* UIImage+ColorImg.m in Sources */,
 				0BF9EF271FE9130F00619B8A /* AJInclinationTableViewCell.m in Sources */,
+				3E59AA332085EAF60005D3B1 /* CTTouchIDAuthorize.m in Sources */,
+				3E59AA292085EAF60005D3B1 /* ChineseTransform.m in Sources */,
+				3E59AA312085EAF60005D3B1 /* CTAutoPositionScrollview.m in Sources */,
+				3E59A96E2085EAE00005D3B1 /* CTSavePhotos.m in Sources */,
 				A411B3C01EC4B0BD00244B6E /* AJSettingViewController.m in Sources */,
 				A40B20B61EC733280027399E /* AJHouseDetailsViewController.m in Sources */,
 				A4AE33011EF51C0C004B0A54 /* AJWKWebViewController.m in Sources */,
 				0B1904C41EE66192004C46EE /* AJAllHouseListViewController.m in Sources */,
 				0B1904A11EE6546E004C46EE /* AJSecondHouseViewController.m in Sources */,
 				0B2343BD1EC01CA1007A3AC1 /* main.m in Sources */,
+				3E59AA2D2085EAF60005D3B1 /* CTAutoRunLabel.m in Sources */,
 				0BEE41BE1F303EC200D702F4 /* AJUploadHomeImagesViewController.m in Sources */,
 				0BF2C6F71EFA5D4800EA46AF /* AJWechatViewController.m in Sources */,
 				0B1904E21EE668EC004C46EE /* AJBaseTbViewController.m in Sources */,
 				0B8E18591F17470400FB92D2 /* AJHouseInfoEditViewController.m in Sources */,
+				3E59A96C2085EAE00005D3B1 /* CTONEPhoto.m in Sources */,
 				0BC2B4711F0CFD1F0041C9C2 /* TJMessageControllerCell.m in Sources */,
 				0B1904C71EE66192004C46EE /* AJHouseInfoTableViewCell.m in Sources */,
 				A4FC23591EE6F39000924EEE /* AJNewHouseCellModel.m in Sources */,
+				3E59A9C22085EAE70005D3B1 /* CTLazyImageView.m in Sources */,
 				0B302F6E1ED04F47006896CA /* AJUserHeadViewController.m in Sources */,
 				0BF9EF2B1FE9130F00619B8A /* AJUserInclinationViewController.m in Sources */,
+				3E59AA1D2085EAF60005D3B1 /* CTDataSourceObj.m in Sources */,
+				3E59A9CA2085EAE70005D3B1 /* CTImagePath.m in Sources */,
 				0B23446C1EC03095007A3AC1 /* CTTool.m in Sources */,
 				0BC2B4651F0CFD1F0041C9C2 /* TJMessageListTableViewCell.m in Sources */,
 				A4C3AF521EED418800DBBB4C /* AJSearchTableViewCell.m in Sources */,
 				0BC2B45D1F0CFD1F0041C9C2 /* AJMessageBean.m in Sources */,
 				0BE2A35C1EC2D2CD00519840 /* AJMeCenterData.m in Sources */,
 				A4AE330D1EF51F4A004B0A54 /* AJMyReserverViewController.m in Sources */,
+				3E59A9C42085EAE70005D3B1 /* CTSemaphoreGCD.m in Sources */,
+				3E59A9902085EAE00005D3B1 /* CTPhotosCollectionViewCell.m in Sources */,
 				A4AE33161EF52572004B0A54 /* AJReserverCellModel.m in Sources */,
 				0B1904CB1EE66192004C46EE /* AJUploadPicModel.m in Sources */,
 				0BC1DEDF1F178D64007C78DB /* AJPicCollectionReusableView.m in Sources */,
+				3E59A9762085EAE00005D3B1 /* CTPHAssetModel.m in Sources */,
 				A4AE331F1EF52E7A004B0A54 /* AJReserverDetailsViewController.m in Sources */,
 				0B57F5941EC198D000B89CE2 /* AJUserCenterViewController.m in Sources */,
 				A4B8645A1EE6F00E00E3CE5E /* AJNewHouseViewController.m in Sources */,
@@ -1810,7 +2242,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0B2343D91EC01CA2007A3AC1 /* MyHomeCloudTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1818,57 +2249,91 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E59A9812085EAE00005D3B1 /* CTPhotosCollectionViewController.m in Sources */,
+				3E59AA2A2085EAF60005D3B1 /* ChineseTransform.m in Sources */,
 				0BF3E83B1F2ECDA9009CEFF6 /* AJAboutUsViewController.m in Sources */,
 				0BF2C6851EFA5A4400EA46AF /* AJEstateInfoModal.m in Sources */,
 				0BF2C6861EFA5A4400EA46AF /* AJTbViewPresenter.m in Sources */,
 				A46422591F07497900459294 /* AJFeedbackCellModel.m in Sources */,
+				3E59A9A12085EAE00005D3B1 /* CTPreviewPhotosCollectionViewController.m in Sources */,
 				0BF2C6871EFA5A4400EA46AF /* AJUMShareUtil.m in Sources */,
 				0BF2C6881EFA5A4400EA46AF /* AJSecondHouseTableViewCell.m in Sources */,
+				3E59A9CB2085EAE70005D3B1 /* CTImagePath.m in Sources */,
+				3E59A97F2085EAE00005D3B1 /* CTAlbumGroupController.m in Sources */,
+				3E59A9892085EAE00005D3B1 /* CTCollectionModel.m in Sources */,
 				0BF2C6891EFA5A4400EA46AF /* AJNewReserverViewController.m in Sources */,
+				3E59AA202085EAF60005D3B1 /* CTLocationViewController.m in Sources */,
 				0B3EB4551FD7DBDF00DD38E2 /* CT3D_TouchProcess.m in Sources */,
+				3E59A96F2085EAE00005D3B1 /* CTSavePhotos.m in Sources */,
 				0BEE41F61F30A06600D702F4 /* AJFinanceCellModel.m in Sources */,
 				0BF9EF2D1FE9131F00619B8A /* AJFindHouseViewController.m in Sources */,
 				0BF2C68A1EFA5A4400EA46AF /* CTBaseViewController.m in Sources */,
+				3E59A97B2085EAE00005D3B1 /* CTPrviewImageScrollView.m in Sources */,
+				3E59AA242085EAF60005D3B1 /* CTLocationNavController.m in Sources */,
 				0BF2C68C1EFA5A4400EA46AF /* TJCircleView.m in Sources */,
 				0BF2C68D1EFA5A4400EA46AF /* AJEstateDetailsViewController.m in Sources */,
+				3E59A9C32085EAE70005D3B1 /* CTLazyImageView.m in Sources */,
+				3E59A9CF2085EAE70005D3B1 /* CTDownloadWithSession.m in Sources */,
+				3E59AA322085EAF60005D3B1 /* CTAutoPositionScrollview.m in Sources */,
 				0BF2C68E1EFA5A4400EA46AF /* AppDelegate.m in Sources */,
 				0BC2B4621F0CFD1F0041C9C2 /* TJMessageListDetailsViewController.m in Sources */,
 				0BF2C68F1EFA5A4400EA46AF /* UIView+SDXIBExtension.m in Sources */,
 				0BF2C6901EFA5A4400EA46AF /* AJHouseDesViewController.m in Sources */,
 				0BF2C6911EFA5A4400EA46AF /* AJLetHouseCellModel.m in Sources */,
 				0BF2C6921EFA5A4400EA46AF /* AJLoginViewController.m in Sources */,
+				3E59AA302085EAF60005D3B1 /* KeychainTool.m in Sources */,
+				3E59AA2E2085EAF60005D3B1 /* CTAutoRunLabel.m in Sources */,
+				3E59A9912085EAE00005D3B1 /* CTPhotosCollectionViewCell.m in Sources */,
 				0BF2C6931EFA5A4400EA46AF /* AJLocalDataCenter.m in Sources */,
 				0BC2B45C1F0CFD1F0041C9C2 /* AJDataBaseDao.m in Sources */,
 				0BF2C6951EFA5A4400EA46AF /* AJHomeViewController.m in Sources */,
 				0BF2C6961EFA5A4400EA46AF /* AJSB.m in Sources */,
+				3E59A97D2085EAE00005D3B1 /* UIViewController+CTAlertShow.m in Sources */,
 				0BC1DEE11F178D70007C78DB /* AJAddPicturesViewController.m in Sources */,
 				0BF2C6971EFA5A4400EA46AF /* AFNetworkReachabilityManager.m in Sources */,
+				3E59A98B2085EAE00005D3B1 /* CTBottomView.m in Sources */,
 				0BF2C6981EFA5A4400EA46AF /* AJReserverTableViewCell.m in Sources */,
+				3E59AA1A2085EAF60005D3B1 /* CTVersionAutoUpdate.m in Sources */,
 				0BF9EF321FE9131F00619B8A /* AJUserInclinationViewController.m in Sources */,
 				0BF2C6991EFA5A4400EA46AF /* AjMainTabBarViewController.m in Sources */,
+				3E59A9712085EAE00005D3B1 /* UIImage+ColorImg.m in Sources */,
 				A4C645591F35A59F00F2D93A /* AJForgotPswViewController.m in Sources */,
+				3E59AA0C2085EAF60005D3B1 /* UIAlertController+CTAlertBlock.m in Sources */,
+				3E59A9C52085EAE70005D3B1 /* CTSemaphoreGCD.m in Sources */,
 				0B21DE8C1FDA731C000EA464 /* UIImage+ChangeColor.m in Sources */,
+				3E59AA182085EAF60005D3B1 /* CTCustomePageController.m in Sources */,
+				3E59A9832085EAE00005D3B1 /* CTCustomAlbum.m in Sources */,
 				A44A8C191F03EE7A00BE6D89 /* AJFilterViewController.m in Sources */,
 				0BF2C69A1EFA5A4400EA46AF /* AJLocationViewController.m in Sources */,
+				3E59AA162085EAF60005D3B1 /* CTAutoLoopViewController.m in Sources */,
 				0BF2C69B1EFA5A4400EA46AF /* AJNewHouseModel.m in Sources */,
 				0BEE41F01F309F7C00D702F4 /* AJFinanceTableViewCell.m in Sources */,
 				0BF2C69C1EFA5A4400EA46AF /* AJTbViewCellModel.m in Sources */,
+				3E59AA1C2085EAF60005D3B1 /* CTDelegateObj.m in Sources */,
+				3E59AA142085EAF60005D3B1 /* UIView+SDXIBExtension.m in Sources */,
 				0BF2C69D1EFA5A4400EA46AF /* UIView+TYKYPrompt.m in Sources */,
 				0BAD073D1F6F9BDC006613C7 /* AJflyVoice.m in Sources */,
 				0BF2C69E1EFA5A4400EA46AF /* AJAddHouserViewController.m in Sources */,
 				0BB93A6F1EFFD22300B32320 /* AJTagsViewController.m in Sources */,
 				0BF2C69F1EFA5A4400EA46AF /* AJLetHouseTableViewCell.m in Sources */,
+				3E59A9732085EAE00005D3B1 /* CTPhotosConfiguration.m in Sources */,
 				0BAD073F1F6F9BDC006613C7 /* AJSearchBar.m in Sources */,
+				3E59AA1E2085EAF60005D3B1 /* CTDataSourceObj.m in Sources */,
 				0BF2C6A01EFA5A4400EA46AF /* AJHomeDataCenter.m in Sources */,
 				0BEE41E91F309D8700D702F4 /* AJFinanceViewController.m in Sources */,
+				3E59AA0E2085EAF60005D3B1 /* UIImage+Scale.m in Sources */,
 				0BF2C6A11EFA5A4400EA46AF /* AJPickViewTextField.m in Sources */,
 				0BC2B46E1F0CFD1F0041C9C2 /* AJMessageController.m in Sources */,
+				3E59A9872085EAE00005D3B1 /* PHAsset+CTPHAssetManager.m in Sources */,
 				0BF2C6A41EFA5A4400EA46AF /* AJOtherViewController.m in Sources */,
 				0BF2C6A51EFA5A4400EA46AF /* AJUserHouseViewController.m in Sources */,
 				0BF9EF2F1FE9131F00619B8A /* AJInclilnationModel.m in Sources */,
 				0BC1DECC1F17899A007C78DB /* AJAddNHouseViewController.m in Sources */,
+				3E59A9752085EAE00005D3B1 /* CTGroupTableViewCell.m in Sources */,
 				A42BECDC1F121AB400C9E2CB /* AJHouseInfoViewController.m in Sources */,
+				3E59AA102085EAF60005D3B1 /* NSString+Extension.m in Sources */,
 				0B21DE8E1FDA731C000EA464 /* TYKYThemeScheme.m in Sources */,
+				3E59A98F2085EAE00005D3B1 /* PHAssetCollection+CTAssetCollectionManager.m in Sources */,
 				A46422531F0748F800459294 /* AJFeedbackTableViewCell.m in Sources */,
 				A464225E1F07591F00459294 /* AJSendFeecbackViewController.m in Sources */,
 				0B5F6C2D1F0A3C84001C93D0 /* AJRemoteNotification.m in Sources */,
@@ -1877,6 +2342,7 @@
 				0BF2C6A81EFA5A4400EA46AF /* AJHomeHeadView.m in Sources */,
 				0BF2C6A91EFA5A4400EA46AF /* AJMeModel.m in Sources */,
 				0BF2C6AA1EFA5A4400EA46AF /* Colours.m in Sources */,
+				3E59A98D2085EAE00005D3B1 /* CTPhotoManager.m in Sources */,
 				0BF2C6AB1EFA5A4400EA46AF /* PreviewUpLoadCollectionViewCell.m in Sources */,
 				0BF2C6AC1EFA5A4400EA46AF /* AJTableViewCell.m in Sources */,
 				0BF2C6AD1EFA5A4400EA46AF /* AJNewHouseTableViewCell.m in Sources */,
@@ -1888,13 +2354,21 @@
 				0BF2C6B21EFA5A4400EA46AF /* AJWKWebViewController.m in Sources */,
 				0BF9EF301FE9131F00619B8A /* AJInclinationTableViewCell.m in Sources */,
 				0BF2C6B31EFA5A4400EA46AF /* AJAllHouseListViewController.m in Sources */,
+				3E59A9A32085EAE00005D3B1 /* UIControl+CTControlBlock.m in Sources */,
 				0BF2C6B41EFA5A4400EA46AF /* AJSecondHouseViewController.m in Sources */,
 				0BF2C6B51EFA5A4400EA46AF /* main.m in Sources */,
 				0BEE41BF1F303EC200D702F4 /* AJUploadHomeImagesViewController.m in Sources */,
+				3E59AA342085EAF60005D3B1 /* CTTouchIDAuthorize.m in Sources */,
 				0BF2C6B61EFA5A4400EA46AF /* AJBaseTbViewController.m in Sources */,
+				3E59A9772085EAE00005D3B1 /* CTPHAssetModel.m in Sources */,
+				3E59A96D2085EAE00005D3B1 /* CTONEPhoto.m in Sources */,
+				3E59A9792085EAE00005D3B1 /* UIButton+CTButtonManager.m in Sources */,
 				0BF2C6B71EFA5A4400EA46AF /* AJHouseInfoTableViewCell.m in Sources */,
+				3E59AA122085EAF60005D3B1 /* UIButton+CTButtonBlock.m in Sources */,
 				0B8E185A1F17470400FB92D2 /* AJHouseInfoEditViewController.m in Sources */,
 				0BC2B4721F0CFD1F0041C9C2 /* TJMessageControllerCell.m in Sources */,
+				3E59A9C92085EAE70005D3B1 /* CTImagePreviewViewController.m in Sources */,
+				3E59A9CD2085EAE70005D3B1 /* CTImageScrollView.m in Sources */,
 				0BF2C6B81EFA5A4400EA46AF /* AJNewHouseCellModel.m in Sources */,
 				0BF2C6B91EFA5A4400EA46AF /* AJUserHeadViewController.m in Sources */,
 				0BF2C6BA1EFA5A4400EA46AF /* CTTool.m in Sources */,
@@ -1910,6 +2384,7 @@
 				0BF2C6C51EFA5A4400EA46AF /* AJUserCenterViewController.m in Sources */,
 				0BF2C6C61EFA5A4400EA46AF /* AJNewHouseViewController.m in Sources */,
 				0BF2C6C71EFA5A4400EA46AF /* AJEstateTableViewCell.m in Sources */,
+				3E59A9852085EAE00005D3B1 /* CTPhotosNavigationViewController.m in Sources */,
 				0BF2C6C81EFA5A4400EA46AF /* AJSearchViewController.m in Sources */,
 				0BF2C6CB1EFA5A4400EA46AF /* AJSecondHouseCellModel.m in Sources */,
 				0BB93A6D1EFFD1F800B32320 /* AJWechatViewController.m in Sources */,
@@ -1960,6 +2435,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -1967,6 +2443,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -2014,6 +2491,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -2021,6 +2499,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -2055,7 +2534,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MyHomeCloud/MyHomeCloud.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 3B6Y25Z4JK;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				ENABLE_ONLY_ACTIVE_RESOURCES = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2088,7 +2568,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MyHomeCloud/MyHomeCloud.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 3B6Y25Z4JK;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				ENABLE_ONLY_ACTIVE_RESOURCES = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2145,7 +2626,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MyHomeCloud/MyHomeCloud.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 4F5G8L9327;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2177,7 +2659,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MyHomeCloud/MyHomeCloud.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 4F5G8L9327;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

@@ -15,7 +15,6 @@
 #import <Foundation/Foundation.h>
 #import <AVOSCloud/AVOSCloud.h>
 #import <MJRefresh/MJRefresh.h>
-#import <TYKYLibrary/TYKYLibrary.h>
 
 #import "CTBaseViewController.h"
 #import "AJLocalDataCenter.h"
@@ -25,11 +24,14 @@
 #import "AppDelegate.h"
 #import "AJTableViewCell.h"
 #import "TYKYThemeScheme.h"
+#import "CTImagePreviewViewController.h"
+#import "CTCustomAlbum.h"
 
 #import "UIImageView+WebCache.h"
 #import "UIView+TYKYPrompt.h"
 #import "UIImage+ChangeColor.h"
 #import "NSString+Extension.h"
+#import "UIAlertController+CTAlertBlock.h"
 
 #endif /* MyHomeCloud_pch */
 

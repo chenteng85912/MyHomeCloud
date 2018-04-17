@@ -8,6 +8,7 @@
 
 #import "AJWKWebViewController.h"
 #import <WebKit/WebKit.h>
+#import "CTAutoRunLabel.h"
 
 @interface AJWKWebViewController ()<WKNavigationDelegate>
 @property (nonatomic, strong) WKWebView *wkWebView;//网页

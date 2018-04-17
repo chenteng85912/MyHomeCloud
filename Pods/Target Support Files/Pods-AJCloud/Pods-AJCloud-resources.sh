@@ -86,33 +86,11 @@ EOM
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "${PODS_ROOT}/AVOSCloud/AVOS/AVOSCloud/AVOSCloud_Art.inc"
   install_resource "${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle"
-  install_resource "${PODS_ROOT}/TYKYLibrary/TYKYLibrary/AutoLocation/city.plist"
-  install_resource "${PODS_ROOT}/TYKYLibrary/TYKYLibrary/AutoLocation/close_location@2x.png"
-  install_resource "${PODS_ROOT}/TYKYLibrary/TYKYLibrary/AutoLocation/CTLocationViewController.xib"
-  install_resource "${PODS_ROOT}/TYKYLibrary/TYKYLibrary/AutoLocation/toTop@2x.png"
-  install_resource "${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/back@2x.png"
-  install_resource "${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/origin_selected@2x.png"
-  install_resource "${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/origin_unselect@2x.png"
-  install_resource "${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/pselected@2x.png"
-  install_resource "${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/punselect@2x.png"
-  install_resource "${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/selected@2x.png"
-  install_resource "${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/unselect@2x.png"
   install_resource "${PODS_ROOT}/UMengUShare/UShareSDK/UMSocialSDK/UMSocialSDKPromptResources.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "${PODS_ROOT}/AVOSCloud/AVOS/AVOSCloud/AVOSCloud_Art.inc"
   install_resource "${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle"
-  install_resource "${PODS_ROOT}/TYKYLibrary/TYKYLibrary/AutoLocation/city.plist"
-  install_resource "${PODS_ROOT}/TYKYLibrary/TYKYLibrary/AutoLocation/close_location@2x.png"
-  install_resource "${PODS_ROOT}/TYKYLibrary/TYKYLibrary/AutoLocation/CTLocationViewController.xib"
-  install_resource "${PODS_ROOT}/TYKYLibrary/TYKYLibrary/AutoLocation/toTop@2x.png"
-  install_resource "${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/back@2x.png"
-  install_resource "${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/origin_selected@2x.png"
-  install_resource "${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/origin_unselect@2x.png"
-  install_resource "${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/pselected@2x.png"
-  install_resource "${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/punselect@2x.png"
-  install_resource "${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/selected@2x.png"
-  install_resource "${PODS_ROOT}/TYKYLibrary/TYKYLibrary/CustomAlbum/unselect@2x.png"
   install_resource "${PODS_ROOT}/UMengUShare/UShareSDK/UMSocialSDK/UMSocialSDKPromptResources.bundle"
 fi
 

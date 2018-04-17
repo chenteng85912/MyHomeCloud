@@ -1,1 +1,0 @@
-../../../TYKYLibrary/TYKYLibrary/CustomAlbum/CTPhotosNavigationViewController.h

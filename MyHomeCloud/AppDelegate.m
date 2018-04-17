@@ -16,6 +16,7 @@
 #import <UMSocialCore/UMSocialCore.h>//友盟集成 微信分享
 #import <iflyMSC/IFlySpeechUtility.h>
 #import "CT3D_TouchProcess.h"
+#import "CTVersionAutoUpdate.h"
 
 NSString *const AVOSCloudID = @"Q4xx9Pczn6UbtkFQttUzGfOV-gzGzoHsz";
 NSString *const AVOSCloudKey = @"YUlG0aQ4gwl7DcuwopUraSnz";

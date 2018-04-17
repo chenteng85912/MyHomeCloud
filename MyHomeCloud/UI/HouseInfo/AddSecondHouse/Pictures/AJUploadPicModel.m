@@ -16,12 +16,18 @@
 }
 - (void)startUpload{
     WeakSelf;
-    [self.picFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+    [self.picFile uploadWithProgress:^(NSInteger number) {
+        weakSelf.percent = number;
+        weakSelf.state = @1;
+        if ([weakSelf.delegate respondsToSelector:@selector(refreshUploadProgress:)]) {
+            [weakSelf.delegate refreshUploadProgress:number];
+        }
+    } completionHandler:^(BOOL succeeded, NSError * _Nullable error) {
         if (succeeded) {
-          
+            
             NSString *filePath = [AJLocalDataCenter imagePathWithImageName:weakSelf.picFile.name];
             if (![[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
-                [weakSelf.picFile.getData writeToFile:filePath atomically:YES];
+//                [weakSelf.picFile.getData writeToFile:filePath atomically:YES];
                 
             }
             
@@ -32,18 +38,13 @@
         }else{
             
             weakSelf.state  =@3;
-
+            
         }
         if ([weakSelf.delegate respondsToSelector:@selector(uploadSuccess:)]) {
             [weakSelf.delegate uploadSuccess:succeeded];
         }
-    } progressBlock:^(NSInteger percentDone) {
-        weakSelf.percent = percentDone;
-        weakSelf.state = @1;
-        if ([weakSelf.delegate respondsToSelector:@selector(refreshUploadProgress:)]) {
-            [weakSelf.delegate refreshUploadProgress:percentDone];
-        }
     }];
+
 }
 
 

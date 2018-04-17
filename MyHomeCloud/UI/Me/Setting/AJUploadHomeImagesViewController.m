@@ -10,7 +10,7 @@
 #import "PreviewUpLoadCollectionViewCell.h"
 #import "AJUploadPicModel.h"
 
-@interface AJUploadHomeImagesViewController ()<CTSendPhotosProtocol>
+@interface AJUploadHomeImagesViewController ()
 
 @property (weak, nonatomic) IBOutlet UICollectionView *colView;
 @property (strong, nonatomic) NSMutableArray <AJUploadPicModel *> *dataArray;
@@ -111,13 +111,9 @@
     
     NSMutableArray *show = [NSMutableArray new];
     for (AJUploadPicModel *modal in self.dataArray) {
-        UIImage *img = [UIImage imageWithData:modal.picFile.getData];
-        if (img) {
-            [show addObject:img];
-        }else if(modal.picUrl){
-            [show addObject:modal.picUrl];
-            
-        }
+
+        [show addObject:modal.picUrl];
+ 
     }
     
     [CTImagePreviewViewController showPictureWithUrlOrImages:show withCurrentPageNum:indexPath.row];
@@ -128,30 +124,26 @@
         [self.view showTips:@"最多上传9张图片" withState:TYKYHUDModeWarning complete:nil];
         return;
     }
+    [CTCustomAlbum showCustomAlbumWithBlock:^(NSArray<UIImage *> *imagesArray) {
+        [self.view showHUD:nil];
+        [self performSelector:@selector(creatUnUploadData:) withObject:imagesArray afterDelay:0];
+    }];
 
-    CTPhotosNavigationViewController *nav = [CTPhotosNavigationViewController initWithDelegate:self];
-    [self presentViewController:nav animated:YES completion:nil];
     
 }
-#pragma mark - CTSendPhotosProtocol
-- (void)sendImageDataArray:(NSMutableArray<NSData *> *)imgDataArray{
-    
-    [self.view showHUD:nil];
-    [self performSelector:@selector(creatUnUploadData:) withObject:imgDataArray afterDelay:0];
-    
-}
+
 //上传图片
-- (void)creatUnUploadData:(NSMutableArray<NSData *> *)imgDataArray{
+- (void)creatUnUploadData:(NSMutableArray<UIImage *> *)imgDataArray{
 
     NSInteger count = imgDataArray.count;
     for (int i = 0; i<count; i++) {
-        NSData *imgData = imgDataArray[i];
+        UIImage *img = imgDataArray[i];
         NSString *imgName = [NSString stringWithFormat:@"%f_%d",[NSDate new].timeIntervalSince1970,i];
         
         AJUploadPicModel *upload = [AJUploadPicModel new];
         upload.isHome = YES;
 
-        AVFile *file = [AVFile fileWithName:imgName data:imgData];
+        AVFile *file = [AVFile fileWithData:UIImageJPEGRepresentation(img, 1) name:imgName];
         upload.picFile = file;
         [self.dataArray addObject:upload];
     }

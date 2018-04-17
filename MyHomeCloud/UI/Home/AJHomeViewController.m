@@ -26,11 +26,12 @@
 #import "AJNewHouseViewController.h"
 #import "AJNewHouseTableViewCell.h"
 #import "AJNewHouseCellModel.h"
+#import "CTAutoLoopViewController.h"
 
 #define AutoLoopHeight dHeight/3
 CGFloat const HEAD_BTN_HEIGHT = 100;
 
-@interface AJHomeViewController ()<CTLocationViewControllerDelegate,UISearchBarDelegate,CTAutoLoopViewDelegate>
+@interface AJHomeViewController ()<UISearchBarDelegate,CTAutoLoopViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tbView;
 @property (weak, nonatomic) IBOutlet UIView *headBtnView;
 

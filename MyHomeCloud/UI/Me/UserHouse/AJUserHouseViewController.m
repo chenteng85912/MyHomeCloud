@@ -14,6 +14,7 @@
 #import "AJMyReserverViewController.h"
 #import "AJAddNHouseViewController.h"
 #import "AJUserInclinationViewController.h"
+#import "CTCustomePageController.h"
 
 @interface AJUserHouseViewController ()
 
