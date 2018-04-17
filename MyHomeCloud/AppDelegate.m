@@ -44,7 +44,7 @@ NSString *const UMWEIXINAPPSECRET = @"1b701ce273624810d0f55296f19cd384";
     self.window.rootViewController = [AjMainTabBarViewController new];
     [AJMessageBeanDao createTable];
     [self setBugLy];
-    [self setUMWXSDK];
+//    [self setUMWXSDK];
     
     [AJRemoteNotification registerRemoteNotification];
     [AJRemoteNotification registerJPush];
@@ -68,7 +68,7 @@ NSString *const UMWEIXINAPPSECRET = @"1b701ce273624810d0f55296f19cd384";
     [Bugly startWithAppId:BUGLY_APPID config:config];
 }
 //集成友盟微信分享
--(void)setUMWXSDK{
+- (void)setUMWXSDK{
     
     //打开调试日志
     [[UMSocialManager defaultManager] openLog:YES];
