@@ -7,18 +7,21 @@
 //
 
 #import "CTSemaphoreGCD.h"
+#import <UIKit/UIKit.h>
 
 //同时最大下载数量
-NSInteger const maxNum = 99;
+#define kMaxNum  UIScreen.mainScreen.bounds.size.width == 320 ? 9: 99
 
 @interface CTSemaphoreGCD ()
 
-//待上传队列
+//待下载队列
 @property (strong, nonatomic) NSMutableDictionary <NSString *,CTDownloadWithSession *> *prepareUploadArray;
-
-@property (strong, nonatomic) dispatch_queue_t uploadQueue;//队列
-
-@property (strong, nonatomic) dispatch_semaphore_t uploadSemaphore;//信号量
+//队列
+@property (strong, nonatomic) dispatch_queue_t uploadQueue;
+//信号量
+@property (strong, nonatomic) dispatch_semaphore_t uploadSemaphore;
+//图片内存
+@property (strong, nonatomic) NSCache *imageCache;
 
 @end
 
@@ -32,46 +35,55 @@ NSInteger const maxNum = 99;
        
         UploadGCD.prepareUploadArray = [NSMutableDictionary new];
         UploadGCD.uploadQueue =  dispatch_queue_create("CTImageSemaphoreGCD", DISPATCH_QUEUE_CONCURRENT);
-        UploadGCD.uploadSemaphore = dispatch_semaphore_create(maxNum);
+        UploadGCD.uploadSemaphore = dispatch_semaphore_create(kMaxNum);
 
-        NSLog(@"同时上传数量：%ld",(long)maxNum);
+        //内存对象
+        NSCache *imageCache = [NSCache new];
+        if (UIScreen.mainScreen.bounds.size.width==320) {
+            imageCache.countLimit = 50;
+            imageCache.totalCostLimit = 10 * 1024 * 1024;// 10 M
+        }else{
+            imageCache.countLimit = 100;
+            imageCache.totalCostLimit = 50 * 1024 * 1024;// 50 M
+
+        }
+        UploadGCD.imageCache = imageCache;
+        
+        NSLog(@"同时下载数量：%d",(long)kMaxNum);
 
     });
     return UploadGCD;
 }
-
++ (NSCache *)imageCache{
+    return [self shareSemaphoreGCD].imageCache;
+}
 + (CTDownloadWithSession *)oldDownloadTool:(NSString *)urlStr{
     if (!urlStr) {
         return nil;
     }
     return [self shareSemaphoreGCD].prepareUploadArray[urlStr];
 }
-+ (void)addNewDownloadQueue:(CTDownloadWithSession *)download{
-    [[self shareSemaphoreGCD].prepareUploadArray setObject:download forKey:download.urlStr];
++ (void)addNewDownloadQueue:(CTDownloadWithSession *)download
+                     forKey:(NSString *)urlStr{
+    [[self shareSemaphoreGCD].prepareUploadArray setObject:download forKey:urlStr];
     [self startDownload:download];
 }
-//重新上传
+//重新下载
 + (void)reDownloadFile:(NSString *)urlStr{
     CTDownloadWithSession *session = [self shareSemaphoreGCD].prepareUploadArray[urlStr];
     [self startDownload:session];
 }
-//开发上传
+//开始下载
 + (void)startDownload:(CTDownloadWithSession *)uploadFile{
 
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-    
-        void (^task)(void) = ^{
-            dispatch_semaphore_wait([self shareSemaphoreGCD].uploadSemaphore, DISPATCH_TIME_FOREVER);
-
-            [uploadFile startDownload];
-
-        };
-        dispatch_async([self shareSemaphoreGCD].uploadQueue, task);
-
+    dispatch_async([self shareSemaphoreGCD].uploadQueue, ^{
+        dispatch_semaphore_wait([self shareSemaphoreGCD].uploadSemaphore, DISPATCH_TIME_FOREVER);
+        
+        [uploadFile startDownload];
     });
-  
+
 }
-//上传成功或失败
+//下载成功或失败
 + (void)downloadedFile:(NSString *)urlStr{
   
     dispatch_semaphore_signal([self shareSemaphoreGCD].uploadSemaphore);
@@ -80,13 +92,13 @@ NSInteger const maxNum = 99;
         return;
     }
     @synchronized(self) {
-        //上传成功移除 上传工具
+        //下载成功移除 上传工具
         [[self shareSemaphoreGCD].prepareUploadArray removeObjectForKey:urlStr];
 
     }
 
 }
-//清空所有上传队列
+//清空所有下载队列
 + (void)clearAllDownloadQueue{
     
     for (CTDownloadWithSession *upload in [self shareSemaphoreGCD].prepareUploadArray.allValues) {

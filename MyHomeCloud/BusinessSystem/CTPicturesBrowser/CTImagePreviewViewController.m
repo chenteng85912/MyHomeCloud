@@ -33,6 +33,7 @@ NSString *const CTImageShowIdentifier = @"CTImageShowIdentifier";
         static dispatch_once_t once;
         dispatch_once(&once, ^{
             imageShowInstance = [[self alloc] init];
+          
             [imageShowInstance initUI];
 
         });
@@ -60,7 +61,7 @@ NSString *const CTImageShowIdentifier = @"CTImageShowIdentifier";
 
     UILabel *pageLabel = [[UILabel alloc] initWithFrame:CGRectMake(kPictureBrowserScreenWidth/2-20, kPictureBrowserScreenHeight-60, 40, 26)];
     pageLabel.textAlignment = NSTextAlignmentCenter;
-    pageLabel.font = [UIFont systemFontOfSize:13];
+    pageLabel.font = [UIFont systemFontOfSize:12];
     pageLabel.textColor = [UIColor whiteColor];
     pageLabel.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.3];
     pageLabel.layer.masksToBounds = YES;
@@ -78,7 +79,7 @@ NSString *const CTImageShowIdentifier = @"CTImageShowIdentifier";
         return;
     }
 
-    [[self defaultShowPicture] showPicture:imageArray withCurrentPageNum:currentNum];
+    [self.defaultShowPicture showPicture:imageArray withCurrentPageNum:currentNum];
 }
 
 - (void)showPicture:(NSArray *__nonnull)imageArray
@@ -98,7 +99,7 @@ NSString *const CTImageShowIdentifier = @"CTImageShowIdentifier";
     [self.colView reloadData];
     
     [self.colView setContentOffset:CGPointMake((kPictureBrowserScreenWidth+20)*currentNum, 0)];
-    self.pageNumLabel.text = [NSString stringWithFormat:@"%ld/%lu",currentNum+1,(unsigned long)imageArray.count];
+    self.pageNumLabel.text = [NSString stringWithFormat:@"%d/%lu",currentNum+1,(unsigned long)imageArray.count];
     
     self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     

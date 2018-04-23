@@ -13,6 +13,7 @@ target "AJCloud" do
 #    pod 'UMengAnalytics-NO-IDFA'
     pod 'JPush'
     pod 'Bugly'
+    pod 'CTCustomAlbum'
 
 end
 
@@ -27,5 +28,6 @@ target "AJCloudAdmin" do
 #    pod 'UMengAnalytics-NO-IDFA'
     pod 'JPush'
     pod 'Bugly'
+    pod 'CTCustomAlbum'
 
 end

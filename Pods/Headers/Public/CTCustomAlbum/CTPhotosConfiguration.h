@@ -1,0 +1,1 @@
+../../../CTCustomAlbum/CTCustomAlbum/CTCustomAlbum/CTPhotosConfiguration.h

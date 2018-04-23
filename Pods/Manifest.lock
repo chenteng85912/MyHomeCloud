@@ -1,6 +1,12 @@
 PODS:
   - AVOSCloud (10.1.0)
   - Bugly (2.5.0)
+  - CTCustomAlbum (0.0.2):
+    - CTCustomAlbum/CTCustomAlbum (= 0.0.2)
+    - CTCustomAlbum/CTOnePhoto (= 0.0.2)
+  - CTCustomAlbum/CTCustomAlbum (0.0.2):
+    - CTCustomAlbum/CTOnePhoto
+  - CTCustomAlbum/CTOnePhoto (0.0.2)
   - FMDB (2.7.2):
     - FMDB/standard (= 2.7.2)
   - FMDB/standard (2.7.2)
@@ -21,6 +27,7 @@ PODS:
 DEPENDENCIES:
   - AVOSCloud
   - Bugly
+  - CTCustomAlbum
   - FMDB
   - JPush
   - MBProgressHUD
@@ -28,9 +35,23 @@ DEPENDENCIES:
   - SDWebImage
   - UMengUShare/Social/ReducedWeChat
 
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - AVOSCloud
+    - Bugly
+    - CTCustomAlbum
+    - FMDB
+    - JCore
+    - JPush
+    - MBProgressHUD
+    - MJRefresh
+    - SDWebImage
+    - UMengUShare
+
 SPEC CHECKSUMS:
   AVOSCloud: e6639cc02af886d88aafce0217b31f181d5e3fc7
   Bugly: 3ca9f255c01025582df26f9222893b383c7e4b4e
+  CTCustomAlbum: 166d83568be543d230d8caa792b316aaf34fb035
   FMDB: 6198a90e7b6900cfc046e6bc0ef6ebb7be9236aa
   JCore: 27598485098d0db99d2812cba048003457d08cfb
   JPush: 003d9eaef8ba2df76de32573d0c8aa62b92b3c82
@@ -39,6 +60,6 @@ SPEC CHECKSUMS:
   SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
   UMengUShare: 370d180101e13ee0227ae657ab119ba97243d2b3
 
-PODFILE CHECKSUM: de7addbf1fd85b7496526e3bab33417cbd826571
+PODFILE CHECKSUM: b75f0d13ec0e8abf34c3524abe83d0d61939bd46
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.0
