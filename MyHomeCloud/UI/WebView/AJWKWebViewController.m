@@ -53,8 +53,7 @@
     [super viewWillDisappear:animated];
     
 }
-- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
-{
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
     if (self.wkWebView.canGoBack) {
         [self.wkWebView goBack];
         return NO;
@@ -159,26 +158,11 @@
         self.closeBtn.hidden = NO;
     }else{
         self.closeBtn.hidden = YES;
-        
     }
     //不允许跳转
     //decisionHandler(WKNavigationResponsePolicyCancel);
 }
-// 在发送请求之前，决定是否跳转
-//- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler{
-//    
-//    debugLog(@"%@",navigationAction.request.URL.absoluteString);
-//    //允许跳转
-//    decisionHandler(WKNavigationActionPolicyAllow);
-//    if (webView.canGoBack) {
-//        self.closeBtn.hidden = NO;
-//    }else{
-//        self.closeBtn.hidden = YES;
-//        
-//    }
-//    //不允许跳转
-//    //decisionHandler(WKNavigationActionPolicyCancel);
-//}
+
 //加载失败
 - (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation withError:(NSError *)error {
     debugLog(@"加载失败");
@@ -195,7 +179,6 @@
     }else{
         [self closeAction];
     }
-
 }
 - (void)dealloc {
     [self.wkWebView removeObserver:self forKeyPath:@"estimatedProgress"];
@@ -223,10 +206,8 @@
         _closeBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
         [_closeBtn setImage:LOADIMAGE(@"close") forState:UIControlStateNormal];
         _closeBtn.imageEdgeInsets = UIEdgeInsetsMake(0, -10, 0, 0);
-
         [_closeBtn addTarget:self action:@selector(closeAction) forControlEvents:UIControlEventTouchUpInside];
         _closeBtn.hidden = YES;
-
     }
     return _closeBtn;
 }
